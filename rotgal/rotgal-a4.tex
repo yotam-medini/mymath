@@ -1,0 +1,8 @@
+\ifx\pdfoutput\undefined % We're not running pdftex
+\documentclass[11pt,twoside,a4paper]{book}
+\else
+\documentclass[pdftex,twoside,a4paper]{book}
+\usepackage{thumbpdf}
+\pdfcompresslevel=9
+\fi
+\input{rotgal}
