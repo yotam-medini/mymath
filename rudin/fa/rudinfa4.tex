@@ -1,0 +1,1570 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Duality in Banach Spaces}
+
+\newcommand{\BXY}{\ensuremath{\scrB(X,Y)}}
+\newcommand{\Xss}{\ensuremath{X^{**}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+\subsection{More boundness Characterizations}
+
+Some more results concering bounded functionals and bounded operators.
+
+See \cite{Megginson1998} Corollary~2.4.5
+\begin{llem} \label{llem:cont:bymaps}
+Let \((W,\tau)\) be a topological space and $X$ be a set topologized
+by a a family \calF\ of mappings \(f: X \to Y_f\).
+A mapping \(g:W\to X\) is continuous iff \(f\circ g\) is continuous
+for all \(f\in\calF\).
+\end{llem}
+\begin{proof}
+If $g$ is continuous then \(f\circ g\) are continuous simply
+by composition of continuous mappings.
+
+Conversely, we assume \(f\circ g\) is continuous for all \(f\in\calF\).
+It will be sufficient to show that \(g^{-1}(B)\) is open in $W$
+for any set $B$ in a basis for the topology of $X$.
+
+Let $G$ be a family of inverse images of open sets \(f^{-1}(V)\)
+where \(f\in\calF\) and $V$ is open in \(Y_f\).
+Following  the discussion of Section~3.8
+let the $S$ be the family that consists of finite intersections
+of sets from $G$. It is a subbasis for 
+the topology of $X$ which consists of unions of sets from $S$.
+
+Pick an arbitrary set
+'\(B = \cap_{j\in J} f_j^{-1}(V_j)\) from the subbasis $S$ where \(V_j\) is open 
+in \(Y_{f_j}\) and $J$ is a finite set of \calF-indices.
+% (The finiteness $J$ is actually not needed for our arguments).
+Put \(U_j = f_j^{-1}(V_j) \subset X\).
+By the assumption each \((f_j\circ g)^{-1}(V_j) = g^{-1}(U_j)\) 
+is open in $W$.
+It is easy to see that
+\begin{equation*}
+g^{-1}(B) = g^{-1}\left(\cap_{j\in J} U_j\right)
+  = \cap_{j\in J} g^{-1}(U_j).
+\end{equation*}
+Hence \(g^{-1}(B) \in \tau\) and so $g$ is continuous.
+\end{proof}
+
+
+The relation between continuity and boundness
+Will now be shown form normed spaces.
+\begin{llem} \label{llem:op:cont:bounded}
+Let \(T:X \to Y\) be a linear mapping between normed spaces.
+Then $T$ is continuous iff \(T(E)\) is bounded in $Y$ whenever $E$
+is bounded in $X$.
+\end{llem}
+\begin{proof}
+Assume $T$ is continuous.
+Let \(E\subset X\) be bounded subset.
+Pick an arbitrary neighborhood \(0\in V \subset Y\)
+By assumption there exists a neighborhood \(0 \in U \subset X\)
+such that \(T(U) \subset V\) and there exists some \(n < 0\) such that
+\(E \subset nU\). Hence 
+\(T(E) \subset nT(U) \subset nV\). Hence the desired boundness condition 
+holds for $T$. (Note that this direction did not use any norm).
+
+Conversely, assume that $T$ maps bounded sets to bounded sets.
+Then \(T(\{x\in X: \|x\| \leq 1\})\) is bounded in $Y$.
+Thus there exists some \(M < \infty\) such that
+\(\|Tx\| < M\) whenever \(\|x\| \leq 1\) where \(x \in X\).
+Pick a neighborhood \(0\in V \subset Y\).
+We can find some \(r > 0\) such that \(\{y\in Y: \|y\| \leq r\} \subset V\).
+Put the open set \(W = \{x \in X: \|x\| < r/M\}\) and clearly
+\(T(W) \subset U\). Thus $T$ is continuous at the origin.
+By linearity $T$ is continuous.
+\end{proof}
+
+
+Here is a characterization of linear operator's boundness
+(\cite{Megginson1998} Proposition~2.5.10).
+\begin{llem}
+Assume \(T:X \to Y\) is a linear operator between normed spaces.
+Then $T$ is bounded  iff \(y^* \circ T \in X^*\) for all \(y^*\in Y^*\).
+\end{llem}
+\begin{proof}
+If a functional is weakly-continuous then obviously it is
+continuous in the norm topology. Theorem~3.10  gives the converse
+that a any continuous functional is also weakly-continuous.
+By Local-Lemma~\ref{llem:cont:bymaps} $T$ is weak-to-weak continuous.
+
+The mapping $T$ is normed-continuous iff it \(T(E)\) is norm-bounded
+in $Y$ whenever $E$ is normed bounded in $X$.
+By Theorem~3.18 this is equivalent 
+to the condition that \(T(E)\) is weakly-bounded
+whenever $E$ weakly-bounded.
+\end{proof}
+
+The relation between operator continuity and its weak-continuity
+is shown in the next result
+\begin{llem} \label{llem:weak:to:weak}
+Let \(T:X \to Y\) be a linear map between normed spaces.
+Then $T$ is continuous iff $T$ is weak-to-weak continuous.
+\end{llem}
+\begin{proof}
+By Local Leamm~\ref{llem:op:cont:bounded}
+$T$ is continuous iff it map bounded sets to bounded sets.
+By Theorem~3.18 it is equivalent to
+require that $T$ maps weakly bounded sets to weakly bounded sets.
+\end{proof}
+
+Here a are simple lemmas regarding bounded and weak boundness of a set.
+\begin{llem} \label{llem:bound:weakbound}
+If $E$ is bounded then it is weakly bounded.
+\end{llem}
+\begin{proof}
+Trivial since every weak neighborhood is a neighborhood
+in the original topology.
+\end{proof}
+
+
+\begin{llem} \label{llem:bound:funcbound}
+If  $E$ is a bounded subset of  a topological vector space $X$,
+then \(\Lambda (E)\) is bounded in \C\ for every \(\Lambda \in X^*\).
+\end{llem}
+\begin{proof}
+By  negation assume \(\Lambda(E)\) is unbounded.
+Thus we can find a sequence \(x_n\in E\) such that \(|\Lambda x_n| \geq n\).
+Define the open $0$ neighborhood \(V = \{x \in X: |\Lambda x\| < 1\}\).
+Clearly \(x_n \notin nV\) for all $n$. Hence \(E \not\subset nV\) for all $n$
+contradicting the assumption.
+\end{proof}
+
+We have a ``weak equivalnce''.
+\begin{llem} \label{llem:weakbound:funcbound}
+A subset  $E$ is weakly bounded in a topological vector space $X$,
+iff \(\Lambda (E)\) is bounded in \C\ for every \(\Lambda \in X^*\).
+\end{llem}
+\begin{proof}
+This was shown in the discussion of Section~3.11.
+\end{proof}
+
+With norm we have an equivalnce.
+\begin{llem} \label{llem:bound:norm:funcbound}
+Let  \(E \subset X\) where $X$ is a normed vector space.
+Then $E$ is bounded iff \(\Lambda (E)\) is bounded in \C\ for
+every \(\Lambda \in X^*\).
+\end{llem}
+\begin{proof}
+If $E$ is bounded ,then it is weakly bounded and by
+Local Lemma~\ref{llem:op:cont:bounded}
+\(\Lambda (E)\) is bounded in \C\ for
+every \(\Lambda \in X^*\).
+Conversely, assume \(\Lambda (E)\) is bounded in \C\ for
+every \(\Lambda \in X^*\). 
+By Local Lemma~\ref{llem:weakbound:funcbound} again,
+$E$ is weakly bounbded. By Theorem~3.18 it is also originally bounded.
+\end{proof}
+
+The following lemma shows that in boundness of operator
+can be checked by looking at weak topologies, when the spaces are normed
+(See \cite{Megginson1998} Proposition~2.5.11).
+\begin{llem} \label{llem:op:normbd:weakbd}
+Let \(T:X\to Y\) be a linear operator between normed spaces.
+Then $T$ is bounded iff it is weak-to-weak bounded.
+\end{llem}
+\begin{proof}
+Let \(B_X = \{x\in X: \|x\|\leq 1\}\).
+By definitions, \(\Lambda\) is bounded if \(T(B_X)\) is bounded in $Y$. 
+By Local Lemma~\ref{llem:bound:norm:funcbound} 
+This is equivalent to  \((\Lambda T)(B_X)\) be bounded in \C\ for
+all \(\Lambda \in Y^*\).
+Since all these \(\Lambda T \in X^*\) for all \(\Lambda \in Y^*\)
+the last condition means, that $T$ is bounded
+iff  \((\Lambda T)(B_X)\) are continuous mappings \(X\to\C\)
+for all \(\Lambda \in Y*\) considering the weak topology of $X$.
+
+In turn, by Local Lemma~\ref{llem:cont:bymaps} this is equivalent 
+to $T$ being continuous mapping 
+from $X$ with its weak to $Y$ with its weak topology.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemmas for the Exercises}
+
+\begin{llem} \label{lem:compact:separable}
+A compact set $K$ in a metric space is separable.
+\end{llem}
+\begin{proof}
+Let $d$ be the metric.
+For any \(n\in\N\), consider the open covering
+\begin{align*}
+G_{n,x} &= \{y\in K: d(y,x) < 1/n\}\\
+\calG_n &= \cup_{x\in K} G_{n,x}
+\end{align*}
+By compactness, for any \(n\in\N\) there is a finite 
+sub-covering of \(\calF_n = \calG_n\).
+Let \(C_n\) be the finite set of centers of the \(\calF_n\) balls.
+Now \(F = \cup_{n\in\N} C_n\) is countable, and clearly dense in $K$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 111-115
+
+Throughout this set of exercises, $X$ and $Y$ denote Banach spaces, unless
+the contrary is explicitly stated.
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%% 1
+\begin{excopy}
+Let \(\phi\) be the embeddings of $X$ onto \Xss\ in Section~4.5.
+Let \(\tau\) be the weak topology of $X$, and let \(\sigma\)
+be the weak\upstar-topology of \Xss\ --- the one induced by \(X^*\).
+\begin{itemize}
+
+\itemch{a}
+Prove that \(\phi\) is a homeomorphism of \((X,\tau)\) onto a dense subspace
+of \((\Xss, \sigma)\).
+
+\itemch{b}
+If $B$ is the closed unit ball of $X$, prove that \(\phi(B)\)
+is \(\sigma\)-dense in the closed unit ball
+of \Xss. (Use the Hahn-Banach separation theorem.)
+
+\itemch{c}
+Use \ich{a}, \ich{b}, and the Banach-Alaoglu theorem to prove that $X$
+ is reflexive if and only if $B$ is weakly compact.
+
+\itemch{d}
+Deduce from \ich{c} that every norm-closed subspace of reflexive space $X$
+ is reflexive.
+
+\itemch{e}
+If $X$ is reflexive and $Y$ is a closed subspace of $X$, prove that \(X/Y\) 
+is reflexive.
+
+\itemch{f}
+Prove that $X$ is reflexive if and only if \(X^*\) is reflexive.\\
+\emph{Suggestion:} One half follows from \ich{c}; for the other half,
+ apply \ich{d} to the subspace \(\phi(X)\) of \Xss.
+
+\end{itemize}
+\end{excopy}
+
+See \cite{Megginson1998} Theorems (or alike)~1.11.17,
+(Goldstine)\index{Goldstine}~2.6.26, 2.6.28.
+
+\begin{itemize}
+\itemch{a}
+The homeomorphism is implied by definitions of weak topologies.
+We need to show that the image \(\phi(X)\) is weak\upstar\ dense.
+If \(\dim X < \infty\),
+ the result is trivial since the topologies are equivalent.
+Thus we may assume \(\dim X = \infty\).
+Pick some base weak\upstar\ neighborhood of~0,
+by fixing some \(\epsilon>0\) and \(x_j^*\in X^*\) for \(j\in\N_n\) and
+setting
+\begin{equation*}
+V = \{w^{**}\in X^{**}: \forall j\in\N_n,\; |w^{**}(x_j^*)| < \epsilon\}.
+\end{equation*}
+Let \(x^{**}\in X^{**}\), we will show that
+\begin{equation*}
+(x^{**} + V) \cap \phi(X) \neq \emptyset.
+\end{equation*}
+\iffalse
+We may assume that \(\{x_j^*:j\in\N_n\}\) are linearly independent,
+since otherwise, we can take a linearly independent subset,
+and the rest of the evaluations will be determined.
+\fi
+We may assume that \(\{x_j^*:j\in\N_m\}\) are linearly independent (\(m\leq n\)).
+We would like to show that actually there exists \(x\in X\) such that
+\begin{equation} \label{eq:xjsx:eq:xssxj}
+\forall j\in\N_m,\; x_j^*(x) = x^{**}(x_j^*).
+\end{equation}
+This will imply, that \eqref{eq:xjsx:eq:xssxj} holds \(\forall j\in N_n\)
+as well.
+
+Put
+\begin{align*}
+N &= \bigcap_{k\in\N_n} \Ker(x_k^*) \\
+N_j &= \bigcap_{k\in\N_n\setminus\{j\}} \Ker(x_k^*) \qquad (j\in\N_n).
+\end{align*}
+Note that if \(T_j:X \to \C^{n-1}\) defined by
+\begin{equation*}
+T_j(x) = 
+ \bigl(
+   x_1^*(x),x_2^*(x),\ldots,x_{j-1}^*(x),x_{j+1}^*(x),\ldots,x_n^*(x)
+ \bigr)
+\end{equation*}
+then \(N_j = \Ker(T_j)\), and thus \(\dim N_j = \infty\).
+
+Since \(\{x_j^*:j\in\N_m\}\) are linearly independent, by Lemma~3.9
+for each \(j\in\N_n\) there exists \(x_j \in N \setminus N_j\)
+such that \(X_j^*(x_k) = \delta_{j,k}\) for all \(j,k\in\N_n\).
+
+Now we can form a system of linear equations
+\begin{equation*}
+\sum_{k=1}^n \alpha_k X_j^*(x_k) 
+  = x_j^*\left(\sum_{k=1}^n \alpha_k (x_k)\right) = x^{**}(x_j^*)
+\end{equation*}
+Solving this, gives the desired
+\(x = \sum_{k=1}^n \alpha_k (x_k)\).
+
+\itemch{b}
+The (closed) unit ball $B$ is convex, and so  \(\phi(B)\) 
+is convex as well.
+Clearly \(U := \overline{\phi(B)}^{w^*}\) is convex as well
+and also balanced.
+We look at \(X^*\) as a family of functionals on~\(X^{**}\).
+By definition of the latter, the former is a separating family.
+The topological vector space
+\((X^{**},\sigma)\) is 
+by Theorem~3.10,
+locally convex and its dual is \(X^*\).
+
+Assume by negation \(x_0^{**} \in X^{**}\setminus U\) 
+and \(\|x_0^{**}\| \leq 1\).
+By Theorems~3.7 there exists \(\Lambda \in X^*\)
+such that 
+  \(|x^{**}(\Lambda)| \leq 1\) for all \(x^{**} \in U\) and
+  \(|x_0^{**}(\Lambda)| > 1\).
+Thus we can find a \(\sigma\)-neighborhood \(V \ni x_0\)
+such that \(V \cap U = \emptyset\) which gives a~contradiction.
+
+
+\itemch{c}
+We note that both \(\sigma\) and \(\tau\) are 
+topologies induced by \(X^*\). Hence they are equivalent via \(\phi\).
+
+Assume $X$ is reflexive. 
+The ball $B$ is closed by the norm topology,
+and by Corollary~\ich{a} of Theorem~3.12 it is \(\sigma\) closed.
+Hence \(\phi(B)\) is \(\tau\)-closed and 
+by Banach-Alaoglu Theorem~3.15 \(\phi(B)\) is \(\tau\)-compact
+and so $B$ is weakly compact.
+
+Conversely, assume $B$ is weakly compact.
+The map \(\phi: (X,\sigma \to (X^{**},\tau)\) is homeomorphism,
+hence  \(\phi(B)\) is \(\tau\)-compact in \(\phi(X)\).
+But this implies that \(\phi(B)\) is compact also in \(X^{**}\).
+In Hausdorff space, any compact set is closed, and thus
+\(\phi(B)\) is \(\tau\)-closed in \(X^{**}\) and by \ich{b}
+we see that \(\phi(B)\) is the closed unit ball of \(X^{**}\).
+By linearity \(\phi(X) = X^{**}\) and so $X$ is relative.
+
+\itemch{d}
+Let \(Y \subset X\) be a normed-closed subspace of $X$.
+It will be sufficient to show that \(B\cap Y\) is weakly compact.
+
+We first show that the 
+weak topology \(\sigma_Y\) restricted by \(\sigma\)
+is the same as the
+weak topology of $Y$ (induced by \(Y^*\)).
+The inverse images of open sets in \C\ by the functionals \(\Lambda \in X^*\)
+are a  sub-base of \(\sigma_Y\). This sub-base is actually the
+same as 
+The inverse images of open sets in \C\ by the 
+the functionals \(\{\Lambda_Y: \Lambda \in X^*\} \subset Y^*\).
+But the last inclusion is actually an equality,
+since by the Hahn-Banach Theorem~3.6 each functional \(f\in Y^*\)
+can be extended to some \(\Lambda \in X^*\).
+Thus the two topologies have a same sub-base and so they are equal.
+
+Since $Y$ is norm-closed and convex, by Corollary~\ich{a} of Theorem~3.12
+It is also weakly closed in $X$. Hence \(B \cap Y\) is weakly compact.
+
+\itemch{e}
+It would be better to clearly ignore the trivial \(X = Y\) case.
+Note the if \(P: X \to X/Y\) is the projection,
+then \(P(B)\) is not necessarily the unit ball of \(X/Y\).
+
+The projection \(P:X\to X/Y\) gives a natural injection
+\begin{align*}
+ T: (X/Y)^* &\to X^* \\
+ T(\Lambda^*) &= \Lambda \\
+ \Lambda(x) &= \Lambda^*(x + Y) \qquad (x\in X)
+\end{align*}
+The last setting is clearly well defined.
+
+Assume now that $X$ is reflexive. We will show that the natural
+\(\tilde{\phi}:(X/Y) \to (X/Y)^{**}\) 
+ injection 
+is surjective.
+Let \(\tilde{x}^{**} \in (X/Y)^{**}\).
+It is a functional on \((X/Y)^*\) 
+that can be viewed as a functional on \(T((X/Y)^*) \subset X^*\).
+It can be extended by Hahn-Banach Theorem~3.6
+to some \(x^{**} \in X^{**}\). Since $X$ is reflexive
+\(\phi(x) = x^{**}\) for some (unique) \(x\in X\).
+Now clearly
+\begin{equation*}
+\forall x^* \in X^*,\; (x+Y,x^*) = (x^*,\tilde{x}^{**}).
+\end{equation*}
+Thus \(\tilde{\phi}(x) = \tilde{x}^{**}\) and \(\tilde{\phi}\)
+is surjective.
+
+\itemch{f}
+Assume $X$ is reflexive. Since the dual space depends only on the original
+and since \(X \cong X^{**}\) via the natural embedding,
+similar embedding gives \(X^* \cong (X^{**})^* = X^{***}\).
+
+Conversely, assume \(X^*\) is reflexive. By what was just shown, 
+\(X^*\) is reflexive and by \ich{d}, its norm-closed subspace \(\phi(X)\)
+is reflexive. By isomorphism, $X$ is reflexive.
+\end{itemize}
+
+
+%%%%%%% 2
+\begin{excopy}
+Which of the spaces \(c_0\), \ellone, \ellp, \ellinf are reflexive?
+Prove that every finite-dimensional
+normed space is reflexive. Prove that $C$, the supremum-normed space of all
+complex
+continuous functions, on the unit interval, is not reflexive.
+\end{excopy}
+
+We know that (upto natural isomorphism) 
+\(c_0^* = \ellone\),
+\((\ellone)^* = \ellinf\)
+and \(c_0 \not\cong \ellinf\) hence 
+by previous Exercise~1\ich{f} these 3 spaces are \emph{not} reflexive.
+When \(1<p<\infty\) we have \((\ellp)^* = \ell^q\)
+where \(q = p/(p-1)\) and similarly \((\ell^q)^* = \ellp\)
+hence \ellp\ are reflexive.
+
+As a vector space, every normed space $V$ of 
+dimension \(n < \infty\) is isomorphic
+to \(\C^n\). Every functional on $V$ is determined by its values 
+on a basis of $V$. Thus \(\dim V^* = \dim V = n\).
+Hence \(\dim V = \dim V^{**}\).
+Now in finite-dimensional vector space, a ???  sub-space
+must be of smaller degree, hence the natural embedding of $V$
+into \(V^{**}\) must be surjective, hence every finite-dimensional normed
+space is reflexive.
+
+By Riesz representation \cite{RudinRCA80} Theorem~6.19
+\(C(I)^*\) are the complex Lebesgue measure on $I$
+which can be identified with \(L^1(I)\), hence \(C(I)^{**} \cong L^\infty(I)\)
+and so \(C(I)\) is not reflexive.
+
+
+%%%%%%% 3
+\begin{excopy}
+Prove that a subset $E$ of \BXY\ is equicontinuous if and only if there exists
+\(M < \infty\)
+such that \(\|\Lambda\| < M\) for every \(\Lambda \in E\).
+\end{excopy}
+
+Assume $E$ is equicontinuous.
+Pick \(\epsilon = 1\), then there exist some \(\delta > 0\)
+such that \(\|\Lambda x \| < 1\) whenever \(\Lambda \in E\) 
+and \(\|x\| < \delta\).
+Now take \(M = 1/\delta\) and now \(\|\Lambda u\| < M\)
+for all \(\Lambda \in E\) and \(u \in \{x\in X: \|x\| \leq 1\}\).
+
+Conversely, assume such an $M$ exists.
+By linearity, it is sufficient to show that 
+$E$ is equicontinuous at the origin \(0 \in X\).
+for any neighborhood $V'$ of \(0\in Y\)
+we can find some \(\epsilon > 0\) such that 
+\begin{equation*}
+V := \{y \in Y: \|y\|< \epsilon\} \subset V'.
+\end{equation*}
+Now let 
+\(W := \{x \in X: \|x\|< \epsilon/M\}\).
+Since 
+\begin{equation*}
+\forall \Lambda \in E,\, \forall x\in X\; \|\Lambda x \| < M\cdot \|x\|
+\end{equation*}
+we have
+\begin{equation*}
+\forall \Lambda \in E,\, \forall x\in  W\; \Lambda x \in V.
+\end{equation*}
+Thus $E$ is equicontinuous.
+
+%%%%%%% 4
+\begin{excopy}
+Recall that \(X^* = \scrB(X,\C)\) if \C\ is the scalar field.
+Hence \(\Lambda^* \in \scrB(\C,X^*)\) for every
+\(\Lambda \in X^*\). Identify the range of \(\Lambda^*\).
+\end{excopy}
+
+The range is \(\{\lambda \Lambda: \lambda\in\C\}\).
+
+
+%%%%%%% 5
+\begin{excopy}
+Prove that \(T \in \BXY\) is an isometry of $X$ onto $Y$ if and only if
+\(T^*\) is an isometry of \(Y^*\) onto \(X^*\).
+\end{excopy}
+
+Let 
+\begin{alignat*}{2}
+B_X  &= \{x \in X: \|x\| \leq 1\} \qquad &
+  B_Y  &= \{y \in Y: \|y\| \leq 1\} \\
+B_X^* &= \{\Lambda \in X^*: \|\Lambda\| \leq 1\}  \qquad &
+  B_Y^* &= \{\Psi \in Y^*: \|\Psi\| \leq 1\} 
+\end{alignat*}
+
+
+Assume $T$ is an isometry, then \(T(B_X)\subset B_Y\).
+Moreover, \(T(B_X) = B_Y\) since $T$ is onto.
+If~\(\Psi\in B_Y^* \) then
+\begin{equation*}
+\|T^*(\Psi)\|
+ = \sup_{x\in B_X} |(T^*(\Psi))(x)| 
+ = \sup_{x\in B_X} |\Psi(Tx)|
+ = \sup_{y\in B_Y} |\Psi(y)| 
+ = \|\Psi\|.
+\end{equation*}
+Hence \(T^*\) is an isometry. 
+To show it is surjective, pick arbitrary \(\Lambda_X \in X^*\).
+We simply define \(\Lambda_Y \in Y^*\) by 
+\(\Lambda_Y(y) = \Lambda_X(T^{-1}(y))\) which is well defined
+since $T$ is onto and being isometry is also injective.
+
+
+Conversely, assume \(T^*\) is an onto isometry.
+Assume by negation \(\|x\| \neq \|Tx\|\) for some \(x\in X\)
+and put \(y = Tx\).
+There are two cases.
+
+\textbf{Case 1.}
+Assume by negation \(\|x\| < \|y\|\).
+By Hahn-Banach Theorem~3.6, we can find a functional \(\Lambda \in Y^*\)
+such that \(\Lambda y = \|y\|\) and \(\|\Lambda\| = 1\).
+Now \(T^*(\Lambda) \in X^*\) and \((T^*\Lambda)(x) = |y|\)
+which gives the \(\|T^*(\Lambda)\| > 1\) contradiction.
+Note that for this case we did not use the fact that \(T^*\) is onto.
+
+
+\textbf{Case 2.}
+Assume by negation \(\|x\| > \|y\|\).
+We can find some \(\Lambda_X \in X^*\) such that 
+(again wth Hahn-Banach Theorem~3.6)
+\(\Lambda_X x = \|x\|\)
+and
+\(\|\Lambda_X\| = 1\).
+Since \(T^*\) is onto, we can also find (unique by isometry)
+\(\Lambda_Y \in Y^*\) such that \(T^*(\Lambda_Y) = \Lambda_X\).
+Now
+\begin{equation*}
+  \Lambda_Y y
+= \Lambda_Y (T x) 
+= (T^*(\Lambda_Y)) (x) 
+= \Lambda_X x
+= \|x\|.
+\end{equation*}
+If \(y \neq 0\) then the above equality gives the \(\|x\| = 0\) contradiction.
+Otherwise  \(\|\Lambda_Y\| \geq \|x\|/\|y\| > 1\) is a contradiction
+as well, and so $T$ is an isometry.
+
+The surjectivity of $T$ follows from Theorem~4.15.
+
+
+
+%%%%%%% 6
+\begin{excopy}
+Let \(\sigma\) and \(\tau\) be the weak\upstar-topologies of \(X^*\) and \(Y^*\)
+respectively, and prove that $S$ a
+continuous linear mapping of \((Y^*, \tau)\) into \((X^*, \sigma)\)
+ if and only if \(S = T^*\) for some \(T \in \BXY\).
+\end{excopy}
+
+See \cite{Megginson1998} Theorem~3.1.11.
+
+Assume \(T \in \BXY\), then for any \(x \in X\) % \(\Lambda \in Y^*\)
+\begin{equation*}
+(S \Lambda)(x) = (T^* \Lambda)(x) = \Lambda(T x) \qquad (\Lambda \in Y^*)
+\end{equation*}
+is a continuous function simply by composition of continuous functions
+in the norm topologies of \(X^*\) and \(Y^*\).
+The linearity of $S$ is clear so it is sufficient to show 
+the weak\upstar-to-weak\upstar\ continuity in the origin.
+Let \(V'\subset X^*\) be a \(\sigma\)-neighborhood of $0$.
+We can find a base sub-neighborhood \(V \subset V'\)
+\begin{equation*}
+V = \{x^*\in X^*: \forall j\in\N_m,\; |x*(x_j)| < \epsilon\}
+\end{equation*}
+for some \(\epsilon > 0\) and \(x_j \in X\) for \(1\leq j \leq m\).
+Now
+\begin{align*}
+(T^*)^{-1}(V)
+ &= \{y^*\in Y^*: T^*(y^*) \in V\}
+  = \cap_{j=1}^m \{y^*\in Y^*: |\langle x_j, T^*(y^*)\rangle | < \epsilon\} \\
+ &= \cap_{j=1}^m \{y^*\in Y^*: |\langle T(x_j), y^*\rangle | < \epsilon\}
+\end{align*}
+which is \(\tau\)-open in \(Y^*\). Thus $S$ is also
+continuous  \((Y^*, \tau) \,\to\, (X^*, \sigma)\) mapping.
+
+Conversely, assume $S$ is
+continuous linear mapping of \((Y^*, \tau)\) into \((X^*, \sigma)\).
+Let \(\psi_X\) and \(\psi_Y\) the isomorphisms of $X$ and $Y$
+to their second duals.
+Pick \(x\in X\). By composition \(\psi_X \circ S\) is weakly\upstar\ continuous
+functional on~\(Y^*\). Hence \(\psi_X \circ S \in \psi_Y(Y)\).
+Define
+\begin{equation*}
+Tx = \psi_Y^{-1}(\psi_X \circ S) \in Y.
+\end{equation*}
+The linearity of $T$ is clear. By definition it is weak-to-weak continuous.
+By local lemma~\ref{llem:op:normbd:weakbd} $T$ is also normed-continuous.
+
+
+%%%%%%% 7
+\begin{excopy}
+Let \(L^1\) be the usual space of integrable functions on the closed unit
+ interval $J$, relative
+to Lebesgue measure. Suppose \(T \in \scrB(L^1, Y)\),
+ so that \(T^* \in \scrB(Y^*, L^\infty)\). Suppose
+\(\scrR(T^*)\) contains every continuous function on $J$.
+ What can you deduce about $T$?
+\end{excopy}
+
+Since \(C(J)\) is dense in \(L^\infty(J)\) we have
+\(\scrR(T^*)^\perp = \{0\}\).
+By Theorem~4.12 \(\scrN(T) = \{0\}\), hence $T$ is injective.
+
+
+%%%%%%% 8
+\begin{excopy}
+Prove that \((ST)^* = T^*S^*\). Supply the hypotheses under which this makes
+ sense.
+\end{excopy}
+
+Let $X$, $Y$, $Z$ be Banach spaces and let 
+\begin{equation*}
+T: X \to Y \qquad S: Y\to Z
+\end{equation*}
+linear bounded mapping.
+Let \(\Lambda_Z \in Z^*\) and \(x\in X\).
+\begin{align*}
+\bigl((ST)^*(\Lambda_Z)\bigr)(x)
+ &= \Lambda_Z\bigl((ST)(x)\bigr)
+  = \Lambda_Z\bigl(S(Tx)\bigr)
+  = (S^*\Lambda_Z)(Tx)
+  = \bigl(T^*(S^*\Lambda_Z)\bigr)(x) \\
+  &= \bigl((T^*S^*)\Lambda_Z\bigr)(x).
+\end{align*}
+Hence \((ST)^* = T^*S^*\).
+
+
+%%%%%%% 9
+\begin{excopy}
+Suppose \(S\in \scrB(X)\), \(T\in \scrB(X)\).
+\begin{itemize}
+\itemch{a}
+Show, by an example, that \(ST = I\) does not imply \(TS = I\).
+\itemch{b}
+However, assume $T$ is compact, show that
+\begin{equation*}
+S(I - T) = I \quad \textnormal{if and only if} \quad (I - T)S = I,
+\end{equation*}
+and show that either of these equalities implies that 
+\(I - (I - T)^{-1}\) ts compact.
+\end{itemize}
+
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+Consider \(X = \ellp\) with $S$ and $T$ the left and right shift operators
+respectively. That is 
+\begin{align*}
+(S(x))(n) &= x(n+1) \\
+(R(x))(n) &= x(n-1) \quad \textnormal{if} \quad n>1 
+\qquad \textnormal{and} \quad (R(x))(0) = 0.
+\end{align*}
+\itemch{b}
+Assume \(S(I - T) = I\).
+Then \(\scrN(I -T) = \{0\}\) 
+% and \(\scr(S) = X\),
+hence \(\dim\scrN(I -T) = 0\) and
+by Theorem~4.25
+\(\dim X / \scrR(I - T) = 0\) and so 
+\(\scrR(I - T) = X\).
+By negation assume \(y = (I - T)Sx \neq x\) for some \(x\in X\).
+Then \(Sy = S(I - T)Sx = Sx\) and so \(0 \neq (x-y) \in \scrN(S)\).
+Now we can find some \(w\in X\) such that \(x-y = (I-T)w\)
+which gives the following \(0 = S(I - T)w = w \neq 0\) contradiction.
+
+Conversely, assume \((I - T)S = I\).
+Then \(\scrR(I - T) = X\) 
+hence \(\dim X / \scrR(I - T) = 0\)
+and by Theorem~4.25 \(\dim \scrN(I -T) = 0\) 
+and so \(\scrN(I -T) = \{0\}\).
+Assume by negation \(y = S(I - T)x \neq x\) for some \(x\in X\).
+Now \((I - T)y = (I - T)S(I - T)x = (I - T)x\) and so 
+\(0 \neq x - y \in \scrN(I - T)\) which is a contradiction.
+
+If any if the equalities \(S(I - T) = I = (I - T)S\) holds
+then \(S = (I - T)^{-1}\). 
+Now \(I - S) = (I - T)S - S = -TS\) which is compact by Theorem~4.18\ich{f}.
+\end{itemize}
+
+%%%%%%% 10
+\begin{excopy}
+Assume \(T \in \scrB(X)\) is compact, and assume either that \(\dim X = \infty\)
+or that the scalar
+field is \C. Prove that \(\sigma(T)\) is not empty. However, \(\sigma(T)\)
+ may be empty if \(\dim X < \infty\)
+and the scalar field is \R.
+\end{excopy}
+
+For \(X = \R^2\), define (rotation) by \(T((x,y)) = (-y, x)\) which has
+no eigenvalue. Now 
+\begin{equation*}
+(T - \lambda I)((x,y)) = (-\lambda x - y, x -\lambda y).
+\end{equation*}
+and
+\begin{equation*}
+(T - \lambda I)^{-1}((v,w)) 
+  = \frac{1}{\lambda^2 + 1}(\lambda v + w, -v -\lambda w).
+\end{equation*}
+Hence \(T - \lambda I\) has inverse for any \(\lambda \in \C\).
+
+If \(X = \C^n\) then $T$ can be represented 
+as an~\(n\times n\) matrix \(A = A_T\)
+whose characteristic polynomial \(p_A(t) = \det(tI - A)\).
+This polynomial must have a root in \C\ which is an eigenvalue
+of $A$ and actually of $T$. For such root \(\lambda\),
+that is \(p_A(t) = 0\). Since now \(T -\lambda I\) 
+has nonzero eigenvector of the \(\lambda\) eigenvalue,
+hence \(T - \lambda I\) is not injective, not invertible
+and so \(\lambda \in \sigma(T)\).
+
+Now assume \(\dim X = \infty\) and the scalar field is \C.
+\emph{Note:} A compact operator may not have a finite rank,
+see \cite{Megginson1998} Section~3.4.5.
+Theorem~4.18\ich{e} shows that \(0 \in \sigma(T)\),
+thus \(\sigma(T)\neq\emptyset\).
+
+
+%%%%%%% 11
+\begin{excopy}
+Suppose \(\dim X < \infty\) and show that the equality \(\beta^* = \beta\)
+ of Theorem~4.25 reduces to the
+statement that the row rank of a square matrix is equal to its column rank.
+\end{excopy}
+
+Say \(\dim X = n < \infty\).
+By the last paragraphs of Section~4.9 titled \textbf{Adjoints},
+an operator \(T\in B(X)\) can be views as \(n\times n\)-matrix.
+Then the adjoint operator \(T^*\) is actually represented exactly
+by the transposed matrix \(T^t\).
+
+By basic results of linear algebra the rank of $T$ and \(T^t\) 
+are equal and actually are the raw-rang and column rank of $T$.
+Clearly by looking at standard basis \((e_k)_{k=1}^n\) of \(\C^n\),
+they are the dimension of the images of $T$ and \(T^*\) operators.
+
+
+%%%%%%% 12
+\begin{excopy}
+Suppose \(T \in \BXY\) and \(\scrR(T)\) is closed in $Y$. Prove that
+\begin{align*}
+\dim \scrN(T) &= \dim X^*/\scrR(T^*) \\
+\dim \scrN(T^*) &= \dim Y/\scrR(T)
+\end{align*}
+This generalizes thed assertions \(\alpha = \beta^*\) and \(\alpha^* = \beta\)
+ of Theorem~4.25.
+\end{excopy}
+
+\emph{Note:} In this case the dimensions are not necessarily finite.
+
+From Theorem~4.25, 
+we use similar proof ideas and the similar notations
+\begin{alignat*}{2}
+\alpha &= \dim \scrN(T)   \qquad &   \beta &= \dim Y / \scrR(T) \\
+\alpha^* &= \dim \scrN(T^*) \qquad & \beta^* &= \dim X^* / \scrR(T^*).
+\end{alignat*}
+Thus we need to show \(\alpha = \beta^*\) and \(\alpha^* = \beta\).
+As shown there if \(M_0\) is a closed subspace of locally convex space $Z$ and
+\begin{equation*}
+\Sigma = \bigl\{\Lambda \in Z^*: \Lambda(M_0) = \{0\}\bigr\}
+\end{equation*}
+then 
+\begin{equation}  \label{eq:zm0:leq:sigma}
+ \dim Z/M_0 \leq \dim \Sigma.
+\end{equation}
+We can strengthen this to  an equality.
+The case of \(\dim Z/M_0 = \infty\)
+becomes trivial with the note regarding \(\infty\)
+preceding the proof of Theorem~4.25.
+Let \(\dim Z/M_0 = k < \infty\) and 
+\(\{z_j+M_0:j \in\N_k\}\) be a basis of \(Z/M_0\).
+Define 
+\begin{equation*}
+M_j = \vspan(M_0 \cup \{z_h: 1\leq h \leq k \wedge h \neq j\}
+\qquad \textnormal{for} j\in\N_k
+\end{equation*}
+and let \(\Lambda_j \in Z^*\) be functionals such that 
+\(\Lambda_j(z_j)=1\) but \(\Lambda_j(M_j) = \{0\}\).
+Pick arbitrary \(\Lambda \in \Sigma\).
+Clearly
+\begin{equation*}
+\Lambda' = \sum_{j=1}^k (\Lambda z_j)\Lambda_j
+\end{equation*}
+agrees with \(\Lambda\) on the basis \(\{z_j: j\in\N_k\}\),
+thus \(\Lambda = \Lambda'\).
+Hence, any \(\Lambda \in \Sigma\) 
+is a linear combination of \((\Lambda_j)_{j=1}^k\).
+This gives the desired equality in \eqref{eq:zm0:leq:sigma}.
+
+
+Apply with \(Z = Y\), \(M_0 = \scrR(T)\) which is given to be closed.
+Also, \(\Sigma = \scrR(T)^\perp = \scrN(T^*)\) by Theorem~4.12.
+Now we get 
+\begin{equation} 
+   \beta = \dim Y / \scrR(T) = \dim \Sigma = \dim\scrN(T^*) = \alpha^*.
+\end{equation}
+
+Next, apply with \(Z=X^*\) with its weak\upstar\ topology,
+\(M_0=\scrR(T^*)\) which is closed by Theorem~4.14.
+Now \(\Sigma\) consists of all weak\upstar-continuous functionals \(\Lambda^*\)
+on \(X^*\) such that \(\Lambda^*(M_0) = \{0\}\).
+Hence \(\Sigma = {}^\perp\scrR(T^*) = \scrN(T)\) by Theorem~4.12. 
+Now we get
+\begin{equation*}
+   \beta^* = \dim X^* / \scrR(T^*) = \dim \Sigma = \dim \scrN(T) = \alpha.
+\end{equation*}
+
+
+%%%%%%% 13
+\begin{excopy}
+\begin{itemize}
+\itemch{a}
+Suppose \(T \in \BXY\), \(T_n \in \BXY\) for \(n =1,2,3,\ldots\), 
+each \(T_n\) has finite-dimensional
+ range, and \(\lim \|T - T_n\| = 0\). Prove that $T$ is compact.
+\itemch{b}
+Assume $Y$ is a Hilbert space, and prove the converse of \ich{a}: Every compact
+\(T \in \BXY\) can be approximated in the operator norm by operators with 
+finite-dimensional ranges.
+\emph{Hint:} In a Hilbert space there are linear projections of norm $1$
+onto any closed subspace. (See Theorems~5.16, 12.4.)
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+The limit $T$ is in the norm-closure of the set of compact operators.
+By Theorem~4.18\ich{c} it is a closed set, thus $T$ is compact.
+\itemch{b}
+Let \(T \in \BXY\) be a compact operator, so by definition
+\(K = \overline{T(B_X(0;1)}\) is compact.
+By Local Lemma~\ref{lem:compact:separable}
+$K$ is separable. Statring from a countable dense subset of $K$,
+using ortho-normalization process we generate a countable ortho-normal basis
+\(\{v_j:j\in\N\}\) for \(\overline{T(X)}\).
+Define the finite subsets \(V_1 = \{v_1\}\) and \(V_n = V_{n-1} \cup \{v_n\}\)
+for \(n > 1\). 
+We now define \(P_n:Y \to \vspan(V_n)\) to be the projection defined by
+\begin{equation*}
+P_n(y) = \sum_{j=1}^n \langle v_j, y\rangle \cdot v_j.
+\end{equation*}
+Put \(T_n = P_n \circ T\), and clearly \(P_n\) has a finite rank.
+For each \(x\in X\) we have \(\lim_{n\to\infty}(T - T_n)x = 0\).
+This convergence is in $K$, and by compactness it is a uniform 
+on \(B_X(0;1)\), thus \(\lim_{n\to\infty}\|T-T_n\| = 0\).
+\end{itemize}
+
+
+%%%%%%% 14
+\begin{excopy}
+Define s shift operator S and a multiplication operator M on \(\ell^2\) by
+\begin{align*}
+(Sx)(n) &= 
+\left\{
+ \begin{array}{ll}
+ 0 & \qquad \textnormal{if}\; n = 0,\\
+ x(n-1) & \qquad \textnormal{if}\; n \geq 1
+ \end{array} 
+\right.\\
+(Mx)(n) &= (n+1)^{-1}x(n) \qquad \textnormal{if}\; n \geq 0.
+\end{align*}
+Put \(T = MS\). Show that $T$ is a compact operator which has no eigenvalue
+ and whose
+spectrum consists of exactly one point.
+ Compute \(\|T^n\|\) for \(n=1,2,3,\ldots\), and compute
+\(\lim_{n\to\infty} \|T^n\|^{1/n}\).
+\end{excopy}
+
+Let \(P_n:\ell^2\to\ell^2\) be projections defined by
+\((P_n(v))(j) = v(j)\) if \(j\leq n\) and 
+\((P_n(v))(j) = 0\) otherwise.
+Clearly \(P_nT\) are compact operators.
+Now
+\begin{align*}
+\|T-P_nT\| 
+&= \sup\left\{\|(T-P_nT)v\|_2: \|v\|_2 \leq 1\right\}
+ = \sup\left\{\sum_{j>n} |v(j-1)|^2/(j+1)^2|: \|v\|_2 \leq 1\right\} \\
+&\leq (n+1)^{-2} \sup\left\{\sum_{j>n} |v(j-1)|^2: \|v\|_2 \leq 1\right\}
+ \leq (n+1)^{-2}.
+\end{align*}
+Hence $T$ is compact.
+
+Assume by negation \(\lambda \in \sigma(T)\setminus\{0\}\).
+By Theorem~4.25\ich{b}
+\(\lambda\in\C\) is an eigenvalue for $T$, 
+with eigenvector \(v\in \ell^2\setminus\{0\}\).
+Let \(k\in\Z^+\) be minimal such that \(v(k)\neq 0\).
+Since \((T(v))(n) = 0/(n+1) = 0\) we get the contradiction \(\lambda = 0\).
+
+Obviously \(e_0 = (1,0,0,\ldots) \notin (T-0\cdot I)(\ell^2)\).
+Hence $0$ is the only point in the spectrum of $T$.
+
+Clearly
+\begin{equation} \label{eq:Tn:j}
+\bigl(T^n(x)\bigr)(j) = \left\{
+\begin{array}{ll}
+0 \qquad &\textnormal{if}\; j < n \\
+j!\cdot x(j - n)/(n + j + 1)! \qquad &\textnormal{if}\; j \geq n
+\end{array}\right.
+\end{equation}
+
+In order to compute \(\|T^n\|_2\) we want to show that 
+the actual \(\sup \{\|T^n x\|_2: \|x\|_2\leq 1\}\)
+is achieved in \(e_0 = (1,0,0,\ldots)\).
+By \eqref{eq:Tn:j} \(\|T^n(e_0)\|_2 = 1/n!\).
+For any \(x \in \ell^2\) such that \(\|x\|_2\leq 1\) we have
+\begin{equation*}
+\|T^nx\|_2^2 
+= \sum_{j=0}^\infty (|x(j)|/(j+n)!)^2 
+\leq \sum_{j=0}^\infty (|x(j)|/n!)^2 
+= (n!)^{-2}\sum_{j=0}^\infty |x(j)|^2 
+= (\|x\|_2/n!)^2.
+\end{equation*}
+Hence \(\|T^n\|_2 = 1/n!\).
+
+We will now show that 
+\begin{equation} \label{eq:fact:roor:infty}
+\lim_{n\to\infty} (n!)^{1/n} = \infty.
+\end{equation}
+Pick arbitrary \(M>0\), find some \(n<\infty\) such that \(\log n > 2M\).
+Now
+\begin{equation*}
+\log ((2n)!)^{1/2n}
+= (1/2n)\sum_{k=1}^{2n} \log k
+\geq (1/2n)\sum_{k=n}^{2n} \log k
+\geq (n/2n) \log n
+= (\log n)/2 > M.
+\end{equation*}
+Since \(\log\) is strictly monotonic increasing, \eqref{eq:fact:roor:infty}
+is true.
+Hence
+\begin{equation*}
+\lim_{n\to\infty} \|T^n\|^{1/n}
+= \lim_{n\to\infty} (n!)^{-1/n} = 0
+= \lim_{n\to\infty} \exp(\log|1/(n!)|^{1/n} = 0
+\end{equation*}
+
+
+%%%%%%% 15
+\begin{excopy}
+Suppose \(\mu\) is a finite (or \(\sigma\)-finite) positive measure
+on a measure space \(\Omega\), \(\mu\times\mu\) is the
+corresponding product measure on \(\Omega\times\Omega\),
+ and \(K \in L^2(\mu\times\mu)\). Define
+\begin{equation*}
+(Tf)(s) = \int_\Omega K(s,t)f(t)\,d\mu(t) \qquad [f \in L^2(\mu)].
+\end{equation*}
+\begin{itemize}
+\itemch{a}
+Prove that \(T \in \scrB(L^2(\mu))\) and that
+\begin{equation*}
+\|T\|^2 \leq \int_\Omega\int_\Omega |K(s,t)|^2\,d\mu(s)\,d\mu(t).
+\end{equation*}
+
+\itemch{b}
+Suppose \(a_i\), \(b_i\) are members of \(L^2(\mu)\), for \(1 \leq i \leq n\),
+ , put \(K_1(s,t) = \sum a_i(s)b_i(t)\), and
+define \(T_1\) in terms of \(K_1\) as $T$ was defined in terms of $K$.
+ Prove that \(\dim \scrR(T_1) \leq n\).
+
+\itemch{c}
+Deduce that $T$ is a compact operator on \(L^2(\mu)\).
+\emph{Hint:} Use Exercise~13.
+
+\itemch{d}
+Suppose \(\lambda \in \C\), \(\lambda \neq 0\). Prove: Either the equation
+\begin{equation*}
+Tf - \lambda f = g
+\end{equation*}
+has a unique solution \(f \in L^2(\mu)\) for every \(g \in L^2(\mu)\)
+ or there are inlinitely many
+solutions for some $g$ and none for others.
+ (This is known as the 
+\index{Fredholm alternatives}
+Fredholm alternatives.)
+
+\itemch{e}
+Describe the adjoint of $T$.
+\end{itemize}
+\end{excopy}
+
+See \cite{Conway1990}~Proposition~4.7.
+\begin{itemize}
+\itemch{a}
+Let \(f\in L^2(\mu)\),
+then by Fubini \index{Fubini} Theorem~8.8 of \cite{RudinRCA80}
+and Cauchy-Schwarz \index{Cauchy-Schwarz} inequality
+(Theorem~3.5 in \cite{RudinRCA80}) 
+\begin{align*}
+\|Tf\|_2^2 
+&= \int_\Omega\left|\int_\Omega K(s,t)f(t)\,d\mu(t)\right|^2\,d\mu(s) \\
+&\leq \int_\Omega
+   \left(
+   \left(\int_\Omega |K(s,t)|^2\,d\mu(t)\right)
+   \cdot
+   \left(\int_\Omega |f(t)|^2\,d\mu(t)\right)
+   \right)
+   \,d\mu(s) \\
+&= \|f\|_2^2 \cdot
+   \int_\Omega\left(\int_\Omega |K(s,t)|^2\,d\mu(t)\right)\,d\mu(s) \\
+&= \|f\|_2 \cdot \int_{\Omega\times\Omega} |K(s,t)|^2\,d(\mu\times\mu)(s,t)
+ = \|K\|_2^2 \cdot \|f\|_2^2.
+\end{align*}
+\itemch{b}
+Let \(f\in L^2(\mu)\), then
+\begin{align*}
+(T_1f)(s) 
+&= \int_\Omega K_1(s,t)f(t)\,d\mu(t)
+ = \int_\Omega \left(\sum_{i=1}^n a_i(s)b_i(t)\right)f(t)\,d\mu(t) \\
+&= \left(\int_\Omega f(t)\left(\sum_{i=1}^n b_i(t)\right)\,d\mu(t)\right)
+    \cdot a_i(s)
+\end{align*}
+Thus the range of \(T_1\) is spanned by \(\{a_i:i\in\N_n\}\). 
+\itemch{c}
+By Theorem~4.22 of \cite{RudinRCA80}, let \((e_j)_{j\in J}\) be 
+an orthonormal basis for \(L^2(\mu)\).
+We will show that \(\scrB = \{e_j(s)\cdot e_k(t): j,k\in J\}\)
+is an orthonormal set % basis 
+for \(L^2(\Omega\times\Omega,\mu\times\mu)\).
+
+\textbf{Normality}:
+\begin{align*}
+\lrangle{e_j\cdot e_k, e_j\cdot e_k}
+&= 
+ \int_{\Omega\times\Omega} 
+ \bigl(e_j(s)\cdot e_k(t)\bigr)
+ \cdot
+ \overline{\bigl(e_j(s)\cdot e_k(t)\bigr)}
+ \,d(\mu\times\mu)(s,t) \\
+&= \int_\Omega 
+   e_k(t)\overline{e_k(t)}
+   \left(\int_\Omega e_j(s)\overline{e_j(s)}\,d\mu(s)\right)
+   \,d\mu(t) \\
+&= \int_\Omega e_k(t)\overline{e_k(t)}\cdot 1\,d\mu(t)
+ = 1
+\end{align*}
+
+\textbf{Orthogonality}:
+\begin{align*}
+\lrangle{e_j\cdot e_k, e_{j'}\cdot e_{k'}}
+&= 
+ \int_{\Omega\times\Omega} 
+ \bigl(e_j(s)\cdot e_k(t)\bigr)
+ \cdot
+ \overline{\bigl(e_{j'}(s)\cdot e_{k'}(t)\bigr)}
+ \,d(\mu\times\mu)(s,t) \\
+&= \int_\Omega 
+   \left(e_k(t)\cdot\overline{e_{k'}(t)}\right)
+   \cdot \lrangle{e_j,e_{j'}}
+   \,d\mu(t)
+ = \lrangle{e_j,e_{j'}}\cdot \lrangle{e_k,e_{k'}}
+\end{align*}
+If \(j\neq j'\) or \(k\neq k'\) then the last product is clearly $0$.
+
+\iffalse
+\textbf{Basis.}
+Pick arbitrary \(g \in L^2(\mu\times\mu)\) there are at most countable
+functions \(f\in \scrB\) such that \(\lrangle{g,f} \neq 0\).
+Denote this countable subset \(\scrD \subset \scrB\) and
+put it in a sequence \((f_n)_{n\in\N}\)
+where each is of the form \(f_j(s,t) = e_{j(n)}(s)\cdot e_{k(n)}(t)\).
+Similarly, let \(P_N: L^2(\mu\times\mu) \to L^2(\mu\times\mu)\)
+be the projection to the finite-dimensional subspace spanned by
+\(\{f_n: n\leq N\}\). Now
+\begin{align*}
+\|g - P_N(g)\|_2^2
+&= \int_{\Omega^2} |g(s,t) - \sum_{n=1}^N g(s,t)\cdot f_n(s,t)|^2\,d(\mu^2)(s,t)
+\end{align*}
+\fi
+
+For any \(g \in L^2(\mu\times\mu)\) there are at most countable
+functions \(h\in \scrB\) such that \(\lrangle{g,h} \neq 0\).
+Thus we can use the presentation 
+\(g(s,t) = \sum_{h\in\scrB} \lrangle{g,h}\cdot h(s,t)\).
+In particular let \(\scrD \subset \scrB\) the countable
+subset of functions $h$ such that  \(\lrangle{k,h}\neq 0\).
+Put \scrD\ in a sequence \((h_n)_{n\in\N}\),
+putting 
+\begin{equation*}
+h_n(s,t) = e_{j(n)}(s)\cdot e_{k(n)}(t)
+\end{equation*}
+and let 
+\(P_N: L^2(\mu\times\mu) \to L^2(\mu\times\mu)\)
+be the projection to the finite-dimensional subspace spanned by
+\(\{h_n: n\leq N\}\).
+Put 
+\begin{equation*}
+% K_n = TP_n + P_nT - P_n T P_n.
+K_n = P_nT.
+\end{equation*}
+Clearly \(\dim K_n(L^2(\mu\times\mu)) < \infty\).
+We will now show that 
+\begin{equation} \label{eq:limKn:T}
+\lim_{n\to\infty} K_n = T
+\end{equation}
+in the operator norm.
+Pick \(f\in L^2(\mu)\) such that \(\|f\|_2 \leq 1\)
+and put \(\alpha_j = \lrangle{f,e_j}\).
+Thus \(f=\sum_{j\in J} \alpha_j\cdot e_j\)
+and \(\|f\|_2^2 = \sum_{j\in J} |\alpha_j|^2 \leq 1\).
+Now by the orthogonality of \scrB
+\begin{align}
+\|T-K_n\|^2 
+&\leq 
+ \|Tf - K_n f\|_2^2
+ = \sum_{j\in J} |\lrangle{Tf - K_nf, e_j}|^2  \notag \\
+&= \sum_{j\in J} 
+   \left|
+     \lrbangle{(T - K_n)
+       \left(\sum_{k\in J}\alpha_k\cdot e_k\right), e_j}
+   \right|^2 \notag \\
+&\leq \label{eq:ex4.15:csineq}
+ \sum_{j\in J} 
+   \left(\sum_{j\in J} |\alpha_j|^2\right)
+   \cdot
+   \left(\sum_{j\in J} \left|\lrbangle{(T - K_n)e_k, e_j}\right|^2 \right) \\
+\iffalse
+&\leq \sum_{j\in J} \sum_{k\in J} 
+ \left|
+  \lrbangle{Te_k,ej} 
+  - \lrbangle{TP_ne_k,e_j} - \lrbangle{P_nTe_k,e_j} + \lrbangle{P_nTP_ne_k,e_j}
+ \right|^2 \notag
+\fi
+&\leq \sum_{j\in J} \sum_{k\in J} 
+ \left|  \lrbangle{Te_k,e_j} - \lrbangle{P_nTe_k,e_j} \right|^2 \notag
+= \sum_{p=n+1}^\infty
+ \left|  \lrbangle{Te_{k(p)},e_{j(p)}} \right|^2 \notag
+\end{align}
+where the Cauchy-Schwarz inequality (Theorem~3.5 \cite{RudinRCA80})
+gives the inequality of~\eqref{eq:ex4.15:csineq}.
+Clearly the last expression is smaller than any \(\epsilon>0\)
+for sufficiently large~$n$.
+Thus \eqref{eq:limKn:T} is shown.
+By Exercise~13\ich{a} $T$ is a compact operator.
+
+\itemch{d}
+This claim actually holds for every compact operator on a Banach space.
+If \(\lambda \notin \sigma(T)\) then \(T -\lambda I\) is invertible
+and thus the equation has a unique solutions for every \(g\in L^2(\mu)\).
+
+Assume now \(\lambda \in \sigma(T)\). By Theorem~4.25
+\begin{equation*}
+\dim \scrN(T-\lambda I) = \dim\left(L^2(\mu)/\scrR(T-\lambda I)\right) > 0.
+\end{equation*}
+If \(g \in \scrR(T-\lambda I)\) then 
+there exist some solution $f$ to the equation and
+so are \(\{f+h: h \in \scrN(T-\lambda I)\}\).
+Otethrwise  \(g \notin \scrR(T-\lambda I)\) 
+and there is no solution to the equation.
+
+\itemch{e}
+The Hilbert-adjoint of $T$ is defined (like transpose conjugate matrix) by
+\begin{equation*}
+(T^*f)(s) = \int_\Omega \overline{K(t,s)}f(t)\,d\mu(t) \qquad [f \in L^2(\mu)].
+\end{equation*}
+
+\end{itemize}
+
+
+%%%%%%% 16
+\begin{excopy}
+Define 
+\begin{equation*}
+K(s,t) = 
+\left\{
+\begin{array}{ll}
+(1-s)t \qquad & \textnormal{if}\; 0 \leq t \leq s \\
+(1-t)s \qquad & \textnormal{if}\; s \leq t \leq 1
+\end{array}
+\right.
+\end{equation*}
+and define \(T \in \scrB(L^2(0,1))\) by
+\begin{equation*}
+(Tf)(s) = \int_0^1 K(s,t)f(t)\,dt \qquad (0 \leq s \leq 1)
+\end{equation*}
+\begin{itemize}
+
+\itemch{a}
+Show that the eigenvalues of $T$ are \((n\pi)^{-2}\), \(n=1,2,3,\ldots\),
+ that the corresponding
+eigenvalue are \(\sin n\pi x\), and that each eigenspace is one-dimensional.
+\emph{Hint:} If
+\(\lambda \neq 0\), the equation \(Tf = \lambda f\) implies that $f$ is
+ infinitely differentiable, that \(\lambda f'' + f = 0\),
+and that \(f(0) = f(1) = 0\).
+ The case \(\lambda = 0\) can be treated separately.
+
+\itemch{b}
+Show that the above eigenfunctions form an orthogonal basis for \(L^2(0, 1)\).
+
+\itemch{c}
+Suppose \(g(t) = \sum c_n \sin n \pi t\).
+ Discuss the equation \(Tf - \lambda f = g\).
+
+\itemch{d}
+Show that $T$ is also compact operator on $C$, the space of all continuous
+functions
+on \([0,1]\). 
+ \emph{Hint:}~If \(\{f_i\}\) is uniformly bounded,
+then \(\{Tf_i\}\) is equicontinuous.
+
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+Compute
+\begin{align*}
+(Tf)(s)
+&= \int_0^1 K(s,t)f(t)\,dt
+ = \int_0^s K(s,t)f(t)\,dt + \int_s^1 K(s,t)f(t)\,dt \\
+&= \int_0^s (1-s)t\cdot f(t)\,dt + \int_s^1 (1-t)s\cdot f(t)\,dt \\
+&= (1-s)\int_0^s t\cdot f(t)\,dt + s\int_s^1 (1-t)\cdot f(t)\,dt
+\end{align*}
+Differentiate:
+\begin{align*}
+(Tf)'(s)
+&= -\int_0^s t\cdot f(t)\,dt + (1-s)s\cdot f(s) + 
+   \int_s^1 (1-t)\cdot f(t)\,dt - s(1-s)\cdot f(s) \\
+&= \int_s^1 f(t)\,dt - \int_0^1 t\cdot f(t)\,dt
+\end{align*}
+Hence
+\begin{equation*}
+(Tf)''(s) = -f(s).
+\end{equation*}
+\itemch{b}
+\itemch{c}
+\itemch{d}
+\end{itemize}
+
+
+\unfinished
+
+%%%%%%% 17
+\begin{excopy}
+If \(L^2 = L^2(0,\infty)\) relative to Lebesgue measure, and if
+\begin{equation*}
+(Tf)(s) = \frac{1}{s} \int_0^s f(t)\,dt \qquad (0 < s < \infty),
+\end{equation*}
+prove that \(T \in \scrB(L^2)\) and that $T$ is not compact.
+ (The fact that \(\|T\| \leq 2\) is a special cas
+of \index{Hardy} Hardy`s inequality. See p.~72 of~[23].)
+\end{excopy}
+
+
+\unfinished
+
+%%%%%%% 18
+\begin{excopy}
+Prove the following statements.
+
+\begin{itemize}
+
+\itemch{a}
+If \(\{x_n\}\) is a weakly convergent sequence in $X$ then \(\{\|x_n\|\}\)
+ is bounded.
+
+\itemch{b}
+If \(T \in \BXY\) and \(x_n \to x\) weakly, then \(Tx_n \to Tx\) weakly.
+
+\itemch{c}
+If \(T \in \BXY\), if \(x_n \to x\) weakly, and if $T$ is compact,
+ then \(\|Tx_n - Tx\| \to 0\).
+
+\itemch{d}
+Conversely, if $X$ ts reflexive, if \(T \in \BXY\),
+ and if \(\|Tx_n - Tx\| \to 0\) whenever
+\(x_n \to x\) weakly, then $T$ is compact.
+\emph{Hint:}~Use \ich{c} of Exercise~1, and part \ich{c} of Exercise~28
+ in Chapter~3.
+
+\itemch{e}
+If $X$ is reflexive and \(T \in \BXY\), then $T$ is compact.
+ Hence \(\scrR(T) \neq \ellone\).
+\emph{Hint:}~Use \ich{c} of Exercise~5 of Chapter~3.
+
+\itemch{f}
+If $Y$ is reflexive and \(T\in \scrB(c_0, Y)\), then $T$ is compact.
+
+\end{itemize}
+
+\end{excopy}
+
+\begin{itemize}
+
+\itemch{a}
+
+\itemch{b}
+
+\itemch{c}
+
+\itemch{d}
+
+\itemch{e}
+
+\itemch{f}
+
+\end{itemize}
+
+
+\unfinished
+
+%%%%%%% 19
+\begin{excopy}
+Suppose $Y$ is a closed subspace of $X$, and \(x_0^* \in X^*\), Put
+\begin{align*}
+\mu &= \sup\{|\langle x, x_0^*\rangle|: x\in Y, \|x\| \leq 1\}, \\
+\delta &= \inf\{\| x -  x_0^*\|: x^*\in Y^\perp\}
+\end{align*}
+In other words, \(\mu\) is the norm of the restriction of \(x_0^*\) to $X$
+ and \(\delta\) is the distance from
+\(x_0^*\) to the annihilator of $Y$. Prove that \(\mu = \delta\).
+ Prove also that \(\delta = \|x^* - x_0^*\|\) for at
+least one \(x^* \in Y^\perp \).
+\end{excopy}
+
+
+\unfinished
+
+%%%%%%% 20
+\begin{excopy}
+Extend Sections~4.6 to 4.9 to locally convex spaces.
+ (The word ``isometric'' must of
+course be deleted from statement of Theorem~4.9.)
+\end{excopy}
+
+
+\unfinished
+
+%%%%%%% 21
+\begin{excopy}
+Let $B$ and \(B^*\) be the closed unit balls in $X$ and \(X^*\), respectively.
+ The following is a
+converse to the Banach-Alaoglu theorem:
+\textsl{If $E$ is a convex set in \(X^*\) such that \(E \cap rB^*)\)
+is weak\upstar-compact
+ for every \(r > 0\),
+ then $E$ is
+ weak\upstar-closed}.
+ (Corollary: A subspace of \(X^*\)
+is weak\upstar-closed if and only if its intersection with \(B^*\)
+ is weak\upstar-compact.)
+
+Complete the following outline of the proof.
+
+\begin{itemize}
+
+\itemch{i}
+$E$ is norm-closed.
+
+\itemch{ii}
+Associated to each \(F \subset X\) its polar
+\begin{equation*}
+P(F) = \{x^*: |\langle x, x^* \rangle| \leq 1 \;\textnormal{for all}\; x\in F\}.
+\end{equation*}
+The intersection of all sets \(P(F)\), as $F$ ranges over the collection of all
+ finite subsets
+of \(r^{-1}B\), is exactly \(rB^*\).
+
+\itemch{iii}
+The theorem is a consequence of the following proposition:
+\textsl{
+ If, in addition to the
+stated hypotheses, \(E \cap B^* = \emptyset\), there exists \(x \in X\)
+ such that \(\Re \lrangle{x, x^*} \geq 1\) for
+every \(x^* \in E\).
+}
+
+\itemch{iv}
+Proof of the proposition: Put \(F_0 = \{0\}\).
+ Assume finite sets \(F_0,\ldots,F_{k-1}\) have been
+chosen so that \(iF_i \subset B\) and so that
+\begin{equation} \label{eq:BA-conv:1}
+P(F_0) \cap \cdots \cap P(F_{k-1}) \cap E \cap kB^* = \emptyset.
+\end{equation}
+Note that \eqref{eq:BA-conv:1} is true for \(k = 1\). Put
+\begin{equation*}
+Q = P(F_0) \cap \cdots \cap P(F_{k-1}) \cap E \cap (k+1)B^* 
+\end{equation*}
+If \(P(F) \cap Q \neq \emptyset\) for every finite set
+ \(F \subset k^{-1}B\), the weak\upstar-compactness of $Q$,
+together with \ich{ii}, implies that \((kB^*) \cap Q \neq \emptyset\),
+ which contradicts \eqref{eq:BA-conv:1}. Hence there
+is a finite set \(F_k \subset k^{-1}B\) such that \eqref{eq:BA-conv:1} holds
+ with \(k+1\) in place of $k$. The construction
+can thus proceed. It yields
+\begin{equation} \label{eq:BA-conv:2}
+E \cap \bigcap_{k=1}^\infty P(F_k) = \emptyset.
+\end{equation}
+Arrange the members \(\cup F_k\) in a sequence \(\{x_n\}\).
+ Then \(x_n\| \to 0\). Define \(T: X^* \to c_0\)
+by
+\begin{equation*}
+Tx^* = \{\lrangle{x_n,x^*}\}.
+\end{equation*}
+Then \(T(E)\) is a convex subset of \(c_0\). By \eqref{eq:BA-conv:2}
+for every \(x^* \in E\). Hence there is a scalar sequence \(\{\alpha_n\}\),
+ with \(\sum |\alpha_n| < \infty\), such that
+\begin{equation*}
+\Re \sum_{n=1}^\infty \alpha_n \lrangle{x_n,x^*} \geq 1
+\end{equation*}
+for every \(x^* \in E\). To complete the proof, put \(x = \sum \alpha_n x_n\).
+
+\end{itemize}
+\end{excopy}
+
+
+
+\unfinished
+
+%%%%%%% 22
+\begin{excopy}
+Suppose \(T \in \scrB(X)\), $T$ is compact, \(\lambda \neq 0\),
+ and \(S = T - \lambda I\).
+\begin{itemize}
+
+\itemch{a}
+If \(\scrN(S^n) = \scrN(S^{n+1})\) for some  nonnegative integer $n$,
+ prove that \(\scrN(S^n) = \scrN(S^{n+k})\)
+for \(k=1,2,3,\ldots\).
+
+\itemch{b}
+Prove that \ich{a} must happen for some $n$. 
+\emph{Hint:}: Consider the proof of Theorem~4.24.)
+
+\itemch{c}
+Let $n$ be the smallest nonnegative integer for which \ich{a} holds.
+ Prove that
+\begin{equation*}
+X = \scrN(S^n) \oplus \scrR(S^n),
+\end{equation*}
+and that the restriction of $S$ to \(\scrR(S^n)\) is a one-to-one mapping
+ of \(\scrR(S^n)\) onto \(\scrR(S^n)\).
+
+\end{itemize}
+
+\end{excopy}
+
+\begin{itemize}
+
+\itemch{a}
+
+\itemch{b}
+
+\itemch{c}
+
+\end{itemize}
+
+
+
+\unfinished
+
+%%%%%%% 23
+\begin{excopy}
+Suppose \(\{x_n\}\) is sequence in a Banach space $X$, and
+\begin{equation*}
+ \sum_{n=1}^\infty \|x_n\| = M < \infty.
+\end{equation*}
+Prove that the series \(\sum x_n\) converges to some \(x \in X\).
+ Explicitly, prove that
+\begin{equation*}
+\lim_{n\to\infty} \|x - (x_1 + \cdots + x_n)\| = 0.
+\end{equation*}
+Prove also that \(\|x\| \leq M\).
+ (These facts were used in the proof of Lemma~4.13.)
+\end{excopy}
+
+
+\unfinished
+
+%%%%%%% 24
+\begin{excopy}
+Let $c$ be the space of all complex sequences
+\begin{equation*}
+x = \{x_1,x_2,x_3,\ldots\}
+\end{equation*}
+for which \(x_\infty = \lim x_n\) exists (in \C).
+ Put \(\|x\| = \sup |x_n|\). Let \(c_0\) be the subspace of $c$ that
+consists of all $x$ with \(x_\infty = 0\).
+\begin{itemize}
+
+\itemch{a}
+Describe explicitly two isomeric isomorphisms $u$ and $v$,
+ such that $u$ maps \(c^*\) unto \(\ellone\)
+and $v$ maps \(c_0^*\) onto \ellone.
+
+\itemch{b}
+Define \(S: c_0 \to c\) by \(Sf = f\) Describe the operator
+\(vS^*u^{-1}\) that maps \ellone\ to \ellone.
+
+\itemch{c}
+Define \(T: c \to c_0\) by setting
+\begin{equation*}
+ y_1 = x_\infty,\quad y_{n+1} = x_n - x_\infty \qquad \textnormal{if}\; n \geq 1.
+\end{equation*}
+Prove that $T$ is one-to—one and that \(Tc = c_0\).
+ Find \(\|T\|\) and \(\|T^{-1}\|\). Describe the
+operator \(uT^*v\) that maps \ellone\ to \ellone.
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+
+\itemch{a}
+
+\itemch{b}
+
+\itemch{c}
+
+\end{itemize}
+
+
+\unfinished
+
+%%%%%%% 25
+\begin{excopy}
+If \(T \in \BXY\) and \(\scrR(T^*) = \scrN(T)^\perp\),
+prove that \(\scrR(T)\) is closed.
+\end{excopy}
+
+\unfinished
+
+%%%%%%% 26
+\begin{excopy}
+Assume \(T \in \BXY\) and \(T(X)=Y\). Show that there exists \(\delta>0\)
+such that \(S(X)=Y\) for all \(S\in\BXY\) with \(\|S-T\|<\delta\).
+\end{excopy}
+
+%%%%%%% 27
+\begin{excopy}
+Suppose \(T \in \scrB(X)\). Prove that \(\lambda \in \sigma(T)\) if and only if
+there is a sequence \(\{x_n\}\) in~$X$, \(\|x_n\|=1\), for which 
+\begin{equation*}
+\lim_{n\to\infty} \|T x_n - \lambda x_n\| = 0.
+\end{equation*}
+[Thus every \(\lambda \in \sigma(T)\) which is not an eigenvalue of $T$
+is an ``approximate'' eigenvalue.]
+\end{excopy}
+
+\unfinished
+
+%%%%%%%%%%%%%%%
+\end{enumerate}
+%%%%%%%%%%%%%%%
+
+
+

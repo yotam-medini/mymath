@@ -1,0 +1,58 @@
+\documentclass{article}
+
+% \usepackage{underscore}
+\makeatletter
+\catcode`\_\active
+\DeclareRobustCommand{\myunderscore}{\ifmmode\sb\else
+  \leavevmode\nobreak\hskip\z@skip
+  \_\-\nobreak\hskip\z@skip \fi}
+\let_\myunderscore
+\makeatother
+
+
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\usepackage{amsmath}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}{Conjecture}[section]
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt plus 1pt minus 1pt}
+
+\title{Conic behavior of Norm}
+\author{Yotam Medini \\ \texttt{yotam.medini@gmail.com}}
+
+\begin{document}
+
+\maketitle
+
+Given a finite dimensional Banach space $X$ (not necessarily Hilbert
+space), for any proper subspace \(Y \subsetneq X\),
+it is easy to find a unit vector
+\(u \in X\setminus Y\) such that \(\|u\| = d(u,Y) = 1\).  It is
+natural to ask whether there could be some other natural restrictions
+that could lead to some kind of uniqueness of such $u$.  One can think
+of ``choosing'' such $u$ by requiring some symmetrical ``conic-like''
+behavior of its distance with vectors in $Y$.
+In some sense this could generalize the notion of orthogonality.
+
+Is the following true? Is there a counterexample?
+\begin{conj}
+Let $X$ be an \((n+1)\)-dimensional Banach space and
+\(Y\subset X\) an $n$-dimensional subspace.
+There exists \(x\in X\) such that
+\begin{gather}
+\|x\| = 1  \label{eq:normx1} \\
+\forall y\in Y,\; \|x+y\| = \|x-y\| \geq 1. \label{eq:xpy:xmy:geq1}
+\end{gather}
+\textnormal{(Uniqueness:)}
+If \(x'\) satisfies \eqref{eq:normx1} and \eqref{eq:xpy:xmy:geq1}
+then \(x' = \pm x\).
+\end{conj}
+
+Note: The equality in \eqref{eq:xpy:xmy:geq1} is the main claim of the
+conjecture.  The inequality also gives \(d(x,Y)=1\).
+
+\end{document}

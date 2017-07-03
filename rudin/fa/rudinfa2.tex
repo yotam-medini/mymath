@@ -1,0 +1,1241 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Completeness}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 36-40
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+If $X$ is an infinite-dimensional topological vector space which is the union
+of countably many finite-dimensional subspaces, 
+prove that $X$ is the 
+\index{first category}
+\index{category!first}
+first category in itself.
+Prove that therefore no inifinite-dimensional $F$-space has a countable
+Hamel basis.
+
+(A set \(\beta\) is a 
+\index{Hamel basis}
+\emph{Hamel basis} for a vector space $X$ if \(\beta\) is a maximal linearly 
+independent subset of $X$. Alternatively, \(\beta\) is a Hamel basis if every
+\(x\in X\) has a unique representation as a \emph{finite} linear combination
+of elements of \(\beta\).)
+\end{excopy}
+
+A finite subspace is always closed and if it is a proper subspace
+it has empty interior. Thus a union of finite-dimensional subscapes
+of $X$ is of first category. An $F$-space is complete and by
+\index{Baire}
+Baire category theorem~2.2 is of second category, and therefore
+cannot be a countable union of finite-dimensional subspaces.
+
+%%%%%%%%%%%%%% 2
+\begin{excopy}
+Sets of first and second category 
+\index{second category}
+\index{category!second}
+are ``small'' and ``large'' in a topological sense.
+These notions are different when
+``small'' and ``large'' are understood in the sense of measure,
+even when the measure is initimately related to the topology.
+To see this, construct a subset of the unit interval which is the
+first category but whose Lebesgue measure is $1$.
+\end{excopy}
+
+Following \cite{Gelb1996} chapter~8, examples~4, 19 and~20.
+
+First, for any \(\alpha\in(0,1)\)
+we will construct a Cantor-like set \(C_\alpha\)
+that is closed (even perfect), nowhere dense and \(m(C_\alpha)=\alpha\).
+The construction is made of steps. 
+Put \(\beta = 1 - \alpha\).
+In step-$0$, 
+we start from the closed unit interval \(K_0 = [0,1]\).
+For each step $n$ we have a compact \(K_n\) which 
+consists of \(2^n\) closed intervals of equal length.
+In the $n$th step we remove from each closed interval $I$,
+an open sub-interval $J$ such that the centers of $J$ and $I$ are the same
+and \(m(J) = 2^{-2n}\beta\). Thus the resulted removal is
+\begin{equation*}
+m(K_n) - m(K_{n+1}) = m(K_n \setminus K_{n+1}) 
+ = 2^n \cdot 2^{-2n}\beta = 2^{-n}\beta.
+\end{equation*}
+We define
+\begin{equation*}
+ C_\alpha \eqdef \bigcap_{n=1}^\infty K_n.
+\end{equation*}
+Clearly \(C_n\) is closed since each \(K_n\) is closed and is nowhere dense
+since any open interval of size greater than \(2^{-n}\) cannot be contained
+in \(K_{n+1}\). Now
+\begin{equation*}
+m(C_\alpha) = m([0,1]) - \sum_{n=1}^\infty m(K_n \setminus K_{n+1}) 
+   = 1 - \sum_{n=1}^\infty 2^{-n}\beta = 1 - \beta = \alpha.
+\end{equation*}
+
+Now let \(\alpha_n = 1 - 1/n\),
+or any sequence monotonically increasing and converging to $1$.
+Define
+\begin{equation*}
+A \eqdef \bigcup_{n=1}^\infty C_{\alpha_n}
+\end{equation*}
+Clearly $A$ is of first category and \(m(A)=1\). 
+Since \([0,1]\) is of second category, the complement 
+\begin{equation*}
+B = [0,1] \setminus A
+\end{equation*}
+is of second category and \(m(B) = 0\).
+
+
+%%%%%%%%%%%%%% 3
+\begin{excopy}
+Put \(K=[-1,1]\); define \(\scrD_K\) as in Section~1.46
+(with \(\R\) in place of \(\R^n\)).
+Suppose \(\{f_n\}\) is a sequence of Lebesgue integrable functions such that
+\begin{equation*}
+ \Lambda \phi = \lim_{n\to\infty}\int_{-\infty}^\infty f_n(t)\phi(t)\,dt
+\end{equation*}
+exists for every \(\phi\in\scrD_K\).
+Show that \(\Lambda\) is a continuous functional on \(\scrD_K\).
+Show that there is a positive integer $p$ and a number \(M<\infty\) such that
+\begin{equation*}
+ \left| \int_{-\infty}^\infty f_n(t)\phi(t)\,dt\right| \leq M\|D^p\phi\|_\infty
+\end{equation*}
+for all $n$. For example, if \(f_n(t) = n^2\) on \([0,1/n]\) and $0$ elsewhere,
+show that this can be done with \(p=1\).
+Construct an example where it can be done with \(p=2\).
+but not with \(p=1\).
+\end{excopy}
+
+The \(\Lambda\) is clearly a linear mapping.
+The mappings 
+\begin{equation*}
+\Lambda_n \phi \eqdef \int_{-\infty}^\infty f_n(t)\phi(t)\,dt
+\end{equation*}
+are clearly
+linear and continuous. The discussion of section~1.46 in \cite{RudinFA79}
+shows that \(\scrD_K\) is an $F$-space. Combining with 
+theorem~2.8 \cite{RudinFA79}, \(\Lambda\) is continuous.
+
+Applying theorem~2.6 \cite{RudinFA79} shows that \(\{\Lambda_n\}\)
+are equicontinuous. Thus there is a base neighborhood $V$ of $0$ in \(\scrD_K\)
+such that
+\begin{equation*}
+\Lambda_n(V) \subset \{z\in\C: |z|\leq 1\}.
+\end{equation*}
+for all $n$. Looking at the seminorms of \(\scrD_K\)
+there exists some $p$ and \(\epsilon > 0\) such that 
+\begin{equation*}
+W \eqdef \{\phi\in\scrD_K: \|D^p \phi\|_\infty < \epsilon\} \subset V.
+\end{equation*}
+By linearity for any \(\phi \in \scrD_K\), we have 
+\(\epsilon\phi/\|D^p \phi\|_\infty \in W\) or 
+\(\|D^p \phi\|_\infty = 0\) and in any case
+\begin{equation*}
+\Lambda_n(\phi) \in \{z\in\C: |z|\leq \|D^p \phi\|_\infty/\epsilon\}
+\end{equation*}
+or equivalently
+\begin{equation*}
+|\Lambda_n(\phi)| \leq  (1/\epsilon)\cdot \|D^p \phi\|_\infty.
+\end{equation*}
+
+\paragraph{Exercise Error!?} 
+Assuming \(f_n = n^2\chi_{[0,1/n]}\). Pick some \(\phi\in\scrD_K\)
+such that \(\phi(0)\neq 0\). By looking at \(\phi/\phi(0)\)
+we may assume \(\phi(0)=1\). For arbitrary \(\epsilon>0\)
+we can find some $n$ such that \(|\phi(x)| > 1 - \epsilon\)
+for \(x\in (-1/n,1/n)\). Now
+\begin{equation*}
+      \int_{-\infty}^{\infty} f_n(t)\phi(t)\,dt
+ =  \int_0^{1/n} n^2\phi(t)\,dt
+\end{equation*}
+and so 
+\begin{equation*}
+      \left|\int_{-\infty}^{\infty} f_n(t)\phi(t)\,dt\right|
+ \geq  \int_0^{1/n} n^2(1-\epsilon)\,dt = n(1-\epsilon) 
+\end{equation*}
+contradiction to the requirement of converging to zero!
+
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Assuming \(f_n = n^2\chi_{[0,1/n]}\), we compute
+\begin{equation*}
+\int_{-\infty}^\infty f_n(t)\phi(t)\,dt 
+= \int_0^{1/n} n^2\phi(t)\,dt 
+= - \int_0^{1/n} n^2t \phi'(t)\,dt.
+\end{equation*}
+
+we define \(F_n:\R\to\R\) 
+\begin{equation*}
+F_n(x) \eqdef   \left\{\begin{array}{ll}
+                        0     &\qquad x \leq 0 \\     
+                        n^2x  &\qquad 0 \leq x \leq 1/n \\     
+                        n     &\qquad 1/n \leq x
+                       \end{array}\right..
+\end{equation*}
+A tedious computation shows that
+\begin{equation*}
+\int_{-\infty}^\infty f_n(t)\phi(t)\,dt 
+ = - \int_0^1 F_n(t)\phi'(t)\,dt.
+\end{equation*}
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Let \(L^1\) and \(L^2\) be the usual Lebesgue spaces on the unit interval.
+Prove that \(L^2\) is of the first category in \(L^1\) in three ways:
+\begin{itemize}
+ \itemch{a}
+ Show that \(\{f: \int|f|^2\leq n\}\) is closed in \(L^1\)
+ but has empty interior.
+ \itemch{b}
+ Put \(g_n=n\) on \([0,n^{-3}]\), and show that 
+ \begin{equation*}
+  \int fg_n \to 0
+ \end{equation*}
+ for every \(f\in L^2\)
+ but not for every \(f\in L^1\).
+ \itemch{c}
+  Note that the inclusion map of \(L^2\) into  \(L^1\)
+  is continuous but not onto.
+\end{itemize}
+ Do the same for \(L^p\) and \(L^q\) if \(p<q\).
+\end{excopy}
+
+Assume \(1\leq p<q < \infty\). Later we apply \(p=1\) and \(q=2\).
+  For any \(f\in L^q([0,])\),
+  separate intgeration over \(G = \{t\in[0,1]: |f(t)|\geq 1\}\)
+  and \(H = [0,1]\setminus G\) 
+  % shows that \(L^2([0,1]) \subset L^1([0,1])\)
+  as follows:
+  % \begin{eqnarray*}
+  \begin{equation*}
+  \|f\|_p^p
+   = \int_0^1 |f|^p\,dm \\
+   =    \int_G |f|^p\,dm + \int_H |f|^p\,dm \\
+   \leq \int_G |f|^q\,dm + \int_H 1\,dm \\
+   \leq \|g\|_q^q + m(H) < \infty
+  \end{equation*}
+  % \end{eqnarray*}
+  Thus \(f\in L^p([0,1])\) and so
+  \(L^q([0,1])\subset L^p([0,1])\).
+
+\begin{itemize}
+ \itemch{a}
+  Let \(\{f_n\}_{n\in\N}\) be a sequence of functions in \(L^q([0,1])\)
+  such that 
+  \begin{equation*} \label{eq:ex2.3:fnn}
+  \int_0^1 |f_n|^q\,dm \leq n
+  \end{equation*}
+  and
+  \(f_n\to f\) in \(L^p([0,1])\).
+  By negation assume  \(f\notin L^q([0,1])\). 
+  It is easy to see that
+  \(|f_n|\to |f|\) in \(L^p([0,1])\) and 
+  \(|f|\notin L^q([0,1])\), thus we may assume \(f_n\geq 0\) and \(f\geq 0\).
+  Define 
+  \begin{equation*}
+  g_n(x) = \liminf_{k\geq n} f_k(x).
+  \end{equation*}
+  Clearly 
+  for all \(x\in[0,1]\), the convergences
+  \(g_n^p(x) \to f^p(x)\) and 
+  \(g_n^q(x) \to f^q(x)\) holds as well and 
+  \(g_n^q(x)\leq g_{n+1}^q(x)\) for all $n$. 
+  Hence by Lebesgue's monotone convergence theorem~(1.26 \cite{RudinRCA80}),
+  \begin{equation*}
+    \lim_{n\to\infty} \int_{[0,1]} g_n^q \,dm  = \int_{[0,1]} f^q \,dm.
+  \end{equation*}
+  By \eqref{eq:ex2.3:fnn} and thus \(\int_{[0,1]} f^q \,dm \leq n\)
+  and so \(f\in L^q([0,1])\) and the set 
+  \begin{equation*}
+  F_n \eqdef \left\{f: \int|f|^q\leq n\right\}
+  \end{equation*}
+  is closed in \(L^p\).
+
+  Pick arbitrary \(\epsilon > 0\).
+  Observing
+  \begin{equation*}
+  \int_0^1 x^{ra}\,dx = x^{ra+1}/(ra+1)\big|_0^1
+  \end{equation*}
+  we look for $a$ such that \(pa+1 > 0 > qa+1\) or equivalently
+  \begin{equation*}
+  -1/p < a < -1/q
+  \end{equation*}
+  For example we can take \(a = -2/(p+q)\).
+  Let 
+  \begin{equation*}
+   A = \left(\int_0^1 x^{pa}\,dx\right)^{1/p} < \infty
+  \end{equation*}
+   and define
+  \(h(x) = \epsilon x^a/A\). Using the constraints inequalities, we can see that 
+  \begin{eqnarray*}
+  h &\in& L^p([0,1]) \setminus L^q([0,1]) \\
+  \|h\|_p &\leq& \epsilon
+  \end{eqnarray*}
+  Now for any \(f\in L^q([0,1])\) we have
+  \(f+h\in L^p([0,1]) \setminus L^q([0,1])\) thus \(L^q([0,1])\)
+  and in particular \(F_n\) have empty interior in \(L^p([0,1])\)
+  and since \(L^q([0,1]) = \cup_n F_n\) it is of first category.
+
+ \itemch{b}
+  Assume again \(1\leq p < q < \infty\). 
+  Put \(q' = q/q-1\) the exponent conjugate.
+  We want to find scalars \(\alpha\) and \(\beta\) such that if
+  \begin{equation*}
+    g_n(x) = \left\{\begin{array}{ll}
+                     n & \qquad x \in [0,n^\alpha] \\
+                     0 & \qquad x \in (n^\alpha, 1]
+                    \end{array}\right.
+  \end{equation*}
+  and 
+  \begin{equation*}
+    \psi(x) = \left\{\begin{array}{ll}
+                      x^\beta & \qquad x\in (0,1] \\
+                      0       & \qquad x = 0
+                    \end{array}\right.
+  \end{equation*}
+  then
+  \begin{eqnarray}
+   \forall f\in L^q([0,1])\qquad 
+   \lim_{n\to \infty} \int_{[0,1]} fg_n\,dm &=& 0
+                         \label{eq:ex2.4b:i} \\
+   \psi &\in&  L^p([0,1]) \setminus L^p([0,1])
+                         \label{eq:ex2.4b:psi} \\
+   \lim_{n\to \infty} \int_{[0,1]} \psi g_n\,dm &=& \infty
+                         \label{eq:ex2.4b:iii}
+  \end{eqnarray}
+
+  To ensure \eqref{eq:ex2.4b:i}, we use H\"older inequality
+  \begin{equation*}
+  \left|\int_{[0,1]} fg_n\,dm \right| \leq \|f\|_q \|g_n\|_{q'}
+  \end{equation*}
+  and require that
+  \(\lim_{n\to\infty} \|g_n\|_{q'}^{q'} = 0.\)
+  Computing
+  \begin{equation*}
+   \|g_n\|_{q'}^{q'} = \int_0^{n^\alpha} n^{q'}\,dm 
+   = n^\alpha \cdot n^{q'} = n^{\alpha + q/(q-1)}.
+  \end{equation*}
+  Thus 
+  \begin{equation} \label{eq:ex2.4b:alpha}
+  \alpha < -q/(q-1)
+  \end{equation}
+  must hold.
+
+  To ensure \eqref{eq:ex2.4b:psi}, we require that 
+  \(p\beta + 1 > 0\)
+  \(q\beta + 1 < 0\), or equivalently
+  \begin{equation} \label{eq:ex2.4b:beta1}
+   -1 \leq -1/p < \beta < -1/q < 0.
+  \end{equation}
+
+  We compute
+  \begin{equation*}
+   \int_{[0,1]} \psi g_n\,dm 
+   = \int_0^{n^\alpha} n x^\beta = n^{\alpha(\beta+1) + 1} / (\beta+1)
+  \end{equation*}
+   and since \(\beta+1 > 0\)
+   to ensure \eqref{eq:ex2.4b:iii},  we require that 
+   \begin{equation}  \label{eq:ex2.4b:beta2}
+     \alpha(\beta+1) + 1 \geq 0.
+   \end{equation}
+
+   Combining the requirements of 
+   \eqref{eq:ex2.4b:alpha}, 
+   \eqref{eq:ex2.4b:beta1}, and 
+   \eqref{eq:ex2.4b:beta2}
+   \begin{eqnarray} 
+     -1/(\beta + 1) \leq &\alpha& < -q/(q-1) \label{eq:ex2.4b:s1} \\
+           -1/p     <    &\beta& < -1/q .    \label{eq:ex2.4b:s2}
+   \end{eqnarray}
+   We will define \(\beta = -1/p + \epsilon\) 
+   for sufficiently small \(\epsilon > 0\) 
+   so \eqref{eq:ex2.4b:s2} holds which is trivial,
+   but also allow for \eqref{eq:ex2.4b:s1} to hold for some \(\alpha\),
+   as we now show.
+   We first note that the mapping
+   \(t \to -t(t-1) = -1/(t-1) -1\) is increasing.
+   We deal with two similar cases.
+   \paragraph{Case 1.} Assume \(p>1\). 
+   Since
+   \begin{equation*}
+     -1/((-1/p) + 1) = -p/(p-1) < -q/(q-1),
+   \end{equation*}
+   For sufficiently small \(\epsilon>0\) 
+   \begin{equation*}
+     -p/(p-1) <  -1\big/\bigl(((1/p)+\epsilon)\, + 1\bigr) < -q/(q-1)
+   \end{equation*}
+   and thus we can find \(\alpha\) so \eqref{eq:ex2.4b:s1} holds.
+   \paragraph{Case 2.} Assume \(p=1\). The convergence
+   \begin{equation*}
+   \lim_{0<\epsilon\to 0} -1\big/\bigl((-1/p)+\epsilon + 1\bigr) = -\infty
+   \end{equation*}
+   Shows that for sufficiently small \(\epsilon > 0\)
+   \begin{equation*}
+      -1\big/\bigl((-1/p)+\epsilon + 1\bigr) < -q/(q-1)
+   \end{equation*}
+   and again we have \(\beta\) and \(\alpha\) so \eqref{eq:ex2.4b:s1} holds.
+
+  Hence,
+  \(\lim_{n\to\infty} \int_0^1 \psi g_n\,dm > 0\).
+  By Banach Steinhaus
+  \index{Banach~Steinhaus}
+  theorem~2.5 (\cite{RudinFA79}) \(L^q([0,1])\) cannot be of second category
+  in \(L^p([0,1])\).
+
+ \itemch{c}
+  To show that the inclusion map of \(L^q\to L_p\) is continuous, assume
+  \(f_n\to f\) in \(L_q\).
+  Then \(\{f_n\}\) is a Cauchy sequence in \(L^q\).
+  By chapter~3 exercise~5 of \cite{RudinRCA80},
+  \(\|g\|_p \leq \|g\|_q\) for any \(g\in L^q\).
+  Thus \(\{f_n\}\) is a Cauchy sequence in \(L^p\) as well
+  and by its completeness it has a limit that must coincide with $f$.
+
+  By the open-mapping theorem~2.11 (\cite{RudinFA79}), 
+  \(L^q([0,1])\) cannot be of second category
+  in \(L^p([0,1])\), since otherwise the inclusion mapping would be onto.
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+Prove results analogous to those of Exercise~4 for the spaces \(\ell^p\),
+where \(\ell^p\) is the Banach space of all
+complex functions $x$ on \(\{0,1,2,\ldots\}\) whose norm 
+\begin{equation*}
+\|x\|_p = \left\{ \sum_{n=0}^\infty |x(n)|^p\right\}^{1/p}
+\end{equation*}
+is finite.
+\end{excopy}
+
+Assume \(1\leq p < q < \infty\).
+We first show that \(\ell^p \subsetneq \ell^q\).
+Note that this is analogically \emph{opposite} to exercise~4, because
+of different characteristics of the measure space.
+Let \(x\in \ell^p\).
+Clearly, there exists an integer $n$, such that \(|x(j)| < 1\) 
+for all \(j>n\). 
+Now
+\begin{eqnarray*}
+\|x\|_q^q
+&=& \sum_{j=0}^\infty |x(j)|^q \\
+&=& \sum_{j=0}^n |x(j)|^q + \sum_{j=n+1}^\infty |x(j)|^q \\
+&\leq& \sum_{j=0}^n |x(j)|^q + \sum_{j=n+1}^\infty |x(j)|^p \\
+&\leq& \sum_{j=0}^n |x(j)|^q + \|x\|_p^p \\
+&<& \infty.
+\end{eqnarray*}
+Thus \(x\in \ell^q\) and so \(\ell^p \subset \ell^q\). 
+Let's look at 
+\begin{equation} \label{eq:ex2.5:u}
+u(n) \eqdef n^{-1/p}.
+\end{equation}
+Note that \(-q/p < -1\) and compute
+\begin{eqnarray*}
+\|u\|_q^q &=& \sum_{n=0}^\infty n^{-q/p} < \infty \\
+\|u\|_p^p &=& \sum_{n=0}^\infty n^{-1} = \infty.
+\end{eqnarray*}
+Therefore \(u\in \ell^q \setminus \ell^p\) and so \(\ell^p \subsetneq \ell^q\).
+We will show that \(\ell^p\) is of first category in \(\ell^q\)
+in three ways sinilar to previous exercise.
+\begin{itemize}
+ \itemch{a}
+   Let \(F_n \eqdef \{x\in \ell^p: \|x\|_q \leq n\}\).
+   We will show that \(F_n\) is closed in \(\ell_q\).
+   Let \(\{x_k\}_{k\in\N}\) a sequence in \(F_n\) that converges to $x$ 
+   in \(\ell_p\). Formally, \(\lim_{k\to\infty} \|x-x_k\|_q = 0\), equivalently
+   \(\lim_{k\to\infty} \|x-x_k\|_q^q = 0\).
+   Clearly 
+   \begin{equation} \label{eq:ex2.5a:1}
+   \lim_{k\to\infty} x_k(j) = x(j) 
+   \end{equation}
+   in \C\ for each $k$.
+   If by negation \(x\notin F_n\) then 
+   \(\|x\|_p > n\) 
+   or equivalently, there exists some $m$ such that
+   \begin{equation} \label{eq:ex2.5a:2}
+   h \eqdef \left(\sum_{j=1}^m |x(j)|^p\right) - n^q > 0.
+   \end{equation}
+   By \eqref{eq:ex2.5a:1} we can find some integer $K$, such that 
+   \(|x_k(j) - x(j)|^p < h/m\) for any $j$ and for every \(k\geq K\)
+   which contradicts \eqref{eq:ex2.5a:2}. Hence \(F_n\) is closed
+   but it has empty interior, since 
+   for any \(\epsilon > 0\), 
+   for any \(x\in F_n\) and any \(\epsilon > 0\)
+   using \eqref{eq:ex2.5:u} put \(v \eqdef \epsilon u/\|u\|_q\)
+   and clearly \(v \in l^q\) but \(x+v \notin l^p\) for any \(x\in F_n\)
+   (even \(x\in l^p\)). Noting that \(l^p = \cup_n F_n\)
+   shows it is of first category in \(l^q\).
+   
+ \itemch{b}
+  Take some $r$ such that \(1\leq p<r<q<\infty\).
+  Denote the respective exponent-conjugates
+  \begin{equation*}
+    \infty 
+    \geq\; p' \eqdef p/(p-1)
+    >\;    r' \eqdef r/(r-1) 
+    >\;    q' \eqdef q/(q-1) 
+    > 1.
+  \end{equation*}
+  Define \(g_n:\N\to\R\) for each \(n\in\N\) 
+  \begin{equation*}
+  g_n(k) \eqdef \left\{\begin{array}{ll}
+                       0          & \qquad 1 \leq k < n \\
+                       k^{-1/r'}  & \qquad n \leq k  \\
+                       \end{array}\right.\;.
+  \end{equation*}
+  Since \(-p'/r' < -1\),
+  \begin{equation*}
+  \sum_{k=1}^\infty k^{-p'/r'} < \infty
+  \end{equation*}
+  and so we have
+  \begin{equation*}
+  \lim_{n\to\infty} \|g_n\|_{p'} 
+  = \lim_{n\to\infty} \sum_{k=n}^\infty k^{-p'/r'} = 0.
+  \end{equation*}
+  Hence, for each \(x\in l^p\) by H\"older inequality
+  \begin{equation*}
+  \lim_{n\to\infty} \left| \sum_{k=1}^\infty x(k)g_n(k) \right|
+  \leq \lim_{n\to\infty} \|x\|_p \cdot \|g_n\|_{p'}
+  = \|x\|_p \cdot \lim_{n\to\infty} \|g_n\|_{p'}
+  = 0.
+  \end{equation*}
+
+  On the other hand take \(w(k) \eqdef k^{-1/r}\), clearly
+  \(w \in l^q \setminus l^r\). Compute
+  \begin{equation*}
+       \sum_{k=1}^\infty w(k)g_n(k) 
+  =    \sum_{k=n}^\infty (1/k)^{1/r} \cdot (1/k)^{1/r'}
+  =    \sum_{k=n}^\infty (1/k)
+  = \infty.
+  \end{equation*}
+
+  Thus as a linear operator, 
+  \(\{g_n\}_{n\in\N}\) are bounded for each \(x\in l^p\),
+  but not on \(w\in l^q\).
+  Hence, by Banach Steinhaus
+  \index{Banach~Steinhaus}
+  theorem~2.5 (\cite{RudinFA79}) \(l^p\) cannot be of second category
+  in \(l^q\).
+
+ \itemch{c}
+  The inclusion mapping of \(l^p\) into \(l^q\) is continuous,
+  since if \(\lim_{k\to\infty}\|x_k - x\|_p = 0\) 
+  then for sufficiently large $k$, clearly
+  \(|x_k - x\|_p \geq |x_k - x\|_q\) and so 
+  \(\lim_{k\to\infty}\|x_k - x\|_q = 0\).
+
+  Again, by the open-mapping theorem~2.11 (\cite{RudinFA79}), 
+  \(l^q\) cannot be of second category
+  in \(l^p\), since otherwise the inclusion mapping would be onto.
+
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Define the Fourier coefficients \(\hat{f}(n)\) of a function
+\(f\in L^2(T)\) ($T$ is the unit circle) by
+\begin{equation*}
+\hat{f}(n) 
+ = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(e^{i\theta})e^{-in\theta}\,d\theta
+\end{equation*}
+for all \(n\in\Z\) (the integers). Put
+\begin{equation*}
+ \Lambda_n f = \sum_{k= -n}^n \hat{f}(k)\,.
+\end{equation*}
+Prove that 
+ \(\{f\in L^2(T): \lim_{n\to\infty} \Lambda_n f\; \textrm{exists}\}\)
+is a dense subspace of \(L^2(T)\) of the first category.
+\end{excopy}
+
+For any trigonometric polynomial, 
+\begin{equation*}
+ P(\theta) = \sum_{k= -m}^m a_k e^{i\theta}
+\end{equation*}
+we have \(\hat{P}(k) = a_k\)
+for each $k$ such that \(|k| \leq m\).
+Thus \(\Lambda_n f = f\) for any \(n\geq m\), 
+and in particular \(\Lambda_n f\) converges in  \(L^2(T)\).
+The trigonometric (finite, continuous) polynomials
+are dense in \(C(T)\) and thus dense in \(L^2(T)\).
+Now that density was shown, we need to show first category.
+
+Assume by negation that the set 
+\begin{equation*}
+F = \{f\in L^2(T): \lim_{n\to\infty} \Lambda_n f\; \textrm{exists}\}
+\end{equation*}
+is of second category, then so would be the superset
+\begin{equation*}
+B = \{f\in L^2(T): \limsup_{n\to\infty} |\Lambda_n f| < \infty\}.
+\end{equation*}
+By
+\index{Banach Steinhaus}
+Banach~Steinhaus theorem~2.5 (\cite{RudinFA79})
+\(\{\Lambda_n\}\) are equicontinuous, but this contradicts
+the results of the 
+discussion in section~5.11 of \cite{RudinRCA80} that shows that 
+the functionals \(\Lambda_n\) are not equicontinuous.
+
+
+%%%%%%%%%%%%%% 7
+\begin{excopy}
+Let \(C(T)\) be the set of all continuous complex functions
+on the unit circle $T$.
+Suppose \(\{\gamma_n\}\) (\(n\in\Z\)) is a complex sequence that associates
+to each \(f\in C(T)\) a function \(\Lambda f \in C(T)\) whose 
+Fourier coefficients  are
+\begin{equation*}
+ (\Lambda f){\,\hat{}\,}(n) = \gamma_n\hat{f}(n) \qquad (n\in\Z).
+\end{equation*}
+(The notation is as in Exercise~6.) Prove that \(\{\gamma_n\}\)
+has this multiplier property if and only if there is a complex Borel measure
+\(\mu\) on $T$ such that 
+\begin{equation*}
+ \gamma_n = \int e^{-in\theta}\,d\mu(\theta) \quad (n\in\Z)
+\end{equation*}
+\emph{Suggestion:} With the supremum norm, \(C(T)\) is a Banach space.
+Apply the closed graph theorem. Then consider the functional
+\begin{equation*}
+ f \to (\Lambda f)(1) = \sum_{-\infty}^{\infty} \gamma_n \hat{f}(n)
+\end{equation*}
+and apply the Riesz representation theorem ([23], Th.~6.19)
+(The above series may not converge;
+use it only for trigonometric of polynomials.)
+\end{excopy}
+
+Assume there exists a Borel measure \(\mu\)
+determining such \(\{\gamma_n\}_{n\in\Z}\).
+Define \(\Lambda : C(T) \to C(T)\) by
+\begin{equation*}
+(\Lambda f)(t) \eqdef \sum_{k\in\Z} \gamma_n e^{ikt}.
+\end{equation*}
+For each \(k in\Z\) we define a base function \(b_k(t) = e^{ikt}\).
+Clearly \(\posthat{b_k}(n) = 1\) iff \(k=n\) and 
+\(\posthat{b_k}(n) = 0\) otherwise.
+Compute
+\begin{eqnarray*}
+\posthat{(\Lambda b_n)}(n) 
+&=& \frac{1}{2\pi} \int_{-\pi}^\pi%
+       \left(\sum_{k\in\Z} \gamma_n e^{ikt}\right) e^{-int}\,dt \\
+&=& \frac{1}{2\pi} \sum_{k\in\Z} \int_{-\pi}^\pi \gamma_n e^{i(k-n)t}\,dt \\
+&=& \frac{1}{2\pi} \int_{-\pi}^\pi \gamma_n \cdot 1\,dt \\
+&=& \gamma_n
+\end{eqnarray*}
+For any \(f\in C(T)\) we have
+\(f = \sum_{k\in\Z} \posthat{f}(k)\cdot b_k\).
+Hence
+\begin{eqnarray*}
+\posthat{(\Lambda f)}(n)
+&=& \posthat{(\Lambda \sum_{k\in\Z} \posthat{f}(k)\cdot b_k )}(n) \\
+&=& \sum_{k\in\Z} \posthat{(\Lambda \posthat{f}(k)\cdot b_k )}(n) \\
+&=& \posthat{(\Lambda \posthat{f}(n)\cdot b_n)}(n) \\
+&=& \posthat{f}(n)\cdot \posthat{(\Lambda b_n)}(n) \\
+&=& \gamma_n \cdot \posthat{f}(n).
+\end{eqnarray*}
+
+Conversely,
+assume that \(\{\gamma_n\}_{n\in\Z}\) satisfies the abive multiplier property.
+For any \(f\in C(T)\), if \(\hat{f}(n) = 0\) for every \(n\in\Z\)
+then \(f=0\). 
+This can be derived from the discussion in section~4.26 of \cite{RudinRCA80}.
+By this, we can easily see that \(\Lambda\) is linear.
+Now we will show that the graph \(\{(f,\Lambda f): f\in C(T)\}\)
+is closed in \(C(T)^2\).
+Since it is a normed space, it is sufficient to verify
+for (enumerable) sequences.
+\iffalse
+Every \(f\in C(T)\) satisfies
+\begin{equation*}
+f(t) = \sum{n\in\Z} \hat{f}(n)e^{int}
+\end{equation*}
+\fi
+Let \(\lim_{m\to\infty} f_m = f\)
+and \(\lim_{m\to\infty} \Lambda f_m = g\)
+both in \(C(T)\) with the supremum norm.
+For any \(n\in\Z\)
+\begin{eqnarray*}
+ (\Lambda f){\,\hat{}\,}(n) 
+ &=& \gamma_n \hat{f}(n) \\
+ &=& \frac{\gamma_n}{2\pi}%
+     \int_{-\pi}^{\pi} f(e^{i\theta})e^{-in\theta}\,d\theta \\
+ &=&  \frac{\gamma_n}{2\pi} \int_{-\pi}^{\pi}
+       \lim_{m\to\infty} f_m(e^{i\theta})e^{-in\theta}\,d\theta \\
+ &=& \gamma_n\lim_{m\to\infty}\frac{1}{2\pi}%
+     \int_{-\pi}^{\pi} f_m(e^{i\theta})e^{-in\theta}\,d\theta \\
+ &=& \gamma_n\lim_{m\to\infty} \widehat{f_m}(n) \\
+ &=& \lim_{m\to\infty} \gamma_n \widehat{f_m}(n) \\
+ &=& \lim_{m\to\infty} \posthat{(\Lambda {f_m})}(n) \\
+ &=& \hat{g}(n)
+\end{eqnarray*}
+Note that the last inequality is justified by the fact that 
+\(\phi \to \hat{\phi}(n)\) is a continuous functional.
+
+By the closed graph theorem~2.15 (\cite{RudinFA79}), \(\Lambda\)
+is continuous and so is the functional \(f \to (\Lambda f)(1)\).
+By Riesz representation theorem (cited in the above suggestion),
+there is a Borel complex measure \(\mu\) on $T$
+such that \((\Lambda f)(1) = \int_T f\,d\mu\) for every \(f\in C(T)\).
+In particular if \(f(t) = e^{ikt}\) then 
+\(\hat{f}(n) = 1\) iff \(n=k\) and 
+\(\hat{f}(n) = 0\) otherwise. 
+Thus \(\posthat{(\Lambda f)}(n) = \gamma_n\) iff \(n=k\) and 
+\(\posthat{(\Lambda f)}(n) = 0\) otherwise.
+The desired equality can now be computed
+\begin{equation*}
+\int_T e^{ikt}\,d\mu
+ = (\Lambda f)(1)
+ = \sum_{n\in\Z} \posthat{(\Lambda f)}(n) e^{in\cdot 0}
+ = \posthat{(\Lambda f)}(k)
+ = \gamma_n.
+\end{equation*}
+
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+Define functionals \(\Lambda_m\) on \(\ell^2\) (see Exercise~5) by
+\begin{equation*}
+ \Lambda_m x = \sum_{n=1}^m n^2x(n) \qquad (m=1,2,3,\ldots).
+\end{equation*}
+Define \(x_n\in\ell^2\) by \(x_n(n) = 1/n\), \(x_n(i) = 0\) if \(i\neq n\).
+Let \(K\subset \ell^2\) consist of \(0,x_1,x_2,x_3,\ldots\).
+Prove that $K$ is compact.
+Compute \(\Lambda_m x_n\).
+Show that \(\{\Lambda_m x\}\) is bounded for each \(x\in K\)
+but \(\{\Lambda_m x_m\}\) is not.
+Convexity can therefore not be omitted from the hypothesis of Theorem~2.9.
+
+Choose \(c_n > 0\) so that 
+\(\sum c_n = 1\), 
+\(\sum n c_n = \infty\).
+Take \(x = \sum c_n  x_n\). Show that $x$ lies in the closed convex hull of $K$
+(by definition, this is the closure of the convex hull)
+and that \(\{\Lambda_m x\}\) is not bounded.
+
+Show that the convex hull of $K$ is not closed.
+\end{excopy}
+
+For any open covering \(\Omega\) of $K$, we pick some $0$-neighborhood
+\(V_0\in\Omega\). Since \(x_n \to 0\), there exist some $N$ such that
+\(x_n\in V_0\) for all \(n>N\). For each \(n\leq N\) we pick \(v_n\)
+such that \(x_n\in V_n\in\Omega\). Now \(\{V_n\}_{n=0}^N\)
+is a finite sub-covering. Thus $K$ is compact.
+
+Compute
+\begin{equation*}
+\Lambda_m x_n = \left\{%
+ \begin{array}{ll}
+   n & \qquad n \leq m \\
+   0 & \qquad m < n
+ \end{array}\right..
+\end{equation*}
+Thus \(\Lambda_m x_n \leq m\) 
+therefore \(\{\Lambda_m x\}\) is bounded for each \(x\in K\),
+while \(\Lambda_m x_m = m\}\) which is not bounded.
+
+Define \(s_m = \sum_{n=1}^m c_n x_n\) and let 
+\(\gamma_{m} = 1 - \sum_{n=1}^m c_n\).
+Thus 
+\begin{equation*}
+s_m = \gamma_{m}\cdot 0 = \sum_{n=1}^m c_n x_n \in \hull(K).
+\end{equation*}
+Since \(\lim_{m\to\infty} s_m = x\) we have \(x\in \overline{\hull(K)}\).
+But 
+\begin{equation*}
+\Lambda_m x 
+= \sum_{n=1}^m n^2c_n(1/n)
+= \sum_{n=1}^m n c_n = \infty.
+\end{equation*}
+
+
+
+%%%%%%%%%%%%%% 9
+\begin{excopy}
+Suppose $X$, $Y$, $Z$ are Banach spaces and 
+\begin{equation*}
+B: X\times Y \to Z
+\end{equation*}
+is a bilinear and continuous. Prove that there exists \(M<\infty\) such that
+\begin{equation*}
+ \| B(x,y) \| \leq M \|x\| \|y\| \qquad (x\in X, y\in Y).
+\end{equation*}
+Is completeness needed here?
+\end{excopy}
+
+By continuity, there is a neighborhood $V$ of \((0,0)\in X\times Y\)
+such that 
+\begin{equation*}
+B(V) \subset Z_1 \eqdef \{z\in Z: |z| < 1\}.
+\end{equation*}
+From definition of the topology of \(X\times Y\)
+there are scalars \(0<a,b<\infty\) such that
+\begin{equation*}
+U \eqdef \{(x,y)\in X\times Y: |x| < a\;\wedge\; |y|<b\} \subset V.
+\end{equation*}
+Let \(M = \max(a, b)^2\).
+Take arbitrary \((x,y)\in X\times Y\).
+If \(x=0\) or \(y=0\) then \(B(x,y) = 0\) and the inequality
+trivially holds.
+Otherwise, 
+\((x/a\|x\|, y/b\|y\|) \in U\) and so 
+\begin{equation*}
+\|B(x/a\|x\|, y/b\|y\|)\| \leq 1
+\end{equation*}
+or equivalently,
+\begin{equation*}
+\|B(x, y)\| \leq ab\|x\|\cdot\|y\| \leq M\|x\|\cdot\|y\|.
+\end{equation*}
+We used only the fact that Banach space is normed.
+Completeness was not necessary.
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Prove that a bilinear mapping is continuous if it is continuous 
+at the origin \((0,0)\).
+\end{excopy}
+
+Suppose $X$, $Y$, $Z$ are topological vector spaces and 
+let \(B: X\times Y \to Z\) be a bilinear mapping which is continuous
+in \((0,0)\). Pick some \((x,y)\in X\times Y\)
+and let \(z = B(x,y)\) and let \(z + W'\) a neighborhood of \(z\in Z\).
+We can find a neighborhood $W$ of \(0\in Z\) such that 
+\begin{equation*}
+W + W + W \subset W'.
+\end{equation*}
+
+For each \(x,a\in X\) and \(y,b\in Y\) we have by bilinearity
+\begin{equation*}
+B(x+a,y+b) = B(x,y) + B(x,b) + B(a,y) + B(a,b).
+\end{equation*}
+We can find neighborhoods of the origins
+\(V_X \subset X\) and \(V_Y \subset Y\) such that 
+\begin{itemize}
+ \item \(B(V_X \times V_Y) \subset W\) --- By continuity at the origin of $B$.
+ \item \(B(\{x\}\times V_Y) \subset W\) --- By bilinearity (\(B(0,y)=0\)).
+ \item \(B(V_X\times \{y\}) \subset W\) --- By bilinearity  (\(B(x,0)=0\)).
+\end{itemize}
+Putting \(V = V_X \times V_Y \subset X\times Y\), we get
+\begin{equation*}
+ B(V) \subset W + W + W \subset W'.
+\end{equation*}
+Thus $B$ is continuous.
+
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Define \(B(x_1,x_2;y) = (x_1y, x_2y)\). 
+Show that $B$ is a bilinear continuous mapping of 
+\(\R^2\times\R\) onto \(\R^2\) which is not open at \((1,1;0)\).
+Find all points where this $B$ is open.
+\end{excopy}
+
+\textbf{Note:} We refer to cases of table~\ref{tbl:B:open}.
+\newcommand{\tbcase}[2]{\textbf{{\textsf{#1}}#2}}
+
+We will use the following open interval notation:
+\begin{equation*}
+V(x,h) \eqdef \{t\in\R: x-h < t < x+h\}.
+\end{equation*}
+
+
+Put  \(P= (1,1;0)\). We have \(B(P) = (0,0)\). Pick a neighborhood of $P$
+\begin{equation*}
+V \eqdef \bigl\{(x_1,x_2;y) \in \R^2\times\R : 
+           |x_1-1| < 1/2 \;\wedge\;
+           |x_2-1| < 1/2 \;\wedge\;
+           |y| < 1/2\bigr\}.
+\end{equation*}
+Clearly, for any \(\epsilon > 0\), we have
+%\begin{equation*}
+ \((\epsilon, 0) \notin B(V)\)
+%\end{equation*}
+and so \(B(V)\) is not open.
+Similarly, $B$ is not open at 
+\(\{(x_1,x_2;0)\in \R^2\times\R: x_1\neq 0 \neq x_2\}\)
+(case \tbcase{TTF}{F}).
+
+The other cases
+\begin{itemize}
+
+\item \textbf{Case} \tbcase{FFF}{T}.
+If \(x_1 = x_2 = y = 0\), then for any \(\epsilon>0\), 
+then the neighborhood \(U_\epsilon\) of
+\((0,0;0)\) defined as 
+\(U_\epsilon 
+  \eqdef \bigl(V(0,\epsilon) \times  V(0,\epsilon)\bigr) \times V(0,\epsilon)\)
+we can pick \(\delta = \epsilon^2\) and clearly
+\begin{equation*}
+ W_\delta \eqdef V(0,\delta) \times V(0,\delta) \subset B(U_\epsilon).
+\end{equation*}
+Hence, $B$ is open at \((0,0;y)\).
+
+\item \textbf{Case} \tbcase{FFT}{T}.
+If \(Q = (0,0;y)\) where \(y\neq 0\) then \(B(Q)=(0,0)\).
+Pick \(\epsilon>0\) and let 
+\begin{equation*}
+U_\epsilon> \eqdef (V(0,\epsilon)\times V(0,\epsilon)\times)\times V(y,\epsilon)
+\end{equation*}
+a neighborhood of $Q$.
+Take \(\delta = |y|\epsilon\) and let 
+\(W_\delta = V(0,\delta)\times V(0,\delta)\).
+If \((x_1,x_2)\in W_\delta\) then
+\(|x_i/y| < \epsilon\) for \(i=1,2\) and 
+so \((x_1/y,x_2/y;y)\in U_\epsilon\) and $B$ is open at $Q$.
+
+\item \textbf{Cases} \tbcase{TFF}{F}, \tbcase{FTF}{F}.
+If \(Q = (x_1,0;0)\) where \(x_1\neq 0\) then \(B(Q)=(0,0)\).
+For any 
+% \(0<\epsilon < |x_1|\), 
+\(\epsilon > 0\), 
+we can see that
+\((0,\epsilon)\notin B(V)\), for sufficiently small neighborhood $V$ of $Q$.
+Hence, using symmetry, $B$ is not open at
+\(\{(x_1,x_2;0)\in \R^2\times\R: (x_1=0) \not\Leftrightarrow (x_2=0)\}\)
+
+
+\item \textbf{Cases} \tbcase{FTT}{T}, \tbcase{TFT}{T}.
+If \(Q = (x_1,0;y)\) where \(x_1y\neq 0\) then \(B(Q)=(x_1y,0)\).
+Pick arbitrary \(\epsilon>0\) 
+then the neighborhood \(U_\epsilon\) of $Q$ defined as 
+\(U_\epsilon 
+  \eqdef \bigl(V(x_1,\epsilon) \times  V(0,\epsilon)\bigr) \times V(y,\epsilon)\)
+we can pick \(\delta = \epsilon/y\).
+For any
+\begin{equation*}
+(w_1,w_2) \in W \eqdef V(x_1y, \delta) \times V(0,\delta)
+\end{equation*}
+we put 
+\begin{equation*}
+Q' \eqdef (u_1,u_2;y) \eqdef (w_1/y, w_2/y;y)
+\end{equation*}
+and clearly \(Q'\in U_\epsilon\) and therefore $B$ is open at $Q$.
+Similarly the same result hold for \((0,x_2;y\) where \(x_2y\neq 0\).
+
+\item \textbf{Case} \tbcase{TTT}{T}.
+If \(x_1 x_2 y \neq 0\), then for any \(\epsilon>0\), 
+the neighborhood \(U_\epsilon\) of
+\((x_1,x_2;y)\) defined as 
+\(U_\epsilon 
+  \eqdef \bigl(V(x_1,\epsilon) \times  V(x_2,\epsilon)\bigr) 
+         \times V(y,\epsilon)\)
+we can find \(\delta\) such that 
+\begin{equation*}
+ W_\delta \eqdef V(x_1y,\delta) \times V(x_2y,\delta) \subset B(U_\epsilon).
+\end{equation*}
+For example we can pick
+\(\delta = \min_{i=1,2} |x_i|\epsilon\)
+and so $B$ is open at \((x_1,x_2;y)\).
+
+\end{itemize}
+
+To summerize
+\begin{table}[ht] \label{tbl:B:open}
+\begin{center}
+\newcommand{\bfsf}{\bfseries\sffamily}
+\begin{tabular}{|>{\bfsf}c|>{\bfsf}c|>{\bfsf}c|>{\bfseries}c|}
+\hline
+ \(x_1\neq 0\) &  \(x_2\neq 0\)  & \(y\neq 0\) & $B$ open at \((x_1,x_2;y)\) \\
+\hline
+  F & F & F & T \\ \hline
+  F & F & T & T \\ \hline
+  F & T & F & F \\ \hline
+  F & T & T & ? \\ \hline
+  T & F & F & F \\ \hline
+  T & F & T & ? \\ \hline
+  T & T & F & F \\ \hline
+  T & T & T & T \\ \hline
+\end{tabular}
+\caption{Sorted cases where $B$ is open mapping}
+\end{center}
+\end{table}
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Let $X$ be the normed space of all real polynomials in one variable, with
+\begin{equation*}
+ \|f\| = \int_0^1 |f(t)|\,dt\,.
+\end{equation*}
+Put \(B(f,g) = \int_0^1f(t)g(t)\,dt\),
+and show that $B$ is a bilinear functional on \(X\times X\)
+which is separately continuous but is not continuous.
+\end{excopy}
+
+First note that
+\begin{equation*}
+  \int_0^1 |f_n(t)g(t) - f(t)g(t)|\,dt
+ \leq \max_{t\in[0,1]}|g(t)| \int_0^1 |f_n(t) - f(t)|\,dt.
+\end{equation*}
+If $g$ is fixed and \(\lim_{n\to\infty} f_n = f\) in the \(\|\cdot\|_1\) norm,
+then 
+\begin{equation*}
+\lim_{n\to\infty} \int_0^1 f_n(t)g(t)\,dt = \int_0^1 f(t)g(t)\,dt 
+\end{equation*}
+by the above inequality. Thus $B$ is separately continuous.
+
+Define a sequences \(\{f_n\}_{n\in\N}\) in \(C[0,1]\)
+\begin{equation*}
+f_n(x) = \left\{%
+  \begin{array}{ll}
+  n^2 - n^5x & \qquad 0 \leq x \leq  n^{-3} \\
+  0          & \qquad n^{-3} \leq x \leq 1
+  \end{array}\right.
+\end{equation*}
+Clearly \(f_n\) is continuous. The square is
+\(f_n^2(x) = n^{10}x^2 - 2n^7x + n^4\). Integrations are
+\begin{eqnarray*}
+\int_0^1 f_n(x)\,dx &=& n^2\cdot n^{-3}/2 = 1/2n \\ 
+\int_0^1 f_n^2(x)\,dx 
+  &=& (n^{10}x^2/2 - n^7x^2 + n^4x)\bigm|_0^{n^{-3}} 
+   =  n^4/2 - n + n = n^4/2
+\end{eqnarray*}
+By 
+\index{Stone Weierstrass}
+Stone Weierstrass theorem~(7.26 \cite{RudinPMA85})
+we can find real polynomials \(p_n\) such that \(\|p_n - f_n\|_\infty < 1/n\)
+and so 
+\begin{eqnarray*}
+\lim_{n\to\infty} \int_0^1 |p_n(x)|\,dx &=& 0 \\
+\lim_{n\to\infty} \int_0^1 p_n^2(x)\,dx &=& \infty \\
+\end{eqnarray*}
+Thus \(p_n \xrightarrow{n\to\infty} 0\) but \(B(p_n,p_n) \not\to 0\).
+
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Suppose $X$ is a topological vector space which 
+is of a second category in itself.
+Let $K$ be a closed, convex, absorbing subset of $X$.
+Prove that $K$ contains a neighborhood of $0$.\\
+\emph{Suggestion:} Show first that \(H= K\cap(-K)\) is absorbing.
+By a category argument, $H$ has interior. Then use
+\begin{equation*}
+  2H = H + H = H - H.
+\end{equation*}
+Show that the result is false without convexity of $K$, 
+even if \(X = \R^2\).
+Show that the result is false if \(X = L^2\) topologized by the \(L^1\)-norm
+(as in Exercise~4).
+\end{excopy}
+
+Following the suggestion. 
+We will show that $H$ is absorbing.
+Since $K$ is absorbing, so is \(-K\) 
+and we have \(0\in K\) and \(0\in (-K)\) and so 
+\(0\in H\). Now pick arbitrary \(x\in X\)
+so there exist some  \(m_0\) and \(m_1\) such that 
+\(x\in m_0 K\) and \(x\in m_1(-K)\).
+Hence \(x/m_0 \in K\) and \(x/m_1 \in (-K)\).
+If \(1/m_0 \leq 1/m_1\) the convexity of \(-K\) implies \(x/m_0 \in (-K)\).
+Otherwise, \(1/m_1 \leq 1/m_0\) and similarly,
+the convexity of $K$ implies \(x/m_1 \in K\).
+In both cases \(x/\max(m_0,m_1) \in K\cap(-K)\),
+equivalently, \(x\in \max(m_0,m_1) H\) and $H$ is absorbing.
+
+Now, since \(X = \cup_{n\in\N} nH\)
+since each \(nH\) is closed, and $X$ is of second category, then
+some \(nH\) must have non empty interior, thus
+$H$ must have non empty interior and so \emph{each} \(nH\).
+ By definition, \(H= -H\)
+and so \(H + H = H - H\). 
+Also \(2H \subset H+H\) (actually for any set $H$), 
+but by convexity \(2H = H+H\).
+Let \(x_0\in V \subset H\), where $V$ is a neighborhood of \(x_0\in H\)
+that exist since $H$ has non empty interior. Clearly 
+\(V-\{x_0\}\) is a neighborhood of $0$ in \(H-H = 2H\).
+Hence $W$ defined by 
+\begin{equation*}
+W \eqdef \frac{1}{2}\cdot\bigl(V-\{x\}\bigr) \subset H \subset K
+\end{equation*}
+is a neighborhood of $0$ in $K$.
+
+Without convexity, the result is false as the following 
+subset $K$ --- unit disc with ``sharp-arc-cavity'' in its positive quadrant ---
+shows.
+\begin{equation*}
+K = \left\{(x,y)\in\R^2: x^2+y^2\leq 1 \; \wedge 
+      (\; x\leq 0 \vee y\leq 0 \vee (x-1)^2+y^2 \leq 0\;)
+      \right\}.
+\end{equation*}
+It is easy to see that $K$ is closed and absorbing, but has no $0$-neighborhood
+and indeed is not convex.
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+\begin{itemize}
+ \itemch{a}
+  Suppose $X$ and $Y$ are topological vector spaces,
+  \(\{\Lambda_n\}\) is an equicontinuous sequence of linear mappings
+  of $X$ into $Y$, and $C$ is the set of all $x$ at which 
+  \(\{\Lambda_n(x)\}\) is a Cauchy sequence in $Y$.
+  Prove that $C$ is a closed subspace of $X$.
+ \itemch{b}
+  Assume, in addition to the hypothesis of \ich{a}, that $Y$ is an $F$-space
+  and that \(\{\Lambda_n(x)\}\) converges in some dense subset of $X$.
+  Prove that then
+  \begin{equation*}
+    \Lambda(x) = \lim_{n\to \infty} \Lambda_n(x)
+  \end{equation*}
+  exists for every \(x\in X\) and that \(\Lambda\) is continuous.
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \itemch{a}
+  First we show that $C$ is a subscpace.
+  Let \(x\in C\), then
+  \(\{\Lambda_n x\}\) is a Cauchy sequence. 
+  Pick a scalar \(\alpha\). If \(\alpha=0\) then  \(\{\Lambda_n 0x\}\)
+  is a trivial Cauchy sequence.
+  Otherwise, for any neighborhood $V$ of \(0\in Y\), we look at 
+  \((1/\alpha)V\) and there exists some $N$ such that 
+  \((\Lambda_m x - \Lambda_n x) \in (1/\alpha)V\) for all \(m,n\geq N\).
+  Equivalently,
+  \((\Lambda_m \alpha x - \Lambda_n \alpha x) \in V\) for all \(m,n\geq N\)
+  and therefore \(\alpha x \in C\).
+  If \(x_1,x_2\in C\) then for any neighborhood $V$ of \(0\in Y\)
+  we look at sub-neighborhood $W$ such that \(W+W\subset U\)
+  and for \(j=1,2\) find \(N_j\) such that 
+  \(\Lambda_m x_j - \Lambda_n x_j) \in W\).
+  We can see that for \(N=\max(N_1,N_2\)
+  \begin{equation*}
+   \Lambda_m (x_1+x_2) - \Lambda_n (x_1+x_2)
+   = 
+     (\Lambda_m x_1 - \Lambda_n x_1) +
+     (\Lambda_m x_2 - \Lambda_n x_2)
+   \in W + W \subset U.
+  \end{equation*}
+  Hence $C$ is a linear subscpace of $X$.
+  
+  Let \(x\in \overline{C}\).
+  Pick arbitrary neighborhood $V$ of \(0\in Y\).
+  We take a symmetric sub-neighborhood $W$ such that \(W + W + W \subset V\).
+  Since \(\{\Lambda_n\}\) are equicontinuous, there exists a neighborhood
+  $U$ of \(0\in X\) such that \(\Lambda_n(U) \subset W\) for all $n$.
+  Since \(x\in\overline{C}\) there exists \(x'\in C\) such that
+  \(x-x'\in U\). By definition of $C$, there exists \(m_1\)
+  such that \(\Lambda_{n_1}(x') - \Lambda_{n_2}(x') \in W\)
+  for all \(n_1,n_2\geq m_1\). Now
+  \begin{equation*}
+   \Lambda_{n_1}(x) - \Lambda_{n_2}(x) =
+      \bigl(\Lambda_{n_1}(x) - \Lambda_{n_1}(x')\bigr)
+    +  \bigl(\Lambda_{n_1}(x') - \Lambda_{n_2}(x')\bigr)
+    +  \bigl(\Lambda_{n_2}(x') - \Lambda_{n_2}(x)\bigr)
+      \in W + W + W \subset V.
+  \end{equation*}
+  We have shown that \(\{\Lambda_n(x)\}\) is a Cauchy sequence.
+  Hence \(x\in C\) and C is closed.
+  
+ \itemch{b}
+
+  Since $Y$ is a complete sapce, every Cauchy sequence converges.
+  Thus the assumption implies that $C$ is dense in $X$. By \ich{b}
+  $C$ is closed and so  \(C=X\) and \(\Lambda\) is well defined.
+
+  \emph{Note:} To show continuity,
+  we cannot apply Theorems~2.7(b) or~2.8 (\cite{RudinFA79})
+  since we \emph{cannot} assume $X$ is an F-Space.
+
+  Pick an arbitrary \(x\in X\) and let $y+V$ 
+  be a neighborhood  \(y=\Lambda(x)\).
+  Take a symmetric neighborhood $W$ of \(0\in Y\) such that
+  \(W + W + W \subset V\).
+  By definition of \(\Lambda\) there exists $n$ such that
+  \(\Lambda(x) - \Lambda_n(x) \in W\).
+  By \(\{\Lambda_n\}\) being continuous, there exists a neighborhood $U$
+  of $x$ such that  \(\Lambda_n(x) - \Lambda_n(x') \in W\) for all \(x'\in x+U\).
+  We now have
+  \begin{equation*}
+  \Lambda(x) - \Lambda(x') = 
+      \bigl(\Lambda(x) - \Lambda_n(x)\bigr)
+   +  \bigl(\Lambda_n(x) - \Lambda_n(x')\bigr)
+   +  \bigl(\Lambda_n(x') - \Lambda(x')\bigr)
+   \in W + W + W \subset V.
+  \end{equation*}
+  Hence \(\Lambda\) is continuous.
+
+\end{itemize}
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+Suppose $X$ is an $F$-space and $Y$ is a subscpace $X$ whose complement
+is of the first category. Prove \(Y=X\).
+\emph{Hint:} $Y$ must intersect \(x+Y\) for every \(x\in X\).
+\end{excopy}
+
+Pick an arbitrary \(x\in X\).
+Look at 
+\begin{equation*}
+X \setminus \bigl(Y \cap (x+Y)\bigr)
+\subset (X\setminus Y) \cup \bigl(X \setminus (x+Y)\bigr)
+= (X\setminus Y) \cup \bigl(x+(X \setminus Y)\bigr).
+\end{equation*}
+Hence this complement is a union of two sets of first category,
+Thus \(Y \cap (x+Y)\) is of second category since $X$ is a complete metric space.
+In particular \(Y \cap (x+Y)\neq \emptyset\), and tus there exists
+\(y_1,y_2 \in Y\) such that \(y_1 = y_2 + x\)
+and \(x = y_1 - y_0 \in Y\). Therefore \(X\subset Y\) and so \(X=Y\).
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+Suppose $X$ and $K$ are metric spaces, that $K$ is compact,
+and that the graph of \(f: X\to K\) is a closed subscpace of \(X\times K\).
+Prove that $f$ is continuous.
+(This is an analogue of Theorem~2.15 but is much easier.)
+Show that compactness of $K$ cannot be omitted from the hypothesis,
+even when $X$ is compact.
+\end{excopy}
+
+Because these are metric spaces, it is sufficient
+to show continuity for sequences, that is let 
+\((x_j)_{j\in\N}\) be a sequence in $X$ such that \(\lim_{n\to\infty} x_n = x\)
+we need to show that 
+\begin{equation} \label{eq:ex2.16}
+\lim_{n\to\infty} f(x_n) = f(x).
+\end{equation}
+Put \(y_n = f(x_n\) for \(n\in\N\) and \(Y=\{y_j: j\in N\}\).
+The sequence \((y_j)_{j\in\N}\) in $K$ must have at least 
+one accumulation point $y$.
+
+Assume by negation that  \((y_j)_{j\in\N}\) has 
+another accumulation point \(y' \neq y\).
+The graph~$G$ of~$f$ contains \(\{(x_n,y_n):n\in\N\}\)
+and so both 
+\begin{equation*}
+(x,y),(x,y') \,\in \overline{G},
+\end{equation*}
+but by being a graph of a function it is impossible for $G$
+to have both \((x,y)\) and \((x,y')\). 
+Hence $y$ is the unique accumulation point.
+
+Now, the (compact) sets 
+\begin{equation*}
+\left(K\setminus B(y;1/n)\right)\cap Y
+\end{equation*}
+must be finite, otherwise one of them would have another accumulation point
+of \((y_j)_{j\in\N}\),
+Hence $y$ is actually a limit point, \(y=\lim_{n\to\infty} y_n\)
+and so \eqref{eq:ex2.16} holds and $f$ is continuous.
+
+
+For a counterexample showing that compactness of $K$ is necessary,
+look at \(f:[0,2]\to \R\) where \(f(x)=\tan(x)\) if \(x\neq \pi/2\)
+and \(f(x)=0\) othewise. The graph of~$f$ is closed but clearly $f$
+is not continuous.
+
+%%%%%%%%%%%%%%%
+\end{enumerate}
+%%%%%%%%%%%%%%%

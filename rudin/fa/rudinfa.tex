@@ -1,0 +1,104 @@
+\usepackage{array}
+
+\input{mymacs}
+
+\title{Notes and Solutions to Exercises \\
+          from \\
+       Functional Analysis / Walter Rudin}
+\author{Yotam Medini}
+
+
+\newcommand{\ellone}{\ensuremath{\ell^1}}
+\newcommand{\ellp}{\ensuremath{\ell^p}}
+\newcommand{\ellinf}{\ensuremath{\ell^\infty}}
+
+
+\newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!!}\par}
+\newcommand{\upstar}{\raise.5ex\hbox{\(*\)}}
+
+%%%%%%%%%%%%
+%% math op's
+%%
+\newcommand{\hull}{\mathop{\rm hull}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{-1}
+\chapterTypeout{About this Document}
+
+Here I try to solve problems
+from the book \cite{RudinFA79}
+\begin{center}
+\textbf{Functional Analysis}\\
+by
+\textbf{Walter Rudin}
+\end{center}
+
+The publisher  McGraw-Hill has the following:
+\begin{center}
+\texttt{http://catalogs.mhhe.com/mhhe/viewProductDetails.do?isbn=0070542368}
+\end{center}
+web-page for this book.
+
+
+\begin{center}
+Whenever there is reference to theorem or lemma, it implicitly
+targets this text, unless otherwise specified.
+Furthermore, we have in this document lemmas or theorems
+which are referred to as \emph{local} lemma
+or \emph{local} theorem.
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Notation}
+
+\input{notations}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftrue
+ \input{rudinfa1}
+ \input{rudinfa2}
+ \input{rudinfa3}
+ \input{rudinfa4}
+\else
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain}
+\bibliographystyle{alpha}
+\bibliography{rudinfa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printindex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

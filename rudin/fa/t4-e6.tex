@@ -1,0 +1,221 @@
+\documentclass{book}
+
+\input{mymacs}
+\makeatletter
+\@ifclassloaded{book}{
+ \newcommand{\isbook}{Yes}
+}{
+ \newcommand{\isbook}{No}
+}
+\@ifclassloaded{article}{
+ \newcommand{\isarticle}{Yes}
+}{
+ \newcommand{\isarticle}{No}
+}
+
+\makeatother
+
+\newcommand{\upstar}{\raise.5ex\hbox{\(*\)}}
+\newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!!}\par}
+
+\title{Weak-To-Weak}
+\author{Yotam Medini}
+
+\begin{document}
+
+\maketitle
+
+
+Here is a basic topological result.
+
+See \cite{Megginson1998} Corollary~2.4.5
+\begin{llem} \label{llem:cont:bymaps}
+Let \((W,\tau)\) be a topological space and $X$ be a set topologized
+by a a family \calF\ of mappings \(f: X \to Y_f\).
+A mapping \(g:W\to X\) is continuous iff \(f\circ g\) is continuous
+for all \(f\in\calF\).
+\end{llem}
+\begin{proof}
+If $g$ is continuous then \(f\circ g\) are continuous simply
+by composition of continuous mappings.
+
+Conversely, we assume \(f\circ g\) is continuous for all \(f\in\calF\).
+It will be sufficient to show that \(g^{-1}(B)\) is open in $W$
+for any set $B$ in a basis for the topology of $X$.
+
+Let $G$ be a family of inverse images of open sets \(f^{-1}(V)\)
+where \(f\in\calF\) and $V$ is open in \(Y_f\).
+Following  the discussion of Section~3.8
+let the $S$ be the family that consists of finite intersections
+of sets from $G$. It is a subbasis for 
+the topology of $X$ which consists of unions of sets from $S$.
+
+Pick an arbitrary set
+'\(B = \cap_{j\in J} f_j^{-1}(V_j)\) from the subbasis $S$ where \(V_j\) is open 
+in \(Y_{f_j}\) and $J$ is a finite set of \calF-indices.
+% (The finiteness $J$ is actually not needed for our arguments).
+Put \(U_j = f_j^{-1}(V_j) \subset X\).
+By the assumption each \((f_j\circ g)^{-1}(V_j) = g^{-1}(U_j)\) 
+is open in $W$.
+It is easy to see that
+\begin{equation*}
+g^{-1}(B) = g^{-1}\left(\cap_{j\in J} U_j\right)
+  = \cap_{j\in J} g^{-1}(U_j).
+\end{equation*}
+Hence \(g^{-1}(B) \in \tau\) and so $g$ is continuous.
+\end{proof}
+
+
+The relation between continuity and boundness
+Will now be shown form normed spaces.
+\begin{llem} \label{llem:op:cont:bounded}
+Let \(T:X \to Y\) be a linear mapping between normed spaces.
+Then $T$ is continuous iff \(T(E)\) is bounded in $Y$ whenever $E$
+is bounded in $X$.
+\end{llem}
+\begin{proof}
+Assume $T$ is continuous.
+Let \(E\subset X\) be bounded subset.
+Pick an arbitrary neighborhood \(0\in V \subset Y\)
+By assumption there exists a neighborhood \(0 \in U \subset X\)
+such that \(T(U) \subset V\) and there exists some \(n < 0\) such that
+\(E \subset nU\). Hence 
+\(T(E) \subset nT(U) \subset nV\). Hence the desired boundness condition 
+holds for $T$. (Note that this direction did not use any norm).
+
+Conversely, assume that $T$ maps bounded sets to bounded sets.
+Then \(T(\{x\in X: \|x\| \leq 1\})\) is bounded in $Y$.
+Thus there exists some \(M < \infty\) such that
+\(\|Tx\| < M\) whenever \(\|x\| \leq 1\) where \(x \in X\).
+Pick a neighborhood \(0\in V \subset Y\).
+We can find some \(r > 0\) such that \(\{y\in Y: \|y\| \leq r\} \subset V\).
+Put the open set \(W = \{x \in X: \|x\| < r/M\}\) and clearly
+\(T(W) \subset U\). Thus $T$ is continuous at the origin.
+By linearity $T$ is continuous.
+\end{proof}
+
+
+Here is a characterization of linear operator's boundness
+(\cite{Megginson1998} Proposition~2.5.10).
+\begin{llem}
+Assume \(T:X \to Y\) is a linear operator between normed spaces.
+Then $T$ is bounded  iff \(y^* \circ T \in X^*\) for all \(y^*\in Y^*\).
+\end{llem}
+\begin{proof}
+If a functional is weakly-continuous then obviously it is
+continuous in the norm topology. Theorem~3.10  gives the converse
+that a any continuous functional is also weakly-continuous.
+By Local-Lemma~\ref{llem:cont:bymaps} $T$ is weak-to-weak continuous.
+
+The mapping $T$ is normed-continuous iff it \(T(E)\) is norm-bounded
+in $Y$ whenever $E$ is normed bounded in $X$.
+By Theorem~3.18 this is equivalent 
+to the condition that \(T(E)\) is weakly-bounded
+whenever $E$ weakly-bounded.
+\end{proof}
+
+The relation between operator continuity and its weak-continuity
+is shown in the next result
+\begin{llem} \label{llem:weak:to:weak}
+Let \(T:X \to Y\) be a linear map between normed spaces.
+Then $T$ is continuous iff $T$ is weak-to-weak continuous.
+\end{llem}
+\begin{proof}
+By Local Leamm~\ref{llem:op:cont:bounded}
+$T$ is continuous iff it map bounded sets to bounded sets.
+By Theorem~3.18 it is equivalent to
+require that $T$ maps weakly bounded sets to weakly bounded sets.
+\end{proof}
+
+Here a are simple lemmas regarding bounded and weak boundness of a set.
+\begin{llem} \label{llem:bound:weakbound}
+If $E$ is bounded then it is weakly bounded.
+\end{llem}
+\begin{proof}
+Trivial since every weak neighborhood is a neighborhood
+in the original topology.
+\end{proof}
+
+
+\begin{llem} \label{llem:bound:funcbound}
+If  $E$ is a bounded subset of  a topological vector space $X$,
+then \(\Lambda (E)\) is bounded in \C\ for every \(\Lambda \in X^*\).
+\end{llem}
+\begin{proof}
+By  negation assume \(\Lambda(E)\) is unbounded.
+Thus we can find a sequence \(x_n\in E\) such that \(|\Lambda x_n| \geq n\).
+Define the open $0$ neighborhood \(V = \{x \in X: |\Lambda x\| < 1\}\).
+Clearly \(x_n \notin nV\) for all $n$. Hence \(E \not\subset nV\) for all $n$
+contradicting the assumption.
+\end{proof}
+
+We have a ``weak equivalnce''.
+\begin{llem} \label{llem:weakbound:funcbound}
+A subset  $E$ is weakly bounded in a topological vector space $X$,
+iff \(\Lambda (E)\) is bounded in \C\ for every \(\Lambda \in X^*\).
+\end{llem}
+\begin{proof}
+This was shown in the discussion of Section~3.11.
+\end{proof}
+
+With norm we have an equivalnce.
+\begin{llem} \label{llem:bound:norm:funcbound}
+Let  \(E \subset X\) where $X$ is a normed vector space.
+Then $E$ is bounded iff \(\Lambda (E)\) is bounded in \C\ for
+every \(\Lambda \in X^*\).
+\end{llem}
+\begin{proof}
+If $E$ is bounded ,then it is weakly bounded and by
+Local Lemma~\ref{llem:op:cont:bounded}
+\(\Lambda (E)\) is bounded in \C\ for
+every \(\Lambda \in X^*\).
+Conversely, assume \(\Lambda (E)\) is bounded in \C\ for
+every \(\Lambda \in X^*\). 
+By Local Lemma~\ref{llem:weakbound:funcbound} again,
+$E$ is weakly bounbded. By Theorem~3.18 it is also originally bounded.
+\end{proof}
+
+% Up to here - can be put in Chapter 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To be put in Chapter 4
+
+The following lemma shows that in boundness of operator
+can be checked by looking at weak topologies, when the spaces are normed
+(See \cite{Megginson1998} Proposition~2.5.11).
+\begin{llem} \label{llem:op:normbd:weakbd}
+Let \(T:X\to Y\) be a linear operator between normed spaces.
+Then $T$ is bounded iff it is weak-to-weak bounded.
+\end{llem}
+\begin{proof}
+Let \(B_X = \{x\in X: \|x\|\leq 1\}\).
+By definitions, \(\Lambda\) is bounded if \(T(B_X)\) is bounded in $Y$. 
+By Local Lemma~\ref{llem:bound:norm:funcbound} 
+This is equivalent to  \((\Lambda T)(B_X)\) be bounded in \C\ for
+all \(\Lambda \in Y^*\).
+Since all these \(\Lambda T \in X^*\) for all \(\Lambda \in Y^*\)
+the last condition means, that $T$ is bounded
+iff  \((\Lambda T)(B_X)\) are continuous mappings \(X\to\C\)
+for all \(\Lambda \in Y*\) considering the weak topology of $X$.
+
+In turn, by Local Lemma~\ref{llem:cont:bymaps} this is equivalent 
+to $T$ being continuous mapping 
+from $X$ with its weak to $Y$ with its weak topology.
+\end{proof}
+
+\begin{center}
+Now Back To the 2nd part to be inserted in the Exercises!!
+\end{center}
+
+Conversely, assume $S$ is 
+continuous linear mapping of \((Y^*, \tau)\) into \((X^*, \sigma)\).
+Let \(\psi_X\) and \(\psi_Y\) the isomorphisms of $X$ and $Y$
+to their second duals.
+Pick \(x\in X\). By composition \(\psi_X \circ S\) is weakly\upstar\ continuous
+functional on~\(Y^*\). Hence \(\psi_X \circ S \in \psi_Y(Y)\).
+Define
+\begin{equation*}
+Tx = \psi_Y^{-1}(\psi_X \circ S) \in Y.
+\end{equation*}
+The linearity of $T$ is clear. By definition it is weak-to-weak continuous.
+By local lemma~\ref{???} $T$ is also normed-continuous.
+\end{document}

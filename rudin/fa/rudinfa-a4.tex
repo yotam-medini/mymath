@@ -1,0 +1,10 @@
+\RequirePackage{ifpdf}
+\ifpdf
+ \documentclass[11pt,pdftex,twoside,a4paper]{book}
+\else
+  \documentclass[11pt,a4paper]{book}
+  \usepackage{thumbpdf}
+  %\pdfcompresslevel=9
+\fi
+
+\input{rudinfa}

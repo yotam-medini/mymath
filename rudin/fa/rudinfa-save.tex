@@ -1,0 +1,268 @@
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage[mathcal]{euscript}
+\usepackage{mathrsfs}
+
+% \usepackage{fullpage}
+\usepackage{geometry}
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+
+% are we in pdftex ????
+\ifx\pdfoutput\undefined % We're not running pdftex
+\else
+\RequirePackage[colorlinks,hyperindex,plainpages=false]{hyperref}
+\def\pdfBorderAttrs{/Border [0 0 0] } % No border arround Links
+\fi
+
+% \usepackage{fancyheadings}
+\usepackage{fancyhdr}
+\usepackage{pifont}
+
+\pagestyle{fancy}
+% \addtolength{\headwidth}{\marginparsep}
+% \addtolength{\headwidth}{\marginparwidth}
+%  \addtolength{\textheight}{2pt}
+\newcommand{\srightmark}{\rightmark}
+\newcommand{\sfbfpg}{\sffamily\bfseries{\thepage}}
+  \newcommand{\symenvelop}{%
+     {\nullfont a}\relax\lower.2ex\hbox{\large\Pisymbol{pzd}{41}}}
+% \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}}
+
+\fancyplain{plain}{%
+ \fancyhf{}
+ \fancyhead[LE,RO]{\fancyplain{}{{\sfbfpg}}}
+ \fancyhead[RE,LO]{\sl\leftmark}
+ \fancyfoot[L]{\today}
+ \fancyfoot[C]{Yotam Medini \copyright}
+ \fancyfoot[R]{\symenvelop\ \texttt{yotam.medini@gmail.com}}
+ \renewcommand{\headrulewidth}{0.4pt}
+ \renewcommand{\footrulewidth}{0.4pt}
+}
+
+% \usepackage{amstex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{makeidx}
+\makeindex % enable
+
+% 'Inspired' by:
+%% This is file `uwamaths.sty',
+%%%     author   = "Greg Gamble",
+%%%     email     = "gregg@csee.uq.edu.au (Internet)",
+
+\makeatletter
+\def\DOTSB{\relax}
+\def\dotcup{\DOTSB\mathop{\overset{\textstyle.}\cup}}
+ \def\@avr#1{\vrule height #1ex width 0pt}
+ \def\@dotbigcupD{\smash\bigcup\@avr{2.1}}
+ \def\@dotbigcupT{\smash\bigcup\@avr{1.5}}
+ \def\dotbigcupD{\DOTSB\mathop{\overset{\textstyle.}\@dotbigcupD%
+                               \vphantom{\bigcup}}}
+
+\def\dotbigcupT{\DOTSB\smash{\mathop{\overset{\textstyle.}\@dotbigcupT%
+                              \vphantom{\bigcup}}}%
+                       \vphantom{\bigcup}\@avr{2.0}}
+\def\dotbigcup{\mathop{\mathchoice{\dotbigcupD}{\dotbigcupT}
+                                  {\dotbigcupT}{\dotbigcupT}}}
+\let\disjunion\dotcup
+\let\Disjunion\dotbigcup
+\makeatother
+
+
+\newcommand{\C}{\ensuremath{\mathbb{C}}} % The Complex set
+\newcommand{\calB}{\ensuremath{\mathcal{B}}}
+\newcommand{\calG}{\ensuremath{\mathcal{G}}}
+\newcommand{\scrD}{\ensuremath{\mathscr{D}}}
+\newcommand{\scrP}{\ensuremath{\mathscr{P}}}
+\newcommand{\scrQ}{\ensuremath{\mathscr{Q}}}
+\newcommand{\Lp}[1]{\ensuremath{\mathbf{L}^{#1}}} % Lp space
+\newcommand{\N}{\mathbb{N}} % The Natural Set
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}} % The Rational set
+\newcommand{\R}{\ensuremath{\mathbb{R}}} % The Real Set
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}} % The Integer Set
+\newcommand{\intR}{\int_{-\infty}^{\infty}} % Integral over the reals
+\newcommand{\posthat}[1]{#1{\,\hat{}\,}}
+
+% sequences
+\newcommand{\seq}[2]{\ensuremath{#1_1,\ldots,#1_{#2}}}
+\newcommand{\seqn}[1]{\seq{#1}{n}}
+\newcommand{\seqan}{\seq{a}{n}}
+\newcommand{\seqxn}{\seq{x}{n}}
+\newcommand{\seqalphn}{\seq{\alpha}{n}}
+
+\newcommand{\ich}[1]{(\textit{#1})}
+\newcommand{\itemch}[1]{\item[\ich{#1}]}
+
+
+\title{Notes and Solutions to Exercises \\
+          from \\
+       Functional Analysis / Walter Rudin}
+\author{Yotam Medini}
+
+
+%%%%%%%%%%%
+%% Theorems
+%%
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{Def}{Definition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{llem}[thm]{Local Lemma}
+\newtheorem{lthm}[thm]{Local Theorem}
+
+% \newtheorem{quotecor}{Corollary}
+% \newtheorem{quotelem}{Lemma}[section]
+\newtheorem{quotethm}{Theorem}[chapter]
+
+
+% \newcommand{\proofend}{\(\bullet\)}
+\newcommand{\proofend}{\hfill\(\blacksquare\)}
+\newenvironment{thmproof}
+{\textbf{Proof.}}
+{\proofend}
+
+\newcommand{\chapterTypeout}[1]{\typeout{#1} \chapter{#1}}
+\newcommand{\sectionTypeout}[1]{\typeout{#1} \section{#1}}
+
+% abbreviations, ensuremath
+\newcommand{\eqdef}{\ensuremath{\stackrel{\mbox{\upshape\tiny def}}{=}}}
+\newcommand{\fx}{\ensuremath{f(x)}}
+\newcommand{\gx}{\ensuremath{g(x)}}
+\newcommand{\lrangle}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\calD}{\ensuremath{\mathcal{D}}}
+\newcommand{\frakD}{\ensuremath{\mathfrak{D}}}
+\newcommand{\frakM}{\ensuremath{\mathfrak{M}}}
+\newcommand{\M}{\ensuremath{\mathfrak{M}}}
+\newcommand{\mldots}{\ensuremath{\ldots}}
+\newcommand{\salgebra}{\(\sigma\)-algebra}
+\newcommand{\wlogy}{without loss of generality}
+\newcommand{\Wlogy}{Without loss of generality}
+\newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!!}\par}
+
+%%%%%%%%%%%%
+%% math op's
+%%
+\newcommand{\hull}{\mathop{\rm hull}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\inter}[1]{\ensuremath{#1^{\circ}}}
+% \newcommand{\inter}[1]{\ensuremath{\textrm{int{#1}^\circ}}
+\def\Lip{\mathop{\rm Lip}\nolimits}
+\def\lip{\mathop{\rm lip}\nolimits}
+\def\Ker{\mathop{\rm Ker}\nolimits}
+\def\ker{\mathop{\rm ker}\nolimits}
+\def\Re{\mathop{\rm Re}\nolimits}
+\def\Im{\mathop{\rm Im}\nolimits}
+\def\supp{\mathop{\rm supp}\nolimits}
+
+
+\newenvironment{excopyOLD}
+{\item\begin{minipage}[t]{.8\textwidth}\footnotesize}
+{\smallskip\hrule\end{minipage}}
+
+\newenvironment{excopy}
+{\item % \relax
+ \begin{list}{}{
+ \setlength{\topsep}{0pt}
+ \setlength{\partopsep}{0pt}
+ \setlength{\itemsep}{0pt}
+ \setlength{\parsep}{0pt}
+ \setlength{\leftmargin}{0pt}
+ \setlength{\rightmargin}{20pt}
+ \setlength{\listparindent}{0pt}
+ \setlength{\itemindent}{0pt}
+ % \setlength{\labelsep}{0pt}
+ \setlength{\labelwidth}{0pt}
+ \footnotesize
+ }
+ \item
+}
+{\par
+ {\nullfont a}\hrulefill
+ \end{list}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{-1}
+\chapterTypeout{About this Document}
+
+Here I try to solve problems
+from the book \cite{RudinFA79}
+\begin{center}
+\textbf{Functional Analysis}\\
+by
+\textbf{Walter Rudin}
+\end{center}
+
+The publisher  McGraw-Hill has the following:
+\begin{center}
+\texttt{http://catalogs.mhhe.com/mhhe/viewProductDetails.do?isbn=0070542368}
+\end{center}
+web-page for this book.
+
+
+\begin{center}
+Whenever there is reference to theorem or lemma, it implicitly
+targets this text, unless otherwise specified.
+Furthermore, we have in this document lemmas or theorems
+which are referred to as \emph{local} lemma
+or \emph{local} theorem.
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Notation}
+
+\input{notations}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftrue
+ \input{rudinfa1}
+ \input{rudinfa2}
+ \input{rudinfa3}
+\else
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain}
+\bibliographystyle{alpha}
+\bibliography{rudinfa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printindex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

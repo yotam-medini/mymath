@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\newenvironment{excopy}
+{\item % \relax
+ \begin{list}{}{
+ \setlength{\topsep}{0pt}
+ \setlength{\partopsep}{0pt}
+ \setlength{\itemsep}{0pt}
+ \setlength{\parsep}{0pt}
+ \setlength{\leftmargin}{0pt}
+ \setlength{\rightmargin}{20pt}
+ \setlength{\listparindent}{0pt}
+ \setlength{\itemindent}{0pt}
+ % \setlength{\labelsep}{0pt}
+ \setlength{\labelwidth}{0pt}
+ \footnotesize
+ }
+ \item
+}
+{\par
+ {\nullfont a}\hrulefill
+ \end{list}
+}
+
+\begin{document}
+
+\newcommand{\many}[1]{
+  #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1 #1
+}
+\newcommand{\pone}{\many{one}}
+\newcommand{\ptwo}{\many{two}}
+\newcommand{\pex}{\many{exercise}}
+
+\tracingmacros=1
+\begin{enumerate}
+
+\item Pre item
+\pone\par\ptwo
+
+\begin{excopy}
+\pex
+\end{excopy}
+
+Solution \ldots
+
+\begin{excopy}
+\pex
+\begin{itemize}
+\item[A] aaa aaa aaa
+\item[B] bbb bbb bbb
+\item[C] ccc ccc ccc
+\end{itemize}
+\end{excopy}
+
+Solution \ldots
+
+\item % \relax
+\begin{list}{}{
+ \setlength{\topsep}{0pt}
+ \setlength{\partopsep}{0pt}
+ \setlength{\itemsep}{0pt}
+ % \setlength{\parsep}{0pt}
+ \setlength{\leftmargin}{0pt}
+ \setlength{\rightmargin}{20pt}
+ \setlength{\listparindent}{0pt}
+ \setlength{\itemindent}{0pt}
+ %\setlength{\labelsep}{0pt}
+ \setlength{\labelwidth}{0pt}
+ \footnotesize
+ }
+\item \pex
+\begin{itemize}
+\item[A] aaa aaa aaa
+\item[B] bbb bbb bbb
+\item[C] ccc ccc ccc
+\end{itemize}
+\par
+ {\nullfont a}\hrulefill
+\end{list}
+
+Solution \ldots
+
+\item Post item \pone\par\ptwo
+
+\end{enumerate}
+
+\end{document}

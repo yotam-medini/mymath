@@ -1,0 +1,112 @@
+\itemch{e}
+We begin by proving the claim in the hint by steps.
+
+\begin{llem}
+Let \(\{x_j\}\) to \(x_0\) weakly in \ellone\ then
+  \(\{\|x_j\|_1\}\) is bounded.
+\end{llem}
+\begin{proof}
+{\nullfont dum}
+\newline
+\textbf{Claim-I.}
+For any \(m,n>0\) the set \(\{|x_j(m,n)|: j\in\N\}\)  is bounded.
+This is trivial by looking at \(y\in c_0\) defined by \(y(j,k)=1\)
+if \((j,k)=(m,n)\) and \(y(j,k)=0\) otherwise.
+
+\textbf{Claim-II.}
+For any finite set $F$ of pairs 
+\(m,n>0\) the set 
+\begin{equation*}
+\{|x_j(m,n)|: j\in\N\;\land\; (m,n)\in F\}
+\end{equation*}
+is bounded.
+\newline
+The bound is a simple maximum taken on the finite sets of 
+bounds each of a fixed pair \((m,n)\in F\).
+
+Now by negation assume that the set  \(\{\|x_j\|_1:j\in\N\}\) is not bounded.
+We will construct \(y\in c_0\) such that the set
+\(\{|y(x_j)|:\,j\in\N\}\) is not bounded, that is by changing to 
+sub-sequence \((s(j))_{j\in\N}\) we can have
+\begin{equation*}
+\lim_{j\to\infty}|y(x_{s(j)})| 
+ = \lim_{j\to\infty} \left| \sum_{(m,n)\in\N^2} y(m,n)\cdot x_{s(j)}(m,n) \right| 
+ = \infty
+\end{equation*}
+which contradicts the assumption of this lemma.
+
+We start by constructing mutually disjoints finite
+sets \(D_n \subset \N^2\) by induction.
+We put
+\begin{alignat*}{2}
+E_0 &= 0    &  d_0 &= 0 \\
+E_j &= E_{j-1} \cup D_j   \qquad &   d_j &= \max\{m, n: (m,n)\in E_j\}
+   \qquad (\forall j\in\N)
+\end{alignat*}
+Let \(D_0 = \emptyset\).
+Assume \(D_j\) are defined for all \(j < k\).
+Let $b$ be a bound (provided by Claim~II) of
+\begin{equation*}
+\{|x_j(m,n)|: \, j\in\N \land (m,n) \in E_{k-1}\}.
+\end{equation*}
+pick an index \(s(k)\) such that \(x_{s(k)}\) satisfy the following
+\begin{align*} 
+\sum_{(m,n) \in \N^2 \setminus E_{k-1}} |x(m,n)| > k(b + k + 1)
+\end{align*}
+Since \(x_j\in \ellone\) we can find some \(d_k\) such that 
+\begin{align*} 
+\sum_{(m,n > d_k) \in \N^2 \setminus E_{k-1}} |x(m,n)| < 1
+\end{align*}
+We define \(\lrcorner\)-like set
+\begin{equation*}
+D_k = \{(m,n)\in \N^2: m,n \leq d_k\} \setminus D_{k-1}
+\end{equation*}
+Clearly \(\N^2 = \disjunion_{j\in\N} D_j\), so we can define
+\(y(m,n) = e^{i\theta(m,n)}/s(k)\) iff \((m,n)\in D_k\)
+setting the argument \(\theta(m,n)\)
+so that \(e^{i\theta(m,n)} x_{s(k)}(m,n) = |x_{s(k)}(m,n)|\).
+Using the abbreviation 
+\begin{equation*}
+c(m,n) =  y(m,n)\cdot x_{s(k)}(m,n)
+\end{equation*}
+ we have 
+%% \begin{align*}
+%% |y(x_{s_k})|
+%% &= \left| 
+%%    \left(\sum_{(m,n)\in E_{k-1}} c(m,n)\right)
+%%    + \left(\sum_{(m,n)\in D_k} c(m,n)\right)
+%%    + \left(\sum_{(m,n)\in \N^2 \setminus E_k} c(m,n)\right)
+%%    \right| \\
+%% &\geq 
+%%    \left|\sum_{(m,n)\in D_k} c(m,n)\right|
+%%   - \left|\sum_{(m,n)\in E_{k-1}} c(m,n)\right|
+%%   - \left|\sum_{(m,n)\in \N^2 \setminus E_k} c(m,n)\right| \\
+%% &\geq
+%%    \left(\sum_{(m,n)\in D_k} x_{s_k}(m,n)\right)\bigm/ k
+%%   - \sum_{(m,n)\in E_{k-1}} |c(m,n)|
+%%   - \sum_{(m,n)\in \N^2 \setminus E_k} |c(m,n)| \\
+%% &\geq (b+k+1) - b - 1 = k.
+%% \end{align*}
+\end{proof}
+
+
+%% With the lemma established, assume by negation that the sequence \(\{x_j\}\) 
+%% where \(x_j\in M\), 
+%% converges \upstar-weakly to \(x_0\).
+%% Let $M$ be the bound of \(\{\|x_j\|_1:j\in\N\}\) provided by the lemma.
+%% Let $K$ be such that \(\sum_{j=1}^K 1/j > M + 1\).
+%% Let \(v\in c_0\) defined by \(v(m,n)=1\) iff \(1\leq m \leq K\) and \(n=1\)
+%% and  \(v(m,n)=0\) otherwise.
+%% By convergence, dor each \(\epsilon>0\) there must exists some $k$ such that 
+%% \begin{equation*}
+%% |(x_k - x_0)(v)| = \left|\sum_{m=1}^K x_k(m, 1) - m^{-2}\right| < \epsilon.
+%% \end{equation*}
+%% and then, putting \(y=x_k\) we have
+%% \begin{align*}
+%% \|y\|_1
+%% &= \sum_{m=1}^\infty \left(|y(m,1)| + \sum_{j=2}^\infty|y(m,j)|\right) \\
+%% &\geq \sum_{m=1}^\infty 
+%%     \left(|y(m,1)| + \left|\sum_{j=2}^\infty|y(m,j)\right|\right)   \\
+%% &= \sum_{m=1}^\infty |y(m,1)| +m|y(m,1)|
+%%  = \sum_{m=1}^\infty (m+1)|y(m,1)|
+%% \end{align*}

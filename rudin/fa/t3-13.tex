@@ -1,0 +1,216 @@
+\documentclass{article}
+
+\input{mymacs}
+\makeatletter
+\@ifclassloaded{book}{
+ \newcommand{\isbook}{Yes}
+}{
+ \newcommand{\isbook}{No}
+}
+\@ifclassloaded{article}{
+ \newcommand{\isarticle}{Yes}
+}{
+ \newcommand{\isarticle}{No}
+}
+
+\makeatother
+
+\title{Harmonic Equalities}
+\author{Yotam Medini}
+
+\begin{document}
+
+\maketitle
+
+% Is this a book ? \isbook !
+% Is this an article ? \isarticle !
+
+Given the finite sequence
+\((a_j)_{j=l}^{h}\) and
+\((ba_j)_{j=l}^{h}\),
+we have the  \emph{summation by parts} formula
+\begin{equation} \label{eq:sumbyparts}
+\sum_{j=l}^{h-1} (a_{j+1} - a_j)b_j
+ = a_{h} b_{h} - a_l b_l - \sum_{j=l}^{h-1} a_{j+1}(b_{j+1} - b_j).
+\end{equation}
+which can be easily proved by induction on \(h-l\).
+
+Define the harmonic numbers:
+\begin{equation*}
+H(n) = \sum_{k=1}^n 1/k
+\end{equation*}
+Clearly \(\sum_{k=l}^h = H(h) - H(l-1)\).
+
+\iffalse
+Now define the following 
+\begin{align*}
+U(N) &= \sum_{n=1}^N (2n-1) \sum_{k=n}^N 1/k \\
+T(N) &= \sum_{n=1}^N (2n-1) \left(\sum_{k=n}^N 1/k\right)^2
+\end{align*}
+We shall show
+\begin{equation}
+\forall N \geq 0, \qquad U(N) = T(N) = N(N+1)/2.
+\end{equation}
+\fi
+
+We will use \eqref{eq:sumbyparts} with \(l=1\), \(h=N+1\), that is:
+\begin{equation}   \label{eq:sumbyparts:1N}
+\sum_{n=1}^N n \sum_{k=n}^N 1/k
+= a_{N+1}b_{N+1} - a_1 b_1 - \sum_{n=1}^N a_{n+1}(b_{n+1} - b_n)
+\end{equation}
+with some special cases for
+\((a_n)_{n=1}^{N+1}\) and \((b_n)_{n=1}^{N+1}\).
+
+\textbf{Case 1.}
+\begin{alignat*}{2}
+a_n &= (n^2-n)/2  \qquad  &           b_n &= \sum_{k=n}^N 1/k \\
+a_{n+1} - a_n &= n  &  \qquad b_{n+1} - b_n &= -1/n \\
+a_1 &= 0           &               b_{N+1} &= 0
+\end{alignat*}
+Now \eqref{eq:sumbyparts:1N} becomes
+\begin{align}
+\sum_{n=1}^N n \sum_{k=n}^N 1/k
+&= a_{N+1}\cdot 0 - 0 \cdot b_1 - \sum_{n=1}^N \left((n^2+n)/2\right)(-1/n)
+= \frac{1}{2} \sum_{n=1}^N (n+1) 
+= (n(n+1)/2+n)/2
+\notag \\
+% = (n(n+1)+2n)/4
+&= N(N+3)/4
+\end{align}
+
+
+\textbf{Case 2.}
+\begin{alignat*}{2}
+a_n &= (n-1)^2      &           b_n &= \sum_{k=n}^N 1/k \\
+a_{n+1} - a_n &= 2n-1 \qquad &  \qquad b_{n+1} - b_n &= -1/n \\
+a_1 &= 0              &               b_{N+1} &= 0
+\end{alignat*}
+Now \eqref{eq:sumbyparts:1N} becomes
+\begin{equation}
+\sum_{n=1}^N (2n-1) \sum_{k=n}^N 1/k
+= a_{N+1}\cdot 0 - 0 \cdot b_1 - \sum_{n=1}^N n^2(-1/n)
+= \frac{1}{2} \sum_{n=1}^N n 
+= N(N+1)/2
+\end{equation}
+
+
+\textbf{Case 3.}
+\begin{alignat*}{2}
+a_n &= (n-1)^2  \qquad &           b_n &= \left(\sum_{k=n}^N 1/k\right)^2 \\
+a_{n+1} - a_n &= 2n-1 \qquad & \qquad
+  b_{n+1} - b_n &= 
+    \left(2\left(\sum_{k=n}^N 1/k\right) - 1/n\right)\cdot(-1/n) \\
+a_1 &= 0           &               b_{N+1} &= 0
+\end{alignat*}
+Now using  \eqref{eq:sumbyparts:1N} and a previous case
+\begin{align}
+\sum_{n=1}^N (2n-1) \left(\sum_{k=n}^N 1/k\right)^2
+&= a_{N+1}\cdot 0 - 0 \cdot b_1 
+   - \sum_{n=1}^N n^2
+     \cdot
+     \left(2\left(\sum_{k=n}^N 1/k\right) - 1/n\right)\cdot(-1/n) \notag \\
+&= \sum_{n=1}^N n \left(2\left(\sum_{k=n}^N 1/k\right) - 1/n\right) 
+ = \left(2\sum_{n=1}^N n \sum_{k=n}^N 1/k\right)
+    - \sum_{n=1}^N n(1/n) \notag \\
+&= 2N(N+3)/4 - N
+ = N(N+1)/2
+\end{align}
+
+
+Given $N$,  we look for a ''good'' convex combination 
+\begin{equation*}
+g = \sum_{n=1}^N q_jf_j \qquad  
+\textnormal{where}\quad
+\sum_{n=1}^N q_n = 1\quad  \textnormal{and}\quad 0 \leq q_n \leq 1.
+\end{equation*}
+
+\iffalse
+Now
+\begin{equation*}
+g 
+= \sum_{n=1}^N q_n/n \sum_{k=1}^{n^2} e_k
+= \sum_{n=1}^N 
+    \left(\sum_{k=(n-1)^2-1}^{n^2} e_k\right)
+    \left(\sum_{k=n}^N q_k/k \right)
+\end{equation*}
+Hence
+\begin{equation*}
+\|g\|_2^2 
+= \sum_{n=1}^N 
+  \left(n^2 - (n-1)^2\right) \cdot  \left(\sum_{k=n}^N q_k/k \right)^2
+\end{equation*}
+We again use summation by parts with 
+\(l=1\),
+\(h=N+1\),
+\(a_j = (j-1)^2\),
+\(b_j = \left(\sum_{k=j}^N q_k/k\right)^2\)
+to get
+\begin{align*}
+\|g\|_2^2 
+&= a_{N+1}\cdot 0 - 0 \cdot b_1 
+  - \sum_{n=1}^N n^2 
+    \left( 
+       \left(\sum_{k=n+1}^N q_k/k\right)^2
+       -
+       \left(\sum_{k=n}^N q_k/k\right)^2
+    \right)
+  \\
+&= \sum_{n=1}^N n^2 \left(2\left(\sum_{k=n}^N q_k/k\right)^2 - q_n/n\right)q_n/n
+ = \sum_{n=1}^N n \left(2\left(\sum_{k=n}^N q_k/k\right)^2 - q_n/n\right)q_n
+\end{align*}
+
+May be we can use \(q_k = \alpha / k\), such that \(\sum_{n=1}^N q_n = 1\).
+\fi
+
+Let \(H(N) = \sum_{n=1}^N = 1/n\)
+% and let \(q_n = 1/(H_N n)\).
+and define
+\begin{equation*}
+g = (1/H(N))\sum_{n=1}^N f_n /n
+\end{equation*}
+Hence
+\begin{equation*}
+H(N) g = \sum_{n=1}^N f_n/n.
+\end{equation*}
+We note that 
+\begin{equation*}
+H(N) g = \sum_{n=1}^N \left(\sum_{k=n}^N 1/k\right)\cdot 
+   \left(\sum_{k=(n-1)^2+1}^{n^2} e_k/k\right)
+\end{equation*}
+and
+\begin{equation*}
+\sum_{k=m}^n 1/k^2 \leq \int_m^{n+1} x^{-2}\,dx 
+% = 1/(n+1) - 1/m 
+= \frac{1}{n+1} - \frac{1}{m}.
+\end{equation*}
+Now using summation by parts
+with \(a_n=(n-1)^2\) and \(b_n = \sum_{k=n}^N 1/k^2\), \(b_{N+1} = 0\)
+we get
+\begin{align*}
+\|H_N g\|_2^2
+&= \sum_{n=1}^N \left(n^2 - (n-1)^2\right) \sum_{k=n}^N 1/k^2
+% \leq \sum_{n=1}^N (2n - 1)(1/(n+1) - 1/m) \\
+= a_{N+1} \cdot 0 - 0 \cdot b_0
+  - \sum_{n=1}^N n^2 
+    \left(
+      \left(\sum_{k=n+1}^N \frac{1}{k^2}\right)^2
+      -
+      \left(\sum_{k=n}^N \frac{1}{k^2}\right)^2
+    \right) \\
+&= \sum_{n=1}^N n^2 
+   \left(
+     \left(2\sum_{k=n}^N \frac{1}{k^2}\right) - \frac{1}{n^2}
+   \right)
+   \cdot \left(\frac{1}{n^2}\right)
+ = \sum_{n=1}^N \left(2\sum_{k=n}^N \frac{1}{k^2}\right) - \frac{1}{n^2} \\
+&\leq 2 \sum_{n=1}^N \sum_{k=n}^N \frac{1}{k^2}
+ \leq 2 \sum_{n=1}^N \bigl(1/n - 1/(N+1)\bigr)
+ \leq 2 \sum_{n=1}^N 1/n  = 2H(N).
+\end{align*}
+Hence
+\begin{align*}
+\|g_N\|_2^2 \leq 2/H(N) \\
+\lim_{N\to\infty} \|g_N\|_2 = 0.
+\end{align*}
+
+\end{document}

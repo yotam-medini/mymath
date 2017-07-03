@@ -1,0 +1,264 @@
+\documentclass[11pt,twoside,a4paper]{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage[mathcal]{euscript}
+\usepackage{mathrsfs}
+
+\usepackage{geometry}
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% \usepackage{fancyheadings}
+\usepackage{fancyhdr}
+\usepackage{pifont}
+
+% \pagestyle{fancy}
+% \addtolength{\headwidth}{\marginparsep}
+% \addtolength{\headwidth}{\marginparwidth}
+%  \addtolength{\textheight}{2pt}
+\newcommand{\srightmark}{\rightmark}
+\newcommand{\sfbfpg}{\sffamily\bfseries{\thepage}}
+  \newcommand{\symenvelop}{%
+     {\nullfont a}\relax\lower.2ex\hbox{\large\Pisymbol{pzd}{41}}}
+% \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}}
+
+\fancyplain{plain}{%
+ \fancyhf{}
+ \fancyhead[LE,RO]{\fancyplain{}{{\sfbfpg}}}
+ \fancyhead[RE,LO]{\sl\leftmark}
+ \fancyfoot[L]{\today}
+ \fancyfoot[C]{Yotam Medini \copyright}
+ \fancyfoot[R]{\symenvelop\ \texttt{yotam\_medini@fastmail.fm}}
+ \renewcommand{\headrulewidth}{0.4pt}
+ \renewcommand{\footrulewidth}{0.4pt}
+}
+
+% \usepackage{amstex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{makeidx}
+\makeindex % enable
+
+% 'Inspired' by:
+%% This is file `uwamaths.sty',
+%%%     author   = "Greg Gamble",
+%%%     email     = "gregg@csee.uq.edu.au (Internet)",
+
+\makeatletter
+\def\DOTSB{\relax}
+\def\dotcup{\DOTSB\mathop{\overset{\textstyle.}\cup}}
+ \def\@avr#1{\vrule height #1ex width 0pt}
+ \def\@dotbigcupD{\smash\bigcup\@avr{2.1}}
+ \def\@dotbigcupT{\smash\bigcup\@avr{1.5}}
+ \def\dotbigcupD{\DOTSB\mathop{\overset{\textstyle.}\@dotbigcupD%
+                               \vphantom{\bigcup}}}
+
+\def\dotbigcupT{\DOTSB\smash{\mathop{\overset{\textstyle.}\@dotbigcupT%
+                              \vphantom{\bigcup}}}%
+                       \vphantom{\bigcup}\@avr{2.0}}
+\def\dotbigcup{\mathop{\mathchoice{\dotbigcupD}{\dotbigcupT}
+                                  {\dotbigcupT}{\dotbigcupT}}}
+\let\disjunion\dotcup
+\let\Disjunion\dotbigcup
+\makeatother
+
+
+\newcommand{\C}{\mathbb{C}} % The Complex set
+\newcommand{\calB}{\ensuremath{\mathcal{B}}}
+\newcommand{\calG}{\ensuremath{\mathcal{G}}}
+\newcommand{\scrD}{\ensuremath{\mathscr{D}}}
+\newcommand{\scrP}{\ensuremath{\mathscr{P}}}
+\newcommand{\scrQ}{\ensuremath{\mathscr{Q}}}
+\newcommand{\Lp}[1]{\ensuremath{\mathbf{L}^{#1}}} % Lp space
+\newcommand{\N}{\mathbb{N}} % The Natural Set
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}} % The Rational set
+\newcommand{\R}{\ensuremath{\mathbb{R}}} % The Real Set
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}} % The Integer Set
+\newcommand{\intR}{\int_{-\infty}^{\infty}} % Integral over the reals
+
+% sequences
+\newcommand{\seq}[2]{\ensuremath{#1_1,\ldots,#1_{#2}}}
+\newcommand{\seqn}[1]{\seq{#1}{n}}
+\newcommand{\seqan}{\seq{a}{n}}
+\newcommand{\seqxn}{\seq{x}{n}}
+\newcommand{\seqalphn}{\seq{\alpha}{n}}
+
+\newcommand{\ich}[1]{(\textit{#1})}
+\newcommand{\itemch}[1]{\item[\ich{#1}]}
+
+
+\title{Notes and Solutions to Exercises \\
+          from \\
+       Real and Complex Analysis / Walter Rudin}
+\author{Yotam Medini}
+
+
+%%%%%%%%%%%
+%% Theorems
+%%
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{Def}{Definition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{llem}[thm]{Local Lemma}
+\newtheorem{lthm}[thm]{Local Theorem}
+
+% \newtheorem{quotecor}{Corollary}
+% \newtheorem{quotelem}{Lemma}[section]
+\newtheorem{quotethm}{Theorem}[chapter]
+
+
+% \newcommand{\proofend}{\(\bullet\)}
+\newcommand{\proofend}{\hfill\(\blacksquare\)}
+\newenvironment{thmproof}
+{\textbf{Proof.}}
+{\proofend}
+
+\newcommand{\chapterTypeout}[1]{\typeout{#1} \chapter{#1}}
+\newcommand{\sectionTypeout}[1]{\typeout{#1} \section{#1}}
+
+% abbreviations, ensuremath
+\newcommand{\eqdef}{\ensuremath{\stackrel{\mbox{\upshape\tiny def}}{=}}}
+\newcommand{\fx}{\ensuremath{f(x)}}
+\newcommand{\gx}{\ensuremath{g(x)}}
+\newcommand{\lrangle}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\calD}{\ensuremath{\mathcal{D}}}
+\newcommand{\frakD}{\ensuremath{\mathfrak{D}}}
+\newcommand{\M}{\ensuremath{\mathfrak{M}}}
+\newcommand{\mldots}{\ensuremath{\ldots}}
+\newcommand{\salgebra}{\(\sigma\)-algebra}
+\newcommand{\wlogy}{without loss of generality}
+\newcommand{\Wlogy}{Without loss of generality}
+
+%%%%%%%%%%%%
+%% math op's
+%%
+\newcommand{\hull}{\mathop{\rm hull}\nolimits}
+\newcommand{\id}{\mathop{\rm id}\nolimits}
+\newcommand{\Int}{\mathop{\rm Int}\nolimits}
+\newcommand{\inter}[1]{\ensuremath{#1^{\circ}}}
+% \newcommand{\inter}[1]{\ensuremath{\textrm{int{#1}^\circ}}
+\def\Lip{\mathop{\rm Lip}\nolimits}
+\def\lip{\mathop{\rm lip}\nolimits}
+\def\Ker{\mathop{\rm Ker}\nolimits}
+\def\ker{\mathop{\rm ker}\nolimits}
+\def\Re{\mathop{\rm Re}\nolimits}
+\def\Im{\mathop{\rm Im}\nolimits}
+\def\supp{\mathop{\rm supp}\nolimits}
+
+
+\newenvironment{excopy}
+{\item\begin{minipage}[t]{.8\textwidth}\footnotesize}
+{\smallskip\hrule\end{minipage}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+  Assume again \(1\leq p < q < \infty\). 
+  Put \(q' = q/q-1\) the exponent conjugate.
+  We want to find scalars \(\alpha\) and \(\beta\) such that if
+  \begin{equation*}
+    g_n(x) = \left\{\begin{array}{ll}
+                     n & \qquad x \in [0,n^\alpha] \\
+                     0 & \qquad x \in (n^\alpha, 1]
+                    \end{array}\right.
+  \end{equation*}
+  and 
+  \begin{equation*}
+    \psi(x) = \left\{\begin{array}{ll}
+                      x^\beta & \qquad x\in (0,1] \\
+                      0       & \qquad x = 0
+                    \end{array}\right.
+  \end{equation*}
+  then
+  \begin{eqnarray}
+   \forall f\in L^q([0,1])\qquad 
+   \lim_{n\to \infty} \int_{[0,1]} fg_n\,dm &=& 0
+                         \label{eq:ex2.4b:i} \\
+   \psi &\in&  L^p([0,1]) \setminus L^p([0,1])
+                         \label{eq:ex2.4b:psi} \\
+   \lim_{n\to \infty} \int_{[0,1]} \psi g_n\,dm &>& 0
+                         \label{eq:ex2.4b:iii}
+  \end{eqnarray}
+
+  To ensure \eqref{eq:ex2.4b:i}, we use H\"older inequality
+  \begin{equation*}
+  \left|\int_{[0,1]} fg_n\,dm \right| \leq \|f\|_q \|g_n\|_{q'}
+  \end{equation*}
+  and require that
+  \(\lim_{n\to\infty} \|g_n\|_{q'}^{q'} = 0.\)
+  Computing
+  \begin{equation*}
+   \|g_n\|_{q'}^{q'} = \int_0^{n^\alpha} n^{q'}\,dm 
+   = n^\alpha \cdot n^{q'} = n^{\alpha + q/(q-1)}.
+  \end{equation*}
+  Thus 
+  \begin{equation} \label{eq:ex2.4b:alpha}
+  \alpha < -q/(q-1)
+  \end{equation}
+  must hold.
+
+  To ensure \eqref{eq:ex2.4b:psi}, we require that 
+  \(p\beta + 1 > 0\)
+  \(q\beta + 1 < 0\), or equivalently
+  \begin{equation} \label{eq:ex2.4b:beta1}
+   -1 \leq -1/p < \beta < -1/q < 0.
+  \end{equation}
+
+  We compute
+  \begin{equation*}
+   \int_{[0,1]} \psi g_n\,dm 
+   = \int_0^{n^\alpha} n x^\beta = n^{\alpha(\beta+1) + 1} / (\beta+1)
+  \end{equation*}
+   and since \(\beta+1 > 0\)
+   to ensure \eqref{eq:ex2.4b:iii},  we require that 
+   \begin{equation}  \label{eq:ex2.4b:beta2}
+     \alpha(\beta+1) + 1 \geq 0.
+   \end{equation}
+
+   Combining the requirements of 
+   \eqref{eq:ex2.4b:alpha}, 
+   \eqref{eq:ex2.4b:beta1}, and 
+   \eqref{eq:ex2.4b:beta2}
+   \begin{eqnarray} 
+     -1/(\beta + 1) \leq &\alpha& < -q/(q-1) \label{eq:ex2.4b:s1} \\
+           -1/p     <    &\beta& < -1/q .    \label{eq:ex2.4b:s2}
+   \end{eqnarray}
+   We will define \(\beta = -1/p + \epsilon\) 
+   for sufficiently small \(\epsilon > 0\) 
+   so \eqref{eq:ex2.4b:s1} holds which is trivial,
+   but will also allow for \eqref{eq:ex2.4b:s1} to hold for some \(\alpha\),
+   as we now show.
+   We first note that the mapping
+   \(t \to -t(t-1) = -1/(t-1) -1\) is increasing.
+   We deal with two similar cases.
+   \paragraph{Case 1.} Assume \(p>1\). 
+   Since
+   \begin{equation*}
+     -1/((-1/p) + 1) = -p/(p-1) < -q/(q-1),
+   \end{equation*}
+   For sufficiently small \(\epsilon>0\) 
+   \begin{equation*}
+     -p/(p-1) <  -1\big/\bigl(((1/p)+\epsilon)\, + 1\bigr) < -q/(q-1)
+   \end{equation*}
+   and thus we can find \(\alpha\) so \eqref{eq:ex2.4b:s1}s.
+   \paragraph{Case 2.} Assume \(p=1\). The convergence
+   \begin{equation*}
+   \lim_{0<\epsilon\to 0} -1\big/\bigl((-1/p)+\epsilon + 1\bigr) = -\infty
+   \end{equation*}
+   Shows that for sufficiently small \(\epsilon > 0\)
+   \begin{equation*}
+      -1\big/\bigl((-1/p)+\epsilon + 1\bigr) < -q/(q-1)
+   \end{equation*}
+   and again we have \(\beta\) and \(\alpha\) so \eqref{eq:ex2.4b:s1} holds.
+
+
+
+\end{document}
