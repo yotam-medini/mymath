@@ -53,7 +53,7 @@ Hence \(g^{-1}(B) \in \tau\) and so $g$ is continuous.
 
 
 The relation between continuity and boundness
-Will now be shown form normed spaces.
+will now be shown for normed spaces.
 \begin{llem} \label{llem:op:cont:bounded}
 Let \(T:X \to Y\) be a linear mapping between normed spaces.
 Then $T$ is continuous iff \(T(E)\) is bounded in $Y$ whenever $E$
@@ -107,7 +107,7 @@ Let \(T:X \to Y\) be a linear map between normed spaces.
 Then $T$ is continuous iff $T$ is weak-to-weak continuous.
 \end{llem}
 \begin{proof}
-By Local Leamm~\ref{llem:op:cont:bounded}
+By Local Lemma~\ref{llem:op:cont:bounded}
 $T$ is continuous iff it map bounded sets to bounded sets.
 By Theorem~3.18 it is equivalent to
 require that $T$ maps weakly bounded sets to weakly bounded sets.
@@ -182,6 +182,85 @@ for all \(\Lambda \in Y*\) considering the weak topology of $X$.
 In turn, by Local Lemma~\ref{llem:cont:bymaps} this is equivalent 
 to $T$ being continuous mapping 
 from $X$ with its weak to $Y$ with its weak topology.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Compact operators}
+
+In \textbf{4.16} the text mentions equivalent conditions
+for being comapct operators without proof.
+
+\begin{llem} \label{lem:compact:op}
+Let \(T\in \BXY\). The following conditions are equivalent.
+\begin{itemize}
+\itemch{a} $T$ is a compact operator.
+\itemch{b} If \(U = \{x\in X: \|x\|<1\}\) is the open unit ball,
+        then \(T(U)\) is totally bounded.
+\itemch{c} Every bounded \(\{x_n\}\) sequence in $X$ has
+         a subsequence \(\{x_{n_i}\}\) such that \(\{T(x_{n_i})\}\)
+        converges to a point \(y\in Y\).
+\end{itemize}
+\end{llem}
+\begin{proof}
+
+[\ich{a} \(\to\) \ich{b}].
+Assume $T$ is compact, and \(\epsilon>0\).
+Let \(G_u = \{y\in Y: \|y - T(u)\|< \epsilon\}\) be a family
+of open balls for each \(u\in U\).
+Since \(\cup_{u\in U} G_u  \subset T(U)\) by \ich{a} 
+there is a finite sib-family that covers T(U).
+Thus \(T(U)\) is totally bounded.
+
+[\ich{b} \(\to\) \ich{c}].
+Let \(\{x_n\}\) be bounded by \(M > 0\) in $X$.
+By moving to  \(\{x_n/M\}\) we may assume \(M\leq1\), \(x_n\in U\).
+Clearly \(\Gamma=\{T(x_n)\}\subset T(U)\)
+which is bounded by $T$ being bounded.
+By \ich{b} for each \(\epsilon>0\)
+By looking at finite balls covering of radius \(\epsilon\)
+there exists some ball with infinite points from \(\Gamma\).
+Thus  \(\Gamma\) is a Cauchy sequence and by completeness of $Y$
+ \(\Gamma\) has a converging subsequence.
+
+[\ich{c} \(\to\) \ich{a}].
+We start by definition.
+Given a metric space \((X,d)\) with an open covering
+\(\{G_\alpha: \alpha\in I\}\).
+If there exist \(\delta>0\) 
+--- \emph{Lebesgue's number} \index{Lebesgue number} --
+such that 
+if \(A\subset X\) and its diameter \(\sup \{d(x,y): x,y\in A\} < \delta\)
+then  \(A \subset G_\alpha\) for some \(\alpha\in I\).
+
+Put \(V = \overline{T(U)}\).
+Let \(\Gamma=\{G_\alpha: \alpha\in I\}\) be a covering of $V$.
+Assume by negation, \(\Gamma\) has no Lebesgue number.
+Thus for any \(n\in\Z^1\) we can find \(C_n=B(y_n,1/n)\)
+such that \(\forall \alpha\in I, C_n \not\subset G_\alpha\).
+
+By \ich{c} there exists \(a\in V\) that is
+a limit of some subsequence of \((y_n)\).
+Pick \(G_\alpha \ni a\) and \(B(a,\epsilon)\subset G_\alpha\).
+Now there are infinite numbers $n$ such 
+that \(y_n \in B(a,\epsilon/2)\), for each (such) \(n > 2/\epsilon\)
+\begin{equation*}
+B(y_n,1/n) \subset B(y_n,\epsilon/2) \subset B(a,\epsilon) \subset G_\alpha
+\end{equation*}
+a contradiction. Thus \(\Gamma\) has a Lebesgue number \(\delta>0\).
+
+Assume by negation \(\Gamma\) does not have finite sub-cover
+ of \(\overline{T(U)}\). We will define a sequence \((y_n)\) in $V$.
+Pick arbitrary \(y_1\in V\) and \(G_{\alpha_1} \supset
+ B(y_1, \delta/2)\).
+Say \((x_n)\) and \(G_{\alpha_n}\) where chosen for \(n<k\).
+Since 
+\begin{equation*}
+V \not\supset H_{k-1} = \cup_{n<k} G_{\alpha_n}
+\end{equation*}
+we pick \(y_k \in V \setminus H_{k-1}\)
+and again \(G_{\alpha_k} \supset B(y_k, \delta/2)\).
+Note that \(d(y_i,y_j)\geq \delta/2\) when \(i\neq j\).
+Thus \((y_n)\) has no converging subsequence, contradiction to \ich{c}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -436,7 +515,7 @@ dimension \(n < \infty\) is isomorphic
 to \(\C^n\). Every functional on $V$ is determined by its values 
 on a basis of $V$. Thus \(\dim V^* = \dim V = n\).
 Hence \(\dim V = \dim V^{**}\).
-Now in finite-dimensional vector space, a ???  sub-space
+Now in a finite-dimensional vector space, a proper sub-space
 must be of smaller degree, hence the natural embedding of $V$
 into \(V^{**}\) must be surjective, hence every finite-dimensional normed
 space is reflexive.
@@ -1120,7 +1199,7 @@ in the operator norm.
 Pick \(f\in L^2(\mu)\) such that \(\|f\|_2 \leq 1\)
 and put \(\alpha_j = \lrangle{f,e_j}\).
 Thus \(f=\sum_{j\in J} \alpha_j\cdot e_j\)
-and \(\|f\|_2^2 = \sum_{j\in J} |\alpha_j|^2 \leq 1\).
+<and \(\|f\|_2^2 = \sum_{j\in J} |\alpha_j|^2 \leq 1\).
 Now by the orthogonality of \scrB
 \begin{align}
 \|T-K_n\|^2 
@@ -1201,7 +1280,7 @@ and define \(T \in \scrB(L^2(0,1))\) by
 \itemch{a}
 Show that the eigenvalues of $T$ are \((n\pi)^{-2}\), \(n=1,2,3,\ldots\),
  that the corresponding
-eigenvalue are \(\sin n\pi x\), and that each eigenspace is one-dimensional.
+eigenfunctions are \(\sin n\pi x\), and that each eigenspace is one-dimensional.
 \emph{Hint:} If
 \(\lambda \neq 0\), the equation \(Tf = \lambda f\) implies that $f$ is
  infinitely differentiable, that \(\lambda f'' + f = 0\),
@@ -1233,26 +1312,98 @@ Compute
 &= \int_0^1 K(s,t)f(t)\,dt
  = \int_0^s K(s,t)f(t)\,dt + \int_s^1 K(s,t)f(t)\,dt \\
 &= \int_0^s (1-s)t\cdot f(t)\,dt + \int_s^1 (1-t)s\cdot f(t)\,dt \\
-&= (1-s)\int_0^s t\cdot f(t)\,dt + s\int_s^1 (1-t)\cdot f(t)\,dt
+&= (1-s)\int_0^s t\cdot f(t)\,dt + s\int_s^1 (1-t)\cdot f(t)\,dt \\
+&= \int_0^s t\cdot f(t)\,dt + s\int_s^1 f(t)\,dt -s \int_0^1  t\cdot f(t)\,dt\\
 \end{align*}
+Clearly: \(Tf)(0) = (Tf)(1) = \).
 Differentiate:
 \begin{align*}
 (Tf)'(s)
 &= -\int_0^s t\cdot f(t)\,dt + (1-s)s\cdot f(s) + 
    \int_s^1 (1-t)\cdot f(t)\,dt - s(1-s)\cdot f(s) \\
-&= \int_s^1 f(t)\,dt - \int_0^1 t\cdot f(t)\,dt
+&=  - \int_0^s t\cdot f(t)\,dt + \int_s^1 (1-t)\cdot f(t)\,dt
 \end{align*}
 Hence
 \begin{equation*}
-(Tf)''(s) = -f(s).
+% (Tf)''(s) = -f(s).
+(Tf)''(s) = -s\cdot f(s) - (1 - s)\cdot f(s) = -f(s)
 \end{equation*}
-\itemch{b}
-\itemch{c}
-\itemch{d}
-\end{itemize}
+% \frac{d}{dt}(t\sin n\pi t) = \sin n\pi t + n\pi t \cos n\pi t
+% \frac{d}{dt}(t\sin n\pi t - (\cos n\pi t / n\pi) =  n\pi t \cos n\pi
+% t
+Thus if \(T f = 0\) then \((T f)'' = 0 = -f\) so \(\Ker(T) = \{0\}\).
 
+Now if \(T f = \lambda f\) then \(\lambda f'' + f = 0\).
 
+Note that
+\begin{equation*}
+\int t\cos(n\pi t)\,dt 
+ = \frac{1}{n\pi} t\sin(n\pi t) + \frac{1}{(n\pi)^2} \cos(n\pi t)
+\end{equation*}
+
+\iffalse
+If \(\kappa(t) = \cos(n\pi t)\) then
+\begin{eqnarray*}
+(T \kappa)(s) 
+&=& \int_0^s t\cdot \cos(n \pi t)\,dt + s\int_s^1 \cos(n \pi t)\,dt 
+   -s \int_0^1  t\cdot \cos(n \pi t)\,dt \\
+&=& \left.\left(
+  \frac{1}{n\pi} t\sin(n\pi t) + \frac{1}{(n\pi)^2} \cos(n\pi t)
+  \right)\right\rvert_0^s \\
+& & + \frac{s}{n\pi}\left.\left(
+       \sin(n \pi t)
+      \right)\right\rvert_s^1 \\
+& & + s\left.\left(
+  \frac{1}{n\pi} t\sin(n\pi t) + \frac{1}{(n\pi)^2} \cos(n\pi t)
+  \right)\right\rvert_0^1 \\
+&=& \frac{1}{(n\pi)^2}(\cos(n \pi s) - 1) 
+    + \frac{s}{n\pi} \sin(n \pi s)
+    + s\left( \frac{1}{n\pi} s\sin(n\pi)
+    + \frac{1}{(n\pi)^2}(\cos(n\pi s) - 1)\right)
+\end{eqnarray*}
+\fi 
 \unfinished
+
+\itemch{b}
+Let \(m>n>0\). Since \(\sin(a)\sin(b) = \left(\cos(a-b)
+- \cos(a+b)\right)/2\)
+we have
+\begin{eqnarray*}
+2\int_0^1 \sin(m\pi t) \sin(n\pi t)\,dt 
+&=& \int_0^1 \cos((m-n)\pi t)\,dt - \int_0^1 \cos((m+n)\pi t)\,dt \\
+&=& \frac{1}{m-n}\left (\sin((m-n)\pi 1) -  \sin((m-n)\pi 0)\right) - \\
+& & \frac{1}{m+n}\left (\sin((m+n)\pi 1) -  \sin((m+n)\pi 0)\right)
+\end{eqnarray*}
+
+\itemch{c} Apply (\emph{d}) of previous exercise.
+
+\itemch{d}
+Assuming the supremum norm on $C$
+and \(\{f_i\}\) are uniformly bounded by $M$.
+% Pick arbitrary \(\epsilon>0\),
+Let \(s_1 \leq s_2 \in [0,1]\).
+\begin{eqnarray*}
+\left|(Tf)(s_1) - (Tf)(s_2)\right|
+ &\leq& \int_0^{s_1}\left|K(s_1,t) - K(s_2,t)\right|\cdot M\,dt \\
+ &    & + \int_{s_1}^{s_2} \left|K(s_1,t) - K(s_2,t)\right|\cdot M\,dt \\
+ &    & + \int_{s_2}^1 \left|K(s_1,t) - K(s_2,t)\right|\cdot M\,dt \\
+ &\leq& \int_0^{s_1}(s_2 - s_1) M\,dt
+         + \int_{s_1}^{s_2}  M\,dt 
+         + \int_{s_2}^1 (s_2 - s_1) M\,dt \\
+ &\leq& (s_2 - s_1) M.
+\end{eqnarray*}
+Thus \(\{Tf_i\}\) are equicontinuous.
+Enumerate \(\Q\cap[0,1]\) by \((q_n)_{n\in\Z^+}\).
+Starting with  \(\frak{F}_0=\{Tf_i\}\),
+by induction pick repatedly subsequence \(\frak{F}_n\)
+of \(\frak{F}_{n-1}\) such that  \(\frak{F}_{n-1}\) converges
+pointwise on \(q_n\).
+By diagonaly picking the $n$-th function of \(\frak{F}_n\)
+we get a subsequence of \(\frak{F}_0\) that converges
+on \(\Q\cap[0,1]\). Since they are equicontinuous, the convergence
+is on the whole \([0,1]\).
+Thus $T$ is compact By local lemma \ref{lem:compact:op}.
+\end{itemize}
 
 %%%%%%% 17
 \begin{excopy}
@@ -1261,10 +1412,14 @@ If \(L^2 = L^2(0,\infty)\) relative to Lebesgue measure, and if
 (Tf)(s) = \frac{1}{s} \int_0^s f(t)\,dt \qquad (0 < s < \infty),
 \end{equation*}
 prove that \(T \in \scrB(L^2)\) and that $T$ is not compact.
- (The fact that \(\|T\| \leq 2\) is a special cas
+ (The fact that \(\|T\| \leq 2\) is a special case
 of \index{Hardy} Hardy`s inequality. See p.~72 of~[23].)
 \end{excopy}
 
+Let \(f\in L^2\), for convenience assume \(f\geq 0\).
+\begin{equation*}
+\|T f\|^2 = \int_0^\infty \left( \frac{1}{s} \int_0^s f(t)\,dt\right)^2\,ds
+\end{equation*}
 
 \unfinished
 
