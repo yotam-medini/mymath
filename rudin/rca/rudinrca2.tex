@@ -1,0 +1,1681 @@
+% -*- latex -*-
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Positive Borel Measures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+While working on Exercise~\ref{ex:2:10}, I worked out the following
+lemma, that eventually were not used. Here they are, so they
+will not be lost.
+
+\begin{llem} \label{llem:interval:subsum}
+Assume the disjoint union
+\begin{equation*}
+ \Disjunion_{i\in\N} I_i \subset [0,1]
+\end{equation*}
+where \(I_i\) are intervals of the form
+\((a_i,b_i)\),
+\((a_i,b_i]\),
+\([a_i,b_i)\) or
+\([a_i,b_i]\). If
+\begin{equation*}
+ \sum_{i\in\N} m(I_i) =  \sum_{i\in\N} (b_i - a_i) < 1
+\end{equation*}
+then there exists \(u\in[0,1]\) such that for any open interval $J$,
+where \(u\in J\subset [0,1]\), the following inequality
+\begin{equation*}
+ \sum_{i\in\N} m(I_i \cap J) < m(J)
+\end{equation*}
+holds.
+\end{llem}
+
+\begin{thmproof}
+Let \(U = \disjunion_{i\in\N}\).
+We will construct a decreasing sequence of clsoed intervals \(\{K_i\}_{i\in\N}\)
+such that for all \(i\in\N\)
+\begin{itemize}
+ \item \(K_{i+i} \subset K_i\)
+ \item \(m(K_i) = 2^{-i}\)
+ \item \(\sum_{i\in\N} m(I_i\cap K_i) < m(K_i) = 2^{-i}\).
+\end{itemize}
+Put \(K_0 = [0,1]\). Now by induction, assume \(K_i = [\alpha,\beta]\)
+is defined and for which satisfies the above requirements.
+Put \(\gamma = (\alpha+\beta)/2\), consider the two subintervals
+\(L=[\alpha,\gamma]\) and
+\(R=[\gamma,\beta]\). The first two requirements hold for \(K_{i+1}\)
+and at least one of them satisfies the third, and we pick it as \(K_{i+1}\).
+Now let \(u = \cap_{i\in\N} K_i\) (identifying a singleton with the element),
+such $u$ exists as an intersection of non empty compact sets (and also is
+unique).
+
+Now assume \(u\in J = (a,b)\) an open interval.
+Then there is some (sufficiently small) \(K_j \subset J\).
+Using \(m(J) = m(K_j) + m(J\setminus K_j)\) we have
+\begin{eqnarray*}
+ \sum_{i\in\N} m(I_i \cap J)
+ &=& \sum_{i\in\N} m\left(I_i \cap (K_j \disjunion (J\setminus K_j)\right) \\
+ &=& \sum_{i\in\N} {   m(I_i \cap K_j)
+                     + m\left(I_i \cap (J\setminus K_j)\right)} \\
+ &=& \sum_{i\in\N} m(I_i \cap K_j) +
+     \sum_{i\in\N} m\left(I_i \cap (J\setminus K_j)\right) \\
+ &<&     m(K_j) + \sum_{i\in\N} m\left(I_i \cap (J\setminus K_j)\right) \\
+ &\leq&  m(K_j) + m(J\setminus K_j) \\
+ &=& m(J).
+\end{eqnarray*}
+\end{thmproof}
+
+
+\begin{llem} \label{llem:sumintervals:}
+Assume the unit interval is a disjoint union
+\begin{equation*}
+ [0,1] = \Disjunion_{i\in\N} I_i
+\end{equation*}
+where \(I_i\) are intervals of the form
+\((a_i,b_i)\),
+\((a_i,b_i]\),
+\([a_i,b_i)\) or
+\([a_i,b_i]\). Then
+\begin{equation*}
+ \sum_{i\in\N} m(I_i) =  \sum_{i\in\N} (b_i - a_i)= 1.
+\end{equation*}
+\end{llem}
+
+\begin{thmproof}
+For any finite sub-sum \(\sum_{i=1}^N m(I_i) \leq 1\), hence
+\(\sum_{i\in\N} m(I_i)\leq 1\).
+By negation, we assume \(\sum_{i\in\N} m(I_i)< 1\).
+Now the assumptions of the previous lemma~\ref{llem:interval:subsum} hold
+giving \(u\in[0,1]\) such that for any open interval \(J\subset[0,1]\) we have
+\(\sum_{i\in\N} m(I_i \cap J) < m(J)\).
+By assumptions there must be (a unique) $j$ such that \(u\in I_j\).
+Now there are two cases.
+\begin{itemize}
+ \item[(\emph{i})]
+   (Internal) $u$ is inetrnal point of \(I_j\), then
+   we can pick an open interval $J$ such that \(u\in J \subset I_j\).
+   Note, that here we use the induced topology, so $u$ may
+   also be $0$ or $1$.
+   For the sake of unifying with the proof continuation, we denote
+   a dummy \(j' = j + 1\).
+ \item[(\emph{ii})]
+   (Boundary) \(u\in\partial I_j\) that is (\(I_j\) is not open and)
+   \(u=a_j\in I_j\) or \(u=b_j\in I_j\).  In that case there must be
+   \(j'\), the index of the neighbor interval, such that
+   \(u\in\partial I_{j'}\).  \(L=I_j\disjunion I_{j'}\) is an
+   interval.  Now we can pick an open interval $J$ such that
+   \(u\in J\subset L=I_j\disjunion I_{j'}\) (where $L$ is an interval).
+\end{itemize}
+In both cases \(J \subset I_j \disjunion I_{j'}\).
+Now by lemma~\ref{llem:interval:subsum} \(\sum_{i\in\N} m(I_i\cap J) < m(J)\),
+but
+\begin{equation*}
+ \sum_{i\in\N} m(I_i\cap J)
+ \geq   m(I_j \cap J) +  m(I_{j'} \cap J) \\
+ =     m\left( (I_j \disjunion I_{j'}) \cap J\right)  = m(J)
+\end{equation*}
+which is a contradiction.
+\end{thmproof}
+
+
+Let us generalize 
+\index{Lusin}
+Lusin theorem~2.24.
+\begin{llem}
+Let \(f:\R\to\C\) be a measurable function.
+For each \(\epsilon>0\) there exists a continuous function \(g:\R\to\C\)
+such that 
+\begin{align*}
+m\bigl(\{x\in\R: f(x)\neq g(x)\}\bigr) &< \epsilon\\
+\forall x\in\R,\quad |g(x)| &\leq |f(x)|\,.
+\end{align*}
+\end{llem}
+Note that the lemma does \emph{not} imply \emph{uniform} continuity of $g$.
+\\
+\begin{thmproof}
+Pick an \(\epsilon>0\), \wlogy\ \(\epsilon<1/2\).
+For each \(n\in\Z\) consider the restriction
+\(f_n:[n,n+2]\to\C\) of $f$ to \([n,n+2]\) 
+(actually, \(f_n = f_{\restriction[n,n+2]}\)).
+By Lusin theorem~2.24 we can find \(g_n:[n,n+2]\to\C\)
+such that 
+\begin{align*}
+m\bigl(\{x\in[n,n+2]: f(x)\neq g_n(x)\}\bigr) &< \epsilon_n = 2^{|n|+2}\epsilon\\
+\forall x\in[n.n+2],\quad |g_n(x)| &\leq |f(x)|\,.
+\end{align*}
+We will connect \(g_n\) to define $g$.
+For every $n$ pick \(t_n\in(n, n+1)\) such that 
+\begin{equation*}
+g_{n-1}(t_n) = g_n(t_n) = f_n(t_n) = f(t_n).
+\end{equation*}
+The existence of \(t_n\) is ensured by \(\epsilon_n < 1/2\)
+and thus \(g_n\) and \(g_{n+1}\) could differ from $f$ in \([n,n+1]\)
+ona set of measure  at most less than $1$.
+For each \(x\in\R\) there is a unique \(n\in\Z\) such that 
+\(t_n \leq t_{n+1}\),  and we define \(g(x) = g_n(x)\).
+Clearly $g$ is continuous and differs from $f$ on a set whose
+measure is at most
+\begin{equation*}
+\sum_{n\in\Z}\epsilon_n = \epsilon \sum_{n\in\Z}  2^{|n|+2} < \epsilon\,.
+\end{equation*}
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises Support}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Topology}
+
+We need to establish some more set-theoretic topological results.
+Using the
+\index{Stone-Cech compactification@Stone-\Cech\ compactification}
+Stone-\Cech\ compactification (\cite{Dug1966}, \textsf{XI 8.3}).
+
+\paragraph{Definition} (\cite{Dug1966}, \textsf{VII 7.1}).
+A Hausdorff space $X$ is
+\index{completely regular}
+\emph{completely regular}
+\index{Tychonoff}
+(or Tychonoff)
+if for each point \(p\in X\) and a closed \(A\subset X\) such that \(p\notin A\)
+there is a continuous \(f:X\rightarrow I=[0,1]\) such that \(f(p) = 1\)
+and \(\forall x\in A, f(x)=0\).
+
+\paragraph{Definition} (\cite{Dug1966}, \textsf{VII~7.1}).
+Let $X$ be a completely regular topological space.
+Let \(P=C(X,I)\) be the set of continuous functions \(f:X\rightarrow I\)
+where \(I=[0,1]\) the unit interval. The product space \(I^P\)
+is compact by the Tychonoff theorem  (\cite{Dug1966}, \textsf{XI~1.4}).
+We define the map
+\begin{eqnarray} \label{eq:stonecech:rho}
+ \rho: X & \rightarrow & I^P \\
+ \rho(x) &=& (\lambda(x))_{\lambda \in C(X,I)} \notag
+\end{eqnarray}
+The Stone-\Cech\ compactification is
+\begin{equation*}
+ \beta(X) = \overline{\rho(X)},
+\end{equation*}
+where the closure is on \(I^P\).
+
+\begin{llem} \label{llem:stonecech:omega1}
+The Stone-\Cech\ compactification of \([0,\omega_1)\) is homeomorphic
+to \([0,\omega_1]\).
+\end{llem}
+\begin{thmproof}
+For each \(f\in C([0,\omega_1],I\), its restriction
+\begin{equation*}
+ f_{|[0,\omega_1)} \in C([0,\omega_1),I).
+\end{equation*}
+From lemma~\ref{llem:Vickery} every \(g \in C([0,\omega_1),I)\),
+can be extended to \(\overline{f}\in C([0,\omega_1],I)\)
+by defining \(\overline{f}(\omega_1)\) as the tail value.
+Thus,
+\begin{equation*}
+ C([0,\omega_1),I) \cong C([0,\omega_1],I)
+\end{equation*}
+By using the notations of (\ref{eq:stonecech:rho}),
+\begin{equation*}
+ \rho\left(C([0,\omega_1),I)\right) \subset
+ \rho\left(C([0,\omega_1],I)\right)
+\end{equation*}
+Since \([0,\omega_1]\) is compact, it image is compact
+and so equals to its closure. We now have:
+\begin{equation*}
+ \rho\left(C([0,\omega_1),I)\right) \subset
+ \overline{\rho\left(C([0,\omega_1),I)\right)} \subset
+ \overline{\rho\left(C([0,\omega_1],I)\right)} =
+ \rho\left(C([0,\omega_1],I)\right)
+\end{equation*}
+\end{thmproof}
+
+
+\begin{llem}
+Let \(K_1,K_2\subset [0,\omega_1]\) be uncountable compact.
+Then \(K_1\cap K_2\) is uncountable compact.
+\end{llem}
+\begin{thmproof}
+Clearly \(K = K_1\cap K_2\) is compact.
+By negation assume $K$ it is countable.
+For \(i=1,2\), let \(H_i = K_i\cap [0,\omega_1)\)
+(note that \(\omega_1\in K_i\)),
+% both \(H_i\) are uncountable and compact in the inherited topology of
+and \(H=K\setminus \{\omega_1\}\).
+For $H$, there exists by lemma~\ref{llem:countable:ub}
+an upper bound \(b\in[0,\omega_1)\).
+Since \(H_i\cap[0,b)\) is countable, we define
+in the space \([0,\omega_1)\)
+new compact (in the inherited topology) subsets
+\begin{equation*}
+ L+i = H_i \cap [b,\omega_1) = K_i \cap [b,\omega_1)
+ \qquad \textrm{for}\; i=1,2.
+\end{equation*}
+
+\end{thmproof}
+
+
+\iffalse
+%%% NOT TRUE!!  only if Y closed.
+\begin{llem}
+Let $X$ be a topological space, \(Y\subset X\) a subspace
+with the topology inherited from $X$.
+If \(K\subset X\) compact then \(K\cap Y\) is compact in $Y$
+\end{llem}
+\begin{thmproof}
+Let \(\{V_i\}_{i\in I}\) be an open cover in $Y$ of \(K\cap Y\).
+By the definition of the inherited topology, there are open sets
+ \(\{V_i\}_{i\in I}\) in $X$ such that \(U_i = V_i \cap Y\) (for \(i\in I\).
+For each \(i\in I\) we define \(W_i = V_i
+\end{thmproof}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 58-61
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let \(\{f_n\}\) be a sequence of real nonnegative functions on \(\R^1\),
+and consider the following four statements:
+\begin{itemize}
+ \itemch{a}
+   If \(f_1\) and \(f_2\) are upper semicontinuous,
+   then \(f_1 + f_2\) is upper semicontinuous.
+ \itemch{b}
+   If \(f_1\) and \(f_2\) are lower semicontinuous,
+   then \(f_1 + f_2\) is lower semicontinuous.
+ \itemch{c}
+   If each \(f_n\) is upper semicontinuous, then \(\sum_1^\infty f_n\)
+   is upper semicontinuous.
+ \itemch{d}
+   If each \(f_n\) is lower semicontinuous, then \(\sum_1^\infty f_n\)
+   is lower semicontinuous.
+\end{itemize}
+Show that three of these atr true and one is false.
+What happens if the word ``nonnegative'' is omitted?
+Is the truth of the statements affected if \(\R^1\) is replaced
+by a general topological space?
+\end{excopy}
+
+We will show that only \ich{c} is false.
+
+\begin{itemize}
+ \itemch{a}
+  True, for
+  \begin{equation*}
+  \{x\in\R: f_1(x)+f_2(x) < a\}
+  = \bigcup_{\alpha\in\R} \left(\{x\in\R: f_1(x)< \alpha\} \cap
+                             \{x\in\R: f_2(x) < a-\alpha\} \right).
+  \end{equation*}
+  and since the intersection of two open sets is open, the above
+  set is open as an infinite union of open sets.
+
+ \itemch{b}
+  True, for
+  \begin{equation*}
+  \{x\in\R: f_1(x)+f_2(x) > a\}
+  = \bigcup_{\alpha\in\R} \left(\{x\in\R: f_1(x)> \alpha\} \cap
+                             \{x\in\R: f_2(x) > a-\alpha\} \right).
+  \end{equation*}
+  and since the intersection of two open sets is open, the above
+  set is open as an infinite union of open sets.
+ \itemch{c}
+ False. Let's construct the following sequence of upper semicontinuous
+ functions. For \(n\geq 1\), let
+ \begin{equation*}
+  f_n(x) = \left\{\begin{array}{lc}
+        1 & \qquad\textrm{if }\  1/(n+1) \leq x \leq 1/n \\
+        0 & \textrm{Otherwise}
+                  \end{array}\right..
+ \end{equation*}
+ Putting \(F = \sum f_n\).
+ Now clearly \(\{x\in R: x < 1/2\} = \{0\}\) a singleton which is clearly
+ \emph{not} open.
+
+ \itemch{d}
+ True.
+ Using \ich{b} and induction, we see that  \(F_n = \sum_{k=1}^n f_k\)
+ is lower semicontinuous. Now for any \(x\in\R\) such that
+ \(\sum_{k=1}^\infty f_k(x) > a\) there exists $n$ such that \(F_n(x) > a\),
+ and so
+ \begin{equation*}
+  \{x\in\R: \sum_{k=1}^\infty f_k(x)\ > a\} =
+  \bigcup_n \{x\in\R: F_n(x)\ > a\}.
+ \end{equation*}
+ is open.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let $f$ be an arbitrary complex function on \(\R^1\), end define
+\begin{eqnarray*}
+ \varphi(x,\delta) & = & \sup\{|f(s) - f(t)|: s,t\in (x-\delta, x+\delta)\}\\
+ \varphi(x)        & = & \inf\{\varphi(x,\delta): \delta > 0\}.
+\end{eqnarray*}
+Prove that \(\varphi\) is upper semicontinuous, that $f$ is continuous
+at a point $x$ if and only if \(\varphi(x)=0\), and hence that the set of
+points of continuity of an arbitrary complex function is a \(G_\delta\).
+
+Formulate and prove an analogous statement for general topological
+space in place of \(\R^1\).
+\end{excopy}
+
+Assume \(\alpha \in \R\) and \(G=\varphi^{-1}(-\infty,\alpha)\).
+Let \(b\in G\setminus\inter{G} = \) a boundary point.
+Now for any \(\delta>0\), there exists
+\(w\in (b-\delta/2,b+\delta/2)\) such that \(w\notin G\).
+Hence there are \(x,y\in(w-\delta/2,w+\delta/2)\) such that
+\(|f(x)-f(y)| \geq \alpha\). But \(x,y\in (b-\delta,b+\delta)\) as well,
+and since \(\delta\) is arbitrary, \(\varphi(b)\geq \alpha\) and
+so \(b\notin G\) hence $G$ is open showing that \(\varphi\) is
+upper semicontinuous.
+
+If $f$ is continuous at $w$, then for any
+% (replacing classic roles of \(\epsilon\) and \(\delta\))
+\(\epsilon>0\) there exists \(\delta>0\) such that
+\(|f(w+h)-f(w)| < \epsilon/2\) whenever \(|h|<\delta\).
+In such case, clearly for any \(x,y\in (w-\delta,w+\delta)\)
+we have
+\begin{equation*}
+|f(x) - f(y)| \leq
+|f(x) - f(w)| + |f(w) - f(y)| < \epsilon/2 + \epsilon/2 = \epsilon.
+\end{equation*}
+That \(\varphi(w) < \epsilon\) and since \(epsilon>0\) was arbitrary,
+\(varphi(w)=0\).
+Conversely, if \(varphi(w)=0\) then for any \(\epsilon>0\)
+there exists \(\delta>0\) such that for any \(x,y\in (w-\delta,w+\delta)\)
+we have \(|f(x)-f(y)| < \epsilon\). In particular,
+ \(|f(x)-f(w)| < \epsilon\) for any \(x \in (w-\delta,w+\delta)\),
+hence $f$ is continuous at $w$.
+
+The set of points where an arbitrary function $f$ is continuous, is
+ \(\cap_n \varphi^{-1}(-\infty, 1/n)\) and by what was just shown
+this set is an intersection of countably many open sets, that is
+a \(G_\delta\) type of set.
+
+\paragraph{Generalization} Let \(X,T\) be a topological space
+(points are in $X$ and $T$ is the family of opens sets in $X$).
+Define
+\begin{eqnarray*}
+ \varphi(x,V) & = & \sup\{|f(s) - f(t)|: s,t\in V\}
+                             \qquad \textrm{where}\; x\in V\in T\\
+ \varphi(x)        & = & \inf\{\varphi(x,V): V\in T\}.
+\end{eqnarray*}
+The proof goes similarly, just replacing \(\delta\) and \(delta/2\)
+with sub-neighborhoods.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let $X$ be a metric space, with metric \(\rho\).
+For any non empty \(E\subset X\), define
+\begin{equation*}
+ \rho_E(x) = \inf\{\rho(x,y): y\in E\}.
+\end{equation*}
+Show that \(\rho_E\) is a uniformly continuous function on $X$.
+If $A$ and $B$ are disjoint nonempty closed subsets of $X$, examine
+the relevance of the function
+\begin{equation*}
+  f(x) = \frac{\rho_A(x)}{\rho_A(x) +  \rho_B(x)}
+\end{equation*}
+\index{Urysohn's lemma}
+to Urysohn's lemma.
+\end{excopy}
+
+Let \(x\in X\) and \(\emptyset \neq E \subset X\).
+For any \(\epsilon>0\), there exists \(u\in E\) such that
+\(\rho(x,u) < \rho_E(x) + \epsilon\).
+Now
+\begin{equation*}
+\rho_E(y) \leq \rho(y,u)
+          \leq \rho(x,y) + \rho(x,u)
+             < \rho(x,y) + \rho_E(x) + \epsilon.
+\end{equation*}
+Hence \(\rho_E(y) - \rho_E(x) \leq \rho(x,y)\) and by symmetry,
+\begin{equation*}
+|\rho_E(y) - \rho_E(x)| \leq \rho(x,y).
+\end{equation*}
+From which continuity of \(\rho_E\) follows.
+
+If a non empty \(A\subset X\) is closed and \(x\in X\setminus A\)
+then \(\rho_A(x) > 0\), since otherwise \(x\in \overline{A}\).
+Hence by \(A\cap B = \emptyset\), the denominator of $f$ satisfies
+\(\rho_A(x)+\rho_B(x) > 0\) for any \(x\in X\) and so $f$ is
+well defined and continuous.
+
+Now this gives a simple algabraic construction of a function
+as desired in Urysohn's Lemma. We can easily see
+that \(f(x)=0\) for \(x\in A\) and
+that \(f(x)=1\) for \(x\in B\).
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Examine the proof of the
+\index{Riesz theorem}
+Riesz theorem and prove the following two statements:
+\begin{itemize}
+ \itemch{a}
+   If \(E_1 \subset V_1\) and \(E_2 \subset V_2\), where \(V_1\) and \(V_2\)
+   are disjoint open sets, then \(\mu(E_1\cup E_2) = \mu(E_1) + \mu(E_2)\),
+   even if \(E_1\) and \(E_2\) are not in \frakM.
+ \itemch{b}
+   If \(E\in \frakM_F\) then
+   \(E = N\cup K_1\cup K_2 \cup \cdots\), where \(\{K_i\}\)
+   is a disjoint countable collection of compact sets and \(\mu(N) = 0\).
+\end{itemize}
+\end{excopy}
+
+
+\begin{itemize}
+ \itemch{a}
+   By \textsc{step~i} of the proof of Riesz Theorem (\cite{RudinRCA80} page~44),
+   we know that
+   \begin{equation*}
+   \mu(E_1\cup E_2) \leq \mu(E_1) + \mu(E_2).
+   \end{equation*}
+   For the opposite inequality, let \(\epsilon>0\) and pick
+   some open set $V$ such that \(E_1\cup E_2\subset V\) and
+   \(\mu(V) \leq \mu(E_1\cup E_2) + \epsilon\).
+   We now have:
+   \begin{eqnarray*}
+   \mu(E_1) + \mu(E_2)
+    & \leq & \mu(V\cap V_1) + \mu(V\cap V_2) \\
+    & = & \mu\left(V\cap (V_1 \cup V_2)\right) \\
+    & \leq & \mu(V) \leq \mu(E_1\cup E_2) + \epsilon.
+   \end{eqnarray*}
+   Since \(\epsilon\) was arbitrary, we have
+   \begin{equation*}
+   \mu(E_1) + \mu(E_2) \leq \mu(E_).
+   \end{equation*}
+
+ \itemch{b}
+   By \textsc{step~viii} of the proof of Riesz Theorem
+   (\cite{RudinRCA80} page~47), we know that \frakM\ contains all
+   Borel sets with finite \(\mu\) measure.
+   Now define by induction, \(K_1\) a compact set such that
+   \(K_1\subset E\) and \(\mu(K_1) > \mu(E)/2\).
+
+   If \(\{K_i\}_{1\leq i<n}\) are defined, we know that
+   \(D_{n-1} = E\setminus \cup_{i<n} K_i \in \frakM_F\) as such
+   we can define \(K_n\)
+   as a compact set, such that \(K_n \subset D_{n-1}\)
+   and \(\mu(K_n) > \mu(D_{n-1}E)/2\).
+   We can easily see that
+   \begin{equation*}
+    \sum_{i=1}^n \mu(K_i) \geq \sum_{i=1}^n 1/2^n = 1 - 1/2^{n+1}.
+   \end{equation*}
+   Put \(N = E \setminus \cup_{i=1}^\infty K_i\)
+   and since \(\mu(E) = \sum_{i=1}^\infty \mu(K_i)\),
+   we conclude that \(\mu(N) = 0\).
+\end{itemize}
+
+\end{enumerate}
+
+\index{Lebesgue}
+In Exercises 5 to 8, $m$ stands for Lebesgue's measure on \(R^1\).
+\nobreak
+\begin{enumerate}
+
+\setcounter{enumi}{4}
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+Let $E$ be
+\index{Cantor}
+Cantor's familiar ``middle thirds'' set.
+Show that \(m(E) = 0\), even though $E$ and \(\R^1\) have the same cardinality.
+\end{excopy}
+
+After removing the thirds on the $n$ step, the set \(C_n\) ``remain'' with
+\(m(C_N) = (2/3)^n\). By being in the \(\sigma\)-algebra,
+the Cantor set $C$ has a measure
+\begin{equation*}
+m(C) =
+\lim_{n\rightarrow\infty}m(C_n) = \lim_{n\rightarrow\infty}(2/3)^n = 0.
+\end{equation*}
+
+For compuing the cardinality, let's consider the ternary representation
+of each \(\alpha\in [0,1]\),
+\begin{equation*}
+ \alpha = \sum_{i=1}^\infty t_i(\alpha) 3^{-i}
+    \qquad \textrm{where}\; t_i(\alpha) \in \{0,1,2\}
+\end{equation*}
+Numbers, except for $0$,  with finite representation
+(with \(t_i(\alpha)=0\) for all \(i > N\) for some $N$)
+such as
+\begin{equation*}
+\alpha = \sum_{i=1}^N t_i(\alpha) 3^{-i}
+\end{equation*}
+where \(0\neq t_N(\alpha) \in \{1,2\}\) ---
+also have an infinite representation as in:
+\begin{equation*}
+\sum_{i=1}^N t_i(\alpha) 3^{-i} =
+\sum_{i=1}^{N-1} t_i(\alpha) 3^{-i}
++ (t_N(\alpha)-1) 3^{-N}
++ \sum_{i=N+1}^\infty 2\cdot 3^{-i}
+\end{equation*}
+
+In such cases,
+we resolve the ambiguity, by choosing:
+\begin{itemize}
+ \item the infinite representation if \(t_N = 1\).
+ \item the finite representation if \(t_N = 2\).
+\end{itemize}
+
+Now the Cantor set $C$, is exactly the numbers in \([0,1]\)
+whose ternary representation (with the above choice made)
+does \emph{not} contain any factor (digit) $1$, that is
+\(1 \neq t_i\in \{0,2\}\) for all $i$.
+
+Using \(b_i=t_i/2\in \{0,1\}\), we build
+ the following map \(f:C\rightarrow [0,1]\)
+\begin{equation*}
+f(\alpha)
+  = f\left(\sum_{i=1}^\infty t_i(\alpha) 3^{-i} \right)
+  = \sum_{i=1}^\infty (t_i(\alpha)/2) 2^{-i}.
+\end{equation*}
+Maps the Cantor set \emph{onto} the unit interval, using \emph{binary}
+representation. This shows directly that the cardinality of $C$ is
+the same as that of \([0,1]\) which is known to be \(|\R^1|\).
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Construct \label{ex:disc:K}
+a totally disconnected compact set \(K\subset \R^1\) such that
+\(m(K) > 0\).
+($K$ is to have no connected subset consisting of more than one point.)
+
+If $v$ is lower semicontinuous  and \(v\leq \chhi_K\), show that actually
+\(v \leq 0\). Hence \(\chhi_K\) cannot be approximated by lower semicontinuous
+function, in the sense of
+\index{Vitaly}
+\index{Carath\'eodory}
+Vitaly-Carath\'eodory Theorem.
+\end{excopy}
+
+Construct the following similar to Cantor set.
+Start from the unit interval,
+in each step we ``break'' any segment of the previous step,
+but (contrary to Cantor's) ensuring that the sum of open segment
+taken out is ``much'' less than $1$.
+
+More formally, we start (after step-0), with \(D_0 = [0,1]\).
+After step $n$, \(D_n\) is a union of \(2^n\) closed intervals.
+In step $n$, from each interval \([a,b]\) of \(D_{n-1}\)
+we substract from its center an open sub-interval with length of \(2^{-(2n+1)}\)
+Hence in this step we substract a total of
+\begin{equation*}
+ 2^n \cdot 2^{-(2n+1)} = 2^{-n-1}.
+\end{equation*}
+The total length of open intervals removed by all steps upto step $n$ is
+\begin{equation*}
+ \sum_{k=1}^n 2^{-k-1} = (1/2) \sum_{k=1}^n 2^{-k} < 1/2
+\end{equation*}
+Thus \(K = \cap_n D_n\) is compact, \(m(D) \geq 1/2\)
+and it is totally disconnected, since any interval eventually gets cut.
+
+Now if $v$ satisfies the assumptions of the exercise, and by negation
+\(v(w) > 0\) for some \(w\in \R\) then for \(a = v(w)/2\) then
+\(V = v^{-1}(a,\infty)\) is open and \(w\in V\) thus there is an open
+interval $I$ for which \(f(x)>a\) for all \(x\in I\),
+but since $K$ is totally disconnected, there must be some \(r\in I\setminus K\)
+giving a the contradiction \(\chhi(r) = 0\).
+
+%%%%%%%%%%%%%% 7
+\begin{excopy}
+Given \(\epsilon > 0\), construct an open set \(E\subset [0,1]\) which is dense
+in \([0,1]\), such that \(m(E)=\epsilon\).
+(To say that $A$ is dense in $B$ means that the closure of $A$ contains $B$.)
+\end{excopy}
+
+Of course we should assume \(\epsilon \leq 1\).
+Put \(\Q\cap[0,1]\) into q sequence \((q_i)_{i=1}^\infty\).
+Now define the following sequence open sets \((G_k)_{k=1}^\infty\).
+Given \(k\leq 1\), let \(H_k =  \cup_{j<k} \overline{G_j}\)
+(closed, where \(H_1 = \emptyset\)),
+let $i$ be the minimal such that \(q_i\notin H_k\).
+Pick an open interval \(I_k\) of \(q_i\) with length \(l_k\)
+such that \(l_k \leq 2^{-k}\epsilon\)
+(Note: by ``open'' we mean here --- open \emph{in} \([0,1]\).
+Thus \([0,a)\) and \((b,1]\) are considered open).
+If \(l_k < 2^{-k} \epsilon\), also pick some finite number
+of open intervals \(\{J_{k,m}\}\) such that
+\begin{equation*}
+G_k = I_k \cup\,\bigcup_{m=1}^{N_k} J_{k,m}
+\end{equation*}
+satisfies
+\begin{equation*}
+m(G_k) = 2^{-k} \qquad \textrm{and} \qquad
+  G_k \cap \left(\cup_{j<k} G_j\right) = \emptyset.
+\end{equation*}
+Let \(G = \cup G_k\), surely \(m(G) = \epsilon\) and \(\Q\cap [0,1] \subset G\),
+and so $G$ is dense in \([0,1]\).
+
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+Construct a Borel set \(E\subset \R^1\) such that
+\begin{equation*}
+ 0 < m(E\cap I) < m(I)
+\end{equation*}
+for every nonempty segment $I$. Is it possible to have \(m(E) < \infty\)
+for such a set?
+\end{excopy}
+
+
+Given \(0<a<1\) we will first build a set \(F\subset [0,1]\) such that
+\(m(F) = a\) and
+\begin{equation*}
+0 < m(F\cap I) < m(I)
+\end{equation*}
+We will build $F$, and its complement \(G = [0,1] \setminus F\)
+as an countable infinite union of Borel sets,
+\(F = \cup_n F_n\)
+and
+\(G = \cup_n G_n\)
+with measures \(m(F_i) = 2^{-i}a\) and \(m(G_i) = 2^{-i}(1-a)\).
+At each stage,
+\begin{equation*}
+ R_n = [0,1] \setminus
+       \left( \bigcup_{i=1}^n F_i \cup \bigcup_{i=1}^n G_i\right)
+\end{equation*}
+will be a countable family of intervals ---
+close, open are half closed and open. That is, of
+any of the forms:
+\([a,b]\),
+\((a,b)\),
+\([a,b)\) or
+\((a,b]\).
+
+\paragraph{Building \(F_1\).}
+For any interval \(I\subset[0,1]\).
+Similar to Exercise~\ref{ex:disc:K} above, we construct a totally disconnected
+subset \(F_1\) of [0,1]
+whose complement is a countable family of open intervals.
+We carefully choose the sizes of the open intervals, so
+that \(m(F_1) = a/2\).
+
+\paragraph{Building \(G_1\).}
+The set \(F_1^c = [0,1]\setminus G_1\) consists of countably many \(\cal{N}\)
+intervals (where \(\cal{N}<\infty\) or \({\cal{N}} = \aleph_0\)).
+Within each interval \(I_i\) of \(F_1^c\) we build a totally disconnected
+subset \(T_i\), such that the sum of measures of these sets equals \((1-a)/2\).
+This is done either by choosing a measure of
+\((1-a)/\cal{N}\) if  \(\cal{N}<\infty\),
+or a measure of \(2^{i+1}(1-a)\) otherwise.
+We let \(G_1= \cup_i T_i\).
+
+
+\paragraph{Building \(F_n\).}
+Assume \(\{F_i\}_{i=1}^{n-1}\)
+and \(\{G_i\}_{i=1}^{n-1}\) are built,
+The set
+\begin{equation*}
+ R_{n-1} = [0,1] \setminus
+  \left( \bigcup_{i=1}^{n-1} F_i \cup \bigcup_{i=1}^{n-1} G_i\right)
+\end{equation*}
+consists of countably many intervals.
+Within each of these intervals we build a totally disconnected set \(U_{n,i}\)
+such that when letting \(F_n = \cup_i U_{n,i}\) be a disjoint union, we have
+\begin{equation*}
+m(F_n) = m\left(\cup_i U_{n,i}\right) = \sum_i m(U_{n,i}) = 2^{-(n+1)} a
+\end{equation*}
+
+\paragraph{Building \(G_n\).}
+Assume \(\{F_i\}_{i=1}^{n}\)
+and \(\{G_i\}_{i=1}^{n-1}\) are built,
+The set
+\begin{equation*}
+ S_{n-1} = [0,1] \setminus
+  \left( \bigcup_{i=1}^n F_i \cup \bigcup_{i=1}^{n-1} G_i\right)
+\end{equation*}
+consists of countably many intervals.
+Within each of these intervals we build a totally disconnected set \(V_{n,i}\)
+such that when letting \(G_n = \cup_i V_{n,i}\) be a disjoint union, we have
+\begin{equation*}
+m(G_n) = m\left(\cup_i V_{n,i}\right) = \sum_i m(U_{n,i}) = 2^{-(n+1)} (1-a).
+\end{equation*}
+
+Now $F$ and $G$ are well defined, and \(F\disjunion G = [0,1]\).
+
+Note that the way \(\{F_i\}\) and \(\{G_i\}\) were build,
+for each \(x,y\in F\), where \(x<y\), there is some $n$, such that
+\(x,y\in \cup_{i\leq n} F_i\) and \(m((x,y) \cap G_i) > 0\).
+
+Similarly,
+for each \(x,y\in G\), where \(x<y\), there is some $n$, such that
+\(x,y\in \cup_{i\leq n} G_i\) and \(m((x,y) \cap  F_{i+1}) > 0\).
+
+The last observations show
+the inequalities \(0 < m(F\cap\, [x,y]\,) < m([x,y])\).
+To generalize it, we repeat the process of building $F_i$ for
+any interval \(\{[n,n+1]\}_{n\in\Z}\), with \(a = 2^{-|n|}\).
+Put \(E = \cup F_i\). Now \(m(E) = \sum_{n\in\Z} = 3 < \infty\)
+and the desired inequalities \(0 < m(E\cap\, I\,) < m(I)\)
+for and interval $I$ in \R\ is established.
+
+
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Construct a sequence of continuous function \(f_n\) on \([0,1]\) such that
+\(0\leq f_n \leq 1\), such that
+\begin{equation*}
+ \lim_{n\rightarrow \infty} \int_0^1 f_n(x)dx = 0,
+\end{equation*}
+but such that the sequence \(\{f_n(x)\}\) converges for no \(x\in[0,1]\).
+\end{excopy}
+
+Put \(N_0 =0\) and \(N_k = \sum_{i=1}^{k+1} i = (k+1)(k+2)/2\).
+We will define the \(f_n\) functions in $k$-batches.
+For each \(k>0\), we  define \(\{f_n:  N_{k=1} < n \leq N_k\}\):
+\begin{equation*}
+f_n(x) = f_{N_{k-1}+i}(x) = \left\{
+ \begin{array}{l@{\quad}c}
+   1 - k|x - (i-1)/k| & \textrm{if}\; |x - (i-1)/k|<1/k \\
+   0                  & \textrm{Otherwise}
+ \end{array}\right.
+\end{equation*}
+for \(1\leq i \leq N_k\).
+We see that \(\int_0^1 f(n) = 1/k\) and so \(\int_0^1 f(n)\to 0\)
+but for every $k$-batch, for any \(x\in[0,1]\)
+there is some $n$ such that \(N_{k-1}< n \leq N_k\)
+and \(f_n(x) \geq 1/2\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy} % 10
+If \label{ex:2:10}
+\(\{f_n\}\) is a sequence of continuous functions on \([0,1]\) such that
+\(0\leq f_n \leq 1\), and such that
+\(f_n(x)\to 0\) as \(n \to \infty\),
+for every \(x\in[0,1]\), then
+\begin{equation*}
+ \lim_{n\rightarrow \infty} \int_0^1 f_n(x)dx = 0,
+\end{equation*}
+Try to prove this without using any measure theory or any theorem
+about Lebesgue integration. (This is to impress you with the power of
+the Lebesgue integral. A nice proof was given
+\index{Eberlein}
+by W.F.~Eberlein in \emph{communications on Pure and Applied Mathematics},
+vol.~X, pp.~357-360, 1957.)
+\end{excopy}
+
+We will allow ourselves to use some trivial measure concepts
+such as the sum of lengths of finite union of intervals.
+That is if \(\{I_i\}_{i=1}^n\),
+where \(I_i\) are intervals of the form
+\((a_i,b_i)\),
+\((a_i,b_i]\),
+\([a_i,b_i)\) or
+\([a_i,b_i]\), and \(I_i \cap I_j = \emptyset\) whenever \(i\neq j\) then
+we use
+\begin{equation*}
+m\left(\Disjunion_{i=1}^n I_i\right) =
+\sum_{i=1}^n m(I_i) = \sum_{i=1}^n b_i - a_i.
+\end{equation*}
+
+\iffalse
+Back to the exercise. Let us define some sequences of subsets of \([0,1]\)
+(with nicknames) based on \(\{f_n\}_{i\in\N}\).
+\begin{equation*}
+\begin{array}{lcl@{\qquad}r}
+ U_{n,k} &=&
+    \{x\in [0,1]: |f_n(x)| \geq 1/k\}    & \textrm{(Upper)} \\ \\
+ T_{n,k} &=&
+   \bigcup\limits_{i=n}^\infty U_{i,k}   & \textrm{(Tail)} \\ \\
+ R_k     &=&
+    \bigcap\limits_{i=1}^\infty T_{i,k}  & \textrm{(Resistance)} \\
+\end{array}
+\end{equation*}
+
+When looked closely, we see that \(R_k\) consists of all \(x\in[0,1]\)
+such that \(|f_n(x)| \geq 1/k\)  for infinitely many $n$.
+Thus the assumption that \(f_n(x)\to 0\) for all \(x\in[0,1]\)
+means that
+\begin{equation*}
+\cap_{k\in\N} R_k = \emptyset.
+\end{equation*}
+\fi
+
+Back to the exercise. Let
+\begin{equation*}
+ g_n(x) = \sup_{k\geq n} |f_k(x)|
+\end{equation*}
+Clearly \(\{g_n\}_{n\in\N}\) is a decreasing sequence,
+converges pointwise \(g_n(x)\xrightarrow{n\to\infty} 0\) and
+\begin{equation*}
+ \left|\int_0^1 f_n(x)dx\right|
+ \leq  \int_0^1 |f_n(x)|dx \leq  \int_0^1 g_n(x)dx.
+\end{equation*}
+Hence it is sufficient to show that
+\begin{equation} \label{eq:integ:gto0}
+\lim_{n\to\infty} \int_0^1 g_n(x)dx = 0.
+\end{equation}
+
+Let \(\epsilon>0\) be arbitrary, and define
+\begin{equation*}
+ L_n = L_{n,\epsilon} = \{x\in[0,1]: |f_n(x) < \epsilon\}.
+\end{equation*}
+By definition and assumptions, \(\{L_n\}_{n\in\N}\) is an increasing
+sequence of open sets with union
+\begin{equation} \label{eq:ULn}
+\bigcup_{n\in\N} L_n = [0,1].
+\end{equation}
+Each \(L_n\) is a union of countably many open intervals,
+\begin{equation*}
+ L_n = \bigcup_{k\in \N} I_{n,k} = \bigcup_{k\in \N} (a_{n,k}, b_{n,k})
+ \qquad \textrm{for each}\; n\in\N.
+\end{equation*}
+
+The (still limited to intervals) total measure
+\begin{equation}
+ M_n = M(L_n) =\sum_{k\in \N} m(I_{n,k})
+\end{equation}
+is clearly an increasing sequence (by simply looking at sub-finite sums).
+We will now show that it
+converges to the measure of the unit \(m([0,1])\), that is:
+\begin{equation} \label{eq:Lsubint:to1}
+ \lim_{n\to\infty} \sum_{k\in \N} m(I_{n,k}) = 1.
+\end{equation}
+By negation, assume
+\begin{equation*}
+ \lim_{n\to\infty} M_n = \beta < 1.
+\end{equation*}
+
+For any sub-intervals \(I,[a,b]\subset [0,1]\)
+trivially
+\begin{equation*}
+m(I\cap[a,b]) = m(I\cap[a,(a+b)/2]) + m(I\cap[(a+b)/2, b]).
+\end{equation*}
+Similarly
+\begin{equation} \label{eq:MLn}
+ M(L_n \cap [a,b]) =  M(L_n \cap [a,(a+b)/2]) + M(L_n\cap[(a+b)/2, b])
+\end{equation}
+Starting with \(a_0=0\), \(b_0=1\), and recursively bisect \([a_i,b_i]\),
+we get a decreasing sequence of closed sub-segments with sizes
+\(m([a_i,b_i]) = 2^{-i}\),
+such that
+\begin{equation*}
+ M(L_n \cap [a_i,b_i]) \leq 2^{-i}\beta < 2^{-i}
+\end{equation*}
+for all \(n\in\N\).
+This can be done, by choosing the smaller of the two choices
+in each bisection step, and using (\ref{eq:MLn}).
+Let $b$ be the intersection point \(\{b\} = \cap_{i\in\N} [a_i,b_i]\).
+But by (\ref{eq:ULn}), there exists $n$, such that \(b\in L_n\).
+Since \(L_n\) is open, there is some $i$ such that \(b\in[a_i,b_i]\subset L_n\).
+Now
+\begin{equation*}
+M(L_n \cap [a_i,b_i]) = M([a_i,b_i]) = 2^{-i}
+\end{equation*}
+gives a contradiction and thus (\ref{eq:Lsubint:to1}) is true.
+
+Let \(N<\infty\) be such that
+\begin{equation*}
+M_N = \sum{k\in \N} m(I_{N,k}) > 1 - \epsilon
+\end{equation*}
+and \(K<\infty\) be such that
+\begin{equation*}
+M_N = \sum{k=1}^K m(I_{N,k}) > 1 - 2\epsilon.
+\end{equation*}
+Set
+\begin{eqnarray*}
+  D & = & \cup{k=1}^K I_{N,k} \\
+  U & = & [0,1] \setminus D
+\end{eqnarray*}
+Both $D$ and $U$ are unions of finite number of intervals.
+Since \(m(D) > 1 - 2\epsilon\), the complement has \(m(U) < 2\epsilon\).
+Now we compute:
+\begin{equation*}
+\int_0^1 g_N(x)dx = \int_D g_N(x)dx + \int_U g_N(x)dx
+ \leq (1-2\epsilon)\epsilon + 2\epsilon\cdot 1 < 3\epsilon.
+\end{equation*}
+Since \(\epsilon>0\) was arbitrary and
+\(\{g_n\}_{n\in\N}\) is a decreasing sequence,
+the convergence of (\ref{eq:integ:gto0}) is shown.
+
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Let \(\mu\) be a regular Borel measure on a compact Hausdorff space $X$:
+assume \(\mu(X) = 1\). Prove that there is a compact set \(K\subset X\)
+\index{carrier}
+\index{support!measure}
+(the \emph{carrier} or \emph{support} of \(\mu\))
+such that \(\mu(K) = 1\) but \(\mu(H)<1\)
+for every proper compact subset $H$ of $K$.
+\emph{Hint}: Let $K$ be the intersection of all compact \(K_\alpha\) with
+\(\mu(K_\alpha)=1\);
+show that every open set $V$ which contains $K$ also contains some \(K_\alpha\).
+Regularity of \(\mu\) is needed; compare Exercise~18.
+Show that \(K^c\) is the largset open set in $X$ whose measure is $0$.
+\end{excopy}
+
+If both \(K_1\) and \(K_2\) are compact then
+\(K_1 \cap K_2\) is compact. If
+\(\mu(K_1) = \mu(K_2) = 1\), then
+\(mu(X\setminus K_1) = \mu(X\setminus K_2) = 0\) and so
+\begin{equation*}
+\mu(K_1 \cap K_2) \geq \mu(X) - (\mu(X\setminus K_1) + \mu(X\setminus K_2) =
+        1 - 0 = 1.
+\end{equation*}
+By induction \(\mu(\cap_{i=1}^n K_i = 1\) for finite intersection.
+
+Let $K$ be the intersection as in the hint.
+Let $V$ be an open set such that \(\cap_\alpha K_\alpha \subset V \subset X\).
+Now \(V^c \subset \cup_\alpha K_\alpha^c\), this is an open covering
+of the compact \(V^c\). Hence there is a sub-finite covering,
+that is we have \(\{\alpha_i\}_{i=1}^m\) such that
+\(V^c \subset \cup_{i=1}^m K_{\alpha_i}^c\), equivalently
+\(L = \cap_{i=1}^m K_{\alpha_i} \subset V\). By our initial remarks,
+$L$ is compact and \(\mu(L)=1\) thus \(L=K_\alpha\) for some \(\alpha\).
+
+By regulartiy,
+\begin{equation*}
+\mu(K) = \inf \{\mu(V): V\;\textrm{is open, and }\; K\subset V\}
+       \geq \mu(K_\alpha) = 1.
+\end{equation*}
+Thus \(\mu(K) = 1\) and by construction, $K$ is minimal compact with
+such measure.
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Show \label{ex:2:12}
+that every compact set of \(\R^1\) is the support of a Borel measure.
+\end{excopy}
+
+Let \(K\subset\R^1\) be a compact set, with the inherited topology.
+For any function \(f\in C_c(K) = C(K)\) we will define an extension
+\(\tilde{f} \in C_c(\R)\). By $K$ being bounded, we can pick
+\(b_0 < \min(K)\) and \(b_1 > \max(K)\).
+Denote the compact \(\tilde{K} = K \cup \{b_0,b_1\}\)
+and the complement open set \(G=\R\setminus \tilde{K}\).
+For any \(x\in G\) there is a maximal open interval \((a_x,b_x) \subset $G$\)
+whose endpoints \(a_x,b_x\in \tilde{K}\). Define:
+\begin{equation*}
+ \tilde{f}(x) = \left\{\begin{array}{l@{\qquad}l}
+                  f(x) & x \in K \\
+                  0    & x \leq b_0 \quad \textrm{or} \quad b_1 \leq x \\
+                  \left(\tilde{f}(b_x) - \tilde{f}(a_x)\right)
+                  \frac{x - a_x}{b_x - a_x}
+                  + \tilde{f}(a_x)
+                    & x \in (a_x,b_x)\subset G \quad\textrm{and}\quad
+                      a_x,b_x \in \tilde{K}
+                  \end{array}\right.
+\end{equation*}
+Note the ``pseudo'' recursive definition is fine, since
+only \(\tilde{f}(b_x)\) and  \(\tilde{f}(a_x)\) are used
+and for them \(\tilde{f}\) is well defined on previous cases.
+The mapping \(f\to\tilde{f}\) is clearly linear mapping of \(C(K) \to C_c(\R)\).
+We now define a positive functional on \(C(K)\)
+\begin{equation*}
+ \Lambda(f) = \int_{\R} \tilde{f}\,dm =  \int_{b_0}^{b_1} \tilde{f}\,dm
+\end{equation*}
+where $m$ is the regular Lebesgue's measure on \(\R\).
+
+\index{Riesz}
+From Riesz Theorem~2.14, there is Borel measure \(\mu\) on $K$
+such that for all \(f\in C(K)\)
+\begin{equation*}
+ \int_{\R^1} f\,d\mu = \Lambda f.
+\end{equation*}
+
+We will now show that $K$ is the support of \(\mu\).
+By negation, let \(H\subsetneq K\) be a compact such that
+ \(\mu(H) = \mu(K)=1\), hence \(\mu(K\setminus H) = 0\).
+Pick \(x\in K\setminus H\). By being a compact Hausdorff space,
+there exists an open set $V$ such that \(x\notin V\) and \(H\subset V\).
+\index{Urysohn's lemma}
+By Urysohn's Lemma~2.12, we can find a continuous function \(g\in C(K)\)
+such that \(\{x\} \prec g \prec V\).
+Now
+\begin{equation} \label{eq:Ksupp:mu}
+ \Lambda g = \int_K g\,d\mu = \int_H g\,d\mu + \int_{K\setminus H} g\,d\mu
+           = \int_H 0\,d\mu + \int_{\emptyset} g\,d\mu = 0+0 = 0.
+\end{equation}
+But \(\tilde{g} \geq 0\) is continuous, with \(\tilde{g}(x) = g(x) > 0\),
+hence
+\(\Lambda g = \int_{\R} \tilde{g}dm > 0\) a contradiction
+to (\ref{eq:Ksupp:mu}).
+
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Is it true that every compact subset of \(\R^1\) is a support of a continuous
+functions? If not, can you describe the class of all compact sets in
+\(\R^1\) whoch are supports of continuous functions?
+Is your description valid in other topological spaces?
+\end{excopy}
+
+The first claim is false. Take a any singleton, say \(\supp f = \{a\}\)
+then \(f(a) \neq 0\), by continuity, using a positive \(\epsilon < |f(a)|\)
+we can find a \(\delta>0\) such that
+\begin{equation*}
+ \supp f \supset (a-\delta, a + \delta)
+         \subset \{x\in\R: |f(x)| > |f(a)| - \epsilon > 0\}.
+\end{equation*}
+
+
+Here is the classification:
+\begin{llem}
+A compact \(K\in\R\) is a support of some \(f\in C(\R)\)
+iff \(K = \overline{\inter{K}}\) (equals the closure of its interior).
+\end{llem}
+\begin{thmproof}
+Let $K$ be  a compact $K$ set.
+
+Assume \(K = \supp f\), for some \(f\in C(\R)\).
+For any closed set $K$, (in particular compact),
+\(K \subset \overline{\inter{K}}\).
+If by negation \(K \subsetneq \overline{\inter{K}}\), then we can find
+\(x \in K \setminus \overline{\inter{K}}\).
+If \(f(x) \neq 0\) then there is a neighborhood $V$ of $x$
+such that \(x\in V \subset \supp f\) which gives the contradiction
+\(x\in \inter{K}\). Thus \(f(x) = 0\) but then
+\(K = \supp f \subset \overline{\inter{K}}\) gives a contradiction.
+
+Conversely, assume \(K = \overline{\inter{K}}\).
+Since \(G = \inter{K} = \cup_{i\in\N} I_i\), is a countable union
+of open  intervals \(I_i = (a_i, b_i)\), we denote their
+length  \(l_i = b_i - a_i\) and
+center
+\(c_i = (a_i + b_i)/2\) to define
+\begin{equation*}
+f(x) = \left\{\begin{array}{l@{\qquad}l}
+               l_i/2 - |x - c_i| &  a_i \leq x \leq b_i \\
+               0 & x \notin K
+              \end{array}\right.
+\end{equation*}
+Now clearly $f$ is continuous and \(\supp f = K\).
+\end{thmproof}
+
+From the proof, we can see that the classification
+can extend to any space $X$ where any open set $G$ is a union
+of open sets \(\{V_\alpha\}_{\alpha\in I}\) with disjoint closures
+such that for each \(V_\alpha\) there is a function \(f\in C(X)\)
+such that \(K \prec f \prec V\) for any compact \(K\subset V\).
+This is true for \(\R^n\).
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+If $f$ is a Lebesgue measurable complex function on \(\R^1\),
+prove that there is a Borel function $g$ on \(\R^1\) such that
+\(f=g\)~a.e.[$m$].
+\end{excopy}
+
+With the understanding (similar to the definition
+\index{Borel}
+of \emph{Borel function} --- see:
+\cite{RudinRCA80} page~13)
+that
+\index{Lebesgue!measurable function}
+\(f:X\to \C\) is a \emph{Lebesgue measurable function} iff
+\(f^{-1}(V)\) is Lebesgue measurable for any open set \(V\subset X\).
+
+We will build a subset \(M \subset \R\) with \(m(M) = 0\)
+and define
+\begin{equation} \label{eq:g:Borel}
+g(x) = \left\{\begin{array}{l@{\qquad}l}
+             f(x) & x\notin M \\
+             0    & x\in M
+             \end{array}\right..
+\end{equation}
+
+By Theorem~2.20 for any Lebesgue measurable set $L$, we can find
+Borel (\(F_{\sigma}\) set \(B\subset L\) such that \(m(L\setminus B) = 0\).
+
+Enumerate all open rectangles with rational boundaries
+\({\cal{R}} = \{R_i\}_{i\in\N}\)
+where
+\begin{equation*}
+ R_i = \{z\in\C : r_0\leq \Re(z) \leq r_1 \;\wedge\;
+                  q_0\leq \Im(z) \leq q_1 \;\wedge\;r_0,r_1,q_0,q_1\in\Q\}.
+\end{equation*}
+
+Now \(L_i = f^{-1}(R_i)\) is a Lebesgue measurable function.
+Let \(B_i\subset L_i\) be a Borel measurable set
+(as on the preceding remark) such that and \(m(L_i\setminus B_i) = 0\).
+We define \(M = \cup_{i\in\N} (L_i\setminus B_i)\).
+By \(\sigma\)-additivity, \(m(M)=0\) as requried.
+Now, it is left to show
+that $g$ defined in (\ref{eq:g:Borel}) is a Borel measurable function.
+
+Any (origin-less) open set \(G\subset \C\setminus\{0\}\)
+can be represented as a countable union of intervals from \(\cal{R}\),
+say
+\begin{equation*}
+G = \cup_{i\in\N} R_{k_i}
+\end{equation*}
+Now computing the inverse images
+\begin{eqnarray*}
+ g^{-1}(G)
+ &=&  f^{-1}(G) \setminus M \\
+ &=& f^{-1}\left(\cup_{i\in\N} R_{k_i}\right) \;\setminus M
+     = \bigcup_{i\in\N} f^{-1}( R_{k_i}) \;\setminus M
+     = \bigcup_{i\in\N} L_{k_i} \;\setminus M \\
+ &=& \left(\bigcup_{i\in\N} B_{k_i}
+     \disjunion \left(L_{k_i}\setminus B_{k_i}\right)\right) \;\setminus M \\
+ &=& \left(\bigcup_{i\in\N} B_{k_i}
+     \,\cup\, \bigcup_{i\in\N}  \left(L_{k_i}\setminus B_{k_i}\right)
+     \right) \;\setminus M \\
+ &\subset&  \left(\bigcup_{i\in\N} B_{k_i} \cup M'\right) \;\setminus M \\
+ &=& \bigcup_{i\in\N} B_{k_i}.
+\end{eqnarray*}
+Where
+\begin{equation*}
+ M' = \bigcup_{i\in\N}  \left(L_{k_i}\setminus B_{k_i}\right) \subset M.
+\end{equation*}
+So \(g^{-1}(G)\) is a Borel set. In particular \(g^{-1}(\C\setminus\{0\})\)
+is Borel set, and by \calB\ being \(\sigma\)-algebra,
+the complement \(g^{-1}(\{0\})\) is a Borel set as well.
+
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+It is easy to gueass the limits of
+\begin{equation*}
+ \int_0^\pi \left(1 - \frac{x}{n}\right)^n e^{x/2}\, dx
+ \quad\textrm{and}\quad
+ \int_0^\pi \left(1 + \frac{x}{n}\right)^n e^{-2x}\, dx.
+\end{equation*}
+as \(n\to\infty\). Prove that your guesses are correct.
+\end{excopy}
+
+\begin{itemize}
+
+\item
+We compute the limit
+\begin{equation*}
+\lim_{n\to\infty} \left(1 - \frac{x}{n}\right)^n e^{x/2}
+=  e^{x/2} \lim_{n\to\infty} \left(1 - \frac{x}{n}\right)^n \\
+=  e^{x/2} e^{-x} = e^{-x/2}.
+\end{equation*}
+
+The integrand \(\left(1 - \frac{x}{n}\right)^n e^{x/2}\)
+is bounded on \([0,\pi]\) by  \(1\cdot e^{\pi/2}\).
+Using \(\int e^{-x/2}\,dx = -2e^{-x/2} + c\) and
+Lebesgue Dominated Theorem
+\begin{equation*}
+ \lim_{n\to\infty} \int_0^\pi \left(1 - \frac{x}{n}\right)^n e^{x/2}\, dx =
+ \int_0^\pi e^{-x/2}\,dx = -2e^{-\pi/2} - (-2e^{-0/2}) = -2e^{-\pi/2} - 2.
+\end{equation*}
+
+\item
+We compute the limit
+\begin{equation*}
+\lim_{n\to\infty} \left(1 + \frac{x}{n}\right)^n e^{-2x}
+=  e^{-2x} \lim_{n\to\infty} \left(1 + \frac{x}{n}\right)^n \\
+=  e^{-2x} e^x = e^{-x}.
+\end{equation*}
+
+The integrand \(\left(1 + \frac{x}{n}\right)^n e^{-2x}\)
+is bounded on \([0,\pi]\) by  $2$.
+Using \(\int e^{-x}\,dx = -e^{-x} + c\) and
+Lebesgue Dominated Theorem
+\begin{equation*}
+ \lim_{n\to\infty} \int_0^\pi \left(1 + \frac{x}{n}\right)^n e^{-2x}\, dx =
+ \int_0^\pi e^{-x}\,dx = -e^{\pi} - (-e^0) = -e^{-\pi/2} + 1.
+\end{equation*}
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+If $m$ is a Lebesgue measurable on \(\R^k\), prove that \(m(-E) = m(E)\),
+where
+\begin{equation*}
+ -E  = \{-x: x\in E\},
+\end{equation*}
+and hence that
+\begin{equation*}
+ \int_{\R^k} f(x)dx = \int _{\R^k} f(-x)dx =
+\end{equation*}
+for all \(f\in L^1(\R^k)\).
+\end{excopy}
+
+For any $k$-cell $W$, we have
+\begin{equation*}
+m(W) = \vol(W) = \prod_{i=1}^k (\beta_i - \alpha_i) =
+\prod_{i=1}^k ((-\alpha_i) - (-\beta_i)) = \vol(-W) = m(W).
+\end{equation*}
+Since $E$ is a limit of countable union of $k$-cells
+\(m(E) = m(-E)\) follows.
+The equality of integration is now simply matter of mapping \(\R^k \to \R^k\)
+and a change of variable.
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+Let $X$ be the plane, with the following topology: A set is open
+if and only if its intersection with every vertical line is an open subset
+of that line,
+with respect to the usual topology of \(\R^1\).
+Show that this $X$ s a locally compact Hausdorff space.
+If \(f\in C_c(X)\), let \seqxn\ be those values of $x$
+for which \(f(x,y)\neq 0\) for at least one $y$
+(there are only finitely many such $x$!), and define
+\begin{equation*}
+\Lambda f = \sum_{j=1}^n \int_{-\infty}^\infty f(x_j,y) dy.
+\end{equation*}
+Let \(\mu\) be the measure associated with this \(\Lambda\) by Theorem~2.14.
+If $E$ is the $x$-axis, show that \(\mu(E) = \infty\) although
+\(\mu(K) = 0\) for every compact \(K\subset E\).
+\end{excopy}
+
+For any two distinct point \(P_i = (x_i,y_i)\in \R^2 = X\) where \(i=1,2\)
+we present open sets \(V_1\) and \(V_2\) that separate the points.
+If \(x_1\neq x_2\), then we take  \(V_i = \{x_1\}\times\R\),
+otherwise \(y_1\neq y_2\) and we take
+\begin{equation*}
+V_i = \{(x_i,y)\in\R^2: |y-y_i| < |y_1-y_2|/2\}.
+\end{equation*}
+
+For Any point \(P=(x,y)\in\R^2=X\) and any neighborhood $V$ of $P$,
+we can find \(\epsilon>0\) such that
+\begin{equation*}
+ G = \{(x,v)\in\R^2: |v-y| < \epsilon\} \subset
+\overline{G} = \{(x,v)\in\R^2: |v-y| \leq \epsilon\}  \subset V
+\end{equation*}
+and clearly \(\overline{G}\) is compact,
+
+Now that we have shown that $X$ is locally compact Hausdorff space,
+we proceed. Let \(f\in C_c(X)\).
+Let \(W\subset \R\)  be of all
+\(x\in W\) such that there exist $y$ such that \(f(x,y)\neq 0\).
+If by negation $W$ is inifinite, then
+the family of open sets
+\begin{equation*}
+ \{\,\{x\}\times\R\, : x\in W\}
+\end{equation*}
+is a covering of \(\supp f\) which has no finite sub-covering.
+This contradicts the assumption that \(f\in C_c(\R)\).
+
+By looking at vertical finite segments
+\(S = \{(x,y)\in\R^2: x=x_0 \wedge y_0\leq y\leq y_1\}\),
+clearly \(\Lambda \chhi_S = y_1 - y_0\) hence \(\mu(S) = y_1-y_0\).
+Let $E$ is the $x$-axis. The last assertion is also true for any
+non empty sub interval \([a,b]\subset E\).
+Any open super set \(V \supset [a,b]\) contains a continuum
+of vertical segments and hence \(\mu(V) = \infty\).
+By Theorem~2.14(c) \(\mu([a,b] = \infty\).
+
+The inifinite subsets of $E$
+are covered by inifinitely many vertical open segments
+with no sub-finite sub-covering.
+Hence, the compact subsets of $E$ are exactly the finite subsets.
+Clearly the measure of a singleton \(\mu(\{(x,y)\}) = 0\),
+and thus \(\mu(K)=0\) for any compact \(K\subset E\).
+
+
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+This exercise requires more set-theoretic skill than the preceding
+ones.  Let $X$ be a well-ordered uncountable set which has a last
+element \(\omega_1\), such that every predecessor of \(\omega_1\) has
+at most countably many predecessors.
+(``Construction'': Take any well-ordered set which has elements with uncountably
+many predecessors, and let \(\omega_1\) be the first of these;
+\(\omega_1\) is called the first uncountable ordinal.)
+For \(\alpha\in X\), let \(P_\alpha\) [\(S_\alpha\)] be the set of all
+predecessors (successors) of \(\alpha\),
+and call a subset of $X$ open if it is
+a \(P_\alpha\) or an \( S_\beta\)
+or an  \(P_\alpha \cap S_\beta\)
+or a union of such sets.
+Prove that $X$ is then a compact Hausdorff space.
+(\emph{Hint}: No well-ordered set contains an infinite decreasing sequence.)
+
+Prove that the complement of the point \(\omega_1\) is an open set
+\index{sigma-compact@\(\sigma\)-compact}
+which is not \(\sigma\)-compact.
+
+Prove that to every \(f\in C(X)\)  there corresponds an \(\alpha \neq \omega_1\)
+such that $f$ is constant on \(S_\alpha\).
+
+Prove that the intersection of every countable collection \(\{K_\alpha\}\)
+of uncountable compact subsets of $X$ is uncountable.
+(\emph{Hint}: Consider limits of increasing countable sequences in $X$ which
+intersects each \(K_n\) in infinitely many points.)
+
+Let \frakM\ be the collection of all \(E\subset X\) such that either
+\(E\cup \{\omega_1\}\) or
+\(E^c\cup \{\omega_1\}\) contains an uncountable compact set; in the first case,
+define \(\lambda(E)=1\); in the second case, define \(\lambda(E) = 0\).
+Prove that \frakM\ is a \(\sigma\)-algebra which contains all Borel sets
+in $X$, that \(\lambda\) is a measure on \frakM\ which is \emph{not}
+regular (every neighborhood of \(\omega_1\) has measure $1$), and that
+\begin{equation*}
+ f(\omega_1) = \int_X f\, d\lambda
+\end{equation*}
+for every \(f\in C(X)\). Describe the regular \(\mu\) which Theorem~2.14
+associates with this linear functional.
+\end{excopy}
+
+
+\paragraph{Hausdorff.} Let \(\alpha<\beta\) be any two points in $X$.
+Clearly \(\alpha+1\leq \beta\) and then  \(P_{\alpha+1}\) and \(S_{\alpha}\)
+are open sets that separate the two points.
+
+\paragraph{Compactness.} Let \(\{G_i\}_{i\in I}\) be a family of open
+sets such that \(X=\cup_{i\in I}G_i\). By negation, assume that
+there is no finite sub-covering. We build
+\begin{itemize}
+\item A sequence of sets
+     \(\{G_{i_j}: j\in\{0\}\cup \N\;\textrm{and}\; i_j \in I\}\).
+\item A strictly decreasing sequence of points \(\{\alpha_j\}_{i\in\N}\)
+\end{itemize}
+by induction.
+For notational convenience we use ``\(G_j=G_{i_j}\)''
+and we denote \(U_n = \cup_{j=0}^n G_j\).
+Pick \(G_0\) such that \(\omega_1\in G_0\).
+
+By looking at base neighborhoods, we see that
+each non empty open set (except for \(\{1\}\)).
+contains a
+non empty open set of the form \(S_\alpha\) or \(S_\alpha \cap P_\beta\)
+
+In step $n$, let \(\alpha_n\) be the least point such that
+\(S_{\alpha_j} \subset U_{n-1}\).
+or \(S_{\alpha_j}\cap P_\beta \subset U_{n-1}\) for some
+\(\beta \geq \alpha+1\).
+Note that \(\alpha_j \notin \cup_{j<n} G_j\). Now we pick \(G_n\) such that
+\(\alpha_n \in G_n\).
+By construction, there is a base neighborhood of \(\alpha_1\)
+that is contained in \(U_n\). Thus \(\{\alpha_j\}_{i\in\N}\) is strictly
+decreasing. Hence has no minimal element in contradiction to $X$ being
+well ordered.
+
+
+\paragraph{Non \(\sigma\)-compactness of \(X\setminus\{\omega_1\}\).}
+Let \(Y= X\setminus\{\omega_1\}\). Now
+\(\{P_y: y\in Y\}\) is an open covering of $Y$.
+By exercise's, assumption \(|P_y| \leq \aleph_0\) for all \(y\in Y\).
+If by negation $X$ is \(\sigma\)-compact, then be looking at the sub-compacts
+\(X=\cup_{i\in\N} K_n\), the finite sub-covering of each and finally
+joining the sub-coverings to a countable sub-covering
+\begin{equation*}
+ Y = \bigcup_{i\in N} P_{y_i}.
+\end{equation*}
+But then \(|Y| \leq |\N|\cdot\aleph_0 = \aleph_0\)
+contradiction to the fact \(|Y|=|X|>\aleph_0\).
+
+\paragraph{Constant Tail.}
+Indeed some ``set-theoretic skill'' is needed.
+Here we use some terms and results from \cite{Dug1966}.
+\paragraph{Definitions} (\cite{Dug1966} \textsf{II 3.1}).
+Let $W$ be a well ordered set
+\index{ideal!set}
+\index{initial interval}
+The set of ideals \(I(W)\),
+an initial interval \(W(a)\) for each \(a\in W\))
+and the set of initial interval \(J(W)\)
+are defined as follows:
+\begin{eqnarray*}
+I(W) &=& \{S\subset W: \forall x\in S\wedge y < x \Rightarrow y\in S \\
+W(a) &=& \{x\in W: x < a \wedge x\neq a\}  \\
+J(W) &=& \{W(a): a\in W\}
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:set:ideals}
+\textnormal{(\cite{Dug1966} \textsf{II 3.2(a)})}
+Let $W$ be a well ordered set, then \(J(W) = I(W) \setminus \{W\}\).
+\end{llem}
+\begin{thmproof}
+\(J(W) \subset I(W) - \{W\}\): Each initial interval is obviously an ideal
+but not the whole $W$.
+Conversely, let \(S\in I(W) \setminus \{W\}\) Then
+\(U = W\setminus S\neq \emptyset\), so $U$ has a first element $a$.
+
+We now show that \(W(a)=S\).
+If \(x\in W(a)\), and if by negation \(x notin S\) then \(x\in U\)
+contradiction to \(a=\min(U)\) since \(x<a\).
+Otherwise \(x\notin W(a)\), but then \(a\leq x\) and so \(x\notin S\)
+for if \(x\in S\) by being ideal we would have \(a\in S\).
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:countable:ub}
+\textnormal{(\cite{Dug1966} \textsf{II 9.1})}
+Each countable subset of the ordinals \([0,\omega_1)\) has an upper bound in
+ \([0,\omega_1)\).
+\end{llem}
+\begin{thmproof}
+Let \(L = [0,\omega_1) \) the set of all ordinals less than \(\omega_1\).
+Let \(A\subset L\) and let $S$ be the ideal
+\begin{equation} \label{eq:UWa}
+  S =
+  \bigcup_{\alpha\in A} W(\alpha) = \bigcup_{\alpha\in A} \{x\in L: x< \alpha\}
+  \subset L.
+\end{equation}
+Since the cardinality of the ordinal \(\omega_1\) is not equal
+to any smaller ordinal, \(|W(\alpha)| \leq \aleph_0\)
+for each \(\alpha < \omega_1\).
+So the above \(\ref{eq:UWa}\) is a countable union of countable sets.
+% Since \(\aleph_0\cdot \aleph_0 = \aleph_0\) using
+\begin{equation*}
+ |S| = \aleph_0 \cdot  \aleph_0 = \aleph_0 < \aleph_1 = |L|.
+\end{equation*}
+Consequently $S$ cannot be isomorphic to $L$. By lemma~\ref{llem:set:ideals},
+\(S=[0,\beta)\) for some \(\beta < \omega_1\) and \(\beta\) is
+the least upper bound of $A$.
+\end{thmproof}
+
+The following lemma solves the ``constant tail'' statement.
+Note that in \cite{Dug1966} the underlying  space does \emph{not}
+contain (``the last'') \(\omega_1\).
+
+\index{Vickery}
+\begin{llem} \textnormal{(\cite{Dug1966} \textsf{III 8.4 Ex.7}
+                         \textrm{Vickery})}
+ \label{llem:Vickery}
+With the above interval topology defined above on \([0,\omega_1]\) and
+induced on \([0,\omega_1)\),
+If \(f\in C([0,\omega_1])\)
+then $f$ is continuous on a tail \([\beta,\omega_1]\).
+\end{llem}
+\begin{thmproof}
+We first assert that
+\begin{equation} \label{eq:f:omega:Cauchy}
+ \forall n\in\N,
+ \exists \alpha_n < \omega_1\,
+ \forall \xi \in (\alpha_n,\omega_1)\;
+         |f(\xi) - f(\alpha_n)| < 1/n.
+\end{equation}
+Intuitively --- $f$ behaves like a Cauchy sequence.
+By negation, assume
+\begin{equation*}
+ \exists n_0\in\N,
+ \forall \alpha < \omega_1\,
+ \exists \xi \in (\alpha,\omega_1)\;
+         |f(\xi) - f(\alpha)| \geq 1/n_0.
+\end{equation*}
+Now we build by induction an increasing sequence \(\{\xi_i\}_{i\in \N}\)
+such that \(|f(\xi) - f(\alpha)| \geq 1/n_0\).
+In the  \((i+1)\)-th step of the induction we look for the first \(\xi_{i+1}\)
+within \((\xi_i,\omega_1)\) that satisfies the hypothesis.
+By lemma~\ref{llem:countable:ub}, \(\xi_{i+1}\) have a least upper bound
+\(\gamma < \omega_1\). But then $f$ would not be continuous at \(\gamma\).
+This proves (\ref{eq:f:omega:Cauchy}).
+
+
+Now let \(\beta\) be an upper bound of \(\{\alpha_i\}_{i\in \N}\).
+Again by lemma~\ref{llem:countable:ub} \(\beta<\omega_1\).
+Now if \(\zeta\in(\beta,\omega_1)\), then
+\begin{equation*}
+|f(\zeta) - f(\beta)| \leq
+|f(\zeta) - f(\alpha_n)| + |f(f(\beta) - f(\alpha_n)| = 2/n
+\end{equation*}
+for every $n$, thus \(f(\zeta) = f(\beta)\), for every \(\zeta\) such that
+\(\beta < \zeta < \omega_1\).
+As for last point, If by negation \(f(\omega_1)\neq f(\beta)\) then we could
+find a base neighborhood interval \(I=S_{\delta}\) of \(\omega_1\)
+such that for every \(x\in I\), we have
+\begin{equation*}
+|f(x)-f(\omega_1)| < |f(\omega_1) - f(\beta)| / 2 > 0
+\end{equation*}
+But then there must be an \(x\in I\setminus\{\omega_1\}\)
+for which we know that \(f(x)=f(\beta)\).
+Thus $f$ is constant on \(S_\beta\).
+\end{thmproof}
+
+An immediate consequence is:
+\begin{llem}
+With the above interval topology defined above on \([0,\omega_1]\),
+If \(f\in C([0,\omega_1])\)
+then $f$ is continuous on a tail \([\beta,\omega_1]\).
+\end{llem}
+\begin{thmproof}
+With such \(f\in C([0,\omega_1])\),
+put \(\tilde{f} = f_{|[0,\omega_1)}\in C([0,\omega_1))\).
+Applying lemma~\ref{llem:Vickery}, we see that \(\tilde{f}\)
+is constant on a tail. By continuity \(f(\omega_1)\) has this tail value,
+and so $f$ is constant on a tail.
+\end{thmproof}
+
+
+\paragraph{Intersection of Compacts.}
+Let \(\{K_n\}_{n\in\N}\) a countable family of uncountable compact sets
+in \([0,\omega_1]\). We note that \(\omega_1\in K_n\) for all \(n\in\N\)
+since otherwise each of their upper bound would imply countable cardinality.
+Let \(K = \bigcap_{n\in\N} K_n\) It is clealy compact.
+Let \(K'=K\setminus \{\omega_1\}\).
+Assume by negation $K$ that is countable, and so is \(K'\).
+Let $b$ be a an upper bound for \(K'\) whose existence
+is implied by lemma~\ref{llem:countable:ub}.
+
+We will build an strictly increasing sequence \(\{a_n\}_{n\in\N}\)
+in \([0,\omega_1)\). We look at blocks \(B_k\) of indices of increasing size.
+Let
+\begin{eqnarray*}
+b_0 &=& 0 \\
+b_k &=& \sum_{i=1}^k i = k(k+1)/2 \qquad \textrm{for}\; k\in\N \\
+B_k &=& \{m\in\N: b_{k-1} < m \leq b_k\}
+\end{eqnarray*}
+Note that \(\N = \disjunion_{k\in\N} B_k\). Hence
+for each \(n\in\N\) there are unique \(k(n)\in\N\) such that \(n\in B_{k(n)}\).
+We denote the position of $n$ within \(B_k(n)\)
+by \(j(n) = n - b_{k(n)-1}\).
+
+We now define the desired sequence by induction.
+\begin{eqnarray}
+a_1 &=& \min(K_1) \cap [b+1,\omega_1)  \label{eq:a1K1} \\
+a_n &=& \min\left(K_{j(n)} \cap [a_{n-1},\omega_1)\right). \notag
+\end{eqnarray}
+
+The sequence \(\{a_n\}_{n\in\N}\) intersects each of the
+compact sets \(\{K_n\}_{n\in\N}\) in infinitely many points.
+Again by lemma~\ref{llem:countable:ub},
+The limit \(u = \lim_{n\in\N} a_n < \omega_1\).
+This $u$, must be the same limit of all sub-sequences, in particular
+intersection of \(\{a_n\}_{n\in\N}\) with \(K_i\). Thus \(u\in K_i\),
+hence \(u\in K'\), but by construction (\ref{eq:a1K1})
+we have a contradiction \(u>b\).
+
+\paragraph{The \(\lambda\) measure}
+Let \frakM\ be defined as in the exercise. Clearly by definition
+it is closed under completion, and it contains $X$ and \(\emptyset\).
+To show it is a \(\sigma\)-algebra we need to show it is closed
+under countable union. Let \(A_n\in\frakM\) for \(n\in\N\) and
+let \(A=\cup_{n\in\N}A_n\). If there exists \(n\in\N\) such that
+\(A_n\cup\{\omega_1\}\) contains an uncountable compact subset,
+then so does $A$.  Otherwise, for every \(n\in\N\) the sets
+\(A_n^c\cup\{\omega_1\}\) each contains an uncountable compact subset.
+By previous result so is their intersection
+\begin{equation*}
+ \bigcap_{n\in\N} A_n^c\cup\{\omega_1\} =
+ \left(\bigcap_{n\in\N} A_n^c\right)\cup\{\omega_1\} =
+ A^c\cup\{\omega_1\}.
+\end{equation*}
+Hence, in both cases \(A\in\frakM\).
+
+A closed interval \[a,b\] is uncountable iff \(a<b=\omega_1\). So clearly
+\frakM\ contains all closed intervals. By completion closure, \frakM\ contains
+all open intervals, hence all Borel sets.
+
+\paragraph{The \(\mu\) measure}
+Let \(\mu\) be the measure on \([0,\omega_1]\) provided by
+\index{Riesz}
+Riesz representation theorem. In the constructive proof
+(\cite{RudinRCA80} Theorem 2.14, formula (3)) we have the definition
+\begin{equation*}
+ \mu(E) = \sup\{\mu(K): K\subset E,\, K\, \textrm{compact}\}.
+\end{equation*}
+Since the singleton \(\{\omega_1\}\) is compact, and for all \(f\in C(X)\)
+we actually have \(f(\omega_1)\) as the value of the functional,
+we have the following unique measure
+\begin{equation*}
+ \lambda(E) = \left\{\begin{array}{l@{\qquad}l}
+                      1 & \omega_1 \in E \\
+                      0 & \omega_1 \notin E
+                     \end{array}\right.
+\end{equation*}
+for all Borael sets $E$.
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+If \label{ex:2:19}
+\(\mu\) is an arbitrary possible measure and \(f\in L^1(\mu)\),
+prove that  \(\{x: f(x)\neq 0\}\) has \(\sigma\)-finite measure.
+\end{excopy}
+
+Say the measure \(\mu\) is over $X$. Let
+\begin{eqnarray*}
+A_0 &=& \emptyset  \\
+A_n &=& \{x\in X: |f(x)| > 1/n\} \setminus A_{n-1}
+\end{eqnarray*}
+Now
+\begin{equation*}
+\int |f|\,d\mu
+ =    \cup_{n\in\N} \int_{A_n} |f|\,d\mu
+ \geq \cup_{n\in\N} \mu(A_n)/n.
+\end{equation*}
+If \(mu\) were not \(\sigma\)-finite measure, then there would exist
+\(n\in\N\) such that \(\mu(A_n)=\infty\).
+But then \(\int |f|\,d\mu = \infty\) contrsicting the
+assumption \(f\in L^1(\mu)\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+A positive measure \(\mu\) on a set $X$ is called
+\index{sigma-finite@\(\sigma\)-finite}
+\emph{\(\sigma\)-finite} if $X$ is a countable union of sets \(X_i\)
+with \(\mu(X_i) < \infty\). Prove that \(\mu\) is \(\sigma\)-finite
+if and only if there exists  \(f\in L^1(\mu)\)
+such that \(f(x)>0\) for every \(x\in X\).
+\end{excopy}
+
+One direction was shown in the above exercise~\ref{ex:2:19}.
+Conversely, say \(\mu\) is a \(\sigma\)-finite measure over $X$.
+Hence we have \(X = \disjunion_{n\in\N} X_i\) and \(\mu(X_n)<\infty\).
+Define
+\begin{equation*}
+f(x) = 2^{-n}\,/\,\max(\mu(X_n),1) \qquad \textrm{if}\; x \in X_i.
+% \left\{ \begin{array}{l@{\qquad}l}
+\end{equation*}
+Now clearly
+\begin{equation*}
+\int_X |f|\,d\mu
+ = \sum_{n\in\N} \int_{X_n} |f|\,d\mu
+ \leq \sum_{n\in\N} 2^{-n} = 1.
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%
+\end{enumerate}
+%%%%%%%%%%%%%%%

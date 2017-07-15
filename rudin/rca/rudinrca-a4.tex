@@ -1,0 +1,10 @@
+\RequirePackage{ifpdf}
+\ifpdf
+ \documentclass[pdftex,twoside,a4paper]{book}
+\else
+  \documentclass[11pt,a4paper]{book}
+  \usepackage{thumbpdf}
+\fi
+
+\input{rudinrca}
+

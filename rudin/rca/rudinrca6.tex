@@ -1,0 +1,928 @@
+% -*- latex -*-
+% $Id: rudinrca6.tex,v 1.5 2008/07/19 08:56:55 yotam Exp $
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Complex Measures} % 6
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+Intuitively the following lemma shows that \(f\,d\mu\) is regular.
+\begin{llem} \label{llem:fdmu:abscont}
+Let $f$ be a \(\mu\)-measurable function on $X$
+such that \(\int|f|\,d\mu<\infty\).
+For any \(\epsilon>0\) there exists \(\delta>0\) such that
+\(\int_E |f|\,d\mu < \epsilon\) whenever \(\mu(E)<\delta\).
+\end{llem}
+\begin{thmproof}
+Define the complex measure \(\lambda(E) = \int_E f\,d\mu\).
+Clearly \(\lambda \ll \mu\). Theorem~6.11 gives the desired conclusion.
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 132-134
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% 01
+\begin{excopy}
+If \(\mu\) is a complex measure on a \(\sigma\)-algebra \frakM,
+and if \(E \in \frakM\), define
+\begin{equation*}
+\lambda(E) = \sup \sum |\mu(E_i)|,
+\end{equation*}
+the supremum being taken over all \emph{finite} partitions \(\{E_i\}\) of $E$.
+Does it follow that \(\lambda = |\mu|\)?
+\end{excopy}
+
+Yes.
+
+Clearly \(\lambda(E) \leq |\mu|(E)\). To show the opposite inequality,
+let \(\epsilon > 0\). We can find some countable
+partition \(\{E_i\}\) of $E$
+such that
+\begin{equation*}
+ \sum_{i\in\N} |\mu(E_i)| > |\mu|(E) - \epsilon/2.
+\end{equation*}
+So  we can find some integer \(m<\infty\) such that
+\begin{equation*}
+ \sum_{i=1}^m |\mu(E_i)| > |\mu|(E) - \epsilon.
+\end{equation*}
+Hence \(\lambda(E) \geq |\mu|(E)\) and thus
+\(\lambda(E) = |\mu|(E)\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Prove that the example given at the end of Sec.~6.10 has the stated properties.
+\end{excopy}
+
+\paragraph{Property 1.}
+On \(I=(0,1)\), let \(\mu\) be the Lebesgue measure
+and \(\lambda\) the counting measure.
+By negation, let \(\lambda = \lambda_s + \lambda_a\) be the
+Lebesgue decomposition.
+For any \(x\in I\), we have
+ \(\lambda(\{x\}) = 1\) and  \(\mu(\{x\}) = 0\)
+Hence
+\(\lambda_s(\{x\}) = 0\) and  \(\lambda_a(\{x\}) = 1\).
+Since \(\mu\perp \lambda_a\) we have \(I = A \disjunion B\)
+such that for any Lebesgue measurable $E$, we have
+\begin{equation*}
+\mu(E) = \mu(E\cap A) \qquad \textrm{and} \qquad
+\lambda_a(E) = \lambda_a(E\cap B).
+\end{equation*}
+Since
+\(\lambda_a(\{x\}) = 1\)
+for any \(x\in I\), we must have \(B=I\), but then \(\mu=0\)
+which is a contradiction.
+
+\paragraph{Property 2.}
+Assume by negation \(h\in L^1(\lambda)\) such that \(d\mu = h\,d\lambda\).
+If \(h=0\) then \(\mu=0\) so we may assume that \(h(x)\neq 0\)
+for some \(x\in I\). But then
+\begin{equation*}
+0 = \mu(\{x\}) = h(x)\lambda(\{x\}) = h(x) \neq 0.
+\end{equation*}
+which is again a contradiction.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Prove that the vector space \(M(X)\) of  all complex regular Borel measures
+on a locally compact Hausdorff space $X$ is a Banach space if
+\(\|\mu\| = |\mu|(X)\).
+\emph{Hint}: Compare Exercise~8, Chap.~5.
+[That the difference of any two members of \(M(X)\) is in \(M(X)\)
+was used in the first
+paragraph of the proof of Theorem~6.19; supply a proof of this fact.]
+\end{excopy}
+
+Let \(\lambda,\mu \in M(X)\).
+For \(E = \disjunion E_j\) use definition to compute
+\begin{align}
+\lambda(E) - \mu(E) \notag \\
+&= \left(\sum_{j\in\N} \lambda(E_j)\right) -
+   \left(\sum_{j\in\N} \mu(E_j)\right) \notag \\
+&= \sum_{j\in\N} \lambda(E_j) - \mu(E_j) \label{eq:ex6.3} \\
+&= \sum_{j\in\N} (\lambda - \mu)(E_j) \notag \\
+&= (\lambda - \mu)(E).
+\end{align}
+The equality in \eqref{eq:ex6.3} holds since the series converge absolutely.
+
+If we define \((a\mu)(E) = a(\mu(E)\) for \(a\in\C\), all vector space
+equalities trivally hold. Thus we need only to show completeness.
+Let \(\{\mu_j\}_{j\in\N}\) be a Cauchy sequence of measures.
+That is for each \(\epsilon>0\) there exists some $N$ such that
+\(|\mu_j - \mu_k|(X) < \epsilon\) if \(j,k>N\).
+Since
+\(|\mu_j - \mu_k|(E) \leq |\mu_j - \mu_k|(X)|\)
+for any \(E\in\frakM\), the sequence
+\(\{\mu_j(E)\}\) is a Cauchy sequence, and we can define
+its limit \(\mu(E) = \lim_{j\to\infty} \mu_j(E)\).
+It is easy to see that with \(\mu\), the vector space equalities still hold.
+We need to show that \(\mu\in M(X)\).
+
+We have the unique decompositions
+\begin{align*}
+\mu_j &= \lambda_j^+ - \lambda_j^- + i(\nu_j^+ - \nu_j^-) \\
+\mu   &= \lambda^+ - \lambda^- + i(\nu^+ - \nu^-)
+\end{align*}
+where
+\(\lambda_j^+\), \(\lambda_j^-\), \(\nu_j^+\) and \(\nu_j^-\)
+are positive measures since
+the mappings\(x\mapsto|x|\), \(\Re\) \(\Im\) are continuous,
+and
+\(\lambda^+\), \(\lambda^-\), \(\nu^+\) and \(\nu^-\)
+are non-negative functions on \frakM.
+
+For temporary abberviation, we use
+\(\lambda=\lambda^+\) and \(\lambda_j = \lambda_j^+\).
+
+Pick arbitrary \(K<\infty\) so we can estimate
+\begin{align*}
+\sum_{k\leq K} \lambda(E_k)
+&= \sum_{k\leq K} \lim_{j\to\infty} \lambda_j(E_k)
+ = \lim_{j\to\infty} \sum_{k\leq K} \lambda_j(E_k)
+ = \lim_{j\to\infty} \lambda_j\left(\Disjunion_{k\leq K} E_k\right) \\
+&\leq \lim_{j\to\infty} \lambda_j(E) \\
+&= \lambda(E).
+\end{align*}
+Hence
+\begin{equation*}
+\sum_{k\in\N} \lambda(E_k) \leq \lambda(E).
+\end{equation*}
+Looking at \(f_j = \lambda_j(E_k)\) as function on \(k\in\N\)
+with at the coundting measure on \N, we utilize
+Lebesgue's dominated convergence theorem
+in the following \eqref{eq:ex:6.3}.
+
+Now
+If \(E = \disjunion_{j\in\N} E_i\) all in \frakM, then
+\begin{align}
+\lambda(E)
+&= \lim_{j\to\infty} \lambda_j(E)
+ = \lim_{j\to\infty} \lambda_j\left(\Disjunion_{K\in\N} E_k\right) \notag \\
+&= \lim_{j\to\infty} \sum_{k\in\N} \lambda_j(E_k) \notag \\
+&= \sum_{k\in\N} \lim_{j\to\infty} \lambda_j(E_k)  \label{eq:ex:6.3} \\
+&= \sum_{k\in\N} \lambda(E_k) \notag
+\end{align}
+
+Similarly, we can derive the equlaities for
+\(\lambda^-\), \(\nu^+\) and \(\nu^-\). Then we sum them to get
+\begin{equation*}
+\mu(E) = \sum_{k\in\N}  \mu(E_k).
+\end{equation*}
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose \(1 \leq p \leq \infty\), and $q$  is the exponent conjugate to $p$.
+Suppose \(\mu\) is a positive \(\sigma\)-finite measure and $g$ is a measurable
+function such that \(fg\in L^1(\mu)\) for every
+\(f\in L^p(\mu)\). Prove that \(g\in L^q(\mu)\).
+\end{excopy}
+
+\iffalse
+% By H\"older's inequality \(\|fg\|_1 \leq \|f\|_p \|g\|_q\).
+Clearly \(f \mapsto \int fg\;d\mu\) is a linear functional on \(L^p(\mu)\).
+Let \(X=\disjunion_{j\in\N} X_j\) a decomposition of the space
+such that \(\mu(X_j)<\infty\). We set \(S_n = \disjunion_{j\leq n} X_j\)
+and let \(g_n = g_{|S_n}\).
+Using Exercise~2.5\ich{a} we have
+\begin{equation*}
+\|g_n\|_q = \|g_n\|_\infty \leq \|g\|_\infty.
+\end{equation*}
+
+Clearly \(g\in L^q(\mu)\) iff \(|g| L^q(\mu)\).
+Since \(|\mu|(X)<\infty\), we have the constant \(1\in L^q\)
+for all \(q\in[1,\infty]\). Hence also
+\(g\in L^q(\mu)\) iff \(g\pm 1\in L^q(\mu)\).
+Let \(X_n=\{x\in X: n-1 \leq |g(x)| < n\}\).
+
+Assume first \(1<p,q<\infty\), and by negation, assume
+\begin{equation} \label{eq:ex6.4:neg}
+g\notin L^q(\mu).
+\end{equation}
+Hence we can have the estimatation.
+\begin{equation*}
+\sum_{n\in \N} n^q \mu(X_n)
+ \geq \sum_{n\in \N} \int_{X_n} |g|^q\,d\mu \\
+ = \int_X |g|^q\,d\mu
+ = \|g\|q^q = \infty.
+\infty
+\end{equation*}
+
+Define the function
+\begin{equation*}
+h(x) =
+\left\{
+ \begin{array}{ll}
+ 0 & \quad x\in X_0\\
+ n^{q/p} & \quad x\in X_n \;\textrm{and}\; n>0
+ \end{array}
+\right.
+\end{equation*}
+
+Now
+\begin{equation*}
+\|h\|_p^p
+= \int_X h^p\,d\mu
+= \sum_{n=0}^\infty \int_{X_n} h^p\,d\mu
+= \sum_{n\in\N}  \left(n^(q/p)\right)^p\,d\mu
+= \sum_{n\in\N}  n^q\,d\mu
+\end{equation*}
+Hence \(\||g|-1\|_q = \infty\),
+
+\fi
+
+For each $n$ define
+\begin{equation*}
+g_n(x) =
+\left\{
+ \begin{array}{ll}
+ g(x) & \quad |g(x)| \leq n\\
+ ng(x)/|g(x)| & \quad |g(x)| > n
+ \end{array}
+\right.
+\end{equation*}
+Clearly \(\lim_{n\to\infty}g_n(x) = g(x)\;\aded\)\,.
+Now we can define functionals \(\Lambda_n\in (L^p(\mu))^*\) by
+\begin{equation*}
+\Lambda_n(f) = \int_X fg_n\,d\mu.
+\end{equation*}
+With the estimatation
+\begin{equation*}
+|\lambda_n{f}|
+\leq \int_X |fg_n|\,d\mu
+\leq \int_X |fg|\,d\mu
+< \infty
+\end{equation*}
+we use the
+\index{Banach-Steinhaus}
+\index{Steinhaus}
+Banach-Steinhaus Theorem~5.8 (\cite{RudinRCA87})
+to get a unifrom bound \(\|\Lambda_n\|\leq M\).
+Now for each \(f\in L^p(\mu)\) we have
+\begin{equation*}
+\lim_{n\to\infty} \int_X fg_n\,d\mu = \int_X fg\,d\mu
+\end{equation*}
+and if we define \(\Lambda(f) = \int_X fg\,d\mu\) we
+have \(\|\Lambda\| \leq M\).
+
+
+Applying the uniquness part of Theorem~6.16 \cite{RudinRCA87}
+we get the desired result for \(p<\infty\).
+
+Now assume \(p=\infty\). Obviously the constant function
+\(1\in L^\infty(\mu)\) and by assumption
+\(|\int_X 1\cdot g\,d\mu|<\infty\). Hence \(f\in L^1{\mu}\).
+
+
+%%%%%%%%%%%%%% 05
+\begin{excopy}
+Suppose $X$ consists of two points $a$ and $b$; define
+\(\mu(\{a\}) = 1\),
+\(\mu(\{b\}) = \mu(X) = \infty\), and
+\(\mu(\emptyset) = 0\).
+Is it true for this \(\mu\) ,
+that \(L^\infty(\mu)\) is the dual space of \(L^1(\mu)\)?
+\end{excopy}
+
+No. Clearly
+\begin{equation*}
+L^1(\mu) = \{f\in \C^X: f(b)=0\}.
+\end{equation*}
+Now consider \(g_1,g_2\in L^\infty(\mu)\) defined as
+\(g_1=1\), \(g_2(a)=1\) and \(g_2(b)=0\). Both induces the same
+functional in \(\left(L^1(\mu)\right)^*\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose \(1 < p < \infty\), and prove that
+\(L^q(\mu)\) is the dual space of \(L^p(\mu)\)
+even if \(\mu\) is not \(\sigma\)-finite.
+(as usual \(1/p+1/q=1\).)
+\end{excopy}
+
+For positive  \(\sigma\)-finite measure the claim has been proved.
+Assume now that \((X,\frakM,\mu)\) is a complex measure space.
+By Theorem~6.12 (\cite{RudinRCA87}) there exists a measurable
+function $h$ such that \(\forall x\in X, |h(x)|=1\) and
+\(d\mu = h\,d|\mu|\).
+We note, that as \emph{sets of functions} we trivially have
+\(L^p(\mu)=L^p(|\mu|)\) and \(L^q(\mu)=L^q(|\mu|)\).
+The vector space operations are identical.
+Also the topolgies are the same, since the norms are invariant,
+that is
+\begin{equation*}
+\|f\|_{p,\mu}
+= \left(\int |f|^p\,d\mu\right)^{1/p}
+= \left(\int |f|^p\,d|\mu|\right)^{1/p}
+\|f\|_{p,|\mu|}.
+\end{equation*}
+
+Hence, given a \(\Lambda\in (L^p(\mu))^*\)
+it may be viewed as a functional on \(L^p(|\mu|)\).
+From results on positive measures we have \(g\in L^q(|\mu|)\)
+such that
+\begin{equation*}
+\Lambda(f) = \int_X fg\,d|\mu|
+\end{equation*}
+for all \(f\in L^p(\mu)\).
+But then
+\begin{equation*}
+\Lambda(f) = \int_X f(g/h)\,d\mu
+\end{equation*}
+and clearly \(g/h\in L^q(\mu)\).
+The uniqness of \(g/h)\) is proved in same way
+as in the proof of Theorem~6.16 (\cite{RudinRCA87}).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose \(\mu\) is a complex Borel measure on \([0,2\pi]\)
+(or on the unit circle \T),
+and define the Fourier coefficients of \(\mu\) by
+\begin{equation*}
+\widehat{\mu}(n) = \int e^{-int}\,d\mu(t) \qquad (n=0,\pm 1,\pm 2, \ldots).
+\end{equation*}
+Assume that \(\widehat{\mu}(n) \to 0 \) as \(n\to +\infty\)
+and prove that then
+\(\widehat{\mu}(n) \to 0 \) as \(n\to -\infty\).
+
+\emph{Hint}: The assumption also holds with \(f\,d\mu\) in  place of \(d\mu\)
+if $f$ is any trigonometric polynomial, hence if $f$ is continuous,
+hence if $f$ is any bounded Borel function,
+hence if \(d\mu\) is replace by \(d|\mu|\).
+\end{excopy}
+
+Following the hint. For each \(m\in\Z\) we have
+\begin{equation*}
+\lim_{n\to+\infty} \int e^{-int}e^{imt}\,d\mu(t)
+= \lim_{n\to+\infty} \int e^{-i(n-m)t}\,d\mu(t)
+= \lim_{n\to+\infty} \int e^{-int}\,d\mu(t)
+= 0.
+\end{equation*}
+If for \(j=1,2\) we have
+\begin{equation*}
+\lim_{n\to+\infty} \int e^{-int}f_j(t)\,d\mu(t) = 0
+\end{equation*}
+Then
+\begin{equation*}
+\lim_{n\to+\infty} \int e^{-int}(f_1+f_2)(t)\,d\mu(t) = 0.
+\end{equation*}
+Thus we have similar convergence \(\lim_{n\to+\infty}\widehat{(f\mu)}(n)\)
+for trigonometric polynomials $f$.
+Similarly this holds for all continuous $f$, in particular for
+the unique $h$ such that \(|\mu| = h\mu\) and \(|h(t)|=1\)
+Now
+\begin{align}
+\widehat{\mu}(-n)
+&= \int e^{int}\,d\mu(t)
+ = \int e^{int}/h(t)\,d|\mu(t)|
+ = \overline{\int \overline{e^{int}}/\overline{h(t)}\,d|\mu(t)|}
+ = \overline{\int e^{-int}/\overline{h(t)}\,d|\mu(t)|} \notag \\
+&= \overline{\int e^{-int}\left(h(t)/\overline{h(t)}\right)\,d\mu(t)}
+   \label{eq:ex6.7}.
+\end{align}
+As before, the convergence to zero also holds for
+\(h(t)/\overline{h(t)}\) and thus the values \eqref{eq:ex6.7}
+converge to zero.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+In the terminology of Exercise~7, find all \(\mu\) such that
+\(\hat{\mu}\) is periodic, with respect to $k$
+[This means that \(\hat{\mu}(n+k) = \hat{\mu}(n)\) for all integers $n$;
+of course $k$ is also assumed to be an integer.]
+\end{excopy}
+
+Equivalently, we can look for all measurable functions $f$, such that
+\begin{equation*}
+\int_\T e^{-int}f(t)\,dm(t)
+\end{equation*}
+is periodic in $n$.
+
+
+\paragraph{Example:} Given $k$, for each \(j\in\N_k\) let
+\(K = \{e^{2j\pi i/k}: 0\leq j < k\}\) and set
+\(\mu(\{P\}) = 1/k\) for each \(P\in K\)
+and \(\mu(\T\setminus K) = 0\). Complete \(\mu\) to a measure,
+then
+\begin{equation*}
+\widehat{\mu}(n) = \left\{
+ \begin{array}{ll}
+ 1 & \quad \textrm{if}\; n = 0 \bmod k \\
+ 0 & \quad \textrm{if}\; n \neq 0 \bmod k
+ \end{array}
+ \right.
+\end{equation*}
+If \(\mu\ll m\) then \(d\mu = h\,dm\) for some \(h\in L^1(\T)\)
+but \(\widehat{h}(n)\) cannot be periodic (unless \(h=0\)),
+since \(\lim_{n\to\infty}\widehat{h}(n) = 0\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose that \(\{g_n\}\) is a sequence of positive continuous functions on
+\(I=[0,1]\), that \(\mu\) is a positive Borel measure  on $I$, and that
+\begin{itemize}
+\itemch{i} \(\lim_{n\to\infty} g_n(x) = 0\quad \aded [m]\).
+\itemch{ii} \(\int_I g_n\,dm = 1\) for all $n$,
+\itemch{iii} \(\lim_{n\to\infty} \int_I fg_n\,dm = \int_I f\,d\mu\)
+              for every \(f\in C(I)\).
+\end{itemize}
+Does it follow that \(\mu\perp m\)?
+\end{excopy}
+
+Yes. We will show that there exists a Borel subset \(D\subset I\) such that
+\(m(D)=0\) and \(\mu(E) = \mu(E\cap D)\) for each Borel set $E$.
+
+Consider the ``bad set''
+\begin{equation*}
+ B = \{x\in I: \limsup g_n(x) > 0\}.
+\end{equation*}
+Since \(m(B) = 0\) by \ich{i} we can redefine \(g_n(x)=0\)
+for each \(x\in B\).
+This redefinition removes the \aded\ restriction from \ich{i}, but
+does not effect
+the other assumptions \ich{ii}, \ich{iii} and not the desired conclusion.
+
+Pick some \(k\in\N\).
+\index{Egoroff}
+By Egoroff's Theorem (Exercise~3.16 \cite{RudinRCA87})
+there exists a measurable \(D_n \subset I\) such that
+\(m(D_k) < 1/k\) and such that
+\(\{g_n\}\) converges \emph{uniformly} to $0$ on \(C_k\)
+where \(E_k = I \setminus D_k\).
+We will show that \(\mu(E_k) = 0\).
+\iffalse
+Hence
+\begin{equation*}
+\lim_{n\to\infty} \int_{E_k} g_n\,dm
+\leq \bigl(1 - m(D_k)\bigr) \lim_{n\to\infty} \sup_{x\in E_k} g_n(x)
+= 0.
+\end{equation*}
+\fi
+Given \(\epsilon>0\), we
+apply Lusin Theorem~2.24 (\cite{RudinRCA87}) to the function
+\(\chhi_{E_k}\) to get a function \(f_k\in C(I)\)
+such that \(\|f_k\|_\infty = 1\) and
+\begin{equation*}
+m\bigl(\{x\in I: f(x) \neq \chhi_{E_k}(x)\}\bigr) < \epsilon.
+\end{equation*}
+\begin{align*}
+\mu(E_k)
+&= \int_I \chhi{E_k}\,d\mu \\
+&\leq \int_I f_k\,d\mu + \epsilon
+\end{align*}
+
+
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Let \((X,\frakM,\mu)\) be a positive measure space. Call a set
+\(\Phi \subset L^1(\mu)\)
+\index{uniformly  integrable}
+\emph{uniformly  integrable}
+if to each \(\epsilon < 0\) corresponds \(\delta>0\) such that
+\begin{equation*}
+\left|\int_E f\,f\mu\right| < \epsilon
+\end{equation*}
+whenever \(f\in\Phi\) and \(\mu(E) < \delta\).
+\begin{itemize}
+
+\itemch{a}
+Prove that every finite subset of \(L^1(\mu)\) is uniformly integrable.
+
+\itemch{b}
+Prove the following convergence theorem of \index{Vitali} Vitali:
+
+\textsl{
+If (i) \(\mu(X)<\infty\), (ii) \(\{f_n\}\) is uniformly integrable,
+(iii) \(f_n(x)\to f(x)\;\aded\) as \(n\to\infty\),
+and (iv) \(|f(x)|<\infty\;\aded\), then \(f\in L^1(\mu)\) and
+\begin{equation*}
+\lim_{n\to\infty} \int_X|f_n - f|\,d\mu = 0.
+\end{equation*}
+}
+\emph{Suggestion}: Use \index{Egoroff} Egoroff's theorem
+
+\itemch{c}
+Show that \ich{b} fails if \(\mu\) is a Lebesgue measure on
+\((-\infty,\infty)\), even if \(\{\|f_n\|_1\}\) is assumed to be bounded.
+Hypothesis (i) can therefore  not be omitted in \ich{b}.
+
+\itemch{d}
+Show that the hypothesis (iv)  is redundant in \ich{b} for some \(\mu\)
+(for instance, for Lebesgue measure on a bounded interval), but that there are
+finite measures for which the omission of~(iv)
+would make \ich{b} false.
+
+\itemch{e}
+Show that Vitali's theorem implies Lebesgue's dominated convergence theorem,
+for finite measure space. Construct an example in which Vitali's theorem
+applies although the hypothesis of
+Lebesgue's theorem does not hold.
+
+\itemch{f}
+Construct a sequence \(\{f_n\}\), say on \([0,1]\), so that
+\(f_n(x)\to 0\) for every $x$,
+\(\int f_n\to 0\) but \(\{f_n\}\) 
+is not uniformly integrable (with respect to Lebesgue's measure).
+
+\itemch{g}
+However, the following converse of Vitali's theorem is true:
+
+\textsl{
+If \(\mu(X)<\infty\), \(f_n\in L^1(\mu)\), and
+\begin{equation*}
+\lim_{n\to\infty} \int_E f_n\,d\mu
+\end{equation*}
+exists for every \(E\in \frakM\), then \(\{f_n\}\) is uniformly integrable.
+}
+
+Prove this by completing the following outline.
+
+Define \(\rho(A,B) = \int |\chhi_A - \chhi_B|\,d\mu\).
+Then \((\frakM,\rho)\) is a complete metric space
+(modulo sets of measure $0$), and \(E\mapsto \int_E f_n\,d\mu\) is
+a continuous for each $n$.
+If \(\epsilon > 0\), there exist \(E_0\), \(\delta\), $N$
+(Exercise~13, Chap~5) so that
+\begin{equation} \label{eq:ex:6.10}
+\left| \int_E (f_n - f_N)\,d\mu\right| < \epsilon
+\qquad \textrm{if}\qquad
+\rho(E, E_0) < \delta, \qquad n > N.
+\end{equation}
+If \(\mu(A)<\delta\), \eqref{eq:ex:6.10} holds with \(B = E_0 - A\)
+and \(C = E_0 \cup A\)
+in place of $E$.
+Thus \eqref{eq:ex:6.10} holds with $A$ in place of $E$ and \(2\epsilon\)
+in place of \(\epsilon\).
+Now apply \ich{a} to \(\{\seq{f}{N}\}\): There exists \(\delta'>0\)
+such that
+\begin{equation*}
+\left| \int_A f_n\,d\mu \right| < 3\epsilon
+\qquad \textrm{if}\qquad
+\mu(A) < \delta', \qquad n=1,2,3,\ldots.
+\end{equation*}
+\end{itemize}
+\end{excopy}
+
+We will need the following result.
+\begin{llem}
+If
+\(\Phi=\{f_j: j\in J\}\) is uniformly  integrable,
+then
+\(\{|f_j|: j\in J\}\) is uniformly  integrable.
+\end{llem} \label{llem:abs:unifinteg}
+\begin{thmproof}
+Define the complex plane quartans
+\begin{align*}
+\C_0 &= \{z\in\C: \Re(z)>0 \;\wedge\; \Im(z)\geq 0\} \\
+\C_j &= \{e^{j\pi i/2}z: z\in \C_0 \} \quad j=1,2,3.
+\end{align*}
+Now
+\begin{equation*}
+\C = \{0\} \disjunion \Disjunion_{j=0}^3 \C_j.
+\end{equation*}
+Pick arbitrary \(\epsilon> 0\). Let \(\delta>0\) such that 
+\(|\int_E f\,d\mu|<\epsilon\) for all \(f\in\Phi\) 
+whenever \(\mu(E)<\delta\).
+Take such $E$, and define \(E_j = E\cap \C_j\) for \(j=0,1,2,3\).
+For each such $j$
+\begin{align*}
+\int_{E_j} |f|\,d\mu
+&= \int_{E_j} |\Re(f) + \Im(f)|\,d\mu \\
+&\leq  \int_{E_j} |\Re(f)|\,d\mu + \int_{E_j} |\Im(f)|\,d\mu \\
+&=  \left|\int_{E_j} \Re(f)\,d\mu\right| 
+  + \left|\int_{E_j} \Im(f)\,d\mu\right| 
+ =  \left|\Re\left(\int_{E_j} f\,d\mu\right)\right| 
+  + \left|\Im\left(\int_{E_j} f\,d\mu\right)\right| \\
+&\leq  2\max\left(\left|\Re\left(\int_{E_j} f\,d\mu\right)\right|,
+                  \left|\Im\left(\int_{E_j} f\,d\mu\right)\right|\right) \\
+&\leq  \sqrt{2}\left|\int_{E_j} f\,d\mu\right|.
+\end{align*}
+
+Hence
+\begin{equation*}
+\int_E |f|\,d\mu
+=    \sum_{j=0}^3 \int_{E_j} |f|\,d\mu
+\leq \sqrt{2}\left|\sum_{j=0}^3 \int_{E_j} f\,d\mu\right| 
+<    \sqrt{2}\epsilon
+\end{equation*}
+and thus \(\Phi\) is uniformly integrable.
+\end{thmproof}
+
+
+
+\begin{itemize}
+
+\itemch{a}
+By Theorems~1.29 and~6.11 \cite{RudinRCA87} $f$ is uniformly integrable
+(by itself) if \(f\in L^1(\mu)\).
+For finite set \(\{f_j\}_{j=1}^n\), for each \(\epsilon>0\)
+we pick \(\delta = \min\{\delta_j: 1\leq j \leq n\}\)
+where \(\delta_j\) corresponds to \(f_j\)
+
+
+\itemch{b}
+By removing a subset of measure zero, we may assume
+\(f_n(x) \to f(x)\) for all \(x\in X\).
+
+Pick arbitrary \(\epsilon>0\).
+By Egoroff's Theorem (Exercise~3.16)  
+and by being uniform integrable, 
+we can find some some \(\delta>0\) and a set \(E\subset X\) such that 
+\begin{enumerate}
+\itemch{i} \(\mu(X\setminus E)<\delta\) .
+\itemch{ii} On \(X\setminus E\) the convergence \(f_n \to f\) is uniform.
+\itemch{iii} \(\int_E |f_n|\,d\mu < \epsilon\) for all $n$, 
+      see local lemma~\ref{llem:abs:unifinteg}.
+\end{enumerate}
+By Fatou's Lemma (Theorem~1.28 \cite{RudinRCA87}) we have
+\begin{equation*}
+\int_E |f|\,d\mu 
+= \int_E |\lim_{n\to\infty}f_n|\,d\mu 
+= \int_E |\liminf_{n\to\infty}f_n|\,d\mu 
+\leq \liminf_{n\to\infty} \int_E |f_n|\,d\mu < \sqrt{2}\epsilon
+\end{equation*}
+Pick $m$ such that \(|f_n(x)-f(x)| < \epsilon\)
+for all \(n\geq m\) and all \(x\in X\setminus E\).
+Thus
+\begin{equation*}
+\left|\int_X f\,d\mu\right|
+\leq
+  \left|\int_{X\setminus E} f\,d\mu\right|
++ \left|\int_E f\,d\mu\right|
+\leq
+  \int_{X\setminus E} (|f_n| + \epsilon)\,d\mu + \sqrt{2}\epsilon < \infty.
+\end{equation*}
+Thus \(f\in L^1(\mu)\).
+
+Now
+\begin{equation*}
+\int_X |f-f_n|\,d\mu
+= \int_{X\setminus E} |f-f_n|\,d\mu + \int_E |f-f_n|\,d\mu 
+% \leq \mu(X)\epsilon + 2\sqrt{2}\epsilon
+\leq (\mu(X) + 2\sqrt{2})\epsilon
+\end{equation*}
+and the desired convergence holds.
+
+\itemch{c}
+For a counterexample, simple take \(f_n(x) = \chhi_{[0,n]}\)
+that are uniformly integrable.
+Clearly \(\lim_{n\to\infty} f_n = 1 \notin L^1(\R,m)\).
+
+\itemch{d}
+For Lebesgue measure $m$ on \([0,1]\), say we dropy the 
+\ich{iv} requirement.
+
+If we take a singleton space \(X=\{x\}\) with \(\mu(\{x\}=1\)
+and \(f_n(x)=n\), then the set is trivially uniformly integrable,
+by ``suggesting'' \(\delta=1/2<1\).
+Clearly \(f(x)=\infty\) and \(\int_X|f_n-f|\,d\mu=\infty\).
+
+\itemch{e}
+Given the assumptions of Lebesgue's dominated convergence theorem ---
+\(f_n\to f\) and \(|f_n|\leq g\in L^1(\mu)\).
+we Actually need to show that \(\Phi=\{f_n\}_{n\in\N}\) 
+is uniformly integrable.
+By \ich{a}, the function \(\{g\}\) is uniformly integrable.
+Given \(\epsilon>0\) there exists some \(\delta>0\) 
+such that \(|\int_E g\,d\mu|<\epsilon\) whenever \(\mu(E)<\delta\).
+For such $E$ and for any $n$, by the dominating condition, 
+\(|\int_E |f_n|\,d\mu|<\epsilon\) as well, thus
+\(\Phi\) is uniformly integrable.
+
+We now show an
+example that satisfies Vitali's lemma assumptions but not
+Lebesgue's theorem. For all \(n\in\N\)
+let \(f_n: \R\to\R\) defined by 
+\begin{align*}
+a_0 &= 0 \\
+a_n &= \sum_{j=1}^n 1/n \\
+f_n &= \chhi_{[a_n,a_{n+1}]}.
+\end{align*}
+Clearly \(\lim_{n\to\infty}=0\) 
+and also \(\lim_{n\to\infty} \|f_n\|_1 = 0\)
+but there is no dominating function for \(\{f_n\}_{n\in\N}\)
+in \(L^1(\R,m)\).
+
+
+\itemch{f}
+% Define \(f_n = n\chhi_{(0,1/n^2]}\).
+Define
+\begin{equation*}
+f_n(x) = \left\{
+\begin{array}{ll}
+n^2        & \qquad 0 < x \leq 1/2n \\
+-n^2       & \qquad 1/2n < x < 1/n \\
+0          & \qquad x=0\;\vee\; x \geq 1/n
+\end{array}\right.
+\end{equation*}
+Clearly \(\lim_{n\to\infty} f_n(x) = 0\) for all \(x\in[0,1]\)
+and \(\int_{[0,1]} f_n\,dm = 0\) but
+\begin{equation*}
+\int_{[0,1/2n]} f_n\,dm = n/2.
+\end{equation*}
+
+
+
+
+\itemch{g}
+The triangle inequality \(\rho(A,B)\leq \rho(A,C) + \rho(B,C)\)
+is trivial. To show completeness we follow \cite{Oxtoby1980} chapter~10.
+Say \(\{E_j\}_{j\in\N}\) a Cauchy sequence.
+For each $j$ there is \(n_j > n_{j-1}\) such that \(\rho(E_m,E_n)<2^{-j}\)
+whenever \(m,n\geq j\). Let \(F_j=E_{n_j}\), 
+we have \(\rho(F_j,F_k)<2^{-j}\) for all \(k>j\). Define
+\begin{equation*}
+H_j = \bigcap_{k=j}^\infty F_k \qquad 
+E = \bigcup_{j=1}^\infty H_j.
+\end{equation*}
+The set $E$ consists of points that belong to all 
+but a finite number of sets \(\{f_j\}_{j\in\N}\).
+If \(x\in E\vartriangle  F_j\) then there are two cases
+\begin{itemize}
+\itemch{i} 
+\(x\in  E\setminus F_j\) then we look for the first $k$
+such that \(x\in F_{j+k}\).
+\itemch{ii} 
+\(x\in  F_j\setminus E\) then we look for the first $k$
+such that \(x\notin F_{j+k}\).
+\end{itemize}
+In both cases \(x\in F_{j+k-1} \vartriangle F_{j+k}\).
+
+For each  \(x\in H_j\vartriangle F_j = F_j \setminus H_j\)
+by looking at the first $k$ such that \(x\notin F_{j+k}\)
+we see that
+\begin{equation*}
+x \in F_{j+k-1} \vartriangle F_{j+k}.
+\end{equation*}
+
+Using the simple rule
+\((A\vartriangle B) \cup (A\vartriangle B) \subset B\vartriangle C \),
+now clearly
+\begin{equation*}
+E\vartriangle  F_j
+\subset (E\vartriangle H_j)\cup (H_j\vartriangle F_j)
+\subset \bigcup_{k=1}^\infty F_{j+k-1} \vartriangle F_{j+k}.
+\end{equation*}
+Consequently
+\begin{equation*}
+m(E\vartriangle  F_j)
+\leq \sum_{k=1}^\infty m(F_{j+k-1} \vartriangle F_{j+k})
+\leq \sum_{k=1}^\infty 2^{-(j+k)} = 2^{1-j}.
+\end{equation*}
+For any \(n\geq n_j\) we have
+\begin{align*}
+\rho(E,E_n) 
+&= m\bigl((E\vartriangle F_j) \vartriangle
+          (E_{n_j}\vartriangle E_n)\bigr) \\
+&\leq m(E\vartriangle F_j) + m(E_{n_j}\vartriangle E_n) 
+< 2^{1-j}+2^{-j}.
+\end{align*}
+
+Thus completeness of the metric space $S$ of measurable sets 
+modulu sets of zero-measure with the metric \(\rho\) was shown.
+
+The continuity of \(E\mapsto \int_E f_n\,d\mu\) is immediate
+by \(f_n\in L^1(\mu)\).
+By Exercise~5.13(b) there exists $N$ and  an open set 
+\(V = \{E\in S: \rho(E_0,E) < \delta)\}\)
+of \(E_0\) such that \eqref{eq:ex:6.10} holds for any \(E\in V\) and \(n>N\).
+If \(\mu(A)<\delta\) then \(B = E_0 \setminus A\in V\)
+and \(C = E_0 \cup A\in V\).
+Thus
+\begin{equation*}
+\left|\int_A f_n\right| 
+= \left|\int_{E_0\setminus A} f_n + \int_{E_0\cup A} f_n\right| 
+\leq \left|\int_{E_0\setminus A} f_n\right| + \left|\int_{E_0\cup A} f_n\right| 
+< 2\epsilon.
+\end{equation*}
+
+We pick some \(0<\delta'<\delta\) such that
+\(|\int_E f_j\,d\mu| < \epsilon\) whenever \(1\leq j \leq N\).
+Now if \(\mu(A)<\delta'\) then
+for any \(n>N\) we have
+\begin{equation*}
+\left|\int_A f_n\,d\mu\right|
+\leq \left|\int_A f_N\,d\mu\right| + \left|\int_A (f_n - f_N)\,d\mu\right|
+\leq \epsilon + 2\epsilon < 3\epsilon
+\end{equation*}
+If \(n\leq N\) then \(|\int_A f_n\,d\mu| < \epsilon < 3\epsilon\) trivially.
+Thus
+\begin{equation*}
+\left|\int_A f_n\,d\mu\right| < 3\epsilon
+\end{equation*}
+for any \(n\in\N\) and $A$ such that \(\mu(A) < \delta'\).
+Thus \(\{f_n\}_{n\in\N}\) are uniformly integrable, and by Vitali's lemma
+the desired result follows.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose \(\mu\) is a positive measure on $X$, \(\mu(X)<\infty\),
+\(f_n \in L^1(\mu)\) for \(n=1,2,3,\ldots\),
+\(f_n(x)\to f(x)\;\aded\),
+and there exists \(p>1\) and \(C<\infty\) such that
+\(\int_X |f_n|^p\,d\mu<C\) for all $n$. Prove that
+\begin{equation*}
+\lim_{n\to\infty} \int_X |f - f_n|\,d\mu = 0.
+\end{equation*}
+\emph{Hint}: \(\{f_n\}\) is uniformly integrable.
+\end{excopy}
+
+By negation there exists \(\epsilon>0\) and 
+a sequences \(\{\delta_n\}_{n\in\N}\) and sets \(\{A_n\}_{n\in\N}\)
+such that 
+\begin{align*}
+\mu(A_n) &< \delta_n = \epsilon/n \\
+\left|\int_{A_n} f_n\,d\mu \right| &\geq \epsilon.
+\end{align*}
+
+Let $q$ be the exponent conjugate of $q$.
+By H\"older inequality
+\begin{equation*}
+\left|\int_{A_n} f_n\,d\mu \right|
+\leq \int_{A_n} |f_n|\,d\mu 
+\leq 
+\iffalse
+     \left(\int_{A_n} |f_n|^p\,d\mu\right)^{1/p}
+     \left(\int_{A_n} 1^q\,d\mu\right)^{1/q}
+= 
+\fi
+\left(\int_{A_n} |f_n|^p\,d\mu\right)^{1/p} \bigl(\mu(A_n)\bigr)^{1/q}
+\end{equation*}
+Hence
+\begin{equation*}
+\int_{A_n} |f_n|^p\,d\mu
+\geq \left( 
+      \left|\int_{A_n} f_n\,d\mu \right| \bigm/ \bigl(\mu(A_n)\bigr)^{1/q}
+     \right)^p
+\geq \bigl( \epsilon / (\epsilon/n)^{1/q} \bigr)^p 
+= (n\epsilon^{1-1/q})^p
+= n^p\epsilon.
+\end{equation*}
+Which gives the contradiction
+\begin{equation*}
+\int_X |f_n|^p\,d\mu \geq \int_{A_n} |f_n|^p\,d\mu \geq n^p\epsilon > C
+\end{equation*}
+For sufficiently large $n$.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let \frakM\ be the collection of all sets $E$ in the unit interval \([0,1]\) such that either $E$ or its complement is at most countable.
+Let \(\mu\) be the counting measure on this \(\sigma\)-algebra \frakM.
+If \(g(x) = x\) for \(0\leq x \leq 1\),
+show that $g$ is not \frakM-measurable, although the mapping
+\begin{equation*}
+f \to \sum xf(x) = \int fg\,d\mu
+\end{equation*}
+makes sense for every \(f\in L^1(\mu)\) and defines a bounded linear functional
+on \(L^1(\mu)\). Thus \((L^1)^* \neq L^\infty\) in this situation.
+\end{excopy}
+
+The set \(g^{-1}([0,1/2]) = [0,1/2]\) is not measurable, hence $g$ is not.
+Indeed this measurable space is not \(\sigma\)-finite.
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let \(L^\infty = L^\infty(m) \), where $m$ is a Lebesgue measure on
+\(I=[0,1]\). Show that there is a bounded linear functional \(\Lambda \neq 0\)
+on \(L^\infty\) that is $0$ on \(C(I)\), and therefore there is no
+\(g\in L^1(m)\) that satisfies
+\(\Lambda f = \int_I fg\,dm\) for every \(f\in L^\infty\).
+Thus \((L^\infty)^* \neq L^1\).
+\end{excopy}
+
+\(C(I)\) is a closed subspace of \((L^\infty)\).
+By Hahn Banach Theorem
+\index{Hahn Banach}
+Theorem~5.16 \cite{RudinRCA87} 
+and its consequence Theorem~5.19 there is a functional 
+\(\Lambda\in (L^\infty)^*\) such that 
+\(\Lambda f = 0\) for all \(f\in C(I)\) but 
+\(\Lambda(\chhi_{[0,1/2]}) \neq 0\). Viewing \(C(I)\subset L^2\)
+as a subspace of Hilbert space, if \(\Lambda\) may be represented
+by inner multiplication by the zero function, but it surely cannot
+represent \(\Lambda\) for the \(\chhi{[0,1/2]}\) case.
+
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}

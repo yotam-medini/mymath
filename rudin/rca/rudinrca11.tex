@@ -1,0 +1,766 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%chapter 11
+\chapterTypeout{Harmonic Functions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\index{Laplacian}
+\subsection{The Laplacian}
+
+\newcommand*{\partialby}[1]{\frac{\partial}{\partial #1}}
+\newcommand*{\fracpart}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand*{\dpartial}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand*{\px}{\partialby x}
+\newcommand*{\py}{\partialby y}
+
+Assuming \(f = u + iv\) and \(f_{xy} = f_{yx}\) we have
+\begin{align*}
+4\partial\tilde{\partial}f 
+ &= 4\partial\left(\half\left(\px + i\py\right)(u + iv)\right)
+  = 2\partial\bigl(u_x + iv_x + i(u_y + iv_y)\bigr) \\
+ &= \left(\px - i\py\right)\bigl(u_x - v_y + i(v_x + u_y)\bigr) \\
+ &= u_{xx} - v_{yx}  + i(v_{xx} + u_{yx}) 
+    -i\bigl(u_{xy} - v_{yy} + i(v_{xy} + u_{yy})\bigr) \\
+ &= (u + iv)_{xx} + (u + iv)_{yy} = \Delta f.
+\end{align*}
+
+\subsubsection{Polar Coordinates}
+
+Using
+\begin{equation*}
+x = r\cos\theta \qquad
+y = r\sin\theta \qquad
+r = \sqrt{x^2+y^2} \qquad
+\tan \theta = y/x
+\end{equation*}
+Asssume \(u(x,y)\) is sufficiently differentiable with continuous
+partial derivatives.
+
+Using the chain rule
+\begin{equation*}
+\fracpart{u}{x} 
+  = \cos \theta \fracpart{u}{r} 
+    - \frac{\sin \theta}{r}\fracpart{u}{\theta} 
+  \qquad
+\fracpart{u}{y} 
+  = \sin \theta \fracpart{u}{r} 
+    + \frac{\cos \theta}{r}\fracpart{u}{\theta}
+\end{equation*}
+
+Continuing
+\begin{align*}
+\dpartial{u}{x}
+ &= \cos^2\theta \dpartial{u}{r}
+    - \frac{2\sin\theta \cos\theta}{r} 
+      \frac{\partial^2 u}{\partial r\,\partial \theta}
+    + \frac{\sin^2 \theta}{r^2} \dpartial{u}{\theta}
+    + \frac{\sin^2 \theta}{r} \fracpart{u}{r}
+    + \frac{2\sin\theta \cos\theta}{r^2}\fracpart{u}{\theta} \\
+\dpartial{u}{y}
+ &= \sin^2\theta \dpartial{u}{r}
+    + \frac{2\sin\theta \cos\theta}{r} 
+      \frac{\partial^2 u}{\partial r\,\partial \theta}
+    + \frac{\cos^2 \theta}{r^2} \dpartial{u}{\theta}
+    + \frac{\cos^2 \theta}{r} \fracpart{u}{r}
+    - \frac{2\sin\theta \cos\theta}{r^2}\fracpart{u}{\theta}
+\end{align*}
+Adding the above gives
+\begin{equation*}
+\Delta u 
+= \dpartial{u}{x} + \dpartial{u}{y}
+ = \dpartial{u}{r} + \frac{1}{r}\fracpart{u}{r} 
+    + \frac{1}{r^2}\dpartial{u}{\theta}
+ = \frac{1}{r}\partialby{r}\left(r\fracpart{u}{r}\right)
+    + \frac{1}{r^2}\dpartial{u}{\theta}
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Theorem~11.9}
+
+The proof of Theorem~11.9 refers to Theorem~10.7
+for showing that $f$ is holomorphic. But instead, it should 
+refer to Exercise~16 of Chapter~10 (\ref{ex:10.16}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Harnack's Theorem}
+
+\index{Harnack}
+Let's look a the proof of Harnack's Theorem~11.11.
+The first double inequality has a minor error.
+The middle expression is missing square sign in the denominator.
+It should be
+\begin{equation*}
+\frac{R^2 - r^2}{R^2 - 2rR\cos(\theta - t) + r^{\mathbf{2}}}
+\end{equation*}
+
+% The proof of Harnack's Theorem~11.11, specifically 
+The second
+double-inequality makes use of \textbf{11.10}(1).
+
+\iffalse
+of the following observation.
+
+Say $u$ is a real harmonic function, so \(u(z) = \Re(f(z)\) for some
+\(f\in H(\Omega)\). 
+Let \(\gamma(t) = a + Re^{it}\)
+and \(\Gamma = \{\gamma(t): -\pi \leq t < \pi\}\). Now
+\(\gamma`(t) = Rie^{it}\) and
+\begin{align*}
+u(a) 
+ &= \Re(f(a))
+ = 
+   \Re\left(
+     \dtwopii
+     \int_{\Gamma} \frac{f(a+z)}{(a+z)-a}\,dz
+   \right) 
+ \\
+ &= \frac{1}{2\pi} 
+   \Re\left(
+    \frac{1}{i}
+     \int_{-\pi}^\pi \frac{f(a+\gamma(t))}{Re^{it}}\cdot Rie^{it}\,dt
+   \right).
+ \\
+ &= \frac{1}{2\pi} 
+   \Re\left(
+     \int_{-\pi}^\pi f(a+\gamma(t))\,dt
+   \right).
+\end{align*}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Exercises} % pages 249-252
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Suppose $u$ and $v$ are real harmonic functions in a plane regular \(\Omega\).
+Under what conditions is \(uv\) harmonic?
+(Note that the answer depends strongly on the fact that the question
+is one about \emph{real} functions.)
+Show that \(u^2\) cannot be harmonic in \(\Omega\), unless $u$ is constant.
+For which \(f \in H(\Omega)\) is \(|f|^2\) harmonic?
+\end{excopy}
+
+Compute
+\begin{equation*}
+(uv)_{xx} 
+= \left((uv)_x\right)_x
+= \left(u_xv + uv_x\right)_x
+= u_{xx}v + 2u_xv_x + uv_{xx}
+\end{equation*}
+
+Hence
+\begin{align*}
+\Delta(uv) 
+ &= u_{xx}v + 2u_xv_x + uv_{xx} + u_{yy}v + 2u_yv_y + uv_{yy} \\
+ &= \Delta(u)v + u\Delta(v) + 2(u_xv_x + u_yv_y).
+\end{align*}
+
+So \(uv\) is harmonic when \(u_xv_x + u_yv_y = 0\) in \(\Omega\).
+Clearly \(\Delta(u^2) = 2(u_x^2 + u_y^2) \geq 0\)
+and equality holds iff \(u_x = u_y = 0\).
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Suppose $f$ a complex function in a region \(\Omega\) and both
+$f$ and \(f^2\) are hannonic in \(\Omega\). Prove that
+either $f$ or \(\overline{f}\) are holnmorphic in \(\Omega\).
+\end{excopy}
+
+By the previous exercise, \((f_x)^2 + (f_y)^2 = 0\).
+Regardless whether \(f_x = f_y = 0\) holds or not, we have
+\begin{equation*}
+f_x = \pm i\,f_y.
+\end{equation*}
+By continuity, only one variant of \(\pm\) holds for all \(\Omega\).
+Put \(f = u + iv\) with real valued functions $u$ and $v$.
+Now
+\begin{equation*}
+u_x + iv_x = -v_y + iu_y
+\qquad\textnormal{or}\qquad
+u_x + iv_x = v_y - iu_y.
+\end{equation*}
+Hence the Cauchy-Riemann equation holds for \(\overline{f}\) or $f$.
+
+%%%%%%%%%%%%%% 3
+\begin{excopy}
+If $u$ is a harmonic function in a region \(\Omega\),
+what can you say about the set of points at which the
+gradient of $u$ is $0$? (Thus is the set which \(u_x = u_y = 0\).)
+\end{excopy}
+
+% From Section~1.11, every harmonic function has continuous partial derivative
+% of all orders.
+We will show that
+the vanishing set $K$ is either the whole region where $u$ is constant
+in each connected component of \(\Omega\),
+or it consists of just isolated points.
+
+By Section~11.10, every real harmonic function is locally the real part
+of holomorphic function.
+
+Assume $u$ is harmnonic in a connected region
+(\wlogy, it is \(\Omega\) and the set
+\begin{equation*}
+ K = \{z\in\Omega: u_x(z) = u_y(z) = 0\}
+\end{equation*}
+has accumulation point \(z_0 \in \Omega\).
+Note that both \(\Re(u)\) and \(\Im(u)\) are harmnonic.
+By the previous, remark there exist a neighborhood \(V\subset\Omega\)
+and holomorphic functions $f$ and $G$ defined on $V\ni z_0$ such that
+\begin{equation*}
+ u(z) = \Re(f(z)) + i\Re(g(z)) \qquad (z\in V).
+\end{equation*}
+Now for \(z\in V\)
+\begin{align*}
+u_x(z) &= \Re(f_x(z)) + i\Re(g_x(z)) = (\Re(f))_x(z) + i(\Re(g))_x(z) \\
+u_y(z) &= \Re(f_y(z)) + i\Re(g_y(z)) = (\Re(f))_y(z) + i(\Re(g))_y(z)
+\end{align*}
+and Cauchy-Riemann equations show that 
+\begin{alignat*}{2}
+\Re(u)_x &= \Re(f)_x = \Im(f)_y &\qquad \Im(u)_x &= \Re(g)_x = \Im(g)_y \\
+\Re(u)_y &= \Re(f)_y = -\Im(f)_x &\qquad \Im(u)_y &= \Re(g)_y = -\Im(g)_x 
+\end{alignat*}
+For \(z\in K\), the above functions vanish, hence
+\begin{align*}
+f'(z) = g'(z) = 0 \qquad (z\in K).
+\end{align*}
+By Theorem~10.18 \(f'(z)=g'(z) = 0\) for all \(z\in V\)
+and consequently for all \(z\in \Omega\).
+Hence $f$ and $g$ are constant functions and so is $u$.
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Prove that every partial derivative of every harmonic function is harmonic.
+
+Verify, by direct computation, that \(P_r(\theta - t)\) is, for each fixed $t$,
+a harmonic function of \(re^{i\theta}\).
+Deduce (without referring to holomorphic functions) that the Poisson integral
+\(P[d\mu]\) of every finite
+Borel measure \(\mu\) on $T$ is harmonic in $U$, by showing that every partial
+derivative of \(P[d\mu]\) is equal to
+the integral of the corresponding partial derivative of the kernel.
+\end{excopy}
+
+See also \cite{Lang199304} Chapter~\textsf{VIII} Section~\S3 Example~3.
+
+Let
+\begin{equation*}
+f(z) = \frac{e^{it} + z}{e^{it} - z} = \frac{u + x+iy}{u - x - iy}.
+\end{equation*}
+
+First order differentiation:
+\begin{align*}
+\partialby{x}f(z) 
+&= \partialby{x} \frac{u + x+iy}{u - x - iy}
+ = \frac{(u - x - iy) + (u + x+iy)}{(u-z)^2}
+ = \frac{2u}{(u-z)^2}
+ \\
+\partialby{y}f(z) 
+&= \partialby{y} \frac{u + x+iy}{u - x - iy}
+ = \frac{i(u - x - iy) + i(u + x+iy)}{(u-z)^2}
+ = \frac{2iu}{(u-z)^2}
+\end{align*}
+
+Second order differentiation:
+\begin{align*}
+\dpartial{}{x}f(z) 
+ &= \partialby{x}\frac{2u}{(u-x-iy)^2}
+  = \frac{-2u(2x+2iy-2u)}{(u-z)^2}
+  = 4u\frac{(-x-iy+u)}{(u-z)^2}
+ \\
+\dpartial{}{y}f(z) 
+ &= \partialby{y}\frac{2iu}{(u-x-iy)^2}
+  = \frac{-2iu(2ix-2y-2iu)}{(u-z)^2}
+  = 4u\frac{(x+iy-u)}{(u-z)^2}
+\end{align*}
+
+By summing the above, and noting that the partial differentiation
+commutes with the \(\Re\) operator,
+we get 
+\begin{align*}
+\Delta P_r(\theta - t)
+= \left(\dpartial{}{x}+\dpartial{}{y}\right) \Re(f(z))
+= \Re\left(\left(\dpartial{}{x}+\dpartial{}{y}\right) f(z)\right)
+= \Re(0) = 0.
+\end{align*}
+
+Let us explicitly define 
+\begin{equation*}
+P[d\mu](re^{i\theta}) = \dtwopii \int_{-\pi}^\pi P_r(\theta - t)\,d\mu(t).
+\end{equation*}
+
+Put \(m(t) = \mu(\{x: -\pi < x < t\})\).
+We can find 4 increasing functions \(a_j(t)\) such that
+\begin{equation*}
+m(t) = (a_1(t) - a_2(t)) + i\left(a_3(t) - a_4(t)\right).
+\end{equation*}
+Applying Theorem~9.42 of \cite{RudinPMA85} separately to each \(a_i\)
+and summing we can generalize that theorem so we can use \(m(t)\)
+in place of \(a(t)\) in that theorem.
+Thus
+
+\iffalse
+Let $f$ be a harmonic function.
+Since its real and imaginary parts are real parts of holomorphic functions
+(by Section~11.10), $f$ itself has partial derivatives of all orders.
+By Theorem~9.41 \cite{RudinPMA85} we can change the order
+of partial derivative axes. Hence
+\begin{align*}
+\Delta(f_x)
+&= (f_x)_{xx} + (f_x)_{yy}
+ = f_{xxx} + f_{xyy}
+ = f_{xxx} + f_{yyx}
+ = \left(f_{xx} + f_{yy}\right)_x
+ = \left(\Delta(f)\right)_x
+ = 0.
+\end{align*}
+Similarly we agve \(\Delta(f_y) = 0\).
+
+Putting \(z = re^{i\theta} = x + iy\), we have:
+\begin{equation*}
+\renewcommand{\currentprefix}{ex11.4}
+P(\theta -t) = \Re\left((e^{it}+z)/(e^{it}-z)\right)
+\end{equation*}
+Thus \(P(z) \in H(U)\).
+
+Let \(e^{it} = x_t + iy_t\), then
+\begin{align*}
+ P_r(\theta -x)
+&= \Re\left((x_t + iy_t + x+iy)/\left(x_t + iy_t -(x+iy)\right)\right) \\
+&= \Re\left(((x_t+x) + i(y_t + y))/\left((x_t-x) + i(y_t - y)\right)\right) \\
+&= \Re\left(\left((x_t+x) + i(y_t + y)\right)
+           \cdot\left((x_t-x) - i(y_t - y)\right)
+         / \left((x_t-x)^2 + (y_t - y)^2\right)\right) \\
+&= \Re\frac{(x_t^2 - x^2) + (y_t^2 - y^2)
+           + i\left((x_t-x)(y_t + y) + (x_t+x)(y_t - y)\right)}{
+             (x_t-x)^2 + (y_t - y)^2} \\
+&= (x_t^2 - x^2 + y_t^2 - y^2) / \left((x_t-x)^2 + (y_t - y)^2\right)
+\end{align*}
+
+Thus
+\begin{align*}
+\px P_r(\theta -x)
+=& \px \left((x_t^2 - x^2) - (y_t^2 - y^2)\right)
+   \bigm/ \left((x_t-x)^2 + (y_t - y)^2\right) \\
+=&  \left(-2x \left((x_t-x)^2 + (y_t - y)^2\right)
+    - \left((x_t^2 - x^2) - (y_t^2 - y^2)\right)(2x -2)\right)
+    \\
+ & \bigm/
+     \left((x_t-x)^2 + (y_t - y)^2\right)^2 \\
+=& - (4x + 2)\left((x_t-x)^2 + (y_t - y)^2\right)
+     \bigm/ \left((x_t-x)^2 + (y_t - y)^2\right)^2 \\
+\end{align*}
+\fi
+
+\iffalse
+Looking at a kernel $k$, we freely use \(k(z) = k(r,\theta)\).
+Asuming the given conditions, we want to show
+\begin{equation} \locallabel{eq:need:lim}
+\frac{\partial}{\partial x}\left( \int_{-\pi}^\pi k(r,\theta -t)\,d\mu(t)\right)
+= 
+\int_{-\pi}^\pi \frac{\partial}{\partial x}\left( k(r,\theta -t)\right)\,d\mu(t)
+\end{equation}
+
+It is sufficient to show that for each nonzero real sequence \(\{h_n\}_{n\in\N}\)
+such that \mbox{\(\lim_{n\to\infty} h_n = 0\)}.
+Using 
+\begin{equation*}
+z + h_n = r_n e^{i\theta_n}
+\end{equation*}
+we need to show
+\begin{multline} \locallabel{need:limn}
+\lim_{n\to\infty}\frac{1}{h_n}
+ \left( \int_{-\pi}^\pi 
+  \bigl(k(r,\theta -t)-k(r_n, \theta_n-t)\bigr)\,d\mu(t)\right)
+ \\
+ =
+\int_{-\pi}^\pi 
+  \left( 
+    \lim_{n\to\infty}\frac{1}{h_n}
+      \bigl(k(r,\theta -t)-k(r_n, \theta_n-t)\bigr)
+  \right)
+  \,d\mu(t)
+\end{multline}
+
+% Consider Theorem 9.42 in Rudin's PMA
+
+% Consider cases:  z=0,   z\neq 0
+Two cases. \\
+\textbf{Case~1.} \(z\in\R\). \\
+Then \(\theta = \theta_n = 0\). Now \localeqref{need:limn} becomes
+\begin{equation} \locallabel{eq:need:lim}
+\frac{\partial}{\partial x}\left( \int_{-\pi}^\pi k(r, -t)\,d\mu(t)\right)
+= 
+\int_{-\pi}^\pi \frac{\partial}{\partial x}\left( k(r, -t)\right)\,d\mu(t)
+\end{equation}
+\fi
+
+\iffalse
+\textbf{Case~1.} \(z=0\). \\
+Then \(r=0\), \(\theta = \theta_n = 0\), \(h_n = r_n\)
+and \eqref{eq:11.4:need:limn} becomes
+\begin{equation*}
+\lim_{n\to\infty}\frac{1}{h_n}
+  \left( \int_{-\pi}^\pi k(0)-k(h_n, -t)\bigr)\,d\mu(t)\right)
+ =
+\int_{-\pi}^\pi 
+  \left( \lim_{n\to\infty}\frac{1}{h_n} \bigl(k(0)-k(h_n, -t)\bigr)  
+  \right)  \,d\mu(t)
+\end{equation*}
+
+The ``directonal'' derivative
+\begin{equation*}
+ \lim_{n\to\infty}\frac{1}{h_n} \bigl(k(0)-k(h_n, -t)\bigr)
+ = e^{i\Arg(t)}\cdot k'(0).
+\end{equation*}
+
+\textbf{Case~2.} \(z\neq 0\).
+\fi
+
+\unfinished
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Suppose \(f \in H(\Omega)\) and $f$ has no zero in \(\Omega\).
+Prove that \(\log|f|\) is harmonic in \(\Omega\), by computing its
+Laplacian. Is there an easier way?
+\end{excopy}
+
+\begin{align*}
+\log(|f|)
+ &= \log\left( \left(\left((f+\overline{f})/2\right)^2 
+    + \left((\overline{f} - f)/2\right)^2\right)^{\half}\right)
+ = \log\left( \left(\sqrt{2}/2\right)\left(f^2 
+    + {\overline{f}}^2\right)^\half\right) \\
+ &= \half \log\left(f^2 + {\overline{f}}^2\right) + \log(\sqrt{2}/2)
+\end{align*}
+
+\unfinished
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Suppose \(f \in H(U)\), where $U$ is the open unit disc, $f$ is one-to-one in
+$U$, \(\Omega = f(U)\), and \(f(z) = \sum c_n z^n\).
+Prove that the area of \(\Omega\) is 
+\begin{equation*}
+\pi \sum_{n=1}^\infty n |c_n|^2.
+\end{equation*}
+
+Hint: The Jacobian of $f$ is \(|f'|^2\).
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+\ich{a} If \(f \in H(\Omega)\), \(f(z) \neq 0\) for \(z \in \Omega\),
+and \(=\infty \alpha < \infty\), prove that
+\begin{equation*}
+\Delta(|f|^\alpha) = \alpha^2 |f|^{\alpha-2} |f'|^2,
+\end{equation*}
+by proving the formula
+\begin{equation*}
+\partial\overline{\partial}(\psi \circ (f\overline{f})) 
+ = (\varphi \circ |f|^2)\cdot|f'|^2,
+\end{equation*}
+in which \(\psi\) twice differentiable on \((0, \infty)\) and
+\begin{equation*}
+\varphi(t) = t \psi''(t) + \psi'(t).
+\end{equation*}
+
+\ich{b}
+Assume \(f \in H(\Omega)m\) and \(\Phi\) is a complex function with domain
+\(f(\Omega)\), which has continuous
+second-order partial derivatives. Prove that
+\begin{equation*}
+ \Delta[\Phi \circ f] = [(\Delta \Phi) \circ f] \cdot|f'|^2.
+\end{equation*}
+Show that this specializes to the result of \ich{a} 
+if \(\Phi(w) = \Phi(|w|)\).
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 8 
+\begin{excopy}
+Suppose \(\Omega\) is a region, \(f_n\in H(\Omega)\) for \(n=1,2,3,\ldots\),
+\(u_n\) is the real part off \(f_n\), \(\{u_n\}\) converges 
+uniformly on compact subsets of \(\Omega\), and \(\{f_n(z)\}\) converges for
+ at least one \(z \in \Omega\). Prove that then \(\{f_n\}\)
+converges uniformly on compact subsets of \(\Omega\).
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Suppose $u$ is a Lebesgue measurable function in a region \(\Omega\), and $u$ 
+is locally in \(L^1\). This means that
+the integral of \(|u|\) over any compact subset of \(\Omega\) is finite.
+ Prove that $u$ is harmonic if it satisfies the
+following form of the mean value property:
+\begin{equation*}
+u(a) = \frac{1}{\pi r^2} \iint\limits_{D(a;r)}  u(x, y)\,dx\,dy
+\end{equation*}
+whenever \(\overline{D}(a;r) \subset \Omega\).
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Suppose \(I=[a,b]\) is an interval on the real axis, 
+\(\varphi\) is a continuous function on $I$, and
+\begin{equation*}
+f(z) = \dtwopii \int_a^b \frac{\varphi{t}}{t - z}\,dt \qquad (z \notin I).
+\end{equation*}
+Show that
+\begin{equation*}
+\lim_{\epsilon\to 0}[f(x+i\epsilon) - f(x-i\epsilon)] \qquad (\epsilon > 0)
+\end{equation*}
+exists for every real $x$, and find it in terms of \(\varphi\).
+
+How is the result affected if we assume merely that \(\varphi \in L^1\)?
+What happens then at points $x$ at
+which \(\varphi\) has right- and left-hand limits?
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Suppose that \(I=[a,b]\), \(\Omega\) is a region, \(I \subset \Omega\),
+$f$ is continuous in \(\Omega\), and \(f \in H(\Omega - I)\). Prove that
+actually \(f \in H(\Omega)\).
+
+Replace $I$ by some other sets for which the same conclusion can be drawn.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+\index{Harnack} (Harnack‘s Inequalities) 
+Suppose \(\Omega\) is a region, $K$ is a compact subset of \(\Omega\),
+\(z_0 \in \Omega\), Prove that
+there exist positive numbers \(\alpha\) and \(\beta\) 
+(depending on \(z_0\), $K$, and \(\Omega\)) such that
+\begin{equation*}
+\alpha u(z_0) \leq u(z) \leq \beta u(z_0)
+\end{equation*}
+for every positive harmonic function $u$ in \(\Omega\) and for all \(z \in K\).
+
+If \(\{u_n\}\) is a sequence of positive harmonic functions in \(\Omega\)
+ and if \(u_n(z_0)\to 0\), describe the behavior
+of \(\{u_n\}\) in the rest of \(\Omega\). Do the same if \(u_n(z_0)\to \infty\).
+ Show that the assumed positivity of \(\{u_n\}\) is
+essential for these results.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Suppose $u$ is a positive harmonic function in $U$ and \(u(0) = 1\).
+How large can \(u(\half)\) be? How small?
+Get the best possible bounds.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+For which pairs of lines \(L_1\), \(L_2\) do there exist real functions,
+hamonic in the whole plane, that are
+$0$ at all points of \(L_1 \cup L_2\) without vanishing identically?
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+suppose $u$ is a positive harmonic function in $U$, 
+and \(u(re^{i\theta}) \to 0\) as \(r\to 1\), for every \(e^{i\theta} \neq 1\).
+Prove
+that there is a constant $c$ such that
+\begin{equation*}
+u(re^{i\theta}) = cP_r(\theta).
+\end{equation*}
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 16 
+\begin{excopy}
+Here is an example of a harmonic function in $U$ which is not identically $0$ but all of whose radial
+limits are $0$:
+\begin{equation*}
+u(z) = \Im\left[\left(\frac{1+2}{1-z}\right)^2\right].
+\end{equation*}/
+Prove that this $u$ is not the Poisson integral of any measure on $T$ 
+and that it is not the difference of
+two positive harmonic functions in $U$.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Let \(\Phi\) be the set of all positive harmonic functions $u$ in $U$
+ such that \(u(0) = 1\). Show that \(\Phi\) is 
+a~convex set and find the extreme points of \(\Phi\). (A point $x$ in a convex
+ set \(\Phi\) is called an extreme point of
+\(\Phi\) if $x$ lies on no segment both of whose end points lie in \(\Phi\)
+ and are different from $x$.) \emph{Hint}: If $C$ is the
+convex set whose members are the positive Borel measures on $T$,
+ of total variation $1$, show that the
+extreme points of $C$ are precisely those \(\mu \in C\)
+ whose supports consist of only one point of $T$.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 
+\begin{excopy} 18
+Let \(X^*\) be the dual space of the Banach space $X$. 
+A sequence \(\{\Lambda_n\}\) in \(X^*\) is said to converge weakly
+to \(\Lambda \in X^*\) if \(\Lambda_n x \to \Lambda x\) as \(n \to \infty\),
+ for every \(x \in X\). Note that \(\Lambda_n \to \Lambda\) weakly whenever
+\(\Lambda_n \to \Lambda\) in the
+norm of \(X^*\). (See Exercise~8, Chap.~5.) The converse need not be true.
+ For example, the functionals
+\(f\to \hat{f}(n)\) on \(L^2(T)\) tend to $0$ weakly (by the Bessel inequality),
+ but each of these functionals has norm $1$.
+Prove that \(\{\| \Lambda_n\|\}\) must be bounded if \(\{\Lambda_n\}\)
+ converges weakly.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+\ich{a} Show that \(\delta P_r(\delta) > 1\) if \(\delta = 1 - r\).\\
+\ich{b} If \(\mu \geq 0\), \(u = P[d\mu]\), and \(I_\delta \subset T\)
+is the are with center $1$ and length \(2\delta\), show that
+\begin{equation*}
+\mu(I_\delta) \leq \delta\mu(1 - \delta)
+\end{equation*}
+and that therefore
+\begin{equation*}
+(M\mu)(1) \leq \pi(M_{\textnormal{rad}}\,u)(1).
+\end{equation*}
+\ich{c} If, furthermore, \(\mu \perp m\), show that
+\begin{equation*}
+u(re^{i\theta}) \to \infty \qquad \aded\,[\mu].
+\end{equation*}
+\emph{Hint}: Use Theorem~7.15.
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 20
+\begin{excopy}
+Suppose \(E \subset T\), \(m(E) = 0\).
+ Prove that there is an \(f \in H^\infty\), with \(f(0) = 1\), that has
+\begin{equation*}
+\lim_{r\to 1} f(re^{i\theta}) = 0
+\end{equation*}
+at every \(e^{i\theta} \in E\).
+
+\emph{Suggestion}: Find a lower semicontinuous 
+ \(psi \in L^1(T)\), \(\psi > 0\), \(\psi = +\infty\) at every point of $E$.
+ There
+is a holomorphic $g$ whose real part is \(P[\psi]\). Let \(f= 1/g\).
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 21
+\begin{excopy}
+Define \(f \in H(U)\) and \(g \in H(U)\) by 
+\(f(z) = \exp \{(1 + z)/(1 - z)\}\), \(g(z) = (1 - z) \exp \{-f(z)\}\). Prove
+that
+\begin{equation*}
+g^*(e^{i\theta}) = \lim_{r\to 1} g(re^{i\theta})
+\end{equation*}
+exists at every \(e^{i\theta} \in T\), that \(g^* \in C(T)\),
+ but that $g$ is not in \(H^\infty\).
+
+\emph{Suggestion}: Fix $s$, put
+\begin{equation*}
+ z_t = \frac{t + is - 1}{t + is + 1} \qquad (0 < t < \infty).
+\end{equation*}
+For certain values of $s$, \(|g(z_t)| \to \infty\) as \(t \to \infty\).
+
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 22
+\begin{excopy}
+Suppose $u$ is harmonic in $U$, and 
+\(\{u_r: 0 \leq r < 1\}\) is a uniformly integrable subset of 
+\(L^1(T)\). (See
+Exercise~10, Chap.~6.) Modify the proof of Theorem~11.30 to show that
+\(u = P[f]\) for some \(f \in L^1(T)\).
+
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 23
+\begin{excopy}
+Put \(\theta_n = 2^{-n}\) and define
+\begin{equation*}
+u(z) = \sum_{n=1}^\infty n^{-2}\{P(z,e^{i\theta_n}) - P(z,e^{-i\theta_n})\},
+\end{equation*}
+for \(z \in U\). Show that $u$ is the Poisson integral of a measure on $T$,
+ that \(u(x) = 0\) if \(-1 < x < 1\), but
+that
+\begin{equation*}
+u(1 — \epsilon + i\epsilon)
+\end{equation*}
+is unbounded, as \(\epsilon\) decreases to $0$. 
+(Thus $u$ has a radial limit, but no nontangential limit, at $1$.)
+
+\emph{Hint}: lf \(\epsilon = \sin \theta\) is small and 
+\(z = 1 — \epsilon + i\epsilon\), then
+\begin{equation*}
+ P(z,e^{i\theta}) - P(z,e^{-i\theta}) > 1/\epsilon.
+\end{equation*}
+\end{excopy}
+
+
+%%%%%%%%%%%%%% 24
+\begin{excopy}
+Let \(D_n(t)\) be the 
+\index{Dirichlet} Dirichlet kernel, as in Sec.~5.11, define the 
+\index{Fejer@Fej\'er} Fej\'er 
+kernel by
+\begin{equation*}
+K_N = \frac{1}{N+1} (D_0 + D_1 + \cdots + D_n),
+\end{equation*}
+put \(L_N(t) = \min(N, \pi^2/Nt^2)\). Prove that
+\begin{equation*}
+K_{N_1}(t) = \frac{1}{N} \cdot \frac{1 - \cos Nt}{1 - \cos t} \leq L_N(t)
+\end{equation*}
+and that \(\int_R L_N\,d\sigma \leq 2\).
+
+Use this to prove that the arithmetic means
+\begin{equation*}
+\sigma_N = \frac{S_0 + S_1 + \cdots + S_N}{N + 1}
+\end{equation*}
+of the partial sums \(s_n\) of the Fourier series of a functionf
+\(f \in L^1(T)\) converge to \(f(e^{i\theta})\) at every Lebesgue
+point of $f$ (Show that \(\sup |\sigma_N|\) is dominated by \(Mf\),
+ then proceed as in the proof of Theorem~11.23.)
+\end{excopy}
+
+%%%%%%%%%%%%%% 25
+\begin{excopy}
+If \(1 \leq p \leq \infty\) and \(f \in L^1(\R^1)\), prove that
+ \((f * h_\lambda)(x)\) is a harmonic function of \(x + i/\lambda\) in the upper
+half plane. 
+(\(h_\lambda\) is defined in Sec.~9.7; 
+it is the Poisson kernel for the half plane.)
+\end{excopy}
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}
+
+

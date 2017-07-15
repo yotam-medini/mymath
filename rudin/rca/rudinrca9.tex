@@ -1,0 +1,2856 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Fourier Transforms}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Comments and Clarifications}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Convolution} 
+
+\begin{llem} \label{lem:conv:commut}
+Convolution is commutative. If \(f,g\in L^1\) then
+\(f\ast g = g\ast f\).
+\end{llem}
+\begin{thmproof}
+\begin{align*}
+(f\ast g)(x)
+&= \int_\R f(x-y)g(y)\,dm(y)
+ = \int_\R f(t)g(x-t)(dx/dt)\,dm(t)
+ = \int_\R g(x-t)f(t)\,dm(t) \\
+&= (g \ast f)(x)
+\end{align*}
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Transform Formulas} \label{subsec:xform:formulas}
+
+
+\newcommand{\sqdivtpi}{\ensuremath{\frac{1}{\sqrt{2\pi}}}}
+In Theorem~9.2.
+Suppose \(f\in \Lp1\), and \(\alpha,\lambda \in\R\).
+\begin{itemize}
+
+ \itemch{a} If \(g(x)=f(x)e^{i\alpha x}\) then
+    \begin{eqnarray*}
+      \Hat{g}(t)
+            & = & \intR g(x)e^{-ixt}\,dm(x) \\
+            & = & \intR f(x)e^{i\alpha x}e^{-ixt}\,dm(x) \\
+            & = & \intR f(x)e^{-i(t-\alpha)x}\,dm(x) \\
+            & = & \Hat{f}(t-\alpha).
+    \end{eqnarray*}
+
+  \itemch{b} If \(g(x)=f(x-\alpha)\) then
+    \begin{eqnarray*}
+      \Hat{g}(t)
+            & = & \intR g(x)e^{-ixt}\,dm(x) \\
+            & = & \intR f(x-\alpha)e^{-i((x-\alpha)+\alpha)t}\,dm(x) \\
+            & = & e^{-i\alpha t}\intR f(x-\alpha)e^{-i(x-\alpha)t}\,dm(x) \\
+            & = & \Hat{f}(t-\alpha)e^{-i\alpha t}.
+    \end{eqnarray*}
+
+  \itemch{d} If \(g(x)=\overline{f(-x)}\) then
+    \begin{eqnarray*}
+      \Hat{g}(t)
+            & = & \intR g(x)e^{-ixt}\,dm(x) \\
+            & = & \intR \overline{f(-x)}e^{-ixt}\,dm(x) \\
+            & = & \intR \overline{f(-x)e^{-i(-x)t}}\,dm(x) \\
+            & = & \overline{\intR f(-x)e^{-i(-x)t}\,dm(x)} \\
+            & = & \overline{\Hat{f}(t)}.
+    \end{eqnarray*}
+
+  \itemch{e}
+    Given \(g(x) = f(x/\lambda)\) and \(\lambda>0\)
+    we use the substitution \(y=x/\lambda\) and \(dx/dy=\lambda\)
+    \begin{align*}
+    \widehat{g}(x)
+     &= \int_{-\infty}^\infty g(x)e^{-itx}\,dm(x)
+     = \int_{-\infty}^\infty f(x/\lambda)e^{-itx}\,dm(x) 
+     = \int_{-\infty}^\infty f(y)e^{- it \lambda y}\lambda\,dm(yx) \\
+     &= \lambda \widehat{f}(\lambda t)
+    \end{align*}
+
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Auxiliary Functions}
+
+In Section~9.7, the following functions are defined:
+\begin{gather}
+H(t) = e^{-|t|} \\
+h_\lambda(x) = \int_{-\infty}^\infty H(\lambda t)e^{itx}\,dm(t) 
+ \qquad (\lambda > 0)
+\end{gather}
+Then text says:
+\begin{quote}
+A simple computation gives
+\begin{equation}
+ \tag{Rudin(3)}
+h_\lambda(x) = \sqrt{\frac{2}{\pi}} \frac{\lambda}{\lambda^2 + x^2}
+\end{equation}
+\end{quote}
+Let's compute it in details, in two ways.
+\begin{itemize}
+
+\item
+
+Assuming \(\lambda>0\):
+\begin{eqnarray*}
+h_\lambda(x)
+  & = & \intR H(\lambda t)e^{itx}dm(t) =
+  % & = &
+        \intR e^{-|\lambda t|}e^{itx}dm(t) \\
+  & = & \int_{-\infty}^0 e^{(ix+\lambda)t}dm(t) +
+        \int_0^\infty e^{(ix-\lambda)t}dm(t) \\
+  & = & \left.\left(\sqdivtpi\frac{1}{ix+\lambda}e^{(ix+\lambda)t}
+        \right)\right|_{-\infty}^0 +
+        \left.\left(\sqdivtpi\frac{1}{ix-\lambda}e^{(ix-\lambda)t}
+        \right)\right|_0^\infty \\
+  & = & \sqdivtpi\frac{1}{ix+\lambda} - 0 +
+        0 - \sqdivtpi\frac{1}{ix-\lambda} \\
+  & = & \sqdivtpi\,\frac{-2\lambda}{(ix+\lambda)(ix-\lambda)} \\
+  & = & \sqrt{\frac{2}{\pi}}\frac{\lambda}{\lambda^2+x^2}\>.
+\end{eqnarray*}
+
+\item
+We use the indefinite integral formula 
+(See \cite{Apostol1961}~6.17, Exercise~20)
+\begin{equation*}
+\int e^{ax}\cos(bx)\,dx = \frac{e^{ax}(a\cos(bx) + b\sin(bx))}{a^2+b^2} + C.
+\end{equation*}
+\iffalse
+We use the indefinite integral formula
+\begin{equation*}
+\int 1/(a+x^2)\,dx = \arctan\left(x/\sqrt{a}\,\right)/\sqrt{a}
+\end{equation*}
+\fi
+\iffalse
+which can be verified by
+\begin{equation*}
+1=\frac{d}{dx}\tan\bigl(\arctan(\x)\bigr)
+= \frac{d}{dx}\arctan(x) \frac{d}{dx}\tan\bigl(\arctan(\x)\bigr)
+\end{equation*}
+\fi
+
+Now
+\begin{align*}
+h_\lambda(x) 
+&= \int_{-\infty}^\infty H(\lambda t)e^{itx}\,dm(t)
+  =  \int_{-\infty}^0 e^{-\lambda t} e^{itx}\,dm(t) 
+   + \int_0^\infty e^{-\lambda t} e^{itx}\,dm(t)  \\
+&= \int_0^\infty e^{-\lambda t} (e^{itx} + e^{-itx})\,dm(t)
+ = \int_0^\infty e^{-\lambda t} 2\cos(tx)\,dm(t)  \\
+&= \frac{2}{\sqrt{2\pi}}
+   \left.\frac{e^{-\lambda t}(-\lambda \cos(tx) + x\sin(tx))}{\lambda^2+x^2} 
+   \,\right|_{t=0}^{t=\infty} 
+ = \sqrt{\frac{2}{\pi}}\cdot\frac{\lambda}{\lambda^2+x^2}
+\end{align*}
+\end{itemize}
+
+Following in the text is the equality
+\begin{equation} \tag{Rudin(4)}
+\intR h_\lambda(x)dm(x) = 1
+\end{equation}
+that we will now verify.
+
+From the derivative equation \(\arctan'(x) = 1/(1+x^2)\) we have
+the indefinite integral:
+\[\int \frac{1}{\lambda^2+x^2}dx = \arctan'(x/\lambda)/\lambda.\]
+To get Equation~(3) there:
+\begin{eqnarray*}
+\intR h_\lambda(x)dm(x)
+ & = & \sqrt{\frac{2}{\pi}}\sqdivtpi \intR \frac{\lambda}{\lambda^2+x^2}dx \\
+ & = & (1/\pi)
+       \left.\bigl(\arctan(x/\lambda)\bigr)\right|_{-\infty}^{\infty} \\
+ & = & \frac{1}{\pi}\left(\frac{\pi}{2} - \frac{-\pi}{2}\right) = 1.
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equality in Theorem 9.9}
+
+The proof of Theorem~9.9 uses the equality
+\begin{equation*}
+h_\lambda(y) = \lambda^{-1}h_1\left(\frac{y}{\lambda}\right)\,.
+\end{equation*}
+Working it out:
+\begin{equation*}
+h_1(y/\lambda) 
+= \sqrt{\frac{2}{\pi}}\frac{1}{1^2+(y/\lambda)^2}
+= \sqrt{\frac{2}{\pi}}\frac{\lambda^2}{\lambda^2+y^2}
+= \lambda h_\lambda(y).
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Additional Results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generalization of Theorem~9.2} \label{sec:gen:thm9.2}
+
+Theorem~9.2 has several items, each of which gives some equality
+under some conditions. Here we generalize item~\ich{f}.
+
+\begin{llem} \label{lem:g-eq-xnf}
+Assume \(f\in L^1\).
+If \(g(x) = x^nf(x)\) and \(g\in L^1\) then
+\(\hat{f}\) is $n$-times differentiable and
+\begin{equation}
+\hat{g}(t) = i^nD^n\hat{f}(t). \label{eq:gtDn}
+\end{equation}
+\end{llem}
+\begin{thmproof}
+The case \(n=1\) was proved in Theorem~9.2\ich{f}.
+Assume that \eqref{eq:gtDn} holds for \(1\leq n < k\).
+Put \(h(x) = x^kf(x) = xg(x)\). By induction
+\begin{equation*}
+\hat{h}(t) 
+= i\hat{g}'(t) 
+= iD^1\left(i^{k-1}D^{k-1}\hat{f}\right)(t)
+= i^kD^k\hat{f}(t).
+\end{equation*}
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Continuity with Domain Transformations}
+
+Theorem~9.5 deals with continuity of changing a function
+by shifting its \(\R^1\) domain.
+Let's generalize it to other kind of transformations.
+
+\begin{llem} \label{lem:9.5:gen}
+Let \((X,d,\mu)\) be a metric and positive measurable space such
+that \(\mu(A)<\infty\) whenever \(A\subset X\) is compact
+and let \(f\in L^p(X)\).
+For each \(\epsilon>0\) there exists \(\delta > 0\) such that if 
+\(T:\,X\to X\) is continuous and \(d(T(x),x)<\delta\) for all \(x\in X\)
+then \(\|f - f\circ T\|_p < \epsilon\).
+\end{llem}
+\begin{thmproof}
+By theorem~3.14 there exists \(g\in C_c(X)\) such that 
+\(\|f-g\|_p < \epsilon/3\). Put \(K=\supp g\).
+Let \(\delta>0\)
+be such that \(|g(x_1)-g(x_2)|<\epsilon/(3\mu(K))\) 
+whenever \(|x_1-x_2|<\delta\).
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Inversion --- 4 Steps to Identity}
+
+The Inversion~Theorem~9.11 actually goes only half way.
+The following lemma completes it.
+
+\begin{llem}
+Denote \(\calF(f) = \hat{f}\).
+If \(f\in L^2\) then
+\begin{equation} \label{eq:F4}
+\calF^4(f) = \calF(\calF(\calF(\calF(f)))) = f \;\aded
+\end{equation}
+\end{llem}
+Notes
+\begin{itemize}
+\item This can be summarized by \(\calF^4 = \Id\).
+\item By Theorem~9.14, if \(\hat{f}\in L^1\) then
+\begin{equation*}
+f(x) = \int_{\infty}^\infty \hat{f}(t) e^{ixt}\,dm(t)\;\aded
+\end{equation*}
+\end{itemize}
+\begin{thmproof}
+By Plancherel Theorem~9.13\ich{d}
+\begin{equation*}
+f(x) = \lim_{A\to\infty}\int_{-A}^A \hat{f}(t) e^{ixt}\,dm(t) \;\aded
+\end{equation*}
+Therefore, with
+accepting the limit as the defined of the Fourier transform in \(L^2\) 
+\begin{equation*}
+f(-x) = \lim_{A\to\infty}\int_{-A}^A \hat{f}(t) e^{-ixt}\,dm(t) = \calF^2(f)(x)
+\;\aded
+\end{equation*}
+Applying this twice gives the desired \eqref{eq:F4}.
+\end{thmproof}
+
+Intuitively $f$ vanishes at infinitely if \(f\in L^1\),
+but it is not difficult to construct a counterexample.
+The intuition is true with additional requirement.
+
+\begin{llem} \label{lem:fdf-L1-then-f-inC0}
+If \(f\in L^1(\R)\)  and differentable and \(f'\in L^1\) then
+\(f\in C_0\).
+\end{llem}
+\begin{thmproof}
+Let 
+\(l = \varliminf_{x\to\infty}|f(x)|\)
+and
+\(h = \varlimsup_{x\to\infty}|f(x)|\).
+We need to show that \(l=h=0\).
+Similarly we can do the same with 
+opposite direction \(\lim_{x\to-\infty}\) limits 
+and consequently \(f\in C_0\).
+
+First we will show that \(l=0\). If by negation \(l>0\), 
+then \(|f(x)|\geq l\) for all \(x\geq M\) for some \(M<\infty\)
+and thus 
+\begin{equation*}
+\int_{-\infty}^\infty |f(x)|\,dm(x)
+\geq \int_M^\infty|f(x)|\,dm(x) 
+\geq \int_M^\infty l\,dm(x) = \infty.
+\end{equation*}
+A contradiction to \(f\in L^1\). 
+Hence \(\varliminf_{x\to\pm\infty}|f(x)| = 0\).
+
+Now assume by negation \(h>0\).
+Since \(f'\in L^1\) there exist some \(M<\infty\) such that
+\begin{equation} \label{eq:intfx-lt4}
+\int_M^\infty |f(x)|\,dm(x) < h/4.
+\end{equation}
+But we can find some \(x_l,x_h>M\) such that
+\begin{align*}
+|f'(x_l)| &< h/3 \\
+|f'(x_h)| &> 2h/3
+\end{align*}
+and \wlogy\ assume that \(x_l < x_h\). Now
+\begin{equation*}
+\int_M^\infty |f(x)|\,dm(x) 
+\geq \int_{x_l}^{x_h} |f'(x)|\,dm(x) 
+\geq \left|\int_{x_l}^{x_h} f'(x)\,dm(x)\right|
+= f(x_h) - f(x_l)
+> h/3
+\end{equation*}
+which contradicts \eqref{eq:intfx-lt4}.
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Back from Derivative to Multiplication}
+
+The following lemma is an inverse variant of Theorem~9.2\ich{f},
+that we have generalized before (\ref{sec:gen:thm9.2}).
+\begin{llem} \label{lem:fourierdif}
+Let $f$ be a differentable function on \(\R\).
+Put \(g(x)=f'(x)\).
+If \(f,g\in L^1\) then
+\begin{equation} \label{eq:fourierdif}
+\hat{g}(t) = it\hat{f}(t) \qquad (t\in\R).
+\end{equation}
+\end{llem}
+\begin{thmproof}
+By local lemma~\ref{lem:fdf-L1-then-f-inC0} \(f\in C_0\).
+Integrating by parts
+\begin{equation*}
+\hat{g}(t) 
+= \int_{-\infty}^\infty f'(x)e^{-ixt}\,dm(x)
+= \frac{1}{\sqrt{2\pi}}f(x)e^{-ixt}\bigm|_{-\infty}^\infty 
+  - (-it)\int_{-\infty}^\infty f(x)e^{-ixt}\,dm(x)
+= 0 - 0 + it\hat{f}(t).
+\end{equation*}
+\end{thmproof}
+
+Let's extend this formula
+\begin{llem} \label{lem:fourierdifn}
+Let $f$ be an $n$-times differentable function on \(\R\).
+Put \(g(x)=D^n(f)(x)\).
+If \(D^k(f)\in L^1\) for \(0\leq k \leq n\) then
+\begin{equation} \label{eq:Fourierdifn}
+\hat{g}(t) = \widehat{D^n(f)}(t) = (it)^n\hat{f}(t) \qquad (t\in\R).
+\end{equation}
+\end{llem}
+\begin{thmproof}
+The previous locall lemma \ref{lem:fourierdif}
+establishes \eqref{eq:Fourierdifn} for \(n=1\).
+Assume by induction that \eqref{eq:Fourierdifn} holds for \(1\leq n < k\).
+Now
+\begin{equation*}
+\widehat{D^k(f)}(t) 
+= \widehat{D(D^{k-1}(f))}(t) 
+= it \widehat{D^{k-1}(f)}(t) 
+= it \cdot (it)^{k-1}\hat{f}(t)
+= (it)^k\hat{f}(t).
+\end{equation*}
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 193-195
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Local Lemmas} 
+
+\begin{llem}
+If \(m\in\Z\) and
+\begin{equation*}
+  f(x) = x^m e^{-x^2}
+\end{equation*}
+then
+\begin{equation}
+  \lim_{x\to\infty} f(x) = 0. \label{eq:lim:xm:ex2:eq0}
+\end{equation}
+\end{llem}
+\begin{thmproof}
+Since \(f(-x) = \pm f(x)\) we can restrict our attention to \(0<x\to+\infty\).
+By induction on~$m$. Clearly \eqref{eq:lim:xm:ex2:eq0} holds for \(m \leq 0\).
+Assume it holds for all \(m < k\).
+Now by L'Hospital rules and induction assumption
+\begin{equation*}
+\lim_{x\to\infty} f(x) 
+= \lim_{x\to\infty} \frac{mx^{m-1}}{2x e^{x^2}}
+= (m/2) \lim_{x\to\infty} x^{m-2} e^{-x^2} = 0.
+\end{equation*}
+\end{thmproof}
+
+
+\begin{llem} \label{llem:9.calF}
+Let \calF\ be a family of functions of the following form
+\begin{equation*}
+f(x) = \sum_{j=1}^n a_jx^{m_j}e^{-x^2}
+\end{equation*}
+where \(a_j\in\C\) and \(m\in\Z^+\).
+If \(f \in \calF\) then \(f'\in\calF\).
+\end{llem}
+\begin{thmproof}
+Differentiate \(f(x) = x^me^{-x^2}\) gives
+\begin{equation*}
+f'(x) = mx^{m-1} e^{-x^2} -2x^{m+1}e^{-x^2} \in \calF.
+\end{equation*}
+Since differentiation is linear and \calF\ is a linear space,
+and since \(f'\in \calF\) for a $f$ in a base, \(f'\in \calF\) also for
+all \(f\in \calF\).
+\end{thmproof}
+
+
+\begin{llem} \label{lem:fxfL1}
+Assume $f$ is measurable and \(x^nf(x)\) are bounded for \(n=1,2\).
+Then \(f\in L^1\).
+\end{llem}
+\begin{thmproof}
+For \(n=0,1,2\) let \(A_{1n}\) be such that 
+\(|x^nf(x)| \leq A_{1n}\) (See Exercise~9.\ref{ex:Amn})
+\begin{equation*}
+\|f\|_1 
+= \int |f|
+= \int_{-1}^1 |f(t)|\,dt + \int_{|t|>1} |f(t)|\,dt
+\leq 2A_{10} + \int_{|t|>1} A_{12}t^{-2}\,dt
+= 2(A_{10} + A_{12}).
+\end{equation*}
+Hence \(f\in L^1\).
+
+
+\begin{llem} \label{lem:fxfL2}
+Assume $f$ is measurable and \(x^nf(x)\) are bounded for \(n=0,1\).
+Then \(f\in L^1\).
+\end{llem}
+Let
+\begin{align*}
+L &= \{x\in\R\setminus[-1,1]: |f(x)| < 1\} \\
+H &= \{x\in\R\setminus[-1,1]: |f(x)| \geq 1\}
+\end{align*}
+\begin{align*}
+\|f\|_2^2 
+&= \int_{\R} |f|^2
+= \int_{-1}^1 |f|^2 + \int_L |f|^2 + \int_H |f|^2 \\
+&\leq 2A_{10}^2 + \int_L |f| + \int_H (A_{11}/t)^2\,dt \\
+&\leq 2A_{10}^2 + \|f\|_1 + 2A_{11}^2.
+\end{align*}
+Hence \(f\in L^2\).
+\end{thmproof}
+
+
+\begin{llem} \label{lem:fxfL12}
+Assume $f$ is measurable and \(x^nf(x)\) are bounded for \(0 \leq n \leq 2\).
+Then
+ \(f\in L^1\cap L^2\).
+and
+ \(\hat{f}\in L^2\cap C_0\).
+\end{llem}
+\begin{thmproof}
+Combining the results of previous local lemmas 
+\ref{lem:fxfL1} and \ref{lem:fxfL2}
+we have \(f\in L^1\cap L^2\).
+By 
+Theorem~9.6 and
+\index{Plancherel}
+Plancherel Theorem~9.13 \(\hat{f}\in L^2\cap C_0\).
+\end{thmproof}
+
+\paragraph{Derivative of rational polynomial.}
+
+\begin{llem} \label{lem:ratpoly:vansihderivf}
+Let \(f(x) = p(x)/q(x)\) where \(p(x)\) and \(q(x)\) are 
+real polynomials defined on~\(\R\) and \(q(x)\neq 0\) for all \(x\in\R\)
+and \(\deg(p) < \deg(q)\).
+Then 
+\begin{itemize}
+\itemch{a} \(f\in C^\infty(\R)\).
+
+\itemch{b} The derivatives are rational polynomials of the form
+\begin{equation} \label{eq:ratpoly:vansihderivf:denom}
+f^{(n)}(x) = \frac{s_n(x)}{\bigl(q(x)\bigr)^{2^n}}
+\end{equation}
+for some polynomial \(s_n(x)\) such that 
+\(\deg(s_n(x)) < \deg(q(x))^{2^n} = 2^n\deg(q(x))\).
+
+
+\itemch{c} All derivatives vanish at infinity
+\begin{equation} \label{eq:ratpoly:vansihderivf}
+\lim_{x\to\pm\infty} f^{(n)}(x) = 0 \qquad (n \in\Z^+).
+\end{equation}
+
+\end{itemize}
+\end{llem}
+\begin{thmproof}
+Clearly \(\deg(q) \geq 1\) and \(\lim_{x\to\pm\infty}q(x) = \pm\infty\).
+Assume first \(n=0\) 
+then \eqref{eq:ratpoly:vansihderivf:denom} is trivial 
+and \eqref{eq:ratpoly:vansihderivf}
+follows by applying applying L'Hospital rule \(\deg(p)\)-times.
+
+By induction, 
+assume \eqref{eq:ratpoly:vansihderivf:denom} 
+and \eqref{eq:ratpoly:vansihderivf} holds for \(n=k\).
+Now
+\begin{equation*}
+f^{(k+1)}(x) 
+= \left(\frac{s_k(x)}{\bigl(q(x)\bigr)^{2^k}}\right)'
+=   \frac{{s_k}'(x)}{\bigl(q(x)\bigr)^{2^k}} 
+  - \frac{{s_k}(x) \bigl(q(x)\bigr)^{2^k}}{%
+          \left(\bigl(q(x)\bigr)^{2^k}\right)^2} 
+= \frac{s_{k+1}(x)}{\bigl(q(x)\bigr)^{2^{k+1}}}
+\end{equation*}
+where \(s_{k+1}(x) = (q(x))^{2^k}({s_k}'(x) - s_k(x))\).
+Clearly
+\begin{equation*}
+\deg(s_{k+1}(x)) < \deg\left(\bigl(q(x)\bigr)^{2^{k+1}}\right)
+\end{equation*}
+hence \eqref{eq:ratpoly:vansihderivf:denom} 
+and \eqref{eq:ratpoly:vansihderivf} holds for \(n=k+1\) as well.
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Exercises} % pages 193-195
+
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+Suppose \(f \in L^1\), \(f>0\).
+Prove that \(|\hat{f}(y)| < \hat{f}(0)\) for every \(y\neq 0\).
+\end{excopy}
+
+We have
+\begin{equation*}
+\hat{f}(0)
+= \int_{-\infty}^\infty f(t)e^{-i0t}\,dm(t)
+= \int_{-\infty}^\infty f(t)\,dm(t)
+= \|f\|_1 \geq 0.
+\end{equation*}
+Looking at the mutually disjoint \(G_n = f^{-1}\bigl([n-1,n)\bigr)\)
+it is easy to see that \(\|f\|_1 > 0\). Actually the same reasoning
+shows that
+\begin{equation*}
+\int_a^b f(t)\,dm(t) > 0
+\end{equation*}
+Whenever \(a<b\), simply by looking at \(G_n \cap [a,b]\).
+
+
+For any \(y\in\R\)
+\begin{equation*}
+|\hat{f}(y)|
+= \left| \int_{-\infty}^\infty f(t)e^{-iyt}\,dm(t) \right|
+\leq  \int_{-\infty}^\infty |f(t)e^{-iyt}|\,dm(t)
+= \int_{-\infty}^\infty f(t)\,dm(t)
+= \hat{f}(0).
+\end{equation*}
+Assume \(y\neq 0\),
+we still need to show strict inequality.
+Let us have the following simple lemma
+\begin{llem} \label{lem:aubuLYab}
+If \(a,b>0\) and \(|u_1|=|u_2|=1\) and \(u_1 \neq u_2\),
+then
+\begin{equation} \label{eq:ex9.1:llem}
+a + b > |u_1a + u_2 b|
+\end{equation}
+\end{llem}
+\begin{thmproof}
+Since
+\begin{equation*}
+|u_1a + u_2 b| = |u_1a/u_2 + b|
+\end{equation*}
+We may assume \(u_2=1\) and \(u = u_1 = e^{i\theta}\)
+with \(\theta \neq 0 \mod 2\pi\) that is \(\cos\theta < 1\).
+Thus
+
+\begin{equation*}
+|ua + b|^2
+= (a\sin\theta)^2 + (a\cos\theta) + b)^2
+= a^2 + 2ab\cos\theta + b^2
+\end{equation*}
+\begin{equation*}
+(a+b)^2 - |ua + b|^2 = 2ab(1-\cos\theta) > 0.
+\end{equation*}
+Hence \((a+b)^2 > |ua + b|^2\) which gives \eqref{eq:ex9.1:llem}.
+\end{thmproof}
+
+Back to the exercise.
+\begin{align*}
+\hat{f}(0) - |\hat{f}(y)|
+&=
+   \int_{-\infty}^\infty f(t)\,dm(t)
+   - \left| \int_{-\infty}^\infty f(t)e^{-iyt}\,dm(t) \right| \\
+&\geq \int_0^\infty
+           \bigl(f(t) + f(-t)\bigr) -
+           \left| f(t)e^{-iyt} + f(-t)e^{iyt}\right| \,dm(t)
+\end{align*}
+By the lemma~\ref{lem:aubuLYab}, the last integrand is positive \aded,
+thus \(\hat{f}(0) - |\hat{f}(y)| > 0\)
+which gives the desired result.
+
+
+
+\iffalse
+Pick arbitrary \(\epsilon\in(0,\|f\|_1/2)\).
+By Theorem~3.14 \cite{RudinRCA87} there exists
+a~continuous function $g$ such that \(\|g-f\|_1 < \epsilon\).
+We may assume that \(g\geq 0\), otherwise we pick \(|g|\).
+By continuity and choice of \(\epsilon\) there exists \(\xi\)
+such that \(g(\xi)>0\) and \(a,\delta>0\) such that
+\(g(x)\geq a\) whenever \(x\in[\xi-\delta,\xi+\delta]\).
+\fi
+
+%%%%%%%%%%%%%% 2
+\begin{excopy}
+Compute the Fourier transform of the characteristic function
+of an interval. For \(n=1,2,3,\ldots\), let
+\(g_n\) be the characteristic if \([-n,n]\),
+let $h$ be the characteristic
+function of \([-1,1]\) and compute \(g_n \ast h\) explicitly.
+(The grpah is piecewise linear).
+Show that \(g_n \ast h\) is the Fourier transform
+of a~function \(f_n\in L^1\); except for a multiplicative constant,
+\begin{equation*}
+f_n(x) = \frac{\sin x\,\sin nx}{x^2}
+\end{equation*}
+Show that \(\|f_n\|_1 \to \infty\) and conclude that the mapping
+\(f \to \hat{f}\) maps \(L^1\) into a \emph{proper} subset of \(C_0\).
+Show however, that the range of this mapping is dense in \(C_0\).
+\end{excopy}
+
+Let \(f=\chhi_{[a,b]}\) then
+\begin{align*}
+\hat{f}(x)
+ &= \int_{-\infty}^\infty f(x)\cdot e^{-ixt}\,dm(t)
+  = \int_a^b e^{-ixt}\,dm(t)
+  = (e^{-ixb} - e^{-ixa})/\bigl(-ix\sqrt{2\pi}\,\bigr) \\
+ &= i(e^{-ixb} - e^{-ixa})/\bigl(\sqrt{2\pi}x\bigr).
+\end{align*}
+Hence 
+\begin{equation*}
+\hat{g_n}(x) 
+ = i(e^{-inx} - e^{inx})/\bigl(\sqrt{2\pi}x\bigr)
+ = -i^2((e^{inx} - e^{-inx})/i)\bigl(\sqrt{2\pi}x\bigr)
+ = \frac{1}{\sqrt{2\pi}}\sin(nx)/x.
+\end{equation*}
+Similarly,
+\begin{equation} \label{eq:fourier:chi}
+\widehat{\chhi_{[-\lambda,\lambda]}}(x) = \frac{1}{\sqrt{2\pi}}\sin(\lambda x)/x
+\end{equation}
+for any \(\lambda\in\R^{+}\).
+
+
+Now we compute the convolution.
+\begin{align*}
+(g_n \ast h)(x)
+ &= \int_{\infty}^\infty g_n(x-t)h(t)\,dm(t) \\
+ &= \int_{-1}^1 g_n(x-t)\,dm(t)
+  = \left\{
+    \begin{array}{ll}
+    2              & |x| \leq n - 1 \\
+    n+1-|x| \qquad & n-1 \leq |x| \leq n+1 \\
+    0 \qquad       & |x| \geq n + 1
+    \end{array}\right.
+\end{align*}
+
+Put \(\varphi_n = g_n \ast h\) and compute:
+\begin{align*}
+\hat{\varphi_n}(t) 
+ &= \int_{-\infty}^\infty \varphi_n(x)e^{-itx}\,dm(x)
+ =  \int_{-\infty}^\infty 
+         \left(\int_{-\infty}^\infty g_n(x-y)h(y)\,dm(y)\right)
+         e^{-itx}\,dm(x) \\
+ &= \int_{-\infty}^\infty 
+          \left(\int_{-\infty}^\infty g_n(x-y)e^{-it(x-y)}\,dm(x)\right)
+         h(y)e^{-ity}\,dm(y) \\
+ &= \int_{-\infty}^\infty 
+          \left(\int_{-\infty}^\infty g_n(x)e^{-itx}\,dm(x)\right)
+         h(y)e^{-ity}\,dm(y) \\
+ &= \int_{-\infty}^\infty \hat{g_n}(x) h(y)e^{-ity}\,dm(y) 
+  = \hat{g_n}(x)  \int_{-\infty}^\infty h(y)e^{-ity}\,dm(y) \\
+ &= \hat{g_n}(x) \hat{h}(x) = \beta_n \frac{\sin(x)\sin(nx)}{x^2}
+\end{align*}
+for some \(\beta_n\).
+
+By the inversion formula (Theorem~9.11 \cite{RudinRCA87})
+and the fact that \(f_n\) is an even function
+\begin{align*}
+\varphi_n(t) 
+&= \int_{\infty}^\infty \hat{\varphi_n}(x) e^{itx}\,dm(x)
+ = \int_{\infty}^\infty \hat{g_n}(x)\hat{h}(x) e^{itx}\,dm(x) \\
+&= \beta_n \int_{\infty}^\infty f_n(x) e^{itx}\,dm(x) 
+ = \beta_n \int_{\infty}^\infty f_n(x) e^{-itx}\,dm(x) \\
+&= \beta_n \hat{f_n}(t).
+\end{align*}
+
+
+We will now show
+\begin{equation} \label{eq:ex9.1:fn1:inf}
+\lim_{n\to\infty}\|f_n\|_1 = \infty.
+\end{equation}
+If \(0<x\leq\pi/2\) then \(\sin x/x \geq 2/\pi > 1/2\).
+\begin{align*}
+\|f_n\|_1
+&= \int_{-\infty}^\infty \left|\frac{\sin x\,\sin nx}{x^2}\right|\,dm(x)
+ \geq \int_0^1 (\sin x)\cdot|\sin nx|/x^2\,dm(x) \\
+&\geq \int_0^1 (|\sin nx|/x)(\sin x/x)\,dm(x)
+ \geq (1/2)\int_0^1 (|\sin nx|/x)\,dm(x)
+\end{align*}
+We will soon estimate the last integral.
+The function \(\sin nx\) has \(\lfloor n/2\pi \rfloor\)
+complete periods within \([0,1]\).
+Since
+\begin{equation*}
+\sin \pi/3 = \sin 2\pi/3 = -\sin 4\pi/3 = -\sin 5\pi/3 = 1/2,
+\end{equation*}
+in each period $w$,
+the lengths total of the two sub-intervals where \(|\sin nx| \geq 1/2\)
+is \(w/3\). The total lengths of these sub-intervals in \([0,1]\)
+is at least
+\begin{equation*}
+(2\pi/n) \lfloor n/2\pi \rfloor / 3 \geq 1/4
+\end{equation*}
+for \(n>2\pi\).
+Hence
+\begin{align*}
+\int_0^1 (|\sin nx|/x)\,dm(x)
+&\geq \sum_{k=0}^{\lfloor n/2\pi \rfloor}
+  \int_{2\pi k/n}^{2\pi(k+1)/n} |\sin nx|/x\,dm(x) \\
+&\geq (1/4)\sum_{k=1}^{\lfloor n/2\pi \rfloor}
+         (1/2)\cdot (1/k)
+ \geq (1/8)\sum_{k=1}^{\lfloor n/7\rfloor} 1/k
+\end{align*}
+which clearly converges to \(+\infty\) as \(n\to\infty\)
+and \eqref{eq:ex9.1:fn1:inf} is shown.
+
+
+By Theorem~9.6 (\cite{RudinRCA87}) the Fourier transform 
+is a continuous mapping of \(L^1\) to \(C_0\).
+If by negation (similar to Theorem~5.15 \cite{RudinRCA87})
+the mapping were \emph{onto} then by Theorem~5.10 (\cite{RudinRCA87})
+there would exist \(\delta>0\) such that 
+\begin{equation*}
+ \delta \|f_n\|_1 \leq \|\hat{f_n}\|_\infty = 1
+\end{equation*}
+for all $n$, which is a contradiction to the shown \(\lim_{n\to\infty}\|f_n\|_1 = \infty\).
+
+%%%%%%%%%%%%%% 3
+\begin{excopy}
+Find
+\begin{equation*}
+\lim_{A\to\infty} \int_{-A}^A \frac{\sin \lambda t}{t}e^{itx}\,dt
+  \qquad (\infty < x < \infty)
+\end{equation*}
+where \(\lambda\) is a positive constant.
+\end{excopy}
+
+Using \eqref{eq:fourier:chi} of previous exercise, 
+and Theorem~9.13\ich{d} (\cite{RudinRCA87})
+\begin{equation*}
+\lim_{A\to\infty} \int_{-A}^A \frac{\sin \lambda t}{t}e^{itx}\,dt
+= \sqrt{2\pi} \chhi_{[-\lambda,\lambda]}.
+\end{equation*}
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Give examples of \(f\in L^2\) such that \(f\notin L^1\)
+but \(\hat{f}\in L^1\). Under what circumstances can this happen?
+\end{excopy}
+
+The function in previous exercise, namely \(f(x) = \sin(\lambda t)/t\) 
+is an example. 
+The question is --- for which \(f\in L^2\setminus L^1\)
+we have \(\hat{f}\in L^1\)\,?
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+If \(f\in L^1\) and \(\int|t\hat{f}(t)|\,dm(t) < \infty\),
+prove that $f$ coincides \aded\ with a differentiable function
+whose derivative is
+\begin{equation*}
+i \int_{-\infty}^\infty t\hat{f}(t)e^{ixt}\,dm(t).
+\end{equation*}
+\end{excopy}
+
+By Theorem~9.6 \(\hat{f}\in L^1\), hence
+\begin{equation*}
+\int_{-\infty}^\infty |\hat{f}(t)|\,dm(t)
+\leq \int_{-1}^1 |\hat{f}(t)|\,dm(t) 
+     + \int_{\R\setminus[-1,1]} |t\hat{f}(t)|\,dm(t)
+< \infty.
+\end{equation*}
+and \(\hat{f}\in L^1\).
+
+By the inversion Theorem~9.11, we can define
+\begin{equation*}
+g(x) = \int_{-\infty}^\infty \hat{f}(t)e^{ixt}\,dm(t)
+\end{equation*}
+and \(f(x)=g(x)\,\aded\)
+
+Differentiate
+\begin{align}
+g'(x) 
+&= \lim_{h\to 0} (g(x+h)-g(x))/h \notag \\
+&= \lim_{h\to 0} 
+    \left(
+     \int_{-\infty}^\infty \hat{f}(t)(e^{i(x+h)t} - e^{ixt})\,dm(t)
+    \right) \,\bigm/\, h \notag \\
+&= \lim_{h\to 0} 
+    \left(
+     \int_{-\infty}^\infty \hat{f}(t)(e^{i(x+h)t} - e^{ixt})/h\,dm(t)
+    \right) \notag \\
+&= 
+     \int_{-\infty}^\infty \hat{f}(t)
+    \left(
+          \lim_{h\to 0} (e^{i(x+h)t} - e^{ixt})/h
+    \right) 
+    \,dm(t)    \label{eq:ex9.5:lbgdom} \\
+&= i\,\int_{-\infty}^\infty t\hat{f}(t)e^{ixt}\,dm(t) \notag
+\end{align}
+
+The \eqref{eq:ex9.5:lbgdom} equality is justified by the same argument
+of section~9.3(\emph{a}) and the fact that for sufficiently small $h$
+we have \(|(e^{i(x+h)t} - e^{ixt})/h|<2\) together with \(\hat{f}\in L^1\).
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Suppose  \(f\in L^1\), $f$ is differentiable almost everywhere,
+and \(f'\in L^1\). Does it follow that the Fourier transform
+of \(f'\) is \(ti\hat{f}(t)\)?
+\end{excopy}
+
+Consider
+\begin{equation*}
+f(x) = \left\{
+  \begin{array}{ll}
+  e^{-x} & x \geq 0\\
+  0     & x < 0
+  \end{array}
+  \right.
+\end{equation*}
+and \(f'(x) = -f(x)\,\aded\) Now
+\begin{equation*}
+\hat{f}(t) 
+ = \int_0^\infty e^{-x}e^{-ixt}\,dm(x)
+ = \int_0^\infty e^{-x(1+it)}\,dm(x)
+ = \frac{-1}{1+it}\,e^{-x(1+it)}\bigm|_0^\infty
+ = 1/(1+it)
+\end{equation*}
+Clearly the conjecture here fails.
+
+
+%%%%%%%%%%%%%% 7
+\begin{excopy} 
+Let 
+\label{ex:Amn}
+$S$ be the class of all functions $f$ on \(\R^1\) which have
+the following property:
+$f$ is infinitely differentiable,
+and there are numbers \(A_{m n}(f)<\infty\),
+for $m$ and \(n=0,1,2,\ldots\), such that
+\begin{equation*}
+\left| x^nD^m f(x)\right| \leq A_{m n}(f) \qquad (x\in\R^1).
+\end{equation*}
+Here $D$ is the ordinary differentiable operator.
+
+Prove that the Fourier transform maps $S$ onto $S$.
+Find examples of members of $S$.
+\end{excopy}
+
+\textbf{Note:} This $S$ space is called
+\index{Schwartz space}
+Schwartz space in other texts.
+
+Assume \(f\in S\).
+In order to show that \(\hat{f}\in S\) we need to show
+\(\hat{f}\) is infinitely differentiable and 
+that \(A_{mn}(\hat{f})<0\) exist for all \(m,n\in\Z^+\).
+
+\begin{equation*}
+\hat{f}(t) = \int_{\R} f(x)e^{-ixt}\,dm(x)
+\end{equation*}
+Now
+\begin{align*}
+|\hat{f}(t)| 
+ &\leq \int_{\R} |f(x)|\,dm(x)
+  = \int_{-1}^1 |f(x)|\,dm(x) + \int_{|x|>1} |f(x)|\,dm(x) \\
+ & \leq \int_{-1}^1 A_{00}(f)\,dm(x) + 2\int_1^\infty A_{02}(f)x^{-2}\,dm(x)
+  = 2(A_{00}(f) + A_{02}(f)) /\sqrt{2\pi}.
+\end{align*}
+Hence 
+\begin{equation} \label{eq:A00}
+A_{00}(\hat{f}) \leq 2(A_{00}(f) + A_{02}(f)) /\sqrt{2\pi}\,.
+\end{equation}
+
+If \(g(x) = x^nf(x)\) then clearly \(g\in S\).
+By local lemma~\ref{lem:g-eq-xnf}
+\(\hat{g}(t) = i^nD^n\hat{f}(t)\) and so by applying the preceding result
+\begin{equation*}
+|D^n\hat{f}(x)| = |\hat{g}(t)| \leq 2(A_{00}(g) + A_{02}(g)) /\sqrt{2\pi}.
+\end{equation*}
+
+
+If \(g(x) = (D^nf)(x)\) then clearly \(g\in S\).
+By local lemma~\ref{lem:fourierdifn}
+\(\hat{g}(t) = (it)^n\hat{f}(t)\).
+
+Let \(f\in S\).
+By local lemma~\ref{lem:g-eq-xnf}, \(\hat{f}\) is infinitely differentable.
+Let \(g(t) = t^m(D^n(\hat{f}))(t)\).
+Put \(g_d(t) = (D^n(\hat{f}))(t)\)
+and \(h(x) = x^nf(x) \in S\)
+By the same local lemma~\ref{lem:g-eq-xnf}
+\begin{equation*}
+  D^n\hat{f}(t) = (-i)^n\hat{h}(t)
+\end{equation*}
+Applying \eqref{eq:A00} we have 
+\begin{equation*}
+A_{n0}(\hat{g}) \leq A_{00}(\hat{h}) < \infty
+\end{equation*}
+
+By local lemma~\ref{lem:fourierdifn} applied to \(t^mg_d(t)\) we get
+\begin{equation*}
+t^m(D^n(\hat{f}))(t) = (-i)^m\widehat{D^m(h)}(t)
+\end{equation*}
+It is easy to see that \(D^m(h)\in S\) since $S$ is closed under addition.
+Thus 
+\begin{equation*}
+A_{nm}(\hat{f}) = A_{n0}(\widehat{D^mh} < 0
+\end{equation*}
+and therefore \(\hat{f}\in S\).
+
+\iffalse
+If \(f\in C^1(\R)\) and its derivative is bounded then 
+for each \(\epsilon>0\) 
+we have \(|f(s)-f(t)|<\epsilon\) whenever 
+\(|s-t|<\delta=\epsilon / (\|f'\|_\infty+1)\), 
+that is $f$ is uniformly continuous.
+Hence any member of $S$ is uniformly continuous.
+
+Also if \(f\in S\) and \(m\in\{0,1\}\) then
+\begin{equation*}
+\int |f| = \int x^2|f|/x^2 \leq A_{02}x^{-2} < \infty
+\end{equation*}
+and so \(S\subset L^1(\R)\).
+Almost directly by definition, if \(f\in S\) and \(g(x) = x^kf(x)\) 
+for some \(k\geq 0\)
+then \(g\in S\) as well.
+
+Let \(f\in S\), and let \(g(x) = ixf(x)\).
+With the above and theorem~9.2\ich{f} \({\hat{f}}' = \hat{g}\).
+\fi % false
+
+As an example,
+members of \calF\ defined in local lemma~\ref{llem:9.calF} are in $S$.
+
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+If $p$ and $q$ are conjugate exponents, 
+\(f\in L^p\), \(g\in L^q\) and \(h = f\ast g\),
+prove that $h$ is uniformly continuous. If also \(1<p<\infty\), then
+\(h\in C_0\): show that this fails for some \(f\in L^1\), \(g\in L^\infty\).
+\end{excopy}
+
+Along the lines of the proof of Theorem~9.5.\\
+Fix \(\epsilon > 0\). There is a continuous \(\phi\) (Theorem~3.14) such that
+\begin{align*}
+\supp(\phi) &\subset [-A,A] \\
+\|f-\phi\|_p &< \epsilon\,.
+\end{align*}
+\Wlogy, we can enlarge $A$ such that 
+\begin{equation*}
+\|f\chhi_{\R\setminus[-A,A]}\|_p
+= \left(\int_{\R\setminus[-A,A]}\|_p |f(x)|^p\,dm(x)\right)^{1/p} < \epsilon.
+\end{equation*}
+By uniform continuity of \(\phi\) there exists \(\delta\in (0, A)\)
+such that 
+\begin{equation*}
+ |\phi(s) - \phi(t)| < A^{-1/p}\epsilon\,.
+\end{equation*}
+We set 
+\(f_a(x) = f(a-x)\) and
+\(\phi_a(x) = \phi(a-x)\).
+Now
+\begin{align*}
+|h(s)-h(t)|
+&= |(f\ast g)(s) - (f\ast g)(t)| \\
+&= \left|\int f(s-x)g(x)\,dm(x) - \int (f(t-x)g(x)\,dm(x) \right| \\
+&= \left|\int (f(s-x) - f(t-x))g(x)\,dm(x) \right| \\
+&\leq \int |(f(s-x) - f(t-x))g(x)|\,dm(x)  \\
+&= \int \left|f(s-x) - f(t-x)\right|\cdot|g(x)|\,dm(x) \\
+&\leq \|f_s - f_t\|_p \cdot \|g\|_q \\
+&\leq \left(
+           \|f_s - \phi_s\|_p + \|\phi_s - \phi_t\|_p +\|\phi_t - f_t\|_p 
+     \right) \cdot \|g\|_q \\
+&= \left(2\|f - \phi\|_p + \|\phi_s - \phi_t\|_p \right) \cdot \|g\|_q \\
+&\leq (2\epsilon + (2A (A^{-1/p}\epsilon)^p)^{1/p}) \cdot \|g\|_q \\
+&= 4\epsilon \|g\|_q\,.
+\end{align*}
+Therefore $h$ is uniformly continuous.
+
+As a counterexample, let \(f = \chhi_{[0,1]} \in L^1\)
+and \(g = 1 \in L^\infty\). Then also \(h = f \ast g = 1 \notin C_0\).
+
+
+%%%%%%%%%%%%%% 9
+\begin{excopy}
+Suppose \(1\leq p < \infty\), \(f\in L^p\), and
+\begin{equation*}
+g(x) = \int_x^{x+1} f(t)\,dt.
+\end{equation*}
+Prove that \(g\in C_0\). What can you say about $g$ if \(f\in L^\infty\).
+\end{excopy}
+
+Let \(f\in L^p\). Pick some \(\epsilon>0\), then there exist some \(M<\infty\)
+such that \(\int_{|t|>M} |f(t)|\,dt < \epsilon\).
+Obviously 
+\begin{equation*}
+\left|\int_x^{x+1}f(t)\,dt\right|
+\leq \int_x^{x+1}|f(t)|\,dt
+\leq \int_{|t|>M+1}|f(t)|\,dt < \infty.
+\end{equation*}
+Hence \(g\in C_0\).
+
+If \(f\in L^\infty\) then $g$ is not necessarily in \(C_0\).
+For example, if \(f=1\) then \(g=f\in L^\infty \setminus C_0\).
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Let \(C^\infty\) be the class of all infinitely differentiable complex functions
+on \(\R^1\), and let \(C_c^\infty\) consist of all \(g\in C^\infty\) 
+whose supports are compact.
+Show that  \(C_c^\infty\) does not consist of $0$ alone.
+
+Let \(L_{\textrm{loc}}^1\) be the class 
+of all $f$ which belong to \(L^1\) locally;
+that is, \(f\in L_{\textrm{loc}}^1\) provided that $f$ is measurable
+and \(\int_I |f|<\infty\) for every bounded interval $I$.
+
+If \(f\in L_{\textrm{loc}}^1\) and \(g\in C_c^\infty\), prove that 
+\(f\ast g \in C^\infty\).
+
+Prove that there are sequences \(\{g_n\}\) in \(C_c^\infty\), such that
+\begin{equation*}
+\|f\ast g_n - f\|_1 \to 0
+\end{equation*}
+as \(n\to \infty\), for every \(f\in L^1\).
+(Compare Theorem~9.10.)
+Prove that  \(\{g_n\}\) can also be so chosen that 
+\((f\ast g_n)(x) \to f(x)\,\aded\), for every \(f\in L_{\textrm{loc}}^1\);
+in fact for suitable \(\{g_n\}\) the convergence occurs at every point
+$x$ at which $f$ is derivative of its indefinite integral.
+
+Prove that \((f \ast h_\lambda)(x) \to f(x) \,\aded\) if \(f\in L^1\), 
+as \(\lambda\to 0\), and that \(f\ast h_\lambda \in C^\infty\),
+although \(h_\lambda\) does not have compact support.
+(\(h_\lambda\) is defined in Sec~9.7.)
+\end{excopy} 
+
+\paragraph{Example of non trivial \(C_c^\infty\) function.}
+Define
+\begin{equation*}
+v(x) = \left\{
+\begin{array}{ll}
+e^{-1/x^2}e^{-1/(x-1)^2} \qquad &x\in(0,1) \\
+0 & x \notin (0,1)
+\end{array}
+\right.
+\end{equation*}
+It can be shown that \(D^n(v)(0) = D^n(v)(1) = 0\) and so 
+\(0\neq v \in C_c^\infty\).
+
+\paragraph{Convolution resulting in \(\C^\infty\).}
+Assume \(f\in L_{\textrm{loc}}^1\) and \(g\in C_c^\infty\)
+and put \(h = f\ast g\). We may assume that \(\supp g \subset [-A,A]\)
+for some \(A < \infty\).
+By definition, local lemma~\ref{lem:conv:commut}
+Using the substitution \(t=x-y\) we have
+\begin{equation*}
+h(x) = \int_{-A}^A f(x-y)g(y)\,dm(y) = \int_{-A-x}^{A-x} g(x-y)f(y)\,dm(y)
+\end{equation*}
+Note that the fact that the support of $g$ is bounded
+ensures that the integrals above are finite because 
+$f$ is locally in \(L^1\).
+
+The difference ratio of $g$ is bounded since 
+\begin{equation} \label{eq:gCcdinf:difrat}
+\left|\frac{g(x-y)-g(x+s-y)}{s}\right| \leq \|g'\|_\infty < \infty.
+\end{equation}
+The last inequality holds becuase \(g'\in C_c^\infty\).
+
+The difference ratio, for \(s>0\)
+\begin{align*}
+d(x,s) 
+&= (h(x+s)-h(x))/s \\
+&= \frac{1}{s}\int_{-A-x-s}^{A-x+s} (g(x-y)-g(x+s-y))f(y)\,dm(y) \\
+&= \int_{-A-x-s}^{A-x+s} \frac{g(x-y)-g(x+s-y)}{s}f(y)\,dm(y) 
+\end{align*}
+The inequality \eqref{eq:gCcdinf:difrat} 
+together with the discussion in section~9.3\ich{a}
+allow us to use Lebesgue's dominated convergence theorem~1.34.
+\begin{align*}
+h'(x)
+&= \lim_{s\to 0}d(x,s) \\
+&= \lim_{s\to 0} \frac{1}{s}\int_{-A-x-s}^{A-x+s} (g(x-y)-g(x+s-y))f(y)\,dm(y) \\
+&= \int_{-A-x-s}^{A-x+s} \lim_{s\to 0} \frac{g(x-y)-g(x+s-y)}{s}f(y)\,dm(y) \\
+&= \int_{-A-x-s}^{A-x+s} \lim_{s\to 0} \frac{g(x-y)-g(x+s-y)}{s}f(y)\,dm(y) \\
+&= \int_{-\infty}^\infty g'(x-y)f(y)\,dm(y) \\
+&= (f \ast g')(x).
+\end{align*}
+Therefore, \(f \ast g\) is differentiable, and 
+since \(g'\in C_c^\infty\), by induction  
+\(f \ast D^kg\) is differentiable
+and \(D(f \ast D^kg) = D^{k+1}g\) for all \(k\in\Z^+\) and so 
+\(f \ast g \in C^\infty\).
+
+
+\paragraph{Convolution approximation to identity in \(L^1\).}
+Define
+\begin{equation}
+g_n(x) = \left\{%
+\begin{array}{ll}
+a_n\exp(-1/(x+1/n)^2)\exp(-1/(x-1/n)^2) \qquad & x\in (-1/n,1/n) \\
+0                                       \qquad & x\notin (-1/n,1/n)
+\end{array}\right.
+\end{equation}
+where \(a_n\) is defined such that \(\|g_n\|_1 = 1\).
+We will now show that 
+\begin{equation} \label{eq:limCc-ast-gn}
+\lim_{n\to\infty} \|\varphi\ast g_n - \varphi\|_1 = 0
+\qquad \forall \varphi \in C_c(\R)
+\end{equation}
+
+% Let \(f\in L^1(\R)\) and 
+Let \(\varphi\in C_c(\R)\) and pick some \(\epsilon > 0\).
+Since its support is bounded, \(\varphi\) is \emph{uniformly} continuous.
+Thus we can find some \(m<\infty\) such that
+\(|\varphi(t) - \varphi(s)|<\epsilon/A\) whenever \(|t-s|<2/m\).
+For any \(n>m\)
+\begin{align*}
+\|\varphi \ast g_n - \varphi\|_1
+&= \left| \int_{-\infty}^\infty
+        \left( \int_{-\infty}^\infty 
+          \varphi(x-y) \cdot g_n(y)\,dm(y) - \varphi(x)
+        \right)\,dm(x) \right| \\
+&\leq \int_{-\infty}^\infty
+        \left| \int_{-\infty}^\infty 
+          \varphi(x-y) \cdot g_n(y)\,dm(y) - \varphi(x)
+        \right|\,dm(x) \\
+&=    \int_{-\infty}^\infty
+        \left| \int_{-\infty}^\infty 
+          \bigl(\varphi(x-y) - \varphi(x)\bigr)\cdot g_n(y)\,dm(y)
+        \right|\,dm(x) \\
+&=    \int_{-\infty}^\infty
+        \left| \int_{-1/n}^{1/n}
+          \bigl(\varphi(x-y) - \varphi(x)\bigr)\cdot g_n(y)\,dm(y)
+        \right|\,dm(x) \\
+&\leq  \int_{-\infty}^\infty
+         \left( \int_{-1/n}^{1/n}
+          \bigl|\varphi(x-y) - \varphi(x)\bigr|\cdot g_n(y)\,dm(y)
+         \right)\,dm(x) \\
+&=    \int_{-1/n}^{1/n}
+         \left( \int_{-\infty}^\infty
+          \bigl|\varphi(x-y) - \varphi(x)\bigr|\cdot g_n(y)\,dm(x)
+         \right)\,dm(y) \\
+&=    \int_{-1/n}^{1/n}
+         \left( \int_{-A}^{A+y}
+          \bigl|\varphi(x-y) - \varphi(x)\bigr|\cdot g_n(y)\,dm(x)
+         \right)\,dm(y) \\
+&\leq  \int_{-1/n}^{1/n}
+         \left( \int_{-A}^{A+y}
+          (\epsilon/A)\cdot g_n(y)\,dm(x)
+         \right)\,dm(y) \\
+&\leq    (\epsilon/A) \int_{-1/n}^{1/n}(A+y)g_n(y)\,dm(y) \\
+&=    (\epsilon/A)\left((2A/n) + \int_{-1/n}^{1/n} y g_n(y)\,dm(y)\right) \\
+&\leq \epsilon(2/n + 1).
+\end{align*}
+Thus the claim \eqref{eq:limCc-ast-gn} holds.
+
+By theorem~3.14 we can find \(\varphi\in C_c(\R)\)
+such that
+\(\|f-\varphi\|_1 < \epsilon\).
+\iffalse
+Find \(0<A<\infty\) such that \(\int_{|x|>A}|f(x)|\,dx < \epsilon\)
+and \(supp \varphi \subset [-A,A]\).
+By Lusin's theorem~2.24 we can approximate \(f\cdot\chhi_{[-A,A]}\)
+with a function \(\varphi\in C_c(\R)\) such that
+\begin{equation*}
+m\left(\{x\in\R: f(x) \neq \varphi(x)\}\right) < \epsilon\,/
+\end{equation*}
+\fi
+
+Now
+\begin{align*}
+\|f\ast g_n - f\|_1
+&\leq 
+    \|f\ast g_n - \varphi \ast g_n\|_1
+  + \|\varphi \ast g_n - \varphi\|_1
+  + \|\varphi - f\|_1 \\
+&\leq \|(f-\varphi)\ast g_n\|_1 + \|\varphi \ast g_n - \varphi\|_1 + \epsilon \\
+&\leq \epsilon\cdot 1 +  \|\varphi \ast g_n - \varphi\|_1 + \epsilon
+\end{align*}
+With \eqref{eq:limCc-ast-gn}
+\begin{equation*}
+\lim_{n\to\infty} \|f\ast g_n - f\|_1 = 0
+\end{equation*}
+
+\paragraph{Convolution approximation to identity almost everywhere.}
+Pick an arbitrary finite interval \(I\subset \R\).
+We know that \(\|f\chhi_I\|_1 < \infty\).
+Let \(X_n = \{X\in I: n - 1 \leq |f(x)| < n\}\), 
+clearly \(I=\disjunion_{n\in\N} X_n\).
+Now
+\begin{equation*}
+\sum_{n\in\N} (n-1)\cdot m(X_n) 
+ \leq \|f\cdot\chhi_I\|_1
+ < \infty.
+\end{equation*}
+and the last inequality is because \(f\in L_{\textrm{loc}}^1\).
+ % \leq \sum_{n\in\N} n\cdot m(X_n)\,.
+We can find some \(N>2\) such that  
+\begin{equation*}
+\sum_{n>N} m(X_n) < \sum_{n>N} (n-1)\cdot m(X_n) < \epsilon\,.
+\end{equation*}
+Pick \(\delta = \epsilon/(N \max(m(I),1))\) and now 
+\begin{equation*}
+\int_E |f(x)|\,dm(x) < 2\epsilon
+\end{equation*}
+for any \(E\subset I\) such that \(m(E) < \delta\).
+\index{Lusin}
+By Lusin theorem~2.24, we can find a \(\psi\in C_c(\R)\)
+such that  \(|\psi(x)|\leq |f(x)|\) for all \(x\in\R\)
+and if \(B = \{x\in\R: f(x)\neq \psi(x)\}\)
+then \(m(B) < \epsilon / \|f\chhi_I\|_1\). Now for any \(x\in I \setminus B\)
+\begin{align*}
+|(f\ast g_n)(x) - f(x)|
+&\leq  |(f \ast g_n)(x) - (\psi \ast g_n)(x)|
+     + |(\psi \ast g_n)(x) - \psi(x)|
+     + |\psi(x) - f(x)| \\
+&\leq \left\|f-\psi\right\|_1 \cdot \left\|g_n\right\|_1 
+      + |(\psi \ast g_n)(x) - \psi(x)|
+      + 0 \\
+&= \int_B|f(t) - \psi(t)|\,dm(t) + |(\psi \ast g_n)(x) - \psi(x)| \\
+&\leq 2\epsilon + |(\psi \ast g_n)(x) - \psi(x)|.
+\end{align*}
+Using \eqref{eq:limCc-ast-gn} again, shows that 
+\begin{equation*}
+\lim_{n\to\infty}|(f\ast g_n)(x) - f(x)| = 0 \qquad \forall x\in I\setminus B.
+\end{equation*}
+Since \(\epsilon = m(B)\) was arbitrary the limit actually holds
+for $x$ almost everywhere in $I$, and since~$I$ was arbitrarily
+chosen, consequently the limit holds for almost everywhere in~\(\R\).
+
+\paragraph{Convergence with auxilary function.}
+In the proof of the inversion theorem~9.11 it was shown that 
+\begin{equation*}
+\lim_{n\to\infty}(f\ast h_{\lambda_n})(x) = f(x)\quad\aded
+\end{equation*}
+for any seqence \(\{\lambda_n\}\) such that 
+\(\lim_{n\to\infty} \lambda_n = 0\)
+\emph{without} the requirement of \(\hat{f}\in L^1(\R)\).
+Again with the argument of section~9.3\ich{a}
+\begin{equation*}
+\lim_{\lambda\to 0}(f\ast h_\lambda)(x) = f(x)\quad\aded
+\end{equation*}
+
+\paragraph{Convolution result in \(C^\infty\)}
+Let \(f\in L^1(\R)\) and let \(g(x) = (f\ast h_\lambda)(x)\). Now
+\begin{align*}
+\bigl(g(x+s)-g(x)\bigr) \bigm/ s
+&= \frac{1}{s} 
+   \int_{-\infty}^\infty \bigl(f(x-y) - f(x+s-y)\bigr)h_\lambda(y)\,dm(s) \\
+&= \frac{1}{s}\left(
+   \int_{-\infty}^\infty f(x-y) h_\lambda(y)\,dm(s) -
+   \int_{-\infty}^\infty f(x-y)h_\lambda(y-s)\,dm(s)
+   \right) \\
+&= -\int_{-\infty}^\infty f(x-y)\frac{h_\lambda(s) - h_\lambda(y-s)}{s}\,dm(s)
+\end{align*}
+The limit exists
+\begin{equation*}
+g'(x) = -(f \ast {h_\lambda}')(x)\,.
+\end{equation*}
+Since \(h_\lambda\) satisfies the condition 
+of local lemma~\ref{lem:ratpoly:vansihderivf} we have
+the derivatives \({h_\lambda}^{(n)}\) bounded and vanish at infinity
+for all $n$. Thus we can reapply the above manipulation, to show that 
+\begin{equation*}
+(f\ast h_\lambda)^{(n)} = (f\ast (h_\lambda)^{(n)})
+\end{equation*}
+in particular \(f\ast h_\lambda \in C^\infty(\R)\).
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Find conditions of $f$ and/or \(\widehat{f}\) which ensure the correctness of 
+the following formal argument: If
+\begin{equation*}
+ \varphi(t) = \frac{1}{2\pi} \int_{-\infty}^\infty f(x)e^{-itx}\,dx
+\end{equation*}
+and
+\begin{equation*}
+ F(x) = \sum_{k = -\infty}^\infty f(x + 2k\pi)
+\end{equation*}
+then $F$ is periodic with period \(2\pi\), the $n$th Fourier coefficient of $F$
+is \(\varphi(n)\), hence
+\(F(x) = \sum \varphi(n)e^{inx}\). In particular,
+\begin{equation*}
+\sum_{k = -\infty}^\infty f(2k\pi) = \sum_{n = -\infty}^\infty \varphi(n).
+\end{equation*}
+
+More generally
+\begin{equation} \label{eq:ex9.11}
+\sum_{k = -\infty}^\infty f(k\beta) 
+= \alpha \sum_{n = -\infty}^\infty \varphi(n\alpha).
+\qquad \textnormal{if}\; \alpha>0, \beta>0,\, \alpha\beta = 2\pi.
+\end{equation}
+What does \eqref{eq:ex9.11} say about the limit, as \(\alpha\to 0\),
+of the right-hand side 
+(for ``nice'' functions, of course)?
+Is this in agreement with the inversion theorem?
+\\
+\index{Poisson summation formula}
+[\eqref{eq:ex9.11} is known as the Poisson summation formula.]
+\end{excopy}
+
+(See also Watkins (quoting Bump) \cite{Watkins:fnleqn}.)
+
+Note the use of different factors, and thus
+\begin{equation*}
+\varphi(t) = \frac{1}{\sqrt{2\pi}} \widehat{f}(t).
+\end{equation*}
+% http://www.secamlocal.ex.ac.uk/people/staff/mrwatkin/zeta/bump-fnleqn.ps
+
+
+We assume that $f$ is 
+\index{Schwartz}
+a~Schwartz function (see exercise\ref{ex:Amn}). 
+That is $f$ is infinitely differentiable
+and \(x^nD^m f(x)\) are bounded for any \(m,n\in\Z^+\).
+Let \(A_{mn}\) be such that \(|x^nD^m f(x)| < A_{mn}\).
+We have 
+\begin{equation*}
+\left|(x+ka)^2f(x+ka)\right| \leq A_{12}
+\end{equation*}
+hence
+\begin{equation*}
+\sum_{k = -\infty}^\infty |f(x + ka)|
+\leq A_{12} \sum_{k = \infty}^\infty|x+ka|^{-2} < \infty.
+\end{equation*}
+
+\iffalse
+Pick arbitrary \(x\in\R\) and \(a>0\).
+We will now show that \(\sum_{k = -\infty}^\infty f(x + ka)\) 
+absolutely converges.
+Suffices to show that 
+\begin{equation}
+\sum_{k \geq k_0} |f(x + ka)| < \infty
+\end{equation}
+for some \(k_0\). We pick \(k_0\) such that \(x+k_0a > 1\).
+
+Clearly the set \(\{k\in\Z: |x+ka|\leq 1\}\) is finite, and so
+\begin{equation*}
+A := \left|\sum_{\overset{k\in\Z}{|x+ka|\leq 1}} f(x + ka)\right| < \infty.
+\end{equation*}
+
+\begin{align*}
+\left|\sum_{k = -\infty}^\infty f(x + ka)\right|
+&\leq A + \sum_{\overset{k\in\Z}{|x+ka|>1}} |f(x + ka)| \\
+&\leq A + \sum_{\overset{k\in\Z}{|x+ka|>1}} |(x+ka)\cdot f(x + ka)| 
+\end{align*}
+\fi 
+
+By exercise~\ref{ex:Amn}
+\begin{itemize}
+
+\item Clearly \(f\in L^1\).
+
+\item 
+The Fourier transform \(\widehat{f}\) is a~Schwartz function as well.
+Hence \(\widehat{f}\in L^1\)
+
+\item The series
+\begin{gather*}
+\sum_{k = -\infty}^\infty f(x + 2k\pi) \\
+\sum_{n = -\infty}^\infty \varphi(n) 
+\end{gather*}
+absolutely converge.
+\end{itemize}
+
+As defined above, \(F(x)\) converges absolutely and so its 
+derivatives. Clearly it has a period of \(2\pi\) and
+thus \(F\in C^\infty(\T)\). Also
+\begin{align*}
+\int_{-\pi}^\pi F(x)\,dx 
+&= \int_{-\pi}^\pi \left(\sum_{k = -\infty}^\infty f(x + 2k\pi)\right)\,dx
+   = \sum_{k = -\infty}^\infty \int_{-\pi}^\pi f(x + 2k\pi)\,dx \\
+&= \int_{-\infty}^\infty f(x + 2k\pi)\,dx < \infty
+\end{align*}
+The fact that \(F\in L^1(\T)\) can also be derived 
+by the fact that it is continuous on the compcat \T\ and thus bounded.
+This argument also shows \(F\in L^p(\T)\) for all \(1\leq p \leq \infty\).
+
+According to the analysis of section~4.26, we define the Fourier coefficient
+\begin{equation*}
+\widehat{F}(n) = \frac{1}{2\pi} \int_{-\pi}^\pi F(t)e^{-int}\,dt\,.
+\end{equation*}
+Hence
+\begin{align*}
+\widehat{F}(n) 
+&= \frac{1}{2\pi} \int_{-\pi}^\pi 
+     \left(\sum_{k = -\infty}^\infty f(t + 2k\pi)\right)e^{-int}\,dt
+ = \frac{1}{2\pi} \sum_{k = -\infty}^\infty
+     \int_{-\pi}^\pi f(t + 2k\pi)e^{-int}\,dt \\
+&= \frac{1}{2\pi} \int_{-\infty}^\infty f(t)e^{-int}\,dt 
+ = \varphi(n)\,.
+\end{align*}
+
+Since \(F\in L^2(\T) \subset L^1(\T)\) we have
+\begin{equation*}
+F(x) = \sum_{n\in\Z} \widehat{F}(n)e^{inx} = \sum_{n\in\Z} \varphi(n)e^{inx}
+\end{equation*}
+The desired equality above is given by evaluating \(F(0)\).
+
+Now for \(\beta > 0\) define
+\begin{align*}
+f_\beta(x) &= f(\beta x/(2\pi))\\
+\varphi_\beta(t) 
+  &= \frac{1}{2\pi} \int_{-\infty}^\infty f_\beta(x)e^{-itx}\,dx
+   = \frac{1}{\sqrt{2\pi}} \widehat{f_\beta}(t)
+\end{align*}
+By Theorem~9.2\ich{d} 
+\begin{equation*}
+\widehat{f_\beta}(x) = (2\pi/\beta)\widehat{f}(2\pi x/\beta)\,.
+\end{equation*}
+Clearly \(f_\beta\) is as Schwartz function. By what was shown
+and putting \(\alpha = 2\pi/\beta\) we have
+\begin{align*}
+\sum_{k = -\infty}^\infty f(k\beta) 
+&= \sum_{k = -\infty}^\infty f_\beta(2k\pi) 
+ = \sum_{n = -\infty}^\infty \varphi_\beta(n)
+ = \sum_{n = -\infty}^\infty \frac{1}{\sqrt{2\pi}} \widehat{f_\beta}(n) \\
+&= \sum_{n = -\infty}^\infty 
+   \frac{1}{\sqrt{2\pi}} (2\pi/\beta)\widehat{f}\bigl((2\pi/\beta)n\bigr)
+ = (2\pi/\beta) \sum_{n = -\infty}^\infty 
+   \varphi\bigl((2\pi/\beta)t\bigr) \\
+&= \alpha \sum_{n = -\infty}^\infty  \varphi(\alpha n)
+\end{align*}
+
+Looking at the limit
+\begin{equation*}
+\lim_{\alpha\to 0} \alpha \sum_{n = -\infty}^\infty \varphi(n\alpha)
+= \lim_{\beta\to \infty} \sum_{k = -\infty}^\infty f(k\beta) 
+= f(0)
+\end{equation*}
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Take \(f(x) = e^{-|x|}\) in exercise~11 and derive the identity
+\begin{equation*}
+\frac{e^{2\pi\alpha} + 1}{e^{2\pi\alpha} - 1}
+= \frac{1}{\pi} \sum_{n=-\infty}^\infty \frac{\alpha}{\alpha^2 + n^2}.
+\end{equation*}
+\end{excopy}
+
+Using this $f$ (and \(1/\alpha\) instead of \(\alpha\))
+\begin{align}
+\sum_{k = -\infty}^\infty f(2k\pi\alpha) 
+&= \sum_{k = -\infty}^\infty e^{-|2k\pi\alpha|}
+= 1 + 2\sum_{k = 1}^\infty \left(e^{-2\pi\alpha}\right)^k
+= 1 + 2\frac{e^{-2\pi\alpha}}{1 - e^{-2\pi\alpha}}
+= \frac{e^{-2\pi\alpha} + 1}{1 - e^{-2\pi\alpha}} \notag \\
+&= \frac{e^{2\pi\alpha} + 1}{e^{-2\pi\alpha}-1}  \label{eq:sum:fkpia}
+\end{align}
+
+As for \(\varphi\)
+\begin{align}
+2\pi\cdot\varphi(n/\alpha)
+&= \int_{-\infty}^\infty e^{-|x|}e^{-i(n/\alpha)x}\,dx
+ =   \int_{-\infty}^0 e^{x-i(n/\alpha)x}\,dx
+   + \int_0^\infty e^{-x-i(n/\alpha)x}\,dx \notag \\
+&=  \frac{1}{1-in\alpha}\left.\left(e^{x-i(n/\alpha)x}\right)\right|_{-\infty}^0
+  + \frac{1}{-1-in\alpha}\left.\left(e^{-x-i(n/\alpha)x}\right)\right|_0^\infty 
+     \notag \\
+&=  \frac{1}{1-in/\alpha} - \frac{1}{-1-in/\alpha}
+ =  \frac{(1 + in/\alpha) + (1 - in/\alpha)}{1^2 - (in/\alpha)^2} \notag \\
+&= \frac{2\alpha^2}{n^2+\alpha^2}  \label{eq:2pi:varphi:na}
+\end{align}
+
+Using the \eqref{eq:ex9.11} of previous exercise 
+(with \(1/\alpha\) replacing \(\alpha\)) 
+and the above
+\eqref{eq:sum:fkpia},
+\eqref{eq:2pi:varphi:na} 
+we get
+\begin{align*} 
+\frac{e^{2\pi\alpha} + 1}{e^{2\pi\alpha} - 1}
+&= \sum_{k = -\infty}^\infty f(2k\pi\alpha) 
+= \frac{1}{\alpha} \sum_{n = -\infty}^\infty \varphi(n/\alpha)
+= \frac{1}{\alpha} 
+     \sum_{n = -\infty}^\infty 
+        \frac{1}{2\pi}\cdot \frac{2\alpha^2}{n^2+\alpha^2} \\
+&= \frac{1}{\pi} \sum_{n = -\infty}^\infty  \frac{\alpha}{n^2+\alpha^2}\,.
+\end{align*}
+
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+If \(0 < c < \infty\), define \(f_c(x) = \exp(-cx^2)\).
+\begin{itemize}
+\itemch{a} 
+  Compute \(\widehat{f_c}\). \emph{Hint}: If \(\varphi = \widehat{f_c}\),
+    an integration by parts gives \(2c\varphi'(t) + t\varphi(t) = 0\).
+\itemch{b}
+  Show that there is one (and only one) $c$ for which \(\widehat{f_c} = f_c\).
+\itemch{c}
+  Show that \(f_a \ast f_b = \gamma f_c\); find \(\gamma\) and $c$ 
+  explicitly in terms of $a$ and $b$.
+\itemch{d}
+  Take \(f = f_c\) in Exercise~11. What is the resulting identity?
+\end{itemize} 
+\end{excopy}
+
+\begin{itemize}
+\itemch{a} 
+Put \(f_c(x) = \exp(-cx^2)\) and \(\varphi = \widehat{f_c}\).
+We will first compute \(\varphi(0)\).
+
+The following equality is shown 
+in \cite{RudinPMA85}~Section~8.31.
+\begin{equation*}
+\int_{-\infty}^\infty e^{-x^2}\,dx = \sqrt{\pi}.
+\end{equation*}
+By substituting \(y=\sqrt{c}x\) using \(dx/dy=1/\sqrt{a}\) we get
+\begin{equation*}
+\int_{-\infty}^\infty e^{-cx^2}\,dx 
+= \int_{-\infty}^\infty e^{-y^2}/sqrt{c}\,dy = \sqrt{\pi/c}.
+\end{equation*}
+Hence
+\begin{equation*}
+\varphi(0)
+= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-cx^2}e^{-i0x}\,dx \\
+= \frac{1}{\sqrt{2\pi}} \cdot \sqrt{\pi/c} 
+= 1 / \sqrt{2c}.
+\end{equation*}
+
+For any \(t\in\R\)
+\begin{align*}
+\varphi(t) 
+&= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-cx^2}e^{-itx}\,dx \\
+&= \frac{1}{\sqrt{2\pi}} 
+  \left.\left(e^{-cx^2}\cdot
+        \left(\frac{-1}{it}\right)e^{-itx}
+  \right)\right|_{-\infty}^\infty
+  - \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty 
+        \frac{2cx}{it}\cdot  e^{-cx^2}e^{-itx}\,dx \\
+&= \frac{2ci}{\sqrt{2\pi}t} \int_{-\infty}^\infty x e^{-cx^2-itx}\,dx
+\end{align*}
+
+Its derivative
+\begin{equation*}
+\varphi'(t) 
+= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty (-ix)e^{-cx^2}e^{-itx}\,dx
+= \frac{-i}{\sqrt{2\pi}} \int_{-\infty}^\infty xe^{-cx^2}e^{-itx}\,dx
+\end{equation*}
+Combining the above equalities gives
+\begin{equation*}
+\frac{t}{2c}\varphi(t)
+= \frac{i}{\sqrt{2\pi}} \int_{-\infty}^\infty xe^{-cx^2}e^{-itx}\,dx
+= -\varphi'(t) 
+\end{equation*}
+and so we get the hint which is a homogeneous differential equation
+\begin{equation*}
+2c\varphi'(t) + t\varphi(t) = 0
+% \varphi'(t) = \frac{-t}{2c}\varphi(t).
+\end{equation*}
+whose solution is
+\begin{equation*}
+\varphi(t) 
+= \varphi(0)\exp\left(-\int_0^t\frac{t}{2c}\,dt\right)
+= \frac{1}{\sqrt{2c}}\exp\left(\frac{-t^2}{4c}\right).
+\end{equation*}
+
+\itemch{b}
+By previous item,
+\(c=\half\) is the unique $c$ such that \(f_c = \widehat{f_c}\).
+
+\itemch{c}
+Let \(g = f_a \ast f_b\). By Theorem~9.2\ich{c} and previous item
+\begin{align*}
+\widehat{g}(t) 
+= \widehat{f_a}(t)\widehat{f_b}(t)
+&= \frac{1}{\sqrt{2a}}\exp\left(\frac{-t^2}{4a}\right) \cdot
+  \frac{1}{\sqrt{2b}}\exp\left(\frac{-t^2}{4b}\right)
+= \frac{1}{2\sqrt{ab}} \exp\left(\frac{-t^2}{4a}+\frac{-t^2}{4b}\right) \\
+&= \frac{1}{2\sqrt{ab}} \exp\left(\frac{-(a+b)t^2}{4ab}\right).
+\end{align*}
+Thus if \(g = \gamma f_c\) then by looking at \(\widehat{f_c}\) 
+we must have
+\(c = (a+b)/(4ab)\) and 
+\begin{equation*}
+\gamma / \sqrt{2c} = 1/(2\sqrt{ab}).
+\end{equation*}
+Hence
+\begin{equation*}
+\gamma 
+= \frac{\sqrt{2c}}{2\sqrt{ab}}
+= \frac{\sqrt{2(a+b)}}{2\sqrt{ab(4ab)}}
+= \frac{\sqrt{2(a+b)}}{4ab}
+\end{equation*}
+ 
+\itemch{d}
+By \cite{RudinPMA85}~Section~8.21
+\begin{equation*}
+\int_{-\infty}^\infty e^{-x^2}\,dx = \sqrt{\pi}.
+\end{equation*}
+Hence, using the substitution \(y^2=cx^2\) and \(dx/dy=\sqrt{1/c}\) 
+we have
+\begin{equation*}
+  \int_{-\infty}^\infty e^{-cx^2}\,dx 
+= \int_{-\infty}^\infty e^{-y^2}\sqrt{1/c}\;dy = \sqrt{\pi/c}
+\end{equation*}
+
+Now look at a Fourier transform (without a constant factor).
+Given the substitution \(x = (1/\sqrt{c})y - it/(2c)\) we can 
+have a ``sqaure -- linear-free'' expression
+\begin{equation*}
+-cx^2 -itx 
+= -c\left(\frac{1}{\sqrt{c}}y - \frac{it}{2c}\right)^2
+  -it\left(\frac{1}{\sqrt{c}}y - \frac{it}{2c}\right)
+= -y^2 - \frac{t^2}{4c}
+\end{equation*}
+and \(dx/dy = 1/\sqrt{c}\). Now
+\begin{equation*}
+\int_{-\infty}^\infty e^{-cx^2}e^{-itx}\,dx
+= \int_{-\infty}^\infty e^{-y^2 - t^2/(4c)}\frac{1}{\sqrt{c}}\,dy
+= \frac{e^{-t^2/(4c)}}{\sqrt{c}}
+   \int_{-\infty}^\infty e^{-y^2}\,dy
+= \sqrt{\frac{\pi}{c}}e^{-t^2/(4c)}
+\end{equation*}
+Hence if \(f_c(x) = \exp(-cx^2)\) then
+\begin{equation} \label{eq:gaussian:fourier}
+\widehat{f_c}(t) 
+= \frac{1}{\sqrt{2\pi}} \sqrt{\frac{\pi}{c}}e^{-t^2/(4c)}
+= \frac{1}{\sqrt{2c}} e^{-t^2/(4c)}
+\end{equation}
+
+We note that 
+in the exercise~11
+\(\varphi\) 
+is defined with another constant, namely
+\(\varphi = (1/\sqrt{2\pi})\widehat{f}\).
+Thus 
+\begin{equation*}
+\alpha \sum_{n = -\infty}^\infty \varphi(n\alpha)
+= \frac{\alpha}{\sqrt{2\pi}} \sum_{n = -\infty}^\infty 
+  \frac{1}{\sqrt{2c}} e^{-(n\alpha)^2/(4c)}
+= \frac{\alpha}{2\sqrt{\pi c}} \sum_{n = -\infty}^\infty  e^{-(n\alpha)^2/(4c)}
+\end{equation*}
+
+Now the equality
+\begin{equation} 
+\sum_{k = -\infty}^\infty f(k\beta) 
+= \alpha \sum_{n = -\infty}^\infty \varphi(n\alpha).
+\qquad \textnormal{if}\; \alpha>0, \beta>0,\, \alpha\beta = 2\pi.
+\end{equation}
+of exercise~11 with \(f=f_c\) becomes
+\begin{equation*}
+\sum_{k = -\infty}^\infty e^{-c(k\beta)^2}
+= \frac{\alpha}{2\sqrt{\pi c}} \sum_{n = -\infty}^\infty  e^{-(n\alpha)^2/(4c)}
+\end{equation*}
+With \(\alpha=1\) and \(\beta=2\pi\) it becomes
+\begin{equation*}
+\sum_{k = -\infty}^\infty e^{-c(2\pi k)^2}
+= \frac{1}{2\sqrt{\pi c}} \sum_{n = -\infty}^\infty  e^{-n^2/(4c)}
+\end{equation*}
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+The Fourier transform can be defined for \(f\in L^1(\R^k)\) by
+\begin{equation*}
+\Hat{f}(y) = \int_{\R^k} f(x)e^{-ix\cdot y}\,dm_k(x)\qquad (y\in\R^k),
+\end{equation*}
+where \((x\cdot y) = \sum \xi_j \eta_j\) if 
+\(x= (\seq{\xi}{k})\),
+\(y= (\seq{\eta}{k})\)
+and \(m_k\) is Lebesgue measure on \(\R^k\),
+divided by \((2\pi)^{k/2}\) for convenience. Prove the inversion theorem and
+\index{Plancherel theorem}
+the Plancherel theorem in this context, as well as the analogue of Theorem~9.23.
+\end{excopy}
+
+This is actually redoing most of the chapter~(9) generalizing 
+the domain of functions from real line to \(\R^k\).
+This approach is taken in \cite{LiebLoss200104} Chapter~5 from the start.
+
+Let's proceed, we put in brackets the sections theorems numbers
+being generalized.
+
+We generalize the definition [9.1(4)] of 
+\index{convolution}
+convolution.
+Let \(f,g\in L^1(\R^k)\), then
+\begin{equation*}
+(f \ast g)(x) = \int_{\R^k} f(x-y)g(y)\,dm_k(y).
+\end{equation*}
+
+The generalization of Theorem~9.2 items: 
+\ich{a},
+\ich{b}
+\ich{c},
+\ich{d}
+follows easily.
+
+The generalization of Theorem~9.5 is trivial.
+We carry over the definition
+\begin{equation*}
+f_y(x) = f(x-y) \qquad (x,y\in \R^k).
+\end{equation*}
+% We can also consider multi-valued (in \(\C^n\)) functions.
+The change needed in the proof worth noting is to take 
+$k$-power of \(\epsilon\).
+
+Generalization of Theorem~9.6.
+\begin{llem} \label{lem:9.6:kdim}
+If \(f\in L^1(\R^k)\), then \(\widehat{f}\in C_0(\R^k)\) and 
+\begin{equation*}
+\|\widehat{f}\|_\infty \leq \|f\|_1.
+\end{equation*}
+\end{llem}
+\begin{thmproof}
+The inequality is obvious from the definition of the transform
+and noting that \(|e^{-i(t\cdot x)}|=1\).
+
+If \(\lim_{n\to 0}t_n=t \in \R^k\), then
+\begin{equation*}
+\left|\widehat{f}(t_n) - \widehat{f}(t)\right|
+\leq \int_{\R^k} 
+     |f(x)|\cdot\left|e^{-i(t_n\cdot x)} - e^{-i(t\cdot x)}\right|\,dm(x).
+\end{equation*}
+The integrand is bounded by \(2|f(x)|\) and vanishes as \(n\to\infty\).
+Hence \(\lim_{n\to\infty} \widehat{f}(t_n)=\widehat{f}(t)\), 
+by the dominated convergence theorem~1.34. Thus \(\widehat{f}\) 
+is continuous.
+
+% By definitions and using \(e^{\pi i}=-1\)
+% Let \(u=(1,1,\ldots,1)\in\R^k\), hence 
+For each \(t\in\R^k\setminus\{0\}\) we can pick ``an inverse''
+\(\tau(t)\in\R^k\) such that \(t\cdot\tau_t = 1\) in the following way.
+Let \(m\in \N_k\) be the minimal such that
+\(|t_m|=\max\{|t_j|: 1\leq j \leq k\}\)
+and define
+\begin{equation*}
+\tau(t)_j = \left\{%
+\begin{array}{ll}
+1/t_m \quad& \textrm{if}\; j=m \\
+0          & \textrm{if}\; j\neq m \\
+\end{array}\right.
+\end{equation*}
+
+Note that if \(\lim_n \|t_n\|_p=\infty\) then 
+\begin{equation} \label{eq:taut:to0}
+\lim_n \|\tau(t_n)\|_p = 0  \qquad (1\leq p \leq \infty)
+\end{equation}
+
+Now
+\begin{align*}
+\widehat{f}(t) 
+&= \int_{\R^k} f(x)e^{-i(t\cdot x)}\,dm_k(x)
+ = -\int_{\R^k} f(x)e^{-i(t\cdot (x + \pi\tau(t))}\,dm_k(x) \\
+&= -\int_{\R^k} f(x - \pi\tau(t))e^{-i(t\cdot x)}\,dm_k(x).
+\end{align*}
+Hence 
+\begin{equation*}
+2\widehat{f}(t) 
+= \int_{\R^k} \bigl(f(x) - f(x - \pi\tau)\bigr) e^{-i(t\cdot x)}\,dm_k(x)
+\end{equation*}
+so that
+\begin{equation*}
+2\|\widehat{f}(t)\| \leq \|f - f_{\pi\tau(t)}\|_1.
+\end{equation*}
+By previous local lemma~\ref{lem:9.6:kdim} and \eqref{eq:taut:to0}
+\begin{equation*}
+\lim_{\|t\|\to\infty} \|f - f_{\pi\tau(t)}\|_1 
+= \lim_{\|\tau(t)\|\to 0} \|f - f_{\pi\tau(t)}\|_1 = 0.
+\end{equation*}
+Hence \(\widehat{f}\in C_0(\R^k)\).
+\end{thmproof}
+
+
+Define [9.7]
+\begin{align*}
+H(t) &= e^{-\sum_{1\leq j\leq k}|t_j|} \qquad t \in \R^k \\
+h_\lambda(x) &= \int_{\R^k} H(\lambda t) e^{i(t\cdot x)}\,dm(t) 
+ \qquad \lambda > 0, \; x\in\R^k
+\end{align*}
+
+Compute \(h_\lambda(x)\) using the identity established in the 
+$1$-dimensioal case in the text.
+\begin{align*}
+h_\lambda(x) 
+&= \int_{\R^k} e^{-\lambda\sum_{1\leq j\leq k}|t_j|} 
+               e^{i\sum_{1\leq j\leq k} t_jx_j}\,dm(t) \\
+&= 
+    \int_{-\infty}^\infty
+    \int_{-\infty}^\infty
+    \cdots
+    \int_{-\infty}^\infty
+      e^{\sum_{1\leq j\leq k}-\lambda|t_j| + i t_jx_j}
+    \,dm(t_k) 
+     \cdots
+    \,dm(t_2) 
+    \,dm(t_1) 
+    \\
+&= 
+    \int_{-\infty}^\infty
+    e^{-\lambda|t_1|+it_1x_1}
+    \int_{-\infty}^\infty
+    e^{-\lambda|t_2|+it_2x_2}
+    \cdots
+    \int_{-\infty}^\infty
+      e^{-\lambda|t_k| + t_kx_k}
+    \,dm(t_k) 
+     \cdots
+    \,dm(t_2) 
+    \,dm(t_1) 
+    \\
+&= \prod_{j=1}^k \sqrt{\frac{2}{\pi}}\frac{\lambda}{\lambda^2+x_j^2} \\
+&= \left(\frac{2}{\pi}\right)^{k/2} \lambda^k 
+   \prod_{j=1}^k \frac{1}{\lambda^2+x_j^2}
+\end{align*}
+
+The intergal is similarly (using Fubini's theorem~8.8) computed
+\begin{align}
+\int_{\R^k}h_\lambda(x)\,dm(x)
+&=  \int_{-\infty}^\infty
+    \int_{-\infty}^\infty
+    \cdots
+    \int_{-\infty}^\infty
+     \left(\frac{2}{\pi}\right)^{k/2} \lambda^k 
+       \prod_{j=1}^k \frac{1}{\lambda^2+x_j^2}
+    \,dm(t_k) 
+     \cdots
+    \,dm(t_2) 
+    \,dm(t_1) 
+    \notag \\
+&=  \int_{-\infty}^\infty
+      \sqrt{\frac{2}{\pi}}\frac{\lambda}{\lambda^2+x_1^2}
+    \cdots
+    \int_{-\infty}^\infty
+      \sqrt{\frac{2}{\pi}}\frac{\lambda}{\lambda^2+x_k^2}
+    \,dm(t_k) 
+     \cdots
+    \,dm(t_1) 
+    \notag \\
+&= 1^k = 1. \label{eq:kdim:9.7(4)}
+\end{align}
+Note that \(0<H(t)\leq 1\) and \(\lim_{\lambda\to 0} H(\lambda t) = 1\).
+
+The next lemma will give us a convolution [(9.8)] equality.
+\begin{llem} \label{lem:9.8:kdim}
+If \(f\in L^1(\R^k)\), then
+\begin{equation} \label{eq:9.8:kdim}
+(f\ast h_\lambda)(x) 
+= \int_{\R^k} H(\lambda t) \widehat{f}(t)e^{i(x\cdot t)}\,dm(t).
+\end{equation}
+\end{llem}
+\begin{thmproof}
+Using Fubini's theorem~8.8
+\begin{align}
+(f\ast h_\lambda)(x) 
+&= \int_{\R^k} f(x-y)
+     \left(\int_{\R^k} H(\lambda t)e^{i(t\cdot y)}\,dm(t)\right)\,dm(y) 
+     \notag \\
+&= \int_{\R^k} H(\lambda t)
+     \left(\int_{\R^k} f(x-y)e^{i(t\cdot y)}\,dm(y)\right)\,dm(t)
+     \notag \\
+&= \int_{\R^k} H(\lambda t)
+     \left(\int_{\R^k} f(y)e^{i(t\cdot (x-y))}\,dm(y)\right)\,dm(t)
+     \label{eq:kdim:9.8}
+     \notag \\
+&= \int_{\R^k} H(\lambda t)e^{i(t\cdot x)}
+     \left(\int_{\R^k} f(y)e^{-i(t\cdot y)}\,dm(y)\right)\,dm(t)
+     \notag \\
+&= \int_{\R^k} H(\lambda t)e^{i(t\cdot x)}\widehat{f}(t)\,dm(t).
+\end{align}
+In \eqref{eq:kdim:9.8} we actually changed \((x-y)\)
+by a ``new'' variable $y$.
+\end{thmproof}
+
+Generalizing [9.9]
+\begin{llem} \label{lem:9.9:kdim}
+If \(g\in L^\infty(\R^k)\) and $g$ is continuous at a point $x$, then
+\begin{equation}
+\lim_{\lambda\to 0} (g \ast h_\lambda)(x) = g(x). \label{eq:9.9:kdim}
+\end{equation}
+\end{llem}
+\begin{thmproof}
+We will integrate using the following
+\begin{align*}
+h_\lambda(y)
+&= \left(\frac{2}{\pi}\right)^{k/2} \lambda^k
+   \prod_{j=1}^k \frac{1}{\lambda^2+y_j^2}
+  \\
+&= \left(\frac{2}{\pi}\right)^{k/2} \frac{\lambda^k}{\lambda^{2k}}
+   \prod_{j=1}^k \frac{1}{1/\lambda^2}\frac{1}{\lambda^2+y_j^2}
+=  \left(\frac{2}{\pi}\right)^{k/2} 
+   \prod_{j=1}^k \frac{1}{1+(y_j/\lambda)^2}
+ \\
+&= h_1(y/\lambda) / \lambda^k
+\end{align*}
+On account of \eqref{eq:kdim:9.7(4)}, we have
+\begin{align*}
+\lim_{\lambda\to 0} (g \ast h_\lambda)(x) 
+&= \int_{\R^k} \bigl(g(x-y) - g(x)\bigr)h_\lambda(y)\,dm(y) \\
+&= \int_{\R^k} \bigl(g(x-y) - g(x)\bigr)\lambda^{-k}h_1(y/\lambda)\,dm(y) \\
+&= \int_{\R^k} \bigl(g(x-\lambda s) - g(x)\bigr)
+               \lambda^{-k}h_1(s) \prod_{j=1}^k \frac{dy_j}{ds_j}\,dm(s) \\
+&= \int_{\R^k} \bigl(g(x-\lambda s) - g(x)\bigr)h_1(s) \,dm(s) 
+\end{align*}
+Looking at the last integrand
+\begin{align*}
+\left|\bigl(g(x-\lambda s) - g(x)\bigr)h_1(s)\right| 
+     &\leq 2\|g\|_\infty h_1(s) \\
+\forall s\in\R^k,\quad 
+  \lim_{\lambda\to 0} \bigl(g(x-\lambda s) - g(x)\bigr)h_1(s) &= 0.
+\end{align*}
+Hence \eqref{eq:9.9:kdim} follows from
+the dominated convergence theorem~1.34.
+\end{thmproof}
+
+Generalizing the approximation via convolution [9.10]
+\begin{llem} \label{lem:9.10:kdim}
+If \(1\leq p < \infty\) and \(f\in L^P(\R^k)\), then
+\begin{equation}
+ \lim_{\lambda\to 0} \|f\ast h_\lambda - f\|_p = 0. \label{eq:9.10:kdim} 
+\end{equation}
+\end{llem}
+\begin{thmproof}
+Since \(h_\lambda L^(\R^k)\), where \(1/p+1/q=1\), 
+\(f\ast h_\lambda)(x)\) is defined for every \(x\in\R^k\).
+By~\eqref{eq:kdim:9.7(4)} we have
+\begin{equation*}
+(f\ast h_\lambda)(x) - f(x) 
+= \int_{\R^k} \bigl(f(x-y)-f(x)\bigr)h_\lambda(y)\,dm(y)
+\end{equation*}
+and 
+\index{Holder@H\"older}
+H\"older inequality (theorem~3.3) gives
+\begin{align*}
+|(f\ast h_\lambda)(x) - f(x)|
+&\leq \int_{\R^k} \bigl|f(x-y)-f(x)\bigr|h_\lambda(y)\,dm(y) \\
+&=    \int_{\R^k} \left(\bigl|f(x-y)-f(x)\bigr|^p 
+           h_\lambda^{1/p}(y)\right) h_\lambda^{1/q}(y)
+          \,dm(y) \\
+&\leq 
+  \left( \int_{\R^k} \bigl|f(x-y)-f(x)\bigr|^p
+        h_\lambda(y) \,dm(y) \right)^{1/p} 
+  \left(  \int_{\R^k} \left(h_{1/q}\lambda(y)\right)^q\,dm(y)\right)^{1/q} \\
+&= \left( \int_{\R^k} \bigl|f(x-y)-f(x)\bigr|^p h_\lambda(y)
+                     \,dm(y) \right)^{1/p}
+\end{align*}
+The last equality holds becuse of \eqref{eq:kdim:9.7(4)}.
+Taking power over the above, gives
+\begin{equation*}
+|(f\ast h_\lambda)(x) - f(x)|^p
+\leq \int_{\R^k} \bigl|f(x-y)-f(x)\bigr|^p h_\lambda(y) \,dm(y) 
+\end{equation*}
+Integrating with respect to $x$ and apply using Fubini's theorem~8.8:
+\begin{align}
+\| f\ast h_\lambda - f\|_p^p 
+&\leq \int_{\R^k} \left(\bigl|f(x-y)-f(x)\bigr|^p h_\lambda(y) \,dm(y)
+                 \right)\,dm(x) \notag \\
+&= \int_{\R^k} \left(\bigl|f(x-y)-f(x)\bigr|^p \,dm(x)
+                 \right) h_\lambda(y) \,dm(y) \notag \\
+&= \int_{\R^k} \|f_y - f\|_p^p h_\lambda(y) \,dm(y). \label{eq:fyfpp:hl}
+\end{align}
+If \(g(y) = \|f_y - f\|_p^p\), then $g$ is bounded and continuous,
+by a trivial $k$-dimensioal generalization of theorem~9.5, 
+and \(g(0)=0\). Hence the expression in \eqref{eq:fyfpp:hl}
+tends to $0$ as \(\lambda\to 0\), by local lemma~\ref{lem:9.9:kdim}
+\end{thmproof}
+
+Now we arrive to the generalization of the inversion theorem [9.11].
+\begin{llem} \label{lem:9.11:kdim}
+If \(f,\widehat{f}\in L^1(\R^k)\) and if 
+\begin{equation*}
+g(x) = \int_{\R^k} \widehat{f}(t)e^{ixt}\,dm(t)
+\end{equation*}
+then \(g\in C_0\) and \(f(x)=g(x)\;\aded\)
+\end{llem}
+\begin{thmproof}
+We use the result of local lemma~\ref{lem:9.8:kdim} 
+The integrands on the right side of \eqref{eq:9.8:kdim} are bounded
+by \(|\widehat{f}(t)\), and since \(\lim_{\lambda\to 0} H(\lambda t) = 0\),
+the right side of \eqref{eq:9.8:kdim} converges to \(g(x)\)
+for every \(x\in\R^k\), by the dominated convergence theorem~1.34.
+
+By combining local lemma~\ref{lem:9.10:kdim} and theorem~3.12
+there is a sequence \(\{\lambda_n\}\) 
+such that \(\lim_{n\to\infty}\lambda_n=0\) and 
+\begin{equation*}
+\lim_{n\to\infty} (f\ast h_{\lambda_n})(x) = f(x)\quad\aded
+\end{equation*}
+Hence \(f(x)=g(x)\;\aded\)
+and \(g\in C_0(\R^k)\) by local lemma~\ref{lem:9.6:kdim}.
+\end{thmproof}
+
+\index{Plancherel}
+\paragraph{Generalization of Plancherel Theorem [9.13].}
+\begin{llem}
+Once can associate to each \(f\in L^2(\R^k)\) a function
+\(\widehat{f}\in L^2(\R^k)\) so that the following properties hold:
+\begin{itemize}
+
+\itemch{a}
+If \(f \in L^1(\R^k)\cap L^2(\R^k)\), 
+then \(\widehat{f}\) is the previously defined Fourier transform of $f$.
+
+\itemch{b}
+For every \(f \in L^2(\R^k)\), \(\|\widehat{f}\|_2 = \|f\|_2\).
+
+\itemch{c}
+The mapping \(f \to \widehat{f}\) is a 
+\index{Hilbert}
+Hilbert space isomorphism of \(L^2(\R^k)\) onto \(L^2(\R^k)\)
+
+\itemch{d}
+The following symmetric relation exists between $f$ and \(\widehat{f}\):
+If
+\begin{equation*}
+\varphi_A(t) \int_{[-A,A]^k} f(x)e^{-i(x\cdot t)}\,dm(x)
+\qquad \textrm{and} \qquad
+\psi_A(t) \int_{[-A,A]^k} \widehat{f}(x)e^{-i(x\cdot t)}\,dm(x),
+\end{equation*}
+then
+\begin{equation*}
+\lim_{A\to+\infty} \|\varphi_A - \widehat{f}\|_2 = 0 \\
+\qquad \textrm{and} \qquad
+\lim_{A\to+\infty} \|\psi_A - f\|_2 = 0
+\end{equation*}
+\end{itemize}
+\end{llem}
+\begin{thmproof}
+Our objective is the relation
+\begin{equation} \label{eq:plancherel:iso:kdim}
+\|\widehat{f}\|_2 = \|f\|_2 \qquad (f\in L^1(\R^k)\cap L^2(\R^k)).
+\end{equation}
+We fix \(f\in L^1(\R^k)\cap L^2(\R^k)\), 
+put \(\widetilde{f}(x) = \overline{f(-x)}\),
+(clearly \(\widetilde{f} \in L^1(\R^k)\cap L^2(\R^k)\))
+and define \(g = f \ast \widetilde{f}\). Then
+\begin{equation*}
+g(x) 
+= \int_{\R^k} f(x-y)\overline{f(-y)}\,dm(y)
+= \int_{\R^k} f(x+y)\overline{f(y)}\,dm(y)
+= \langle f_x, f \rangle,
+\end{equation*}
+where the inner product is taken in \(L^2(\R^k)\).
+
+\begin{quotation}
+Note that \(\widetilde{f}\) ``negates the direction'' of the variable,
+while it gets ``negated back'' in the convolution $g$.
+Thus, in the integration is with respect to variables going
+in the ``same direction''
+\end{quotation}
+
+By generalization (mentioned above) of theorem~9.5 
+\(x\to f_x\) is a continuous mapping, and the continuity of 
+the inner product, $g$ is a continuous function.
+\index{Schwartz}
+Schwartz inequality shows that
+\begin{equation*}
+|g(x)| \leq \|f_x\|_2\cdot \|f_x\|_2 =  \|f\|_2^2
+\end{equation*}
+so that $g$ is bounded. Also \(g\in L^1(\R^k)\) since
+\(f,\widetilde{f}\in L^1(\R^k)\).
+Hence we map apply local lemma~\ref{lem:9.8:kdim} 
+\begin{equation} \label{eq:gconvh0}
+(g\ast h_\lambda)(0) 
+= \int_{\R^k} H(\lambda t) \widehat{g}(t)\,dm(t).
+\end{equation}
+Since $g$ is continuous and bounded, local lemma~\ref{lem:9.9:kdim}
+show sthat
+\begin{equation} \label{eq:lim-gconvh0}
+\lim_{\lambda\to 0} (g \ast h_\lambda)(0) = g(0) = \|f\|_2^2.
+\end{equation} 
+
+
+Theorem~9.2\ich{c}+\ich{d} 
+(trivially generalized to \(\R^k\)) shows that 
+\begin{equation*}
+\widehat{g} 
+= \widehat{f} \cdot\,\widehat{\tilde{f}}
+= \widehat{f} \cdot\,\overline{\widehat{f}}
+= |\widehat{f}|^2
+\end{equation*}
+and since \(H(\lambda t)\)
+increases to $1$ as \(\lambda\to 0\), 
+the monotone convergence theorem~1.26 gives
+\begin{equation} \label{eq:limint:Hg}
+\lim_{\lambda\to 0} \int_{\R^k} H(\lambda t)\widehat{g}\,dm(t)
+= \int_{\R^k} \left| \widehat{f}(t)\right|\,dm(t).
+\end{equation}
+
+Now
+\eqref{eq:gconvh0},
+\eqref{eq:lim-gconvh0} and
+\eqref{eq:limint:Hg}
+shows that \(\widehat{f}\in L^2(\R^k)\) and that
+the \eqref{eq:plancherel:iso:kdim} holds.
+The part of the work for \(L^1(\R^k)\cap L^2(\R^k)\)) is complete.
+
+
+Let $Y$ be the space of all Fourier transforms \(\widehat{f}\)
+of functions \(f\in L^1(\R^k)\cap L^2(\R^k)\).
+By \eqref{eq:plancherel:iso:kdim}, \(Y\subset L^2(\R^k)\).
+We claim that $Y$ is dense in \(L^2(\R^k)\),
+that is \(Y^\perp = \{0\}\).
+
+The functions 
+\begin{equation*}
+f_{\alpha,\lambda}(x) = e^{i(\alpha\cdot x)}H(\lambda x)
+\qquad \forall \alpha\in\R^k,\; \forall\lambda>0
+\end{equation*}
+are in \(L^1(\R^k)\cap L^2(\R^k)\). Their Fourier transforms
+\begin{equation*}
+\widehat{f_{\alpha,\lambda}}(t)
+= \int_{\R^k} = e^{i(\alpha\cdot (t-y))}H(\lambda (t-y))\,dm(y)
+= \int_{\R^k} = e^{i(\alpha\cdot x)}H(\lambda x)\,dm(x)
+= h_\lambda(\alpha-t)
+\end{equation*}
+are therefore in $Y$. If \(w\in L^2(\R^k)\cap Y^\perp\), it follows that
+\begin{equation*}
+(h_\lambda \ast \overline{w})(\alpha)
+= \int_{\R^k} h_{\lambda}(\alpha-t)\overline{w(t)}\,dm(t) = 0
+\qquad \forall \alpha\in\R^k.
+\end{equation*}
+hence \(w=0\), by local lemma~\ref{lem:9.10:kdim} and therefore
+$Y$ is dense in \(L^2(\R^k)\).
+
+We temporary notate \(\widehat{f}\) by \(\Phi f\).
+Collecting our result so far, shows that 
+\begin{equation*}
+\Phi: L^1(\R^k)\cap L^2(\R^k) \longrightarrow Y
+\end{equation*}
+is an \(L^2(\R^k)\)-isometry whose domain domain and range
+are both dense subspaces of \(L^2(\R^k)\).
+There is a unique continuous extension of \(\Phi\) from 
+the whole \(L^2(\R^k)\) as a domain, and thus \ich{b} holds.
+
+Since \(L^2(\R^k)\) is a complete metric space (as a Hilbert space),
+by Lemma~4.16 this extsnion of \(\Phi\) is \emph{onto}
+\(L^2(\R^k)\).
+In order to show that this extended \(\Phi\) is a
+\emph{Hilbert} space isomorphism, we need to show that 
+the inner product is maintained. But the inner product is determined
+by the norm:
+\begin{equation*}
+\langle v,w\rangle = 
+\left(
+\|v+w\|_2^2
+- \|v-w\|_2^2
++ i\|v+iw\|_2^2
+- i\|v-iw\|_2^2
+\right) \bigm/ 4.
+\end{equation*}
+Hence by \ich{b} 
+\begin{equation*}
+\forall f,g\in L^2(\R^k),\quad 
+\langle f,g\rangle = \langle \widehat{f},\widehat{g}\rangle.
+\end{equation*}
+and thus \ich{c} holds.
+
+To prove \ich{d}, let 
+\begin{equation*}
+k_A = \chhi_{[-A,A]^k}.
+\end{equation*}
+Then \(k_Af \in L^1(\R^k)\cap L^2(\R^k)\) and by definitions
+\begin{equation*}
+\varphi_A = \widehat{k_A f}.
+\end{equation*}
+Since \(\lim_{A\to\infty} \|f - k_A f\|_2 = 0\), 
+it follows from \ich{b} that 
+\begin{equation*}
+\lim_{A\to\infty} \|\widehat{f} - \varphi_A\|_2
+= \lim_{A\to\infty} \|\widehat{f - k_A f}\|_2 = 0.
+\end{equation*}
+Similarly 
+\begin{equation*}
+\lim_{A\to\infty} \|f - \psi_A\|_2
+= \lim_{A\to\infty} \|\Phi^{-1}(f - k_A f)\|_2 = 0.
+= \lim_{A\to\infty} \|f - k_A f\|_2 = 0.
+\end{equation*}
+\end{thmproof}
+
+\paragraph{Complex Homomorphisms of \(L^1(\R^k)\).}
+Now we generalize theorem~9.23.
+\begin{llem}
+To every complex homomorphism \(\varphi\) on \(L^1(\R^k)\setminus\{0\}\)
+such that
+\begin{equation} \label{eq:9.23:kdim:lem}
+\varphi(f\ast g) = \varphi(f)\varphi(g) \qquad (\forall f,g\in(L^1(\R^k))
+\end{equation}
+there corresponds a unique \(t\in\R^k\) such that
+\begin{equation} \label{eq:9.23:kdim:beta}
+\forall f\in L^1(\R^k),\quad  \varphi(f) = \widehat{f}(t).
+\end{equation}
+\end{llem}
+\begin{thmproof}
+By theorem~6.16, there exists a unique
+\(\beta \in L^\infty(\R^k)\) such that 
+\begin{equation} \label{eq:9.23:kdim:eu:beta}
+\varphi(f) = \int_{\R^k} f(x)\beta(x)\,dm(x) \qquad (\forall f\in L^1(\R^k)).
+\end{equation}
+Looking at \eqref{eq:9.23:kdim:lem}'s left side
+\begin{align}
+\varphi(f \ast g)
+&= \int_{\R^k} (f\ast g)(x)\cdot\beta(x)\,dm(x) \notag \\
+&= \int_{\R^k} \beta(x)
+     \left(\int_{\R^k} f(x-y)g(y)\,dm(y)\right)\,dm(x) \notag \\
+&= \int_{\R^k} g(y)
+     \left(\int_{\R^k} f_y(x)\beta(x)\,dm(x)\right)\,dm(y) \notag \\
+&= \int_{\R^k} g(y)\varphi(f_y)\,dm(y). \label{eq:9.23:kdim:left}
+\end{align}
+Looking at the right side
+\begin{equation}  \label{eq:9.23:kdim:right}
+\varphi(f)\varphi(g) = \varphi(f)\int_{\R^k} g(y)\cdot\beta(y)\,dm(y).
+\end{equation}
+Combining
+\eqref{eq:9.23:kdim:left} and
+\eqref{eq:9.23:kdim:right} gives
+\begin{equation} \label{eq:9.23:kdim:lr}
+\int_{\R^k} g(y)\varphi(f_y)\,dm(y) 
+= \varphi(f)\int_{\R^k} g(y)\cdot\beta(y)\,dm(y)
+\end{equation}
+
+% Fix \(f\in L^1(\R^k)\) such that \(\varphi(f)\neq 0\). 
+Since  \eqref{eq:9.23:kdim:lr} holds for any \(g\in L^1(\R^k)\)
+by the uniqueness of \(\beta\) it is wasy to show that
+\begin{equation} \label{eq:vfby=vfy}
+\varphi(f)\beta(y) = \varphi(f_y) \; \aded(y)
+\end{equation}
+\begin{quotation}
+In the text \cite{RudinRCA87} the above \eqref{eq:vfby=vfy}
+is established after fixing $f$ so \(\varphi(f)\neq 0\).
+We do not need it so soon, thus it can be used for any \(f\in L^1(\R^k)\).
+\end{quotation}
+But \(y\to f_y\) is a continuous mapping
+(generalizationof theorem~9.5) and \(\varphi\) 
+is continuous on  \(L^1(\R^k)\).
+Hence \eqref{eq:vfby=vfy}'s right side is continuous
+function of \(y\in\R^k)\).
+By
+picking some \(f\in L^1(\R^k)\) such that \(\varphi(f)\neq 0\). 
+and redefining 
+\begin{equation*}
+\beta(y) = \varphi(f_y) / \varphi(f)
+\end{equation*}
+then \(\beta\) may get changed on set of measure~0 at most, 
+thus \eqref{eq:9.23:kdim:beta} still holds. Now \(\beta\) is continuous
+and now \eqref{eq:vfby=vfy} holds for \emph{all} \(y\in\R^k\).
+By replacing $y$ by \(x+y\) and $f$ by \(f_x\)
+in \eqref{eq:vfby=vfy}, we obtain
+\begin{equation*}
+\varphi(f)\beta(x+y)
+= \varphi(f_{x+y})
+= \varphi((f_x)_y)
+= \varphi(f_x)\beta(y) 
+= \varphi(f)\beta(x)\beta(y) .
+\end{equation*}
+By picking (again) $f$ such that \(\varphi(f)\neq 0\)
+we get
+\begin{equation} \label{eq:9.23:kdim:beta:hom}
+\forall x,y\in\R^k,\quad \beta(x+y) = \beta(x)\beta(y).
+\end{equation}
+Since \(\beta\) is not identically zero, 
+\eqref{eq:9.23:kdim:beta:hom}implies \(\beta(0)=1\)
+and the continuity of \(\beta\) shows hat the is a \(\delta>0\)
+such that
+\begin{equation} % \label{eq:9.23:kdim:beta:delta}
+\int_{[0,\delta]^k}\beta(y)\,dy = c \neq 0.
+\end{equation}
+Then
+\begin{equation} \label{eq:9.23:kdim:beta:delta}
+c\beta(x)
+= \int_{[0,\delta]^k}\beta(x)\beta(y)\,dy
+= \int_{[0,\delta]^k}\beta(x + y)\,dy
+= \int_{[x,x+\delta]^k}\beta(y)\,dy.
+\end{equation}
+Since \(\beta\) is continuous, the last integral is a differentiable
+function of $x$ in each axis.
+hence \eqref{eq:9.23:kdim:beta:delta} shows that \(\beta\)
+is differentiable.
+Differentiating \eqref{eq:9.23:kdim:beta:hom}
+with respect to each axis of $y$, then put \(y=0\);
+the result is
+\begin{equation} \label{eq:9.23:kdim:diffeq}
+\frac{\partial\beta(x)}{\partial x_j} = A_j\beta(x), 
+\qquad A_j = \frac{d\beta(0)}{dx_j}
+\qquad (1\leq j \leq k)
+\end{equation}
+Hence the partial derivatives of \(\beta(x)e^{-A_jx_j}\) are
+\begin{align*}
+\frac{\partial}{\partial x_j} \left(\beta(x)e^{-A_jx_j}\right)
+&= \left(\frac{\partial}{\partial x_j} \beta(x)\right)e^{-A_jx_j}
+   + -A_j\beta(x)e^{-A_jx_j} \\
+&= \left(\left(\frac{\partial}{\partial x_j} \beta(x) 
+              \right) - A_j\beta(x)\right)e^{-A_jx_j}
+= 0
+\end{align*}
+for \(1\leq j \leq k\). Similarly the partial derivatives of
+\begin{equation*}
+\beta(x)\prod_{j=1}^ke^{-A_jx_j}
+= \beta(x)e^{-\sum_{j=1}^k A_jx_j} = \beta(x)e^{-A\cdot x}
+\end{equation*}
+are
+\begin{align*}
+\frac{\partial}{\partial x_j} \left(\beta(x)e^{-A\cdot x}\right)
+&= \left(\frac{\partial}{\partial x_j} \beta(x)\right)e^{-A\cdot x})
+   -A_j \beta(x)e^{-A\cdot x} \\
+&= \left(\left(\frac{\partial}{\partial x_j} \beta(x)\right)
+        -A_j \beta(x)\right)e^{-A\cdot x}
+= 0.
+\end{align*}
+Hence \(\beta(x)e^{-A\cdot x}\)
+is constant in respect of each of \(\{x_j\}_{j=1}^k\).
+Since \(\beta(0)=1\) we obtain
+\begin{equation*}
+\beta(x) = e^{A\cdot x} \qquad (A\in\C^k,\; x\in\R^k).
+\end{equation*}
+Since \(\beta\in L^\infty(\R^k)\) it is bounded (also continuous)
+and by looking at each axis separately, we see that
+\(\forall j\in\N_k,\;\Re(A_i)=0\). Thus $A$ consists
+of pure imaginary numbers, and there exist \(t\in R^k\)
+such that 
+\begin{equation*}
+\beta(x) = e^{-it\cdot x}.
+\end{equation*}
+By looking back  at \eqref{eq:9.23:kdim:eu:beta} we get the desired
+\begin{equation*}
+\varphi(f) = \int_{\R^k}f(x)e^{-it\cdot x}\,dm(x) = \widehat{f}(t).
+\end{equation*}
+evaluation of a Fourier transform.
+\end{thmproof}
+
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+If \(f\in L^1(\R^k)\), $A$ is a linear operator on \(\R^k\), 
+and \(g(x) = f(Ax)\),
+how is \(\Hat{g}\) related to \(\Hat{f}\)?
+If $f$ is invariant under rotations, i.e., if \(f(x)\) depends only 
+on the euclidean distance of $x$ from the origin, prove that the same 
+is true for \(\Hat{f}\).
+\end{excopy}
+
+\begin{quote}
+This is a generalization of theorem~9.2\ich{e}.
+But then we should  either
+\textbf{(i)} think of $A$ as \(1/\lambda\),
+or 
+\textbf{(ii)} 
+think of $A$ as \(\lambda\) \emph{and} swap between $f$ and $g$.
+\end{quote}
+
+If \(\rank{A} < \dim(A) = k\) then the mapping is not onto 
+and its image \((A(\R^k)\) is a subspace of dimension \(<k\)
+so \(m(A(\R^k)) = 0\) in \(\R^k\).
+Thus $g$ depends on values of $f$ \emph{only} on a set of measure~$0$.
+So we cannot get dependency of \(\widehat{g}\) on \(\widehat{f}\)
+
+Now we may assume that $A$ is regular, that is, it is invertible.
+We need to use some change of variable technique.
+We can use either theorem~10.9 of \cite{RudinPMA85}
+or theorem theorem~7.26 of our current~\cite{RudinRCA87}.
+The former deals with \emph{continuous} functions
+while the latter with \emph{measurable} functions but only 
+of \emph{positive} values. We will use the first option.
+
+To use theorem~10.9 of \cite{RudinPMA85}, 
+let us first assume that \(f\in C_c(\R^k)\).
+We have the inverse \(A^{-1}\).
+Note that in our Euclidean real case, $A$ can be represented 
+as an \(k\times k\) matrix $A$.
+\index{Jacobian}
+The Jacobian matrices  of the \(\R^k\)-mappings are
+\(J_A=A\) and \(J_{A^{-1}}=A^{-1}\), the equalities hold
+since $A$ is linear (so we often drop the '$J$' symbol), 
+and their determinants 
+which are constant since $A$ is linear and satisfy
+\begin{equation*}
+\left|J_{A^{-1}}\right|\cdot\left|J_A\right| = |A^{-1}|\cdot |A| = 1.
+\end{equation*}
+We note that there exists a linear mapping \(A^*\)
+such that 
+\(\langle Av,w\rangle =  \langle v, A^*w\rangle\)
+for all \(v,w\in\R^k\).
+See \cite{Lang94} chapter~\textsf{XIII} sections~\S5 and~\S7.
+
+Since \(g(x) = f(Ax)\), equivalently we have \(g(A^{-1}x) = f(x)\).
+\begin{align}
+\widehat{f}(t) 
+&= \int_{\R^k} g\left(A^{-1}y\right)e^{-i(t\cdot y)}\,dm(y) \notag \\
+&= \int_{\R^k} g\bigl(A^{-1}A(x)\bigr)e^{-i(t\cdot Ax)} |J_A|\,dm(x) 
+   \label{eq:fourier:jacobian:c} \\
+&= |A|\int_{\R^k} g(x)e^{-i(A^*t\cdot x)} \,dm(x) 
+   \label{eq:fourier:innerprod} \\
+&= |A|\widehat{g}(A^*t).
+\end{align}
+In \eqref{eq:fourier:jacobian:c} the substitution \(y=Ax\) is used.
+See also \cite{EdwFA}~5.15.4.
+
+We also note that \(A^* = A^T\) the transpose. To see this let
+\begin{equation*}
+v = (\seq{v}{k}) \qquad w = (\seq{w}{k})
+\end{equation*}
+be arbitrary vectors in \(\R^k\). Now 
+\begin{alignat*}{2}
+(Av)_j &= \sum_{m=1}^k A_{j,m}v_m
+\qquad
+  & \langle Av,w \rangle 
+     &= \sum_{j=1}^k (Av)_jw_j 
+     =\sum_{j=1}^k  \left(\sum_{m=1}^k A_{j,m}v_m\right)w_j \\
+(A^Tw)_j &= \sum_{m=1}^k A_{m,j}w_m
+\qquad
+  & \langle v,A^Tw \rangle 
+     &= \sum_{j=1}^k v_jA^Tw_j 
+     =\sum_{j=1}^k v_j \sum_{m=1}^k A_{m,j}w_m \\
+\end{alignat*}
+Looking at the double-sums , each with \(k^2\) terms, 
+we see that they are just permutations of each other.
+Hence 
+\begin{equation*}
+\langle Av,w\rangle = \langle v, A^*w\rangle
+\end{equation*}
+Hence \(A^* = A^T\) as matrices.
+See also \cite{Herstein1975}~Theorem~6.10.2.
+
+Now since \(C_c(\R^k)\) are dense in \(L^p(\R^k)\)
+and we can converge to and \(f\in L^p(\R^k)\)
+by functions \(g\in C_c(\R^k)\) 
+such that \(|g(x)|\leq |f(x)|\,\aded(x)\), 
+by Lebesgue dominated convergence theorem~1.34
+\begin{equation}  \label{eq:fourier:jacobian}
+\widehat{f}(t) = |A|\,\widehat{g}(A^*t) \qquad (\;g(x)=f(Ax)\;)
+\end{equation}
+or equivalently
+\begin{equation}  \label{eq:fourier:jacobian:alt}
+\widehat{g}(t) = |A|^{-1}\,\widehat{f}\left(\left(A^*\right)^{-1}t\right) 
+\qquad (\;g(x)=f(Ax)\;)
+\end{equation}
+for every \(f\in L^1(\R^k)\).
+
+\paragraph{Dependence on Euclidean distance.}
+Now assume that \(f(x)\) depends on \(\|x\|_2\).
+Then for any rotations mapping $A$, we have \(f(x) = f(Ax)\).
+We also note that if $A$ is a rotation, then \(A^T = A^{-1}\) 
+and \(|A|=1\) and  all the eigenvalues have absolute value~$1$.
+See \cite{Herstein1975}~Lemma~6.10.5.
+By what we have shown, 
+\begin{equation*}
+\widehat{f}(x) = |A|\,\widehat{f}(A^*x) = \widehat{f}(A^Tx)
+\end{equation*}
+for all \(A^T\) such that $A$ is a rotation.
+The mapping \(A\to A^T=A^{-1}\) is (bijection) 
+\emph{onto} automorphism of the group of rotations.
+Hence \(\widehat{f}\) similarly depends only on the Euclidean distance.
+
+% theorem 10.9 \cite{RudinPMA85}
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+The
+\index{Laplacian}
+\emph{Laplacian} 
+of a function $f$ on \(\R^k\) is 
+\begin{equation*}
+\Delta f = \sum_{j=1}^k \frac{\partial^2f}{\partial x_j^2},
+\end{equation*}
+provided that the partial derivatives exist. What is the relation between 
+\(\Hat{f}\) and \(\Hat{g}\) if \(g = \Delta f\)
+and all necessary integrability conditions are satisfied?
+It is clear that the Laplacian commutes with translations.
+Prove that it also commutes with rotations, i.e. that 
+\begin{equation*}
+ \Delta(f \circ A) =  \Delta(f) \circ A
+\end{equation*}
+whenever $f$ has continuous second derivatives 
+and $A$ is a rotation of \(\R^k\).
+(Show that it is enough to do this under the additional assumption 
+that $f$ has compact support.)
+\end{excopy}
+
+We first compute the 
+\index{Laplacian}
+Laplacian of the exponential 
+function we convolute with in the Fourier transform.
+\begin{align*}
+\Delta e^{-i(x\cdot t)}
+&= \sum_{j=1}^k \frac{\partial^2}{\partial x_j^2} e^{-i(x\cdot t)} 
+ = \sum_{j=1}^k \frac{\partial}{\partial x_j} (-it_j) e^{-i(x\cdot t)} 
+ = \sum_{j=1}^k (-it_j) \frac{\partial}{\partial x_j} e^{-i(x\cdot t)} \\
+&= \sum_{j=1}^k (-it_j)^2 e^{-i(x\cdot t)} 
+ = e^{-i(x\cdot t)} \sum_{j=1}^k -t_j^2  \\
+&= -|t|^2e^{-i(x\cdot t)}
+\end{align*}
+Now assume \(f\in C_c^2(\R^k\)). 
+That is, $f$ is sufficiently differentiable 
+and it has (and so have its  derivatives) a compact support. Then
+using the inversion theorem (local lemma~\ref{lem:9.11:kdim}) we get
+\begin{equation*}  \label{eq:laplacian:fourier:inv}
+\Delta f(x)
+ = \Delta\int_{\R^k} \widehat{f}(t) e^{i(x\cdot t)}\,dm(t) 
+ = \int_{\R^k} \widehat{f}(t) \Delta e^{i(x\cdot t)}\,dm(t) 
+ = \int_{\R^k} \left(-|t|^2\right)\widehat{f}(t) e^{i(x\cdot t)}\,dm(t)
+\end{equation*}
+The inversion theorem also implies uniqueness of the Fourier transform.
+That is if \(\widehat{g} = \widehat{h}\) then \(g=h\)
+or similarly, more suitable to our case, if
+\begin{equation}
+\int_{\R^k}\widehat{g}(t)e^{i(x\cdot t)}\,dm(x) =
+\int_{\R^k}\widehat{h}(t)e^{i(x\cdot t)}\,dm(x)
+\end{equation}
+then \(\widehat{g}(t)=\widehat{h}(t)\;\aded(t)\).
+Hence by \eqref{eq:laplacian:fourier:inv} we have
+\begin{equation} \label{eq:laplacian:fourier}
+\widehat{\Delta f}(t) = -|t|^2\widehat{f}(t).
+\end{equation}
+By utilizing convergence theorems, \eqref{eq:laplacian:fourier}
+can applied to every \(f\in L^1(\R^k)\cap C^2(\R^k)\),
+that is to smooth functions not necessarily with compact support.
+
+\paragraph{Commuting with rotation.}
+Let us first explore the expression \(\Delta(f \circ A)\)
+directly without referring to the Fourier transform.
+We will do it merely to get some intuition for 
+the complexity involved --- or later the saved complexity.
+Let $A$ be a rotation operator. Since $A$ is linear
+\begin{equation*}
+ \frac{\partial^2}{\partial x_j^2}A(x) = 0 \qquad (\forall j \in N_k).
+\end{equation*}
+Temporarily fix $j$ to compute partial derivatives.
+\begin{equation*}
+\frac{\partial}{\partial x_j} (f \circ A)(x)
+= \frac{\partial}{\partial x_j} (f \circ A)(x) 
+= \left(\frac{\partial}{\partial x_j}(f \circ A)(x)\right)
+   \cdot
+   \frac{\partial A(x)}{\partial x_j}
+\end{equation*}
+We proceed to second derivative
+\begin{align*}
+\frac{\partial^2}{\partial x_j^2} (f \circ A)(x)
+&=   \frac{\partial}{\partial x_j} 
+     \left(
+      \left(\frac{\partial}{\partial x_j}(f \circ A)(x)\right)
+      \cdot
+      \frac{\partial A(x)}{\partial x_j}
+     \right) \\
+&=    \frac{\partial^2 (f \circ A)(x)}{\partial x_j^2}
+      \cdot
+      \frac{\partial A(x)}{\partial x_j} 
+      +
+       \frac{\partial (f \circ A)(x)}{\partial x_j}
+       \cdot
+       \frac{\partial^2 A(x)}{\partial x_j^2}
+       \\
+&=    \frac{\partial^2 (f \circ A)(x)}{\partial x_j^2}
+      \cdot
+      \frac{\partial A(x)}{\partial x_j} 
+\end{align*}
+
+Back to the Laplacian
+\begin{equation*}
+\Delta(f \circ A)(x) 
+= \sum_{j=1}^k 
+     \frac{\partial^2}{\partial x_j^2} (f \circ A)(x) 
+= \sum_{j=1}^k 
+      \frac{\partial^2 (f \circ A)(x)}{\partial x_j^2}
+      \cdot
+      \frac{\partial A(x)}{\partial x_j} 
+\end{equation*}
+
+Now looking at Fourier transforms.
+We will use the that \(|A|=1\) when $A$ is a rotation.
+First transform the left side of the desired equality.
+By \eqref{eq:laplacian:fourier} and \eqref{eq:fourier:jacobian:alt}
+\begin{equation} \label{eq:fourier:laplacian:rot:left}
+ \widehat{\Delta(f \circ A)}(t) 
+ = -|t|^2 \widehat{(f \circ A)}(t)
+ = -|t|^2 |A|^{-1} \widehat{f}\left(\left(A^*\right)^{-1}t\right)
+ = -|t|^2 \widehat{f}\left(\left(A^*\right)^{-1}t\right)
+\end{equation}
+Transform the right side of the desired equality using
+\eqref{eq:fourier:jacobian} 
+and again  \eqref{eq:laplacian:fourier} 
+ with \eqref{eq:fourier:jacobian:alt}
+\begin{align}
+ \widehat{\bigl((\Delta f) \circ A\bigr)}(t) 
+&= |A|^{-1}\,\widehat{(\Delta f)}\left(\left(A^*\right)^{-1}t\right) 
+ = |A|^{-1}
+   \cdot 
+   \left(-\left|\left(A^*\right)^{-1}t\right|^2\right)
+   \cdot
+   \widehat{f}\left(\left(A^*\right)^{-1}t\right) \notag 
+   \\
+   \label{eq:fourier:laplacian:rot:right}
+&=  -|t|^2\cdot \widehat{f}\left(\left(A^*\right)^{-1}t\right) 
+\end{align}
+As we did in previous exercise, 
+the implied uniqueness by the inversion theorems applied to 
+\eqref{eq:fourier:laplacian:rot:left} and
+\eqref{eq:fourier:laplacian:rot:right}
+gives the desired equality
+\begin{equation*}
+ \Delta(f \circ A) = \Delta(f) \circ A\,.
+\end{equation*}
+
+\paragraph{Compact support.} Any function $f$ in \(L^1(\R^k)\)
+and in particular any sufficiently smooth function in \(L^1(\R^k)\)
+can be approximated in \(L^1(\R^k)\) by function \(g\in C_c^2(\R^k)\).
+We can also ensure that \(|g(x)|\leq |f(x)|\;\aded\).
+Hence 
+the arguments above could be applied only to functions with compact support
+and later by Lebesgue's dominated convergence theorem~1.34
+be generalized to \(L^1(\R^k)\cap C^2(\R^k)\).
+
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+Show that every Lebesgue measurable character of \(\R^1\) is continuous.
+Do the same for \(\R^k\).
+(adapt part of the proof of Theorem~9.23.)
+Compare with Exercise~18.
+\end{excopy}
+
+Let \(\varphi\) be a character of \(\R^k\).
+Then \(\varphi\chhi_{\restriction[0,1]}\in L^1(\R)\)
+and by theorem~7.11 there exists (almost everywhere) \(b\in(0,1)\) such that
+\begin{equation*}
+c := \int_0^b \varphi(y)\,dy \neq 0.
+\end{equation*}
+Now for any \(x\in\R\)
+\begin{equation*}
+c \varphi(x) 
+= \int_0^b \varphi(y)\varphi(x)\,dx = 
+= \int_0^b \varphi(y + x)\,dx = 
+= \int_x^{b+x} \varphi(y + x)\,dx
+\end{equation*}
+Hence 
+\begin{equation*}
+\varphi(x) = \frac{1}{c} \int_x^{b+x} \varphi(y + x)\,dx
+\end{equation*}
+is continuous.
+
+\begin{quote}
+The generalization of continuity cannot be derived
+by separate variable continuity, as the example
+\(f(0,0)=0\) and otherwise \(f(x,y)=xy/(x^2+y^2)\) shows
+(see \cite{Gelb1996}~Chapter~9).
+\end{quote}
+
+Now assume \(\varphi\) be a character of \(\R^k\).
+Clearly \(\varphi(0)=1\).
+For every \(a\in \R^k\) and \(j\in\N_k\) we can define,
+by binding to ``\(a \setminus a_j\)'',
+a character on \(\R^1\) by
+\begin{equation*}
+\varphi_{a,j}(t) 
+= \varphi\bigl((a_1,\ldots,a_{j-1},t,a_{j+1},\ldots,a_k)\bigr).
+\end{equation*}
+Hence \(\varphi\) is continuous as a function of each axis.
+Let \(\epsilon>0\) and pick \(\delta>0\) such that
+for all \(j\in \N_k\), if \(|t|<\delta\) then
+\begin{equation*}
+\left|\varphi\left(
+   \overbrace{0,\ldots,0}^{j-1\;\textrm{times}},
+   t,
+   \overbrace{0,\ldots,0}^{n-j\;\textrm{times}}\right) - 1
+\right| < \epsilon.
+\end{equation*}
+Now if \(\|x-a\|_2 < \delta\) then
+\begin{align*}
+|\varphi(x) - \varphi(a)|
+&\leq \sum_{j=1}^k 
+  \left|
+   \varphi(x_1,\ldots        ,x_j,a_{j+1},\ldots,a_k)
+   -
+   \varphi(x_1,\ldots,x_{j-1},a_j,\ldots,a_k) \right| \\
+&= \sum_{j=1}^k 
+  \left|\left((\varphi\left(
+           \overbrace{0,\ldots,0}^{j-1\;\textrm{times}},
+           \,x_j - a_j,\,
+           \overbrace{0,\ldots,0}^{n-j\;\textrm{times}}\right)
+           - 1
+        \right)
+   \varphi(x_1,\ldots,x_{j-1},a_j,\ldots,a_k)\right| \\
+&\leq k\epsilon.
+\end{align*}
+Hence \(\varphi\) continuous at $a$ and thus continuous in \(\R^k\).
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+Show (with the aid of the Hausdorff maximality theorem) that there exist real
+\emph{discontinuous} functions $f$ on \(\R^1\) such that 
+\begin{equation} \label{eq:ex9.18}
+f(x + y) = f(x) + f(y)
+\end{equation}
+for all $x$ and \(y\in \R^1\).
+
+Show that if \eqref{eq:ex9.18} holds and $f$ is Lebesgue measurable then
+$f$ is continuous.
+
+Show that if \eqref{eq:ex9.18} holds and the graph of $f$ is
+not dense in the plane, then $f$ is continuous.
+
+Find all continuous functions which satisfy \eqref{eq:ex9.18}
+\end{excopy}
+
+From \eqref{eq:ex9.18} it is easy that
+\begin{equation} \label{eq:ex9.18:Q}
+\forall x\in\R,\;\forall q\in\Q:\quad f(qx) = q\cdot f(x).
+\end{equation}
+
+\paragraph{Discontinuous example.}
+Take 
+\index{Hamel}
+Hamel base $H$ of \(\R\) over \(\Q\) starting with \(1,\sqrt{2}\in H\).
+Define 
+\(f(1)=1\) and \(f(h)=0\) for all \(h\in H \setminus\{1\}\).
+Clearly $f$ can be extended to a span of any finite sub-base.
+By Zorn Lemma $f$ can be extended to the whole \(\R\)
+and obviously $f$ is discontinuous while its additive rule holds.
+
+\paragraph{Measurable Character.}
+Assume that $f$ is measurable.
+Define
+\begin{equation*}
+\varphi(x) = \exp\left(i\Re\bigl(f(x)\bigr)\right).
+\end{equation*}
+It is easy to see that \(\varphi\) is a measurable character. 
+By previous exercise
+\(\varphi\) is continuous and there exist 
+some (unique) \(t\in\R\) such that \(\varphi(x) = \exp(itx)\)
+for all \(x\in \R\). Hence
+\begin{equation*}
+\Re\bigl(f(x)\bigr) = tx + 2\pi k_x \qquad (k_x \in \Z).
+\end{equation*}
+for all \(x\in\R\).
+Assume by negation that \(k_w\neq 0\) for some \(w\in\R\).
+Let 
+\begin{equation} \label{eq:ex9.18:Z}
+d = \frac{\Re\bigl(f(w)\bigr) - tw}{2\pi} \in \Z
+\end{equation}
+By \eqref{eq:ex9.18:Q} we have
+\begin{equation*}
+\Re\bigl(f(w/(2d))\bigr) = \Re\bigl(f(w)\bigr) \,\bigm/\, (2d)
+\end{equation*}
+and so
+\begin{equation*}
+\frac{\Re\bigl(f(w/(2d))\bigr) - tw/(2d)}{2\pi}
+= \frac{\Re\bigl(f(w))\bigr) - tw}{4\pi d}
+= \half \notin \Z
+\end{equation*}
+which is a contradiction to \eqref{eq:ex9.18:Z}.
+Therefore \(\Re(f(x)) = tx\) and so \(\Re\circ f\) is continuous.
+
+Similarly we can show that \(\Im\circ f\) is continuous, 
+therefore $f$ is continuous.
+
+
+\paragraph{Dense Graph}
+If $f$ is \emph{not} continuous, then by what we just saw it is not linear
+and we can find
+\begin{equation*}
+v_1 = \bigl(x_1,f(x_1)\bigr)
+\qquad
+v_2 = \bigl(x_2,f(x_2)\bigr)
+\end{equation*}
+such that \(\{v_1,v_2\}\) are linearly independent 
+in the vector space \(\R^2\) over \R\ and so they span it.
+Pick \((x,y)\in\R^2\), and let \(a_1,a_2\in\R\) be such that
+\((x,y)=a_1v_1+a_2v_2\).
+We can find two rational sequences \(\{q_{jk}\}_{k=1}^\infty\)
+such that \(\lim_{k\to\infty} q_{jk} = a_j\) for \(j=1,2\).
+Hence
+\begin{equation*}
+\lim_{k\to\infty} q_{1k}v_1 + q_{2k}v_2 = a_1v_1+a_2v_2 = (x,y).
+\end{equation*}
+Since \(q_{1k}v_1 + q_{2k}v_2\) are in the graph of $f$
+it is dense in \(\R^2\).
+
+\paragraph{Description of continuous functions.}
+If $f$ is continuous, then since \(f(q) = q\cdot f(1)\) for all \(q\in\Q\)
+by continuity we also have \(f(x) = x\cdot f(1)\) for all \(x\in\R\).
+Hence the continuous functions that satisfy \eqref{eq:ex9.18}
+are exactly the linear functions.
+
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+Suppose $A$ and $B$ are measurable subsets of \(\R^1\), 
+having finite positive measure.
+Show that the convolution \(\chhi_A \ast \chhi_B\) is continuous 
+and not identically zero. Use this to prove that \(A+B\) contains a segment.
+
+(A different proof was suggested in Exercise~5, Chap.~7.)
+\end{excopy}
+
+Put \(h = \chhi_A \ast \chhi_B\).
+Fix \(\epsilon>0\) and by theorem~3.14, pick \(g\in C_c(\R)\)
+such that \(\|\chhi_A - g\|_1 < \epsilon/m(B)\).
+% Define \(g_a(x) = g(x+a)\) and cleary \(g_a\) are uniformly continuous.
+Cleary $g$ is uniformly continuous.
+Pick \(\delta>0\) such that
+\(|g(s)-g(t)| < \epsilon/m(B)\) whenever \(|s-t|<\delta\).
+If \(|s-t|<\epsilon/m(B)\) then
+\begin{align*}
+h(s) - h(t)
+&= (\chhi_A \ast \chhi_B)(s) - (\chhi_A \ast \chhi_B)(t)  \\
+&= \int \chhi_A(s-x)\chhi_B(x)\,dm(x) -
+   \int \chhi_A(t-x)\chhi_B(x)\,dm(x) \\
+&= \int \bigl(\chhi_A(s-x) - \chhi_A(t-x)\bigr)\chhi_B(x)\,dm(x) \\
+&= \int_B \chhi_A(s-x) - \chhi_A(t-x)\,dm(x)
+\end{align*}
+Now
+\begin{eqnarray*}
+|h(s) - h(t)|
+&=& \left| \int_B \chhi_A(s-x) - \chhi_A(t-x)\,dm(x) \right| \\
+&\leq& \int_B |\chhi_A(s-x) - \chhi_A(t-x)|\,dm(x) \\
+&\leq& 
+   \int_B |\chhi_A(s-x) - g(s-x)|\,dm(x) +
+   \int_B |g(s-x) - g(t-x)|\,dm(x) + \\
+&& \int_B |g(t-x) - \chhi_A(t-x)|\,dm(x) \\
+&\leq& 3\epsilon.
+\end{eqnarray*}
+Hence $h$ is (uniformly!) continuous.
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}

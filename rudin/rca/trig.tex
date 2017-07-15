@@ -1,0 +1,450 @@
+% $Id: trig.tex,v 1.6 2008/07/19 08:56:55 yotam Exp $
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Trigonometry}
+
+We will need workout several results dealing with 
+eqalities and inequalities of complex numbers.
+Argumentation wil be based both on the cartesian and polar representaions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Angle Argument}
+
+For each non zero \(z\in\C\) there is unique polar representaion
+\(z=re^{i\theta}\) where \(r=|z|\) and \(\theta\in[0,2\pi) \subset \R\).
+We define the \emph{argument}
+\begin{equation} \label{eq:arg}
+\Arg(z) = \Arg(|z|e^{i\theta}) \eqdef \theta \in [0,2\pi).
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cosines and Sines}
+
+In addition to the Prologue of \cite{RudinRCA80}, we want to establish
+the following trigonometric equalities.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:trig:cos:sin}
+\begin{alignat}{2}
+ \cos(\pi/3)  & =  1/2   &\qquad \sin(\pi/3) & = \sqrt{3}/2
+    \label{eq:cosin:pi3} \\
+ \cos(2\pi/3) & = -1/2   &\qquad \sin(\pi/3) & = \sqrt{3}/2
+    \label{eq:cosin:2pi3}
+\end{alignat}
+\end{llem}
+\begin{thmproof}
+Let \(a = c+si = e^{\pi i/3}\), with \(c,s\in\R\).
+From \((c+si)^3 = e^{\pi i} = -1\)
+we get the following equations
+\begin{eqnarray*}
+|z|^2 =  c^2 + s^2   &=& 1 \\
+\Re(z) = c^3 - 3cs^2 &=& -1 \\
+\Im(z) = 3c^2s - s^3  &=& 0
+\end{eqnarray*}
+By last equation, 
+\(c=0\) iff \(s=0\). But if this happens it contradicts the first equation.
+Thus \(c\neq 0 \neq s\).
+We divide the last equation by $s$ and add the first.
+We get \(4c^2 = 1\) and so \(s^2= 3/4\) and \(c=\pm1/2\).
+But if \(c = -1/2\) then by the section equation
+\(-1/8 - 3\cdot(-1/2)\cdot(3/4) = 1 \neq -1\) contradicting the second equation.
+Hence \(c=1/2\) and the cosine equality of \eqref{eq:cosin:pi3} is true.
+
+
+Now let \(c+si = e^{\pi 2i/3}\), with \(c,s\in\R\). 
+From \((c+si)^3 = e^{2\pi i} =-1\)
+we get the following equations
+\begin{eqnarray*}
+c^2 + s^2   &=& 1 \\
+c^3 - 3cs^2 &=& 1 \\
+3c^s - s^3  &=& 0
+\end{eqnarray*}
+By similar arguments we again get \(c=\pm1/2\), but this time
+the second equations elimiates the \(c=1/2\) possibility and
+so the cosine equality of \eqref{eq:cosin:2pi3} is true.
+
+By the the \(\cos^2(x) + \sin^2(z) = 1\) equality
+\begin{equation*}
+ \sin(\pi/3) = \sin(2\pi/3) = \pm\sqrt{3}/2.
+\end{equation*}
+But we know that \(\sin(0) = \sin(\pi) = 0\)
+and \(\sin(\pi/2) = 1\). Also \(sin(t)\) is increasing 
+in \([0,\pi/2]\) and decreasing in \([\pi/2,\pi]\)
+and thus the desired equalities for sine are forced.
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Double angle}
+
+\begin{llem}
+The following identities hold.
+\begin{equation*}
+\cos^2(z) = (\cos(2z) + 1)/2
+\end{equation*}
+\end{llem}
+\begin{thmproof}
+\begin{equation*}
+\cos^2(z) 
+= \left((e^{iz} + e^{-iz})/2\right)^2
+= (e^{2iz} + + 2\cdot 0 + e^{-2iz})/4
+= \cos(2z)/2
+\end{equation*}
+\end{thmproof}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Tangent}
+
+The \emph{tangent} function is defined for every complex number \(z\in\C\)
+such that \(\cos(z) \neq 0\) by
+\begin{equation} \label{eq:tan}
+\tan(z) \eqdef \frac{\sin(z)}{\cos(z)}.
+\end{equation}
+
+Viewed as a real function, \(\tan: \R\to\R\) is increasing where it's defined.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:tan}
+Suppose \(\alpha,\beta \in (n\pi/2, (n+1)\pi/2)\) where \(n=0,1,2,3\).
+If \(\alpha < \beta\) then \(\tan(\alpha) < \tan(\beta)\).
+\end{llem}
+\begin{thmproof}
+We simply verify each \((n\pi/2, (n+1)\pi/2)\) quadrant case. 
+\begin{itemize}
+\item[\(n=0\)] 
+  Both \(\sin(t)\) and \(\cos(t)\) are positive, 
+  \(\sin(t)\) increases and \(\cos(t)\) decreases. 
+\item[\(n=1\)] Consider \(-\tan(t) = \sin(t)/(-\cos(t))\).
+  Both \(\sin(t)\) and \(-\cos(t)\) are positive, 
+  \(\sin(t)\) decreases and \(-\cos(t)\) increases, 
+  thus \(-\tan(t)\) decreases.
+\item[\(n=2\)] Consider \(\tan(t) = (-\sin(t))/(-\cos(t))\).
+  Both \(-\sin(t)\) and \(-\cos(t)\) are positive, 
+  \(-\sin(t)\) increases and \(-\cos(t)\) decreases.
+\item[\(n=3\)] % Similar arguments as the \(n=1\) case.
+  Consider \(-\tan(t) = (-\sin(t))/\cos(t)\).
+  Both \(-\sin(t)\) and \(\cos(t)\) are positive, 
+  \(-\sin(t)\) decreases and \(\cos(t)\) increases,
+  thus \(-\tan(t)\) decreases.
+\end{itemize}
+Clearly \(\tan(t)\) increases in all the above cases.
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sums}
+
+\paragraph{Definition.} 
+Given non zero complex numbers \(z_1\) and \(z_2\), 
+we define the \emph{angle} \(\Ang(z_1,z_2)\)
+to be the unique \(\theta \in [0,\pi]\) such that
+\begin{equation*}
+\frac{z_1/ z_2}{|z_1/ z_2|} = \pm e^{i\theta}.
+\end{equation*}
+
+We start by showing a case where the absolute value must grow.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:z1z2:grow}
+Let non zero \(z_1,z_2\in \C\) satisfy \(\Ang(z_1,z_2) \leq \pi/2\)
+then \(|z_1 + z_2| > \max(|z_1|,|z_2|)\). 
+\end{llem}
+\begin{thmproof}
+By symmetry, suffice to show \(|z_1 + z_2| > |z_1|\).
+Let \(z_1 = re^{i\theta}\). If we multiply both \(z_1\) and \(z_2\)
+by \(e^{-i\theta}\) both the assumptions and desired inequalities remain.
+Thus we can assume that \(0 < z_1 \in\R\).
+With the representaion, \(z_k = x_k + iy_k\) for \(k=1,2\),
+we have \(y_1 = 0\)
+and since the \(\Ang(z_1,z_2) \leq \pi/2\), 
+we also have \(x_1,x_2 \geq 0\).
+Thus
+\begin{equation*}
+|z_1 + z_2|^2 = (x_1 + x_2)^2 + y_2^2 \geq x_1^2 + y_2^2 = |z_1|^2
+\end{equation*}
+and the desired inequality follows.
+\end{thmproof}
+
+Now we see a case where the absolute value cannot grow.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:z12:2pi3}
+Let non zero \(z_k = r_k e^{i\theta_k}\) for \(k=1,2\).
+If \(\Ang(z_1,z_2) \geq 2\pi/3\) then
+\begin{equation*}
+|z_1 + z_2| \leq \min(|z_1|,|z_2|).
+\end{equation*}
+\end{llem}
+\begin{thmproof}
+By symmetry and by multiplying both \(z_1\) and \(z_2\) by 
+\(e^{-i\theta_1}/\max(|z_1|,|z_2|)\)
+we may assume 
+\begin{gather*}
+|z_1| \leq 1 \qquad |z_2| < 1 \\
+0=\theta_1 \leq 2\pi/3 \leq \theta_2 \leq \pi
+\end{gather*}
+and we need to show that \(|z_1 + z_2| \leq 1\).
+We look at the representaions \(z_1=x_1\) and \(z_2 = x_2 + iy_2\)
+where \(x_1,x_2,y_2\in\R\).
+Since \(\cos(t)\) and \(\sin(t)\) decrease on \(t\in[\pi/2,\pi]\)
+we have 
+\(-1 \leq x_2 \leq 0 < x_1 \leq 1\).
+and
+\(0\leq y_2 \leq -(\sqrt{3}/2)x_2\).
+There are two cases.
+
+\textbf{Case 1.} Assume \(x_2\geq -x_1/2\).
+\begin{equation*}
+|z_1 + z_2|^2
+ = (x_1 + x_2)^2 + y_2^2 
+ \leq (x_1 + x_2)^2 + (3/4)x_2^2 
+ = (7/4)x_2^2 + 2x_1x_2 + x_1^2
+\end{equation*}
+Looking at the last expression as a function of \(x_2\in\R\),
+it attains its minimum at \(x_2 = -2x_1\)
+Hence the maximum for this case, is achieved at \(x_2 = 0\)
+hence \(|z_1 + z_2|^2 \leq x_1^2 \leq 1\).
+
+\textbf{Case 2.} Assume \(x_2\leq -x_1/2\).
+Hence \(|x_1 + x_2| \leq |x_2|\) and thus
+\begin{equation*}
+|z_1 + z_2|^2
+ = (x_1 + x_2)^2 + y_2^2 
+ \leq x_2^2 + y_2^2 \leq 1
+\end{equation*}
+
+Thus in both cases \(|z_1 + z_2| \leq 1\).
+\end{thmproof}
+
+Our next lemma shows that for any small total sum of small numbers,
+we can find a small pair.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:zpairlt1}
+Suppose  \(n\geq 2\) and \(z_k\in\C\) for \(k\in\N_n\).
+If \(|z_k| \leq 1\) for each \(k\in \N_n\) and 
+\(|\sum_{k=1}^n z_k| \leq 1\)
+then there exists a pair \(j,k\in\N_n\) such that \(j\neq k\)
+and 
+\begin{equation} \label{eq:zpairlt1}
+|z_j + z_k| \leq 1.
+\end{equation}
+\end{llem}
+\begin{thmproof}
+By induction on $n$. For \(n=1\) there is nothing to show.
+For \(n=2\), we simply take \(j=1\) and \(k=2\).
+Now assume the lemma is true for all \(n<n'\) for some \(n'>2\).
+By negation, assume that for any \(j,k\in\N_n\) pair 
+\begin{equation} \label{eq:zpairlt1:zjzk:gt1}
+|z_j + z_k| > 1.
+\end{equation}
+
+We may also assume that 
+\begin{equation} \label{eq:zpairlt1:Azjzk}
+\Ang(z_j,z_k) < 2\pi/3
+\end{equation}
+for any two indices \(j,k\in\N_{n'}\), since otherwise,
+\loclemma~\ref{llem:z12:2pi3} contradicts \eqref{eq:zpairlt1:zjzk:gt1}.
+
+We want to have \(\mathbf{z} = (z_k)_{k=1}^{n'}\) be such that 
+their arguments will be increasing in \([0,2\pi/3)\).
+\Wlogy\ we may assume 
+\(\mathbf{z}\) is sorted so \(\theta_k \leq \theta_{k+1}\)
+for each \(k\in\N_{n'-1}\). 
+We define the ``preceding'' angles
+\(\alpha_1 = \theta_1 + 2\pi - \theta_{n'}\) 
+and
+\(\alpha_{k+1} = \theta_{k+1} - \theta_k\) for \(k\in\N_{n'-1}\).
+Let \(K\in\N_{n'}\) be such that \(\alpha_K = \max\{\alpha_k:k\in N_{n'}\}\).
+\Wlogy, we may assume \(K=1\) and \(\theta_1 = 0\). Otherwise, 
+we can multiply \(\mathbf{z}\) by \(e^{-i\theta_K}\) and resort by
+their (new) arguments.
+To show now that the arguments of \(\mathbf{z}\) are in \([0,2\pi/3)\),
+assume by negation that there is some \(k'\in\N_{n'}\) such that
+\(\theta_k \in [2\pi/3,2\pi)\).
+\newline
+\textbf{Case \ich{i}}.
+If \(\theta_{k'}\in [2\pi/3,4\pi/3]\) then \(\Arg(z_1,z_{k'})\geq 2\pi/3\)
+contradiction to \eqref{eq:zpairlt1:Azjzk}.
+\newline
+\textbf{Case \ich{ii}}.
+Let \(k''\) be the minimal such that
+\(\theta_{k''}\in (4\pi/3,2\pi)\) then put 
+\(\beta = \theta_{k''} - 4\pi/3 \in (0,2\pi/3)\) and 
+again because of \eqref{eq:zpairlt1:Azjzk} we deduce that
+\(\theta_k \notin (\alpha, \alpha + 2\pi/3)\) 
+for \(k\in\N_{n'}\).
+Combining with Case~\ich{i} deduction
+\(\theta_k \notin (\alpha, \alpha + 4\pi/3)\)
+for \(k\in\N_{n'}\). 
+Hence \(\alpha_{k''} > 4\pi/3\), but
+\begin{equation*}
+\alpha_1 \leq \Ang(z_1,z_{k''}) = 2\pi - \theta_{k''} 
+ \leq 2\pi/3 - \alpha < 2\pi/3
+\end{equation*}
+which contradict the assumption of 
+\(K=1\), that is \(\alpha_1\) being the largest preceding angle.
+
+We look at the ``middle sum''
+\begin{equation*}
+U \eqdef \sum_{k=2}^{n'-1} z_k = |U|e^{i\alpha}.
+\end{equation*}
+We rotate all of \(\mathbf{z}\) by \(e^{-i\alpha}\), this time allowing
+for negative angle arguments. For convenience we rename back to \(\mathbf{z}\).
+Now we have the following new situation.
+% \begin{gather}
+% \begin{alignedat}{3}
+\begin{alignat*}{3}
+z_k &= x_k + iy_k = |z_k|e^{i\theta_k} 
+  &\qquad
+  |z_k| &\leq 1 
+  & \qquad (k\in\N_{n'})  \\
+S &\eqdef \sum_{k=1}^{n'} z_k 
+  &\qquad
+|S| &\leq 1 
+  &&  \notag
+\end{alignat*} % \\[1pt]
+\begin{gather}
+ R \eqdef \sum_{k=2}^{n'-1} z_k = S - z_1 - z_{n'} \in \R. \notag \\
+ \theta_k < \theta_{k+1} \qquad (k\in\N_{n'-1}) \notag \\
+ \theta_1 \leq 0 \leq \theta_{n'} < \theta_1 + 2\pi/3 
+    \label{eq:zpairlt1:thetan1}
+\end{gather}
+% \end{gather}
+
+
+We may also assume \wlogy\ that 
+\begin{equation}  \label{eq:zpairlt1:theta1n}
+-\theta_1 < \theta_{n'}. 
+\end{equation}
+Otherwise we can substitue all 
+\((z_k)_{k=1}^{n'}\)
+with 
+\((\overline{z_k})_{k=1}^{n'}\).
+
+% Given the cartesian representation \(z_k = x_k + iy_k\) for \(k\in\N_{n'}\),
+We look at the signs of \(x_1\) and \(x_{n'}\).
+Clearly
+\begin{alignat*}{3}
+ x_1 & \leq 0     &\qquad &\textrm{iff}\quad  &\theta_1    & \leq -\pi/2 \\
+ x_{n'} & \leq 0  &\qquad &\textrm{iff}\quad  &\theta_{n'} & \geq  \pi/2 
+\end{alignat*}
+We examine the following cases. 
+\paragraph{Case 1.} Assume \(x_1 + x_{n'} \geq 0\)
+(covering the case of \(x_1\geq 0\) and \(x_{n'}\geq 0\)).
+Compute
+\begin{eqnarray*}
+|S|^2 - |z_1 + z_{n'}|^2 
+&=& |(U + z_1 + z_{n'})|^2 - |z_1 + z_{n'}|^2 \\
+&=& |U + (x_1 + x_{n'}) + i(y_1 + y_{n'})|^2 - 
+    |(x_1 + x_{n'}) + i(y_1 + y_{n'})|^2 \\
+&=& U^2 + 2U(x_1 + x_{n'})
+\end{eqnarray*}
+Since \(x_1 + x_{n'} \geq 0\), by the above equality
+\(|S|^2 \geq |z_1 + z_{n'}|^2 > 1\) contradiction to the lemma's assumption.
+\paragraph{Case 2.} Assume \(x_1\leq 0\) and \(x_{n'}\leq 0\).
+Then
+\(\theta_1 \leq -\pi/2\) and \(\theta_{n'} \geq \pi/2\)
+contradiction to \eqref{eq:zpairlt1:thetan1}.
+\paragraph{Case 3.} Assume \(x_1\leq 0\) and \(x_{n'}\geq 0\).
+This contradicts the ``conjugate choice'' 
+assumption of \eqref{eq:zpairlt1:theta1n}
+\paragraph{Case 4.} Assume \(x_1\geq 0\), and \(x_{n'}\leq 0\),
+and \(x_1 + x_{n'} < 0\).
+Then
+\(1/x_{n'} > -1/x_1\), and so
+\begin{equation*}
+\tan(z_{n'}) =  y_{n'}/x_{n'} > -y_{n'}/x_1 > y_1 / x_1 = \tan(z_1) = \tan(-z_1).
+\end{equation*}
+which is a contadiction, since 
+\begin{equation*}
+\pi/2 < \theta_{n'} < \theta_1 + \pi < \pi
+\end{equation*}
+and applying \loclemma~\ref{llem:tan} gives \(y_{n'}/x_{n'} \leq y_1/x_1\).
+
+Since all cases were refuted a pair \(j,k\in\N_n\)
+satisfying \eqref{eq:zpairlt1} must exist.
+\end{thmproof}
+
+
+
+%The following lemma shows that in certain conditions 
+%we can order small numbers so their partial sums is stays small.
+Intuitively, we now show that for numbers within the unit circle,
+if their sum is inside, then they can be ordered so partial sums are inside.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:zsubsum}
+Suppose \(z_k\in\C\) for \(k\in\N_n\). % and \(S\eqdef \sum_{k=1}^n z_k\).
+If \(|z_k| \leq 1\) for each \(k\in \N_n\) and 
+\begin{equation} \label{eq:zsubsum:assert}
+\left|\sum_{k=1}^n z_k\right| \leq 1
+\end{equation}
+then \((z_k)\) can be reordered such that \(|S_m| \leq 1\), where
+\begin{equation*}
+S_m = \sum_{k=1}^m z_k
+\end{equation*}
+for each \(m\in\N_n\).
+\end{llem}
+
+\paragraph{Notes.} 
+\begin{itemize}
+\item There could be repetitions of values in \(z_k\).
+\item
+We use the term ``can be reordered''.
+It would be more rigorous to say that
+there exist a permutation \(\sigma\) of \((1,\ldots,n)\) 
+and sum \(z_{\sigma(k)}\). But we prefer to simplify notations.
+\end{itemize}
+
+\begin{thmproof}
+By the lemma above there exist  \(j,k\in\N_{n'}\) such that \(j\neq k\) and
+\begin{equation} \label{eq:zsubsum:zjzk}
+ |z_j + z_k| \leq 1 
+\end{equation}
+We can look at a sequence
+\(\tilde{\mathbf{z}}\) 
+of \(n'-1\) numbers
+made by the original \(\mathbf{z}=(z_k)_{k=1}^{n'}\) 
+with \(z_j\) and \(z_k\) dropped
+and \(z_j + z_k\) added. Applying the induction hypothesis on
+\(\tilde{\mathbf{z}}\) we get an~\((n'-1)\)-ordering
+such that the analogue of \eqref{eq:zsubsum:assert} holds.
+To get reordering for \(\mathbf{z}\)
+we look at the following cases:
+\begin{itemize}
+ \itemch{a} If \(z_j+z_k\) is first in the \((n'-1)\)-ordering,
+ then we simply split it back
+ \itemch{b} If \(z_j+z_k\) is last in the \((n'-1)\)-ordering,
+ then we simply split it back
+ \itemch{c} Assume \(z_j+z_k\) is in the $p$ place of the \((n'-1)\)-ordering.
+ Since \(p<n'-1\) we can apply a sub-\((p+1)\)-ordering,
+ thus changing the the initial $p$ places with new \(p+1\).
+ The final \(n'-p-1\) places are just shifted (and remain the tail).
+\end{itemize}
+Thus, for each possible case, we have shown how a desired reordering
+canbe constructed.
+\end{thmproof}
+
+Here is another view of the above.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{llem} \label{llem:zsub:block}
+Suppose \(z_k\in\C\) for \(k\in\N_n\). % and \(S\eqdef \sum_{k=1}^n z_k\).
+and \(|z_k| \leq 1\) for each \(k\in \N_n\).
+If there exists \(m\in\N_n\) such that each subset \(A\subset\N_n\)
+with $m$ elements (\(|A|=m\)), satisfy
+\begin{equation*}
+\left|\sum_{k\in A} z_k\right| > 1
+\end{equation*}
+then 
+\begin{equation*}
+\left|\sum_{k=1}^n z_k\right| > 1.
+\end{equation*}
+\end{llem}
+\begin{thmproof}
+By negation, applying the above \loclemma~\ref{llem:zsubsum} gives
+a contradiction.
+\end{thmproof}

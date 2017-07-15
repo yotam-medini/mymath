@@ -1,0 +1,1520 @@
+% -*- latex -*-
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Integration on Product Spaces} % 8
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Product of Complex Measures} \label{subsec:prod:complex:measures}
+
+Following Theorem~8.6 that assumes the measures are \(\sigma\)-finite
+which also implies that thy are positive, there is 
+a definition of products \(\mu\times\lambda\) with the similar assumptions.
+We need to generalize the notion for complex measures as well.
+Given a measure \(\mu\) we can define the following decomposition
+based on 
+\index{Jordan Decomposition}
+Jordan Decomposition.
+\begin{alignat*}{2}
+\mu_{r} &= \Re(\mu) \qquad& \mu_{i} &= \Im(\mu) \\
+\mu_{r+} &= (|\mu_r|+\mu_r)/2  \qquad& \mu_{i+} &= (|\mu_i|+\mu_i)/2 \\
+\mu_{r-} &= (|\mu_r|-\mu_r)/2  \qquad& \mu_{i-} &= (|\mu_i|-\mu_i)/2
+\end{alignat*}
+Now by distributive law for measures we get the desired expected generalization
+of the definition of product space to complex (finite!) measures.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Young's Inequality} \label{subsec:young:ineq}
+
+We bring here a proof of 
+\index{Young!inequality}
+Young's inequality based on lecture notes from \cite{Viaclovsky:18125:lec20}.
+
+\begin{lthm}
+Let \(p, q, r \in[1,\infty]\) such that
+\begin{equation*}
+\frac{1}{r} = \frac{1}{p} + \frac{1}{q} - 1
+\end{equation*}
+if \(f \in L^p(\R)\) and \(g\in L^q(\R)\), 
+then \(f \ast g\) exists \aded\ and \(f\ast g\in L^r(\R)\). 
+Moreover,
+\begin{equation*}
+\|f\ast g\|_r \leq \|f\|_p \cdot \|g\|_q\,. \label{eq:young:ineq}
+\end{equation*}
+\end{lthm}
+
+
+\begin{thmproof}
+If \(f=0\,\aded\) or \(g=0\,\aded\) then the inequality is trivial.
+Without loss of generality, let \(\|f\|_p = \|g\|_q = 1\)
+Since otherwise we can look at 
+\(f/\|f\|_p\) and \(g/\|g\|_q\) instead. The general
+case follows from the nonnegative
+case, so assume \(f, g \geq 0\). 
+Let \(p'\) and \(q'\) be the exponential conjugate of $p$ and $q$ respectably.
+Using \(1/r+1/q'+1/p'=1\) and 
+applying H\"older’s inequality Theorem~3.5,
+\begin{align*}
+(f\ast g)(x)
+&= \int_{\R}\left(f(y)^{p/r}g(x-y)^{q/r}\right)f(y)^{1-p/r}g(x-y)^{1-q/r}\,dy \\
+&\leq 
+  \left(\int_{\R} f(y)^pg(x-y)^q\,dy\right)^{1/r}
+     \left(\int_{\R} f(y)^{(1-p/r)q'}\,dy\right)^{1/q'}
+        \left(\int_{\R} f(x-y)^{(1-q/r)p'}\,dy\right)^{1/p'}\,.
+\end{align*}
+Since 
+\begin{equation*}
+(1-p/r)q' = p \qquad\textnormal{and}\qquad (1-q/r)p' =q
+\end{equation*}
+we have
+\begin{equation*}
+(f\ast g)(x) 
+\leq \left(\int_{\R} f(y)^pg(x-y)^q\,dy\right)^{1/r}\cdot1\cdot1.
+\end{equation*}
+Hence
+\begin{equation*}
+(f\ast g)^r(x) \leq \int_{\R} f(y)^pg(x-y)^q\,dy
+\end{equation*}
+That is \((f\ast g)^r \leq f^p \ast g^q\).
+Now
+\begin{align}
+\|f\ast g\|_r^r
+&= \int_{\R} (f\ast g)^r(x)\,dx \notag \\
+&\leq  \int_{\R} (f^p \ast g^q)(x)\,dx = \|(^p \ast g^q\|_1 \notag \\
+&\leq \|f^p\|_1 \|g^q\|_1 \label{eq:young:conv1} \\
+&=  \|f\|_p^p \cdot \|g\|_q^q = 1. \notag
+\end{align}
+The inequality~\eqref{eq:young:conv1} is given by Theorem~8.14.
+Thus desired \eqref{eq:young:ineq} was shown.
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 174-177
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+Find a monotone class \frakM\ in \(\R^1\) which is not a \salgebra,
+even though \(\R^1 \in \frakM\) and \(\R^1\setminus A \in \frakM\)
+for every \(A\in \frakM\).
+\end{excopy}
+
+Take
+\begin{equation*}
+\frakM = \bigl\{\emptyset, \R^1, \; 
+                \{0\}, \R^1\setminus\{0\}, \;
+                \{1\}, \R^1\setminus\{1\}  \bigr\}.
+\end{equation*}
+Note that it is a monotone class but \(\{0,1\}\notin \frakM\).
+
+
+%%%%%%%%%%%%%% 2
+\begin{excopy}
+Suppose $f$ is a Lebesgue measurable nonnegative real function on \(\R^1\)
+and \(A(f)\) is the 
+\emph{ordinate set}
+\index{ordinate set}
+of $f$. This is the set of all points \((x,y)\in\R^2\) for which \(0<y<f(x)\).
+\begin{itemize}
+\itemch{a} Is it true that \(A(f)\) is Lebesgue measurable, 
+           in the two dimensional sense?
+\itemch{b} If the answer to \ich{a} is affirmative, 
+           is the integration of $f$ over \(\R^1\) 
+           equal to the measure of \(A(f)\)?
+\itemch{c} Is the graph of $f$ a measurable subsection of \(\R^2\)?
+\itemch{d} If the answer to \ich{c} is affirmative, 
+           is the measurable of the graph equal to zero?
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+Yes.
+Define simple functions
+\begin{equation*}
+f_n(x) = \lfloor nf(x)\rfloor / n \qquad (n\geq 1).
+\end{equation*}
+Clearly \(\lim_{n\to\infty} f_n = f\).
+Since \(A(f_n)\) is a countable union of rectangles, it is measurable.
+So is \(A(f) = \cup_n A(f_n)\).
+
+\itemch{b}
+Yes. Using the notations if \ich{a}, we have 
+\begin{equation*}
+m_2\bigl(A(f_n)\bigr) 
+= \sum_{k=0}^\infty (k/n)\cdot m\bigl(\{x\in\R^1: f_n(x) = k/n\}\bigr)
+= \int_{\R^1} f_n(t)\,dm(t).
+\end{equation*}
+The desired equality is derived 
+by Lebesgue monotone convergence theorem.
+
+\itemch{c}
+Yes, see \ich{d}.
+
+\itemch{d}
+Yes.
+Pick \(\epsilon>0\). Define
+\begin{equation*}
+s(x) = \epsilon \cdot 2 ^{-\lfloor x \rfloor} > 0
+\end{equation*}
+Clearly 
+\begin{equation*}
+\int_{\R} s(x)\,dx = 2 \epsilon \sum_{n=0}^\infty 2^{-n} = 4\epsilon.
+\end{equation*}
+Now 
+\begin{equation*}
+G 
+= \{(x,f(x)): x\in\R\} 
+\subset \{(x,y)\in\R^2: f(x)-s(x) < y < f(x)+s(x)\}.
+\end{equation*}
+and 
+\begin{align*}
+m(G) 
+&\leq m\bigl(\{(x,y)\in\R^2: f(x)-s(x) < y < f(x)+s(x)\}\bigr) \\
+&=  m\bigl(\{(x,y)\in\R^2: 0 < y < 2s(x)\}\bigr)
+= 2\int_R s(x)\,dx = 8\epsilon.
+\end{align*}
+Since \(\epsilon\) is arbitrary, we have \(m(G)=0\).
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 3
+\begin{excopy}
+Find an example of a positive continuous function $f$
+in the open unit square in \(\R^2\),
+whose integral (relative to Lebesgue measure)
+is finite but such that \(\varphi(x)\) 
+(in the notation of Theorem~8.8)
+is infinite for some \(x \in (0,1)\).
+\end{excopy}
+
+Let \(U = (0,1)^2 \subset \R^2\) be the open unit square
+and \(C = (1/2,0)\) a point on its boundary.
+For \(n\geq 1\) define the open triangle
+\begin{equation*}
+T_n = \triangle\bigl(C-(1/n, 0),\; C+(1/n, 0),\; C+(0, 1/n)\bigr).
+\end{equation*}
+Clearly \(T_n \supset T_{n+1}\) is a decreasing sequence, 
+\(m(T_n) = 1/n^2\) and \(\cap_n T_n = \emptyset\).
+By  Urysohn's Lemma~2.12 \cite{RudinRCA87}, 
+\index{Urysohn's lemma}
+there exists
+\(f_n:U\to[0,1]\) such that 
+\begin{equation*}
+U \setminus T_n \prec f_n \prec T_{n+1}.
+\end{equation*}
+Let \(f = \sum_{n=1}^\infty f_n\).
+Now
+\begin{equation*}
+\int_U f(x,y)\,dm(x,y)
+= \sum_{n=1}^\infty \int_U f_n(x,y)\,dm(x,y)
+\leq \sum_{n=1}^\infty \int_U \chhi_{T_n}(x,y)\,dm(x,y)
+= \sum_{n=1}^\infty 1/n^2
+< \infty.
+\end{equation*}
+But for \(x=1/2\)
+\begin{align*}
+\int_0^1 f_x(y)\,dy 
+&= \int_0^1 f(1/2,y)\,dy
+= \sum_{n=1}^\infty \int_0^1 f(1/2,y)\,dy \\
+&\geq \sum_{n=1}^\infty \int_0^1 \chhi_{T_{n+1}}(1/2,y)\,dy
+= \sum_{n=1}^\infty 1/(n+1)
+= \infty.
+\end{align*}
+ 
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Suppose \(1\leq p \leq \infty\), \(f\in L^1(\R)\) and \(g\in L^p(\R)\).
+\begin{itemize}
+\itemch{a}
+Imitate the proof of Theorem~8.14 to show that the integral defining
+\((f\ast g)(x)\) exists for almost all $x$, that \(f\ast g \in L^p(\R)\),
+and that 
+\begin{equation*}
+\| f \ast g \|_p \leq \|f\|_1 \|g\|_p.
+\end{equation*}
+
+\itemch{b}
+Show that equality can hold in \ich{a} if \(p=1\) and if \(p=\infty\),
+and find the conditions under which this happens.
+
+\itemch{c}
+Assume \(1 < p < \infty\) and equality holds in \ich{a}.
+Show that then either 
+\(f=0\;\aded\) or 
+\(g=0\;\aded\)
+
+\itemch{d}
+Assume \(1\leq p \leq \infty\), \(\epsilon>0\), and show that there exists
+\(f\in L^1(\R^1)\) and \(g\in L^p(\R^1)\) such that 
+\begin{equation*}
+\| f \ast g \|_p > (1-\epsilon) \|f\|_1 \|g\|_p.
+\end{equation*}
+\end{itemize}
+\end{excopy}
+
+For a generalization with 
+\index{Young}
+Young inequalities, see \cite{EdwFA} Theorem~9.5.1 page~655.
+
+\begin{itemize}
+\itemch{a}
+Let's first assume \(p=\infty\), then
+\begin{align*}
+\|f \ast g\|_\infty
+&= \esssup_{x\in\R} \left| \int_{\R} f(y)g(x-y)\,dy\right|
+\leq \esssup_{x\in\R}  \int_{\R} |f(y)g(x-y)|\,dy \\
+&\leq \|g\|_\infty \esssup_{x\in\R} \int_{\R} |f(y)|\,dy
+ = \|f\|_1 \|g\|_\infty
+\end{align*}
+
+So now we may assume \(p<\infty\). We use 
+% generalization of
+ H\"older's inequality 
+\index{Holder@H\"older}
+Theorem~3.5 \cite{RudinRCA87}
+% (see local lemma~\ref{llem:hlp:188}).
+Let \(q = p / (p - 1)\) be the exponent conjugate.
+\begin{align}
+|(f \ast g)(t)|
+&\leq \int_{\R} |f(t-s)g(s)|\,ds \notag \\
+&= \int_{\R} 
+    \left(|f(t-s)|^{1/p} |g(s)|\right) 
+    \left(|f(t-s)|^{1/q}\right) 
+    \,ds \notag \\
+&\leq \label{eq:ex8.4a:holder}
+      \left( \int_{\R} \left(|f(t-s)|^{1/p} |g(s)|\right)^p\,ds \right)^{1/p}
+      \left( \int_{\R} \left(|f(t-s)|^{1/q}\right)^q \,ds \right)^{1/q} \\
+&=   \left( \int_{\R} |f(t-s)| \cdot |g(s)|^p\,ds \right)^{1/p}
+      \left( \int_{\R} |f(t-s)| \,ds \right)^{1/q} \notag \\
+&=   \left( \int_{\R} |f(t-s)| \cdot |g(s)|^p\,ds \right)^{1/p} \|f\|_1^{1/q}
+     \notag
+\end{align}
+The above inequality holds for almost all $t$. Hence
+\begin{align}
+\|f \ast g\|_p^p
+&\leq \|f\|_1^{p/q} \notag
+      \int_\R 
+        \left(\int_{\R} |f(t-s)| \cdot |g(s)|^p\,ds \right)^{(1/p)p}\,dt \\
+&= \|f\|_1^{p/q} \notag
+   \int_\R \int_{\R} |f(t-s)| \cdot |g(s)|^p\,ds\,dt \\
+&= \|f\|_1^{p/q} \label{eq:8.4:fub}
+   \int_\R \int_{\R} |f(t-s)| \cdot |g(s)|^p\,dt\,ds \\
+&= \|f\|_1^{p/q} \notag
+   \int_\R |g(s)|^p \int_{\R} |f(t-s)| \,dt\,ds \\
+&= \|f\|_1^{p/q} \cdot \|g\|_p^p \cdot \|f\|_1  \notag
+ = \|f\|_1^{p/(p/(p-1)) + 1}  \|g\|_p^p \\
+&=  \|f\|_1^p \cdot \|g\|_p^p  \notag
+\end{align}
+The \eqref{eq:8.4:fub} equality is by Fubini Theorem~8.8 \cite{RudinRCA87}.
+Thus \(\|f \ast g\|_p =  \|f\|_1 \|g\|_p\) as desired.
+
+\itemch{b}
+\emph{Note:} This is a result of 
+\index{Riesz-Thorin}
+\index{Thorin}
+Riesz-Thorin theorem.
+
+% Clearly if \(f=0\,\aded\) or \(g=0\,\aded\) then equality holds.
+Let \(h = f\ast g\).
+By the proof of Theorem~8.14, when \(p=1\), there is an equality iff
+\begin{equation*}
+|h(x)| 
+= \left|\int_{-\infty}^\infty f(x-y)g(y)\,dy\right|
+= \int_{-\infty}^\infty |f(x-y)g(y)|\,dy
+\end{equation*}
+This happens iff \(f(x-y)g(y)\) 
+has the same argument almost everywhere on~$x$ and~$y$.
+Equivalently, since \(x-y\) covers all of \(\R\), iff
+$f$ and $g$ wach has constant argument \aded.
+
+When \(p=\infty\) then equality holds 
+if for any \(\epsilon>0\) there exists some \(x\in\R\) 
+and \(\theta\in[0,2\pi]\)
+such that 
+\begin{equation*}
+\int_{\R}\left| f(y)g(x-y)- e^{i\theta}|f(y)|\cdot\|g\|_\infty\right|\,dx 
+< \epsilon.
+\end{equation*}
+
+
+\itemch{c}
+Assme \(1<p<\infty\).
+If equality holds, then equality must hold for almost all \(t\in\R\) in 
+\eqref{eq:ex8.4a:holder}.
+By Local~Lemma~\ref{llem:hlp:188} (H\"older), both expressions:
+\begin{equation*}
+|f(t-s)|^{1/p} |g(s)|  \qquad  |f(t-s)|^{1/q}
+\end{equation*}
+must be effectively proportional for all \(t\in\R\).
+Equivalently, 
+\begin{equation*}
+|g(s)|  \qquad  |f(t-s)|^{1/q-1/p}
+\end{equation*}
+must be effectively proportional. 
+Hence \(f=0\,\aded\) or \(g=0\,\aded\).
+
+\itemch{d}
+Let \(f_n(x) = n\chhi_{[-1/n,+1/n]}/2\) and \(g = \chhi_{[0,1]}\).
+Clearly \(\|f_n\|_1=1\) and
+\(\|g\|_p = 1\). Now 
+\begin{align*}
+(f_n\ast g)(x) 
+&= \int_{-\infty}^\infty f_n(x-t)g(t)\,dt
+ = \int_0^1 f_n(x-t)\,dt
+ = (n/2) \int_0^1 \chhi_{[-1/n,+1/n]}(x-t)\,dt \\
+&= \left\{\begin{array}{ll}
+    n(x+1/n)/2 \qquad &  -1/n \leq x \leq 1/n \\
+    1    \qquad    1/n \leq x \leq 1-1/n \\
+    n(x-(1-1/n))/2 \qquad &  -1/n \leq x \leq 1/n \\
+    0 \qquad              & \textnormal{otherwise}
+   \end{array}\right.
+\end{align*}
+By Lebesgue convergence theorems
+\(\lim_{n\to\infty} \|f_n\ast g\|_p = 1\).
+Hence for any \(\epsilon>0\) we can find some $n$ such that 
+\begin{equation*}
+\| f_n \ast g \|_p > 
+(1-\epsilon) =
+(1-\epsilon) \|f\|_1 \|g\|_p.
+\end{equation*}
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+Let $M$ be the Banach space of all complex Borel measures on \(\R^1\).
+The norm in $M$ is \(\|\mu\| = |\mu|(\R^1)\).
+Associate to each Borel set \(E \subset \R^1\) the set
+\begin{equation*}
+E_2 = \{ (x,y): x+y \in E\} \subset \R^2.
+\end{equation*}
+If \(\mu\) and \(\lambda \in M\) define their convolution \(\mu \ast \lambda\)
+to be the set function given by
+\begin{equation*}
+(\mu \ast \lambda)(E) = (\mu \times \lambda)(E_2)
+\end{equation*}
+for every Borel set \(E\subset \R^1\);
+\(\mu\times\lambda\) is as in Definition~8.7.
+\begin{itemize}
+\itemch{a}
+Prove that \(\mu \ast \lambda \in M\) and that 
+\(\|\mu \ast \lambda\| \leq \|\mu\| \, \|\lambda \|\).
+
+\itemch{b}
+Prove that \(\mu \ast \lambda \) is the unique \(\nu\in M\) such that 
+\begin{equation*}
+\int f\,d\nu = \int\int f(x+y)\,d\mu(x)\,d\nu(y)
+\end{equation*}
+for every \(f\in C_0(\R^1)\). (all integrals extend over \(\R^1\).)
+
+\itemch{c}
+Prove that convolution in $M$ is commutative, associative, and distributive
+with respect to addition.
+
+\itemch{d}
+Prove the formula
+\begin{equation*}
+(\mu \ast \lambda)(E) = \int \mu(E-t)\,d\lambda(t)
+\end{equation*}
+for every \(\mu\) and \(\lambda \in M\) and every Borel set $E$. Here
+\begin{equation*}
+E - t = \{x - t: x\in E\}.
+\end{equation*}
+
+\itemch{e}
+Define \(\mu\) to be 
+\emph{discrete} 
+\index{discrete!measure} 
+if \(\mu\) is concentrated on a countable set;
+define \(\mu\) to be 
+\emph{continuous}
+\index{continuous!measure}
+if \(\mu(\{x\}) = 0\) for every \(x\in\R^1\);
+let $m$ be Lebesgue measure on \(\R^1\)
+(note that \(m\notin M\)).
+Prove that  \(\mu \ast \lambda\) is discrete if both \(\mu\) and \(\lambda\)
+are discrete, that \(\mu \ast \lambda\) is continuous if \(\mu\) is continuous
+and \(\lambda\in M\), and that \(\mu \ast \lambda \ll m \) if \(\mu \ll m\).
+
+\itemch{f}
+Assume
+\(d\mu = f\,dm\), 
+\(d\lambda = g\,dm\),
+\(f\in L^1(\R^1)\), 
+\(g\in L^1(\R^1)\), 
+and prove that \\
+\(d(\mu\ast\lambda) = (f\ast g)\,dm\).
+
+\itemch{g}
+Properties \ich{a} and \ich{c} show that the Banach space $M$ is what one calls
+\index{commutative!Banach algebra}
+\emph{commutative Banach algebra}.
+Show that \ich{e} and \ich{f} imply that the set of all discrete measures in $M$
+is a subalgebra of $M$,
+that the continuous measures form an ideal in $M$, and that the absolutely
+continuous measures (relative to $M$) form an ideal in $M$ which is isomorphic 
+(as an algebra) to \(L^1(\R^1)\).
+
+\itemch{h}
+Show that $M$ has a unit, i.e., show that there exists a \(\delta\in M\)
+such that \(\delta \ast \mu = \mu\) for all \(\mu \in M\).
+
+\itemch{i}
+Only two properties of \(\R^1\) have been used in this discussion: \(\R^1\)
+is a commutative group (under addition), and there exists a translation
+invariant Borel measure $M$ on \(\R^1\) which is not identically $0$ and 
+which is finite on all compact subsets of \(\R^1\).
+Show that the same results hold if \(\R^1\)
+is replaced by \(\R^k\) or by $T$ (the unit circle) or by \(T^k\)
+(the $K$-dimensional torus, the cartesian product of $k$
+copies of $T$),
+as soon as the definitions are properly formulated.
+\end{itemize}
+\end{excopy}
+
+\emph{Note:} The definition of \(\mu\times\lambda\) where 
+\(\mu\) and \(\lambda\) are complex measures requires a generalization
+of the definition done in section~8.7 of \cite{RudinRCA87},
+see \ref{subsec:prod:complex:measures} above.
+
+Utilizing the notations of Theorem~8.6 gives:
+\begin{align*}
+(E_2)_t &= \{u\in\R: (t,u)\in E_2\} = \{u\in\R: t+u\in E\} 
+    = \{x-t: x\in E\} = E-t \\
+(E_2)^u &= \{t\in\R: (t,u)\in E_2\} = \{t\in\R: t+u\in E\} 
+    = \{y-u: y\in E\} = E-u.
+\end{align*}
+
+\begin{itemize}
+\itemch{a}
+Let \(\frakM\) be the set of all Borel sets \(E\subset \R\)
+such that \(E_2\) is a Borel set in \(\R^2\).
+
+% Assume \(E\subset\R\) is a Borel set. We need to whow that 
+% \(E_2\) is a Borel set in \(\R^2\).x
+% We will do this in steps.
+
+% First we assume that 
+If $E$ is open, then it is trivial to see that~\(E_2\) is open. 
+If \(E\in\frakM\) then 
+\begin{equation*}
+C_2 
+= \{(x,y)\in\R^2: x+y \in \R\setminus E\}
+= \R^2 \setminus \{(x,y)\in\R^2: x+y \in E\}
+= \R^2 \setminus E_2\,,
+\end{equation*}
+hence \((\R\setminus E)\in\frakM\).
+
+Let \(E = \cup_{n\in\N}B_n\) a Partition of Borel sets
+and assume \(B_n\in\frakM\) for all \(n\in\N\), then
+\begin{equation*}
+E_2 
+= \{(x,y)\in\R^2: x+y \in \cup_{n\in\N}B_n\}
+= \bigcup_{n\in\N}B_n \{(x,y)\in\R^2: x+y \in B_n\}
+\end{equation*}
+hence \(E\in\frakM\).
+Therefore \frakM\ is a \salgebra\ that contains the open sets,
+and so it contains all the Borel sets.
+
+
+Now we have to show that \(\mu\ast\lambda\) is a measure.
+Let \(E=\disjunion_{n\in\N} B_n\) a partition of Borel sets.
+\begin{align*}
+(\mu\ast\lambda)(E)
+&= (\mu\times\lambda)\left(\{(x,y)\in\R^2: x+y\in\disjunion_{n\in\N} B_n\}\right)
+  \\
+&= \sum_{n\in\N}(\mu\times\lambda)\left(\{(x,y)\in\R^2: x+y \in B_n\}\right) \\
+&= \sum_{n\in\N}(\mu\ast\lambda)(B_n)
+\end{align*}
+
+We note that if \(A,B\subset\R\) are disjoint, then
+\(A_2,B_2\subset\R^2\) are disjoint as well. Hence
+\begin{align*}
+\left|\mu\ast\lambda\right|
+&= |\mu\ast\lambda|(\R)
+ = \sup_{\R=\disjunion_{n\in\N} F_n} 
+   \left(\sum_{n\in\N} \left| (\mu\ast\lambda) (F_n)\right|\right)
+ = \sup_{\R=\disjunion_{n\in\N} F_n} 
+   \left(\sum_{n\in\N} \left| (\mu\times\lambda) (F_n)_2\right|\right)
+   \\
+&\leq (|\mu|\times|\lambda|)(\R^2) 
+ = \|\mu\|\cdot\|\lambda\|.
+\end{align*}
+The last equality is a trivial applying of 
+\index{Fubini}
+Fubini's Theorem~8.8.
+
+\itemch{b}
+The Borel measure is determined by its value on open sets.
+In the case of \(\R\) therefore, it is determined by the value on intervals.
+But for any interval $I$ we can aproximate \(\chhi_I\) by functions
+from \(C_0(\R)\). Thus the uniqueness follows.
+
+\itemch{d}
+\emph{Note:} before \ich{c} since we will need this one there.
+First we have the set manipulation
+\begin{equation*}
+(E_2)^y 
+= \{x\in\R: (x,y)\in E_2\}
+= \{x\in\R: x+y\in E\}
+= \{t-y\in\R: t\in E\}
+= E - y.
+\end{equation*}
+Now
+\begin{equation*}
+(\mu \ast \lambda)(E) 
+= (\mu\times\lambda)(E_2) 
+= \int_{\R} \mu\left(E_2)^t\right)\,d\lambda(t)
+= \int_{\R} \mu(E-t)\,d\lambda(t)
+\end{equation*}
+
+\itemch{c}
+Let \(\lambda,\mu,\nu\in M\) and a Borel set \(E\subset\R\),
+and \(E_2\) defined as above.
+
+\paragraph{Convolution is commutative.}
+\begin{equation*}
+(\lambda\ast \mu)(E)
+= (\lambda\times\mu)(E)
+= (\mu\times\lambda)(E)
+= (\mu\ast\lambda)(E)
+\end{equation*}
+
+We note the set equality:
+\begin{gather*}
+(E^y)_2 = (E-y)_2 
+ = \{(t,u)\in\R^2: t+u\in E-y\}
+ = \{(t,u)\in\R^2: t+u+y\in E\} \\
+%
+\begin{align*}
+\bigl((E-y)_2\bigr)^s 
+&= \{r\in\R: (r,s)\in (E-y)_2\}
+ = \{r\in\R: r+s\in E-y\} \\
+&= \{r\in\R: r+s+y\in E\}
+ = E-(y+s)
+\end{align*}
+\end{gather*}
+
+\paragraph{Convolution is associative.}
+Using Theorem~8.6 and its notations
+\begin{align*}
+\bigl((\lambda\ast \mu)\ast \nu\bigr)(E)
+&=\bigl((\lambda\ast \mu)\times \nu\bigr)(E_2)
+ % = \int_{\R} \nu\bigl((E_2)_x\bigr)\,d(\lambda\ast \mu)(x) \\
+ = \int_{\R} (\lambda\ast \mu)\bigl((E_2)^y\bigr)\,d\nu(y) \\
+&= \int_{\R} (\lambda\ast \mu)(E-y)\,d\nu(y) 
+ = \int_{\R} (\lambda\times \mu)\bigl((E-y)_2\bigr)\,d\nu(y) \\
+&= \int_{\R} 
+   \left(
+      \int_{\R}\lambda\left(\bigl((E-y)_2\bigr)^s\right)\,d\mu(s)
+   \right)\,d\nu(y) \\
+&= \int_{\R} \left(\int_{\R}\lambda(E-y-s)\,d\mu(s)\right)\,d\nu(y)
+\end{align*}
+
+Summerizing the above
+\begin{equation} \label{eq:measure:conv:assoc}
+\bigl((\lambda\ast \mu)\ast \nu\bigr)(E)
+= \int_{\R} \left(\int_{\R}\lambda(E-y-s)\,d\mu(s)\right)\,d\nu(y)
+\end{equation}
+
+We now use commutativity and \eqref{eq:measure:conv:assoc} twice:
+\begin{equation*}
+\bigl((\lambda\ast \mu)\ast \nu\bigr)(E)
+\bigl((\mu\ast \lambda)\ast \nu\bigr)(E)
+= \int_{\R} \left(\int_{\R}\mu(E-y-s)\,d\lambda(s)\right)\,d\nu(y)
+\end{equation*}
+and
+\begin{equation*}
+\bigl(\lambda\ast (\mu\ast \nu)\bigr)(E)
+\bigl((\mu\ast \nu)\ast \lambda\bigr)(E)
+= \int_{\R} \left(\int_{\R}\mu(E-y-s)\,d\nu(s)\right)\,d\lambda(y)
+\end{equation*}
+By Fubini's Theorem~8.8 the last integrals of the last two equalities
+are equal
+\begin{equation*}
+  \int_{\R} \left(\int_{\R}\mu(E-y-s)\,d\lambda(s)\right)\,d\nu(y)
+= \int_{\R} \left(\int_{\R}\mu(E-y-s)\,d\nu(s)\right)\,d\lambda(y)
+\end{equation*}
+hence,
+\begin{equation*}
+  \bigl((\lambda\ast \mu)\ast \nu\bigr)(E) 
+= \bigl(\lambda\ast (\mu\ast \nu)\bigr)(E).
+\end{equation*}
+
+\paragraph{Convolution is distributive.}
+\begin{align*}
+\bigl((\lambda+\mu)\ast \nu)(E)
+&= \int_{\R} (\lambda+\mu)(E-y)\,d\nu(y)
+     \int_{\R} \lambda(E-y)\,d\nu(y)
+   + \int_{\R} \mu(E-y)\,d\nu(y) \\
+&=  (\lambda+\mu)\ast \nu)(E)
+  + (\mu+\mu)\ast \nu)(E)
+\end{align*}
+The distribution of other side follows by commutativity.
+
+\itemch{e}
+\textbf{Discreteness.}
+Assume both \(\mu\) and \(\lambda\) are discrete.
+Let \(A,B\subset\R\) the countable sets on which the measures are concentrated
+respectably. We freely use the notations like \(\mu(\{x\})=\mu(x)\).
+Now
+\begin{align*}
+(\lambda\ast\mu)(E)
+&= \int_{\R} \lambda(E-y)\,d\mu(y)
+ = \sum_{y\in B} \lambda(E-y)\mu(y)
+ = \sum_{y\in B} \left(\sum_{x\in A\cap (E-y)}\lambda(x)\right)\mu(y) \\
+&= \sum{x\in A}\sum_{y\in B} \chhi_E(x+y)\lambda(x)\cdot\mu(y)
+\end{align*}
+Therefore \(\lambda\ast\mu\) is concentrated in \(\{x+y: (x,y)\in A\times B\}\).
+and 
+\begin{equation*}
+(\lambda\ast\mu)(w) = \sum_{\stackrel{(x,y)\in  A\times B}{x+y=w}} \lambda(x)\cdot\mu(y).
+\end{equation*}
+
+
+\textbf{Continuity.}
+Assume \(\mu\) is continuous. Pick arbitrary \(x\in\R\).
+\begin{equation*}
+(\mu\ast\lambda)(x) 
+= \int_{\R} \mu(x-y)\,d\lambda(y) = 
+= \int_{\R} 0\,d\lambda(y) = 0.
+\end{equation*}
+Hence \(\mu\ast\lambda\) is continuous.
+
+\textbf{Absolute Continuity.}
+Assume \(\mu \ll m\) and \(m(E)=0\). 
+Clearly \(\mu(E-y)=0\) for each \(y\in\R\) since \(m(E-y)=0\)
+by construction of the Lebesgue measure. Now
+\begin{equation*}
+(\mu\ast \lambda)(E) 
+= \int_{\R} \lambda(E-y)\,d\mu(y)
+= \int_{\R} 0\,d\mu(y) = 0
+\end{equation*}
+
+\itemch{f}
+Take a Borel set $E$. Using the fact that $m$ is a measure that 
+is invariant under translation and 
+\index{Fubini}
+Fubini's Theorem~8.8
+\begin{align*}
+(\mu\ast\lambda)(E)
+&= \int_{\R} \chhi_E\,d(\mu\ast\lambda)
+ = \int_{\R} \mu(E-y)\,d\lambda(y)
+ = \int_{\R} \left(\int_{E-y}\!f(x)\,dm(x)\right)g(y)\,dm(y) \\
+&= \int_{\R} \left(\int_E f(x-y)\,dm(x)\right)g(y)\,dm(y) \\
+&= \int_{\R} \left(\int_{\R} \chhi_E(x) f(x-y)g(y)\,dm(x)\right)\,dm(y) \\
+&= \int_{\R} \left(\int_{\R} \chhi_E(x) f(x-y)g(y)\,dm(y)\right)\,dm(x) \\
+&= \int_{\R} \chhi_E(x) \left(\int_{\R} f(x-y)g(y)\,dm(y)\right)\,dm(x) 
+ = \int_{\R} \chhi_E(x) (f\ast g)(x)\,dm(x) \\
+&= \int_{\R} \chhi_E(x)\,d(f\ast g)(x)m(x)
+\end{align*}
+
+
+\itemch{g}
+Discrete measure are subalgebra by \ich{e} and \ich{f}.
+Closure under addition and scalar multiplication is trivial.
+
+Let $C$ be the family of continuous measures.
+Again, closure under addition and scalar multiplication is trivial.
+By \ich{e} and \ich{f} we have shown that $C$ is an ideal.
+
+Let $A$ be the family of absolutely continuous measures with respect to $m$.
+Again, closure under addition and scalar multiplication is trivial.
+If \(\mu\ll m\) then by 
+\index{Radon-Nikodym}
+Radon-Nikodym Theorem~6.10 trivially extended to complex measures,
+there exists $m$-measurable $f$
+such that \(f\,dm = d\mu\). With this,\ich{e} and \ich{f} $A$ is an ideal
+and the mapping \(\mu \to f\) is an isomorphism.
+
+
+\itemch{h}
+Put \(\delta(E) = \chhi_E(0)\). Verification is trivial.
+
+\itemch{i}
+For \(E\subset \T^k\) we need to modify the definition 
+\begin{equation*}
+E_2 = \left\{(u_1,u_2)\in \left(\T^k\right)^2: \exists u\in E,\;
+         \forall j\in\N_k,\; (z_1)j\cdot(z_2)_j = u_j\right\}
+\end{equation*}
+Now all arguments can be easily applied to \(\R^k\) and \(\T^k\).
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+(Polar coordinates in \(\R^k\).)
+Let \(S_{k-1}\) be the unit sphere in \(\R^k\), 
+i.e., the set of all \(u \in \R^k\) whose distance from the origin $0$ is $1$.
+Show that every \(x\in \R^k\), except for \(x=0\), has a unique representation
+of the form \(x=ru\), where $r$ is a positive real number and \(u\in S_{k-1}\).
+Thus \(\R^k\setminus\{0\}\) may be regarded as the cartesian product
+\((0,\infty)\times S_{k-1}\).
+
+Let \(m_k\) be the Lebesgue measure on \(\R^k\), and define a measure
+\(\sigma_{k-1}\) on \(S_{k-1}\) as follows:
+If \(A \subset S_{k-1}\) and $A$ is a Borel set, let \(\overline{A}\)
+be the set of all points \(ru\), where \(0 < r < 1\)
+and \(u\in A\), and define
+\begin{equation*}
+\sigma_{k-1}(A) = k \cdot m_k(\overline{A}).
+\end{equation*}
+Prove that the formula
+\begin{equation*}
+\int_{R^k} f\,dm_k 
+= \int_0^\infty r^{k-1}\,dr \int_{S_{k-1}} f(ru)\,d\sigma_{k-1}(u)
+\end{equation*}
+is valid for every nonnegative Borel function $f$ on \(\R^{k}\).
+Check that this coincides with familiar results 
+when \(k=2\)
+and when \(k=3\).
+
+\emph{Suggestion}: If \(0 < r_1 < r_2\) and if $A$ 
+is an open subset of \(S_{k-1}\), let $E$ be the set of all \(ru\) with
+\(r_1 < r < r_2\), \(u\in A\),
+and verify that the formula holds for the characteristic function of $E$.
+Pass from these to characteristic functions of Borel sets in \(\R^k\).
+\end{excopy}
+
+Pick $E$ as suggested. Now
+\begin{align*}
+\int_{R^k} \chhi_E\,dm_k 
+&= m_k(E) 
+ = m_k\left(\{ru\in \R^k: u\in A\;\wedge\; r_1<r<r_2\}\right) \\
+&=   m_k\left(\{ru\in \R^k: u\in A\;\wedge\; r<r_2\}\right)
+   - m_k\left(\{ru\in \R^k: u\in A\;\wedge\; r\leq r_1\}\right) \\
+&= m_k(\overline{A})\left(r_2^k - r_1^k\right)
+ = k\int_{r_1}^{r_2} r^{k-1}m(\overline{A})\,dr \\
+&= \int_{r_1}^{r_2} r^{k-1}\sigma_{k-1}(A)\,dr
+ = \int_{r_1}^{r_2} r^{k-1}\left(\int_A 1\,d\sigma_{k-1}(u)\right)\,dr \\
+&= \int_0^\infty r^{k-1}\,dr \int_{S_{k-1}} \chhi_E(ru)\,d\sigma_{k-1}(u)
+\end{align*}
+Thus the desired equality holds for \(f=\chhi_E\).
+
+Now every Borel function \(f\geq 0\) can be monotonically approximated
+by simple functions of the forum
+\begin{equation*}
+s(x) = \sum_{j\in\N} a_j\chhi_{E_j}
+\end{equation*}
+where \(a_j\geq 0\) and \(E_j\) are sets of the suggested type.
+Note: For such sets, \(A_j\) sets can be picked so they are intersection
+of \(B_k(u;\epsilon)\) with \(u\in S_{k-1}\) and \(\epsilon>0\).
+By Lebesgue's monotone~ convergence Theorem~1.34
+the equality holds for non-negative Borel functions.
+
+
+%%%%%%%%%%%%%% 7
+\begin{excopy}
+Suppose \((X,\calG, \mu)\)
+and \((Y,\calF, \lambda)\)
+are finite measure spaces, and suppose \(\psi\) is a measure on
+\(\calG\times\calF\) such that 
+\begin{equation*}
+\psi(A\times B) = \mu(A) \mu(B)
+\end{equation*}
+whenever \(A\in\calG\) and \(B\in\calF\).
+Prove that then \(\psi(E) = (\mu\times\lambda)(E)\) 
+for every \(E\in \calG\times\calF\).
+\end{excopy}
+
+Let \calE\ be the family if sets $E$ for which the desired equality holds.
+Clearly all the elementary sets are in \calE\ and it is monotonic.
+By Theorem~8.3  \(\calG\times\calF \subset \calE\).
+
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+\begin{itemize}
+\itemch{a}
+Suppose $g$ is a real function on \(\R^k\) such that each section \(f_x\)
+is a Borel measurable and each section \(f^y\) is continuous.
+Prove that $f$ is Borel measurable on \(\R^2\).
+Note the contrast between this and Example~8.9(c).
+\itemch{b}
+Suppose $g$ is a real function on \(\R^k\) which is continuous in each 
+of the $k$ variables separately.
+More explicitly, for every choice of \(x_2,\ldots\,x_n\), the mapping
+\(x_1 \to g(\seqn{x})\) is continuous, etc.
+Prove that $g$ is a Borel function.
+\end{itemize}
+\emph{Hint}: If \((i-1)/n = a_{i-1} \leq x \leq a_i = i/n\), put
+\begin{equation*}
+f_n(x,y) = 
+\frac{a_i - x}{a_i - a_{i-1}} f(a_{i-1}, y) 
++
+\frac{x - a_{i-1}}{a_i - a_{i-1}} f(a_i, y).
+\end{equation*}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+We first look at the function \(g_2:\R^2\to\R^2\) defined by
+\(g_2(x,y) = (x,f_a(y))\).
+Pick a base open set 
+\begin{equation*}
+G = (u-\delta_x,u+\delta_x)\times(v-\delta_y,u+\delta_y) \subset \R^2.
+\end{equation*}
+Now
+\begin{equation*}
+g_2^{-1}(G) = (u-\delta_x,u+\delta_x)\times f_a^{-1}(v-\delta_y,u+\delta_y).
+\end{equation*}
+which is a cartesian product of two Borel sets, hence
+\(g_2^{-1}(G)\) is a Borel set and \(g_2\) is a Borel function.
+By Theorem~1.12\ich{d} \(xg_2(x,y) = x\cdot f_a(x,y)\) are Borel
+functions for all \(a\in\R\).
+Hence the functions \(f_n\) (defined in the hint) are Borel functions.
+
+Clearly for \(\lim_n f_n(x,y) = f(x,y)\) for all \((x,y)\in\R^2\).
+If \(G\subset \R^2\) is any open set then
+\begin{equation*}
+f^{-1}(G) = \bigcup_{m\in\N} \left(\bigcap_{n\geq m} f_n^{-1}(G)\right)
+\end{equation*}
+Since each \(f_n^{-1}(G)\) is a Borel set, 
+by being a \salgebra\ \(f^{-1}(G)\) is a Borel set. 
+Therefore $f$ is Borel measurable.
+
+\itemch{b}
+
+Just for comparison with continuity, recall the following example:
+\begin{equation*}
+f(x,y) = \left\{
+\begin{array}{ll}
+0 & \textnormal{if}\; x= y = 0 \\
+\frac{xy}{x^2+y^2}  \quad & \textnormal{otherwise}
+\end{array}\right.
+\end{equation*}
+Now 
+\begin{align*}
+\lim_{x\to 0} f(x,0) &= 0 \\
+\lim_{y\to 0} f(0,y) &= 0 \\
+\lim_{x\to 0} f(x,ax) &= \frac{a}{1+a^2} 
+   = \left(\frac{1}{a}\right)\,
+     \bigm/\,
+     \left(1+\left(\frac{1}{a}\right)^2\right)
+     \qquad (a\neq 0)
+\end{align*}
+
+By induction. If \(k=1\) then trivially $g$ is continuous,
+and every continuous function is also a Borel function.
+Now assume that \(k=n\) and that the claim holds for all \(k<n\).
+For each fixed \(x_n\) the function \(\tilde{g}:\R^{n-1}\to\R\) defined by 
+\begin{equation*}
+\tilde{g}(x_1,x_2,\ldots,x_{n-1}) = g(x_1,x_2,\ldots,x_{n-1},x_n)
+\end{equation*}
+is Borel.
+Similar to previous item, 
+for each \((x_1,x_2,\ldots,x_{n-1})\in\R^{n-1}\) and 
+\begin{equation*}
+x_n \in [a_{i-1},a_i] = [(i-1)/n, i/n]
+\end{equation*}
+we define
+\begin{equation*}
+f_n(x_1,\ldots,x_n) = 
+\frac{a_i - x_n}{a_i - a_{i-1}} g(x_1,\ldots,x_{n-1},a_{i-1}) 
++
+\frac{x_n - a_{i-1}}{a_i - a_{i-1}} f(x_1,\ldots,x_{n-1},a_i).
+\end{equation*}
+Clearly \(\lim_{n\to\infty} f_n = f\) pointwise, and by similar argumnets 
+the limit of Borel function is Borel as well. Thus $f$ is a Borel function.
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 9
+\begin{excopy}
+Suppose $E$ is a dense set in \(\R^1\) and $f$ is a real function on \(\R^2\)
+such that 
+\ich{a} \(f_x\) is Lebesgue measurable for each \(x\in E\) and 
+\ich{b} \(f^y\) is continuous for almost all  \(y\in \R^1\).
+Prove that $f$ is a Lebesgue measurable on \(\R^2\).
+\end{excopy}
+
+Enumerate $E$ as \(\{a_j\}_{j\in\N}\) such that for each $n$ 
+there exists some $n$ such that 
+for each \(x\in[-n,n]\) we can there exists \(j,k\in\N_m\)
+such that \(a_j\leq x \leq a_k\) and \(a_k-a_j < 1/n\).
+(Note that \(2n^2 \leq m < \infty)\).) Let
+\(K_n = \left[\min(\{a_j: j\leq n\}), \max(\{a_j: j\leq n\})\right]\)
+
+Let $D$ be the set of all \(y\in\R\) such that \(f^y\) is not continuous.
+Clearly \(m(D)=0\) and also 
+\(m_2\left(\{(x,y)\in\R^2: y\in D\}\right) = m_2(\R\times D) = 0\).
+
+Now define 
+\begin{equation*}
+f_n(x,y) = \left\{
+\begin{array}{ll}
+0 & y \in D \;\vee\; x \notin K_n \\
+\frac{a_i - x}{a_i - a_{i-1}} f(a_{i-1}, y) 
++
+\frac{x - a_{i-1}}{a_i - a_{i-1}} f(a_i, y) & \textnormal{otherwise}.
+\end{array}
+\right.
+\end{equation*}
+Clearly \(f_n\) are Lebesgue measurable, and
+\(\lim_{n\to\infty} f_n = f \aded\) Thus $f$ is Lebesgue measurable.
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Suppose $f$ is a real function on \(\R^2\),
+\(f_x\) is a Lebesgue measurable for each $x$,
+and \(f^y\) is continuous for each $y$.
+Suppose \(g: \R^1\to \R^1\) is Lebesgue measurable,
+and put \mbox{\(h(y) = f(g(y),y)\)},
+Prove that $h$ is Lebesgue measurable on \(\R^1\).
+
+\emph{Hint}: Define \(f_n\) as in Exercise~8, put \(h_n(y) = f_n(g(y),y)\).
+show that each \(h_n\) is measurable and that \(h_n(y) \to h(y)\).
+\end{excopy}
+
+Following the hint. For each \(y\in\R\) and \(n\in\N\)
+find 
+\begin{equation*}
+a_{i-1} = (i-1)/n \leq g(y) \leq i/n = a_i
+\end{equation*}
+and define
+\begin{equation*}
+h_n(y) 
+= f_n(g(y),y) 
+= n\left(a_i-g(y)\right)\cdot f(a_{i-1},y) + n(g(y)-a_{i-1})\cdot f(a_i,y).
+\end{equation*}
+By Theorem~1.9\ich{c} \(h_n\) is Lebesgue measurable.
+Fix \(y\in\R\) since \(a_{i}-a_{i-1} = 1/n\) and \(f^y\) is a continuous section
+we have \(\lim_{n\to\infty}h_n(y) = h(y)\).
+By Corollary~\ich{a} of Theorem~1.14 $h$ is Lebesgue measurable.
+
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Let \(\calB_k\) be the \salgebra\ of all Borel sets in \(\R^k\).
+Prove that \(\calB_{m+n} = \calB_m \times \calB_n\).
+This is relevant in Theorem~8.14.
+\end{excopy}
+
+% It is trivial to see that \(\calB_{m+n} \supseteq \calB_m \times \calB_n\).
+We start with a topological lemma.
+\begin{llem} \label{lem:open-countable}
+If \(G\in\R^n\) is open, then it is a union of a countable collection
+of $n$-cubes.
+\end{llem}
+\begin{thmproof}
+Let \(D=\Q^n\cap G\) a countable dense set in $G$.
+For each \(x\in D\) let \(C_x\) be the maximal open cube whose center is $x$
+and \(C_w\subset G\). Clearly \(\cup_{w\in D} C_w \subset G\).
+Assume by negation \(y\in G \setminus \cup_{w\in D} C_w\).
+Let \(\delta>0\) be such that 
+\begin{equation*}
+C_y(\delta) := \{x\in \R^n: \|x-y\|_1<\delta\} \subset G.
+\end{equation*}
+Pick some \(x\in C_y(\delta/2)\cap G\), then 
+\(y\in C_x\), with the contradiction \(y\in \cup_{w\in D} C_w\).
+\end{thmproof}
+
+By the Lemma every open set \(G\in \R^{m+n}\) is a countable union
+of open ``rectangles'' \(X\times Y\subset \R^m\times\R^n\) 
+where \(X\in\R^m\) and \(Y\in\R^n\) are open sets.
+Hence \(G\in \calB_m \times \calB_n\).
+But \(\calB_{m+n}\) is a minimal \salgebra\ that contains all open sets
+in \(\R^{m+n}\) and so \(\calB_{m+n} \subset \calB_m \times \calB_n\).
+
+To show the opposite inclusion it suffices to show that if
+an arbitrary elementary set
+\(E = E_m\times E_n \in \calB_m \times \calB_n\)
+then \(E\in \calB_{m+n}\).
+But since \(E_m\in \calB_m\) then by minimality of the 
+Borel \salgebra\ \(\calB_m\) we also have (its inverse projection)
+\(E_m\times\R^n\in\calB_{m+n}\).
+Similarly \(R^m\times E_n\in\calB_{m+n}\). Now
+\begin{equation*}
+E = E_m\times\R^n \;\cap\;R^m\times E_n \in \calB_{m+n}.
+\end{equation*}
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Use Fubini's
+\index{Fubini}
+Theorem~8.8 and the relation
+\begin{equation*}
+\frac{1}{x} = \int_0^\infty e^{-xt}\,dt \qquad (x>0)
+\end{equation*}
+to prove that 
+\begin{equation*}
+\lim_{A\to\infty} \int_0^A \frac{\sin x}{x}\,dx = \frac{\pi}{2}.
+\end{equation*}
+\end{excopy}
+
+\begin{align*}
+\lim_{A\to\infty}\int_0^A \frac{\sin x}{x}\,dx 
+&= \int_0^\infty \sin x\left( \int_0^\infty e^{-xt}\,dt\right)\,dx 
+ = \int_0^\infty \left(\int_0^\infty e^{-xt}\frac{e^{ix}-e^{-ix}}{2i}\,dt\right)dx \\
+&= \frac{1}{2i}\int_0^\infty \left(\int_0^\infty e^{-xt}(e^{ix}-e^{-ix})\,dt\right)dx
+   \\
+&= \frac{1}{2i}\int_0^\infty 
+        \left(\int_0^\infty e^{(-t+i)x}-e^{-(t+i)x}\,dx\right)dt 
+   \qquad \textnormal{(Fubini)}
+   \\
+&= \frac{1}{2i}\int_0^\infty \left(
+       \frac{e^{(-t+i)x}}{-t+i} - \frac{e^{-(t+i)x}}{-t-i}
+    \right)\biggm|_{x=0}^\infty \,dt \\
+&= \frac{1}{2i}\int_0^\infty 
+        \left(0 - \frac{1}{-t + i}\right)
+        - \left(0 - \frac{1}{-t - i}\right)\,dt \\
+&= \frac{1}{2i}\int_0^\infty 
+        \frac{1}{-t - i} - \frac{1}{-t + i}\,dt
+ = \frac{1}{2i}\int_0^\infty \frac{2i}{t^2 + 1}\,dt
+ = \int_0^\infty \frac{1}{t^2 + 1}\,dt \\
+&= \left(\tan^{-1}(t)\right)\bigm|_{t=0}^\infty
+ = \tan^{-1}(\infty) - \tan^{-1}(0) = \pi/2
+\end{align*}
+
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+If \(\mu\) is a complex measure on a \salgebra\ \frakM, show that every 
+set \(E\in\frakM\) has a subset $A$ for which 
+\begin{equation*}
+|\mu(A)| \geq \frac{1}{\pi} |\mu|(E).
+\end{equation*}
+\emph{Suggestion}: There is a measurable real function \(\theta\) so that
+\(d\mu = e^{i\theta}\,d|\mu|\).
+Let \(A_\alpha\) be the subset of $E$ where \(\cos(\theta - \alpha)>0\), 
+show that
+\begin{equation*}
+\Re[e^{-i\alpha}\mu(A_\alpha)] = \int_E \cos^+(\theta - \alpha)\,d|\mu|.
+\end{equation*}
+and integrate with respect to \(\alpha\) (as in Lemma~6.3).
+
+Show by an example, that \(1/\pi\) is the best constant in this inequality.
+\end{excopy}
+
+Compute
+\begin{align*}
+e^{-i\alpha} \mu(A_\alpha)
+&= e^{-i\alpha}\int_{A_\alpha} 1\,d\mu
+ = \int_{A_\alpha} e^{i(\theta - \alpha)}\,d|\mu|
+ = \int_{A_\alpha} \cos(\theta-\alpha)\,d|\mu| 
+   + i\int_{A_\alpha} \sin(\theta - \alpha)\,d|\mu|.
+\end{align*}
+Hence
+\begin{equation*}
+\Re[e^{-i\alpha}\mu(A_\alpha)]
+= \int_{A_\alpha} \cos(\theta-\alpha)\,d|\mu| 
+= \int_E \cos^+(\theta-\alpha)\,d|\mu|.
+\end{equation*}
+
+Integrate by \(\alpha\)
+\begin{align*}
+\int_0^{2\pi} \Re[e^{-i\alpha}\mu(A_\alpha)]\,d\alpha
+&= \int_0^{2\pi} 
+   \left(\int_E \cos^+(\theta(x)-\alpha)\,d|\mu|(x)\right)\,d\alpha  \\
+&= \int_E \left(
+      \int_0^{2\pi} \cos^+(\theta(x)-\alpha)\,d\alpha
+          \right)\,d|\mu|(x)  \qquad\textnormal{(Fubini)} \\
+&= \int_E \left(
+      \int_0^{2\pi} \cos^+(-\alpha)\,d\alpha \right)\,d|\mu|(x) 
+ = \int_E 2\,d|\mu|(x) 
+ = 2|\mu|(E).
+\end{align*}
+
+Assume by negation
+\(|\mu(A_\alpha)| <  |\mu|(E)/\pi\) 
+for all \(\alpha\in[0,2\pi]\). Then
+\begin{align*}
+\left|\int_0^{2\pi} \Re[e^{-i\alpha}\mu(A_\alpha)]\,d\alpha\right|
+&\leq \int_0^{2\pi} \left|\Re[e^{-i\alpha}\mu(A_\alpha)]\right|\,d\alpha
+ \leq \int_0^{2\pi} |\mu(A_\alpha)|\,d\alpha \\
+&< \int_0^{2\pi} |\mu|(E)/\pi\,d\alpha
+  = 2|\mu|(E)
+\end{align*}
+that contradicts the previous established equality.
+Hence there exists some \(\alpha\)
+such that \(|\mu(A_\alpha)| \geq |\mu|(E)/\pi\).
+
+\paragraph{Best Constant.}
+Consider the unit circle \(\gamma:[0,2\pi]\to\C\) 
+defined by \(\gamma(t) = e^{it}\) with the complex measure
+\(d\mu = \lambda'(t)\,dm(t)\).
+Clearly \(|\mu|(\gamma^*) = 2\pi\).
+
+For any \(E\subset \gamma^*\) and any \(u\in\C\) such that \(|u|=1\)
+we put \(E_u = \{uz: z\in E\}\).
+It is easy to see that \(E_u\subset \gamma^*\) and that 
+\(|\mu(E)| = |\mu(E_u)|\).
+
+Take 
+\begin{equation*}
+A = \{\gamma(t): t\in[0,2\pi] \wedge\;\Re(\gamma'(t)) \geq 0\}
+  = \{z\in\gamma^{*}: \Im(z) \leq 0\}
+\end{equation*}
+Now
+\begin{equation*}
+\mu(A) = \int_{\pi}^{2\pi} = 1\cdot(\gamma^{it})'\,dt
+ = \gamma(2\pi) - \gamma(\pi) = 2 = |\mu|(\gamma^*)/\pi.
+\end{equation*}
+
+We will show that $A$ consist of the positive part of \(\mu\)
+and \(\gamma^*\setminus A\) of the negative.
+Let \(P \subset A\) and \(N \subset \gamma^*\setminus A\), then
+using the definition of $A$ we have
+\begin{equation*}
+\Re(\mu(P)) 
+= \int_P \Re\left((\gamma^{it})'\right)\,dt
+= \int_P \left|\Re\left((\gamma^{it})'\right)\right|\,dt
+\geq 0.
+\end{equation*}
+and
+\begin{equation*}
+\Re(\mu(N)) 
+= \int_N \Re\left((\gamma^{it})'\right)\,dt
+= \int_N -\left|\Re\left((\gamma^{it})'\right)\right|\,dt
+\leq 0.
+\end{equation*}
+
+Assume by negation there exists some \(E\subset\gamma^*\) such that 
+\(|\mu(E)| > 2\). \Wlogy\ (or by replacing $E$ by some \(E_u\)
+we may assume that \(\mu(E) > 0\) is real.
+Now we get the following contradiction
+\begin{align*}
+\mu(E) 
+&= \Re(\mu(E\cap A)) + \Re(\mu(E\setminus A))
+ \leq \Re(\mu(E\cap A))
+ = \Re(\mu(E\cap A)) \\
+&\leq \Re(\mu(E\cap A)) + \Re(\mu(A\cap E))
+ = \Re(\mu(A)) 
+ = \mu(A)
+ = 2.
+\end{align*}
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+Complete the following proof of Hardy's
+\index{Hardy} 
+inequality
+(Chap.~3 Exercise~14).
+Suppose \(f\geq 0\) on \((0,\infty)\), \(f\in L^p\), \(1<p<\infty\), and
+\begin{equation*}
+F(x) = \frac{1}{x}\int_0^x f(t)\,dt.
+\end{equation*}
+Write \(xF(x) = \int_0^x f(t)t^\alpha t^{-\alpha}\,dt\),
+where \(0<\alpha<1/q\), use H\"older's inequality 
+to get an upper bound for
+\(F(x)^p\), and integrate to obtain
+\begin{equation*}
+\int_0^\infty F^p(x)\,dx 
+\leq 
+(1-\alpha q)^{1-p} (\alpha p)^{-1} \int_0^\infty f^p(t)\,dt.
+\end{equation*}
+Show that the best choice of \(\alpha\) yields
+\begin{equation*}
+\int_0^\infty F^p(x)\,dx 
+\leq 
+\left(\frac{p}{p-1}\right)^{p} \int_0^\infty f^p(t)\,dt.
+\end{equation*}
+\end{excopy}
+
+In \cite{Garling2007} Section~7.3,
+given \(\mu\)-measurable \(f:\Omega\to\C\)
+\index{maximal function!Muirhead}
+\index{Muirhead!maximal function}
+Muirhead's maximal function is introduced, 
+\begin{equation*}
+f^\dagger(t) = \sup\left\{\frac{1}{t}\int_E|f|\,d\mu: \mu(E)\leq t\right\}
+\qquad \textnormal{where}\; 0 < t < \mu(\Omega).
+\end{equation*}
+
+The treatment there (\cite{Garling2007}) uses
+the following notation
+\begin{equation*}
+\lambda_f(t) = \mu(f > t) \qquad (t\geq 0)
+\end{equation*}
+for the distribution function.
+
+
+See \cite{Garling2007} Theorem~8.1.1 and its Corollary.
+
+Using H\"older's inequality:
+\begin{equation*}
+\int_0^x f(t)\,dt
+= \int_0^x f(t)t^\alpha t^{-\alpha}\,dt
+\leq \left(\int_0^x \left(f(t)t^\alpha\right)^p\,dt\right)^{1/p}
+      \cdot \left(\int_0^x t^{-\alpha q}\,dt\right)^{1/q}
+\end{equation*}
+Simplifying the last term
+\begin{equation*}
+\left(\int_0^x t^{-\alpha q}\,dt\right)^{1/q}
+= \left(\frac{x^{1-\alpha q}}{1-\alpha q}\right)^{1/q}.
+\end{equation*}
+Combining with the inequality gives
+\begin{align*}
+F(x)^p
+&\leq \left(x^{-1} \left(\frac{x^{1-\alpha q}}{1-\alpha q}\right)^{1/q}\right)^p
+      \left(\int_0^x \left(f(t)t^\alpha\right)^p\,dt\right)
+ = (1-\alpha q)^{-p/q} x^{-\alpha p - 1}
+   \left(\int_0^x \left(f(t)t^\alpha\right)^p\,dt\right) \\
+&= (1-\alpha q)^{1-p} x^{-\alpha p - 1}
+   \left(\int_0^x \left(f(t)t^\alpha\right)^p\,dt\right).
+\end{align*}
+The power of $x$ was simplified
+by \((-1 + (1-\alpha q)\frac{1}{q})p = -p + p/q - \alpha p = -\alpha p - 1\).
+
+We now integrate using 
+\index{Fubini}
+Fubini's Theorem~8.8 on \(\{(x,t)\in\R^2: 0\leq t \leq x\}\)
+\begin{align*}
+\int_0^\infty F^p(x)\,dx 
+&\leq \int_0^\infty
+  \left((1-\alpha q)^{1-p} x^{-\alpha p - 1}
+   \left(\int_0^x \left(f(t)t^\alpha\right)^p\,dt\right)\right)\,dx
+   \\
+&= (1-\alpha q)^{1-p}
+   \int_0^\infty
+   \left( x^{-\alpha p - 1}
+   \left(\int_0^x \left(f(t)t^\alpha\right)^p\,dt\right)\right)\,dx
+   \\
+&= (1-\alpha q)^{1-p}
+   \int_0^\infty 
+     \left(\int_t^\infty x^{-\alpha p - 1}
+                 \left(f(t)t^\alpha\right)^p\,dx\right)\,dt
+   \\
+&= (1-\alpha q)^{1-p}
+   \int_0^\infty 
+     \left(\left(f(t)t^\alpha\right)^p
+       \int_t^\infty x^{-\alpha p - 1}
+                 \,dx\right)\,dt.
+\end{align*}
+The inner integral is simplified as follows:
+\begin{equation*}
+\int_t^\infty x^{-\alpha p - 1}
+= -\frac{1}{\alpha p}\left(x^{-\alpha p}\right)\biggm|_{x=t}^\infty
+= -(\alpha p)^{-1}\left(0 - t^{-\alpha p}\right)/p = (\alpha p)^{-1} t^{-\alpha p}.
+\end{equation*}
+Back to previous integration
+\begin{align*}
+\int_0^\infty F^p(x)\,dx 
+ &\leq (1-\alpha q)^{1-p}
+   \int_0^\infty \left(f(t)t^\alpha\right)^p (\alpha p)^{-1} t^{-\alpha p}/p\,dt
+ \\
+ &= (1-\alpha q)^{1-p} (\alpha p)^{-1} \int_0^\infty \bigl(f(t)\bigr)^p\,dt
+\end{align*}
+
+\paragraph{Best Constant.}
+We want to minimize
+\begin{equation*}
+b(\alpha) = (1-\alpha q)^{1-p} (\alpha p)^{-1}
+\end{equation*}
+where \(0 < \alpha < 1/q\)
+This is equivalent to maximize  
+\begin{equation*}
+c(\alpha) = (1-\alpha q)^{p-1} \alpha p.
+\end{equation*}
+where \(0 < \alpha q < 1\).
+Clearly in this domain \(c(\alpha) > 0\). We differentiate and equate to zero
+\begin{gather*}
+c'(\alpha) =  (1 - \alpha q)^{p-1} - \alpha q (p-1)(1 - \alpha q)^{p-2} = 0 \\
+1 - \alpha q = \alpha q(p-1) \\
+\alpha = \frac{1}{pq}\,.
+\end{gather*}
+Hence the best constant is
+\begin{align*}
+b(\alpha) 
+&= (1-\alpha q)^{1-p} (\alpha p)^{-1}
+= \left(1-\frac{1}{p}\right)^{1-p} \left(\frac{1}{q}\right)^{-1}
+= \left(\frac{1}{q}\right)^{1-p} \left(\frac{1}{q}\right)^{-1}
+= \left(\frac{1}{q}\right)^{-p}
+\\
+&= \left(1-\frac{1}{p}\right)^{-p}
+= \left(\frac{p-1}{p}\right)^{-p}
+= \left(\frac{p}{p-1}\right)^{p}\,.
+\end{align*}
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+Put \(\varphi(t) = 1 - \cos t\) if \(0\leq t \leq 2\pi\), 
+\(\varphi(t) = 0\) for all other real $t$.
+For \(-\infty < x < \infty\), define
+\begin{equation*}
+f(x) = 1, 
+\qquad g(x) = \varphi'(x),
+\qquad h(x) = \int_{-\infty}^x \varphi(t)\,dt.
+\end{equation*}
+Verify the following statements about convolutions of these functions:
+\begin{itemize}
+\item[(i)] \((f\ast g)(x) = 0\) for all $x$.
+\item[(ii)] \((g\ast h)(x) = (\varphi \ast \varphi)(x) > 0\) on \((0,4\pi)\).
+\item[(iii)] Therefore \((f\ast g)\ast h = 0\), 
+             whereas \(f\ast (g\ast h)\) is a positive constant.
+\end{itemize}
+But convolution is supposedly associative, by Fubini's Theorem~8.8
+\index{Fubini}
+(Exercise~5(c)). What went wrong?
+\end{excopy}
+
+First compute the functions
+\begin{equation*}
+g(x) = \left\{\begin{array}{ll}
+0            & x < 0 \\
+\sin x \quad & 0 < x < 2\pi \\
+0            & x > 2\pi
+\end{array}
+\right.
+\qquad
+h(x) = \left\{\begin{array}{ll}
+0                & x \leq 0 \\
+x - \sin x \quad & 0 \leq x \leq 2\pi \\
+2\pi             & x \geq 2\pi
+\end{array}
+\right.
+\end{equation*}
+
+\begin{itemize}
+\item[(i)]
+Compute:
+\begin{equation*}
+(f\ast g)(x) 
+= \int_\R f(x-t)g(t)\,dt
+= \int_\R g(t)\,dt
+= \int_0^{2\pi} \sin(t)\,dt 
+= 0
+\end{equation*}
+
+\item[(ii)]
+We note that \(0 < x-t < 2\pi\) iff  \(x-2\pi < t < x\).
+Compute:
+\begin{align*}
+(g\ast h)(x)
+&= \int_\R g(x-t)h(t)\,dt
+ = \int_0^{2\pi} g(x-t)\cdot (t - \sin t)\,dt
+% = \int_\R g(t)h(x-t)\,dt
+% = \int_0^{2\pi} \sin(t)\cdot h(x-t)\,dt
+ \\
+&= \left\{\begin{array}{ll}
+   \int_{\max(x-2\pi,0)}^{\min(x,2\pi)} \sin (x-t)\cdot (t - \sin t)\,dt 
+        \quad & x \in [0,4\pi] \\
+   0  & x \notin [0,4\pi]
+   \end{array}\right.
+\end{align*}
+We have 
+\begin{itemize}
+\item[\(\circ\)] \(\max(x-2\pi,0) < \min(x,2\pi)\) when \(0<x<4\pi\),
+\item[\(\circ\)] \(t-\sin t > 0\) for all \(t>0\),
+\item[\(\circ\)] \(\sin(x-t)>0\) when \(0 < x-t < 2\pi\).
+\end{itemize}
+Hence \((g\ast h)(x)>0\) when \(0<x<4\pi\).
+
+\item[(iii)]
+Clearly by linearity of convolution.
+
+\end{itemize}
+The associativity holds in Exercise~5\ich{c} for complex measures, 
+meaning finite measures on~\R. Viewing these as functions, 
+the associativity holds for functions in \(L^1(\R)\) but clearly
+here \(f\notin L^1(\R)\).
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+Prove the following analogue of Minkowski's inequality
+\index{Minkowski}
+, for \(f\geq 0\):
+\begin{equation*}
+\left\{\int \left[\int f(x,y)\,d\lambda(y)\right]^p\,d\mu(x)\right\}^{1/p}
+\leq
+\int \left[\int f^p(x,y)\,d\mu(x) \right]^{1/p}\,d\lambda(y).
+\end{equation*}
+Supply the required hypothesis.
+(Many further developments of this theme may be found in [9].)
+\end{excopy}
+
+See also Theorem~2.4 in \cite{LiebLoss200104}.
+
+Let \((X,\mu)\) and \(Y,\lambda\) be \(\sigma\)-finite measurable spaces
+and \(f:X\times Y\to  \R^\oplus\) measurable function.
+
+\emph{Note:} If \(Y = \{0,1\}\) and \(\lambda\) is the counting measure,
+then we get the known Minkowski's inequality
+of Theorem~3.5(2). We follow similar idea as in the proof there.
+
+We may assume that $f$ and \(\supp f\) are bounded
+and generalize the result by applying
+Lebesgue's monotone convergence Theorem~1.34.
+
+Denote the two sides
+and the inner integral of the left side of the desired inequality as
+\begin{align*}
+L &= \left(\int_X 
+        \left(\int_Y f(x,y)\,d\lambda(y)\right)^p d\mu(x)\right)^{1/p} \\
+R &= \int_Y\left(\int_X \left(f(x,y)\right)^pd\mu(x) \right)^{1/p} d\lambda(y) \\
+\psi(x) &= \int_Y f(x,y)\,d\lambda(y).
+\end{align*}
+Fix \(v\in Y\), the 
+\index{H\"older}
+H\"older inequality of of Theorem~3.5(1) gives
+\begin{equation*}
+\int_X f(x,v)\left(\psi(x)\right)^{p-1} d\mu(x)
+\leq \left(\int_X \left(f(x,v)\right)^p\,d\mu(x)\right)^{1/p} 
+     \left(\int_X \left(\psi(x)\right)^{(p-1)q} d\mu(x)\right)^{1/q}
+\end{equation*}
+Using Fubini's Theorem~8.8 and \(p = (p-1)q\), we integrate both sides
+\begin{align}
+A
+&= \int_Y 
+    \left(\int_X f(x,v)\left(\psi(x)\right)^{p-1} d\mu(x)\right)\,d\lambda(v)
+ = \int_X 
+    \left(\int_Y f(x,v)\left(\psi(x)\right)^{p-1} d\lambda(v)\right)\,d\mu(x)
+   \notag \\
+&= \int_X 
+    \left(\psi(x)\right)^{p-1} \left(\int_Y f(x,v)\,d\lambda(v)\right)\,d\mu(x)
+ = \int_X \left(\psi(x)\right)^p d\mu(x) = L^p
+   \notag \\
+&\leq  \label{eq:minkowski:gen1}
+    \left(
+      \int_Y
+        \left(\int_X \left(f(x,v)\right)^p\,d\mu(x)\right)^{1/p} 
+      d\lambda(v)
+    \right)
+    \left(\int_X \left(\psi(x)\right)^p d\mu(x)\right)^{1/q} 
+  \\
+&= \left(\int_X \left(\psi(x)\right)^p d\mu(x)\right)^{1/q} \cdot R.
+  \notag
+\end{align}
+
+We now have \(L = A^{1/p}\) and establish an inequality
+\(A \leq A^{1/q} R\).
+Three cases regarding $A$ are to be considered.
+
+\paragraph{Case 1 (Zero).} 
+If \(A=0\) then \(L = A^{1/p}=0\) and the desired inequality is trivial.  
+
+\paragraph{Case 2 (Infinity).}
+The case of \(A=\infty\) is impossible because of
+our assumption that \(\|f\|_\infty<\infty\) 
+and \((\mu\times\lambda)(\supp f) < \infty\).
+
+\paragraph{Case 3 (Normal).}
+If \(0 < A < \infty\) then we can safely divide the inequality
+we got by \(A^{1/q}\) and since \(1-1/q=1/p\) we get the desired inequality,
+\(A^{1/p} \leq R\) or explicitly
+\begin{equation*}
+ \left(\int_X 
+    \left(\int_Y f(x,y)\,d\lambda(y)\right)^p d\mu(x)\right)^{1/p} 
+\leq
+ \int_Y\left(\int_X \left(f(x,y)\right)^pd\mu(x) \right)^{1/p} d\lambda(y).
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}

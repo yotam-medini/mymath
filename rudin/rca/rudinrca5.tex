@@ -1,0 +1,1963 @@
+% -*- latex -*-
+% $Id: rudinrca5.tex,v 1.8 2006/04/30 19:06:58 yotam Exp $
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Example of Banach Space Techniques} % 5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Baire's Category Theorem}
+
+Other applications of Baire's theorem are the following
+
+\begin{llem} \label{lem:count:1cat}
+If $A$ is a countable subset of a complete metric space $X$,
+then $A$ is of first category.
+\end{llem}
+
+\begin{thmproof}
+As a set --- every point is a nowhere dense. 
+Since  $A$ is a countable union of its elements, it is of first category.
+\end{thmproof}
+
+\begin{llem} \label{lem:gdel:2cat}
+If $D$ is a dense \(G_\delta\) subset of a complete metric space $X$,
+then $D$ is of second category.
+\end{llem}
+
+\begin{thmproof}
+Let \(D=\cup_{n\in\N}G_n\) where \(G_n\) are open. By assumption
+all \(G_n\) are dense. Put \(F_n = X \setminus G_n\), now each \(F_n\) is
+closed and nowehere dense, since otherwise \(G_n\) would not be dense.
+Thus \(F = \cup_{n\in\N}F_n\) is of first category, 
+therefore, since $X$ is of second category, 
+so is \(D = X \setminus F\).
+\end{thmproof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Working out Dirichlet's kernel}
+
+\index{Dirichlet's kernel}
+
+Let's verify the equality of \textbf{5.11}(9) of \cite{RudinRCA80}.
+First note that
+% \begin{equation*}
+\(e^{i\theta} = \cos\theta + i\sin\theta\)
+% \end{equation*}
+and so
+\begin{equation*}
+e^{i\theta} - e^{-i\theta}
+=     \bigl(\cos(\theta) - \cos(-\theta)\bigr)
+  +  i\bigl(\sin(\theta) - \sin(-\theta)\bigr)
+= 2i\sin\theta.
+\end{equation*}
+We use the above equality twice, in the following computation
+\begin{eqnarray*}
+D_n(t)
+ &\eqdef& \sum_{k=-n}^n e^{ikt} \\
+ &=&      \frac{e^{it/2} - e^{-it/2}}{e^{it/2} - e^{-it/2}}
+           \sum_{k=-n}^n e^{ikt} \\
+ &=& \left(\sum_{k=-n}^n e^{ikt}(e^{it/2} - e^{-it/2})\right)
+     \biggm/
+     \bigl(2i\sin(t/2)\bigr)\\
+ &=& \bigl(e^{i(n+1/2)t} - e^{-i(n+1/2)t}\bigr) \bigm/
+     \bigl(2i\sin(t/2)\bigr) \\
+ &=& 2i\sin\bigl((n+1/2)t\bigr) \bigm/
+     \bigl(2i\sin(t/2)\bigr) \\
+ &=& \sin\bigl((n+1/2)t\bigr) / \sin(t/2). \\
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Parseval's Identity}
+\index{Parseval}
+
+Let's derive an equality in section~5.24. Given 
+\begin{equation*}
+f(z) = \sum_{n=0}^N b_n(z-z_0)^n
+\end{equation*}
+we have
+\begin{align*}
+ \frac{1}{2\pi}
+  \int_\pi^\pi \left|f(z_0 + re^{i\theta}\right|^2\,d\theta
+&= \frac{1}{2\pi} \int_\pi^\pi 
+   \left(\sum_{n=0}^N b_n r^n e^{ni\theta}\right) 
+   \cdot
+   \overline{\left(\sum_{n=0}^N b_n r^n e^{ni\theta}\right)}
+   \,d\theta \\
+&= \frac{1}{2\pi} \int_\pi^\pi 
+   \left(\sum_{n=0}^N b_n r^n e^{ni\theta}\right) 
+   \cdot
+   \left(\sum_{n=0}^N \overline{b_n} r^n e^{-ni\theta}\right)
+   \,d\theta \\
+&=  \frac{1}{2\pi}  \sum_{m,n=0}^N  \int_\pi^\pi 
+   b_m \overline{b_n} r^{m+n} e^{(m-n)i\theta}
+   \,d\theta \\
+&=  \frac{1}{2\pi}  \sum_{m,n=0}^N  
+    b_m \overline{b_n} r^{m+n} 
+   \int_\pi^\pi e^{(m-n)i\theta}
+   \,d\theta \\
+&=  \sum_{n=0}^N |b_n|^2 r^{2n} 
+\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Working out Poisson's kernel}
+
+\index{Poisson's kernel}
+
+Let's verify the equality of \textbf{5.24}(8) of \cite{RudinRCA80}.
+\begin{eqnarray*}
+1+2\sum_1^\infty \left(ze^{-it}\right)^n
+&=& 1 + 2\left(-1 + \sum_0^\infty \left(ze^{-it}\right)^n\right) \\
+&=& -1 + 2/\left(1 - ze^{it}\right) \\
+&=& \frac{ze^{-it} - 1 + 2}{1 - ze^{-it}} \\
+&=& \frac{e^{it} + z}{e^{it} - z} \\
+&=& \frac{1 + ze^{-it}}{1 - ze^{-it}} \\
+&=& \frac{ (1 + ze^{-it})\overline{(1 - ze^{-it}) } }{
+           (1 - ze^{-it})\overline{(1 - ze^{-it}) } } \\
+&=& \frac{ 1 + ze^{-it} - \overline{ze^{-it}} - ze^{-it}\overline{ze^{-it}} }{
+           |1 - ze^{-it}|^2 } \\
+&=& \frac{ 1 + re^{i\theta}e^{-it} - re^{-i\theta}e^{it}
+             - re^{i\theta}e^{-it}re^{-i\theta}e^{it} }{
+           |1 - ze^{-it}|^2 } \\
+&=& \frac{ 1 - r^2 + r\left(e^{i(\theta-t)} - e^{i(t-\theta)}\right)
+         }{ |1 - ze^{-it}|^2 } \\
+&=& \frac{ 1 - r^2 + 2ir\sin(\theta-t) }{ |1 - ze^{-it}|^2 } \\
+\end{eqnarray*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 112-115
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+Let $X$ consist of two points $a$ and $b$,
+put \(\mu(\{a\}) = \mu(\{b\}) = \half\),
+and let \(L^p(\mu)\) be the resulting \emph{real} \(L^p\)-space.
+Identify each real function $f$ on $X$ with the point \((f(a),f(b))\)
+in the plane, and skecth the unit balls of \(L^p(\mu)\),
+for\(0<p\leq \infty\).
+Note that they are convex if and only if \(1\leq p \leq \infty\).
+For which $p$ is the unit ball a square? A circle?
+If \(\mu(\{a\}) \neq \mu(\{b\})\), how does the situation differ from the
+preceding one?
+\end{excopy}
+
+The unit balls are \(B_p=\{(x,y)\in\R^2: x^p + y^p \leq 1\}\).
+Assume \(1\leq p \leq \infty\) and let \((x_1,y_1),(x_2,y_2)\in B_p\).
+By Minkowski's inequality (Theorem~3.5 \cite{RudinRCA87})
+\[
+\bigl((x_1+x_2)^p/2 + (y_1+y_2)^p/2\bigr)^{1/p}
+\leq
+   (x_1^p/2 + y_1^p/2)^{1/p}
+ + (x_2^p/2 + y_2^p/2)^{1/p}
+.\]
+This is equivalent to
+\(\|(x_1+x_2,y_1+y_2)\|_p \leq \|(x_1,y_1)\|_p + \|(y_2,y_2)\|_p\)
+or
+\[\left\|\bigl((x_1+x_2)/2,(y_1+y_2)/2\bigr)\right\|_p
+ \leq
+ \bigl(\|(x_1,y_1)\|_p + \|(y_2,y_2)\|_p\bigr)\,/\,2.
+\]
+which show convextiy.
+
+If \(0<p<1\), take real \(\alpha\) such that \(\alpha^p = 2\).
+Let
+\begin{eqnarray*}
+(x_1,y_1) &\eqdef& (\alpha, 0) \\
+(x_2,y_2) &\eqdef& (0, \alpha)
+\end{eqnarray*}
+Now clearly
+\(\|(x_1,y_1)\|_p =  \|(x_2,y_2)\|_p = 1\)
+but
+\[
+   \|\bigl((x_1+x_2)/2,(y_1+y_2)/2\bigr)\|_p^p
+=  (\alpha/2)^p)/2 + (\alpha/2)^p)/2
+=  (\alpha/2)^p
+=  2^{1-p} > 1.
+\]
+Hence \(B_p\) is not convex.
+
+When \(p=1\) the unit ball is a square inscribed in the unit circle.
+When \(p=2\) the unit ball is the unit circle.
+When \(p=\infty\) the unit ball is a square circumscribed around the unit circle.
+
+If \(\mu(\{a\}) \neq \mu(\{b\})\) the squares change to rectangles
+and the circle eo ellipse.
+% 1-800 340340
+
+%%%%%%%%%%%%%% 2
+\begin{excopy}
+Prove that the unit ball (open or closed) is convex in every normed linear space.
+\end{excopy}
+
+Let $U$ be an open unit ball of a normed linear space
+and let \(v_0,v_1\in U\).
+For any \(t\in[0,1]\) let \(v_t \eqdef v_0 + t(v_1 - v_0)\).
+We need to show that \(v_t\in U\).
+We may assume that \(v_0\neq v_1\) and \(0<t<1\), since otherwise
+we trivially have \(v_t=v_0\) or \(v_t=v_1\).
+By definition of a norm
+\[
+\|v_t\| = \|(1-t)v_0 + tv_1\|
+\leq \|(1-t)v_0\| + \|tv_1\|
+=     (1-t)\|v_0\| + t\|v_1\| < (1-t)+t = 1.
+\]
+
+If $U$ is a closed unit ball,
+we simply change the last strict inequality ($<$) into \(\leq\).
+
+
+%%%%%%%%%%%%%% 3
+\begin{excopy}
+If \(1<p<\infty\), prove that the unit ball
+of \(L^p(\mu)\) is
+\index{strictly convex}
+\emph{strictly convex};
+this means if
+\[ \|f\|_p = \|g\|_p = 1, \qquad f\neq g, \qquad h = \half(f+g), \]
+then \(\|h\|_p < 1\).
+(Geometrically, the surface of the ball contains no straight lines.)
+Show that this fails in every \(L^1(\mu)\), and in every \(C(X)\).
+(Ignore trivialities, such as spaces consisting of only one point.)
+\end{excopy}
+
+Let $X$ be the functions' domain.
+For all \(x\in X\) we have
+\[|h(x)| = \half|f(x)+g(x)| \leq \half(|f(x)|+g|(x)|).\]
+If there is in equality, then by local lemma~\ref{llem:minkowski:eq},
+there are non negative real constants $a$ and $b$ such that
+\(af=bg\;\aded\), but since \(\|f\|_p = \|g\|_p\)
+we have \(a=b\) and the case is trivial \(f=g\;\aded\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let $C$ be the space of all continuous functions on \([0,1]\),
+with the supremum norm.
+Let $M$ consist of all \(f\in C\) for which
+\[ \int_0^\half f(t)\,dt - \int_\half^1 f(t)\,dt = 1. \]
+Prove that $M$ is a closed subset of $C$ which contains no element
+of minimal norm.
+\end{excopy}
+
+If \(f_n\to f\) in the supremum norm, clearly
+\[ \lim_{n\to \infty} \int_0^\half f_n(t)\,dt - \int_\half^1 f_n(t)\,dt =
+                      \int_0^\half f(t)\,dt - \int_\half^1 f(t)\,dt = 1. \]
+Thus $M$ is closed.
+
+We will now show that \(\|f\|_\infty > 1\) for every \(f\in M\).
+Let \(f\in C([0,1])\) be such that \(\|f\|_\infty \leq 1\).
+and let \(h=f(1/2)\).
+Two cases:
+\begin{itemize}
+\item
+If \(|h|<1\) then let \(\delta>0\) be such that \(|f(x)|<(1+|h|)/2\)
+for all \(x\in (1/2-\delta,1/2+\delta)\). Now
+\begin{eqnarray*}
+\left|\int_0^\half f(t)\,dt - \int_\half^1 f(t)\,dt\right|
+&=&
+\left|\int_0^{1/2-\delta} f(t)\,dt
++ \int_{1/2-\delta}^\half f(t)\,dt
+- \int_\half^{\half+\delta} f(t)\,dt
+- \int_{\half+\delta}^1 f(t)\,dt\right| \\
+&\leq& (1/2-\delta) + (\delta/2 + \delta/2)(1+|h|)/2 + (1/2 - \delta) \\
+&=& 1 + 2\bigl((1+|h|)/2 - 1\bigr)\delta \\
+&<& 1.
+\end{eqnarray*}
+
+\item
+If \(|h|=1\), then let \(\delta>0\) be such that \(|f(x)-h| < 1/3\)
+when \(x\in (\half-\delta,\half+\delta)\).
+Note that if \(|y_i-h|<1/3\) for \(i=1,2\) then \(|y_1-y_2| < 2/3\).
+Now
+\begin{eqnarray*}
+\left|\int_0^\half f(t)\,dt - \int_\half^1 f(t)\,dt\right|
+&=&
+\left|\int_0^{1/2-\delta} f(t)\,dt
++ \int_{1/2-\delta}^\half f(t)\,dt
+- \int_\half^{\half+\delta} f(t)\,dt
+- \int_{\half+\delta}^1 f(t)\,dt\right| \\
+&\leq& (1/2 - \delta)
+       + \int_0^\delta \left(f(t+h-\delta) - f(t+h)\right)dt
+       + (1/2 - \delta) \\
+&\leq& 1 - 2\delta + (2/3)\delta \\
+&<& 1.
+\end{eqnarray*}
+\end{itemize}
+In both case we see that \(f\notin M\).
+Next we will show that for any \(\epsilon>0\) there exists \(f\in M\)
+such that \(\|f\|_\infty > 1 + \epsilon\).
+These results combined, show that $M$ has no minimal normed element.
+
+
+\[
+\left|\int_0^\half f(t)\,dt - \int_\half^1 f(t)\,dt\right|
+\leq \int_0^\half |f(t)|\,dt + \int_\half^1 |f(t)|\,dt
+= \int_0^1 |f(t)|\,dt \leq \|f\|_\infty
+\]
+Let \(\epsilon>0\). Define
+\[
+f(x) = \left\{
+       \begin{array}{ll}
+       -1 - \epsilon& \qquad 0\leq x \leq 1/2 - \delta \\
+        (x-1/2) (1+\epsilon)/\delta
+                        & \qquad 1/2 - \delta \leq x \leq 1/2 + \delta \\
+       1 + \epsilon  & \qquad 1/2 + \delta \leq x \leq 1
+       \end{array}\right.
+\]
+Clearly \(\|f\|_\infty = 1/2+\epsilon\) and if we pick
+\(\delta\) such that
+\[2(1+\epsilon)(1/2 - \delta) + 2\delta(1+\epsilon)/2 = 1\]
+we can have \(f\in M\).
+Simplifying:
+\[2(1+\epsilon)(1/2 - \delta) + 2\delta(1+\epsilon)/2
+  = (1+\epsilon)(2(1/2 - \delta) + \delta)
+  = (1+\epsilon)(1 - \delta)\]
+and solving the above,
+gives \(\delta = 1 - 1/(1+\epsilon) = \epsilon/(1+\epsilon)\).
+
+
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+Let $M$ be the set of all \(f\in L^1([0,1])\), relative to Lebesgue measure,
+such that
+\[\int_0^1 f(t)\,dt = 1.\]
+Show that $M$ is a closed subset of  \(L^1([0,1])\) which contains
+infinitely many element of minimal norm.
+(Compare this and Exercise~4 with Then~4.10.)
+\end{excopy}
+
+Let \(\{f_n\}\) be a sequence in $M$ such that
+\(\lim_{n\to\infty}\|f_n - f\|_1 = 0\)
+where \(f\in L^1([0,1])\). Now
+\begin{eqnarray*}
+\|f\|_1 &\leq& \|f_n - f\|_1 + \|f_n\|_1 \\
+ \|f_n\|_1 &\leq& \|f_n - f\|_1 + \|f\|_1
+\end{eqnarray*}
+and so given \(\epsilon > 0\) for sufficiently large $n$
+\[ 1 - \epsilon \leq \|f\|_1 \leq 1 + \epsilon\]
+thus \(\|f\|_1=1\) and $M$ is closed.
+
+
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Let $f$ be a bounded linear functional on a subspace $M$ of a Hilbert space $H$.
+Prove that $f$ has a \emph{unique} norm-preserving extension to a bounded
+linear functional on $H$, and that this extension vanishes on \(M^\perp\)
+\end{excopy}
+
+The case \(f=0\) is trivial, thus \wlogy by dividing by \(\|f\|\)
+we may assume that \(\|f\|=1\).
+Clearly for every
+\(x=v+w\in H\) where \(v\in M\) and \(w\in M^\perp\)
+we can define \(F(x) = f(v)\) which is a well defined extension
+and clearly \(\|F\|=1\).
+
+Now we will show that this extension is unique.
+Let $F$ be an norm-preserving extension of $f$ on $H$.
+By negation, assume that $F$ does not vanish on \(M^\perp\)
+we can find \(w\in M^\perp\) such that \(\|w\|=1\)
+and \(F(w)=a>0\). Pick and arbitrary \(\epsilon > 0\),
+for which pick \(u\in M\) such that \(\|u\|=1\)
+and \(h \eqdef f(u) > 1-\epsilon\).
+We will contradict the assumtion if we show
+that there exist a real $t$ such that
+\[\frac{F(u+tw)}{\|u+tw\|} > 1.\]
+Equivalently,
+\[(h+ta)^2 = (F(u+tw))^2 > \|u+tw\|^2 = t^2 + 1.\]
+that is
+\[(1-a^2)t^2 - 2hat + (1-h^2) < 0.\]
+Since the leaading coefficient \(1-a^2>0\),
+by looking at the discriminant, there exist some $T$
+satisfying the above inequality(ies), iff
+\[4h^2a^2 - 4(1-a^2)(1-h^2) > 0\]
+that is if
+\begin{equation} \label{eq:ex:5.6:disc}
+(h^2a^2)>(1-a^2)(1-h^2).
+\end{equation}
+Since \(\lim_{\epsilon\to 0} h = 1\),
+When \(\epsilon\to 0\), the left side of \eqref{eq:ex:5.6:disc}
+converges to \(a^2 > 0\) while zero is the limit of the right side.
+Hence such $t$ exists, \(\|F\|>1\) contradicting the assumtion.
+
+
+%%%%%%%%%%%%%% 7
+\begin{excopy}
+Construct a bounded linear functional on some subspace of some \(L^1(\mu)\)
+which has two (hence inifinitely many) distinct norm-preserving
+to \(L^1(\mu)\).
+\end{excopy}
+
+Define \(X=\{0,1\}\) and \(\mu(\{0\}) = \mu(\{1\}) = 1/2\)
+Let
+\[ M \eqdef \{f\in L^1(X,\mu): f(1) = 0\}\]
+and the functional on $M$  \(\Lambda f = f(0)/2\).
+If \(f\in M\) then \(\|f\|_1 = |f(0)|/2\), and so
+\[ \|\Lambda\|
+= \sup \{|\Lambda f|: f \in M\;\wedge\;\|f\|=1\}
+= \sup \{|f(0)/2|: f \in M\;\wedge\;|f(0)|/2=1\}
+= 1. \]
+
+Now we can easily extend \(\Lambda\) to \(L^1(X,\mu)\)
+by the following two extensions
+\begin{eqnarray*}
+\Lambda_1(f) &=& f(0)/2 \\
+\Lambda_2(f) &=& f(0)/2 + f(1)/2
+\end{eqnarray*}
+
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+Let $X$ be a normed linear space, and let \(X^*\) be its dual space, as defined
+in Sec.~5.21, with the norm
+\[\|f\| = \sup \{|f(x)|: \|x\|\leq 1\}.\]
+\begin{itemize}
+ \itemch{a} Prove that \(X^*\) is a Banach space.
+ \itemch{b}
+ Prove that the mapping \(f\to f(x)\) is, for each \(x\in X\),
+ a bounded linear functional on \(X^*\), of norm \(\|x\|\).
+ (This gives a natural imbedding of $X$ on its ``second dual'' \(X^{**}\),
+ the dual space of \(X^*\).)
+ \itemch{c} Prove that \(\{\|x_n\|\}\) is bounded if \mset{x_n} is a sequence
+ in $X$ such that \(\{f(x_n)\}\) is bounded for every \(f\in X^*\).
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \itemch{a}
+ Let \(\Lambda_1,\Lambda_2 \in X^*\) and \(z_1,z_2 \in \C\)
+ for any \(x\in X\), by definition, we have
+ \[ (z_1\Lambda_1 + z_2\Lambda_2)(x) = z_1\Lambda_1(x) + z_2\Lambda_2)(x)  \]
+ and so \(X^*\) is linear vector space over \(\C\).
+ Also \(\|z\Lambda(x)\| = |z||\Lambda(x)|\) so to prove \(\|\cdot\|_{X^*}\)
+ is a norm, we show the triangle inequality:
+ \begin{eqnarray*}
+ \|\Lambda_1 + \Lambda_2\| 
+ &=& \sup\{|(\Lambda_1 + \Lambda_2)(x)|: x\in X,\;\|x|=1\} \\
+ &=& \sup\{|\Lambda_1(x) + \Lambda_2(x)|: x\in X,\;\|x|=1\} \\
+ &\leq& \sup\{|\Lambda_1(x)| + |\Lambda_2(x)|: x\in X,\;\|x|=1\} \\
+ &\leq&    \sup\{|\Lambda_1(x)|: x\in X,\;\|x|=1\}
+         + \sup\{|\Lambda_2(x)|: x\in X,\;\|x|=1\} \\
+ &=& \|\Lambda_1\| + \|\Lambda_2\|.
+ \end{eqnarray*}
+ It is now left to show completeness. 
+ Let \mset{\Lambda_n} be a Cauchy sequence in \(X^*\).
+ Pick arbitrary \(x\in X\setminus\{0\}\). Now since
+ \begin{eqnarray*}
+ |\Lambda_m(x) - \Lambda_n(x)|
+ = |(\Lambda_m - \Lambda_n)(x)|
+ = \|x\|\cdot |(\Lambda_m - \Lambda_n)(x/\|x\|)|
+ \leq \|x\|\cdot\|\Lambda_m - \Lambda_n\|
+ \end{eqnarray*}
+ \mset{\Lambda_n x} is a Cauchy sequence in \(\C\) and converges there,
+ and for \(x=0\) as well.
+ Thus we can define the limit 
+ \[ \Lambda_x \eqdef \lim_{n\to\infty} = \lim_{n\to\infty} \Lambda_n x.\]
+ Now for \(x_1,x_2\in X\) and \(z_1,z_2\in \C\)
+ \begin{eqnarray*}
+ \Lambda (z_1 x_1 + z_2 x_2)
+ &=& \lim_{n\to\infty} \Lambda_n (z_1 x_1 + z_2 x_2) \\
+ &=& \lim_{n\to\infty} \bigl(z_1\Lambda_n(x_1) + z_2 \Lambda(x_2)\bigr) \\
+ &=& \bigl(
+             \lim_{n\to\infty} z_1\Lambda_n(x_1)
+           + \lim_{n\to\infty} z_2\Lambda_n(x_2) \bigr) \\
+ &=& \bigl(  z_1\lim_{n\to\infty} \Lambda_n(x_1)
+           + z_2\lim_{n\to\infty} \Lambda_n(x_2) \bigr) \\
+ &=& z_1\Lambda(x_1) + z_2\Lambda(x_2).
+ \end{eqnarray*}
+ To show \(\Lambda\) is bounded, let \(\|x\| \leq 1\) in $X$, now
+ \[ |\Lambda(x)| = |\lim_{n\to\infty} \Lambda_n(x)| 
+    \leq = \lim_{n\to\infty} \|\Lambda_n\| < \infty\]
+ and the limit is independent of $x$.
+
+ Therefore \(X^*\) \emph{is} a banach space.
+ 
+ \itemch{b} Let \(x\in X\). Since
+ \[(z_1f_1+z_2f_2)(x) = z_1f_1(x) + z_2f_2(x)
+   \qquad f_1,f_2\in X^*\;z_1,z_2\in \C\]
+ clearly \(f\to f(x)\) is a linear functional on \(X^*\).
+ Define \(x^{**}\in X^{**}\) by \(x^{**}(f) = f(x)\) for all \(f\in X^*\).
+ If \(x=0\) then \(\|x^**\|_{X^{**}} = 0\) trivially, for \(x\neq 0\)
+ \begin{eqnarray}
+ \|x^{**}\|_{x^{**}} 
+ &=& \sup\{|f(x)|: \|f\|_{X^*} = 1,\;f\in X^*\} \notag \\
+ &=& \sup\bigl\{|f(x)|: \sup\{ |f(w)|: \|w\|=1,\; f\in X^*,\;w\in X\}=1\bigr\} 
+     \notag \\
+ &\leq& \sup\bigl\{|f(x)|: \sup\{ |f(x/\|x\|)|: f\in X^*\}=1\bigr\} 
+        \label{eq:5.8:sup1} \\
+ &\leq& \|x\| \label{eq:5.8:sup2}.
+ \end{eqnarray}
+ We now show the reverese inequality. Define a functional \(f_x\)
+ on a 1-dimensional subspace of $X$ generated by $x$, as \(f_x(zx/\|x\|) = z\).
+ Clearly \(\|f_x\| = f(x)/\|x\| = 1\)
+ and applying Hahn-Banach theorem, we can extend
+ \(f_x\) to a functional $f$ on whole $X$, such that 
+ \(\|f\|_{X^*} = \|f_x\| = 1\).
+ Using it in the supremum of \eqref{eq:5.8:sup1} and \eqref{eq:5.8:sup2} 
+ we get an equality and so \(\|x^{**}\|_{X^{**}} = \|x\|\).
+ 
+ \itemch{c}
+ By negation, assume \mset{x_n} is unbounded.
+ Let $W$ be the subspace of $X$ generated by \mset{x_n}.
+ Two cases:
+
+ \paragraph{Case 1.} Assume \(\dim(W) < \infty\) and \seqn{v} its base.
+ Thus we have a unique representation 
+ \(x = \sum_{i=j}^n a_j(x) v_j\), where \(a_j\in X^*\).
+ Since \mset{x_n} is unbounded, there exist some $j$ such that
+ \(\{a_j(x_i)\}_{i=1}^\infty\) is not bounded.
+
+ \paragraph{Case 2.} Assume \(\dim(W)\infty\). 
+ Let \(W_n\) be the subspace of $W$ generated by \seqn{x}.
+ Clearly \(W = \cup_{n=1}^\infty W_n\).
+ For convenience, we drop from \seqn{x} any \(x_j\) such that 
+ \(x_j \in X_{j-1}\); note that zeros are dropped. 
+ This case assumtion, guarantees that the sequence is still infinite.
+ The functional $f$ to be constructed, 
+ will furnish a contradiction, namely \mset{f(x_n)} unbounded for 
+ the original, trivially, as well.
+
+ For each \(w\in W\) there is a unique (finite) representation
+ \[ w = \sum_{j=1}^{M(w)} a_j(w) (x_j/\|x_j\|).  \]
+ Note that \(a_n(x_n) = \|x_n\|\).
+ We will define a sequence of functionals \(f_n: W_n \to \C\).
+ \begin{eqnarray*}
+ % u_n &=& \overline{a_n(x_n)}/|x_n| \\
+ f_n(w) &=& f\left(\sum_{j=1}^{M_w} a_j(w) x_j\right) 
+       \eqdef \sum_{j=1}^{M_w} u_j a_j(w) \qquad w \in W_{M_w}
+ \end{eqnarray*}
+ By construction, 
+ \begin{eqnarray*}
+  % |u_n| &\in& \{0,1\} \\
+  f_n(x_n) &=& \sum_{j=1}^n a_j(x_j) = \|x_n\| \\
+  f_n &=& {f_m}_{|W_n}  \qquad \textrm{if}\, n\leq m
+ \end{eqnarray*}
+ Thus we can define the functional \(f = \cup f_n\), 
+ for which \(f(x_n) = \|x_n\|\) for all $n$.
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 9
+\begin{excopy}
+Let \(c_0\), \(\ell^1\), and \(\ell^\infty\) be Banach spaces consisting
+of all complex sequences \(x=\{\xi_i\}\), \(\mbox{i=1,2,3,\ldots,}\) 
+defined as follows:
+\begin{alignat*}{3}
+x&\in\ell^1 & &\quad\textrm{if and only if} 
+   \quad && \|x\|_1 = \sum|\xi_i|<\infty.\\
+x&\in\ell^\infty && \quad\textrm{if and only if} 
+   \quad && \|x\|_\infty = \sup |\xi_i|<\infty.
+\end{alignat*}
+\(c_0\) is the subspace of \(\ell^\infty\) consisting of all \(x\in\ell^\infty\)
+for which \(\xi_i \to 0\) as \(i\to\infty\).
+
+Prove the following statements.
+\begin{itemize}
+ \itemch{a} If \(y=\{\eta_i\}\in \ell^1\) and \(\Lambda x = \sum \xi_i\eta_i\)
+            for every \(x\in c_0\), then \(\Lambda\)
+            is a~bounded linear functional on \(c_0\),
+            and \(\|\Lambda\| = \|y\|_1\).
+            Moreover, every \(\Lambda \in (c_0)^*\) is obtain in this way.
+            In brief, \((c_0)^* = \ell^1\).
+
+            (More precisely, these two space are not equal, the preceding
+            statement, exhibits as isometric vector space isomorphism
+            between them.
+ \itemch{b} In the same sense, \((\ell^1)^* = \ell^\infty\).
+ \itemch{c} Every \(y\in \ell^1\), induces a bounded linear functional on
+            \(\ell^\infty\), as in \ich{a}.
+            However, this does \emph{not} give all of \((\ell^\infty)^*\),
+            since \((\ell^\infty)^*\) contains nontrivial functionals that
+            vanish on all of \(c_0\).
+ \itemch{d} \(c_0\) and \(\ell^1\) are separable but \(\ell^\infty\) is not.
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+Clearly, \(\Lambda\) is linear.
+Estimate:
+\[ |\Lambda x| 
+   = \left|\sum \eta_i\xi_i\right|
+   \leq \sum |\eta_i \xi_i|
+   \leq \left(\sum |\eta_i|\right) \left(\sup |x_i|\right) 
+   = \|y\|_1 \cdot \|x\|\_infty.\]
+Thus \(\|\Lambda\| \leq \|y\|_1\). 
+
+For the reverse inequality, we may assume \(y\neq 0\).
+let \(\|y\|_1 > \epsilon>0\),
+let \(N>0\) be such that \(\sum_{i>N} |\eta_i| < \epsilon\).
+% and let $M$ be the number of nonzero components of $y$ upto $N$;
+% formally: \(M = |\{i\in\N: 1\leq i \leq N\,\wedge\, \eta_i=0\}|\).
+In the next definitions and derivations we freely use \(0/0 = 0\).
+Put \(u_i = \overline{\eta_i}/|\eta_i|\).
+and define \(x=(\xi_i)_i\) by 
+\[
+   \xi_i = \left\{\begin{array}{ll}
+                   u_i   & \qquad \textrm{if}\;  1\leq i\leq N \\
+                   0     & \qquad \textrm{if}\;  i> N
+                  \end{array}\right.\]
+
+Now 
+\[\Lambda x 
+ = \sum \xi_i\eta_i
+ = \sum_{i=1}^N \overline{\eta_i}\eta_i \,/\, |\eta_i|
+ = \sum_{i=1}^N |\eta_i|
+ > \|y\|_1 - \epsilon.\]
+Since \(\epsilon\) can be arbitrarily small, \(\|\Lambda\|\geq \|y\|_1\).
+
+Now Pick arbitrary \(f\in c_0^*\). 
+Define \mset{e_i} in \(c_0\) as a function \(\N\to \C\)
+by \(e_i(n) = delta_{in}\) that is \(e_i(i)=1\) and zero otherwise.
+Define \(x=(\xi_i)_{i=1}^\infty\) by \(\xi_i = f(e_i)\)
+and \(\Lambda\) as above. 
+For each \(j\in \N\), we have
+\[\Lambda e_j = \sum_{i=1}^\infty \xi_i e_j(i) = \xi_j.\]
+Thus \(\Lambda\) and $f$ agree on the subspace $S$ generated by \mset{e_i}.
+It is easy to see that \(c_0 = \overline{S}\) and thus \(\Lambda = f\)
+that is every functional on \(c_0\) is given by the above ``producs-sum'' form.
+
+\itemch{b}
+ Let \(x=\{\xi_i\}\in \ell^1\) 
+ \(y=\{\eta_i\}\in \ell^\infty\) and \(\Lambda x = \sum \eta_i\xi_i\).
+ for 
+ \[ |\Lambda x| \leq \sum |\eta_i\xi_i| 
+    \leq \left(\sup \eta_i\right)\left( \sum |\eta_i\xi_i| \right)
+    = \|y\|_\infty \cdot \|x\|_1.\]
+ Hence \(\|\Lambda\| \leq \|y\|_\infty\).
+ Given \(\epsilon>0\) pick some $J$ such that \(|\eta_j| \geq \|y\|-\epsilon\),
+ and let \(e_j\in l_1\) 
+ such that \(e_j(n) = 1\) if \(n\neq j\) and \(e_j(j)=1\).
+ Now \(\Lambda e_j = \eta_j\) and so \(\|\Lambda\| \geq \|y\|-\epsilon\).
+ Since \(\epsilon\) may be arbitrarily small, \(\|\Lambda\| \geq \|y\|_\infty\),
+ hence \(\|\Lambda\| = \|y\|_\infty\).
+
+ Now let \(f\in (\ell^1)^*\). Define \(e_j\) as before for all $j$, 
+ let \(\eta_j= f(e_j)\) and let \(y=\{\eta_i\}\).
+ Since \(\|e_j\|=1\) for all $J$, we have \(|\eta_j| \leq \|f\|\)
+ and so \(y\in \ell^\infty\).
+
+\itemch{c}
+ Construct a functional \(f\in (\ell^\infty)^*\) as follows.
+ It vanishes \(f(x)=0\) for all \(x\in c_0\). 
+ Pick \(\mathbf{u}=(u_i)_{i\in\N}\)
+ such that \(u_i=1\) for all \(i\in\N\). 
+ Clearly \(u\in \ell^\infty\setminus c_0\).
+ Now define \(f(u)=1\) and extend $f$ to \(\ell^\infty\) by Hahn-Banach theorem.
+ Clearly $f$ is not in the image of \(\ell^1\) embedding in 
+ \((\ell^\infty)^{**}\) 
+ 
+\itemch{d}
+ The extension field \(\Q(i)\in \C\) of the rational is actually
+ \[\Q(i) = \{a+bi:\;a,b\in\Q\}.\]
+ Clearly \(|\Q(i)|=\aleph_0\).
+ Define the set $E$ of inifinite sequences of \(\Q(i)\) which 
+ have only finite nonzero components. Formally:
+ \[ E \eqdef \left\{x\in \bigl(Q(i)\bigr)^\N:\; 
+                     \exists M,\; \forall n>m\,\Rightarrow x(n)=0\right\}.\]
+ Now \(|E|=\aleph_0\) and $E$ is dense in \(c_0\) and \(\ell^1\).
+ 
+ {\small
+ \emph{Sketch:} Pick \(v\in c_0\) or \(v \in \ell^1\) and \(\epsilon>0\).
+ \(c_0\)-case: \(\exists M, \forall n>m,\, |v_n|<\epsilon/2\). 
+ \(\ell^1\)-case: \(\exists M, \sum{j=1}^M |v_j| <\epsilon/2\). 
+ Then \(\epsilon/2\)-approximate $v$ trimmed above $M$, by some \(x\in E\).
+ Now \(\|x-v\|<\epsilon/2+\epsilon/2=\epsilon\).
+ }
+
+ Define a subset
+ \[V \eqdef  \{0,1\}^\N \subset \ell^\infty \subset \C^\N.\]
+ Note that \(\|x-y\|\in\{0,1\}\) for all \(x,y\in V\).
+ Clearly \(|V| = 2^{\aleph_0} > \aleph_0\).
+ If by negation \(\ell^\infty\) is separable, let $D$ be a countable dense
+ set in  \(\ell^\infty\). 
+ Define a mapping \(\nu:V\to D\) by picking 
+ for each \(v\in V\) an \(x\in D\) such that \(\|x-v\|<1/2\).
+ Existence of \(\nu(v)\) is guaranteed by density of $D$.
+ This map must be one-to-one, since if for some \(x\in D\)
+ there exist \(v_1,v_2\in V\) such that \(\|x-v_i\|<1/2\) for \(i=1,2\)
+ then \(\|v_1-v_2\|<1\) but then \(v_1=v_2\).
+ But now a cardinality \(|V|<|D|\) contradiction.
+\end{itemize}
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+If \(\sum \alpha_i\xi_i\) converges for every sequence \((\xi_i)\) such that
+\(\xi_i \to 0\) as \(i\to\infty\), prove that \(\sum|\alpha_i| < \infty\).
+\end{excopy}
+
+This is a consequence of Exercise~9\ich{a} above.
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+For \(0<\alpha\leq 1\),
+\index{Lip@\(\Lip\)}
+let \(\Lip\alpha\) denote the space of all complex
+functions $f$ on \([a,b]\) for which
+\[M_f = \sup_{s\neq t} \frac{|f(s)-f(t)|}{|s-t|^\alpha} < \infty.\]
+Prove  that \(\Lip\alpha\) is a Banach space, if \(\|f\| = |f(a)| + M_f\);
+also if
+\[\|f\| = M_f + \sup_x |f(x)|.\]
+(The members of \(\Lip\alpha\) are said to satisfy
+\index{Lipschitz condition}
+a~\emph{Lipschitz condition} of order \(\alpha\).)
+\end{excopy}
+
+We first show that \(\|\cdot\|\) is indeed a norm.
+\paragraph{Scalar Multiplication}.
+Let \(z\in\C\). For all \(f\in \Lip\alpha\)
+\[
+M_{zf} 
+= \sup_{s\neq t} \frac{|(zf)(s)-(zf)(t)|}{|s-t|^\alpha} 
+= |z|\sup_{s\neq t} \frac{|f(s)-f(t)|}{|s-t|^\alpha} 
+|z| M_f.\]
+Hence
+\[
+\|zf\| = |(zf)(a)| + M_{zf} = |z|\cdot|f(a)| + |z|M_f = |z|\cdot\|f\|.
+\]
+
+\paragraph{Sub additivity}. For all \(f,g\in \Lip\alpha\)
+\begin{eqnarray*}
+\|f+g\| 
+&=& |(f+g)(a)| + \sup_{s\neq t} \frac{|(f+g)(s)-(f+g)(t)|}{|s-t|^\alpha} \\
+&=& |f(a) + g(a)| + 
+  \sup_{s\neq t} \frac{\left|\bigl(f(s)-f(t)\bigr) + 
+                             \bigl(g(s)-g(t)\bigr)\right|)}{|s-t|^\alpha} \\
+&\leq& |f(a)| + |g(a)| + 
+     + \sup_{s\neq t} \frac{|(f(s)-f(t)|}{|s-t|^\alpha} 
+     + \sup_{s\neq t} \frac{|(g(s)-g(t)|}{|s-t|^\alpha} \\
+&=& \|f\|+\|g\|.
+\end{eqnarray*}
+
+Clearly if \(\|f\|=0\) then \(f(a)=0\) and \(f'(t)=0\) for all \(t\in [a,b]\)
+and so \(f=0\).
+
+To show that \(\Lip\alpha\) is a Banach space it is left to show completeness.
+Let \mset{f_n} be a Cauchy sequence in \(\Lip\alpha\).
+Since \(|f_m(a)-f_n(a)| \leq \|f_m - f_n\|\), 
+the evaluations \(\{f_n(a)\}\) is a Cauchy sequence in \(\C\).
+Similarly for \(t\in(a,b]\)
+\[
+\frac{|(f_m - f_n)(t) - (f_m - f_n)(a)|}{|s-t|^\alpha} \leq \|f_m - f_n\|,\]
+equivalently
+\(|(f_m - f_n)(t) - (f_m - f_n)(a)| \leq |s-t|^\alpha \|f_m - f_n\|\)
+hence \mset{f_n(t)} is a Cauchy sequence in \(\C\) as well.
+Therefore we can define \(f(t) = \lim_{n\to\infty} f_n(t)\).
+If by negation \(M_f = \infty\) then for any \(0<M<\infty\) we can find
+\(s,t\in[a,b]\) such that \(s\neq t\) and \(|f(s)-f(t)|\geq |s-t|^\alpha M\).
+But then we can find some $n$ such that \(f_n\) is sufficiently close 
+to $f$ in \(\{s,t\}\) so \(|f_n(s)-f_n(t)|\geq |s-t|^\alpha (M-\epsilon)\).
+But then \mset{M_{f_n}} is not bounded, which is a contradiction.
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Let $K$ be triangle (two-dimensional figure) in the plane,
+let $H$ be the set consisting of the vertices of $K$, of the form
+\[ f(x,y) = \alpha x + \beta y + \gamma
+   \qquad (\alpha, \beta,\, \textrm{and}\, \gamma\; \textrm{real}). \]
+Show that to each \((x_0,y_0)\in K\) there corresponds
+a unique measure \(\mu\) on $H$ such that
+\[ f(x_0,y_0) = \int_H f\,d\mu. \]
+(Compare Sec.~5.22.)
+
+Replace $K$ by a square, let $H$ again be the set of its vertices, and let $A$
+be as above.
+Show that to each point of $K$ there still corresponds a measure on $H$,
+with the above property, but that uniqueness is now lost.
+
+Can you extrapolate to a more general theorem?
+(Think of other figures, higher dimensional spaces.)
+\end{excopy}
+
+Denote the vertices $H$ of the triangle $K$ 
+by \(v_i = (x_i,y_i\) for \(i=1,2,3\).
+Since any triangle is convex, 
+for any \((x_0,y_0)\in K\) there is a convex combination
+\[(x_0,y_0) = \sum_{j=1}^3 w_j(x_j,y_j)\]
+where the weights \(w_j\in[0,1]\) and \(\sum_{j=1}^3 w_j = 1\).
+Put \(\mu(\{v_j\}) = w_j\). 
+Now for any \(f(x,y) = \alpha x + \beta y + \gamma\) 
+we compute:
+\[
+f(x_0,y_0)
+ = \alpha x_0 + \beta y_0 + \gamma 
+ = \sum_{j=1}^3  w_j (\alpha x_j + \beta y_j + \gamma) 
+ = \sum_{j=1}^3 f(x_j,y_j) w_j 
+ = \int_H^f\,d\mu.
+\]
+
+\paragraph{Uniqueness.} Let \(\mu_1\) and \(\mu_2\)
+satsisfying the above condition for any $f$ of the above (affine) form.
+\Wlogy, we may assume \(\mu_1(\{v_1\}) \neq \mu_2(\{v_1\})\).
+We solve the following system of linear equations:
+\begin{eqnarray*}
+\alpha x_1 + \beta y_1 + \gamma &=& 1 \\
+\alpha x_2 + \beta y_2 + \gamma &=& 0 \\
+\alpha x_3 + \beta y_3 + \gamma &=& 0
+\end{eqnarray*}
+Where \(\alpha,\beta,\gamma\in\R\) are the unknowns.
+The vertices are not co-linear, and there must exist a solution.
+But now,
+\[\int_H f\,d\mu_1 = \mu_1(\{v_1\} \neq \mu_2(\{v_1\}) = \int_H f\,d\mu_2\]
+is a contradiction.
+
+When $K$ is a squere we do the same, but now there are 
+inifnite number of convex combinations of the verices.
+Thus the representing measure is not unique in the interior of $K$.
+
+As for higher dimension. In \(\R^n\) for \(n\geq 2\),
+any  set $H$ of \(n-1\) points which do not lie in the same hyperplane
+generate a compact convex hull $K$.
+The condition on $H$ as equivalent of saying that they do not 
+simultanously satisfy a single non trivial linear equation in \(\R^n\).
+The ``extreme'' vertices of of $K$ are $H$.
+Now, for any \(\mathbf{x}\in K\) there exist a unique measure 
+\(\mu_{\mathbf{x}}\) on $H$ such that
+\[f(\mathbf{x}) 
+  = \int_H f\,d\mu_{\mathbf{x}} 
+  = \sum_{v\in H} \mu_{\mathbf{x}}(v) \cdot f(v)\,.\]
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Let \(\{f_n\}\) be a sequence of continuous complex functions on a (nonempty)
+complete metric space $X$, such that \(f(x) = \lim f_n(x)\) exists
+(as a complex number) for every \(x\in X\).
+\begin{itemize}
+ \itemch{a} Prove that there is an open set \(V\neq \emptyset\) and a number
+            \(M<\infty\) such that \(|f_n(x)| < M\) for all \(x\in V\)
+            and \(n=1,2,3,\ldots\).
+ \itemch{b} If \(\epsilon>0\), prove that there is an open set \(V\neq\emptyset\)
+            and an integer $N$ such that \(|f(x) - f_n(x)| \leq \epsilon\)
+            if \(x\in V\) and \(n\geq N\).
+
+\end{itemize}
+\emph{Hint for \ich{b}}: For \(N=1,2,3,\ldots\), put
+\[ A_N = \{x: |f_m(x)-f_n(x)|\leq \epsilon
+\;\textrm{if}\; m\geq N\;\textrm{and}\; n\geq N\}.\]
+Since \(X=\cup A_N\), some \(A_N\) has a nonempty interior.
+\end{excopy}
+
+
+\begin{itemize}
+\itemch{a}
+Let 
+\[ B_M \eqdef  \{x\in X: \forall n\in\N,\, |f_n(x)|\leq M\} 
+  = \bigcup_{n\in\N} \{x\in X: |f_n(x)|\leq M\}.\]
+Clearly \(B_M\) are closed. For any \(x\in X\), 
+the sequence \mset{f_n(x)} hence \mset{|f_n(x)|} is bounded.
+Therefore, \(X=\cup_{M\in\N} B_M\) and
+\index{Baire!category theorem}
+by Baire's category theorem~5.6 since $X$ is complete, some \(B_M\) 
+must have non empty interior $V$.
+
+\itemch{b}
+The sets 
+\[ A_N = \{x: |f_m(x)-f_n(x)|\leq \epsilon\;\textrm{if}\; m,n\geq N\}\]
+are closed. Similarly, \(X=\cup_{N\in\N} A_N\)
+and so again by Baire's theorem, some \(A_N\) has non empty interior $V$.
+\end{itemize}
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+Let $C$ be the space of all real continuous functions on \(I=[0,1]\)
+with the supremum norm. Let $X$, be the subset of $C$ consisting of those
+$f$ for which there exists a \(t\in I\) such that \(|f(s)-f(t)| \leq n|s-t|\)
+for all \(s\in I\). Fix $n$ and prove that each open set in $C$ contains
+an open set which does not intersect \(X_n\). (Each \(f\in C\) can be uniformly
+approximated by a zigzag function $g$ with very large slopes and if
+\(\|g-h\|\) is small, \(h\notin X_n\).)
+Show that this implies the existence of a dense \(G_\delta\) in $C$ which
+consists entirely of nowhere differentiable functions.
+\end{excopy}
+
+
+Fix $n$ and take a base open set in $C$ by picking \(f\in C\) and 
+\(\epsilon>0\), and setting
+\[V \eqdef \{\phi\in C: \|f-\phi\|_\infty < \epsilon/3\}.\]
+In $I$ every continuous functions is uniformly continuous.
+Hence there exists \(\delta>0\) such that \(|f(t)-f(s)|<\epsilon\)
+whenever \(|s-t|<\delta\). 
+Let 
+\[s = \lceil 1\bigm/\,\min\bigl(\delta, \epsilon/(3(n+1))\bigr)\rceil\]
+and split $I$ by \(x_i = i/(s+1)\) for \(0\leq i \leq s+1\).
+Note that \(x_i - x_{i-1} < \delta/(n+1)\).
+We will now construct \(g\in V\).
+Intuitively, it will have on each subsegment \([x_{i-1},x_i]\) 
+a slope of \(\pm(n+1)\), and it will increase or decrease so it follows $f$.
+Formally, we define $g$ by induction on \([x_{i-1},x_i]\) for \(0< i \leq s+1\).
+On the first subsegment \([x_0,x_1]\) let
+\(g(x) = f(0) + (n+1)x\). Assume that $g$ is defined
+on \([x_0,x_{i-1}]\), and by induction on \([x_{i-1}, x_i]\) by
+\[g(x) = g(x_{i-1}) + \sigma (n+1)(x - x_{i-1})\]
+where \(\sigma=1\) if \(g(x_{i-1}) < f(x{i-1})\) and 
+\(\sigma= -1\) otherwise. It is easy to see that \(\|g-f\|_\infty < \epsilon/3\)
+and that \(g\notin X_n\).
+We now need a trivial lemma
+\begin{llem}
+Let \(f:[x_0,x_1]\to \R\) be defined by \(f(x) = ax+b\). 
+For any \(\epsilon>0\)
+such that \(\epsilon<|a|\) there exists \(\delta>0\) such that 
+if \(h:[x_0,x_1]\to \R\) and \(\|f-h\|_\infty < \delta\)
+then 
+\begin{equation} \label{eq:ex5.14:lem}
+ \max\left( \frac{h(t) - h(x_0)}{t-x_0}, 
+              \frac{h(x_1) - h(t)}{x_1 - t} \right) < |a|-\epsilon. 
+\end{equation}
+for all \(t\in(x_0,x_1)\) we 
+\end{llem}
+\begin{thmproof}
+\iffalse
+By defining  \(\tilde{f}:[0,x_1-x_0]\to \R\)
+as \(\tilde{f}(x) = |a|x\)
+we see that we can assume that \(f(0)=0\) and \(a>0\).
+Since we can similarly convert a $h$ 
+and get the same ratios of \eqref{eq:ex5.14:lem}.
+\fi
+\Wlogy, we may assume \(a>0\), the negative case is analogous.
+Let \(\delta = \epsilon(x_1-x_0)/4\), and assume \(\|f-h\|_\infty < \delta\).
+For any \(t\in (x_0,x_1)\), there are two cases
+
+\paragraph{High Case}: \((x_0+x_1)/2 \leq t < x_1\).
+Let us estimate,
+\begin{eqnarray*}
+\frac{h(t) - h(x_0)}{t-x_0}
+&=& \biggl( f(t) + (h(t)-f(t)) - \bigl(f(x_0) + (h(x_0)-f(x_0))\bigr)\biggr)
+    \bigm /\,(t - x_0) \\
+&\geq& \bigl(f(t) - f(x_0)\bigr) / (t - x_0) 
+        - 2\delta / \bigl((x_1 - x_0)/2\bigr) \\
+&=& a - 4\delta/(x_1 - x_0) \\
+&=& a - \epsilon.
+\end{eqnarray*}
+
+\paragraph{Low Case}: \(x_0 < t \leq (x_0+x_1)/2\), similar derivation
+as the high-case, but estimating the slope against \((x_0,h(x_0))\).
+\end{thmproof}
+
+From this lemma, back to this exercise, we see that we can pick 
+some \(\delta>0\) such that for any \(h:I\to\R\) such that
+\(\|g-h\|_\infty\), that is a neighborhood of $g$ the zigzag function, 
+\(h\notin X_n\). 
+Therefore, \[V_n \eqdef \inter{\left(C(I)\setminus X_n\right)}\] is dense.
+By the corollary of theorem~5.6 in \cite{RudinRCA87}, 
+\(\cap_{n\in\N} V_n\) is a dense \(G_\delta\) set, 
+(and in particular non empty) that consists of nowhere differentiable functions.
+
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}Let \(A=(a_{ij})\) be an infinite matrix with complex entries,
+wher \(i,j=0,1,2,\ldots\).
+$A$ associateswith each
+sequence \(\{s_i\}\)
+a sequence \(\{\sigma_i\}\), defined by
+\[ \sigma_i = \sum_{j=0}^\infty a_{ij} s_j \qquad (i=1,2,3,\ldots), \]
+provided that these series converge.
+
+Prove that $A$ transforms every convergent sequence
+\(\{s_i\}\)
+to a sequence \(\{\sigma_i\}\) which converges to the same limit
+if and only if the following conditions are satisfied:
+\begin{alignat*}{2}
+ \ich{a} & \qquad &\lim_{i\to\infty} a_{ij} &= 0\qquad \textrm{for each}\; j. \\
+ \ich{b} & \qquad & \sup_i \sum_{j=0}^\infty |a_{ij}| &< \infty \\
+ \ich{c} & \qquad & \lim_{i\to\infty} \sum_{j=0}^\infty a_{ij} &= 1.
+\end{alignat*}
+The process of passing from
+\(\{s_i\}\) to \(\{\sigma_i\}\) is called
+\index{summability method}
+a~\emph{summability method}. Two examples are
+\begin{eqnarray*}
+a_{ij} &=&
+   \left\{\begin{array}{ll}
+          \frac{1}{i+1} & \quad \textrm{if}\; 0\leq j \leq i. \\
+          0             & \quad \textrm{if}\; i < j,
+          \end{array}\right. \\
+\textrm{and}\qquad a_{ij} &=& (1-r_i)r_i^j, \qquad  0<r_i<1,\quad r_i\to 1.
+\end{eqnarray*}
+Prove that each of these also transforms some divergent sequence \(\{s_i\}\)
+(even some unbounded ones) to a convergent sequences \(\{\sigma_i\}\).
+\end{excopy}
+
+Following the above notations, we denote the transform as \(\sigma = A(s)\).
+
+\paragraph{Summability implies limits.}
+Assume $A$ transforms convergent sequences to convergent sequences.
+
+Assume by negation \ich{a} does not hold for some $j$.
+Pick the sequences \mset{s_j}, such that \(s_{i} = \delta_{ij}\).
+Clearly \(\lim_{i\to\infty}s_i = 0\), 
+but \(\sigma_i = a_{ij}\) which does not converge to $0$, 
+and so by contradiction, \ich{a} holds.
+
+We will now show \ich{b}. We first show that 
+\begin{equation} \label{eq:ex5.15:finsum}
+\sum_{j=0}^\infty |a_{rj}| < \infty.
+\end{equation}
+for each $r$. By negation, assume \eqref{eq:ex5.15:finsum} does not hold 
+for some fixed $r$.
+We will construct, in appending steps, 
+a~sequence \mset{s_j} such that converges to zero but
+\((A(s))_r = \infty\).
+We define a sequence of blocks of indices such that 
+each block if $A$'s $r$th row is ``not too small''.
+Formally, let \(M_0 = 0\) and let \(M_k<\infty\) be the minimal integer
+such that \[\sum_{j=M_{k-1}}^{M_k} |a_{rj}| > 1.\]
+Clearly \mset{M_k} is an infinitely increasing sequnce.
+For \(k\in\N\) let 
+\[s_j = e^{i\theta_j}/k \qquad 
+ \textrm{where}\;
+ M_{k-1} \leq j < M_k
+ \;\textrm{and}\;
+ \theta_j = -\Arg(a_{rj}).\]
+Note that \(\lim_{j\to\infty}s_j = 0\) and \(a_{rj}s_j \geq 0\).
+Compute the $r$ component of \(A(s)\):
+\begin{eqnarray*}
+\sigma_r 
+&=& \sum_{j=0}^\infty a_{rj}s_j 
+ = \sum_{k=1}^\infty \sum_{j=M_{k-1}}^{M_k} a_{rj}s_j \\
+&=& \sum_{k=1}^\infty 
+      \left(\sum_{j=M_{k-1}}^{M_k} a_{rj}e^{i\theta_j}\right) \bigm/\,k 
+ = \sum_{k=1}^\infty \left(\sum_{j=M_{k-1}}^{M_k} |a_{rj}|\right) \bigm/\,k \\
+&\geq& \sum_{k=1}^\infty 1/k \\
+&=& \infty.
+\end{eqnarray*}
+Thus \(\sigma=A(s)\) is not a valid sequence, (limit cannot be defined at all
+and thus \eqref{eq:ex5.15:finsum} is true, and we can denote
+\[S_r \eqdef \sum{j=0}^\infty |a_{rj}.\]
+
+
+Now assume by negation \ich{b} does not hold.
+We will again construct, in appending steps, 
+a~sequence \mset{s_j} that will provide a contradiction.
+We will also build increasing sequences, 
+\mset{b_k} of column blocks, and \mset{r_k} of rows, such that
+\begin{eqnarray}
+\sum_{j=0}^{b_k-1} |a_{r_k j}| &\leq& 1 \label{eq:ex5.15:head} \\
+\sum_{j=b_k}^{b_{k+1}-1} |a_{r_k j}| &\geq& 2^k \label{eq:ex5.15:mid} \\
+\sum_{j=b_{k+1}}^\infty |a_{r_k j}| &\leq& 1 \label{eq:ex5.15:tail}
+\end{eqnarray}
+for each \(k\in\N\).
+Let \(b_0=0\). 
+Assume \mset{s_j} is defined for all \(j<b_{k'}\)
+By \ich{a}, there exists some \(\rho\) such that 
+\(|a_{rj}| < 1/(b_{k'}+1)\)
+for all \(r\geq \rho\) and all \(j<b_{k'}\).
+To ensure our next row pick, let \(U_k = \max_{r\leq\rho}S_r\).
+By our negation hypothesis, there exists \(r_k\) such that 
+\[S_{r_k} \geq \max(k^2+2,U_k).\] 
+Clearly \(r_k>\rho\), and we can find \(b_{k+1}\) such that 
+\[\sum_{j=b_{k+1}}^\infty |a_{rj}| < 1.\]
+Now define \(s_j\) for \(b_k \leq j < b_{k+1}\) by
+\[s_j = e^{i\theta_j}/k \qquad  \textrm{where}\; \theta_j = -\Arg(a_{r_k j}).\]
+By induction we complete the definitions of \mset{s_j} and 
+the supporting sequences \mset{b_k} and \mset{r_k}.
+Clearly \(\lim_{j\to\infty}s_j = 0\), but
+\begin{eqnarray*}
+|\lim_{r\to\infty}\sigma_r|
+&=& \lim_{r\to\infty} |\sigma_r| 
+= \lim_{r\to\infty} \left| \sum_{j=0}^\infty a_{rj}s_j \right| 
+= \lim_{k\to\infty} \left| \sum_{j=0}^\infty a_{r_k j}s_j \right| \\
+&\geq& \lim_{k\to\infty} 
+       \left(
+          \left| \sum_{j=b_k}^{b_{k+1}-1} a_{r_k j}s_j \right| 
+         - \left| \sum_{j=0}^{b_k-1} a_{r_k j}s_j \right| 
+         - \left| \sum_{j=b_{k+1}}^\infty a_{r_k j}s_j \right|
+       \right) \\
+&=& \lim_{k\to\infty} 
+       \left(
+          \left| \sum_{j=b_k}^{b_{k+1}-1} |a_{r_k j}| \right| / k
+         - \left| \sum_{j=0}^{b_k-1} a_{r_k j}s_j \right| 
+         - \left| \sum_{j=b_{k+1}}^\infty a_{r_k j}s_j \right|
+       \right) \\
+&\geq& \lim_{k\to\infty} 
+       \left(
+          (k^2+2k) / k
+         - \sum_{j=0}^{b_k-1} |a_{r_k j}|
+         - \sum_{j=b_{k+1}}^\infty |a_{r_k j}|
+       \right) \\
+&\geq& \lim_{k\to\infty} k+2 - 1 - 1 \\
+&=& \infty.
+\end{eqnarray*}
+This contradicts the summability, hence \ich{b} is true.
+
+Consider the constant sequences \(s_j=1\) for all \(j\in\N\).
+It has \(\lim_{j\to\infty} s_j = 1\) which implies
+ \(\lim_{j\to\infty} \sigma_j = 1\) which is actually equivalent
+to \ich{c}.
+
+\paragraph{Limits implies summability.}
+Conversely, assume conditions \ich{a}, \ich{b}, \ich{c} hold.
+
+\emph{Constant:} If \(s_j=c\) for all \(j\in\N\), 
+then by \ich{c} we get \(\lim_{j\to\infty}\sigma_j = c\).
+\emph{Vanishing:} Assume \(\lim_{j\to\infty s_j} s_j = 0\).
+Pick arbitrary \(\epsilon>0\). 
+Let $J$ be such that \(|s_j| < \epsilon/3\) whenever \(j\geq J\).
+Put \(h = \max_{1\leq j \leq J} |s_j| + 1\).
+By \ich{a} there exists \(\rho_1\) such that \(|a_rj| < \epsilon/(Jh+1)\)
+for all \(r\geq\rho_1\) and \(0\leq j \leq J\).
+Denote \(T_r = \sum{j=0}^\infty a_{rj}\).
+By \ich{c}, pick \(\rho_2\) such that \(|T_r - 1| < \epsilon\)
+whenever \(r\geq \rho_2\). 
+Note that in this case, 
+\[
+\left|\left(T_r - \sum_{j=0}^J a_{rj}\right) - 1\right| 
+\leq |T_r - 1| + J\epsilon/(Jh+1)
+< 2\epsilon.\]
+Let \(\rho = \max(\rho_1,\rho_2)\), now for \(r\geq \rho\)
+\begin{eqnarray*}
+|\sigma_r|
+&=& \left|\sum_{j=0}^\infty a_{rj}s_j\right| 
+ = \left|\sum_{j=0}^J a_{rj}s_j
+        + \sum_{j=J+1}^\infty a_{rj}s_j\right| \\
+&\leq&  \left|\sum_{j=0}^J a_{rj}s_j\right| 
+      + \left|\sum_{j=J+1}^\infty a_{rj}s_j\right| \\
+&\leq&  h\left|\sum_{j=0}^J a_{rj}\right| 
+      + \epsilon\left|\sum_{j=J+1}^\infty a_{rj}\right| \\
+&\leq&  hJ\epsilon/(Jh+1) + \epsilon(1+2\epsilon) \\
+&<& 2\epsilon(\epsilon+1).
+\end{eqnarray*}
+Hence \(\lim_{r\to\infty} \sigma_r = 0\).
+
+Now for arbitrary converging sequence, let \(\lambda = \lim_{j\to\infty} s_j\).
+By the above two case, we have
+\begin{eqnarray*}
+\lim_{r\to\infty} \sigma_r 
+&=& \lim_{r\to\infty} \sum_{j=0^\infty} a_{rj}s_j \\
+&=& \lim_{r\to\infty} \sum_{j=0^\infty} a_{rj}(s_j - \lambda + \lambda) \\
+&=& \left(\lim_{r\to\infty} \sum_{j=0^\infty} a_{rj}(s_j - \lambda)\right) + 
+    \left(\lim_{r\to\infty} \sum_{j=0^\infty} a_{rj} \lambda\right) \\
+&=& 0 + \lambda.
+\end{eqnarray*}
+Thus $A$ satisfies the summability condition.
+
+\paragraph{Specific transformations.}
+When 
+\begin{eqnarray*}
+a_{rj} &=&
+   \left\{\begin{array}{ll}
+          \frac{1}{r+1} & \quad \textrm{if}\; 0\leq j \leq r. \\
+          0             & \quad \textrm{if}\; r < j,
+          \end{array}\right.
+\end{eqnarray*}
+we observe the sequence \mset{s_j} defined by 
+% \(s_j = (-1)^j\), that is \((+1,-1,+1,-1,\ldots)\).
+% that is \((+1,-1,+1,-1,\ldots)\).
+\(s_j = (-1)^j\sqrt{\lfloor j/2\rfloor}\), 
+that is \((0,0,+1,-1,+\sqrt{2},-\sqrt{2},\ldots)\).
+Clearly does not converge and is unbounded, but since
+we observe that 
+\[\sum_{j=0}^r s_j 
+  = \left\{\begin{array}{ll}
+          0 & \qquad r = 1 \bmod 2 \\
+          \sqrt{r/2} & \qquad r = 0 \bmod 2 
+          \end{array}\right.\]
+we see that 
+\begin{eqnarray*}
+\sigma_r 
+&=& \sum_{j=0}^r a_{rj}s_j
+ = \left(\sum_{j=0}^r s_j\right)/(r+1) \\
+&=& \left\{\begin{array}{ll}
+          0 & \qquad r = 1 \bmod 2 \\
+          \sqrt{r}/(r+1) & \qquad r = 0 \bmod 2 
+          \end{array}\right.
+\end{eqnarray*}
+Hence \(\lim_{r\to\infty}\sigma_r = 0\).
+
+When \(a_{kj} = (1-r_k)r_k^j\) 
+where \(0<r_k<1\) and \(\lim_{k\to\infty} r_k\to 1\),
+we pick
+\(s_j = (-1)^j\), that is \((+1,-1,+1,-1,\ldots)\).
+that is \((+1,-1,+1,-1,\ldots)\).
+Clearly does not converge. Compute
+\[
+\sigma_k
+= \sum_{j=0}^r a_{kj}s_j
+ =  \sum_{j=0}^r (1-r_k)r_k^j \cdot (-1)^j
+ = (1-r_k)\sum_{j=0}^r (-r_k)^j 
+ = (1-r_k) \cdot \bigl(1/(1-r_k)\bigr) = 1.\]
+In particular,  \(\lim_{k\to\infty}\sigma_k=1\).
+
+
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+Suppose $X$ and $Y$ are Banach spaces, and suppose \(\Lambda\)
+is a linear mapping of $X$ into $Y$, with the following property:
+For every sequence \mset{x_n} in in $X$ for which \(x = \lim x_n\),
+and \(y = \lim \Lambda x_n\) exist,
+it is true that \(y=\Lambda x\). Prove that \(\Lambda\) is continuous.
+
+This is so called ``closed graph theorem''
+\emph{Hint}: Let \(X \oplus Y\) be the set of all ordered pairs
+\((x,y)\), \(x\in X\) and \(y\in Y\), with addition and scalar multiplication
+defined componentwise.
+Prove that \(X\oplus Y\) is a Banach space,
+if \(\|x,y)\| = \|x\| + \|y\|\).
+The graph $G$ of \(\Lambda\) is a subset of \(X\oplus Y\)
+formed by the pairs \((x,\Lambda x)\), \(x\in X\). Note that our hypothesis
+says that $G$ is closed; hence $G$ is a banach space.
+Note that \((x,\Lambda x) \to x\) is continuous, one-to-one,
+and linear and maps $G$ onto $X$.
+
+Observe that there exist \emph{nonlinear} mappings
+(of \(\R^1\) onto \(\R^1\), for instance)
+whose graph is closed although they are
+not continuous: \(f(x)=1/x\) if \(x=0\), \(f(0)=0\).
+\end{excopy}
+
+Define projections: 
+\begin{alignat*}{2}
+p_1 & : G \to X & \qquad p_1(x,\Lambda x) &= x \\
+p_2 & : (X,Y) \to X & \qquad p_2(x,y) &= y
+\end{alignat*}
+These projections are linear and continuous, and \(p_1\) is also one-to-one.
+By the open mapping theorem~5.9 (\cite{RudinRCA87}), \(p_1^{-1}\) 
+is continuous. But \(\Lambda = p_2 \circ p_1^{-1}\) and thus is continuous.
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+If \(\mu\) is a positive measure, each \(f\in L^\infty(\mu)\) defines
+a  multiplication operator \(M_f\)
+on \(L^2(\mu)\) into \(L^2(\mu)\) such that \(M_f(g) = fg\).
+Prove that \(\M_f\|\leq \|f\|_\infty\).
+For which measures \(\mu\) is it true that \(\|M_f\| = \|f\|_\infty\)
+for all \(f\in L^\infty(\mu)\)?
+For which measures \(f\in L^\infty(\mu)\) does \(M_f\) map
+\(L^2(\mu)\) onto \(L^2(\mu)\)?
+\end{excopy}
+
+Let \(f\in L^\infty(\mu)\) and \(g \in L^2(\mu)\).
+Now
+\[ \|M_f(g)\|_2 
+   = \left(\int |fg|^2\,d\mu\right)^{1/2}
+   \leq \left(\int (\|f\|_\infty |g|)^2\,d\mu\right)^{1/2}
+   \leq \|f\|_\infty \left(\int |g|^2\,d\mu\right)^{1/2}.
+\]
+Hence \(\|M_f\| \leq \|f\|_\infty\).
+
+Now pick some \(f\in L^\infty(X,\mu)\) and an arbitrary \(\epsilon>0\).
+By definition, the set
+\[ U \eqdef \{x\in X: |f(x)|>\|f\|_\infty - \epsilon\}\]
+satisfies \(\mu(U)>0\). Assume that for any such set, 
+there exists \(W\subset U\) such that \(\mu(W)<\infty\).
+Now we consider \(g=\chi_W\).
+Clearly \(\|g\|_2^2 = \mu(W)\). Also
+ we see that 
+\[
+\|M_f(g)\|_2^2
+= \int |fg|^2\,d\mu
+= \int_W f^2\,d\mu
+\geq (\|f\|_\infty - \epsilon)^2 \mu(W).\]
+Hence \(\|M_f\| \geq \|f\|_\infty - \epsilon\)
+and the equality \(\|M_f\| = \|f\|_\infty\) is established.
+
+Finally, if \(1/f \in L^\infty(\mu)\), then 
+\(M_f\) is invertible and \((M_f)^{-1} = M_{1/f}\).
+In particular, in this case, \(M_f\) is onto.
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+Suppose \mset{\Lambda_n} is a sequence of bounded linear transformations
+from a normed linear space $X$ to a Banach space $Y$,
+suppose \(\|\Lambda_n\| \leq M <\infty\) for all $n$, and suppose
+there is a dense set \(E\subset X\) such that
+\mset{\Lambda_n x} converges for each \(x\in E\).
+Prove that \mset{\Lambda_n x} converges for each \(x\in X\).
+\end{excopy}
+
+We will show that \mset{\Lambda_n x} is a Cauchy sequence.
+Pick some arbitrary \(\epsilon>0\). Pick some \(x'\in E\) such that
+\(\|x-x'\|<\epsilon/(3M)\).
+Since \mset{\Lambda_n x'} is a Cauchy sequence, there exists
+some $N$ such that \(\|\Lambda_m x' - \Lambda_n x'\| < \epsilon/3\)
+whenever \(m,n>N\). But also
+\begin{eqnarray*}
+\|\Lambda_m x - \Lambda_n x\|
+&\leq&
+ \|\Lambda_m x - \Lambda_m x'\|
+ + \|\Lambda_m x' - \Lambda_n x'\|
+ + \|\Lambda_n x' - \Lambda_n x\| \\
+&\leq& (\|\Lambda_m\| + \|\Lambda_n\|)\cdot\|x-x'\| 
+      + \|\Lambda_m x' - \Lambda_n x'\| \\
+&\leq& 2M\cdot\epsilon/(3M) + \epsilon/3 = \epsilon.
+\end{eqnarray*}
+Thus, \mset{\Lambda_n x} is a Cauchy sequence, 
+since $Y$ is a Banach space this sequence converges.
+
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+If \(s_n\) is the $n$th partial sum of the Fourier series of a function
+\(f\in C(T)\), prove that \(s_n/\log n \to 0\)
+uniformly, as \(n\to \infty\), for each \(f\in C(T)\). That is prove that
+\[ \lim_{x\to\infty} \frac{\|s\|_\infty}{\log n} = 0. \]
+
+On the other hand, if \(\lambda_n/\log n \to 0\) prove that there exists an
+\(f\in C(T)\) such that the sequence \(\{s_n(f;0)/\lambda_n\}\) is unbounded.
+\emph{Hint}: Apply the reasoning of Exercise~18 and that of Sec.~5.11,
+with a better estimate of \(\|D_n\|_1\), than used there.
+\end{excopy}
+
+We first prove the following Lemmas
+(See also Theorems~I-8-1 and II-8-13 in \cite{Zyg:2002}).
+
+\begin{llem} \label{llem:fog:ifoig}
+Let $f$,\ and $g$ be integrable functions on each 
+subinterval \([a,b']\) such that \(a\leq b' < b\).
+Let
+\begin{equation*}
+F(x) = \int_a^x f(t)\,dt
+\qquad
+G(x) = \int_a^x g(t)\,dt.
+\end{equation*}
+Assume that \(g(x)\geq 0\) and that \(\lim_{x\to b} G(x) = \infty\).
+If 
+\begin{equation*}
+\lim_{x\to b} f(x)/g(x) = 0
+\end{equation*}
+then
+\begin{equation*}
+\lim_{x\to b} F(x)/G(x) = 0
+\end{equation*}
+\end{llem}
+
+In $o$-notation: the theorem says:
+If \(f(x) = o(g(x))\)
+then \(F(x) = o(G(x))\).
+
+\begin{thmproof}
+Pick arbitrary \(\epsilon>0\).
+Let \(x_0\in[a,b)\) such that 
+\(|f(x)/g(x)| < \epsilon/2\) for \(x_0 <x < b\).
+Pick \(x_1 \in (x_0,b)\) such that for all \(x\geq x_1\) we have
+\begin{equation*}
+G(x) > 2\int_a^{X_0} |f(t)|\,dt \bigm/ \epsilon.
+\end{equation*}
+
+Thus for \(x\geq x_1\)
+\begin{equation*}
+|F(x)|
+\leq 
+   \int_a^{x_0} f(t)\,dt 
+ + \int_{x_0}^x f(t)\,dt 
+\leq 
+   \int_a^{x_0} f(t)\,dt 
+ + \epsilon G(x)/2
+\leq \epsilon G(x).
+\end{equation*}
+\end{thmproof}
+
+Clearly similar result and proof holds with 
+reversed directions of $a$ and $b$.
+
+The following lemma shows that for continuous functions 
+\(\|s_n(f)\|_\infty = o(\log n)\).
+\begin{llem} \label{llem:ex:5.19a}
+Let \(g\in C(T)\) and \(s_n\) be the $n$-Fourier sum of $g$.
+Then 
+\begin{equation} \label{eq:ex:5.19}
+\lim_{n\to\infty} s_n(f,x) / \log n = 0.
+\end{equation}
+\end{llem}
+\begin{thmproof}
+We freely identify $T$ with \(\{x: -\pi \leq x < \pi\}\).
+Let \(D_n\) be the Dirichlet's kernel, 
+that is \[s_n(f,t) = (D_n * f)(t).\]
+
+Pick arbitrary \(\epsilon>0\).
+Since $f$ is uniformly continuous (on $T$), 
+there exists \(\delta > 0\)
+such that 
+\begin{equation} \label{eq:ex5:19:fcont}
+|f(x-t) - f(x+t)| < \epsilon
+\end{equation}
+for all \(t < \delta\) and \(x\in T\).
+
+If \(|t|\leq \pi/2\) then \(2t/\pi \leq \sin t\)
+and also
+\begin{equation} \label{eq:ex5:19:Dnltt}
+|D_n(t)| 
+= \left|\frac{\sin\bigl((n+1/2)t\bigr)}{\sin(t/2)}\right|
+\leq 1 \bigm/ (\pi t).
+\end{equation}
+
+Combining \eqref{eq:ex5:19:fcont} and \eqref{eq:ex5:19:Dnltt}
+we get that
+\begin{equation*}
+\lim_{t\to 0} \bigl(f(x-t) - f(x+t) \bigr) D_n(t)  \bigm/\, (1/t) = 0
+\end{equation*}
+uniformly for all \(x\in T\).
+Using 
+\[
+\int_{\pi/n}^{\pi} \frac{1}{t}\,dt = \log(\pi) - \log(\pi/n) = \log n.
+\]
+with local lemma~\ref{llem:fog:ifoig}, we have:
+\begin{equation} \label{eq:ex5:19:fDn:olog}
+\lim_{n\to \infty} 
+ \int_{\pi/n}^{\pi} \bigl(f(x-t) - f(x+t) \bigr) D_n(t)\,dt
+   \bigm/\, \log n = 0.
+\end{equation}
+again, uniformly for all \(x\in T\).
+
+We now estimate \(|s_n(f,x)|\) by integrating two domains.
+\begin{eqnarray*}
+2\pi |s_n(f,x)|
+&=& \left| \int_{-\pi}^{\pi} f(x-t)D_n(t)\,dt \right| \\
+&=& 
+     \left|\int_0^{\pi/n} \bigl(f(x-t) - f(x+t)\bigr)D_n(t)\,dt\right| 
+   + 
+     \left|\int_{\pi/n}^{\pi} \bigl(f(x-t) - f(x+t)\bigr)D_n(t)\,dt\right| \\
+&\leq&
+     (\pi/n) \|f\|_\infty (2n+1)
+   + \left|\int_{\pi/n}^{\pi} \bigl(f(x-t) - f(x+t)\bigr)D_n(t)\,dt\right| 
+\end{eqnarray*}
+
+Using the fact that \(\lim_{n\to\infty} (2n+1) / (n\log n) = 0\)
+and \eqref{eq:ex5:19:fDn:olog} we get the desired \eqref{eq:ex:5.19}.
+\end{thmproof}
+
+The following may be viewed as a converse to local lemma~\ref{llem:ex:5.19a}.
+It shows that \(\log n\) is the best estimate order for \(\|s_n\|\).
+\begin{llem} 
+Let \(g\in C(T)\) and \(s_n\) be the $n$-Fourier sum of $g$.
+Then 
+If \((\lambda_n)_{n\in\N}\) is a sequence of positive numbers
+such that \(\lim_{n\to\infty}\lambda_n/\log n = 0\),
+then there exists \(f\in C(T)\) such that
+\(\{s_n(f;0)/\lambda_n\}_{n\in\N}\) is unbounded.
+\end{llem}
+
+\begin{thmproof}
+% we may trivially ignore occurrences of \(\lambda_n = 0\).
+By Secation 5.11 (\cite{RudinRCA87}) if \(\Lambda_n f = s_n(f;0)\)
+then
+\begin{equation*}
+\| \Lambda_n\| = \|D_n\|_1 
+ > \frac{4}{\pi}\sum_{k=1}^\infty \frac{1}{k} = c \log n
+\end{equation*}
+for some constant \(c>0\).
+Hence
+\begin{equation*}
+\|\Lambda_n\|_\infty /\lambda_n > c \log n / \lambda_n
+\end{equation*}
+and so 
+\begin{equation*}
+\lim_{n\to\infty} \|\Lambda_n\|_\infty /\lambda_n 
+\geq \lim_{n\to\infty} c \log n / \lambda_n = \infty.
+\end{equation*}
+and by the uniform bounded principle (theorem~5.8 \cite{RudinRCA87})
+there must exists \(f\in C(T)\) such that the sequence
+\(\{s_n(f;0)/\lambda_n\}_{n\in\N}\) is unbounded.
+\end{thmproof}
+
+
+\begin{excopy}
+{\small [Appears in and refers to second edition].}\newline
+Is the lemma of Sec.~4.15 valid on every Banach space?
+In every normed linear space?
+\end{excopy}
+
+The lemma says:
+\begin{quote}
+\textsl{
+If $V$ is a closed subspace of a Hilbert space $H$,
+\(y\in H\),
+\(y\notin V\),
+and \(V^{*}\) is the space spanned by $V$ and $y$, then 
+\(V^{*}\) is closed.
+}
+\end{quote}
+% \newline
+
+The proof is it is in the (old edition) text applies for Banach spaces
+as it is. Now we will prove thje following lemma using 
+Hahn Banach
+\index{Hahn Banach}
+theorem~5. \cite{}.
+
+\begin{llem}
+If $V$ is a closed subspace of a normed linear space $L$,
+\(y\in L\)
+and \(V^{*}\) is the space spanned by $V$ and $y$, then 
+\(V^{*}\) is closed.
+\end{llem}
+
+\begin{thmproof}
+We may assume \(y\notin L\) since otherwise the result is trivial.
+Now let's define a functional on \(V^{*}\) by
+\[ f(v + \lambda y) = \lambda \qquad v\in V,\; \lambda \in\C.\]
+By Hahn-Banach theorem we can extend $f$ to all $N$.
+Assume \(w\in \overline{V^*}\).
+By having a norm, there exists a sequence \((v_n + \lambda_n y)_{n\in\N}\)
+such that 
+\[\lim_{n\to\infty} v_n + \lambda_n y = w.\]
+But then 
+\[f(w) = \lim_{n\to\infty} f(v_n + \lambda_n y) 
+       = \lim_{n\to\infty} \lambda_n.\] 
+Thus \(w = f(y)y + \lim_{n\to\infty} v_n\) and 
+% so \(w - f(y)y = \lim_{n\to\infty} v_n\).
+since $V$ is closed,
+\(w - f(y)y\in V\) and so \(w\in V^*\) and we have shown that \(V^*\) is 
+closed.
+\end{thmproof}
+
+
+
+
+\end{enumerate}
+
+\nobreak
+\begin{enumerate}
+
+\setcounter{enumi}{19}
+
+%%%%%%%%%%%%%% 20
+\begin{excopy}
+\begin{itemize}
+
+\itemch{a}
+Does there exist a sequence of continuous positive functions \(f_n\)
+on \(\R^1\) such that \mset{f_n(x)} is unbounded if and only if $x$ is
+rational?
+
+\itemch{b}
+Replace ``rational'' by irrational in \ich{a} and answer the resulting
+question.
+
+\itemch{c}
+Replace ``\mset{f_n(x)} is unbounded''
+by ``\(f_n(x)\to \infty\) as \(n\to\infty\)''
+and answer the resulting analogues of \ich{a} and \ich{b}.
+\end{itemize}
+\end{excopy}
+
+It is easy to see that for all cases, the existence 
+is the same if positive functions are defined on \([0,1]\).
+Simply by restricting functions, or uniting them with 
+appropriate shifting to maintain continuity.
+
+\begin{itemize}
+
+%%%%%%%%%%
+\itemch{a}
+
+Define 
+\[G_{m,n} \eqdef \{x\in\R: f_n(x)>m\}.\]
+
+By definition \(\lim_{n\to\infty} f_n(x) = \infty\) iff
+\[\forall M\exists N \forall n\geq N\;f_n(x)>M.\] 
+Hence the set consists exactly of such points $x$ is
+\[L \eqdef \bigcap_M \bigcup_N \bigcap_{n>N} G_{M,n}.\]
+
+By definition \(\limsup_{n\to\infty} f_n(x) = \infty\) iff
+\[\forall M\forall N \exists n\geq N\;f_n(x)>M.\]
+Hence the set consists exactly of such points $x$ is
+\[U \eqdef \bigcap_M \bigcap_N \bigcup_{n>N} G_{M,n}.\]
+
+Thus the subset of \(\R^1\) for which  \mset{f_n(x)} is unbounded
+is a \(G_\delta\) set. It cannot be \Q\ since otherwise,
+by local lemmas~\ref{lem:count:1cat} and~\ref{lem:gdel:2cat},
+\Q\ would be of second category.
+
+%%%%%%%%%%
+\itemch{b}
+
+Following \cite{Myerson:1991:FCF}, we will show such sequence.
+Interestingly, there it cites \cite{Gelb1996}, Chapter~7 Example~4.
+
+Let \(\{q_j\}_{j\in\N}\) be an enumeration
+of all the rationals in \((0,1)\).
+Define \(f_n\) as a periodic function of period $1$,
+thus we need to define it on \([0,1]\).
+Let \(P_n = \{0,1\} \cup \{q_j: j\leq n\}\). 
+We firrst define \(f_n\) on \(P_n\).
+as follows in \([0,1]\) as follows.
+\begin{align*}
+f_n(0) = f_n(1) &= 0 \\
+\forall j\leq n\quad f_n(q_j) &= j.
+\end{align*}
+
+The set \(P_n\) partitions \([0,1]\)
+into \(n+1\) sub-segmnets, where we define \(f_n\) to be linear.
+It is easy to see that \(f_n\) are continuous, monotonically increasing
+and that for all \(x\in\R\)
+\begin{equation*}
+\lim_{n\to\infty} f_n(x) = 
+\left\{\begin{array}{ll}
+       j       & x - \lfloor x \rfloor = q_j \\
+       \infty  &   x \in \R\setminus \Q
+       \end{array}\right.
+\end{equation*}
+
+
+
+%%%%%%%%%%
+\itemch{c}
+
+The analogue for \ich{a} is \emph{false}.
+Assume by negation there exists a sequence \(\{f_n\}_{n\in\N}\)
+of continuous functions such that 
+\begin{equation*}
+L \eqdef \{x\in\R: \lim_{n\to\infty} f_n(x) = \infty\} = \Q.
+\end{equation*}
+Let \(\{q_n\}_{n\in\N}\) be an enumeration of \Q.
+We will define a decreasing sequence of closed intervals
+\(\{I_n\}_{n\in\N}\) such that 
+for all \(n\in\N\)
+the following hold:
+\begin{align}
+m(I_n) &> 0  \label{eq:ex:5.20:c0} \\
+I_n &\supset I_{n+1} \label{eq:ex:5.20:c1} \\
+q_n &\notin I_n \label{eq:ex:5.20:c2} \\
+\forall x \in I_n,\; f_n(x) &\geq n \label{eq:ex:5.20:c3}
+\end{align}
+Since \(\lim_{n\to\infty} f_n(1/2)=\infty\), 
+there exists some \(N_1\) such that 
+\(f_n(1/2) > 2\) for all \(n\geq N_1\).
+By taking a sufficiently small neighborhood \(V_1\) of \(1/2\)
+and picking a closed sub-interval \(I_1 \subset V_1 \setminus \{q_1\}\).
+We can ensure that 
+\eqref{eq:ex:5.20:c0},
+\eqref{eq:ex:5.20:c2} and
+\eqref{eq:ex:5.20:c3} hold.
+
+By induction assume that 
+\(\{I_j\}_{j=1}^k\) were picked and that
+the above 
+\eqref{eq:ex:5.20:c0},
+\eqref{eq:ex:5.20:c1},
+\eqref{eq:ex:5.20:c2} and
+\eqref{eq:ex:5.20:c3} hold for \(n< k\).
+Since \(m(I_{k-1})>0\) we can
+pick some rational \(\alpha \in I_{k-1} \cap \Q\).
+Since 
+Since \(\lim_{n\to\infty} f_n(\alpha)=\infty\), 
+we can find some \(N_k\) such that 
+\(f_n(\alpha) > k+1\) for all \(n\geq N_k\).
+By taking a sufficiently small neighborhood \(V_k\subset I_{k-1}\) 
+of \(\alpha\)
+and picking a closed sub-interval \(I_k\subset V_k \setminus \{q_k\}\)
+We can ensure that the above 
+\eqref{eq:ex:5.20:c0},
+\eqref{eq:ex:5.20:c1},
+\eqref{eq:ex:5.20:c2} and
+\eqref{eq:ex:5.20:c3} hold for \(n=k\) as well.
+
+Since \(\cup_{n\in\N} I_n \neq \emptyset\) 
+There exists \(c \in \cup_{n\in\N}\)
+and \(c\notin \Q\) by \eqref{eq:ex:5.20:c2}.
+Clearly \(\lim_{n\to\infty} f_n(c) = \infty\)
+Which gives the contradiction \(c\in L=\Q\).
+
+
+The analogue for \ich{b} is \emph{true}, since the example shown
+for \ich{b} holds for here as well, since
+that sequence converges everywhere, either for a real number
+or infinity.
+
+\end{itemize}
+
+%%%%%%%%%%%%%% 21
+\begin{excopy}
+Suppose \(E\subset \R^1\) is measurable, and \(m(E)=0\).
+Must there be a translate \(E+x\) of $E$ that does not intersect $E$?
+Must there be a homeomorphism $H$ of \(\R^1\) onto \(\R^1\) so that
+ \(h(E)\) does not intersect $E$?
+\end{excopy}
+
+The answer is no. It is sufficiently to defy the second conjecture.
+
+We use exercise~2 in chapter~2 of \cite{RudinFA79} 
+(althogh later in the order of Rudin's text books, but the exercise
+does not require further knowledge than we already have).
+Let \(I \eqdef [0,1] = E_0\disjunion F_0\) 
+be a disjoint union of the unit segment
+such that \(m(E_0)=0\) and \(F_0\) is of first category.
+
+Using the translation notation \(E+a = \{x+a: x\in E\}\), define
+\[
+E = \bigcup_{n\in\Z} E_0 + n \qquad
+F = \bigcup_{n\in\Z} F_0 + n \qquad.
+\]
+Clearly \(\R = E \disjunion F\) where 
+such that \(m(E)=0\) and $F$ is of first category.
+
+Assume by negation there is homeomorphism \(T:\R\to\R\) 
+such that \(E\cap T(E) = \emptyset\).
+But then \(I = F \cup T(F)\) contradiction to the fact that
+the unit segment is of second category.
+
+
+%%%%%%%%%%%%%% 22
+\begin{excopy}
+Suppose \(f\in C(T)\) and
+\index{Lip@\(\Lip\)}
+\(f\in \Lip\alpha\) for some \(\alpha > 0\). (See  Exercise~11.)
+Prove that the Fourier series of $f$ converges to \(f(x)\),
+by completing the following outline:
+It is enough to consider the case \(x=0\),
+\(f(0)=0\). The difference between the partial sums \(s_n(f;0)\)
+and the integrals
+\[ \frac{1}{\pi} \int_{-\pi}^\pi f(t)\frac{\sin nt}{t}\,dt \]
+tends to $0$ as \(n\to \infty\).
+The functions \(f(t)/t\) is in \(L^1(T))\).
+\index{Riemann-Lebesgue lemma}
+Apply the Riemann-Lebesgue lemma. More careful reasoning shows that the
+convergence is actually uniform on $T$.
+\end{excopy}
+
+Define \(f_\tau(t) = f(t + \tau)\).
+Now 
+\begin{align*}
+2\pi s_n(f;x)
+&= \int_{\pi}^\pi f(t)D_n(x - t)\,dt
+ = \int_{\pi}^\pi f(t+x)D_n(x - t + x)\,dt
+ = \int_{\pi}^\pi f_x(t)D_n(-t)\,dt \\
+& = 2\pi s_n(f_x;0).
+\end{align*}
+Clearly \(f\in\Lip_\alpha\) iff  \(f_x\in\Lip_\alpha\).
+Thus it is sufficient to to show that \(\lim_{n\to\infty} s_n(f;0) = f(0)\).
+By looking at \(g(t) = f(t) - f(0)\) we see that 
+\(f\in\Lip_\alpha\) iff  \(g\in\Lip_\alpha\)
+and \(s_n(f)\) differs from \(s_n(g)\) by the constant \(\hat{f}(0)\).
+Thus we may also assume \(f(0)=0\).
+
+Let \(E_n(t) = 2\sin(t)/t\)
+and \(H_n(t) = D_n(t) - E_n(t)\).
+Applying L'Hospital rules we have
+\begin{align*}
+\lim_{t\to 0} D_n(t) &= \lim_{t\to 0} \sin((n+1/2)t)/\sin(t/2) = 2n+1\\
+\lim_{t\to 0} E_n(t) &= \lim_{t\to 0} 2\sin(nt)/t = 2n\\
+\lim_{t\to 0} H_n(t) &= 1
+\end{align*}
+and also for \(G(t) = 1/\sin t - 1/t\)
+\begin{equation*}
+\lim_{t\to 0} G(t) % \frac{1}{\sin t} - \frac{1}{t}
+= \lim_{t\to 0} \frac{t - \sin t}{t\sin t}
+= \lim_{t\to 0} \frac{1 - \cos t}{\sin t + t\cos t} 
+= \lim_{t\to 0} \frac{\sin t}{\cos t + \cos t - t\sin t} 
+= \frac{0}{1+1+0} = 0.
+\end{equation*}
+Thus if we define \(G(0)=0\) then $G$ is continuous,
+and we have \(U = \sup_{t\in[-\pi,\pi]} |G(t)|+1 < \infty\).
+Now  for \(t\in [-\pi/2,\pi/2]\) we can estimate 
+\begin{align}
+|H_n(2t)|
+&\leq \left|\frac{\sin\bigl((2n+1)t\bigr)}{\sin t} 
+      - \frac{\sin(2nt)}{t}\right| \notag \\
+&\leq \left|\frac{\sin\bigl((2n+1)t\bigr) - \sin(2nt)}{\sin t}\right|
+      + \left| \sin(2nt) \left( \frac{1}{\sin t} - \frac{1}{t}\right) \right|
+     \notag \\
+&\leq \left| \frac{\sin t}{\sin t}\right| 
+     + 1\cdot U = U + 2. \label{eq:5.22:sinn1t}
+\end{align}
+In \eqref{eq:5.22:sinn1t} we used the inequality
+\begin{equation*}
+\sin\bigl((2n+1)t\bigr) - \sin(2nt) \leq |\sin t|
+\end{equation*}
+for \(-\pi/2\leq t \leq \pi/2\) derived from
+\begin{equation*}
+\sin\bigl((2n+1)t\bigr) = \sin(2nt)\cos t + \cos(2nt)\sin t.
+\end{equation*}
+Note that the bound of \(H_n\) is independent of $n$.
+
+Put \(M=\|f\|_\infty+1\).
+Pick arbitrary \(\epsilon>0\), we may assume \(\epsilon < 1\).
+Find \(\eta>0\)
+such that 
+\begin{itemize}
+\item \(\eta < \epsilon\).
+\item \(|f(t)| < \epsilon/MU\) for all \(t\in[-\eta,+\eta]\).
+\end{itemize}
+
+Put 
+\(f_d(t) = f(t)/\sin(t/2)\)
+and
+\(f_e(t) = f(t)/(t/2)\).
+Since the three functions in
+\(\calF = \{f, f_d, f_e\}\)
+are uniformly continuous in \(\T\setminus(-\eta,\eta)\), 
+let \(\delta > 0\) be such that \(|g(t_1) - g(t_0)| < \eta\epsilon < \epsilon\)
+for \(g\in \calF\)
+whenever \(|t_1 - t_0| < \delta\). we may assume \(\delta<\eta\).
+
+Pick \(n_0\in\N\) such that \(2\pi/n_0 < \delta)/MU\) and
+take arbitrary \(n\geq n_0\).
+
+Now
+\begin{align}
+\Delta_n 
+&= \left|s_n(f;0) - \frac{1}{\pi}\int_{-\pi}^\pi f(t)\sin nt/t\,dt \right| 
+   \notag \\
+&= \left|\frac{1}{2\pi} \int_{-\pi}^\pi f(t)H_n(t)\,dt \right| 
+ = 
+   \frac{1}{2\pi}
+   \left|
+     \int_{-\eta}^\eta \cdots + \int_{\T\setminus[-\eta,+\eta]} \cdots
+   \right| \notag \\
+&\leq 
+     \frac{1}{2\pi}
+     \left(
+         2MU\epsilon
+       + \left|\int_{-\pi}^{-\eta} f(t)H_n(t),dt\right|
+       + \left|\int_\eta^\pi f(t)H_n(t),dt\right|
+     \right)  \label{eq:5.22:2int}
+\end{align}
+
+We will estimate the last two terms can also be as small as desired.
+We will workout the last ($t$-positive) one. % , the other is similar.
+For abbreviation, put \(\nu = (n+1/2)\).
+The periods of 
+\(\sin(\nu t)\) and \(\sin(nt)\) 
+are \(\gamma_d=2\pi/\nu = 4\pi/(2n+1)\)
+and \(\gamma_e=2\pi/n)\) respectably.
+We will separate the integration segments to whole periods as available.
+For \(\iota=d,e\) (as symbols), 
+find the minimal \(l_\iota\) and maximal \(h_\iota\) such that 
+\(\eta\leq l_\iota \gamma_\iota\) and \(h_\iota\gamma_\iota \leq \pi\).
+The ``gaps'' size are
+\begin{align*}
+(l_d\gamma_d - \eta ) + (\pi - h_d\gamma_d) < 2\gamma_d &= 2\pi/(2n+1)\\
+(l_e\gamma_e - \eta ) + (\pi - h_e\gamma_e) < 2\gamma_e &= 2\pi/n.
+\end{align*}
+Now
+\begin{eqnarray*}
+\left|\int_\eta^\pi f(t)H_n(t),dt\right|
+&\leq&
+    \left|\int_\eta^{\max(l_d\gamma_d,l_e\gamma_e)} f(t)H_n(t)\,dt\right| \\
+& &  + \left|\sum_{k=l_d}^{h_d-1} \int_{k\gamma_d}^{(k+1)\gamma_d} 
+           f_d(t)\sin(\nu t)\,dt\right| 
+     + \left|\sum_{k=l_e}^{h_e-1} \int_{k\gamma_e}^{(k+1)\gamma_e}
+           f_e(t)\sin(nt)\,dt\right| \\
+& &  + \left|\int_{\min(l_d\gamma_d,l_e\gamma_e)}^\pi f(t)H_n(t)\,dt\right| \\
+&\leq& 2\pi MU/n \\
+& &  + \left|\sum_{k=l_d}^{h_d-1} \int_0^{\gamma_d}
+           f_d(t+k\gamma_d)\sin\bigl(\nu (t+k\gamma_d)\bigr)\,dt\right| 
+\\ & &
+     + \left|\sum_{k=l_e}^{h_e-1} \int_0^{\gamma_e}
+           f_e(t+k\gamma_e)\sin\bigl(n(t+k\gamma_e)\bigr)\,dt\right| \\
+& &  + 2\pi MU/n \\
+&\leq& 4\pi MU/n \\
+& &  + \left|\sum_{k=l_d}^{h_d-1} \int_0^{\gamma_d/2}
+           \bigl(f_d(t+k\gamma_d) - f_d(t+k\gamma_d + \gamma_d/2)\bigr)
+           \sin\bigl(\nu (t+k\gamma_d)\bigr)\,dt\right| \\
+& &  + \left|\sum_{k=l_e}^{h_e-1} \int_0^{\gamma_e/2}
+           \bigl(f_e(t+k\gamma_e) - f_e(t+k\gamma_e + \gamma_e/2) \bigr)
+           \sin\bigl(n(t+k\gamma_e)\bigr)\,dt\right| \\
+&\leq& \epsilon
+       + (h_d - l_d)\gamma_d\epsilon/2
+       + (h_e - l_e)\gamma_e\epsilon/2. \\
+&\leq& (1+\pi/2+\pi/2)\epsilon.
+\end{eqnarray*}
+
+Similar estimation can be done to 
+\begin{equation*}
+\left|\int_{-\pi}^{-\eta} f(t)H_n(t),dt\right|.
+\end{equation*}
+Thus the last two terms in \eqref{eq:5.22:2int} can be arbitrarily small,
+and so 
+\begin{equation*}
+\lim_{n\to\infty}
+  \left|s_n(f;0) - \frac{1}{\pi}\int_{-\pi}^\pi f(t)\sin nt/t\,dt \right| = 0.
+\end{equation*}
+
+Therefore, in order to see that \(\lim_{n\to\infty} s_n(f;0)=0\), 
+it is sufficient to show that 
+\begin{equation} \label{eq:5.22.suff}
+\lim_{t\to 0} \int_{-\pi}^\pi f(t)\sin nt/t\,dt = 0.
+\end{equation}
+
+{\small
+Note that it is \emph{not} necessarily that \(\lim_{t\to 0}f(t)/t = 0\).
+}
+
+Let $K$ be such that \(|f(x)-f(y)|/|x-y|^\alpha\) for all \(x\neq y\).
+Then 
+\begin{equation*}
+|f(t)/t| 
+= |f(t)| |t|^{\alpha-1}/|t|^\alpha
+\leq K |t|^{\alpha-1}
+\end{equation*}
+for \(t\neq 0\). Thus
+\begin{equation*}
+\|f/t\|_1
+= \frac{1}{2\pi} \int_{-\pi}^\pi |f(t)/t|\,dt 
+\leq \frac{1}{2\pi} \int_{-\pi}^\pi K|t|^{\alpha-1}\,dt 
+% = \frac{K}{\alpha\pi}\pi^\alpha.
+= K\pi^{\alpha-1}/\alpha < \infty
+\end{equation*}
+which shows that \(f_e = f(t)/t \in L^1(\T)\).
+Now
+\begin{equation*}
+\int_{-\pi}^\pi f(t)\sin nt/t\,dt 
+= (2\pi/2i)\bigl(\hat{f_e}(n) - \hat{f_e}(n)\bigr).
+\end{equation*}
+By the Riemann-Lebesgue lemma \(\lim_{n\to\infty} \hat{f_e}(n) = 0\).
+Hence \eqref{eq:5.22.suff} holds.
+
+All the above bounds and minimal (\(\delta\), \(\eta\)) values
+could have been taken for any value other than \(t=0\).
+So we could have the limit converge uniformly
+also for \(f_{\tau}(t) = f(t+\tau) - f(\tau)\).
+
+
+\iffalse
+Define \(f_\tau(t) = f(t + \tau)\).
+Now 
+\begin{align*}
+2\pi s_n(f;x)
+&= \int_{\pi}^\pi f(t)D_n(x - t)\,dt
+ = \int_{\pi}^\pi f(t+x)D_n(x - t + x)\,dt
+ = \int_{\pi}^\pi f_x(t)D_n(-t)\,dt \\
+& = 2\pi s_n(f_x;0).
+\end{align*}
+Clearly \(f\in\Lip_\alpha\) iff  \(f_x\in\Lip_\alpha\).
+Thus it is sufficient to to show that \(\lim_{n\to\infty} s_n(f;0) = f(0)\).
+By looking at \(g(t) = f(t) - f(0)\) we see that 
+similarly 
+Clearly \(f\in\Lip_\alpha\) iff  \(g\in\Lip_\alpha\)
+and \(s_n(f)\) differs from \(s_n(g)\) by the constant \(\hat{f}(0)\).
+Thus we may also assume \(f(0)=0\).
+
+{\small
+Note that it is \emph{not} necessarily that \(\lim_{t\to 0}f(t)/t = 0\).
+}
+
+Let $K$ be such that \(|f(x)-f(y)|/|x-y|^\alpha\) for all \(x\neq y\).
+Then 
+\begin{equation*}
+|f(t)/t| 
+= |f(t)| |t|^{\alpha-1}/|t|^\alpha
+\leq K |t|^{\alpha-1}
+\end{equation*}
+fot \(t\neq 0\). Thus
+\begin{equation*}
+\|f/t\|_1
+= \frac{1}{2\pi} \int_{-\pi}^\pi |f(t)/t|\,dt 
+\leq \frac{1}{2\pi} \int_{-\pi}^\pi K|t|^{\alpha-1}\,dt 
+% = \frac{K}{\alpha\pi}\pi^\alpha.
+= K\pi^{\alpha-1}/\alpha < \infty
+\end{equation*}
+which shows that \(f(t)/t \in L^1(\T)\).
+\fi
+
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}

@@ -1,0 +1,180 @@
+% -*- latex -*-
+
+\input{mymacs}
+\newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!!}}
+
+\usepackage{subfig}
+\usepackage[metapost]{mfpic}
+\opengraphsfile{myfigs}
+
+
+\title{Notes and Solutions to Exercises \\
+          from \\
+       Real and Complex Analysis / Walter Rudin}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{chapter}{-2}
+\chapterTypeout{About this Document}
+
+Here I try to solve problems
+from the book \cite{RudinRCA80}
+\begin{center}
+\textbf{Real and Complex Analysis}\\
+by
+\textbf{Walter Rudin}
+
+Whenever there is reference to theorem or lemma, it implicitly
+targets this text, unless otherwise specified.
+Furthermore, we have in this document lemmas or theorems
+which are referred to as \emph{local} lemma
+or \emph{local} theorem.
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Notation}
+
+\input{notations}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Prologue: The Exponential Function}
+
+\input{trig}
+
+\iftrue
+ \input{rudinrca1}
+ \input{rudinrca2}
+ \input{rudinrca3}
+ \input{rudinrca4}
+ \input{rudinrca5}
+ \input{rudinrca6}
+ \input{rudinrca7}
+ \input{rudinrca8}
+ \input{rudinrca9}
+ \input{rudinrca10}
+ \input{rudinrca11}
+\else
+ % \setcounter{chapter}{0}  \input{rudinrca1}
+ % \setcounter{chapter}{1}  \input{rudinrca2}
+ % \setcounter{chapter}{2}  \input{rudinrca3}
+ % \setcounter{chapter}{3}  \input{rudinrca4}
+ \setcounter{chapter}{4}  \input{rudinrca5}
+ % \setcounter{chapter}{5}  \input{rudinrca6}
+ % \setcounter{chapter}{6}  \input{rudinrca7}
+ % \setcounter{chapter}{7}  \input{rudinrca8}
+ % \setcounter{chapter}{8}  \input{rudinrca9}
+ \setcounter{chapter}{9}  \input{rudinrca10}
+ \setcounter{chapter}{10}  \input{rudinrca11}
+\fi
+
+
+
+\iffalse
+\setcounter{chapter}{10}
+\input{rudinrca11}
+\input{rudinrca12}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\chapterTypeout{Hausdorff's Maximality Theorem}
+
+\index{Hausdorff}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\index{Zorn}
+\section{Equivalence of Zorn Lemma}
+
+We recall the definition of a \emph{chain}
+
+Given a partially ordered set $X$, a subset \(A\subset X\) is a chain
+if the inherited order is a total order.
+
+Let's state Zorn's lemma.
+\begin{llem}
+Let $X$ be a partially ordered set. If each chain in $X$ has an upper bound
+in $X$, then $X$ has a maximal element.
+\end{llem}
+
+This is similar to Hausdorff's maximality theorem.
+Let's state it and prove it rigorously.
+
+\begin{llem}
+Let $X$ be a partially ordered set.
+% The following statements are equivalent
+\begin{itemize}
+ \item[(\textbf{H})]
+ If $X$ be a partially ordered set then there exists a maximal chain.
+ \item[(\textbf{Z})]
+ If $X$ be a partially ordered set and for every chain \(C\subset X\)
+ there exists \(b\in X\) such that \(x\leq b\) for all \(x\in C\).
+\end{itemize}
+\end{llem}
+\begin{thmproof}
+Assume (\textbf{H}) is true.
+Let $X$ be a partially ordered set such that every chain \(C\subset X\)
+has a upper bound \(b\in X\). By (\textbf{H}) there exists a maximal chain
+\(C_M\). Let $b$ be an upper bound of \(C_m\). If by negation
+$b$ is not a maximal element of $X$ then there exists \(u\in X\)
+such that \(b<u\), but then \(C_m \subsetneq C_m \cup \{u\}\)
+and both are chains, contradiction to the maximality of \(C_m\).
+Thus $b$ is a maximal element in $X$.
+
+Conversely, assume (\textbf{Z}) is true. Let $X$ be a partially ordered set.
+Let \frakC\ be the family of chains in $X$.
+Order the (chain) elements of \frakC\ by inclusion.
+For each chain \(c \in \frakC\),
+(chain of chains) its union \(u = \cup c\) is also a chain and is
+an upper bound of $c$. Thus the assumption of (\textbf{Z}) hold
+for \frakC\ (as $X$)
+and hence there is a maximal element \(C_M\in\frakC\) which is a maximal chain.
+\end{thmproof}
+
+The (\textbf{H}) statement may be viewed as stronger since
+when showing (\textbf{Z}) we stayed with the same $X$.
+While when showing the converse, we needed to apply $X$
+on \(\frakC\subset P(X)\).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain}
+\bibliographystyle{alpha}
+\bibliography{rudinrca}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printindex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\closegraphsfile
+\end{document}
+

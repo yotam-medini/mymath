@@ -1,0 +1,3563 @@
+% -*- latex -*-
+% $Id: rudinrca3.tex,v 1.4 2008/07/19 08:56:55 yotam Exp $
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{\ensuremath{L^p}-Spaces} % Chapter 3
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+\index{Jensen}
+In 3.3~Theorem (Jensen's Inequality) to derive the (2) inequality:
+\begin{equation*}
+ \varphi(s) \geq \varphi(t) + \beta\varphi(s-t) \qquad (a<s<b)
+\end{equation*}
+one should check the cases: \(s<t\) and \(t<s\) separately.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inequalities}
+
+Here we bring and use results from \cite{Hardy:1952:I}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proportional Vectors}
+
+Two vectors \(\mathbf{a} = (a_i)_{i=1}^n\)
+and \(\mathbf{b} = (b_i)_{i=1}^n\) are said to be \emph{proportional}
+iff there exist a scalar \(\mu\) such that
+\(\mu a = b\)  or \( a = \mu b\).
+
+The following trivial lemmas do not need a detailed proof.
+
+\begin{lem}
+Any vector is proportional to the zero vector of same dimensionality.
+\end{lem}
+
+\begin{lem}
+For non zero vectors, the proportionality
+is an equivalence relation.
+\end{lem}
+
+
+\begin{lem} \label{lem:prop:det}
+The vectors \(\mathbf{a} = (a_i)_{i=1}^n\)
+and \(\mathbf{b} = (b_i)_{i=1}^n\) are proportional
+iff \(a_i b_j - a_j b_i = 0\) for all \(1\leq i,j \leq n\).
+\end{lem}
+
+
+\begin{lem}
+Given a \(m\times n\) matrix \(A = (a)_{ij}\) where \(1\leq i \leq m\)
+and \(1\leq j \leq n\).
+The $m$ row vectors are proportional to each other
+iff
+the $n$ column vectors are proportional to each other.
+\end{lem}
+\begin{thmproof}
+Applying Lemma~\ref{lem:prop:det}.
+\end{thmproof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cauchy Inequality}
+
+Let's prove the Cauchy inequality.
+\begin{thm} \label{thm:cauchy}
+\begin{equation} \label{eq:cos}
+ \left(\sum_{i=1}^n a_i b_i\right)^2 \leq
+ \left(\sum_{i=1}^n a_i^2\right)
+ \left(\sum_{i=1}^n b_i^2\right)
+\end{equation}
+and equality happens iff
+\(\mathbf{a}=(a_i)_{1\leq i\leq n}\)
+and
+\(\mathbf{b}=(b_i)_{1\leq i\leq n}\)
+are proportional.
+\end{thm}
+\begin{thmproof}
+Looking at the \(n^2\) square terms sum
+\begin{equation}
+D = \sum_{1\leq i,j \leq n} (a_i b_j - a_j b_i)^2 \geq 0
+\end{equation}
+carefully, we see that \(D=0\) iff
+\(\mathbf{a}\) and \(\mathbf{b}\) are proportional.
+Evaluate
+\begin{eqnarray*}
+D
+  &=& \sum_{1\leq i,j \leq n} (a_i b_j - a_j b_i)^2 \\
+  &=& \sum_{\ineqjton} (a_i b_j - a_j b_i)^2 \\
+  &=& \sum_{\ineqjton} a_i^2 b_j^2 + a_j^2 b_i^2
+                             - 2 a_i a_j b_i b_j \\
+  &=& 2 \sum_{\ineqjton} a_i^2 b_j^2 - a_i a_j b_i b_j \\
+\end{eqnarray*}
+
+With the following definition of \(\Delta\), the inequality (\ref{eq:cos})
+is equivalent to \(\Delta\geq 0\), which we will now show.
+\begin{eqnarray*}
+ \Delta
+ &=& \left(\sum_{i=1}^n a_i^2\right) \left(\sum_{i=1}^n b_i^2\right) -
+     \left(\sum_{i=1}^n a_i b_i\right)^2 \\
+ &=& \left(\sum_{\ineqjton}{a_i^2 b_j^2} + \sum_{i=1}^n{a_i^2 b_i^2} \right)
+     -
+     \left(
+       \sum_{i=1}^n{a_i^2 b_i^2} +
+       \sum_{\ineqjton}{a_i a_j b_i b_j}
+     \right) \\
+ &=& \sum_{\ineqjton}{a_i^2 b_j^2} - \sum_{\ineqjton}{a_i a_j b_i b_j} \\
+ &=& D/2
+\end{eqnarray*}
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Arithmetic and Geometric Means}
+
+Our main result here is showing that the geometric mean is bounded
+by the arithmetic mean. The book \cite{Hardy:1952:I} gives several proofs,
+here we follow the shortest (but less intuitive).
+
+\paragraph{Definitions:}
+Let \seqn{q} satisfy \(0\leq q_i\leq 1\) and
+\(\sum_{i=1}^n q_i = 1\) and let \(a=\seqn{a}\) be non negative scalars.
+\begin{itemize}
+ \item For \(0<r<\infty\) the $r$-mean is
+   \begin{equation}
+     \frakM_r(a) = \left(\sum_{i=1}^n q_i a_i^r\right)^{1/r}
+   \end{equation}
+ \item We call \(\frakM_1(a)\) the \emph{arithmetic mean}.
+ \item We define the \emph{geometric mean} by
+        \(\frakG(a) = \prod_{i=1}^n a_i^{q_i}\).
+\end{itemize}
+
+\begin{lem} \label{lem:Mr:Mr2}
+Given the assumption of the above definitions,
+\begin{equation} \label{eq:Mr:Mr2}
+\frakM_r(a) \leq \frakM_{2r}(a)
+\end{equation}
+where equality holds
+iff \(a_i=a_1\) for all \(1\leq i \leq n\).
+\end{lem}
+\begin{thmproof}
+The (\ref{eq:Mr:Mr2}) inequality
+is equivalent (after taking power of \(2r\)) to
+\begin{equation*}
+\left(\sum_{i=1}^n q_i a_i^r\right)^2  \leq \sum_{i=1}^n q_i a_i^{2r}
+\end{equation*}
+Appling Cauchy's Theorem~\ref{thm:cauchy} substituting \(a_i\) and \(b_i\)
+by \(\sqrt{q_i}\) and \(a_i^r\sqrt{q_i}\) gives
+\begin{eqnarray*}
+\left(\sum_{i=1}^n q_i a_i^r\right)^2
+&=& \left(\sum_{i=1}^n \sqrt{q_i} \cdot (a_i^r\sqrt{q_i})\right)^2 \\
+&\leq & (\sum_{i=1}^n \sqrt{q_i}^2)
+        (\sum_{i=1}^n (a_i^r\sqrt{q_i})^2) \\
+&=& 1 \cdot \sum_{i=1}^n q_i a_i^{2r}
+\end{eqnarray*}
+Now that inequality was shown, note that equality holds iff
+\((\sqrt{q_i})_{i=1}^n\) and
+\((a_i^r\sqrt{q_i}_{i=1}^n)\)  are proportional which is equivalent
+to \(a_i^r\) all be equal. Since \(a_i\geq 0\), this
+is equivalent to all \(a_i\) being equal.
+\end{thmproof}
+
+
+Now we will justify the notation \(\frakM_0 = \frakG\).
+\begin{lem} \label{lem:meanr0:g}
+Given the assumption of the above definitions,
+\begin{equation*}
+\lim_{r\to 0} \frakM(a) = \frakG(a)\,.
+\end{equation*}
+\end{lem}
+\begin{thmproof}
+Given \(r>0\), we compute
+\begin{eqnarray}
+\frakM_r(a)
+ &=& \notag
+  \exp\left(\log\left(\biggl(\sum_{i=1}^n q_i a_i^r\biggr)^{1/r}\right)\right) \\
+ &=& \notag
+  \exp\left(\frac{1}{r}\log\biggl(\sum_{i=1}^n q_i a_i^r\biggr)\right) \\
+ &=& \notag
+  \exp\left(\frac{1}{r}\log\biggl(\sum_{i=1}^n q_i a_i^r\biggr)\right) \\
+ &=& \label{eq:Mr0G:taylor}
+  \exp\biggl(\log\bigl(1 + r\sum_{i=1}^n q_i \log(a_i) + O(r^2)\bigr)\big/r\biggr)
+\end{eqnarray}
+
+Where the equality in (\ref{eq:Mr0G:taylor}) is the Taylor expansion
+of \(\sum_{i=1}^n q_i a_i^r\)
+at \(r=0\). Note \(a_i^r = e^{r\log(a_i)}\) and so
+\(\frac{d}{dr} q_i a_i^r = q_i r \log(a_i)a_i^r\)
+
+Before taking limit of the above, we concentrate first on subexpression.
+Put
+\begin{equation*}
+ % L_r = \log\bigl(1 + r\sum_{i=1}^n q_i \log(a_i) + O(r^r)\bigr) \bigm/ r
+ U(r) = 1 + r\sum_{i=1}^n q_i \log(a_i) + O(r^r)
+\end{equation*}
+and by l'Hospital's rule
+\begin{eqnarray*}
+\lim_{r\to 0} \log(U(r))/r
+&=&
+ \lim_{r\to 0} \frac{d}{dr} \log(U(r)) \\
+&=&
+ \lim_{r\to 0} \left(\frac{d}{dr} U(r) \right) \bigm/ U(r)  \\
+&=&
+ \lim_{r\to 0} \left(\sum_{i=1}^n q_i \log(a_i) + \frac{d}{dr}O(r^r)\right) / 1
+ \\
+&=& \lim_{r\to 0} \left(\sum_{i=1}^n q_i \log(a_i) + O(r)\right) \\
+&=& \sum_{i=1}^n q_i \log(a_i)
+\end{eqnarray*}
+
+
+Finally the computation of the desired limit
+\begin{eqnarray*}
+\lim_{r\to 0} \frakM_r(a)
+&=&
+ \lim_{r\to 0}
+ \exp\biggl(\log\bigl(1 + r\sum_{i=1}^n q_i \log(a_i) +
+                      O(r^2)\bigr)\big/r\biggr) \\
+&=&  \lim_{r\to 0} \exp(\log(U(r))/r) \\
+&=&  \exp\left(\sum_{i=1}^n q_i \log(a_i)\right) \\
+&=&  \prod_{i=1}^n a_i^{q_i} \\
+&=&  \frakG(a)
+\end{eqnarray*}
+\end{thmproof}
+
+The goal of the this section is to compare the
+geometric mean \(\frakG(a)\) with the arithmetic mean \(\frakM_1(a)\)
+\begin{thm} \label{thm:geo:arith}
+Given the assumption of the above definitions,
+\begin{equation*}
+\frakG(a) \leq \frakM_1(a)
+\end{equation*}
+where equality holds iff
+iff \(a_i=a_1\) for all \(1\leq i \leq n\).
+\end{thm}
+\begin{thmproof}
+Utilizing lemma~\ref{lem:Mr:Mr2} and lemma~\ref{lem:meanr0:g},
+we compute
+\begin{equation*}
+ \frakM_1(a) \geq \frakM_{\frac{1}{2}}(a)
+ \cdots     \geq \frakM_{2^{-k}}(a)
+ \cdots     \geq \lim_{m\to\infty} \frakM_{2^{-m}}(a) = \frakG(a).
+\end{equation*}
+The inequalities are equalities, as was shown in lemma~\ref{lem:Mr:Mr2},
+iff \(a_i\)'s are constant.
+\end{thmproof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generalizing Cauchy Inequality}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lem} \label{lem:eqgeom}
+Let $n$ and $g=2^m$ be positive integers,
+if \(a_{ij}\geq 0\)
+for all \(1\leq i \leq n\), \(1\leq j \leq g\),
+then
+\begin{equation} \label{eq:eqgeom}
+ \left(\sum_{i=1}^n \prod_{j=1}^g a_{ij}\right)^g
+ \leq
+ \prod_{j=1}^g \sum_{i=1}^n a_{ij}^g
+\end{equation}
+Equality happens iff (the columns)
+\(\mathbf{a}_j = (a_{ij})_{i=1}^n\) are proportional, or at least
+one of them is all zero.
+\end{lem}
+\begin{thmproof}
+The case where some \(\mathbf{a}_i\) is all zeros is trivial,
+so we exclude it from the rest of the proof.
+By induction on $m$.
+Assume \(m=0\), then \(g=1\) and (\ref{eq:eqgeom}) is a trivial equality.
+Also being single dimensional vectors, they are proportional.
+The case of \(m=1\), that is \(g=2\) is proved in Theorem~\ref{thm:cauchy}.
+Now assume that the lemma holds for \(m=k\geq 1\).
+Consider the case of \(m=k+1\)
+\begin{eqnarray}
+ \left(\sum_{i=1}^{n} \prod_{j=1}^{2^{k+1}} a_{ij}\right)^{2^{k+1}}
+ &=& \notag
+ \left(\sum_{i=1}^{n}
+       \Biggl(
+       \biggl(\prod_{j=1}^{2^k} a_{ij}\biggr)
+       \biggl(\prod_{j=2^k + 1}^{2^{k+1}} a_{ij}\biggr)
+       \Biggr)
+ \right)^{2\cdot 2^k} \\
+ &\leq& \label{eq:eqgeom:induc1}
+ \left(
+ \Biggl(\sum_{i=1}^{n}
+       \biggl(\prod_{j=1}^{2^k} a_{ij}\biggr)^2
+ \Biggr)
+ \cdot
+ \Biggl(\sum_{i=1}^{n}
+       \biggl(\prod_{j=2^k+1}^{2^{k+1}} a_{ij}\biggr)^2
+ \Biggr)
+ \right)^{2^k} \\
+ &=& \notag
+ \left(\sum_{i=1}^{n}
+       \prod_{j=1}^{2^k} a_{ij}^2
+ \right)^{2^k}
+ \cdot
+ \left(\sum_{i=1}^{n}
+       \prod_{j=2^k+1}^{2^{k+1}} a_{ij}^2
+ \right) ^{2^k}
+ \\
+ &\leq& \label{eq:eqgeom:induc2}
+ \left(\prod_{j=1}^{2^k} \,\sum_{i=1}^n a_{ij}^{2^{k+1}}\right)
+ \cdot
+ \left(\prod_{j=2^k+1}^{2^{k+1}} \;\sum_{i=1}^n a_{ij}^{2^{k+1}}\right) \\
+ &=& \notag
+ \prod_{j=1}^{2^{k+1}} \,\sum_{i=1}^n a_{ij}^{2^{k+1}}
+\end{eqnarray}
+The inequality (\ref{eq:eqgeom:induc1}) is from Cauchy's Theorem~\ref{thm:cauchy}
+and the inequality (\ref{eq:eqgeom:induc2}) by induction.
+The inequalities are equality iff \(\mathbf{a}_i\) are proportional.
+\end{thmproof}
+
+Now we remove the restriction of $g$ being a power of $2$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lem} \label{lem:cauchy:ng}
+Let $n$ and $g$ be positive integers,
+if \(a_{ij}\geq 0\)
+for all \(1\leq i \leq n\), \(1\leq j \leq g\),
+then
+\begin{equation} \label{eq:eqgeom:n}
+ \left(\sum_{i=1}^n \prod_{j=1}^g a_{ij}\right)^g
+ \leq
+ \prod_{j=1}^g \sum_{i=1}^n a_{ij}^g
+\end{equation}
+Equality happens iff (the columns)
+\(\mathbf{a}_j = (a_{ij})_{i=1}^n\) are proportional, or at least
+one of them is all zero.
+\end{lem}
+\begin{thmproof}
+The case where some \(\mathbf{a}_i\) is all zeros is trivial,
+so we exclude it from the rest of the proof.
+
+If the vectors are proportional, then there are \((c_i)_{i=1}^n\)
+such that \(a_{ij} = c_i a_{1j}\)
+for all \(1\leq i \leq n\), \(1\leq j \leq g\). Inthis case
+\begin{equation*}
+\left(\sum_{i=1}^n \prod_{j=1}^g a_{ij}\right)^g =
+\left(\sum_{i=1}^n c_i \prod_{j=1}^g a_{1j}\right)^g =
+\left(\left(\sum_{i=1}^n c_i\right) \prod_{j=1}^g a_{1j}\right)^g =
+\left(\prod_{j=1}^g \sum_{i=1}^n c_i a_{1j}\right)^g
+\end{equation*}
+
+
+The case where \(g=2^m\) for some integer $m$ was proved
+in the previous Lemma.
+Let $m$ be a positive integer such that \(2^{m-1} < g < 2^m\).
+
+Put
+\begin{equation*}
+T_i = \prod_{j=1}^g a_{ij}^{1/{2^m}}
+\end{equation*}
+and define \(2^m\)-dimensional vectors
+\begin{equation*}
+b_{ij} = \left\{\begin{array}{ll}
+               a_{ij}^{g/{2^m}} \quad & 1 \leq j \leq g\\
+               T_i              \quad & g <    j \leq 2^m
+               \end{array}\right.
+               \qquad \textrm{(for}\quad 1\leq i \leq n, \;
+                                         1 \leq j \leq 2^m \textrm{)}
+\end{equation*}
+Note that
+\begin{equation*}
+\prod_{j=1}^{2^m} b_{ij}
+= \left(\prod_{j=1}^{g} a_{ij}^{g/{2^m}} \right)
+  \left(\prod_{i=g+1}^{2^m} T_i \right)
+= T_i^g T_i^{2^m-g} = T_i^{2^m}
+= \prod_{j=1}^g a_{ij}
+\end{equation*}
+
+Applying Lemma~\ref{lem:eqgeom} we have
+\begin{equation*}
+ \left(\sum_{i=1}^n \prod_{j=1}^{2^m} b_{ij}\right)^{2^m}
+ \leq
+ \prod_{j=1}^{2^m} \sum_{i=1}^n b_{ij}^{2^m}
+\end{equation*}
+With this we can compute
+\begin{eqnarray}
+\left(\sum_{i=1}^n \prod_{j=1}^g a_{ij}\right)^{2^m}
+&=&  \left(\sum_{i=1}^n \prod_{j=1}^{2^m} b_{ij}\right)^{2^m} \notag \\
+&\leq& \label{eq:eqgeom:useinduc}
+    \prod_{j=1}^{2^m} \sum_{i=1}^n b_{ij}^{2^m} \\
+&=& \notag
+        \left(\prod_{j=1}^{g} \sum_{i=1}^n b_{ij}^{2^m}\right)
+        \left(\prod_{j=g+1}^{2^m} \sum_{i=1}^n b_{ij}^{2^m}\right) \\
+&=&     \notag
+        \left(\prod_{j=1}^{g} \sum_{i=1}^n a_{ij}^g\right)
+        \left(\sum_{i=1}^n \prod_{j=1}^g a_{ij} \right)^{2^m - g}
+\end{eqnarray}
+
+The inequality (\ref{eq:eqgeom:useinduc})
+is by previous lemma and it is equality iff the columns vectors
+\(\mathbf{b}_j = (b_{ij})_{i=1}^n\) are proportional.
+It is easy to see that the latter condition is equivalent
+to the columns vectors \(\mathbf{a}_j\) being proportional.
+
+Now \(F=\sum_{i=1}^n \prod_{j=1}^g a_{ij} = 0\) iff
+\(\prod_{j=1}^g a_{ij} = 0\) for all \(1\leq i \leq n\).
+In this case (\ref{eq:eqgeom:n}) holds with strict inequality,
+since all the columns \(\mathbf{a}_j=0\), as the other case was excluded.
+
+So we now may assume \(\sum_{i=1}^n \prod_{j=1}^g a_{ij} \neq 0\).
+Thus from the recent inequality, we can derive (dividing by \(F^{2^m-g}\))
+\begin{equation*}
+\left(\sum_{i=1}^n \prod_{j=1}^g a_{ij}\right)^g
+\leq \left(\prod_{j=1}^{g} \sum_{i=1}^n a_{ij}^g\right)
+\end{equation*}
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hold\"er Inequality}
+
+We begin with special cases that will support
+the proof of the general Holder Inequality.
+
+\begin{lem} \label{lem:holder:eq}
+Let $n$ and $g$ be positive integers,
+if \(a_{ij}\geq 0\)
+for all \(1\leq i \leq n\), \(1\leq j \leq g\),
+then
+\begin{equation}
+ \sum_{i=1}^n \prod_{j=1}^{1/g} a_{ij}^{1/g}
+ \leq
+ \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{1/g}
+\end{equation}
+Equality happens iff (the columns)
+\(\mathbf{a}_j = (a_{ij})_{i=1}^n\) are proportional, or at least
+one of them is all zero.
+\end{lem}
+\begin{thmproof}
+Using Lemma~\ref{lem:cauchy:ng},
+but substituting \(a_{ij}\) with \(a_{ij}^{1/g}\)
+we have
+\begin{equation*}
+ \left(\sum_{i=1}^n \prod_{j=1}^g a_{ij}^{1/g}\right)^g
+ \leq
+ \prod_{j=1}^g \sum_{i=1}^n (a_{ij}^{1/g})^g
+\end{equation*}
+Equivelantly
+\begin{equation*}
+ \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{1/g}
+ \leq
+ \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{1/g}
+\end{equation*}
+and equality happens as was needed to show, since \(\mathbf{a}_j\)
+are proportional iff \(\overline{\mathbf{a}}_j = (a_{ij}^{1/g})_{i=1}^n\)
+that were used here are proportional.
+\end{thmproof}
+
+
+Next generalization would be with varying powers.
+\begin{lem} \label{lem:holder:rat}
+Let $n$ and $g$ be positive integers,
+if \(a_{ij}\geq 0\)
+for all \(1\leq i \leq n\), \(1\leq j \leq g\),
+then
+if \((\alpha_j)_{j=1}^g\) are rationals satisfying \(0\leq \alpha_j \leq 1\)
+and \(\sum_{j=1}^g \alpha_j = 1\) then
+\begin{equation}
+ \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{\alpha_j}
+ \leq
+ \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{\alpha_j}
+\end{equation}
+Equality happens iff (the columns)
+\(\mathbf{a}_j = (a_{ij})_{i=1}^n\) are proportional, or at least
+one of them is all zero.
+\end{lem}
+\begin{thmproof}
+Being rationals, we can find integers $M$ and \(p_j\) such that
+\(\alpha_j = p_j/M\) for \(1\leq j \leq g\).
+By viewing
+\begin{equation*}
+a_{ij}^{p_j/M} = \left(a_{ij}^{1/M}\right)^{p_j}
+\end{equation*}
+noting that \(\sum_{j=1}^g p_j = M\),
+by converting to equal power (\(1/M\)),
+we use Leamm~\ref{lem:holder:eq}
+\begin{equation*}
+     \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{\alpha_j}
+ =   \sum_{i=1}^n \prod_{j=1}^g \left(a_{ij}^{1/M}\right)^{p_j}
+\leq \prod_{j=1}^g \left(\left(\sum_{i=1}^n a_{ij}\right)^{1/M}\right)^{p_j}
+=    \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{p_j/M}
+=    \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{\alpha_j}
+\end{equation*}
+Again the inequality is an equality, when the same conditions
+required in Lemma~\ref{lem:holder:eq} hold.
+\end{thmproof}
+
+Finally removing the restriction for \(\alpha_i\in\Q\),
+\textbf{Hold\"er}'s inequality,
+\begin{llem} \label{lem:holder}
+Let $n$ and $g$ be positive integers,
+if \(a_{ij}\geq 0\)
+for all \(1\leq i \leq n\), \(1\leq j \leq g\),
+then
+if \((\alpha_j)_{j=1}^g\) are reals satisfying \(0\leq \alpha_j \leq 1\)
+and \(\sum_{j=1}^g \alpha_j = 1\) then
+\begin{equation} \label{eq:holder}
+ \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{\alpha_j}
+ \leq
+ \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{\alpha_j}
+\end{equation}
+Equality happens iff (the columns)
+\(\mathbf{a}_j = (a_{ij})_{i=1}^n\) are proportional, or at least
+one of them is all zero.
+\end{llem}
+\begin{thmproof}
+By applying limit process with rationals converting to reals to
+Lemma~\ref{lem:holder:rat} we get the desired result, except for the
+(temporary) loss of strict inequality (for the non proportional case).
+So for now we know that
+\begin{itemize}
+ \item  If the vectors \(\mathbf{a}_j\) are proportional
+        or at least one of the is zero,
+        then equality holds in (\ref{eq:holder}).
+ \item  Otherwise, (\ref{eq:holder}) holds.
+\end{itemize}
+We would now show that in the second case, it is indeed strict inequality.
+
+We now assume that  \(\alpha_j \neq 0\)
+for all \(1\leq j \leq g\). Otherwise,
+we can simply drop the corresponding $j$-th columns,
+without effecting the expression values in (\ref{eq:holder}).
+For \(1\leq j \leq g\) we
+partition \(\alpha_j = q_j + \beta_j\)
+such that both \(q_j, \beta_j > 0\) and \(q_j \in \Q\).
+Put,
+\(q = \sum_{j=1}^g q_j\) and \(\beta = \sum_{j=1}^g \beta_j\).
+Clearly \(q+\beta=1\) and \(q,\beta \in \Q\).
+Now we define
+\begin{eqnarray*}
+Q_i &=& \prod_{j=1}^g a_{ij}^{q_j/q} \\
+B_i &=& \prod_{j=1}^g a_{ij}^{\beta_j/\beta}.
+\end{eqnarray*}
+We know
+\begin{eqnarray}
+\sum_{i=1}^n Q_i = \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{q_j/q}
+  &<& \label{eq:holder:Qlt}
+      \prod_{j=1}^g \left(\sum_{i=1}^n  a_{ij}\right)^{q_j/q} \\
+\sum_{i=1}^n B_i = \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{\beta_j/\beta}
+  &\leq& \label{eq:holder:Bleq}
+      \prod_{j=1}^g \left(\sum_{i=1}^n  a_{ij}\right)^{\beta_j/\beta}
+\end{eqnarray}
+where (\ref{eq:holder:Qlt}) resulted by Lemma~\ref{lem:holder:rat}
+while (\ref{eq:holder:Bleq}) was shown in the beginning of the proof.
+Finally
+\begin{eqnarray*}
+ \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{\alpha_j}
+ =    \sum_{i=1}^n Q_i^q B_i^\beta
+ &\leq& \left(\sum_{i=1}^n Q_i\right)^q \left(\sum_{i=1}^n  B_i\right)^\beta \\
+ &<&
+    \prod_{j=1}^g
+          \left(\sum_{i=1}^n  a_{ij}\right)^{q_j}
+          \left(\sum_{i=1}^n  a_{ij}\right)^{\beta_j}
+ =   \prod_{j=1}^g
+          \left(\sum_{i=1}^n  a_{ij}\right)^{\alpha_j}
+\end{eqnarray*}
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H\"older's Inequality for Integrals}
+
+\paragraph{Definition.} Two functions $f$, $g$
+are said to be \emph{effectively proportional} if
+iff there exist a scalar \(\mu\) such that
+\(\mu f = g \;\aded\)  or \(f = \mu g\;\aded\).
+
+
+\begin{llem} \textnormal{(\cite{Hardy:1952:I} \textbf{188})}
+\label{llem:hlp:188}
+If $k$ is an integer and
+\begin{itemize}
+ \item \seq{q}{k} positive such that \(\sum_{i=1}^k q_i = 1\).
+ \item \seq{f}{k} are measurable functions on \(X\to [0,\infty]\).
+ \item \(\mu\) a positive measure on $X$.
+\end{itemize}
+Then
+\begin{equation} \label{eq:HLP:188}
+% \left\int_X \prod_{i=1}^k f_i^{q_i}\,d\mu\right. \leq
+\int_X \prod_{i=1}^k f_i^{q_i}\,d\mu \leq
+\prod_{i=1}^k \left(\int_X f_i\,d\mu\right)^{q_i}
+\end{equation}
+where equality holds iff \seqn{f} are effectively proportional.
+\end{llem}
+
+\begin{thmproof}
+Geometric means is less or equation arithmetic mean as shown
+in \cite{RudinRCA80} [page 64, (8)]
+and also ``here'' in Theorem~\ref{thm:geo:arith}.
+Thus
+\begin{eqnarray*}
+\frac{\int_X \prod_{i=1}^k f_i^{q_i}\,d\mu}{
+ \prod_{i=1}^k \left(\int_X f_i\,d\mu\right)^{q_i}}
+ &=& \int_X \left(\frac{f_i}{\int_X f_i\,d\mu}\right)^{q_i}\,d\mu \\
+ &\leq& \int_X \sum_{i=1}^k \frac{q_i f_i}{\int_X f_i\,d\mu}\,d\mu \\
+ &=& 1.
+\end{eqnarray*}
+and (\ref{eq:HLP:188}) is clear. By local lemma~\ref{lem:holder}
+an equality happens iff
+the functions \(f_i/{\int_X f_i\,d\mu}\) are effectively proportional,
+or equivalently \(f_i\) are.
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Jensen's Strict Inequality}
+
+We would now give a variation of Theorem~3.3 (Jensen's Inequality)
+\cite{RudinRCA80}. We start with some definition and trivial results.
+
+\textbf{Definition} A real functions \(\varphi\) defined on
+a segment \((a,b)\) where \(-\infty\leq a < b \leq \infty\)
+is called \emph{strictly convex} if the inequality
+\begin{equation} \label{eq:convex:def}
+ \varphi\bigl((1-\lambda)x + \lambda y\bigr) <
+ (1-\lambda)\varphi(x) + \lambda\varphi(y)
+\end{equation}
+holds whenever \(a<x<b\), \(a<y<b\),  and \(0<\lambda<1\).
+
+Note the differences with the Definition~3.1 of \emph{convex} function,
+both with the strict inequality and avoiding \(\lambda=0,1\) cases.
+
+\iffalse
+\begin{llem} \label{lem:convex:stu}
+If \(\varphi\) is strictly convex on \((a,b)\)
+then for any $s$,$t$,$u$ such that \(s<t<u\)
+\begin{equation} \label{eq:convex:stu}
+\frac{\varphi(t) - \varphi(s)}{t-s} < \frac{\varphi(u) - \varphi(t)}{u-t}
+\end{equation}
+\end{llem}
+\begin{thmproof}
+Using \(\lambda = (t-s)(u-s)\),
+we make several simple derivations from (\ref{eq:convex:def})
+\begin{eqnarray}
+ \varphi(t) &<& \frac{u-t}{u-s}\varphi(s) + \frac{t-s}{u-s}\varphi(t) \notag \\
+  (u-t \;+\; t-s)\varphi(t) &<& (u-t)\varphi(s) + (t-s)\varphi(t) \notag \\
+  (u-t)\bigl((\varphi(t) - \varphi(s)\bigr)
+ &<& \notag
+  (t-s)\bigl(\varphi(u) - \varphi(t)\bigr) \\
+%%%
+  u\varphi(t) - u\varphi(s) - t\varphi(t) + t\varphi(s)
+ &<& \notag
+  t\varphi(u) - t\varphi(s) - s\varphi(u) + s\varphi(t) \\
+%%%
+  (u-t)\bigl(\varphi(t) - \varphi(s)\bigr)
+&<& \notag
+    (t-s)\bigl(\varphi(u) - \varphi(t)\bigr) \\
+%%%
+\frac{\varphi(t) - \varphi(s)}{t-s} &<& \frac{\varphi(u) - \varphi(t)}{u-t}
+\end{eqnarray}
+\end{thmproof}
+\fi
+
+The following lemma shows that the divided differences of
+a convex function on \((a,b))\) viewed as a function of
+two variables on \(\{(x,y): a<x<y,\; a<y<b,\; x\neq y\}\)
+is strictly increasing in each variable.
+
+\begin{llem} \label{lem:convex:stu}
+If \(\varphi\) is strictly convex on \((a,b)\)
+then for any $s$,$t$,$u$ such that \(s<t<u\)
+\begin{equation} \label{eq:convex:stu}
+\frac{\varphi(t) - \varphi(s)}{t-s}
+ < \frac{\varphi(u) - \varphi(s)}{u-s}
+ < \frac{\varphi(u) - \varphi(t)}{u-t}
+\end{equation}
+\end{llem}
+\begin{thmproof}
+To express $t$ as a convex combination
+\((1-\lambda)s + \lambda u\)
+of $s$ and $u$, we
+use \(\lambda = (t-s)(u-s)\) and
+ \(1 - \lambda = (u-t)(u-s)\).
+
+We put
+\begin{equation*}
+T = (1-\lambda)\varphi(s) + \lambda\varphi(u)
+  = \frac{u-t}{u-s} \varphi(s) + \frac{t-s}{u-s} \varphi(u).
+\end{equation*}
+Let's first establish the trivial slope equalities
+\begin{equation} \label{eq:convex:slope}
+ \frac{T-\varphi(s)}{t-s}
+ = \frac{\varphi(u)-\varphi(s)}{u-s}
+ = \frac{\varphi(u) - T}{u-t}.
+\end{equation}
+Left equality:
+\begin{eqnarray*}
+ \frac{T-\varphi(s)}{t-s}
+ &=& \frac{(u-s)(T-\varphi(s))}{(u-s)(t-s)}
+ \;=\; \frac{(u-s)T - (u-s)\varphi(s)}{(u-s)(t-s)} \\
+ &=& \frac{(u-t)\varphi(s) + (t-s)\varphi(u) - (u-s)\varphi(s)}{
+           (u-s)(t-s)} \\
+ &=& \frac{(t-s)\varphi(u) + (s-t)\varphi(s)}{(u-s)(t-s)} \\
+ &=& \frac{\varphi(u)-\varphi(s)}{u-s}
+\end{eqnarray*}
+Similarly, the right equality:
+\begin{eqnarray*}
+ \frac{\varphi(u) - T}{u-t}
+ &=& \frac{(u-s)(\varphi(u)-T)}{(u-s)(u-t)}
+ \;=\; \frac{(u-s)\varphi(u) - (u-s)T)}{(u-s)(u-t)} \\
+ &=& \frac{(u-s)\varphi(u) - (u-t)\varphi(s) - (t-s)\varphi(u)}{
+           (u-s)(u-t)} \\
+ &=& \frac{(u-t)\varphi(u) - (u-t)\varphi(s)}{(u-s)(u-t)} \\
+ &=& \frac{\varphi(u)-\varphi(s)}{u-s}
+\end{eqnarray*}
+By strict convexirty, \(\varphi(t)<T\) and so we get
+\begin{eqnarray*}
+\frac{\varphi(t) - \varphi(s)}{t-s}
+ &<& \frac{T - \varphi(s)}{t-s} \\
+ &=& \frac{\varphi(u) - \varphi(s)}{u-s} \\
+ &=& \frac{\varphi(u) - T}{u-t} \\
+ &<& \frac{\varphi(u) - \varphi(t)}{u-t}
+\end{eqnarray*}
+that contains the desired double inequalitiy.
+\end{thmproof}
+
+\begin{llem}
+If \(\varphi\) is strictly convex, then any value is assumed mostly twice.
+\end{llem}
+\begin{thmproof}
+For any \(x<y<z\) in the domain of $f$, if \(f(x)=f(z)\)
+then by strictly convexity \(f(y) < f(x)\).
+\end{thmproof}
+
+Here is general simple result (not related to convexity)
+\begin{llem} \label{lem:fgz:igz}
+If \(f>0\) is a \(\mu\)-measaurable function, on $X$ and \(\mu(X) > 0\)
+then
+\begin{equation*}
+\int_X f\,d\mu > 0.
+\end{equation*}
+\end{llem}
+\begin{thmproof}
+Define measurable subsets: \(U_0 = \{x:X: f(x)>1\}\) and for \(j>0\) define
+\(U_j = \{x:X: 1/(j+1) < f(x) \leq 1/j\}\).
+Clearly \(X = \disjunion_{j=0}^\infty U_j\), and for at least some $j$
+we have \(\mu(U_j) > 0\), thus \(\int_X f\,d\mu \geq \mu(U_j)/(j+1) > 0\).
+\end{thmproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now for this section main result. The proof is also a variant
+of that of Theorem~3.3 (\cite{RudinRCA80}).
+\begin{llem} \label{lem:jensen:strict}
+Let \(\mu\) be a positive measure on 
+a~\(\sigma\)-algebra \frakM in a set \(\Omega\), so that \(\mu(\Omega)=1\).
+If $f$ is a real function in \(L^1(\mu)\),
+which is not constant \aded, satisfying
+ \(a<f(x)<b\) for all \(x\in \Omega\)
+and
+if \(\varphi\) is strictly convex on \((a,b)\), then
+\begin{equation} \label{eq:jensen:strict}
+ \varphi\left(\int_\Omega f\,d\mu\right) <  \int_\Omega (\varphi\circ f)\,d\mu
+\end{equation}
+\end{llem}
+\begin{thmproof}
+
+
+Put \(t=\int_\Omega f,d\mu\). Then \(a<t<b\).
+
+We split \(\Omega\) to a disjoint union of the following measurable subsets.
+\begin{eqnarray*}
+\Omega^{-} &=& \{x\in\Omega: f(x) < t\} \\
+\Omega^{=} &=& \{x\in\Omega: f(x) = t\} \\
+\Omega^{+} &=& \{x\in\Omega: f(x) > t\} \\
+\end{eqnarray*}
+By the assumption,
+\(\mu(\Omega^{-}) > 0\)
+or
+\(\mu(\Omega^{+}) > 0\).
+
+
+We look at the inequality of local lemma~\ref{lem:convex:stu}.
+Let
+\begin{eqnarray*}
+ \beta  &\eqdef& \sup_{a<s<t} \frac{\varphi(t) - \varphi(s)}{t-s}\\
+ \gamma &\eqdef& \inf_{t<u<b} \frac{\varphi(u) - \varphi(t)}{u-t}.
+\end{eqnarray*}
+By local lemma~\ref{lem:convex:stu},
+For any $s$, $t$ such that \(a<s<t<u<b\) we have
+\begin{equation*}
+\frac{\varphi(t)-\varphi(s)}{t-s}
+ < \beta \leq \gamma < \frac{\varphi(u)-\varphi(t)}{u-t}
+\end{equation*}
+
+{\small (Now we could arbitrary proceed using either \(\beta\) or \(\gamma\),
+we choose \(\beta\) similar to the proof mention above).}
+Thus we have two inequalities
+\begin{eqnarray*}
+  \varphi(s) &<& \varphi(t) + \beta(t-s)\\
+  \varphi(u) &>& \varphi(t) + \beta(u-t)
+\end{eqnarray*}
+combined to
+\begin{equation*}
+  \varphi(r) \,>\, \varphi(t) + \beta(r-t)
+\end{equation*}
+for any $r$ such that \(a<r<b\) and \(r\neq t \).
+Hence
+\begin{eqnarray*}
+  \varphi(f(x)) - \varphi(t) > \beta(f(x)-t)
+       & \qquad \textrm{for}\; x\in\Omega^{-}\cup\Omega^{+} \\
+  \varphi(f(x)) - \varphi(t) = \beta(f(x)-t)
+       & \qquad \textrm{for}\; x\in\Omega^{=}
+\end{eqnarray*}
+Since \(\varphi\) is continuous, \(\varphi\circ f\) is measurable.
+We integrate the above expression by $x$. Using local lemma~\ref{lem:fgz:igz}
+gives
+% \int_\Omega  \varphi(f(x)) - \varphi(t) + \beta(f(x)-t)\;d\mu
+%% \begin{equation*}
+%% \int_\Omega (\varphi\circ f)\,d\mu - \varphi\left(\int_\Omega f\,d\mu\right)
+%%  > \int_\Omega \beta(f(x)-t)\,d\mu = 0.
+%% \end{equation*}
+\begin{eqnarray*}
+\int_\Omega (\varphi\circ f)\,d\mu - \varphi\left(\int_\Omega f\,d\mu\right)
+&=& \int_\Omega (\varphi\circ f)\,d\mu - \varphi(t) \\
+&=& \int_\Omega \bigl(\varphi\circ f - \varphi(t)\bigr) \,d\mu \\
+&=& \int_{\Omega^=} \bigl(\varphi\circ f- \varphi(t)\bigr) \,d\mu
+ +  \int_{\Omega^-\cup\Omega^+} \bigl(\varphi\circ f- \varphi(t)\bigr) \,d\mu \\
+&=& \int_{\Omega^=} \beta(f(x) - t)\,d\mu
+ +  \int_{\Omega^-\cup\Omega^+} \bigl(\varphi\circ f- \varphi(t)\bigr) \,d\mu \\
+&>& \int_{\Omega^=} \beta(f(x) - t)\,d\mu
+   +  \int_{\Omega^-\cup\Omega^+} \beta(f(x) - t)\,d\mu \\
+&=&  \int_\Omega \beta(f(x) - t)\,d\mu \\
+&=& 0.
+\end{eqnarray*}
+
+Which gives the desired inequality (\ref{eq:jensen:strict}).
+\end{thmproof}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Technical Calculus Results}
+
+Here is a simple technical lemma, using basic calculus.
+\begin{llem} \label{lem:fg:bnless}
+Let \(f,g:[0,\infty)\to[0,\infty)\) functions, satsisfying
+\begin{itemize}
+ \item \emph{Boundness}: \(\int_0^M g(x)\,dx < \infty\)  for any \(M<\infty\).
+ \item \emph{Boundless}: \(\int_0^\infty g(x)\,dx = \infty\).
+ \item \emph{Dominance}:
+   For every \(x\in[0,\infty)\), there exists \(\epsilon_x > 0\),
+   such that
+   \begin{equation*}
+    f(x) > (1-\epsilon_x)g(x)
+   \end{equation*}
+   and \(\lim_{x\to\infty} \epsilon_x = 0\).
+\end{itemize}
+Then for every \(\eta>0\), there exists \(A<\infty\) such that
+\begin{equation*}
+ \int_0^a f(x)\,dx > (1 - \eta)\int_0^a g(x)\,dx
+\end{equation*}
+\end{llem}
+\begin{thmproof}
+Given (small) \(\eta>0\), let $h$ be such that \(\epsilon_x < \eta/2\)
+for every \(x\geq h\). By the first two ssumptions,
+there exists \(a<\infty\) such that
+\begin{equation*}
+ (1-\eta/2)\int_h^a g(x)\,dx > (1-\eta) \int_0^h g(x)\,dx.
+\end{equation*}
+Now we can derive the desired estimate
+\begin{eqnarray*}
+ \int_0^a f(x)\,dx
+ &>& \int_0^a (1-\epsilon_x)g(x)\,dx  \\
+ &=&   \int_0^h (1-\epsilon_x)g(x)\,dx  + \int_h^a (1-\epsilon_x)g(x)\,dx  \\
+ &\geq& (1-\epsilon_h)\int_h^a g(x)\,dx  \\
+ &\geq& (1-\eta)\int_h^a g(x)\,dx + (\eta/2))\int_h^a g(x)\,dx  \\
+ &>& (1 - \eta)\int_0^a g(x)\,dx
+\end{eqnarray*}
+
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Partial Sum Near Fraction}
+
+Given sufficiently ``fine'' partition of a number,
+we can find a sub-partition of a fraction of the number.
+Let's be less general, but more precise.
+\begin{llem} \label{lem:near:frac}
+% Put \(N=\{k\in \N: 1\leq k \leq n\}\).
+Assume \((a_k)_{k\in{\N_n}}\) be a finite sequence of complex numbers
+and \(\alpha\in[0,1]\).
+For each subset \(G\subset \N_n\) define
+\begin{eqnarray*}
+S(G) &\eqdef& \sum_{k\in G} a_k \\
+D(G) &\eqdef& |S(G) - \alpha S(\N_n)|.
+\end{eqnarray*}
+If \(|a_k| \leq r > 0\) for all \(k\in \N_n\)
+then there exists a subset \(H \subset \N_n\)
+such that \(D(H) \leq \sqrt{2}r/2\).
+\end{llem}
+\textbf{Note.} There is no claim here
+that \(\sqrt{2}/2\) is necessarily the best constant.
+\newline
+\begin{thmproof}
+If \(n\leq 1\) or \(S=0\), then we take \(H=\N_n\) and we are done.
+So we may assume \(n>1\) and \(S\neq 0\).
+There exists \(\theta\in[0,2\pi]\) such that \(S= e^{i\theta}|S|\).
+By multiplying all of the \(a_k\) by \(e^{-i\theta}\),
+the above assumptions do not change.
+Thus, \wlogy\ we may assume that \(0< S \in\R\).
+To construct $H$, we define \((h_k)_{k\in\N_n}\),
+a permutation of \(\N_n\) by induction. Intuitively,
+we keep the partial sums close to the real line.
+
+Let \(h_1=1\) (arbitrary) and assume \(h_k\) were defined for \(k\leq m\).
+For \(h_{m+1}\) we need to pick from the remaining
+\(R = \N_n\setminus \{h_k: 1\leq k \leq m\}\) indices.
+We look at
+\begin{eqnarray*}
+T(m) &=& \sum_{k\leq m} a_{h_i} \\
+I(m) &=& \Im\bigl(T(m)\bigr).
+\end{eqnarray*}
+
+Since $S$ is real, $R$ must contain some \(h_{m+1}=k\) for which
+\(\Im(a_{h_k})\) and $I$ have opposite signs or both are zero.
+
+By the way \(h_k\) were picked,
+clearly \(|I(m)| \leq r\) for all \(1\leq m \leq n\).
+Since
+\begin{equation*}
+\sum_{k=1}^n a_{h_k} = \sum_{k=1}^n a_k = S > 0,
+\end{equation*}
+there exist a first $j$, such that \(\Re(T(j)) \geq \alpha S\).
+We will now show that \(z_0 =  T(j-1)\) or \(z_1 = T(j)\)
+satisfy the desired requirements for $H$.
+We put \(z_k = v_k + iw_k\) for \(k=0,1\) and we have the following
+inequalities:
+\begin{gather}
+% \begin{align}
+v_0 < \alpha S \leq v_1 \notag \\
+w_0  \leq 0 \leq w_1 \label{eq:lem:subaver} \\
+% \end{align} \\
+ |z_1 - z_0| \leq r \notag
+\end{gather}
+\paragraph{Note.} By the choice of \(h_j\),
+the (\ref{eq:lem:subaver}) inequality may actually be reversed.
+But the treatment of such case is the same as with the following:
+\begin{eqnarray*}
+ |\alpha S - z_0|^2 +  |\alpha S - z_1|^2
+ &=&
+  (\alpha S - v_0)^2 + (\alpha S - v_1)^2  + w_0^2 + w_1^2 \\
+ &\leq&
+  (v_1 - v_0)^2 + (w_1 - w_0)^2 \\
+ &=& |z_1 - z_0|^2 \\
+ &\leq& r^2.
+\end{eqnarray*}
+Thus \(|\alpha S - z_k|^2 \leq r^2/2\) for \(k=0\) or \(k=1\), and so
+\(|\alpha S - z_k| = \sqrt{2}r/2\).
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Equalities}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sequences Equalities}
+
+\begin{llem} \label{lem:limsup:liminf}
+Let \((a_i)_{i\in\N}\) and \((b_i)_{i\in\N}\) be sequences of real numbers.
+Put
+\begin{equation*}
+a^{*} \eqdef \limsup_{n\to\infty} a_n \qquad
+b_{*} \eqdef \liminf_{n\to\infty} b_n\,.
+\end{equation*}
+
+If
+\begin{equation*}
+ c \eqdef \lim_{n\to\infty} a_n + b_n
+\end{equation*}
+exists and \(-\infty < c < \infty\) and \(a^{*} < \infty\)
+then
+\begin{equation} \label{eq:limsup:liminf}
+ c = a^{*} + b_{*}\,.
+\end{equation}
+\end{llem}
+\begin{thmproof}
+Take a subsequence \((a_{k(i)})_{i\in\N}\), such that
+\begin{equation*}
+a^{*} = \lim_{n\to\infty} a_{k(n)}.
+\end{equation*}
+Now clearly
+\begin{equation*}
+ c = \lim_{n\to\infty} a_{k(n)} + b_{k(n)} = a^{*} + \lim_{n\to\infty} b_{k(n)}.
+\end{equation*}
+But since
+\begin{equation*}
+ b_{*} \leq \lim_{n\to\infty} b_{k(n)}
+\end{equation*}
+we have
+\begin{equation}
+ c \geq a^{*} + b_{*}.
+\end{equation}
+Similarly, we can derive the reversed inequality.
+Thus (\ref{eq:limsup:liminf}) follows.
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equality in Minkowski's Inequality}
+
+\index{Minkowski's inequality}
+
+The discussion following the proof of Theorem~3.5 \cite{RudinRCA87}
+show the condition under which H\"older's inequality becomes an inequality.
+The case for Minkowski's  inequality is left in the etxt as an~excercise.
+
+The next lemma intuitively says that if function
+do not share arguments, together they lose their norm.
+\begin{llem} \label{eq:fgp:leq:afagp}
+Let $f$ and $g$ be complex measurable functions on $X$ and \(1\leq p < \infty\).
+Then
+\begin{equation} \label{eq:fg:absfg}
+\|f+g\|_p = \||f|+|g|\|_p
+\end{equation}
+iff
+\begin{equation} \label{eq:argf:argg}
+f(x)g(x) = 0 \qquad\textrm{or}\qquad \Arg(f(x)) = \Arg(g(x))\;\aded
+\end{equation}
+\end{llem}
+\emph{Note:} We assume \(\Arg(z) = 0\) when \(z=0\).\\
+\begin{thmproof}
+Assume \eqref{eq:argf:argg} holds.
+Then there the function \(\theta(x) \eqdef \Arg(f(x))\)
+on $X$, satisfies
+\begin{eqnarray*}
+f(x) &=& e^{i\theta(x)}|f(X)| \;\aded \\
+g(x) &=& e^{i\theta(x)}|g(X)| \;\aded.
+\end{eqnarray*}
+Now
+% \begin{eqnarray*}
+\[
+\|f+g\|_p^p
+= \int_X |f(x)+g(x)|^p\,d\mu(x)
+= \int_X |e^{i\theta(x)}|\cdot\bigl(|f(x)|+|g(x)|\bigr)^p\,d\mu(x)
+= \||f|+|g|\|_p^p.
+\]
+% \end{eqnarray*}
+and so \eqref{eq:fg:absfg} follows.
+
+Conversely, assume \eqref{eq:fg:absfg} and by negation
+there is \(E\subset X\) such that \(\mu(E) > 0\) where
+\(f(x)g(x)\neq 0\) and
+\(\Arg(f(x)) \neq  \Arg(g(x))\) for all \(x\in E\).
+Let \(\delta(x) = |\Arg(f(x)) - \Arg(g(x))|\).
+Using Pythagoras theorem, for \(x\in E_n\) we have
+\begin{eqnarray*}
+|f(x) + g(x)|^2
+&=&   \bigl(|f(x)| + |g(x)|\cos(\delta(x))\bigr)^2
+  + \bigl(|g(x)|\sin(\delta(x)\bigr)^2 \\
+&=& (|f(x)| + |g(x)|)^2 + 2\bigl(1-\cos(\delta(x))\bigr)|f(x)g(x)|
+\end{eqnarray*}
+Define
+\[
+% E_n = \{x\in E: |f(x)| > 1/n\;\vee\; |g(x)| > 1/n\}.
+E_n = \left\{x\in E: |f(x)g(x)|\bigl(1-\cos(\delta(x))\bigr) > 1/n\right\}.
+\]
+Clearly \(E=\cup_n E_n\), hence there exist some $n$ such that \(\mu(E_n) > 0\).
+Hence for \(x\in E_n\) we have
+\[
+(|f(x)| + |g(x)|)^2 - |f(x) + g(x)|^2  > 2/n.
+\]
+Hence, dividing by \((|f(x)| + |g(x)|) + |f(x) + g(x)|\) which must be \(>0\)
+\[
+(|f(x)| + |g(x)|)^2 - |f(x) + g(x)|
+  > 2\,\bigm/\,n\bigl((|f(x)| + |g(x)|) + |f(x) + g(x)|\bigr) > 0.
+\]
+Hence \(\int_{E_n} |f+g|^p < \int_{E_n} (|f|+|g|)^p\).
+Finally
+\begin{eqnarray*}
+\|f+g\|_p^p
+&=& \int_X |f+g|^p \\
+&=& \int_{X\setminus E_n} |f+g|^p     + \int_{E_n} |f+g|^p \\
+&<& \int_{X\setminus E_n} (|f|+|g|)^p + \int_{E_n} (|f|+|g|)^p \\
+&=& \| |f| + |g| \|_p^p
+\end{eqnarray*}
+which contradicts the assumption \eqref{eq:fg:absfg}.
+\end{thmproof}
+
+
+We start with a weak
+real version for condition on equality in Minkowski's inequality.
+\begin{llem} \label{llem:mink:real:eq}
+Let \(f,g\) be real non negative measurable functions on $X$ and \(1<p<\infty\).
+If
+\begin{equation}
+ \| f + g \|_p = \|f\|_p + \|g\|_p
+\end{equation}
+then there exist
+real non-negative constants \(a,b\) not both $0$, such that \(af=bg \;\aded\).
+\end{llem}
+\begin{thmproof}
+If \(\|f\|_p = 0\) or \(\|g\|_p = 0\) the result is trivial.
+Say  \(\|f\|_p = 0\), then \(f=0\,\aded\), and we take \(a=1\), \(b=0\).
+
+We now may assume \(\|f\|_p \neq 0\) and \(\|g\|_p \neq 0\).
+Denote
+\[ a(x) \eqdef f(x) + g(x)\]
+and the conjugate exponent $q$ such that \(1/p+1/q=1\).
+Now
+\begin{eqnarray}
+\|f+g\|_p^p
+&=& \int_X a^p
+= \int_X a\cdot a^{p-1}
+=    \int_X f\cdot a^{p-1} +\int_X g\cdot a^{p-1} \notag \\
+&\leq& \|f\|_p \|a^{p-1}\|_q + \|g\|_p \|a^{p-1}\|_q
+       \label{eq:mink:real:2holder} \\
+       % \qquad \textrm{H\"older} \\
+&=& \bigl(\|f\|_p + \|g\|_p\bigr)\cdot\|a^{p-1}\|_q \notag
+= \bigl(\|f\|_p + \|g\|_p\bigr)\cdot\left(\int_X a^{(p-1)q}\right)^{1/q}
+   \notag \\
+&=& \bigl(\|f\|_p + \|g\|_p\bigr)\cdot \|a\|_p^{p/q} \notag
+\end{eqnarray}
+The inequality in \eqref{eq:mink:real:2holder} is by applying H\"older
+inequality twice.
+Since \(p-p/q=1\) we get, dividing by \(\|a\|_p^{p/q}\) the following
+\[
+\|a\|_p \leq \|f\|_p + \|g\|_p.
+\]
+Since it is actually an \emph{equality} by the lemma condition,
+the inequality in \eqref{eq:mink:real:2holder}
+becomes equalities that the discussion quoted from the text,
+shows that the must be real constants \(\alpha_i\) and \(\beta_i\)
+for \(i=1,2\) such that
+\begin{eqnarray*}
+\alpha_1 f^p = \beta_1 a^q \\
+\alpha_2 g^p = \beta_2 a^q.
+\end{eqnarray*}
+These constants are all non zero, and we have
+\[( \alpha_1/\beta_1) f^p = \alpha_2/\beta_2) g^p\]
+or setting
+ \(a = (\alpha_1/\beta_1)^{1/p}\)
+and
+ \(b_i = (\alpha_2/\beta_2)^{1/p}\)
+we get equivalently:
+\( a f = bg\) and clearly \(a,b>0\).
+\end{thmproof}
+
+
+
+Now, the desired generalization.
+\begin{llem} \label{llem:minkowski:eq}
+Let \(f,g\) be measurable functions on $X$ and \(1<p<\infty\).
+Then
+\begin{equation} \label{eq:mink:equal}
+ \left\| |f| + |g| \right\|_p = \|f\|_p + \|g\|_p
+\end{equation}
+iff there exist
+real non-negative constants \(a,b\) not both $0$, such that \(af=bg \;\aded\).
+\end{llem}
+\begin{thmproof}
+If either \(\|f\|_p=0\) or \(\|g\|_p=0\) the result is trivial.
+This we may assume that both \(\|f|_p,\,\|g\|_p>0\).
+
+Assume there exist such constants. \Wlogy, \(a>0\), put \(c=b/a\) and we have
+\(f=cg\;\aded\).
+Now both sides of \eqref{eq:mink:equal}
+equal \((1+c)\|g\|_p\).
+
+Conversely, assume \eqref{eq:mink:equal}.
+By Minkowski's inequality
+% and local lemma~\ref{eq:fgp:leq:afagp}
+we have
+\begin{equation} \label{eq:fgp:afagp:apgp}
+\|f + g\|_p \leq \||f|+|g|\|_p \leq \|f\|_p + \|g\|_p.
+\end{equation}
+Our assumption, force the  inequalities in \eqref{eq:fgp:afagp:apgp}
+to be equalities. But then
+\begin{itemize}
+\item
+By local lemma~\ref{llem:mink:real:eq}
+there exists real non negative constants $a$ and $b$ such that
+\(a|f| = b|g|\;\aded\).
+\item
+By local lemma~\ref{eq:fgp:leq:afagp} \(\Arg(f(x)) = \Arg(g(x))\;\aded\)
+\end{itemize}
+Combing these conclusion,
+show that there exists real non negative constants $a$ and $b$ such that
+\(af = bg\;\aded\).
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Integration Range}
+
+The following result about convexity of the avareges set
+will be used in Exercise~19.
+
+\begin{llem} \label{llem:averages:convex}
+Let   \((X,\frakM,m)\)
+be a measurable space, where \(X\subset \R^n\) and $m$
+is the restriction of Lebesgue's measure.
+If \(f:X\to\C\) is a $m$-measurable function,
+denote the average
+\begin{equation*}
+a(E) = a_f(E) \eqdef \frac{1}{m(E)} \int_E f\,d\mu
+ \qquad \textnormal{where}\quad E\in\frakM \quad\textnormal{and}\quad m(E)>0.
+\end{equation*}
+Then the set of averages
+\begin{equation*}
+ % f \eqdef \left\{\, \frac{1}{\mu(E)} \int_E f\,d\mu\,:
+ A_f \eqdef \left\{a_f(E): E\in\frakM \wedge \mu(E)>0 \right\}
+\end{equation*}
+is convex.
+\end{llem}
+\begin{thmproof}
+Let \(\|\cdot\|\) some norm in \(\R^n\) inducing the Euclidean topology
+(\(\|\cdot\|_2\) will do). For any generalized scalar \(r\in[0,\infty]\)
+let \(B(r) = \{x\in X: \|x\|\leq r\}\).
+For any measurable \(E\in\frakM\)
+\iffalse
+and any scalar \(\alpha\in[0,+\infty]\), let
+\begin{equation*}
+ E_\alpha \eqdef \{x\in E: \|x\|\leq \alpha\}.
+\end{equation*}
+\fi
+by regularity of $m$, the real function
+\(\nu(r) = m(E\cap B(r))\) is continuous. Similarly,
+\begin{equation*}
+\sigma(r) = \int_{E\cap B(r)} f\,dm
+\end{equation*}
+is continuous.
+
+Pick arbitrary \(E_0,E_1\in\frakM\) such that \(m(E_0)\neq 0 \neq m(E_1)\).
+We will show that the \(\C\)-segment
+\begin{equation} \label{eq:llem:av:cvx:0}
+[a(E_0),a(E_1)] \subset A_f,
+\end{equation}
+thus proving the convexity of \(A_f\).
+We assume \(a(E_0) \neq a(E_1)\), otherwise the case is trivial.
+\Wlogy, we may also assume that
+\begin{equation} \label{eq:llem:av:cvx:1}
+ a(E_0) = 0 \qquad a(E_1) = 1
+\end{equation}
+otherwise we may replace $f$ by
+\(\bigl(f - a(E_0)\bigr)/\bigl(a(E_1) - a(E_0)\bigr)\).
+Thus \eqref{eq:llem:av:cvx:0} is simplified to
+\begin{equation} \label{eq:llem:av:cvx:2}
+[0,1] \subset A_f.
+\end{equation}
+\iffalse
+\(a(E_1)-a(E_0) = |a(E_1)-a(E_0)|e^{i\theta}\)
+for some \(\theta\in[0,2\pi)\)
+and we may substitue $f$ with \(e^{-i\theta}f\) and possibly
+exchange \(E_0\) with \(E_1\).
+\fi
+
+Put \(D_j = E_j \setminus E_{1-j}\) for \(j=0,1\) and \(F=E_0\cap E_1\).
+\iffalse
+Now
+\begin{eqnarray*}
+a(E_1)-a(E_0)
+ &=&
+  \frac{1}{m(D_1) + m(F)} \left(\int_{D_1} f\,dm + \int_F f\,dm\right)
+  -
+  \frac{1}{m(D_0) + m(F)} \left(\int_{D_0} f\,dm + \int_F f\,dm\right)
+\end{eqnarray*}
+\fi
+For \(j=0,1\) let
+\begin{eqnarray*}
+ D_j^- &\eqdef& \{x\in D_j: \Im(f(x)) < 0\} \\
+ D_j^+ &\eqdef& \{x\in D_j: \Im(f(x)) \leq 0\} \\
+\end{eqnarray*}
+Note that any of the above 4 mutually disjoint sets may be empty.
+
+We will now ``morph'' \(D_0^- \to D_1^+\) and \(D_0^+ \to D_1^-\).
+We pick arbitrary strictly monotonic increasing and decreasing functions
+(using \(1/0=+\infty\))
+\begin{alignat*}{2}
+u : [0,1]  &\nearrow [0,\infty]   &\qquad  v : [0,1] &\searrow [0,\infty] \\
+u(\lambda) &= 1/(1-\lambda) - 1   &\qquad  v(\lambda)  &= 1/\lambda - 1
+\end{alignat*}
+to define the morphing functions:
+\begin{alignat*}{2}
+\Phi: [0,1] &\to P(D_0^-\cup D_1^+)
+          &\quad \Psi: [0,1] &\to P(D_0^+\cup D_1^-) \\
+\Phi(s) &=
+  \left(D_0^- \cap B(v(s))\right)
+  \cup
+  \left(D_1^+ \cap B(u(s))\right)
+  &\quad
+\Psi(s) &=
+  \left(D_0^+ \cap B(v(s))\right)
+  \cup
+  \left(D_1^- \cap B(u(s))\right).
+\end{alignat*}
+Note that
+\begin{alignat*}{2}
+\Phi(0) &= D_0^-  &\qquad  \Phi(1) = D_1^+ \\
+\Psi(0) &= D_0^+  &\qquad  \Psi(1) = D_1^-
+\end{alignat*}
+
+Now define
+\begin{eqnarray*}
+\varphi : [0,1]\times[0,1] \to &P(E_0\cup E_1) \\
+\varphi(s,t) = &\Phi(s) \disjunion F \disjunion \Psi(t).
+\end{eqnarray*}
+Note
+\begin{equation} \label{eq:llem:av:cvx:E01}
+\varphi(0,0) = E_0 \qquad \varphi(1,1) = E_1.
+\end{equation}
+
+Now we look at the ``morphed average'' continuous function
+and its imaginary part.
+\begin{gather*}
+\Xi : [0,1]\times[0,1] \to \C \\
+\Xi(s,t) = a(\varphi(s,t)) \\
+\iota(s,t) = \Im\bigl(\Xi(s,t)\bigr).
+\end{gather*}
+
+Now \(\iota(s,t)\) is increasing in $s$ and decreasing in $t$
+and
+\(\iota(0,0) = \iota(1,1) = 0\)
+by \eqref{eq:llem:av:cvx:E01} and \eqref{eq:llem:av:cvx:1}.
+Thus for any \(s\in[0,1]\) we have
+\begin{equation*}
+\iota(s,1) \leq 0 \leq \iota(s,0)
+\end{equation*}
+so by continuity of \(\iota\), we can define
+\begin{equation*}
+\tau(s) \eqdef \sup\{t \in[0,1]: \iota(s,t) = 0\}
+\end{equation*}
+which is continuous, again by continuity of \(\iota\).
+Now \(\Xi(s,\tau(s))\) is a continuous function of \([0,1]\) on itself
+with fixed endpoints.
+Thus for any \(\lambda\in[0,1]\)
+there exists \(s\in[0,1]\) such that \(\Xi(s,\tau(s)) = \lambda\).
+Hence \(a(\varphi(s,\tau(s)) = \lambda\) and \eqref{eq:llem:av:cvx:2} holds.
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 73-78
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Prove that the supremum of any collection of convex functions on \((a,b)\)
+\index{convex function}
+is convex on \((a,b)\) and that pointwise limit of sequence of convex
+functions are convex.
+What can you say about upper and lower limits of sequence of convex functions?
+\end{excopy}
+
+Let \(\{f_i(x) \}_{i\in I}\) be a collection of convex functions on \((a,b)\).
+From now on, for any given \(x_0,x_1\in(a,b)\) and \(\lambda\in([0,1]\)
+we define the \(\lambda\)-convex combination
+as \(x_\lambda = (1-\lambda)x_0 + \lambda x_1\).
+
+
+\paragraph{Supremum.}
+Let \(s(x) = \sup_{i\in I}f_i(x)\).
+By negation let \(x_0,x_1\in(a,b)\) and \(\lambda\in[0,1]\) be such that
+\begin{equation*}
+s(x_\lambda) >  (1-\lambda)s(x_0) + \lambda s(x_1)
+\end{equation*}
+Let
+\begin{equation*}
+ \epsilon =
+   s(x_\lambda) -
+   \bigl((1-\lambda)s(x_0) + \lambda s(x_1)\bigl) > 0.
+\end{equation*}
+By definition of \(s(x)\) there exists \(i\in I\) such that
+\begin{equation*}
+ 0 < s(x_\lambda) - f_i(x_\lambda) < \epsilon\,.
+\end{equation*}
+Therefore,
+\begin{equation*}
+f_i(x_\lambda)
+> s(x_\lambda)
+> (1-\lambda)s(x_0) + \lambda s(x_1)
+\geq  (1-\lambda)f_i(x_0) + \lambda f_i(x_1)
+\end{equation*}
+contradiction to \(f_i\) being convex, hence \(s(x)\) is convex.
+
+\paragraph{Pointwise Limit.}
+Let \(l(x) = \lim_{i\in \N}f_i(x)\).
+By negation let \(x_0,x_1\in(a,b)\) and \(\lambda\in[0,1]\) be such that
+\begin{equation*}
+l(x_\lambda) >  (1-\lambda)s(x_0) + \lambda s(x_1)
+\end{equation*}
+Let
+\begin{equation*}
+ \epsilon =
+   l(x_\lambda) -
+   \bigl((1-\lambda)l(x_0) + \lambda l(x_1)\bigr) > 0.
+\end{equation*}
+There exists a sufficient large \(n\in\N\) (maximum of three)
+such that for all \(i\geq n\)
+\begin{equation*}
+ \bigl|l(x_t) - f_i(x_t)\bigr| < \epsilon/2 \qquad
+ \textrm{where}\; t\in\{0,\lambda,1\}
+\end{equation*}
+Now
+\begin{eqnarray*}
+\Delta(f_n,\lambda)
+&=& f_n(x_\lambda) - \bigl((1-\lambda)f_i(x_0) + \lambda f_i(x_1)\bigr) \\
+&\geq&
+\left(l(x_\lambda) - \bigl((1-\lambda)l(x_0) + \lambda l(x_1)\bigr)\right)
+ \; - \\
+&&
+  \bigl(
+     |l(x_\lambda) - f_i(x_\lambda)| +
+     (1-\lambda)|l(x_0) - f_i(x_0)|
+     \lambda)|l(x_1) - f_i(x_1)|\bigr)\\
+&>&
+\left(l(x_\lambda) - \bigl((1-\lambda)l(x_0) + \lambda l(x_1)\bigr)\right)
+ - (\epsilon/2 + (1-\lambda)\epsilon/2 + \lambda\epsilon/2) \\
+&=&
+\left(l(x_\lambda) - \bigl((1-\lambda)l(x_0) + \lambda l(x_1)\bigr)\right)
+ - \epsilon \\
+&=& 0
+\end{eqnarray*}
+Hence
+\begin{equation*}
+f_n(x_\lambda) > (1-\lambda)f_i(x_0) + \lambda f_i(x_1)
+\end{equation*}
+contradiction to \(f_i\) being convex, hence \(l(x)\) is convex.
+
+
+\paragraph{Upper Limit.} Let \(u(x)\) be the upper limit of
+\(\{f_i(x) \}_{i\in \N}\). By definition
+\begin{equation*}
+u(x) = \limsup_{n\to \infty} f_n(x)
+     = \lim_{n\to \infty} \sup_{m\geq n} f_m(x)\,.
+\end{equation*}
+From the previous (supremum, and pointwise limit) results \(u(x)\) is convex.
+
+
+\paragraph{Lower Limit.} A different behavior here.
+The functions \(f_n(x) = (-1)^n x\) are convex.
+But
+\begin{equation*}
+w(x)
+= \liminf_{n\to \infty} f_n(x)
+= \min_{n\to \infty}f_n(x)
+= \min\bigl(f_0(x),f_1(x)\bigr) = -|x|
+\end{equation*}
+which is clearly \emph{not} convex.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+If \(\varphi\) is a convex on \((a,b)\) and if \(\psi\) is convex and
+nondecreasing on the range of \(\varphi\), prove that \(\psi\circ\varphi\)
+is convex on \((a,b)\).
+For \(\varphi>0\), show that the convexity of \(\log\varphi\) implies
+the convexity of \(\varphi\), but not vice versa.
+\end{excopy}
+
+Let \(\varphi\) be convex on \((a,b)\) and \(\psi\)  convex and
+nondecreasing on the range of \(\varphi\).
+For any \(x,y\in(a,b)\) and \(\lambda\in[0,1]\) we have:
+\begin{eqnarray}
+\psi\circ\varphi(\lambda x + (1-\lambda)y)
+ &=& \psi\bigl(\varphi(\lambda x + (1-\lambda)y)\bigr) \notag \\
+ &\leq& \psi\bigl(\lambda\varphi(x) + (1-\lambda)\varphi(y)\bigr)
+        \label{eq:phiconv:psiinc} \\
+ &\leq& \lambda \psi\bigl(\varphi(x)\bigr) +
+        (1-\lambda)\psi\bigl(\varphi(y)\bigr)
+        \label{eq:psiconv} \\
+ &=& \lambda \psi\circ\varphi(x) +  (1-\lambda)\psi\circ\varphi(y). \notag
+\end{eqnarray}
+The inequality (\ref{eq:phiconv:psiinc}) holds because \(\varphi\) is
+convex and \(\psi\) is increasing.
+The inequality (\ref{eq:psiconv}) holds because \(\psi\) is convex.
+
+If \(\varphi>0\), and \(\log\varphi\) is convex, then by using \(\psi\)
+as the exponential (\(\exp(x)\) in the result just shown, we get
+that \(\exp(\log(\varphi)) = \varphi\) is convex.
+
+The converse does not hold. Take the identity \(f(x)=x\), which is
+clearly convex, but \(\log = \log\circ f\) is not.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Assume that \(\varphi\) is a continuous real function on \((a,b)\)
+such that
+\begin{equation*}
+ \varphi\left(\frac{x+y}{2}\right)
+ \leq \frac{1}{2}\varphi(x) + \frac{1}{2}\varphi(y)
+\end{equation*}
+for all $x$ and $y$ \(\in (a,b)\). Prove that \(\varphi\) is convex.
+(The conclude does \emph{not} follow if continuity is omitted from the
+hypotheses.)
+\end{excopy}
+
+
+We first show that for every integers \(n\geq 0\) and
+\(0\leq m \leq 2^n > 0\)
+and any \(x,y\in (a,b)\)
+\begin{equation} \label{eq:ex3.3:m:n}
+ \varphi\bigl((2^n-m)x/2^n + my/2^n\bigr) \leq
+  \left((2^n-m)\varphi(x) + m\varphi(x)\right)\bigm/2^n
+\end{equation}
+
+By denoting
+\begin{equation}
+C(m,N,x,y) = (N-m)x/N + my/N.
+\end{equation}
+we actually need to show in (\ref{eq:ex3.3:m:n})
+\begin{equation}  \label{eq:ex3.3:m:n:C}
+  \varphi(C(m,2^n,x,y)) \leq C(m,2^n,\varphi(x), \varphi(y)).
+\end{equation}
+
+
+
+By induction on $n$. For \(n=0\), we must have \(m=0\) or \(m=1\)
+and the inequality becomes trivial true equality.
+Assume that (\ref{eq:ex3.3:m:n}) holds for \(n\leq k\geq 0\), we will show
+that it holds also for \(n=k\).
+Let $m$ be an integer such that \(0\leq m \leq 2^{k+1}\).
+We use the trivial equality of common \(2^x\) denominator.
+There are two cases:
+
+ \textbf{Case (i)}:
+   If \(2\mid m\), then \(m/2\) is an integer, hence, by induction hypotheses
+ \begin{eqnarray*}
+  C(m,2^{k+1},x,y)
+  &=&     \varphi\bigl(((2^{k+1}-m)x + my)/2^{k+1}\bigr) \\
+  &=&     \varphi\bigl(((2^k-m/2)x + my)/2^k\bigr) \\
+  &\leq&  \left((2^k-m/2)\varphi(x) + (m/2)\varphi(x)\right)\bigm/2^k \\
+  &=&     \left((2^{k+1}-m)\varphi(x) + m\varphi(x)\right)\bigm/2^{k+1} \\
+  &=&     C(m,2^{k+1},\varphi(x)) + C(m,2^{k+1},\varphi(y)).
+ \end{eqnarray*}
+
+\textbf{Case (ii)}:
+Otherwise,
+\(2\nmid m\), then \(0<m<2^n\) and \((m\pm 1)/2\) are two integers.
+  we use a trivial mid-point equality:
+  \begin{equation*}
+  C(m,2^{k+1},x,y) = \left( C(m-1,2^{k+1},x,y) + C(m-1,2^{k+1},x,y) \right) / 2
+  \end{equation*}
+  By initial assumption
+  \begin{equation} \label{eq:ex3.3:m:mid}
+  \varphi\left(C(m,2^{k+1},x,y)\right)
+   \leq
+    \left(\varphi\left(C(m-1,2^{k+1},x,y)\right) +
+          \varphi\left(C(m+1,2^{k+1},x,y)\right) \right) \bigm / 2.
+  \end{equation}
+
+  Now
+  \begin{equation*}
+   C(m\pm 1,2^{k+1},x,y) =  C((m\pm 1)/2,2^k,x,y).
+  \end{equation*}
+
+  Thus (supporting arguments follows),
+  \begin{eqnarray}
+     \varphi\bigl(C(m,2^{k+1},x,y)\bigr)
+    &\leq& \label{eq:ex3.3:m:midC}
+          \Bigl(
+          \varphi\bigl(C(m-1,2^{k+1},x,y)\bigr) + \\
+    && \phantom{\Bigl(}
+          \varphi\bigl(C(m+1,2^{k+1},x,y)\bigr) \Bigr) \Bigm/ 2 \notag \\
+    &=&
+          \Bigl(
+          \varphi\bigl(C((m-1)/2,2^k,x,y)\bigr) + \notag \\
+    && \phantom{\Bigl(}
+          \varphi\bigl(C((m+1)/2,2^k,x,y)\bigr) \Bigr) \Bigm/ 2
+          \notag \\
+    &\leq & \label{eq:ex3.3:induct:step}
+     \Bigl(
+             C\bigl((m-1)/2,2^k,\varphi(x),\varphi(y)\bigr) + \\
+    &&  \phantom{\Bigl(}
+             C\bigl((m+1)/2,2^k,\varphi(x),\varphi(y)\bigr) \Bigr) \Bigm/ 2
+             \notag \\
+    &\leq &  C\bigl((m-1)/2,2^{k+1},\varphi(x),\varphi(y)\bigr) + \notag \\
+    &&       C\bigl((m+1)/2,2^{k+1},\varphi(x),\varphi(y)\bigr) \notag \\
+    &= &     \label{eq:ex3.3:endinuct}
+             C\bigl(m,2^{k+1},\varphi(x),\varphi(y)\bigr).
+  \end{eqnarray}
+
+The (\ref{eq:ex3.3:m:midC}) inequality follows from (\ref{eq:ex3.3:m:mid}).
+The (\ref{eq:ex3.3:induct:step}) inequality follows by induction.
+The last equality (\ref{eq:ex3.3:endinuct}) follows from the following
+two equalities (\ref{eq:ex3.3:m}) and (\ref{eq:ex3.3:m2})
+\begin{equation} \label{eq:ex3.3:m}
+ \bigl((m-1)/2\bigr)/ 2^{k+1} +
+ \bigl((m+1)/2\bigr)/ 2^{k+1} =
+  m / 2^{k+1}
+\end{equation}
+
+\begin{equation}\label{eq:ex3.3:m2}
+ \bigl(2^{k+1}-(m-1)/2\bigr)/ 2^{k+1} +
+ \bigl(2^{k+1}-(m+1)/2\bigr)/ 2^{k+1} =
+      (2^{k+1}-m) / 2^{k+1}
+\end{equation}
+
+Now that (\ref{eq:ex3.3:m:n}) is established, let \(\lambda\in[0,1]\)
+and by negation assume that
+\begin{equation*}
+ \epsilon = \varphi(\lambda x + (1-\lambda)y) -
+ \lambda \varphi(x) + (1-\lambda)\varphi(y) > 0.
+\end{equation*}
+Since \(\varphi\) is continuous on \([a,b]\) it is uniformly continuous
+on \([a,b]\). So there exists \(\delta>0\) such that
+\(|\varphi(t_1) - \varphi(t_2)| < \epsilon/4\)
+whenever \(|t_1-t_2|<\delta\).
+Since the set \(\{m/2^n: m,n\in\N\wedge 0\leq m\leq 2^n\}\)
+is dense in \([0,1]\), we can find \(n>0\) and $m$ such that
+(the first two inequalities are actually equivalent):
+\begin{eqnarray*}
+|(2^n - m)/2^n - \lambda)| &<& \delta \\
+|m/2^n - (1-\lambda)| &<& \delta \\
+|\bigl((2^n - m)/2^n - \lambda)\bigr)\varphi(x)| &<& \epsilon/4 \\
+|\bigl(m/2^n - (1-\lambda)\bigr)\varphi(y)| &<& \epsilon/4
+\end{eqnarray*}
+
+We now get the following contradiction
+\begin{eqnarray*}
+\varphi(\lambda x + (1-\lambda)y)
+&\leq& \varphi(C(m,n,x,y)) + \epsilon/4 + \epsilon/4 \\
+&\leq& C(m,n,\varphi(x),\varphi(y)) + \epsilon/2 \\
+&\leq& (\lambda\varphi(x) + \epsilon/4) + ((1-\lambda)\varphi(y) + \epsilon/4)
+       + \epsilon/2 \\
+&=&    \lambda\varphi(x) (1-\lambda)\varphi(y) + \epsilon.
+\end{eqnarray*}
+
+Therefore \(\varphi\) is convex.
+
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Suppose $f$ is a complex measurable function on $X$, \(\mu\) is a
+positive
+measure on $X$, and
+\begin{equation*}
+ \varphi(p) = \int_X |f|^p\,d\mu = \|f\|_p^p \qquad (0<p<\infty).
+\end{equation*}
+Let \(E = \{p: \varphi(p)<\infty\}\). Assume \(\|f\|_\infty > 0\).
+\begin{itemize}
+ \itemch{a}
+   If \(r<p<s\), \(r\in E\), and \(s\in E\), prove that \(p\in E\).
+ \itemch{b}
+   Prove that  \(\log\varphi\) is convex in the interior of $E$ and
+   that  \(\varphi\) is continuous on $E$.
+ \itemch{c}
+   By \ich{a}, $E$ is connected. Is $E$ necessarily open? Closed? Can
+   $E$ consist of a single point?
+   Can $E$ be any connected subset of \((a,\infty)\)
+ \itemch{d}
+   If \(r<p<s\), prove that \(\|f\|_p \leq \max( \|f\|_r, \|f\|_s)\).
+   Show that this implies the inclusion
+   \(L^r(\mu) \cap  L^s(\mu) \subset L^p(\mu)\).
+ \itemch{e}
+   Assume that \(\|f\|_r < \infty\) for some \(r<\infty\) and prove
+   that
+   \begin{equation*}
+     \|f\|_p \to \|f\|_\infty \qquad \textrm{as}\; p\to\infty.
+   \end{equation*}
+\end{itemize}
+\end{excopy}
+
+ Let \(X_0 = \{x\in X: |f(x)|<1\}\)
+ and \(X_1 = \{x\in X: |f(x)|\geq 1\}\).
+
+\begin{itemize}
+\itemch{a}
+ Compute
+ \begin{eqnarray*}
+ \varphi(p)
+ &=& \int_X |f|^p\,d\mu
+ = \int_{X_0} |f|^p\,d\mu + \int_{X_1} |f|^p\,d\mu
+ \leq \int_{X_0} |f|^r\,d\mu + \int_{X_1} |f|^s\,d\mu \\
+ &\leq& \int_{X} |f|^r\,d\mu + \int_{X} |f|^s\,d\mu
+ \leq \varphi(r) + \varphi(s) < \infty.
+ \end{eqnarray*}
+
+
+\itemch{b}
+  Let \(r < s < t\) be in the interior of $E$.
+  Put \(p_1 = (t-s)/(t-r)\)
+  and \(p_2 = (s-r)/(t-r)\)
+  to form  the convex combination \(s = p_1 r + p_2 t\).
+
+  Now from Lemma~\ref{llem:hlp:188} --- with \(k=2\),
+  \(f_1 = |f|^r\) and
+  \(f_2 = |f|^t\) we have
+  \begin{eqnarray*}
+    \varphi(s)
+    &=&    \int_X |f|^s\,d\mu \\
+    &=&    \int_X f_1^{p_1} f_2^{p_2}\,d\mu \\
+    &\leq& \left( \int_X f_1\,d\mu \right)^{p_1}
+           \left( \int_X f_2\,d\mu \right)^{p_2} \\
+    &=&    \varphi(r)^{p_1} \varphi(t)^{p_2}.
+  % \int_X |f|^s\,d\mu
+  \end{eqnarray*}
+  Now since \(\log\) is monotonic increasing, we get
+  \begin{equation*}
+  \log\varphi(s) \leq  \log(\varphi(r)^{p_1} \varphi(t)^{p_2} =
+           p_1\log\varphi(r) + p_2\log\varphi(t).
+  \end{equation*}
+  Now that we have shown convexity in $E$,
+  by Theorem~3.2 (\cite{RudinRCA80}), \(log(\varphi(x)\) is continuous in
+  the interior of $E$. To show continuity on all of $E$,
+  let \([a,c] = \overline{E}\) and put \(b=(a+b)/2\).
+
+  If \(a\in E\), then \(b\in E\) and put
+  \begin{equation*}
+  g_a(x) = \max(|f(x)|^a, |f(x)|^b)
+  \end{equation*}
+  and clearly \(\int_X g_a(x)\,d\mu < \infty\).
+  For \(s\in[a,b]\),  \(g_a\) is a dominated function for \(\varphi(s)\)
+  and by Lebesgue's dominated convergence theorem, \(\varphi(s)\)
+  is continuous at \(s=a\).
+
+  If \(c\in E\), then \(b\in E\) and put
+  \begin{equation*}
+  g_c(x) = \max\left(|f(x)|^b, |f(x)|^c\right)
+  \end{equation*}
+  and clearly \(\int_X g_c(x)\,d\mu < \infty\).
+  For \(s\in[b,c]\),  \(g_c\) is a dominated function for \(\varphi(s)\)
+  and by Lebesgue's dominated convergence theorem, \(\varphi(s)\)
+  is continuous at \(s=c\).
+
+  Thus \(\varphi\) is continuous on $E$.
+
+\itemch{c}
+  The answer is ``Yes'' to the last question. That is, $E$
+  can be any connected subset of \((0,\infty)\).
+
+  First, the trivial cases:
+  \begin{itemize}
+  \item \(E=\emptyset\) with \(f:\R\to\R\) defined as \(f(x)=1\).
+  \item \(E=\R^+\) with \(f:X\to\R\) defined as \(f(x)=0\)
+        for any measurable space $X$.
+  \end{itemize}
+
+  Let's generalize the definition of \(\phi\) and $E$.
+  For any function \(g:X\to\C\), let
+  \begin{eqnarray*}
+   \varphi_g(p) &=& \int_X |g|^p\,d\mu = \|g\|_p^p \qquad (0<p<\infty) \\
+   E(g) &=& \{p: \varphi_g(p)<\infty\}.
+  \end{eqnarray*}
+
+  Say we have functions
+ \(\{f_i\}_{i\in\N}\)
+  \begin{equation*}
+   f_i: X_i \to \R^+ \qquad(i\in\N)
+  \end{equation*}
+  where \(\R^+ = \{x\in\R: x\geq0\}\).
+  % We'll use the abbreviations: \(\varphi_i(p) = \varphi_{f_i}(p)\).
+
+  It is easy to see that \(E(f_1 + f_2) = E(f_1) \cap E(f_2)\).
+  Similarly
+  \begin{equation*}
+  E\left(\sum_{i\in\N} f_i\right) = \bigcap_{i\in\N} E(f_i)\,.
+  \end{equation*}
+  We can simplify the fucntion summation by assuming that
+  their domains are mutually disjoint. Without loss of generality,
+  we can thing of disjoint union of domains.
+
+  We will show that for any \(a\in\R^+\),
+  we can build functions $g$, such that \(E(g)\)
+  is \emph{half open line}, that is
+  \(E(g) = \{x\in\R^+: 0<x<a\}\) or
+  \(E(g) = \{x\in\R^+: a<x<a\}\).
+
+  It is easy to see that any connected subset of \(\R^+\) can
+  be represented as an intersection of countably many half open lines.
+
+
+  Let \(X=\{x\in\R: x\geq 1\}\) with the normal Lebesgue's measure and let
+  \(g_a(x) = x^a\) for some \(a\in\R\). Let's see how \(E(g_a)\) looks.
+  If \(a=0\) then \(E(g_0) = \emptyset\).
+  Otherwise \(a\neq 0\) and then for
+  \begin{equation*}
+  E(g_a) = \{p\in \R^+: pa < 1\}
+  \end{equation*}
+  we have two cases:
+  \begin{itemize}
+   \item[($-$)] If \(a<0\) then \(E(g_a) = \{p\in\R^+: p > 1/a\}\).
+   \item[($+$)] If \(a>0\) then \(E(g_a) = \{p\in\R^+: p < 1/a\}\).
+  \end{itemize}
+  Thus we can find $a$ for any desired half open line we need.
+
+\itemch{d}
+ If either \(\|f\|_r = \infty\) or \(\|f\|_s = \infty\)
+ then the inequality trivially follows.  Thus we may assume
+ that both \(r,s\in E\).
+ By negation, let's assume
+ \begin{equation} \label{eq:3:fpfrfs}
+ \|f\|_p > \max( \|f\|_r, \|f\|_s).
+ \end{equation}
+ We want to avoid dealing with an exceptional case, where
+ $r$ or $s$ are on the boundary of $E$.
+ From \ich{b} since \(\varphi\) is continuous on $E$,
+ we can find \(r'\), \(s'\) such that \(r<r'<p<s'<s\)
+ and still
+ \(\|f\|_p > \max( \|f\|_{r'}, \|f\|_{s'})\).
+ Since (By \ich{b} again) \(\log\varphi\) is convex in the interior of $E$,
+ and so
+ \begin{equation*}
+ \log\varphi(p) \leq \bigl(\log\varphi(r') + \log\varphi(s')\bigr)/2
+                \leq \max(\log\varphi(r'), \log\varphi(s')\bigr)
+ \end{equation*}
+ But \(\log\) is monotonically increasing, and so
+ \(\varphi(p) \leq \max(\varphi(r'), \varphi(s')\bigr)\)
+ contradiction to (\ref{eq:3:fpfrfs}).
+
+ Now \(L^r(\mu) \cap  L^s(\mu) \subset L^p(\mu)\) follows by definitions.
+
+\itemch{e}
+ Assume $E$ is bounded by \(M<\infty\). Then
+ \begin{equation*}
+ \lim_{p\to\infty}\varphi(p) =
+ \lim_{M<p\to\infty}\varphi(p) = \infty.
+ \end{equation*}
+
+ Otherwise, \(E=\R^+\) (we follow \cite{Hardy:1952:I} \textbf{192}).
+ Two cases:
+ \begin{itemize}
+  \item[\(\bullet\)]
+   Suppose \(M = \|f\|_\infty < \infty\).
+   Then \(\|f\|_r \leq M\) and for any \(\epsilon>0\)
+   we put \(H=\{ x\in X: f(x)> M-\epsilon\}\) with \(\xi=m(H)>0\).
+   Then for any \(r\in\R^+\setminus\{0\}\) we have
+   \begin{equation*}
+   \xi(M-\epsilon)^r \leq \int_H |f|^rd\mu
+                     \leq \int_X |f|^rd\mu \leq \|f\|_r^r\,.
+   \end{equation*}
+   Thus % \(M - \epsilon) \leq \|f\|_r
+   \begin{equation*}
+   \underline{\lim}_{r\to\infty} \|f\|_r \xi^{-r} \geq M - \epsilon
+   \end{equation*}
+   and consequently  \(\underline{\lim}_{r\to\infty} \|f\|_r  \geq M\).
+
+  \item[\(\bullet\)]
+   Suppose \(\|f\|_\infty = \infty\). Then for any \(M<0\)
+   we put \(H=\{ x\in X: f(x)> M\}\) and \(\xi = m(H) > 0\).
+   Similarly as the bounded case, we see that
+   \(\underline{\lim}_{r\to\infty}  \|f\|_r \geq M\).
+   Since $M$ can be arbitrary large,
+   \(\underline{\lim}_{r\to\infty}  \|f\|_r = \infty\).
+ \end{itemize}
+ Thus, in both cases \(\lim_{r\to\infty} \|f\|_r = \|f\|_\infty\).
+
+
+\end{itemize}
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+Assume, in addition to the hypotheses of Exercise~4, that
+\begin{equation*}
+ \mu(X) = 1.
+\end{equation*}
+\begin{itemize}
+\itemch{a}
+ Prove that \(\|f\|_r \leq \|f\|_s\) if \(0<r<s\leq \infty\).
+\itemch{b}
+ Under what conditions does it happen that \(0<r<s\leq \infty\)
+ and \(\|f\|_r = \|f\|_s < \infty\) ?
+\itemch{c}
+ Prove that
+  \(L^r(\mu) \supset L^s(\mu)\) if \(0<r<s\).
+ Under what conditions do these two spaces contain the same functions.
+\itemch{d}
+ Assume that \(\|f\|_r < \infty\) for some \(r>0\), and prove that
+ \begin{equation*}
+   \lim_{p\to 0} \|f\|_p = \exp\left\{\int_X \log|f|\,d\mu\right\}
+ \end{equation*}
+ if \(\exp\{-\infty\}\) is defined to be $0$.
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+%
+\itemch{a}
+If \(\|f\|_s=\infty\) the inequality trivially holds. Otherwise
+We use lemma~\ref{lem:holder:eq} to compute, for simplify assume \(f\geq 0\).
+\begin{equation*}
+\|f\|_r^r
+ = \int_X f^r\,d\mu
+ = \int_X (f^s)^{r/s}\cdot \mathbf{1}^{1-r/s}\,d\mu
+ \leq \left(\int_X f^s\right)^{r/s} \cdot \left(\int_X \mathbf{1}\right)^{1-r/s}
+ = \left(\int_X f^s\right)^{r/s}
+\end{equation*}
+Taking power of \(1/r\) gives the desired inequality \(\|f\|_r \leq \|f\|_s\).
+
+\itemch{b}
+ Following lemma~\ref{lem:holder:eq}, strict inequality happens
+ when $f$ is not effectively constant.
+
+\itemch{c}
+The inclusion is immediate from \ich{a}. The spaces contain the same
+functions (Spaces are ``equal'' except for their norm) iff $X$ has only finite
+number of subsets with non zero measure.
+
+If this condition is met. Let \(X=\disjunion_{j=1}^n X_j\) be the partition.
+Meaning: \(\mu(X_j)>0\) and if \(A\subset X_j\) is measurable, then
+\(\mu(A)=0\) or \(\mu(X\setminus A)=0\).
+Then a measurable function \(f_{|X_j}=c_j\)
+is constant \aded\ on each \(X_j\).
+% assumes finite number of values except for set of measure zero.
+It is easy to see now that for such function \(\|f\|_p < \infty\)
+if \(c_j<\infty\) for \(1\leq i \leq n\).
+
+Conversely, we can find inifinite enumerable partition
+\(X=\disjunion_{j=1}^\infty X_j\), with \(\mu(X_j) = m_j > 0\).
+We will construct a function \(f:X\to [0,\infty)\) such that
+\(f\in L^r(X)\setminus L^s(X)\).
+Since \(\mu(X)=1\), there are infinite subsets \(X_j\) with small measure
+as desired.
+Before picking values for $f$,
+let's assume (or by picking a sub-family) that \(X_j\) are such that
+\begin{equation*} \label{eq:LrLs:mj}
+m_j \eqdef \mu(X_j) < (2^{-js} j)^{1/(s-r)}.
+\end{equation*}
+Hence,
+\begin{equation*}
+\left(\frac{1}{jm_j}\right)^r < \left(\frac{2^{-j}}{m_i}\right)^s.
+\end{equation*}
+Equivelantly,
+\begin{equation}
+l_j \eqdef (j m_j)^{-1/s} < \left(2^{-j}/m_i\right)^{1/r} \eqdef u_j.
+\end{equation}
+Setting ``mid-constants'' \(c_j = (l_j + u_j)/2\) we cann now define
+\begin{equation*}
+f(x) = \left\{ \begin{array}{ll}
+               c_j \qquad & x\in X_j \\
+               0          & \textrm{Otherwise}
+               \end{array}\right..
+\end{equation*}
+To show that $f$ is satisfies our goal:
+\begin{itemize}
+
+\item[(i)] \(f\in L^r(X)\) \quad:
+\begin{equation*}
+\|f\|_r^r
+ = \sum_{j=1}^\infty m_j c_j^r
+ <  \sum_{j=1}^\infty m_j u_j^r
+ \leq \sum_{j=1}^\infty m_j \left(\left(2^{-j}/m_i\right)^{1/r}\right)^r
+ = \sum_{j=1}^\infty 2^{-j} = 1 < \infty
+\end{equation*}
+
+\item[(ii)] \(f\notin L^s(X)\) \quad:
+\begin{equation*}
+\|f\|_s^s
+ = \sum_{j=1}^\infty m_j c_j^s
+ >  \sum_{j=1}^\infty m_j l_j^s
+ = \sum_{j=1}^\infty m_j \left((j m_j)^{-1/s} \right)^s
+ = \sum_{j=1}^\infty 1/j = \infty
+\end{equation*}
+
+\end{itemize}
+
+\itemch{d}
+ Using \(\exp(x)=(\exp(x^p)^{1/p}\), we have:
+ \begin{equation*}
+  \exp\left(\int\log(|f|)\,d\mu\right)
+   = \left(\exp\bigl(\int\log(|f|^p)\,d\mu\bigr)\right)^{1/p}
+   \leq \left(\int|f|^p\,d\mu\right)^{1/p} = \|f\|_p.
+ \end{equation*}
+ The inequality is derived from comparing geometrical and arithmetical means,
+ see (7) in the proof of \index{Jensen} Jensen's theorem
+ (\cite{RudinRCA80}  page~64).
+
+ Note that for \(x>0\)
+ \begin{equation*}
+  \varphi(x) = (t^x-1)/x
+  = \log t \frac{e^{x\log t} - e^0}{x\log t - 0}
+ \end{equation*}
+ is an increasing function by convexity of \(\exp\).
+ and so \(\varphi(x)\to \log t\) (decreasing)  as \(x\to 0\)
+ by l'Hospital's rule. We also note the simple inequality
+ \begin{equation} \label{eq:logt:leq:tm1}
+ \log t \leq t-1.
+ \end{equation}
+ We now compute
+ \begin{eqnarray}
+  \exp\left(\int \log|f|\,d\mu\right)
+  &\leq& \lim_{p\to 0} \|f\|_p          \notag \\
+  &=& \overline{\lim_{p\to 0}} \|f\|_p         \notag \\
+  &=& \exp\left( \overline{\lim_{p\to 0}}
+                 \frac{1}{p}\log\bigl( \int |f|^p\,d\mu\bigr) \right) \notag\\
+  &\leq& \exp \left(\overline{\lim_{p\to 0}}
+                        \int(|f|^p-1)/p\,d\mu\right) \label{eq:5d:whyleq} \\
+  &=&    \exp\left( \int \log|f|\,d\mu\right)        \label{eq:5d:whyeq}
+ \end{eqnarray}
+ Where (\ref{eq:5d:whyleq}) is by (\ref{eq:logt:leq:tm1})
+ and   (\ref{eq:5d:whyeq})  is by Lebesgue's dominated convergence theorem.
+ Hence
+ \begin{equation*}
+  \exp\left\{\int \log|f|\,d\mu\right\} =  \lim_{p\to 0} \|f\|_p
+ \end{equation*}
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Let $m$ be Lebesgue measure on \([0,1]\), and define \(\|f\|_p\)
+with respect to $m$.
+Find all functions \(\Phi\) on \([0,\infty)\) such that the relation
+\begin{equation*}
+ \Phi(\lim_{p\to 0} \|f\|_p) = \int_0^1(\Phi\circ f)\,dm
+\end{equation*}
+holds for every bounded, measurable, positive $f$. Show first that
+\begin{equation*}
+c\Phi(x)+(1-c)\Phi(1) = \Phi(x^c) \qquad (x>0, 0\leq c\leq 1).
+\end{equation*}
+Compare with Exercise~5\ich{d}.
+\end{excopy}
+
+Looking at Exercise~5\ich{d}, we clearly see that \(\log\) can be
+one of such \(\Phi\) functions.
+Define
+\begin{equation*} % \label{eq:fc:chi}
+ f(x) = f_c(x) x\cdot\chhi_{(0,c)} + 1\cdot \chhi_{(c,1)}
+\end{equation*}
+We compute the left side
+\begin{equation*}
+\Phi\left( \lim_{p\to 0} \|f\|_p\right)
+= \Phi\left( \exp \bigl(\int_0^1 \log f\,dm\bigr)\right)
+= \Phi\bigl( \exp (c\cdot\log x + (1-c)\log 1)\bigr)
+= \Phi(x^c)
+\end{equation*}
+and the right side
+\begin{equation*}
+ \int_0^1 \Phi\circ f \,dm
+ = \int_0^c \Phi(x)\,dm + \int_c^1 \Phi(x)\,dm
+ = c\Phi(x) + (1-c)\Phi(1)
+\end{equation*}
+So the required equality is shown.
+
+In the given equality
+\begin{equation} \label{eq:Phi:lim}
+ \Phi(\lim_{p\to 0} \|f\|_p) = \int_0^1(\Phi\circ f)\,dm
+\end{equation}
+We put
+\begin{equation} \label{eq:ex:3.6:psi}
+\psi(x) = \Phi(x) - \Phi(1),
+\end{equation}
+ getting
+\begin{equation*}
+ \psi(x^c)+\Phi(1)
+  = c\bigl(\psi(x)+\Phi(1)\bigr) + (1-c)\bigl(\psi(x)+\Phi(1)\bigr)
+\end{equation*}
+Hence, when \(0\leq c\leq 1\).
+\begin{equation} \label{eq:psi:xc}
+\psi(x^c) = c\psi(x).
+\end{equation}
+If \(c>1\) then \(0\leq 1/c\leq 1\) and similarly
+\begin{equation*}
+\psi\bigl((x^c)^{1/c}\bigr) = (1/c)\psi(x^c)
+\end{equation*}
+and (\ref{eq:psi:xc}) holds for all \(c\geq 0\).
+
+Hence for all \(x>0\),
+\begin{equation*}
+ \psi(x) = \psi\left(e^{\log x}\right) = \psi(e)\log x
+\end{equation*}
+and using (\ref{eq:ex:3.6:psi}) we see that any such \(\Phi\) must satisfy
+\begin{equation*}
+\Phi(x) = \psi(e)\log x + \Phi(1).
+\end{equation*}
+Clearly the converse, is true. That is for any \(a,b\in\R\)
+the function \(\Phi(x) = a\log x + b\) satisfies the required condition.
+
+
+%%%%%%%%%%%%%% 7
+\begin{excopy}
+For some measures, the relation \(r<s\) implies
+\(L^r(\mu) \subset L^s(\mu)\);
+for others, the inclusion is reversed;
+and there are some for which \(L^r(\mu)\) does not contain \(L^s(\mu)\)
+if \(r\neq s\). Give examples of these situations, and find conditions
+on \(\mu\) under which these situations will occur.
+\end{excopy}
+
+For trivial atomic measure space \(\mu\) with only \(\{\emptyset,X\}\)
+in its \salgebra, \(L^p(X,\mu)\) consists of measurable functions $f$
+such that \(|f|<\infty \;\aded\).
+In particular
+\begin{equation*}
+L^r(\mu)=L^s(\mu)\supset L^r(\mu)\subset L^s(\mu).
+\end{equation*}
+In Exercise~5(c) we saw a case (\(\mu(X)<\infty\) where for \(r<s\) we showed
+\(L^s(\mu) \subsetneq L^r(\mu)\).
+% Put \(t=(r+s)/2\).
+
+Put \(t = (1/r+1/s)/2 > 0\).
+Note that \(st>1\) and \(rt<1\) or equivalently \(-st < -1 < -rt\).
+
+Now in \(\R^+\) with Lebesgue measure, the function \(f(x)=x^{-t}\) satisfies
+\begin{equation*}
+\|f\|_s^s = \int_0^\infty x^{-st},dm < \infty
+\end{equation*}
+while
+\begin{equation*}
+\|f\|_r^r = \int_0^\infty x^{-rt},dm > \infty.
+\end{equation*}
+Thus \(L^r(\mu) \nsupseteq L^s(\mu)\).
+
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+ If $g$ is a positive function on \((0,1)\) such that
+\(g(x)\to\infty\) as \(x\to 0\),
+then there is a convex function $h$ on \((0,1)\) such that \(h\leq g\)
+and
+\(h(x)\to\infty\) as \(x\to 0\).
+True or false?
+Is the problem changed of \((0,1)\) is replaced by \((0,\infty)\)
+and \(x\to 0\) is replaced by \(x\to\infty\).
+\end{excopy}
+
+First part is true.
+Let \((g(x)\) be as requried. We will now define a decreasing sequence
+\seqan\ converging to $0$ by induction.
+Let \(a_0=1\) and
+let \(a_1>0\) be such that \(g(x)>1\) for all \(x<a_1\).
+Now assume \(a_i\) are defined for \(i<k\).
+Let \(a_k > 0\) be such that
+\begin{itemize}
+ \item  \(a_k\leq a_{k-1}/2\)
+ \item  \(g(x) > k\) for all \(x < a_k\).
+\end{itemize}
+We now define $h$ on the segments \(I_i = [a_{i+1},a_{i}]\) by induction.
+For \(x\in I_0\), we set \(h(x)=0\).
+Assume $h$ was defined for the segments \(I_i\) for \(i<k\).
+In particular, \(h(a_k)\) is defined.
+For \(x\in I_k\) let \(h(x)\) get the values of the lines passing
+through \(L=(0,k)\) and \(R=(a_k,h(a_k))\).
+It is easy to see that $h$
+\begin{itemize}
+ \item is less than $g$.
+ \item is continuous.
+ \item converges to \(\infty\) as \(x\to 0\)
+ \item is decreasing and its absolute slopes values increase,
+       and thus it is convex.
+\end{itemize}
+
+Second part is false. Simply look at \(g(x)=\log(x)\). Any convex $h$
+satisfying the requirements will have some \(0<a<b<\infty\)
+with \(f(a)<f(b)\). But then the line passing through
+\(A=(a,h(a))\) and
+\(B=(b,h(b))\)
+would intersect \(\log(x)\) at some point $M$, but then
+\(h(M)<\log(x) = h(a) + (h(b)-h(a))(x-a)/(b-a)\)
+contradicting $h$'s convexity.
+
+%%%%%%%%%%%%%% 9
+\begin{excopy}
+Suppose $f$ is Lebesgue measurable on \((0,1)\), and not essentially bounded.
+By Exercise~4\ich{e}, \(\|f\|_p\to\infty\) as \(p\to\infty\).
+Can \(\|f\|_p\) tend to \(\infty\) arbitrarily slowly?
+More precisely, is it true that for any function \(\Phi\) on \((0,\infty)\)
+such that \(\Phi(p)\to\infty\) as \(p\to\infty\) one can find an $f$ such that
+\(\|f\|_p\to\infty\) as \(p\to\infty\), but
+\(\|f\|_p \leq \Phi(p)\) for all sufficiently large $p$?
+\end{excopy}
+
+The answer is \emph{yes}. Assume \(\Phi\) is as described above.
+We will construct a ``step'' function $f$ as desired.
+
+We can assume that \(\Phi\) is monotonically increasing.
+Otherwise, we can simply look at
+\begin{equation*}
+ \Psi(x) = \inf_{w\geq x}\Phi(w)
+\end{equation*}
+instead.
+
+For each \(k\in\Z\),
+let \(p_k>0\) be such that \(\Phi(p)\geq k\) for all \(p>p_k\),
+and define
+\begin{equation*}
+ \alpha_k
+ \eqdef \inf_{p_1\leq p } \bigl(\Phi(p)/k\bigr)^p
+ = \inf_{p_1\leq p \leq p_k } \bigl(\Phi(p)/k\bigr)^p.
+\end{equation*}
+Clearly,
+\begin{equation*}
+0 < 1/k^{p_k} \leq \alpha_k \leq 1.
+\end{equation*}
+Now, define ``interval lengths'' \(m_k = 2^{-k}\alpha_k\).
+We can easily form disjoint open sub-intervals \(I_k\) of \([0,1]\)
+such that \(m(I_k) = m_k\). Finally, we define
+\begin{equation*}
+f(x) = \sum_{k=1}^\infty \chhi_{I_k}(x) \cdot k =
+    \left\{\begin{array}{ll}
+             k & \qquad x\in I_k\\
+             0 & \qquad \textrm{otherwise}
+           \end{array}\right.
+\end{equation*}
+To show the required inequality, for \(p\geq p_1\)
+\begin{equation*}
+\|f\|_p^p
+  = \sum_{k=1}^\infty m_k k^p
+  \leq \sum_{k=1}^\infty 2^{-k} \bigl(\Phi(p)/k\bigr)^p k^p
+  = \sum_{k=1}^\infty 2^{-k} \bigl(\Phi(p)\bigr)^p
+  = \bigl(\Phi(p)\bigr)^p
+\end{equation*}
+Hence \(\|f\|_p \leq \Phi(p)\) for \(p\geq p_1\).
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Suppose \(f_n\in L^p(\mu)\), for \(n=1,2,3,\ldots\), and
+\(\|f_n-f\|_p\to 0\) and
+\(f_n\to g\) \aded, as \(n\to \infty\).
+What relation exists between $f$ and $g$?
+\end{excopy}
+
+By Theorem~3.12 \cite{RudinRCA80}, there is a subsequence of \(\{f_n\}\)
+that converges pointwise to $f$ \aded. Obviousy this subsequence
+converges to $g$ \aded. These two convergences may be missed
+in two sets of measure $0$, and so is their union.
+Thus \(f=g \aded\).
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Suppose \(\mu(\Omega)=1\), and suppose $f$ and $g$ are positive measurable
+functions on \(\Omega\) such that \(fg\geq 1\). Prove that
+\begin{equation*}
+ \int_\Omega f\,d\mu \cdot \int_\Omega g\,d\mu \geq 1.
+\end{equation*}
+\end{excopy}
+
+Clearly \((fg)^{1/2} \geq 1\), hence by H\"older's inequality,
+\begin{equation*}
+1 \leq \int_\Omega f^{1/2} g^{1/2}\,d\mu
+  \leq \left(\int_\Omega f\,d\mu\right)^{1/2}
+       \left(\int_\Omega g\,d\mu\right)^{1/2}
+\end{equation*}
+Taking squares gives the desired inequality.
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Suppose \(\mu(\Omega)=1\) and \(h:\Omega\to[0,\infty]\) is measurable. If
+\begin{equation*}
+ A = \int_\Omega h\,d\mu,
+\end{equation*}
+prove that
+\begin{equation*}
+ \sqrt{1+A^2} \leq \int_\Omega \sqrt{1+h^2}\,d\mu \leq 1 + A.
+\end{equation*}
+If \(\mu\) is Lebesgue measure on \([0,1]\) and if $h$ is continuous, \(h=f'\),
+the above inequalities have simple geometric interpretation.
+From this, conjecture (for general \(\Omega\)) under what conditions on $h$
+equality can hold in either of the above inequalities, and prove your
+conjecture.
+\end{excopy}
+
+We define a function \(\varphi\) and compute:
+\begin{eqnarray}
+ \varphi(x)  &=& \sqrt{x^2+1}         \label{eq:phi:sqrt:x2} \\
+ \varphi'(x) &=& x/\sqrt{x^2+1}       \notag \\
+ \varphi''(x) &=& 1/(x^2+1)^{3/2} > 0 \notag
+\end{eqnarray}
+Thus \(\varphi(x)\) is convex. Applying Jensen Theorem~3.3 to $h$ gives
+\begin{equation*}
+\sqrt{1+A^2} = \varphi\left(\int_\Omega h\,d\mu\right)
+ \leq \int_\Omega (\varphi \circ h)\,d\mu
+ = \int_\Omega \sqrt{1+h^2}\,d\mu.
+\end{equation*}
+the first desired inequality. The second inequality is immediate
+by noting that \(\sqrt{1+x^2}\leq 1+x\)  for \(x\geq 0\), then integrating
+over \(\Omega\).
+
+For the \(h'=f\) case, here is the geometric interpretation.
+The function $f$ is increasing.
+The length of the graph curve of \((x,f(x))\) is
+\(\int_0^1 \sqrt{1+h^2}\,d\mu\) which is greater or equal
+the distance \(\sqrt{1+A^2}=d((0,f(0)),(1,f(1)))\) of its endpoints,
+but is less or equal the Manhattan distnace \(1+A\).
+
+The conjecture
+\begin{itemize}
+ \item[(i)]  \(\sqrt{1+A^2} = \int_\Omega \sqrt{1+h^2}\,d\mu\)
+             \,iff\, $h$ is constant \aded.
+ \item[(ii)]  \(\int_\Omega \sqrt{1+h^2}\,d\mu = 1 + A\)
+             \,iff\, \(h=0\;\aded\).
+\end{itemize}
+
+\textbf{Proof.}
+\newline
+\textbf{(i).} If \(h(x)=c \;\textrm{a.e.}\)
+then clearly \(A=c\) and the equality follows. Conversely,
+if $h$ is not constant \aded, then
+since \(varphi\) (defined in (\ref{eq:phi:sqrt:x2})) is strictly convex,
+we can apply local lemma~\ref{lem:jensen:strict}
+to get strict inequality
+% \begin{equation*}
+\(\sqrt{1+A^2} < \int_\Omega \sqrt{1+h^2}\,d\mu\).
+% \end{equation*}
+\newline
+\textbf{(ii).} If \(h(x)=0 \;\textrm{a.e.}\) then clearly \(A=0\)
+and the equality follows. Conversely, assume
+\(\int_\Omega \sqrt{1+h^2}\,d\mu = 1 + A\).
+Hence
+\(\int_\Omega 1 + h - \sqrt{1+h^2}\,d\mu = 0\) and since the integrand
+is non negative, \(1 + h - \sqrt{1+h^2} = 0\;\aded\), thus \(h=0\;\aded\).
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Under what conditions on $f$ and $g$ does equality hold in the inclusions
+of Theorem~3.8 and~3.9? You may have to treat the cases \(p=1\) and \(p=\infty\)
+separately.
+\end{excopy}
+
+Call the domain of the functions $X$.
+\begin{itemize}
+ \item[\textbf{[3.8]}]
+  Given conjugate \(1\leq \,p\,,q\,\leq \infty\),
+  if \(f\in L^p(\mu)\)
+  and \(g\in L^q(\mu)\), then
+  \begin{equation} \label{eq:fg1:eq:fpgq}
+      \|fg\|_1 = \|f\|_p\cdot\|g\|_q
+  \end{equation}
+  iff one of the following occurs:
+\begin{itemize}
+ \itemdim \emph{Normal}: \(1<p,q<\infty\) and
+        the functions \(f^p\) and \(g^q\) are effectively proportional
+        (see \cite{Hardy:1952:I} \textbf{189.}).
+ \itemdim \emph{Supremum}:
+            \(p=1\) and \(q=\infty\) and
+            \(|g(x)| = \|g\|_\infty\) constant \aded\ on \(\supp f\)
+ \itemdim \emph{Supremum}:
+            \(q=1\) and \(p=\infty\) and
+            \(|f(x)| = \|f\|_\infty\) constant \aded\ on \(\supp g\)
+\end{itemize}
+
+  \emph{Normal}: Assume \(1<p,q<\infty\),
+  since \(1/p+1/q=1\) we have
+  \(q/p = q - 1\).
+  If \(f^p\) and \(g^q\) are effectively proportional, by symmetry, we can assume
+  there is some scalar $a$ such that \(f^p = a g^q \aded\). Then
+  \(|g|^{q/p+1} = |g|^q\). Now compute:
+ \begin{eqnarray*}
+  \|fg\|_1
+    &=& \int |fg|\,d\mu
+    = \int (a|g|^q)^{1/p}|g|\,d\mu
+    = a^{1/p} \int |g|^{q/p+1}\,d\mu
+    = a^{1/p} \int |g|^q\,d\mu \\
+    &=& a^{1/p} \left(\int |g|^q\,d\mu\right)^{1/p + 1/q}
+    = \left(\int a|g|^q\,d\mu\right)^{1/p}
+      \left(\int  |g|^q\,d\mu\right)^{1/q} \\
+    &=& \|f\|_p \|g\|_q
+ \end{eqnarray*}
+
+ Conversely, assume (\ref{eq:fg1:eq:fpgq}) holds. Then
+ \begin{equation*}
+ \int \left(|f|^p\right)^{1/p}g|
+      \left(|g|^q\right)^{1/q}g|
+        \,d\mu
+ = \int |fg|\,d\mu
+ = \|f\|_p \|g\|_q
+ = \int \left(|f|^p\,d\mu\right)^{1/p}
+   \int \left(|g|^q\,d\mu\right)^{1/q}.
+ \end{equation*}
+ By local lemma~\ref{lem:holder}
+ with \(k=2\), we conclude that the functions \(|f|^p\) and \(|g|^q\)
+ are effectively proportional.
+
+ % \smallskip
+ \medskip
+ \emph{Supremum}: The two cases are symmetrical.
+ Assume \(p=1\) and \(q=\infty\).
+ If $g$ is constant \aded\ on \(\supp f\) then
+ \begin{equation*}
+ \int |fg|\,d\mu = \int_{\esssup f} |fg|\,d\mu
+ = \left(\int_{\esssup f} |f|\,d\mu\right)\|g\|_\infty
+ = \|f\|_1 \|g\|_\infty
+ \end{equation*}
+ Conversely, assume (\ref{eq:fg1:eq:fpgq}) holds. By negation
+ assume that \(|g(x)|\) is not a constant \(\|g\|_\infty\) on \(E=\esssup f\).
+ Then $g$ ``misses'' the supremum on $f$'s support. More precisely,
+ there exists $a$ such that \(0\leq a < \|g\|_\infty\)
+ such that the set
+ \begin{equation*}
+  B \eqdef \{x\in \esssup f: |g(x)| < a\} \subset \esssup \subset X
+ \end{equation*}
+ has \(\mu(B)> 0\). Now
+ \begin{eqnarray}
+ \int_X |fg|\,d\mu
+ &=&    \notag
+         \int_{X\setminus B} |fg|\,d\mu + \int_B |fg|\,d\mu \\
+ &\leq& \notag
+          \|g\|_\infty \int_{X\setminus B} |f|\,d\mu
+        + a \int_B |f|\,d\mu \\
+ &<&    \label{eq:gB:a}
+          \|g\|_\infty \int_{X\setminus B} |f|\,d\mu
+        + \|g\|_\infty \int_B |f|\,d\mu \\
+ &=&    \notag
+        \|f\|_1 \cdot \|g\|_\infty
+ \end{eqnarray}
+ Where the strict inequality in (\ref{eq:gB:a})
+ by local lemma~\ref{lem:fgz:igz} gives a contradiction.
+
+ \item[\textbf{[3.9]}]
+  Given \(1\leq p \leq \infty\),
+  if \(f,g\in L^p(\mu)\)
+  then
+  \begin{equation} \label{eq:fg:p:fpgp}
+      \|f + g\|_p = \|f\|_p + \|g\|_p
+  \end{equation}
+  iff one of the following occurs:
+   \begin{itemize}
+    \itemdim \emph{Trivial}:  Both expressions are zero.
+    \itemdim \emph{Manhattan}: \(p=1\) and
+             \begin{equation} \label{eq:absfg:absfabsg}
+              |f(x)+g(x)| = |f(x)| + g(x)\;\aded
+             \end{equation}
+    \itemdim \emph{Normal}: \(1< p <\infty\) and the functions
+          $f$ and $g$ are effectively proportional
+          (see \cite{Hardy:1952:I} \textbf{198.}).
+    \itemdim \emph{Supremum}: \(p=\infty\) and for each \(\epsilon>0\)
+          the set
+          \begin{equation*}
+           S_\epsilon =
+               \bigl\{x\in X:
+              \bigl|\left(\|f\|_\infty + \|g\|_\infty\right) - (f(x)+g(x))\bigr|
+               < \epsilon\bigr\}
+          \end{equation*}
+          has positive measure.
+   \end{itemize}
+    \emph{Trivial}: Both expression are zero. For the rest of the cases
+       (especially \emph{Normal}) we may assume \(\|f+g\|_p > 0\).
+
+    \medskip
+    \emph{Manhattan}:
+    Assume \(p=1\).
+    Clearly  \(|f(x)+g(x)| \leq |f(x)| + g(x)\;\aded\).
+    Now \(\ref{eq:fg:p:fpgp}\) is equivalent to
+    \begin{equation*}
+    \int  |f| + |g| - |f+g|\,d\mu = 0.
+    \end{equation*}
+    this is equivalent by local lemma~\ref{lem:fgz:igz}
+    to~(\ref{eq:absfg:absfabsg}).
+
+    \medskip
+    \emph{Normal}: Assume  \(1\leq p<\infty\).
+    If $f$ and $g$ are effectively proportional, say \(f=ag\)
+    for some scalar \(a>0\), then
+    \begin{eqnarray*}
+    \|f + g\|_p
+    &=& \left(\int (a+1)^p|g|^p\,d\mu\right)^{1/p}
+              = (a+1)\left(\int |g|^p\,d\mu\right)^{1/p} \\
+       &=&   \left(\int |ag|^p\,d\mu\right)^{1/p}
+            + \left(\int |g|^p\,d\mu\right)^{1/p} \\
+    &=& \|f\|_p + \|g\|_p
+    \end{eqnarray*}
+    Conversely, assume (\ref{eq:fg:p:fpgp}) holds.
+    Let \(S \eqdef \|f + g\|_p\),
+    and $q$ be the conjugate exponent of $p$, that is \(1/p+1/q = 1\)
+    or \(p=(p-1)q\).
+    We compute
+    \begin{eqnarray}
+    S^p
+    &=& \notag
+     \|f + g\|_p^p  \\
+    &=& \notag
+     \int |f+g|^p\,d\mu \\
+    &\leq& \label{eq:ex13:f+g}
+           \int |f|\cdot |f+g|^{p-1}\,d\mu
+         + \int |g|\cdot |f+g|^{p-1}\,d\mu \\
+    &\leq& \label{eq:fg:p-1}
+         \left(\int |f|^p\,d\mu\right)^{1/p}
+            \left(\int |f+g|^{(p-1)q}\,d\mu\right)^{1/q}
+         + \\
+    &&   \notag
+          \left(\int |g|^p\,d\mu\right)^{1/p}
+            \left(\int |f+g|^{(p-1)q}\,d\mu\right)^{1/q} \\
+    &=&  \notag
+         \left(\|f\|_p + \|g\|_p\right) \|f+g\|_p^{p/q} \\
+    &=&  \notag
+         \left(\|f\|_p + \|g\|_p\right) \|f+g\|_p^{p-1}
+    \end{eqnarray}
+    The inequality (\ref{eq:fg:p-1}) is by applying
+    Theorem~3.8 (\cite{RudinRCA80}) twice, and it is an equality
+    iff both \(f^p\) and \(g^p\) are effectively proportional
+    to \((f+g)^{p-1}\). Since \(\|f+g\|_p > 0\), by assumption,
+    the above inequalities (divided by \(\|f+g\|_p^{p-1}\))
+    are indeed equalities.
+    Hence \(|f|^p\) and \(|g|^p\) are effectively proportional
+    and so are \(|f|\) and \(|g|\).
+    But since we equality also in (\ref{eq:ex13:f+g})
+    we have \(|f+g|=|f|+|g| \;\aded\),
+    and so $f$ and $g$ are effectively proportional.
+
+    \medskip
+    \emph{Supremum}: Assume \(p=\infty\).
+    For any \(\mu\)-measurable function \(\varphi\)
+    we have \(\|\varphi\|_\infty = \esssup \varphi\).
+    Let \(M=\|f + g\|_\infty\) and
+        \(N = \|f\|_\infty + \|g\|_\infty\).
+    Clearly \(|f(x)+g(x)|\leq M \leq N\) for all \(x\in X\).
+    If (\ref{eq:fg:p:fpgp}) holds, then for any \(\epsilon>0\)
+    the set \(\{x\in X: |f(x)+g(x)| > M-\epsilon\}\) has non zero measure.
+    But in this case, this set is exactly \(S_\epsilon\).
+    Conversely, if \(\mu(S_\epsilon)>0\) for and \(\epsilon > 0\)
+    then \(\|f+g|_\infty \geq M-\epsilon\) and so we get
+    (\ref{eq:fg:p:fpgp}).
+
+
+\end{itemize}
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+Suppose \(1<p<\infty\), \(f\in L^p=L^p((0,\infty))\),
+relative to Lebesgue measure, and
+\begin{equation*}
+ F(x) = \frac{1}{x} \int_0^x f(t)\,dt \qquad (0<x<\infty)
+\end{equation*}
+\begin{itemize}
+\itemch{a}
+ Prove Hardy's inequality
+ \begin{equation*}
+  \|F\|_p \leq \frac{p}{p-1} \|f\|_p
+ \end{equation*}
+ which shows that the mapping \(f\to F\) carries \(L^p\) into \(L^p\).
+\itemch{b}
+ Prove that equality holds only if \(f=0\) a.e.
+\itemch{c}
+ Prove that the constant \(p/(p-1)\) cannot be replaced by a smaller one.
+\itemch{d}
+ If \(f>0\) and \(f\in L^1\), prove that \(F\notin L^1\).\newline
+\end{itemize}
+ \qquad \emph{Suggestions}: \ich{a} Assume first that \(f\geq 0\) and
+ \(f\in C_c((0,\infty))\). Integration by parts gives
+ \begin{equation*}
+   \int_0^\infty F^p(x)\,dx = -p \int_0^\infty F^{p-1}(x)xF'(x)\,dx.
+ \end{equation*}
+ Note that \(xF' = f - F\), and apply
+ \index{Holder@H\"older}
+ H\"older's inequality to \(\int F^{p-1}f\).
+ Then derive the general case.
+ \ich{c}~Take \(f(x)=x^{-1/p}\) on \([1,A]\), \(f(x)=0\) elsewhere,
+ for large $A$.
+\end{excopy}
+
+
+% \begin{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\ich{a}.}
+Following the suggestion, we first assume \(0\leq f\in C_c((0,\infty))\).
+Then
+\begin{equation*}
+F(x) \eqdef \int_0^x f(t)\,dt
+\end{equation*}
+and \(F(x)\) are differentiable.
+Integration by parts (see theorem~6.22 \cite{RudinPMA85})\\
+
+\begin{quote}
+\footnotesize
+ Reminder: Assume \(\Phi'=\phi\) and \(\Psi'=\psi\)
+ \begin{equation*}
+  \int_a^b \Phi(x)\psi(x)\,dx
+  = \Phi(b)\Psi(b) - \Phi(a)\Psi(a) - \int_a^b \phi(x)\Psi(x)\,dx.
+ \end{equation*}
+\end{quote}
+
+gives:
+\begin{equation} \label{eq:int0x:Fpx}
+ \int_0^x F^p(x)\cdot 1\,dx
+ = \bigl(\lim_{x\to\infty} F^p(x)\cdot x\bigr) - F^p(0)\cdot 0
+   - \int_0^x pF^{p-1}(x)F'(x)x\,dx .
+\end{equation}
+Since \(f(x)=0\) when \(x>b\) for some sufficiently large \(b<\infty\),
+we can use the boundary  \(M\int_0^\infty |f(x)|\,dx\) to estimate
+\begin{equation*}
+ F^p(x)\cdot x
+ \leq (M/x)^p x = Mx^{-(p-1)}.
+\end{equation*}
+Thus \(\lim_{x\to\infty} F^p(x)x = 0\) and also \(F(0) = 0\).
+
+By differentiation (see theorem~6.20 \cite{RudinPMA85})
+\begin{equation*}
+F'(x)
+ = \frac{d}{dx}\left(x^{-1}\int_0^x f(t)\,dt\right)
+ = -x^{-2}\int_0^x f(t)\,dt + x^{-1}f(x) = (1/x)\bigl(F(x) + f(x)\bigr).
+\end{equation*}
+Thus
+\begin{equation}  \label{eq:ex14:xF}
+xF'(x) = f(x) - F(x).
+\end{equation}
+Collecting these resulted equalities,
+we can substitute in~(\ref{eq:int0x:Fpx})
+\begin{equation*}
+ \int_0^\infty F^p(x)\,dx
+  =  - p \int_0^\infty F^{p-1}(x)\bigl(f(x) - F(x)\bigr)\,dx
+\end{equation*}
+and simplify to
+\begin{equation*}
+(p-1) \int_0^\infty F^p(x)\,dx =  p \int_0^\infty F^{p-1}(x)f(x)\,dx
+\end{equation*}
+By H\"older inequality with $p$ and its conjugate exponent of \(q=p/(p-1)\).
+\begin{eqnarray}
+ \left(\|F\|_p\right)^p
+    = \left|\int F^{p-1}f\right| \notag
+ &\leq& \|F^{p-1}\|_q \|f\|_p    \label{eq:ex14:a} \\
+ &=& \left(\int_0^\infty F^{q(p-1)}(x)\,dx\right)^{(p-1)/p} \|f\|_p \notag \\
+ &=& \left(\|F\|_p\right)^{p-1} \|f\|_p \notag
+\end{eqnarray}
+Combining with the recent simplified equality
+\begin{equation} \label{eq:ex:3.14a}
+ \|F\|_p \leq (p/p-1) \|f\|_p.
+\end{equation}
+
+Theorem~3.14 (\cite{RudinRCA80}) shows that the functions with compact support
+are dense in \(L^p((0,\infty\), so there (\ref{eq:ex:3.14a})
+holds as well.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\ich{b}.}
+If \(f=0\) equality clearly holds. Conversely, assume \(f=0\; \aded\)
+does not hold, and by negation assume equality holds.
+
+If \(f\geq0\;\aded\) does not hold, take
+\(g(x)=|f(x)|\) and \(G(x)=(1/x)\int_0^x g(t)\,dt\).
+Then
+\begin{equation*}
+\|F\|_p\leq \|G\|_p \leq \frac{p}{p-1}\|g\|_p = \frac{p}{p-1}\|f\|_p
+\end{equation*}
+and so the above inequalities reduce to equalities.
+
+Thus we may assume \(f\geq0\). The inequality (\ref{eq:ex14:a})
+must also be an equality, and by previous exercise, extending theorem~3.8
+\cite{RudinRCA80} (see \ref{eq:fg1:eq:fpgq}) above),
+the functions \((F^{p-1}(x))^q = F^p(x)\) and \(f^p(x)\) must be
+effectively proportional and so are \(F(x)\) and \(f(x)\).
+Hence there is a scalar \(a\neq 0\) such that
+\(aF(x) = f(x)\;\aded\) for \(x\in(0,\infty)\).
+Since \(F(x)\) is continuous, we can consider \(f(x)\) to be continuous,
+otherwise we can look at \(aF(x)\). Using (\ref{eq:ex14:xF}),
+we will solve the following first order ordinary partial equation
+\begin{equation*}
+\frac{d}{dx} \log(F(x)) = \frac{F'(x)}{F(x)} = \frac{a-1}{x}
+\end{equation*}
+Integrating gives
+\begin{equation*}
+ \log(F(x)) = \int_1^x F'(t)/F(t)\;dt + c_0 = (a-1)\int_1^x 1/t\;dt + c_0
+ = b\log(x) + c
+\end{equation*}
+for some constants \(c_0\), \(c_1\).
+Hence
+\begin{equation*}
+F(x) = e^{b\log(x)+c} = e^c x^b
+\end{equation*}
+But then \(f(x) = ae^c x^b\) is a contradiction to \(f \in L^p((0,\infty))\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\ich{c}.}
+Given \(A>1\), let
+\begin{equation*}
+f(x) = \left\{ \begin{array}{ll}
+                 x^{-1/p}   & \quad  x\in[1,A] \\
+                 0         & \quad  \textrm{otherwise}.
+                \end{array}\right.
+\end{equation*}
+
+Now compute
+\begin{equation*}
+\|f\|_p = \left(\int_1^A (x^{-1/p})^p\,dx\right){1/p}
+        = \left(\log(A)\right)^{1/p}
+\end{equation*}
+
+For \(1\leq x \leq A\)
+\begin{equation*}
+F(x)
+ = \left(\int_1^x t^{-1/p}\;dt\right)/x
+ = \frac{p}{(p-1)x}\bigl(x^{(p-1)/p} - 1\bigr)
+\end{equation*}
+\begin{equation*}
+F^p(x)
+ = \left(\frac{p}{p-1}\right)^p \left(\frac{x^{(p-1)/p} - 1}{x}\right)^p
+\end{equation*}
+We need to estimate the last factor.
+For each (large) $x$ We look for \(\epsilon_x\) such that
+\begin{equation} \label{eq:ex14:eps}
+ \left(\frac{x^{(p-1)/p} - 1}{x}\right)^p > \frac{1-\epsilon_x}{x}
+\end{equation}
+Isolating
+\begin{equation*}
+\epsilon_x > 1 - x\left(\frac{x^{(p-1)/p} - 1}{x}\right)^p
+\end{equation*}
+Using l'Hospital rule;
+\begin{equation*}
+\lim_{x\to\infty} x\left(\frac{x^{(p-1)/p} - 1}{x}\right)^p
+% = \lim_{x\to\infty} \left(\frac{x^{1/p}x^{(p-1)/p} - x^{1/p}}{x}\right)^p
+= \lim_{x\to\infty} \left(\frac{x - x^{1/p}}{x}\right)^p
+= \lim_{x\to\infty} 1 - x^{1/p-1}/p = 0.
+\end{equation*}
+So for each $x$ % \(1\leq x \leq A\)
+we can find \(\epsilon_x>0\) such that (\ref{eq:ex14:eps}) holds
+and \(\lim_{x\to\infty}\epsilon_x = 0\) (with \(A\to\infty\) as well).
+
+Next, we need estimate for integration.
+\begin{equation*}
+\|F\|_p^p
+= \int_0^\infty F^p(x)\,dx
+\geq \int_1^A F^p(x)\,dx
+\geq \left(\frac{p}{p-1}\right)^p \int_1^A \frac{1-\epsilon_x}{x}\,dx.
+\end{equation*}
+We will improve the last estimate.
+
+Given \(\eta > 0\)
+there is an $h$ such
+that \(\epsilon_x < \eta\) for any \(x \geq h\).
+By local lemma~\ref{lem:fg:bnless}
+(replacing integral domain minimum), there exists \(A<\infty\) such that
+\begin{equation*}
+   \int_1^A \frac{1-\epsilon_x}{x}\,dx \geq + (1 - \eta) \int_1^A 1/x\,dx
+\end{equation*}
+Thus, by choosing sufficiently large $A$, we get
+\begin{equation*}
+\|F\|_p^p
+\geq \left(\frac{p}{p-1}\right)^p (1 - \eta) \int_h^A f^p(x)\,dx
+\end{equation*}
+which shows that \(p/(p-1)\) is the minimal constant,
+satisfying (\ref{eq:ex:3.14a}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\ich{d}.}
+By local lemma~\ref{lem:fgz:igz}, there exist some \(a<\infty\)
+such that
+\begin{equation*}
+0 < A = \int_0^a f(x)\,dx < \infty
+\end{equation*}
+But now
+\begin{equation*}
+\|F\|_1
+= \int_0^\infty F(x)\,dx
+= \int_0^\infty \left((1/x)\int_0^x f(t)\,dt\right)\,dx
+\geq \int_a^\infty A/x\,dx = \infty
+\end{equation*}
+
+
+% \end{itemize}
+
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+Suppose \(\{a_n\}\) is a sequence of positive numbers. Prove that
+\begin{equation*}
+ \sum_{N=1}^\infty \left(\frac{1}{N} \sum_{n=1}^N a_n\right)^p
+ \leq
+ \left(\frac{p}{p-1}\right)^p \sum_{n=1}^\infty a_n^p
+\end{equation*}
+if \(1<p<\infty\). \emph{Hint}: If \(a_n\geq a_{n+1}\), the result can be made
+ to follow from Exercise~14.
+ This special case implies the general case.
+\end{excopy}
+
+We will first show that the supremum of
+\begin{equation*}
+ \sup_\pi \sum_{N=1}^\infty \left(\frac{1}{N} \sum_{n=1}^N \pi(a_n)\right)^p
+\end{equation*}
+where \(\pi\) runs over all permutations of \N, is achieved with
+\(\bigl(\pi(a_n)\bigr)_{n\in\N}\) monotonically decreasing.
+Assume \((a_n)_{n\in\N}\) is monotonically decreasing, and
+\((b_n)_{n\in\N}\) any of its permutations.
+Then clearly, for any $N$
+\begin{equation*}
+ \sum_{n=1}^N a_n > \sum_{n=1}^N b_n
+\end{equation*}
+and so
+\begin{equation*}
+ \sum_{N=1}^\infty \left(\frac{1}{N} \sum_{n=1}^N a_n\right)^p
+ \geq
+ \sum_{N=1}^\infty \left(\frac{1}{N} \sum_{n=1}^N b_n\right)^p.
+\end{equation*}
+
+Thus, it is sufficient to prove the desired inequality for
+decreasing sequence \((a_n)_{n\in\N}\).
+Let's define \(f:(0,\infty)\to (0,\infty)\), by
+\(f(x) = a_{\lceil x \rceil}\).
+From the trivial equality
+\begin{equation*}
+ \sum_{n=1}^N a_n = \int_0^N f(x)
+\end{equation*}
+we can use the previous exercise~14, with the definition of \(F(x)\)
+\begin{eqnarray*}
+ \sum_{N=1}^\infty \left(\frac{1}{N} \sum_{n=1}^N a_n\right)^p
+ &=& \sum_{N=1}^\infty \left(\frac{1}{N} \int_0^N f(x) \right)^p \\
+ &=& \sum_{N=1}^\infty F^p(N) \\
+ &=& \int_0^\infty F^p(x)\,dx = \|F\|_p^p \\
+ &\leq& \left(\frac{p}{p-1} \|f\|_p\right)^p
+        = \left(\frac{p}{p-1}\right)^p \int_0^\infty f^p(x)\,dx  \\
+ &=&  \left(\frac{p}{p-1}\right)^p \sum_{N=1}^\infty a_n^p\;.
+\end{eqnarray*}
+
+
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+Prove
+\index{Egoroff}
+Egoroff's theorem: If \(\mu(X)<\infty\), if \(\{f_n\}\) is a sequence of complex
+measurable functions which converges pointwise at every point of $X$,
+and if \(\epsilon > 0\), there is a measurable set \(E\subset X\), with
+\(\mu(X\setminus E)<\epsilon\), such that \(\{f_n\}\)
+converges uniformly on $E$.
+
+(The conclusion is that by redefining the \(f_n\) on a set of arbitrarily small
+measure we can convert a pointwise convergent sequence to a uniformly
+convergent one: note the similarity with
+\index{Lusin}
+Lusin theorem.)
+
+\qquad\emph{Hint}: Put
+\begin{equation*}
+ S(n,k) = \cap_{i,j>n} \left\{x: |f_i(x) - f_j(x)| < \frac{1}{k}\right\},
+\end{equation*}
+show that \(\mu(S(n,k))\to \mu(X)\) as \(n\to\infty\), for each $k$,
+and hence that there is a suitable increasing sequence \(\{n_k\}\) such that
+\(E = \cap S(n_k,k)\) has the desired property.
+
+Show that the theorem does not extend to \(\sigma\)-finite spaces.
+
+Show that the theorem does extend (with the same proof)
+to the situation in which the sequences \(\{f_n\}\) are replaced by families
+\(\{f_t\}\), where $t$ ranges over the positive reals, and the assumption
+is that \(f_t(x) \to f(x)\), as \(t\to\infty\), for every \(x\in X\).
+\end{excopy}
+
+Let \(f(x) \eqdef \lim_{n\to\infty} f_n(x)\) for every $x$.
+Following the hint. Clearly \(S(n,k)\subset S(n+1,k)\) for all $n$, $k$.
+Now \((f_n(x))_{n\in\N}\) is a Cauchy sequence for every $x$.
+Equivelantly,
+for every $x$ and every $k$, we have \(x\in\cap_n S(n,k)\) for some $n$.
+Thus
+\begin{equation*}
+\lim_{n\to\infty}\mu(S(n,k)) = \mu(X) < \infty.
+\end{equation*}
+Given \(\epsilon > 0\), for every \(k>0\), pick \(n_k\) such that
+\begin{equation*}
+\mu(S(n,k)) > \mu(X) 2^{-k}\epsilon
+\end{equation*}
+Now
+\begin{equation*}
+\mu(E)
+ =  \mu\bigl(\cap S(n_k,k)\bigr)
+ \geq \mu(X) - \sum_{k=1}^\infty 2^{-k}\epsilon
+ = \mu(X) - \epsilon.
+\end{equation*}
+
+Here is \(\sigma\)-finite space example,
+where the above does not hold.
+Let \(f_n:\R\to\R\) defined by
+\begin{equation*}
+ f_n(x) = \chhi_{[-n,+n]}(x).
+\end{equation*}
+Clearly, \(f_n(x) \to 1 \) for every \(x\in \R\) but uniformly
+only on bounded subsets.
+
+Assume we have a family \((f_t)_{t\in\R^+}\) of functions
+such that a limit \(f(x) = \lim_{t\to\infty} f_t(x)\) exists
+for every \(x\in X\).
+The result does  extend with similar proof.
+We can define a sequence \((g_n)_{n\in\N}\)
+\begin{equation} \label{eq:ex16:gnf}
+ g_n(x) = f(x) + \sup_{t\geq n} |f_t(x) - f(x)|.
+\end{equation}
+Clearly \(\lim_{n\to\infty} g(x) = f(x)\) pointwise.
+Fron what we have shown, for every \(\epsilon > 0\)
+we can find a subset \(E\subset X\) such that \(\mu(X\setminus E) < \epsilon\)
+and \((g_n)_{n\in\N}\) converges uniformly on $E$.
+By the definition (\ref{eq:ex16:gnf})
+\((f_n)_{n\in\N}\) converges uniformly on $E$ as well.
+
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+\begin{itemize}
+\itemch{a}
+ If \(0<p<\infty\), put \(\gamma_p = \max(1,2^{p-1})\), and show that
+ \begin{equation*}
+ |\alpha - \beta|^p \leq \gamma_p(|\alpha|^p + |\beta|^p)
+ \end{equation*}
+ for arbitrary numbers \(\alpha\) and \(\beta\).
+\itemch{b}
+   Suppose \(\mu\) is a positive measure on $X$, \(0<p<\infty\),
+   \(f\in L^p(\mu)\), \(f_n\in L^p(\mu)\), \(f_n(x)\to f(x)\;\textrm{a.e.}\),
+   and \(\|f_n\|_p \to \|f\|_p\) as \(n\to\infty\).
+   Show that then \(\lim\|f-f_n\|_p = 0\),
+   by completing the two proofs that are sketched below.
+  \begin{itemize}
+   \item[(i)]
+    By Egoroff's theorem, \(X=A\cup B\) in such a way that
+    \(\int_A|f|^p<\epsilon\), \(\mu(B)<\infty\), and \(f_n\to f\) uniformly
+    on $B$, Fatou's lemma applied to \(\int_B|f_n|^p\), leads to
+    \begin{equation*}
+      \lim\sup \int_A |f_n|^p\,d\mu \leq \epsilon
+    \end{equation*}
+   \item[(ii)]
+    Put \(h_n = \gamma_p(|f|^p + |f_n|^p) - |f-f_n|^p\),
+    and use Fatou's lemma as in the proof of Theorem~1.34.
+  \end{itemize}
+\itemch{c}
+ Show that the conclusion of \ich{b} is false if the hypothesis
+ \(\|f_n\|_p \to \|f\|_p\) is omitted, even if \(\mu(X)<\infty\).
+\end{itemize}
+\end{excopy}
+
+
+\begin{itemize}
+\itemch{a}
+ Let \(a=|\alpha|\) and \(b=|\beta|\).
+ Since \(|\alpha - \beta| \leq a + b\), it is sufficient to show
+ \begin{equation} \label{eq:3:17a}
+   (a+b)^p \leq \gamma_p(a^p + b^p).
+ \end{equation}
+ If \(a=0\) (or \(b=0\), by symmetry)
+ then (\ref{eq:3:17a}) is trivial. So we can assume \(a\neq 0 \neq b\).
+ Put \(x = b/a > 0\).
+ We have two cases:
+
+ \paragraph{Case 1.} Assume \(0<p<1\) and \(\gamma_p = 1\).
+
+ We first show that for \(x\geq 0\)
+ \begin{equation*}
+ (x + 1)^p \leq (x^p + 1)
+ \end{equation*}
+ or equivalently
+ \begin{equation*}
+ f(x) = (x^p + 1) - (x + 1)^p \geq 0
+ \end{equation*}
+ Clearly \(f(0) = 0\).
+ Since \(p-1 < 0\) the function \(x\to x^{p-1}\) is decreasing (for \(x\neq 0\)).
+ Hence $f$ is increasing for \(x>0\) since
+ \begin{equation*}
+ f'(x) = p\bigl(x^{p-1} - (x+1)^{p-1}\bigr) > 0
+ \end{equation*}
+
+ Now the inequality is derived:
+ \begin{equation*}
+ (a+b)^p =  (a+xa)^p = (x+1)^p a^p
+ \leq a^p(x^p + 1)
+ =    a^p + (xa)^p
+ =    \gamma_p(a^p + b^p)
+ \end{equation*}
+
+ \paragraph{Case 2.} Assume \(p\geq 1\) and \(\gamma=2^{p-1}\).
+ We first we want to show (\ref{eq:ex3.17:a}).
+ Define a 2-points measurable space: \(X=\{0,1\}\)
+ with \(\mu(\{0\}) = \mu(\{1\}) = 1\). Let \(f,g:X\to[0,\infty]\)
+ defined by
+ \begin{equation*}
+  f(0) = x\,, \quad f(1) = 1\,, \qquad g = 1\,.
+ \end{equation*}
+ Let $q$ be the conjugate exponent of $p$.
+ By Minkowski inequality (Theorem~3.5(2) \cite{RudinRCA80}), we have
+ \begin{eqnarray*}
+   x + 1 = \int_X fg\,d\mu
+   &\leq&
+        \left(\int_X f^p\,d\mu\right)^{1/p}
+        \left(\int_X f^q\,d\mu\right)^{1/q} \\
+   &=& \left(x^p+1\right)^{1/p} \left(1^q+q^q\right)^{1/q}
+   = 2^{1/q} \left(x^p+1\right)^{1/p}.
+ \end{eqnarray*}
+ Raising to $p$ power, noting that \(p/q = p-1\) we now have
+ \begin{equation} \label{eq:ex3.17:a}
+  (x+1)^p \leq 2^{p-1} (x^p+1)
+ \end{equation}
+
+ Now we can derive
+ \begin{equation*}
+ (a+b)^p = (a+xa)^p =  a^p (x+1)^p
+  \leq 2^{p-1} a^p(x^p + 1) = \gamma_p(a^p + b^p).
+ \end{equation*}
+
+
+\itemch{b}
+ (Directly, \emph{not} following the hint). We use our local variant of Lebesgue's
+ dominated theorem~\ref{lem:Lebesgue:domvar} (page \pageref{lem:Lebesgue:domvar}).
+ Looking at \(f_n^p\in L^1(\mu)\) playing both roles of
+ \(\{f_n\}\) and \(\{g_n\}\) there. Now the final result
+ \begin{equation*}
+  \lim_{n\to\infty} \|f_n^p - f^p \| = 0.
+ \end{equation*}
+ follows.
+
+
+ Now going through the suggested hints
+ (though unecessary after result established).
+ Take arbitrary \(\epsilon > 0\).
+ Let \(K= \{x\in X: f(x)=0\}\) and
+ \begin{equation*}
+   X_n = \{x\in X: 2^{n-1} \leq |f(x)|^p < 2^n\}
+ \end{equation*}
+ Clearly \(X = K \disjunion (\Disjunion_{n\in\Z} X_n)\) and
+ \begin{equation*}
+  \|f\|_p^p = \int_X |f|^p\,d\mu = \sum_{n\in\Z} \int_{X_n} |f|^p\,d\mu < \infty.
+ \end{equation*}
+ Hence \(\mu(X_n) < \infty\) for all \(n\in\Z\),
+ and we can find some \(N<\infty\) such that
+ \begin{equation*}
+  T = \sum_{|n|>N} \int_{X_n} |f|^p\,d\mu < \epsilon/2.
+ \end{equation*}
+ We put
+ \begin{equation*}
+   A' = \Disjunion_{|n|>N} X_n
+ \end{equation*}
+ and we have \(\int_{A'} |f|^p\,d\mu < \epsilon/2\).
+ We will now deal with
+ \begin{equation*}
+   B' \eqdef X \setminus A' = \Disjunion_{n = -N}^N X_n
+ \end{equation*}
+ \begin{equation*}
+ \|f\|_p^p - T
+  = \sum_{|n|\leq N} \int_{X_n} |f|^p\,d\mu
+  \geq \sum_{|n|\leq N} 2^{n-1}\mu(X_n)
+  \geq 2^{N-1} \sum_{|n|\leq N} \mu(X_n)
+  = 2^{N-1} \mu(B').
+ \end{equation*}
+ We will concentrate now on the \(2N+1\) sets \(\{X_n\}\) for \(|n|<N\).
+ Each has a finite \(\mu\) measure.
+ Restricting \(\{f_n\}\) and $f$ to these sets and applying Egoroff's theorem
+ on each \(X_n\)
+ gives a partition \(X_n = A_n \disjunion B_n\)
+ such that
+ \begin{equation*}
+    \int_{A_n} |f|^p\,d\mu < 2^{-2(|n| + 1)}\epsilon
+ \end{equation*}
+ and \(\{f_n\}\to f\) uniformly on \(B_n\).
+ Since \(f_n\) is bounded on \(X_n\),
+ \(\{|f_n|^p\}\to |f|^p\) uniformly on \(X_n\) as well,
+ and also on any finite sub-union of them
+ and in particular on
+ \begin{equation*}
+  B \eqdef \Disjunion_{n= -N}^N B_n \subset B'.
+ \end{equation*}
+ We put
+ \begin{equation*}
+  A = X \setminus B = A' \disjunion \Disjunion_{n= -N}^N A_n\,.
+ \end{equation*}
+
+ Combining results on $A$ and $B$ gives
+ \begin{eqnarray}
+      \int_X |f|^p\,d\mu
+  &=& \lim_{n\to\infty} \int_X |f_n|^p\,d\mu \notag \\
+  &=& \lim_{n\to\infty} \int_A |f_n|^p\,d\mu + \int_B |f_n|^p\,d\mu \notag \\
+  &=& \limsup_{n\to\infty} \int_A |f_n|^p\,d\mu +
+      \liminf_{n\to\infty} \int_B |f_n|^p\,d\mu  \label{eq:3.17b:1} \\
+  &=& \int_B |f|^p\,d\mu + \limsup_{n\to\infty} \int_A |f_n|^p\,d\mu \notag
+ \end{eqnarray}
+ where (\ref{eq:3.17b:1}) is by local lemma~\ref{lem:limsup:liminf}.
+ Now we get hint-(\emph{i}) estimate:
+ \begin{equation*}
+  \limsup_{n\to\infty} \int_A |f_n|^p\,d\mu
+  = \int_X |f|^p\,d\mu - \int_B |f|^p\,d\mu
+  = \int_A |f|^p\,d\mu < \epsilon\,.
+ \end{equation*}
+
+ Since \(\mu(B) < \infty\) (finite sum of positive numbers),
+ and \(f_n^p\to f^p\) uniformly on $B$, clearly
+ \begin{equation} \label{eq:3.17b:3}
+  \lim_{n\to\infty} \int_B |f_n^p - f|\,d\mu = 0.
+ \end{equation}
+ Hence it is sufficient to show that (\ref{eq:3.17b:3}) holds
+ also for $A$ instead of $B$, this will make it valid for $X$ as well,
+ thus establishing the desired conclusion.
+
+ \begin{eqnarray}
+  2\gamma_p \int_A |f|^p\,d\mu
+  &=& \notag
+   \int_A \gamma_p |f|^p\,d\mu
+   +
+   \int_A \lim_{n\to\infty} \gamma_p |f_n|^p\,d\mu
+   +
+   \int_A \lim_{n\to\infty} |f - f_n|^p\,d\mu \\
+  &=& \notag
+   \int_A \lim_{n\to\infty} \gamma_p(|f|^p + |f_n|^p) - |f - f_n|^p\,d\mu \\
+  &=& \notag
+   \int_A \liminf_{n\to\infty} \gamma_p(|f|^p + |f_n|^p) - |f - f_n|^p\,d\mu \\
+  &\leq& \label{eq:3.17b:fatou}
+   \liminf_{n\to\infty} \int_A \gamma_p(|f|^p + |f_n|^p) - |f - f_n|^p\,d\mu \\
+  &\leq& \notag
+   \limsup_{n\to\infty} \int_A \gamma_p(|f|^p + |f_n|^p)\,d\mu
+   +\liminf_{n\to\infty} \left(-\int_A |f - f_n|^p\,d\mu\right) \\
+  &=& \notag
+   \gamma_p \int_A |f|^p\,d\mu
+   + \gamma_p \limsup_{n\to\infty} \int_A |f_n|^p\,d\mu
+   - \limsup_{n\to\infty} \int_A |f - f_n|^p\,d\mu \\
+ \end{eqnarray}
+
+ Where (\ref{eq:3.17b:fatou}) is by Fatou lemma and \ich{a}.
+ Thus
+ \begin{equation*}
+  \limsup_{n\to\infty} \int_A |f - f_n|^p\,d\mu  + \gamma_p \int_A |f|^p\,d\mu
+  \leq \gamma_p \limsup_{n\to\infty} \int_A |f_n|^p\,d\mu.
+ \end{equation*}
+ Therefore
+ \begin{equation*}
+  \limsup_{n\to\infty} \int_A |f - f_n|^p\,d\mu  \leq \gamma_p \epsilon.
+ \end{equation*}
+ This shows (\ref{eq:3.17b:3}) for $A$ replaceing $B$ as needed.
+
+
+\itemch{c}
+ We will construct a counterexample.
+ Let \(X=[0,1]\) with Lebesgue measure.
+ Define a sequence of functions in \(L^1\)
+ \begin{equation*}
+   f_n(x) = n(n+1)\chhi_{[1/(n+1),1/n]}(x) \qquad \textrm{for}\; 1\leq n\in\N.
+ \end{equation*}
+Clearly \(\lim_{n\to\infty} f_n(x) = 0\) for every \(x\in[0,1]\), but
+\(\|f_n\|_1 = 1\)
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+Let \(\mu\) be a positive measure on $X$. A sequence \(\{f_n\}\) of complex
+measurable functions on $X$ is said to \emph{converge in measure}
+to the measurable function $f$ if to every \(\epsilon>0\) there corresponds
+an $N$ such that
+\begin{equation*}
+ \mu(\{x: |f_n(x) - f(x)| > \epsilon\}) < \epsilon
+\end{equation*}
+for all \(n>N\).
+(This notion is of importance in probability theory.)
+Assume \(\mu(X)<\infty\) and prove the following statements:
+\begin{itemize}
+ \itemch{a} If \(f_n(x)\to f(x)\;\aded\), then \(f_n\to f\) in measure.
+ \itemch{b} If \(f_n\in L^p(\mu)\) and \(\|f_n-f\|_p \to 0\),
+            then \(f_n\to f\) in measure; here \(1\leq p \leq \infty\).
+ \itemch{c} If  \(f_n\to f\) in measure, then \(\{f_n\}\) has a subsequence
+            which converges to $f$ \aded.
+\end{itemize}
+Investigate the convergences of \ich{a} and \ich{b}.
+What happens to \ich{a}, \ich{b}, and \ich{c} if \(\mu(X)=\infty\),
+for instance, if \(\mu\) is Lebesgue measure on \(\R^1\)?
+\end{excopy}
+
+
+\begin{itemize}
+\itemch{a}
+ Given \(\epsilon>0\), for each \(x\in X\) there is a least $m_x$
+ such that \(|f_n(x) - f(x)| < \epsilon\) for all \(n \geq m_x\).
+ For each \(m\in\N\) define
+ \begin{eqnarray*}
+   X_m
+    &\eqdef& \{x\in X: m = m_x\} \\
+    &=& \{x\in X: \forall n\geq m,\, |f_n(x) - f(x)| < \epsilon
+        \; \wedge\; (m=1 \,\vee\, \exists n<m,\,  |f_n(x) - f(x)| \geq \epsilon
+       \}.
+ \end{eqnarray*}
+ Clearly \(X=\disjunion_{n\in\N}X_i\), and \(X_i\) are measurable,
+ so there is \(N_\epsilon\)  such that
+ \begin{equation*}
+ \mu\left(X\setminus \Disjunion_{i=1}^{N_\epsilon} X_i\right) < \epsilon.
+ \end{equation*}
+ This shows that \(f_n\to f\) in measure.
+\itemch{b}
+ By negation, assume there is \(\epsilon>0\)
+ such that for each $N$, there exists \(n>N\)
+ such that the subset
+ \begin{equation*}
+    E \eqdef \{x\in X: |f_n(x) - f(x)| \geq \epsilon\}
+ \end{equation*}
+ satisfies \(\mu(E) \geq \epsilon\).
+ But then
+ \begin{equation*}
+   \int_X |f_n - f|^p\,d\mu
+   \geq \int_E |f_n - f|^p\,d\mu
+   \geq \epsilon^p\mu(E) = \epsilon^{p+1}
+ \end{equation*}
+ Thus
+ \begin{equation*}
+ \limsup_{n\to\infty} \|f_n-f\|_p =
+ \limsup_{n\to\infty} \left(\int_X |f_n - f|^p\,d\mu\right)^{1/p}
+ \geq \epsilon^{(p+1)/p} > 0
+ \end{equation*}
+ contradiction the assumption that \(\|f_n - f\|_p \to 0\).
+
+\itemch{c}
+ First let's illustrate the difficulty by constructing a case
+ of sequence of functions converging in measure but converging \emph{nowhere}.
+ Define for \(n\geq 1\)
+ \begin{eqnarray*}
+   s_n &=& \sum_{k=1}^n 1/k \\
+   a_n &=& s_n - \lfloor s_n \rfloor \\
+   b_n &=& \min(1, a_n + 1/(n+1)
+ \end{eqnarray*}
+ Note that \(a_n \leq b_n = a_{n+1} \leq a_n + 1/n\)
+ and \(b_n - a_n \leq 1/(n+1)\).
+ The sequence of characteristic functions  \(\chhi_{[a_n,b_n]}\) converges
+ to $0$, but converges nowehere.
+
+ Now back to the exercise task. For each \(\epsilon_k = 2^{-k}\)
+ pick \(N_k\) such that for any \(n>N_k\)
+  \begin{equation*}
+   B_k \eqdef \mu(\{x: |f_n(x) - f(x)| > \epsilon_k\}) < \epsilon_k = s^{-k}.
+  \end{equation*}
+ Now take the subsequence \(\calF = (f_{N_k + 1})_{k\in\N}\).
+ We now show that this sequence converges almost everywhere.
+ The sequence \calF\ does not converge for \(x\in X\)
+ iff $x$ belong to infinitely many subsets \(B_k\).
+ That is
+ \begin{equation*}
+  x\in  = B = \bigcap_{j=1}^\infty \left( \bigcup_{k=j}^\infty B_k \right)\,.
+ \end{equation*}
+ But clearly \(\mu(B) = 0\).
+\end{itemize}
+
+Now assume \(X=\R^1\) with Lebesgue measure.
+With \(f_n(x) = \chhi_{[n,n+1]}\), clearly \(f_n(x)\to 0\) for all \(x\in\R\)
+but not in measure, thus \ich{a} does not hold.
+But both \ich{b} and \ich{c} hold, since in their proofs above
+we did not make use of the fact that \(\mu(X)<0\).
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+Define the \emph{essential range} of a function \(f\in L^\infty(\mu)\)
+to be the set \(R_f\) consisting of all complex numbers $w$ such that
+\begin{equation*}
+ \mu(\{x: |f(x) - w | < \epsilon\}) > 0
+\end{equation*}
+for every \(\epsilon > 0\). Prove that \(R_f\) is compact.
+What relation exists between the set \(R_f\) and the number \(\|f\|_\infty\)?
+
+Let \(A_f\) be the set of all averages
+\begin{equation*}
+ \frac{1}{\mu(E)}\int_E f\,d\mu
+\end{equation*}
+where \(E\in\frakM\) and \(\mu(E)>0\).
+What relations exist between \(A_f\) and \(R_f\)?
+Is \(A_f\) always closed?
+Are there measures \(\mu\) such that \(A_f\) is convex
+for every \(f\in L^\infty(\mu)\)?
+Are there measures \(\mu\) such that \(A_f\) fails to be convex for
+some \(f\in L^\infty(\mu)\)?
+
+How are these results affected if \(L^\infty(\mu)\) is replaced
+by \(L^1(\mu)\), for instance?
+\end{excopy}
+
+Since \(f\in L^\infty(\mu)\), the essential range \(R_f\) is bounded in \C.
+To show compactness, it is sufficent to show that \(R_f\) is closed.
+By negation, let \(z\in \overline{R_f} \setminus R_f\).
+For every open ball \(B = B(z,\epsilon)\)
+with center $z$ and radii \(\epsilon > 0\)
+there is \(w\in B\cap R_f\).
+Now we take \(\eta = (\epsilon - |w-z|)/2\) and
+\begin{equation*}
+ G \eqdef \{x\in X: |f(x) - w| < \eta\} \subset
+ H_\epsilon \eqdef \{x\in X: |f(x) - z| < \epsilon\}
+\end{equation*}
+since for \(|u-w|<\eta\;\Rightarrow\; |u - z|<\epsilon\) for any \(u\in\C\).
+Since \(w\in R_f\), we have \(\mu(G) > 0\) but then \(\mu(H_\epsilon) > 0\).
+This is contradiction to \(z\notin R_f\) since \(\epsilon\) was arbitrary.
+
+It is easy to see that  \(\|f\|_\infty = \sup\{|z|: z\in R_f\}\).
+Each number of \(A_f\) is a convex combination of numbers in \(R_f\).
+Formally, \(A_f \subset \conv(R_f)\).
+
+The set \(A_f\) need \emph{not} be closed. For example, let \(X=\N\)
+with atomic measure \(\mu(\{n\}) = 1\) for all \(n\in X\),
+and let \(f(n) = 1/n\). Clearly \(0\in \overline{A_f}\setminus A_f\).
+
+There \emph{are} measures \(\mu\) for with \(A_f\) is convex
+for every \(f\in L^\infty(\mu)\).
+For example Lebesgue's measure on subsets of \(\R^n\) is shown
+in \loclemma~\ref{llem:averages:convex}.
+
+There \emph{are} measures for which \(A_f\) is not convex.
+For example, let \(X=\{0,1\}\) with atomic counting measure \(\mu(A)=|A|\)
+for all \(A\subset X\). For the function \(f(x) = x\), clearly
+\(R_f=\{0,1\}\) and \(A_f=\{0,1/2,1\}\) which is not convex.
+
+When replacing the space with \(L^1(\mu)\) we may get
+a \emph{non} compact \(R_f\).
+% \mldots
+
+
+%%%%%%%%%%%%%%  20
+\begin{excopy}
+Suppose \(\varphi\) is a real function on \(\R^1\) such that
+\begin{equation*}
+ \varphi\bigl(\int_0^1 f(x)dx\bigr) \leq \int_0^1  \varphi(f)dx
+\end{equation*}
+for every real bounded measurable $f$. Prove that \(\varphi\) is then convex.
+\end{excopy}
+
+For any \(a,b\in\R\) and \(t\in [0,1]\)
+define \(f:[0,1] \to \{a,b\}\) by
+\begin{equation*}
+ f(x) = \left\{\begin{array}{ll}
+               a & \qquad x \in [0,t] \\
+               b & \qquad x \in (t,1]
+               \end{array}\right.
+\end{equation*}
+Now the assumed inequality gives
+\begin{equation*}
+  \varphi\bigl( ta + (1-t)b\bigr)
+ =
+  \varphi\left(\int_0^1 f(x)dx\right)
+ \leq
+  \int_0^1  \varphi(f)dx
+ =
+  t \varphi(a) + (1-t)\varphi(b)
+\end{equation*}
+which is the definition of convex function.
+
+
+
+%%%%%%%%%%%%%% 21
+\begin{excopy}
+Call a metric space $Y$ a \emph{completion} of a metric space $X$ if $X$ is
+dense in $Y$ and $Y$ is complete.
+In Sec.~3.15 reference was made to ``the'' completion of a metric space.
+State and prove a uniqueness theorem which justifies this terminology.
+\end{excopy}
+
+The uniqueness can be expressed by the following
+\begin{llem}
+Let \(Y_1\) and \(Y_2\) two completions of a metric space $X$.
+Then there is a unique isometry (implying one-to-one onto continuous mapping)
+\(T:Y_1\to Y_2\) inducing the identity on $X$.
+\end{llem}
+\begin{thmproof}
+Given the \(Y_1\) and \(Y_2\) completions of $X$
+define $T$ as the identity on $X$ and extend to \(Y_1\) as follows.
+For each \(y_1\in Y_1\setminus X\)
+there is Cauchy sequence \(\mathbf{x} = (x_n)_{n\in\N}\) in $X$
+that converges to \(y_1\). Now \(\mathbf{x}\) is a Cauchy sequence
+in \(Y_2\) and converges to a unique \(y_2\in Y_2\).
+Define \(T(y_1) = y_2\). We need to show that the mapping is well defined.
+Say \(\mathbf{w} = (w_n)_{n\in\N}\) in $X$ converges to \(y_1\) as well.
+Then
+\begin{equation*}
+ x_1, w_1, x_2, w_2, \ldots x_n, w_n, \ldots
+\end{equation*}
+converges to \(y_1\) and this is a Cauchy sequence in $X$.
+It must converge to a limit in \(Y_2\) which must be \(y_2\),
+and so does \(\mathbf{w}\). Thus \(T(y_1)\) is independent on the choice
+of converging sequence to \(y_1\).
+\end{thmproof}
+
+%%%%%%%%%%%%%% 22
+\begin{excopy}
+Suppose $X$ is a metric space in which every Cauchy sequence has a convergent
+subsequence. Does it follow that $X$ is complete?
+(See the proof of Theorem~3.11.)
+\end{excopy}
+
+The answer is ``Yes''.
+
+If every Cauchy sequence \(\mathbf{x}\)
+has a subsequence that converges to a limit $L$, then it can be easily
+shown that  \(\mathbf{x}\) itself converges to $L$.
+
+%%%%%%%%%%%%%% 23
+\begin{excopy}
+Suppose \(\mu\) us a positive measure on $X$, \(\mu(X)<\infty\),
+\(f\in L^\infty(\mu)\), \(\|f\|_\infty > 0\), and
+\begin{equation*}
+\alpha_n = \int_X |f|^n\,d\mu \qquad (n=1,2,3,\ldots).
+\end{equation*}
+Prove that
+\begin{equation*}
+ \lim_{n\to \infty} \frac{\alpha_{n+1}}{\alpha_n} = \|f\|_\infty.
+\end{equation*}
+\end{excopy}
+
+Put \(M = \|f\|_\infty\) and Define \(g = f/M\).
+Now \(\|g\|_\infty = 1\) and
+\begin{equation*}
+ \frac{\alpha_{n+1}}{\alpha_{n}}
+ =
+ \frac{\int_X (Mg)^{n+1}\,d\mu}{\int_X (Mg)^{n}\,d\mu}
+ =
+ M \frac{\int_X g^{n+1}\,d\mu}{\int_X g^{n}\,d\mu}.
+\end{equation*}
+Hence it is sufficent to show that
+\begin{equation} \label{3.23:gn}
+ \lim_{n\to\infty} \frac{\int_X g^{n+1}\,d\mu}{\int_X g^{n}\,d\mu} = 1.
+\end{equation}
+
+By exercise~4\ich{e},
+actually \(\lim_{n\to\infty} \int_X g^n\,d\mu = 1\)
+and thus (\ref{3.23:gn}) follows.
+
+%%%%%%%%%%%%%% 24
+\begin{excopy}
+Suppose \(\mu\) is a positive measure.
+\(f\in L^p(\mu)\), \(g\in L^p(\mu)\).
+\begin{itemize}
+ \itemch{a}
+  If \(0<p<1\), prove that
+  \begin{equation*} % typo in book (extra '|')
+   \int \bigl| |f|^p - |g|^p \bigr|\,d\mu \leq \int |f - g|^p \,d\mu
+  \end{equation*}
+  and that \(\Delta(f,g) = \int|f-g|^p\,d\mu\)
+  defines a metric on \(L^p(\mu)\).
+ \itemch{b}
+  If \(1 \leq p < \infty\) and \(\|f\|_p\leq R\), \(\|g\|_p\leq R\),
+  prove that
+  \begin{equation*}
+   \int \bigl| |f|^p - |g|^p \bigr|\,d\mu \leq 2pR^{p-1}\|f-g\|_p.
+  \end{equation*}
+  \emph{Hint}: Prove first, for \(x\geq 0\), \(y\geq 0\), that
+  \begin{equation*}
+   |x^p - y^p| \leq
+   \left\{\begin{array}{ll}
+          |x-y|^p                   & \quad \textrm{if}\; 0<p<1, \\
+          p|x-y|(x^{p-1} + y^{p-1}) & \quad \textrm{if}\; 1\leq p < \infty.
+          \end{array}\right.
+  \end{equation*}
+\end{itemize}
+Note that \ich{a} and \ich{b} establish the continuity of the mapping
+\(f\to |f|^p\) that carries \(L^p(\mu)\) into \(L^1(\mu)\).
+\end{excopy}
+
+Following the hints.
+But symmetry of the expressions with regards to $x$ and $y$,
+we can assume \wlogy\ that \(x>y\).
+
+Assume \(0 < p < 1\). If \(y=0\) then
+\begin{equation*}
+ |x^p - 0^p| = x^p = |x-0|^p.
+\end{equation*}
+Otherwise, by dividing by \(y^p\) we need to show
+\begin{equation} \label{eq:3.24:xp1}
+ x^p - 1 \leq (x-1)^p
+\end{equation}
+or equivalently that
+\begin{equation*}
+ \varphi(x) = x^p - (x-1)^p - 1 \leq 0
+\end{equation*}
+for \(x\geq 1\).
+Indeed \(\varphi(1) = 0\) and since \(x\to x^{p-1}\) is decreasing
+\begin{equation*}
+\varphi'(x) = p\bigl(x^{p-1} - (x-1)^{p-1}\bigr) < 0.
+\end{equation*}
+Hence \(\varphi\) is decreasing for \(x\geq 0\) and (\ref{eq:3.24:xp1}) holds.
+
+Assume \(1\leq p < \infty\). \Wlogy, we can assume \(x\geq y\).
+If \(y=0\)
+\begin{equation*}
+ x^p - 0^p \leq px^p = p(x-0)(x^{p-1} + 0^{p-1})
+\end{equation*}
+Otherwise, \(y>0\) and
+\begin{equation*}
+ x^p - y^p \leq p(x-y)(x^{p-1} + y^{p-1})
+\end{equation*}
+is equivalent --- dividing by \(y^p=yy^{p-1}\) --- to
+\begin{equation*}
+ (x/y)^p - 1 \leq p\bigl((x/y)-1\bigr)\bigl((x/y)^{p-1} + 1).
+\end{equation*}
+Hence it is sufficient to show
+\begin{equation} \label{eq:3.24:xp2}
+ x^p - 1 \leq p(x-1)(x^{p-1} + 1)
+\end{equation}
+or equivalently,
+\begin{equation*}
+ \varphi(x) = p(x-1)(x^{p-1} + 1) - (x^p - 1) \geq 0
+\end{equation*}
+for \(x\geq 1\). Clearly, \(\varphi(1) = 0\).
+\begin{eqnarray*}
+ \varphi'(x)
+ &=& p\bigl( (x^{p-1} + 1) + (x-1)(p-1)x^{p-1} \bigr) - px^{p-1} \\
+ &=& p\bigl( (x-1)(p-1)x^{p-1} + 1 \bigr) \\
+ &\geq& 0.
+\end{eqnarray*}
+Thus \(\varphi\) is increasing for \(x\geq 1\) and  (\ref{eq:3.24:xp2}) holds.
+
+
+
+\begin{itemize}
+\itemch{a}
+ The inequality is immediate from the integrands satisfy
+ \(\bigl| |f|^p - |g|^p \bigr| \leq |f - g|^p\)
+ by the hint's first (\(0<p<1\)) part.
+
+ The function \(\Delta\) indeed is a metric since
+ clearly \(\Delta(f,g) = 0\) iff \(f = g\,\aded\).
+ and by the inequality we just justified,
+ for every \(f,g,h \in L^p(\mu)\)
+ \begin{equation*}
+   \int \bigl| |f-g|^p - |g-h|^p \bigr|\,d\mu
+    \leq \int |(f-g) - (g-h)|^p \,d\mu
+    = \int |f - h|^p \,d\mu
+ \end{equation*}
+ But this shows
+ \begin{equation*}
+   \Delta(f,g) = \int |f-g|^p\,d\mu
+    \leq \int |f - h|^p \,d\mu + \int |g - h|^p \,d\mu =
+   \Delta(f,h) +  \Delta(h,g).
+ \end{equation*}
+ With the triangle shown, \(\Delta\) is a metric.
+
+\itemch{b}
+ Using the hint's inequality. Let $q$ be the conjugate exponent of $p$.
+ Compute
+ \begin{eqnarray}
+   \int \bigl| |f|^p - |g|^p \bigr|\,d\mu
+  &\leq& \label{eq:3.24b:hint}
+   p \int |f-g|\cdot ( |f|^{p-1} + |g|^{p-1})\,d\mu \\
+  &\leq& \label{eq:3.24b:mink}
+   p \|f-g\|_p \left(\int (|f|^{p-1} + |g|^{p-1})^q\,d\mu\right)^{1/q} \\
+  &\leq& \label{eq:3.24b:holder}
+   p \|f-g\|_p \left(\int (|f|^{p-1})^q\,d\mu +
+                     \int (|g|^{p-1})^q\,d\mu \right)^{1/q} \\
+  &=& \label{eq:3.24b:expconj}
+   p \|f-g\|_p \left(\int (|f|^p\,d\mu + \int (|g|^p\,d\mu \right)^{1/q} \\
+  &=& \notag
+   p \|f-g\|_p (\|f\|_p^p + \|g\|_p^p)^{1/q} \\
+  &\leq& \notag
+   p \|f-g\|_p (2R^p)^{1/q} =  p \|f-g\|_p 2^{1/q}R^{p-1} \\
+  &\leq& \label{eq:3.24b:expconjgt1}
+   2pR^{p-1}\|f-g\|_p. \notag
+ \end{eqnarray}
+
+Where
+  (\ref{eq:3.24b:hint}) follows by the hint,
+  (\ref{eq:3.24b:mink}) by Minkowski's inequality,
+  (\ref{eq:3.24b:holder}) by H\"older's inequality,
+  (\ref{eq:3.24b:expconj}) by $q$ being conjugate exponent (\((p-1)q = p\)),
+  (\ref{eq:3.24b:expconjgt1}) by \(q\geq 1\).
+\end{itemize}
+
+% Added in 3rd edition
+
+\begin{excopy}
+
+Suppose \(\mu\) is a positive measure on $X$ and \(f: X\to(0,\infty)\) satisfies
+\(\int_X f\,d\mu=1\).
+Prove, for every \(E\subset X\) with \(0 < \mu(E) < \infty\), that
+\begin{equation*}
+\int_E (\log f)\,d\mu \leq \mu(E) \log \frac{1}{\mu(E)}
+\end{equation*}
+and, when \(0<p<1\).
+\begin{equation*}
+\int_E f^p\,d\mu \leq \mu(E)^{1-p}\,.
+\end{equation*}
+\end{excopy}
+
+\begin{excopy}
+If $f$ is a positive measure function on \([0,1]\), which is larger
+\begin{equation*}
+\int_0^1 f(x)\log f(x)\,dx 
+\qquad \textnormal{or} \qquad
+\int_0^1 f(s)\,ds \int_0^1 \log f(t)\,dt\; \textnormal{?} 
+\end{equation*}
+\end{excopy}
+
+
+%%%%%%%%%%%%%%%
+\end{enumerate}
+%%%%%%%%%%%%%%%

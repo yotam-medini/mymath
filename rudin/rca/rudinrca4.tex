@@ -1,0 +1,1219 @@
+% -*- latex -*-
+% $Id: rudinrca4.tex,v 1.2 2008/07/19 08:56:55 yotam Exp $
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Elementary Hilbert Space Theory}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Completeness of the Trigonometric System}
+\label{sec:comp:trig}
+
+In showing the completeness of the trigonometric system,
+on page~95, the text uses the following equality
+\begin{equation*}
+\frac{c_k}{\pi}\int_0^\pi \left(\frac{1 + \cos t}{2}\right)^k \sin t\,dt =
+  \frac{2c_k}{\pi(k+1)}.
+\end{equation*}
+Let us show it in details. Define
+\begin{equation*}
+f(t) \eqdef \bigl((1+\cos(t))/2\bigr)^{k+1}.
+\end{equation*}
+Now
+\begin{equation*}
+f'(t)
+= -\bigl(\sin(t)/2\bigr)\cdot(k+1)\bigl((1+\cos(t))/2\bigr)^k
+% = -\bigl((k+1)\sin(t)/2\bigr)\cdot\bigl((1+\cos(t))/2\bigr)^k.
+= \bigl(-(k+1)/2\bigr)\cdot\bigl((1+\cos(t))/2\bigr)^k\sin(t).
+\end{equation*}
+Hence
+\begin{equation*}
+\int_0^\pi \left(\frac{1 + \cos t}{2}\right)^k \sin t\,dt
+ = \bigl(-2/(k+1)\bigr) \bigl(f(\pi) - f(0)\bigr)
+ = \bigl(-2/(k+1)\bigr) (0 - 1)
+ = 2/(k+1).
+\end{equation*}
+Which justifies the above quoted equality.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 97-99
+
+In this set of exercises, $H$ always denotes a Hilbert space.
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+If $M$ is a closed subspace of $H$, prove that
+\(M = (M^\perp)^\perp\).
+Is there a similar true statement for subspaces
+$M$ which are not necessarily closed?
+\end{excopy}
+
+As discussed in section~4.9 \cite{RudinRCA80}, \(A^\perp\) is a closed
+subspace for any \emph{subset} \(A\subset H\). Directly by definitions
+we also have \(A \subset (A^\perp)^\perp\).
+If we re-apply theorem~4.11(2) \cite{RudinRCA80}, with \(M^\perp\)
+instead of $M$, we get again unique projections
+$P$, $Q$ and \(P^\perp\)  of $H$ onto
+$M$, \(M^\perp\) and \((M^\perp)^\perp\) respectably.
+That is for any \(x\in H\) we have
+\begin{equation*}
+ x = Px + Qx = Qx + P^\perp x.
+\end{equation*}
+Hence \(P=P^\perp\) and so \(M = (M^\perp)^\perp\).
+where $P$, $Q$ and \(P^\perp\) are projections of $H$ onto
+$M$, \(M^\perp\) and \((M^\perp)^\perp\).
+
+If $M$ is not closed, we cannot ensure the equality, as the following
+example show. Let
+\begin{equation*}
+M \eqdef \{x\in\ell^2: \exists m < 0\,\forall n\geq m\; x(n) = 0\}.
+\end{equation*}
+Clearly $M$ is a non closed subspace of \(\ell^2\) and we have
+\(M^\perp = \{0\}\) and
+\(M \subsetneq \ell^2 = (M^\perp)^\perp\).
+
+
+%%%%%%%%%%%%%% 2
+\begin{excopy}
+For \(n=1,2,3,\ldots\), let \(\{v_n\}\) be an independent set of vectors in $H$.
+Develop a \emph{constructive} process which generates an orthonormal set
+\(\{u_n\}\), such that \(u_n\) is a linear combination of \seqn{v}.
+Note that this leads to a proof of the existence of a maximal orthonormal
+set in a separable Hilbert spaces which makes no apeal to the Hausdorff
+maximality principle.
+(A space is \emph{separable}
+\index{separable}
+if it contains a countable dense subset.)
+\end{excopy}
+
+This is the
+\index{Graham-Schmidt!Orthonormalization}
+\index{Orthonormalization!Graham-Schmidt}
+\emph{Graham-Schmidt Orthonormalization}.
+
+By induction, Let \(u_1 \eqdef v_1/\|v_1\|\).
+Let \(k\geq 1\).
+Assume \(\{u_j\}\) defined for all \(1\leq j < k\).
+Define
+\begin{eqnarray*}
+ {u'}_k &\eqdef& v_k - \sum_{j=1}^{k-1} \langle u_j,v_k \rangle \cdot u_j \\
+ u_k    &\eqdef& {u'}_k \,/\, \|{u'}_k\|
+\end{eqnarray*}
+
+
+%%%%%%%%%%%%%% 3
+\begin{excopy}
+Show that \(L^p(T)\) is separable if \(1\leq p < \infty\),
+but that \(L^\infty(T)\) is not separable.
+\end{excopy}
+
+Assume \(1\leq p < \infty\).
+We will show that the set $Q$ of trigonometric polynomial
+with (complex) rational coefficients is dense in \(L^p(T)\).
+Clearly \(|Q| = \aleph_0\).
+
+Assume \(\epsilon > 0\) and \(f\in L^p(T)\).
+By Theorem~3.14 \cite{RudinRCA80} \(C_c(T)\) is dense in \(L^p(T)\).
+Since $T$ is compact \(C_c(T)=C(T)\).
+Take \(g\in C(T)\) such that \(\|g - f\|_p < \epsilon/3\).
+
+By Theorem~4.25 \cite{RudinRCA80}, the trigonometric polynomial
+are dense in C(T) in the \(\|\cdot\|_\infty\) norm.
+Take a trigonometric polynomial $p$ such that
+\(\|p - g\|_\infty < \epsilon/(6\pi)\), hence
+\(\|p - g\|_p < \epsilon/3\).
+
+For each coefficient \(c_j\) of $p$, we can find a sequence of
+rationals \(\{q_{jk}\}_{k=1}^\infty\)
+such that \(\lim_{k\to\infty} q_{jk} = c_j\).
+Note that  the degree $N$ of $p$ is finite (\(c_j = 0\) if \(|j| > N\)).
+Put
+\begin{equation*}
+h_k(t) \eqdef \sum_{j=-N}^N q_{jk} e^{ijt}
+\end{equation*}
+For each $k$,
+we have \(\lim_{k\to\infty} q_{jk} e^{ijt} = c_k e^{ijt}\) uniformly.
+Hence  \(\lim_{k\to\infty} h_k(t) = p(t)\) uniformly as well.
+Therefore, we can pick some \(q_k \in Q\) such that
+\(\|q - p\|_\infty < \epsilon/(6\pi)\), hence.
+\(\|q - p\|_p < \epsilon/3\).
+Combining the results, \(\|q - f\|_p < \infty\)
+and so $Q$ is dense in \(L^P(T)\) which is thus separable.
+
+We will now show that  \(L^\infty(T)\) is not separable.
+For each \(r\in[-\pi,\pi)\) put
+\begin{equation*}
+ u_r \eqdef\chhi_{[-\pi,r]}.
+\end{equation*}
+Look at the set of \(R \eqdef \{u_r:  r\in[-\pi,\pi)\} \subset L^\infty(T)\).
+Clearly \(|R| > \aleph_0\), but
+for any two \(-\pi \leq r < s < \pi\) we have \(\|u_r - u_s\| = 1\).
+Assume by negation there exists a countable dense set $D$ in \(L^\infty(T)\).
+Put \(\epsilon = 1/3\). For each \(u_r\in R\) there exists some \(f_r\in D\)
+such that \(\|u_r - f_r\|_\infty < 1/3\). By simple cardinality argument,
+there must exist some pair \(r<s\) such that \(f_r = f_s\).
+But then
+\begin{equation*}
+ \|u_r - u_s\|_\infty
+ \leq \|u_r - f_r\|_\infty + \|f_r - f_s\|_\infty + \|f_s - u_s\|_\infty
+ \leq 1/3 + 0 + 1/3 = 2/3 < 1
+\end{equation*}
+which us a contradiction.
+
+%%%%%%%%%%%%%% 4
+\begin{excopy}
+Show that $H$ is separable if and only if $H$ contains a maximal orthonormal
+system which is at most countable.
+\end{excopy}
+
+Assume $H$ is separable.
+Let \(\{v_j\}_{j\in\N}\) a countable set which is dense in $H$.
+By induction, we can through out all vectors \(v_k\)
+which are depenent ob \(\{v_j\}_{1\leq j<k}\).
+We can now use the
+Graham-Schmidt!Orthonormalization (Exercise~2 above) to get orthonormal
+system whose cardinality is at most \(|\N| = \aleph_0\).
+
+Conversely, assume \(U=\{u_j\}_{j\in J}\) is a maximal orthonormal system
+where \(|J| \leq \aleph_0\).
+Clearly the set
+of all finite linear combinations of $U$ with (complex) rational coefficients
+\begin{equation*}
+D \eqdef \left\{\sum_{j\in F} (q_j+ir_j)v_j :
+    F\subset J \;\wedge\;
+   |F|<\infty \;\wedge\;
+   q_j, r_j \in \Q\right\}
+\end{equation*}
+is dense in $H$ and \(|D|=\aleph_0\).
+
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+If \(M = \{x: Lx = 0\}\), where $L$ is a continuous linear functional on $H$,
+prove that \(M^\perp\) is a vector space of dimension $1$ (unless \(M=H\)).
+\end{excopy}
+
+Assume \(M\neq H\) and \(v\in H\setminus M\).
+If by negation \(\dim(M^\perp)> 1 \) then there are
+linearly independent \(v_1,v_2\in \M^\perp\).
+Clearly \(v_1\neq 0 \neq v_2\)
+and \(L(v_1)\neq 0 \neq L(v_2)\).
+Put \(v \eqdef L(v_2)v_1 - L(v_1)v_2 \in M^\perp\).
+By the independence of \(v_1,v_2\) we have \(v\neq 0\).
+But
+\begin{equation*}
+L(v) = L\bigl( L(v_2)v_1 - L(v_1)v_2 \bigr) = L(v_2)L(v_1) - L(v_1)L(v_2) = 0.
+\end{equation*}
+which is a contradiction.
+
+
+%%%%%%%%%%%%%% 6
+\begin{excopy}
+Let \(\{u_n\}\) (\(n=1,2,3,\ldots\)) be an orthonormal set in $H$.
+Show that this gives an example of a closed and bounded set which is
+not compact.
+Let $Q$ be the set of all \(x\in H\) of the form
+\begin{equation*}
+x = \sum_1^\infty c_n u_n
+   \qquad \left(\textrm{where} |c_n| \leq \frac{1}{n}\right).
+\end{equation*}
+Prove that $Q$ is compact. ($Q$ is called the Hilbert cube.)
+
+More generally, let \(\{\delta_n\}\) be a sequence of positive numbers,
+and let $S$ be the set of all \(x\in H\) od the form
+\begin{equation*}
+x = \sum_1^\infty c_n u_n
+  \qquad \left(\textrm{where} |c_n| \leq \delta_n\right).
+\end{equation*}
+Prove that $S$ is compact if and only if \(\sum_1^\infty \delta_n^2 < \infty\).
+Prove that $H$ is not locally compact.
+\end{excopy}
+
+The set \(U = \{u_n\}\) is clearly bounded by $1$.
+It it was not closed and \(x\in\overline{U}\setminus U\) then
+there would be a sequence $s$ in $U$ that converges to $x$.
+\Wlogy, we can remove repetitions from the $s$.
+But then $s$ cannot be a Cauchy sequence since \(\|u_j - u_k\|=2\)
+for any \(j<k\).
+Now let \(V = \{x\in H: \|x\| < 1/3\}\) be a zero neighborhood.
+The family
+\begin{equation*}
+\{u_n + V\}_{n=1}^\infty
+\end{equation*}
+is an open covering of $U$ and clearly has no finite sub-covering.
+Therefore, $U$ is not compact.
+
+% Assume $G$ is a covering of the Hilbert cube $Q$.
+Assume \(\sum_1^\infty \delta_n^2 < \infty\).
+For each $n$, let
+\begin{eqnarray*}
+H_n &\eqdef& \{x\in H: x = \sum_{j=1}^n c_j u_j: |c_j|\}
+             = \{x\in H: \forall m > n,\; \langle x,u_j\rangle = 0\}
+             \subset S. \\
+K_n &\eqdef& S \cap H_n
+% K_n &\eqdef& \{\sum_1^n c_j u_j: |c_j| \leq \delta_j\} \subset S.
+\end{eqnarray*}
+Clearly \(K_n\) is homeomorphic to $n$-dimensional closed box in \(\C^n\)
+and thus is compact (See Hiene Borel Theorem~2.41 \cite{RudinPMA85}).
+\begin{quotation}
+\small
+Clearly \(\cup_n K_n \subset S\).
+Equality \(\cup_n K_n = S\) holds iff there exist \(m<\infty\)
+such that \(\delta_j = 0\) for all \(j>m\).
+\end{quotation}
+
+\iffalse
+Let $G$ be an open covering of $S$.
+For each $n$, the $G$ covering of $S$ is also covering of \(K_n\).
+Let \(G_n \subset G\) a finite subcovering of \(K_n\).
+We may also assume \(G_n \subset G_{n+1}\)
+(otherwise, we simply annex \(G_n\) to \(G_{n+1}\)).
+Suppose by negation that $S$ is \emph{not} compact.
+Then \(\cup G_n \subsetneq S\) for each $n$.
+Pick \(x_n \in S \setminus \cup G_n\).
+We will now find a subsequence of \((x_n)_{n\in\N}\) that converges in $S$,
+by getting subsequences that converge on projections on \(K_n\)'s.
+Moving to double indexing, we put \(x_{0,n} = x_n\).
+By induction assume that for $k$ the sequence \((x_{k,n})_{n\in\N}\)
+is defined.
+Pick a subsequences \((x_{k+1,n})_{n\in\N}\) whose projection on \(K_{k+1}\)
+converges. Taking the diagonal subsequences, let \(y_n = x_{n,n}\).
+Its projection (\(\langle\cdot,u_k\rangle\))
+on \(K_k\) converges for all $k$.
+Moreover its limit \(t = \sum_{k=1}^\infty \langle x,u_k \rangle u_k\)
+converges in $S$ since \(\|t\| \leq \sum_{k=1}^\infty \delta_k^2\).
+Thus \(t\in S\). Pick \(V\in G\) such that \(t\in V\).
+There exist \(0<r\in\R\) such that \(B(t,r) \subset V\).
+Let $m$ be such that
+\begin{equation*}
+\sum_{j=m+1}^\infty \delta_j^2 < r
+\end{equation*}
+Let \(t'\) be the projection of $t$ on \(H_m\).
+So now \(t' \in K_n\).
+\mldots
+\fi
+
+We will show that $S$ is homeomorphic to
+the product space \(T = \prod_{k=1}^\infty \{z\in \C: |z|<\delta_k\)
+with the weak topology.
+By Tychonoff theorem (Appendix A~3 \cite{RudinFA79}) $T$ is compact.
+The homeomorphism is given by the identity mapping. We need to show that
+it is continuous in both directions.
+\begin{itemize}
+ \item
+ Look at \(\Id: S \to T\). Let \(x\in S\) and note that \(\Id(x) = x\in T\).
+ Let $V$ be a base neighborhood of $x$ in $T$. That is for some finite
+ subset \(I \subset \N\) we have
+ \begin{equation*}
+ V = \{v\in T: \forall j\in I,\, |v_j - x_j| < \epsilon_j\}.
+ \end{equation*}
+ Now take
+ \begin{equation*}
+ U = \{s\in S: \|s-x\| < \min_{j\in J} \epsilon_j\}
+ \end{equation*}
+ and clearly \(\Id(U) = U \subset V\).
+
+ \item
+ Look at \(\Id: T \to S\).
+ Let \(x\in T\) and note that \(\Id(x) = x\in S\).
+ Pick a neighborhood
+ \begin{equation*}
+ V = \{s\in S: \|s-x\| = \epsilon
+ \end{equation*}
+ of \(x\in S\).
+ There exist some \(M<\infty\) such that
+\(\sum_{j=m+1}^\infty \delta_j^2 < \epsilon/2\)
+ Now pick a base neighborhood
+ \begin{equation*}
+ U = \left\{v\in T:
+     \forall 1\leq j\leq m,\, |v_j - x_j| < 2^{-(j+1)}\epsilon_j\right\}.
+ \end{equation*}
+ and clearly \(\Id(U) = U \subset V\).
+\end{itemize}
+Thus the identity is a homeomorphism. Since $T$ is compact so is $S$.
+
+
+In particular, the Hilbert cube $Q$ is compact.
+
+Conversely, assume that $S$ is compact.
+If by negation \(\sum_1^\infty \delta_n^2 = \infty\).
+then the family \(V_n \eqdef = \{x\in H: \|x\| < n\}\) of open sets
+is a covering pf $S$ but has no finite sub-covering
+since for each $n$ we can find some $m$ such that
+\(\sum_{j=1}^m \delta_j^2 > n\) and then
+\begin{equation*}
+w \eqdef \sum_{j=1}^m \delta_j u_j \notin \bigcup_{j=1}^k V_n.
+\end{equation*}
+Therefore $G$ has no subcovering which is a contradiction.
+
+
+%%%%%%%%%%%%%% 7
+\begin{excopy}
+Suppose \(\{a_n\}\) is a sequence of positive numbers
+such that \(\sum a_n b_n < \infty \)
+whenever \(b_n \geq 0\)
+and
+  \(\sum b_n^2 < \infty\).
+Prove that
+  \(\sum a_n^2 < \infty\).
+
+\emph{Suggestion:} If \(sum a_n^2 = \infty\) then there are disjoint
+sets \(E_k\) (\(k=1,2,3,\ldots\)) so that
+\begin{equation*}
+ \sum_{n\in E_k} a_n^2 > 1.
+\end{equation*}
+Define \(b_n\) so that \(b_n = c_k a_n\) for \(n\in E_k\). For suitably chosen
+\(c_k\), \(\sum a_n b_n = \infty\) although \(\sum b_n^2 < \infty\).
+\end{excopy}
+
+Following the suggestion. Assume  \(\sum a_n^2 = \infty\)
+and sets \(\{E_k\}_{k\in\N}\) such that \(\N = \disjunion E_k\) and
+\(\sum_{n\in E_k} a_n^2 > 1\).
+Define \(c_k\) so that
+\begin{equation*}
+\sum_{n\in E_k} (c_k a_n)^2  = c_k^2 \sum_{n\in E_k} a_n^2  = 1/k^2
+\end{equation*}
+Hence
+\begin{equation*}
+c_k \eqdef 1 \left/ \left( k \sqrt{\sum_{n\in E_k} a_n^2} \right)\right.
+\end{equation*}
+Now
+\begin{equation*}
+\sum_{n\in E_k} a_n b_n = c_k \sum_{n\in E_k} a_n^2
+=  c_k \left. \sqrt{\sum_{n\in E_k} a_n^2} \right/ k
+= 1/k
+\end{equation*}
+Hence
+\(\sum_{n=1}^\infty b_n^2 < \infty\)
+and
+\(\sum_{n=1}^\infty a_n b_n = \infty\)
+which contradicts the assumption on \(\{a_n\}\)
+and so \(\sum a_n^2 < \infty\).
+
+
+%%%%%%%%%%%%%%  8
+\begin{excopy}
+If \(H_1\) and \(H_2\) are two Hilbert spaces, prove thatone of them
+is isomorphic to a subspace of the other. (Note that every closed subspace
+of a Hilbert space is a Hilbert space.)
+\end{excopy}
+
+By the statemnt showm in section~4.19 of~\cite{RudinRCA87}, a Hilbert space
+is determined by the cardinality of its orthonormal base.
+By simply mapping the smaller orthonormal base of the two spaces
+to the other we get an isomorphic embedding.
+
+%%%%%%%%%%%%%% 9
+\begin{excopy}
+If \(A\subset[0,2\pi]\) and $A$ is measurable, prove that
+\begin{equation*}
+ \lim_{n\to\infty} \int_A \cos nx\,dx
+ =
+ \lim_{n\to\infty} \int_A \sin nx\,dx
+ = 0.
+\end{equation*}
+\end{excopy}
+
+By regularity of the Lebesgue measure, given \(\epsilon > 0\),
+we can find a finite number of intervals \(\{I_k\}_{k=}^n\)
+such that
+\begin{eqnarray*}
+ A &\subset& \bigcup_{k=1}^N I_k \\
+ B &\eqdef& A\setminus \bigcup_{k=1}^N I_k \\
+ m(B) &<& \epsilon/2.
+\end{eqnarray*}
+So it is sufficient to show that the above zero limits hold
+for $A$ where $A$ is an interval.
+The periods of \(\cos nx\) and \(\sin nx\) converge to zero
+as \(n\to\infty\). Since  the intergal value
+of a periodic function is determined by the ``residue'' interval
+whose length is
+\begin{equation*}
+m(I) - \left\lfloor \frac{n m(I)}{2\pi} \right\rfloor \frac{2\pi}{n}
+\leq 2\pi/n
+\end{equation*}
+and since the functions here are bounded, the limits are zero.
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Let \(n_1 < n_2 < n_3 < \cdots\) be positive integers,
+and let $E$ be the set of all \(x\in[0,2\pi]\) at which
+\(\{\sin n_k x\}\) converges. Prove that \(m(E) = 0\).
+\emph{Hint}: \(2\sin^2 \alpha = 1 - \cos 2\alpha\),
+so \(\sin n_k x\to \pm 1/\sqrt{2}\;\aded\) on $E$,
+by Exercise~9.
+\end{excopy}
+
+Assume by negation \(m(E) > 0\).
+By previous exercise
+\begin{equation*}
+   \lim_{k\to\infty} \int_E \cos n_k x\,dm(x)
+ = \lim_{k\to\infty} \int_E \sin n_k x\,dm(x) = 0
+\end{equation*}
+But Lebesgue's dominated convergence theorem
+gives
+\begin{eqnarray}
+ \int_E \lim_{k\to\infty} \cos n_k x\,dm(x)  \label{eq:ex4:10}
+      &=& \lim_{k\to\infty} \int_E \cos n_k x\,dm(x) = 0 \\
+ \int_E \lim_{k\to\infty} \sin n_k x\,dm(x)  \notag
+      &=& \lim_{k\to\infty} \int_E \sin n_k x\,dm(x) = 0
+\end{eqnarray}
+
+Let
+\begin{eqnarray*}
+E_+ &\eqdef& \{x\in E: \lim{k\to\infty} \cos n_k x > 0\} \\
+E_0 &\eqdef& \{x\in E: \lim{k\to\infty} \cos n_k x = 0\} \\
+E_- &\eqdef& \{x\in E: \lim{k\to\infty} \cos n_k x < 0\}
+\end{eqnarray*}
+Clearly \(m(E_+) > 0\) iff \(m(E_-) > 0\)
+since otherwise \eqref{eq:ex4:10} would not hold.
+But if \(m(E_+) > 0\) then we can apply again
+the previous exercise, now to \(E_+\) which gives a contradicton
+of
+\begin{equation*}
+\lim_{k\to\infty} \int_{E_+} \cos n_k x\,dm(x) > 0.
+\end{equation*}
+Thus \(m(E_0) = m(E) > 0\) and  \(\lim_{k\to\infty} \cos n_k x = 0\),
+\aded\ on $E$.
+
+The identity \(2\sin^2 \alpha = 1 - \cos 2\alpha\), now implies
+\begin{equation*}
+\lim_{k\to\infty} \sin n_k x = \pm\sqrt{2}/2
+\end{equation*}
+Appling previous exercise (again) on the two sets
+\begin{equation*}
+\{x\in E: \lim_{k\to\infty} \sin n_k x = -\sqrt{2}/2\}
+\qquad
+\{x\in E: \lim_{k\to\infty} \sin n_k x = \sqrt{2}/2\}
+\end{equation*}
+gives a contradiction with at least one of them.
+
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Find a nonempty closed subset $E$ in \(L^2(T)\) that contains no element
+of smallest norm.
+\end{excopy}
+
+We will construct \(\{f_n\}\) in \(L^2(T)\)  such that \(\|f_n\| = 1 + 1/n\).
+We identify $T$ with \([0,2\pi)\).
+We define (almost disjoint) sub-segments \(I_n = [a_{n-1},a_n]\)
+of measure \(d_n = 2^{-n}\)
+for \(n\geq 1\), by letting \(a_0 = 0\), and \(a_n = a_{n-1} + d_n\).
+We define
+\begin{equation*}
+ f_n(t) = c_n\chhi_{I_n}(t).
+\end{equation*}
+We set
+\begin{equation*}
+c_n = (n+1) \bigm/ \left(n \|\chhi_{I_n}\|\right)
+\end{equation*}
+which ensures that \(\|f_n\| = 1 + 1/n\).
+Clearly \(\|f_m - f_n\| > 1\) whenever \(m\neq n\).
+The set \(F = \{f_n\}\) has no accumulation points and so $F$ is closed.
+
+
+%%%%%%%%%%%%%% 11 2nd edition
+\item[11b]
+\begin{minipage}[t]{.8\textwidth}\footnotesize
+[\textbf{Note:} This exercise was removed in the 3rd edition]
+
+Prove that the identify
+\begin{equation*}
+4\langle x,y \rangle
+=
+    \|x+y\|^2
+ -  \|x-y\|^2
+ +  i\|x+iy\|^2
+ -  i\|x-iy\|^2
+\end{equation*}
+is valid every inner product space, and show that it proves the
+implication \ich{c}~\(\to\)~\ich{d} of Theorem~4.18.
+\smallskip\hrule
+\end{minipage}
+
+Compute
+\begin{eqnarray*}
+ 4\langle x,y \rangle
+&=&
+      2 \langle x,y \rangle
+    + 2 \overline{\langle x,y \rangle}
+    + 2 \langle x,y \rangle
+    - 2 \overline{\langle x,y \rangle}  \\
+&=&
+      2 \langle x,y \rangle
+    + 2 \overline{\langle x,y \rangle}
+    + 2i\overline{i} \langle x,y \rangle
+    + 2i^2\overline{\langle x,y \rangle}  \\
+&=&
+    \bigl(2 \langle x,y \rangle + 2 \langle y,x \rangle \bigr)
+    + i \bigl(2 \langle x,iy \rangle + 2 \langle iy,x \rangle \bigr) \\
+&=&
+   \bigl(
+      \langle x,x \rangle
+    + \langle x,y \rangle
+    + \langle y,x \rangle
+    + \langle y,y \rangle \bigr)
+ \\ &&
+  -
+   \bigl(
+      \langle x,x \rangle
+    - \langle x,y \rangle
+    - \langle y,x \rangle
+    + \langle y,y \rangle \bigr)
+ \\
+&&
+  +
+   i\bigl(
+      \langle x,x \rangle
+    + \langle x,iy \rangle
+    + \langle iy,x \rangle
+    + \langle iy,iy \rangle \bigr)
+ \\ &&
+  -
+   i\bigl(
+      \langle x,x \rangle
+    - \langle x,iy \rangle
+    - \langle iy,x \rangle
+    + \langle iy,iy \rangle \bigr)
+ \\
+&=&
+    \|x+y\|^2
+ -  \|x-y\|^2
+ +  i\|x+iy\|^2
+ -  i\|x-iy\|^2
+\end{eqnarray*}
+
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+The constants \(c_k\) in section~4.24 were shown to be such that
+\(k^{-1}c_k\) is bounded.
+Estimate the relevant integral more precisely and show that
+\begin{equation*}
+ 0 < \lim_{k\to\infty} k^{-1/2} c_k < \infty.
+\end{equation*}
+\end{excopy}
+
+Section~4.24 defines (see also \ref{sec:comp:trig}) \(c_k\) such that
+\begin{eqnarray*}
+Q_k(t) &\eqdef& c_k \left(\frac{1+\cos t}{2}\right)^k \\
+\frac{1}{2\pi} \int_{-\pi}^\pi Q_k(t)\,dt &=& 1
+\end{eqnarray*}
+
+Thus
+\begin{equation*}
+c_k
+= 2\pi \left/ \int_{-\pi}^\pi \left(\frac{1+\cos t}{2}\right)^k \,dt \right.
+= 2^{k+1}\pi \left/ \int_{-\pi}^\pi (1+\cos t)^k \,dt \right..
+\end{equation*}
+Note that \(((1+\cos t)/2)^k\) is decreasing with $k$ and so a limit exists.
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Suppose $f$ is a continuous function on \(\R^1\), with period $1$. Prove that
+\begin{equation*}
+ \lim_{N\to\infty} \frac{1}{N} \sum_{n=1}^N f(n\alpha) = \int_0^1 f(t)\,dt
+\end{equation*}
+for every irrational number \(\alpha\). \emph{Hint}: Do it first for
+\begin{equation*}
+ f(t) = \exp(2\pi ikt), \qquad k=0,\pm 1,\pm 2,\ldots
+\end{equation*}
+\end{excopy}
+
+We use the \emph{binary modulus} notation for real numbers:
+\begin{equation} \label{eq:4.13.bmod}
+x \bmod 1 \eqdef x - \lfloor x\rfloor.
+\end{equation}
+
+Because of being periodic,
+\(f(x) = f(x \bmod 1)\) for all \(x\in\R\).
+Thus looking at $f$-evaluations of
+\(\{n\alpha\}_{n=1}^N\) is equivalent
+to looking at $f$-evaluations of
+\begin{equation*}
+A_N = \{n \alpha \bmod 1\}_{n=1}^N \subset (0,1)
+\end{equation*}
+Let \(X_N = \{x_n\}_{n=1}^N\) be an increasing re-ordering of \(A_N\).
+Since \(\alpha\) is irrational, the sequence \(X_N\)
+is strictly increasing. By defining
+\begin{eqnarray*}
+a_0 &=& 0 \\
+a_k &=& (x_{k} + x_{k+1}) / 2 \qquad \textrm{for}\, 1\leq k < N \\
+a_N &=& 1 \\
+\end{eqnarray*}
+We denote
+\begin{eqnarray*}
+\delta_N &\eqdef& \min_{1\leq n < N} a_{n+1} - a_{n} \\
+\Delta_N &\eqdef& \max_{1\leq n < N} a_{n+1} - a_{n}.
+\end{eqnarray*}
+
+We have a partition of \([0,1]\).
+Since $f$ is continuous, it is uniformly continuous on \([0,1]\).
+By Theorem~6.7 of \cite{RudinPMA85}
+the expression
+\begin{equation*}
+\lim_{N\to\infty} \frac{1}{N} \sum_{n=1}^N f(n\alpha)
+= \lim_{N\to\infty} \frac{1}{N} \sum_{n=1}^N f(x_n)
+\end{equation*}
+\index{Riemann-Stieltjes}
+becomes the Riemann-Stieltjes integral of $f$ over \([0,1]\)
+provided we show that
+\begin{equation} \label{eq:ex4.13:Delto:to0}
+\lim_{N\to\infty} \Delta_N = 0.
+\end{equation}
+
+
+Clearly
+\(\delta_N \leq 1/N\).
+Thus there exists some integers \(j,k\in\N\) such that
+\begin{equation*}
+0 < d \eqdef (j\alpha \bmod 1) - (k\alpha \bmod 1) < 1/N.
+\end{equation*}
+Let \(M = \lceil 1/d \rceil \cdot \max(j,k\).
+Looking at \(X_M\), we can see that it contains
+all numbers of the form
+\begin{equation*}
+\{ md: 1\leq m \leq M\}
+=
+\{ (mj\alpha \bmod 1) - (mk\alpha \bmod 1): 1\leq m \leq M\}.
+\end{equation*}
+Hence \(\Delta_m \leq 1/N\) for all \(m\geq M\)
+and so \eqref{eq:ex4.13:Delto:to0} is proved.
+
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+Compute
+\begin{equation*}
+ \min_{a,b,c} \int_{-1}^1 |x^3 - a - bx -cx^2|^2 \,dx
+\end{equation*}
+and find
+\begin{equation*}
+ \max \int_{-1}^1 x^3 g(x)\,dx,
+\end{equation*}
+where $g$ is subject to the restrictions
+\begin{equation*}
+  \int_{-1}^1 g(x)\,dx
+  = \int_{-1}^1 x g(x)\,dx
+  = \int_{-1}^1 x^2 g(x)\,dx
+  = 0 ;
+  \qquad
+ \int_{-1}^1 |g(x)|^2\,dx=1.
+\end{equation*}
+\end{excopy}
+
+Let's ortho-normalize the base of the $3$-dimensional subspace $S$
+spanned by \(\{x^0, x^1, x^2\}\) in \(C[-1,1]\).
+\begin{eqnarray*}
+f_0(x) &=& \sqrt{2}/2 \\
+f_1(x) &=& \sqrt{3/2}\cdot x \\
+f_2(x) &=& x^2 - 1/3
+\end{eqnarray*}
+Note that
+\begin{eqnarray*}
+\langle f_2, f_0 \rangle
+&=& \int_{-1}^1 (t^2 - 1/3)\cdot \sqrt{2}/2\,dt
+   = (\sqrt{2}/2)\cdot \left(\left(\int_{-1}^1 t^2\,dt\right) - 2/3\right) \\
+&=& (\sqrt{2}/2)\cdot \left(\left( (t^3/3)\bigm|_{-1}^1 \right) - 2/3\right)
+= (\sqrt{2}/2)\cdot ( 2/3 - 2/3)
+= 0
+\end{eqnarray*}
+
+The minimization we are looking for, is actually the \(L^2\) distance
+between \(\tau(x) = x^3\) and~$S$.
+We will project \(\tau\) on \(\{f_0,f_1,f_2\}\)
+\begin{eqnarray*}
+\langle \tau, f_0\rangle
+  &=& \int_{-1}^1 t^3\cdot \sqrt{2}/2\,dt
+      = (\sqrt{2}/2)\left( (1/4)t^4 \bigm|_{-1}^1 \right)
+      = (\sqrt{2}/2)\cdot(1/4)\cdot 2
+      = \sqrt{2}/4 \\
+\langle \tau, f_1\rangle
+ &=& \int_{-1}^1 t^3\cdot \sqrt{3/2}t,dt
+      = \sqrt{3/2} \left( (1/5)t^5 \bigm|_{-1}^1 \right)
+      =  \sqrt{2\cdot3}/5 \\
+\langle \tau, f_2\rangle
+ &=&  \int_{-1}^1 t^3\cdot (t^2 - 1/3)\,dt
+       =  (t^6/6 - t^4/12)\bigm|_{-1}^1
+       =  0
+\end{eqnarray*}
+
+\iffalse
+\begin{eqnarray*}
+\langle \tau, f_0\rangle &=&
+  \int_{-1}^1 t^3\cdot \sqrt{2}/2\,dt \\
+  &=& (\sqrt{2}/2)\left( (1/4)t^4 \bigm|_{-1}^1 \right) \\
+  &=& (\sqrt{2}/2)\cdot(1/4)\cdot 2  \\
+  &=& \sqrt{2}/4 \\
+\langle \tau, f_1\rangle &=&
+  \int_{-1}^1 t^3\cdot \sqrt{3/2}t,dt \\
+ &=&  \sqrt{3/2} \left( (1/5)t^5 \bigm|_{-1}^1 \right) \\
+ &=&  \sqrt{2\cdot3}/5 \\
+\langle \tau, f_2\rangle
+ &=&  \int_{-1}^1 t^3\cdot (t^2 - 1/3)\,dt \\
+ &=&  (t^6/6 - t^4/12)\bigm|_{-1}^1 \\
+ &=&  0
+\end{eqnarray*}
+\fi
+
+Thus the projection is
+\begin{equation*}
+\tau'(x) \eqdef \sqrt{2}/4 f_0 + \sqrt{2\cdot3}/5 f_1
+ = 3 x + 1/4.
+\end{equation*}
+The square distance is
+\begin{equation*}
+d^2(\tau,\tau')
+ = \int_{-1}^1 t^3 - 3t - 1/4\,dt
+ = (t^4/4 - 3t^2/2 - t) \bigm|_{-1}^1
+ = 2
+\end{equation*}
+and so \(d(\tau,\tau') = \sqrt{2}\).
+
+In order to find the maximal distance with $g$
+we can simply apply exercise~\ref{ex:4.16}.
+The condition on $g$
+are exactly as required
+there, namely \(g\in S^\perp\) and \(\|g\|=1\).
+Thus the maximal distance is \(\sqrt{2}\).
+
+\iffalse
+We put
+\begin{equation*}
+\tilde{g}(x) \eqdef \tau(x) - \tau'(x) = x^3 - 3 x - 1/4
+\end{equation*}
+then \(\tilde{g} \in S^\perp\).
+To normalize, we compute the norm
+\begin{eqnarray*}
+\|\tilde{g}\|^2
+ &=& \int_{-1}^1 (t^3 - 3 t - 1/4)^2\,dt \\
+ &=& \int_{-1}^1
+      t^6   - 6t^4   - 2t^3  + 9 t^2 + 3t/2   + 1/16 \,dt \\
+ &=& (t^7/7 - 6t^5/5 - t^4/2 + 3 t^3 + 3t^2/4 + t/16) \bigm|{-1}^1 \\
+ &=& (t^4/2 + 3t^2/4) \bigm|{-1}^1 \\
+ &=& 2(1 + 3/4) \\
+ &=& 7/2 \\
+\end{eqnarray*}
+Finally we define $g$
+\begin{eqnarray*}
+g(x)
+  \eqdef \tilde{g}(x)/\|\tilde{g}\|
+  = \sqrt{7/2}t^3 - 3\sqrt{7/2}t - \sqrt{2\cdot 7}/8
+\end{eqnarray*}
+\fi
+
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+Compute
+\begin{equation*}
+ \min_{a,b,c} \int_0^\infty |x^3 - a - bx -cx^2|^2e^{-x} \,dx
+\end{equation*}
+State and solve the corresponding maximum problem,
+as in Exercise~14.
+\end{excopy}
+
+With a little help from \texttt{http://integrals.wolfram.com}.
+
+Let's ortho-normalize the base of the $3$-dimensional subspace $S$
+spanned by \(\{x^0, x^1, x^2\}\) in \(C[0,\infty)\)
+where the inner product is defined as
+\begin{equation*}
+\langle f,g \rangle \eqdef \int_0^\infty f(t)\overline{g(t)}e^{-t}\,dt
+\end{equation*}
+\index{Graham-Schmidt}
+We use the Graham-Schmidt procedure.
+
+\paragraph{Ortho-Normalize \(\phi_0(x)=x^0\)}.
+\begin{equation*}
+f_0(x) = 1
+\end{equation*}
+
+\paragraph{Ortho-Normalize \(\phi_1(x)=x^1\)}.
+\begin{equation*}
+\langle \phi_1, f_0 \rangle
+ = \int_0^\infty t e^{-t}\,dt
+ = \left(e{-t}(-1-t)\right)\bigm|_0^\infty
+ = 0 - (-1) = 1
+\end{equation*}
+For
+\begin{equation} \label{eq:ex4.15:psi1}
+\psi_1 = \phi_1 - 1\cdot f_0
+\end{equation}
+we compute the norm
+\begin{equation*}
+\|\psi_1\|_2^2
+ = \int_0^\infty \bigl(\psi_1(t)\bigr)^2 e^{-t}\,dt
+ = \int_0^\infty (t - 1)^2 e^{-t}\,dt
+ =  \left(e{-t}(-1-t^2)\right)\bigm|_0^\infty
+ = 0 - 1\cdot (-1) = 1.
+\end{equation*}
+Hence we use \(\psi_1\) \eqref{eq:ex4.15:psi1} for
+\begin{equation*}
+f_1(x) = x - 1
+\end{equation*}
+
+\paragraph{Ortho-Normalize \(\phi_2(x)=x^2\)}.
+\begin{equation*}
+\langle \phi_2, f_0 \rangle
+ = \int_0^\infty t^2 e^{-t}\,dt
+ = \left((-t^2-2t-2)e{-t}\right)\bigm|_0^\infty
+ = 2
+\end{equation*}
+
+\begin{equation*}
+\langle \phi_2, f_1 \rangle
+ = \int_0^\infty t^2(t-1) e^{-t}\,dt
+ = \left((x^3-4x^2+8x-8) e^{-t}\right)\bigm|_0^\infty
+ = 8
+\end{equation*}
+
+For
+\begin{equation} \label{eq:ex4.15:psi2}
+\psi_2 = \phi_2 - 2\cdot f_0 -8f_1.
+\end{equation}
+we compute the norm
+\begin{eqnarray*}
+\|\psi_2\|_2^2
+ &=& \int_0^\infty \bigl(\psi_2(t)\bigr)^2 e^{-t}\,dt  \\
+ &=& \int_0^\infty (t^2 - 2 - 8(t-1))^2 e^{-t}\,dt
+      = \left((-t^4+12t^3-40t^2+16t-20)e{-t}\right)\bigm|_0^\infty \\
+ &=& 20
+\end{eqnarray*}
+
+Hence we use \(\psi_2\) \eqref{eq:ex4.15:psi2} to get
+\begin{eqnarray*}
+f_2(x)
+ &=& \psi_2(x)/\|\psi_2\| \\
+ &=& (\sqrt{5}/10)(x^2 -8(x-1) -2) \\
+ &=& (\sqrt{5}/10)(x^2 -8x + 6) \\
+ &=& (\sqrt{5}/10)\cdot x^2 (-4\sqrt{5}/5)\cdot x^2 + 3\sqrt{5}/5
+\end{eqnarray*}
+
+
+The minimization we are looking for, is actually the \(L^2\) distance
+between \(\tau(x) = x^3\) and~$S$.
+We will project \(\tau\) on \(\{f_0,f_1,f_2\}\)
+\begin{eqnarray*}
+\langle \tau, f_0\rangle &=&
+ \int_0^\infty t^3 e^{-t} \,dt
+    = ((-t^3 -3t^2 -6t -6)e^{-t})\bigm|_0^\infty  \\
+ &=& 6 \\
+\langle \tau, f_1\rangle
+&=& \int_0^\infty t^3(t-1)e^{-t} \,dt
+    = ((-t^4 -3t^3 -9t^2 -18t -18)e^{-t})\bigm|_0^\infty  \\
+ &=& 18 \\
+\langle \tau, f_2\rangle
+ &=&  \int_0^\infty t^3\,(\sqrt{5}/10)(t^2 - 8t + 6)\, e^{-t} \,dt \\
+ &=&  (\sqrt{5}/10)
+      \bigl((-t^5 + 3t^4 + 6t^3 +18t^2 +36t +36)e^{-t}\bigr)\biggm|_0^\infty \\
+ &=&  \sqrt{5}\cdot 18/5
+\end{eqnarray*}
+
+Thus the projection is
+\begin{equation*}
+\tau'(x) \eqdef 6 f_0 + 18 f_1 + (\sqrt{5}\cdot 18/5) f_2
+\end{equation*}
+Let \(\tau = \tau' + \tau''\) directo decomposition.
+The square distance is
+\begin{eqnarray*}
+d^2(\tau,\tau')
+&=& \|\tau''\|^2 \\
+&=& \|\tau\|^2 - \|tau'\|^2 \\
+&=& \|\tau\|^2 - \sum_{j=0}^2 \langle \tau, f_j \rangle^2 \\
+&=& \int_0^\infty t^6 e^{-t} \,dt
+    - \bigl(6^2 + 18^2 +  (\sqrt{5}\cdot 18/5)^2\bigr) \\
+&=& \left((-t^6 -6t^5 - 30t^4 - 120 t^3
+          - 360t^2 -720t - 720)e^{-t}\right) \bigm|_0^\infty  \\
+& & - (36 + 324 + 324/5) \\
+&=& 720 - 360 - 324/5 \\
+&=&  1476/5
+\end{eqnarray*}
+
+
+
+Again we apply exercise~\ref{ex:4.16}, to get
+\begin{equation*}
+\max \{\langle g, \tau\rangle : g\in S^\perp\;\wedge\; \|g\|=1\}
+= d(\tau,\tau')
+\end{equation*}
+
+
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+If \label{ex:4.16}
+\(x_0\in H\) and $M$ is a closed linear subspace  of $H$, prove that
+\begin{equation*}
+ \min \bigl\{\|x - x_0\|: x\in M\bigr\}
+ = \max \left\{|\langle x_0,y\rangle|: y\in M^\perp,\, \|y\|=1\right\}.
+\end{equation*}
+\end{excopy}
+
+Using projections,
+let \(x_0 = \mu + \nu\) be the decomposition,
+such that \(\mu\in M\) and \(\nu \in M^\perp\).
+By Theorem~4.11\ich{a} (\cite{RudinRCA87}),
+\begin{equation*}
+d = d(x_0,M) = \min \bigl\{\|x - x_0\|: x\in M\bigr\} = d(x_0,\mu) = \|\nu\|.
+\end{equation*}
+By Theorem~4.11\ich{d} (\cite{RudinRCA87}),
+\(\|x_0\|^2 = \mu^2 + \nu^2\).
+
+Clearly \(\nu = 0\) iff \(x_0 \in M\). In this case \(d=0\)
+and for every \(y\in M^\perp\) we have \(\langle x_0, y\rangle = 0\)
+and the desired equality holds.
+
+Otherwise, \(\nu \neq 0\).
+We pick \(y_1 = \nu/\|\nu\|\) and so
+\begin{equation*}
+\langle x_0, y_1\rangle
+= \langle \mu + \nu, \nu\rangle / \| \nu \|
+= (\langle \mu , \nu\rangle +  \langle \nu, \nu\rangle) / \| \nu \|
+= 0 + \|\nu\|^2 / \|\nu\|
+= \|\nu\|.
+\end{equation*}
+Hence
+\begin{equation} \label{eq:ex4.15:dleq}
+d \leq  \max \left\{|\langle x_0,y\rangle|: y\in M^\perp,\, \|y\|=1\right\}.
+\end{equation}
+Assume \(y\in M^\perp\) such that \(\|y\|=1\).
+% and \(\langle x_0,y\rangle > d\).
+Let $N$ be the $1$-dimensional subspace spanned by \(\nu\),
+and denote its orthogonal subspace in \(M^\perp\) by \(N^\perp\).
+Let \(y = v + w\) be the direct decomposition,
+such that \(v\in N\) and \(w\in N^\perp \subset M^\perp\).
+Thus there exists a scalar \(a\in\C\) such that \(v = ay_1\)
+and since
+\begin{equation*}
+\|v\| + \|w\| = \|y\| = \|y_1\| = 1
+\end{equation*}
+we have \(|a| \leq 1\).
+Now
+\begin{eqnarray*}
+\langle y, x_0 \rangle
+&=& \langle v+w, \mu + \nu \rangle \\
+&=&   \langle v, \mu \rangle
+    + \langle w, \mu \rangle
+    + \langle v, \nu \rangle
+    + \langle w, \nu \rangle \\
+&=& 0 + 0 + \langle v, \nu \rangle + 0 \\
+&=& \langle a y_1, \|\nu\| y_1 \rangle \\
+&=& a\|\nu\|
+\end{eqnarray*}
+Hence \(|\langle y, x_0 \rangle| \leq \|\nu\|\), which shows
+the desired reversed inequality of \eqref{eq:ex4.15:dleq}.
+
+\iffalse
+Since
+\begin{equation*}
+  \langle x_0, \nu \rangle
+= \langle x_0, \nu \rangle
+= \langle x_0, x_0 - \mu \rangle
+= \|x_0\|^2 - \langle x_0, \mu \rangle
+\end{equation*}
+\fi
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+Show that there is a continuous one-to-one mapping \(\gamma\) of \([0,1]\)
+into $H$ such that
+\(\gamma(b) - \gamma(a)\) is orthogonal to
+\(\gamma(d) - \gamma(c)\) whenever
+\(0\leq a \leq b \leq c \leq d \leq 1\).
+(\(\gamma\) may be called a ``curve with orthogonal increments.'')
+\emph{Hint}: Take \(H=L^2\), and constants characteristic functions
+ of certain subsets of \([0,1]\).
+\end{excopy}
+
+Simply define \(\gamma(t) = {\chhi}_{[0,t]}\).
+
+
+%%%%%%%%%%%%%% 18 2nd edition
+\item[18b]
+\begin{minipage}[t]{.8\textwidth}\footnotesize
+[\textbf{Note:} This exercise was removed in the 3rd edition]
+
+Give a direct proof of Theorem~4.16, i.e., one which does not
+depend on the more general consideration of Sec.~4.15.
+\smallskip\hrule
+\end{minipage}
+
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+Define \(u_s(t) = e^{ist}\) for all \(s\in \R^1\).
+Let $X$ be the complex vector space of all finite linear combinations
+of these functions \(u_s\).
+If \(f\in X\) and \(g\in X\), show that
+\begin{equation*}
+\langle f,g\rangle
+= \lim_{A\to\infty} \frac{1}{2A} \int_{-A}^A f(t)\overline{g(t)}\,dt
+\end{equation*}
+exists. Show that this inner product makes $X$ into a unitary spce
+whose completion is a non separable Hint space $H$.
+Show that \(\{u_s: s\in\R^1\}\) is a maximal orthonormal set in $H$.
+\end{excopy}
+
+% Using the \eqref{eq:4.13.bmod} notation,
+For \(b>0\) we use the real modulus notation:
+\begin{equation*}
+ a \bmod b \eqdef a - \lfloor \frac{a}{b} \rfloor b.
+\end{equation*}
+It is clear that
+\begin{equation*}
+\int_{-A}^A u_s(t)\,dt = \int_{-(A \bmod 2\pi/s) }^{A \bmod 2\pi/s} u_s(t)\,dt
+\end{equation*}
+If \(m, n \in \Z\) then
+\begin{equation*}
+\langle u_m,u_n\rangle
+= \lim_{A\to\infty} \frac{1}{2A} \int_{-A}^A u_m(t)\overline{u_n(t)}\,dt
+= \lim_{A\to\infty} \frac{1}{2A} \int_{-A}^A e^{i(m-n)t}\,dt.
+\end{equation*}
+Hence, if \(m=n\) then
+\begin{equation*}
+\langle u_m,u_n\rangle
+= \lim_{A\to\infty} \frac{1}{2A} \int_{-A}^A e^{i\cdot 0\cdot t}\,dt.
+= \lim_{A\to\infty} \frac{1}{2A} \int_{-A}^A 1\,dt
+= 1.
+\end{equation*}
+Otherwise, \(m\neq n\). Put \(d = m - n \neq 0\) and so
+\begin{eqnarray*}
+|\langle u_m,u_n\rangle|
+&=& \left|\lim_{A\to\infty} \frac{1}{2A} \int_{-A}^A u_d(t)\,dt\right| \\
+&=&\left|\lim_{A\to\infty}
+   \frac{1}{2A} \int_{-(A \bmod 2\pi/d)}^{A \bmod 2\pi/d} u_d(t)\,dt\right| \\
+&=& \lim_{A\to\infty} \frac{1}{2A} %
+   \left|\int_{-(A \bmod 2\pi/d)}^{A \bmod 2\pi/d} u_d(t)\,dt\right| \\
+&\leq&  \lim_{A\to\infty} \frac{1}{2A} \cdot 4\pi/d \\
+&=& 0
+\end{eqnarray*}
+Hence \(\{u_s\}_{s\in\Z}\) is an orthonormal set.
+
+
+
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+Fix a positive integer $N$,
+put \(\omega = e^{2\pi i/N}\), prove the orthogonality relations
+\begin{equation*}
+ \frac{1}{N} \sum_{n=1}^N \omega^{nk} =
+ \left\{\begin{array}{ll}
+         1 \qquad \textrm{if}\quad k=0\\
+         0 \qquad \textrm{if}\quad 1\leq k \leq N - 1
+        \end{array}\right.
+\end{equation*}
+and use them to derive the identities
+\begin{equation*}
+\langle x, y \rangle = \frac{1}{N} \sum_{n=1}^N \|x + \omega^n y\|^2 \omega^n
+\end{equation*}
+that hold in every inner product space if \(N\geq 3\). Show also that
+\begin{equation*}
+\langle x, y \rangle
+ = \frac{1}{2\pi} \int_{-\pi}^\pi \|x + e^{i\theta} y\|^2 e^{i\theta}\,d\theta.
+\end{equation*}
+\end{excopy}
+
+If \(k=0\) then
+\begin{equation*}
+  \frac{1}{N} \sum_{n=1}^N \omega^{nk}
+= \frac{1}{N} \sum_{n=1}^N \omega^{n0}
+= \frac{1}{N} N\cdot 1
+= 1.
+\end{equation*}
+Otherwise \( 1\leq k < N\). Put
+\begin{equation*}
+S_k = \sum_{n=1}^N \omega^{nk}
+\end{equation*}
+Since \(\Omega^{Nk} = (\Omega^N)^k = 1^k = 1\) we have
+\begin{equation*}
+\omega^k S_k
+= \sum_{n=1}^N \omega^{nk + k}
+= \left(\sum_{n=2}^N \omega^{nk}\right) +  \omega^{Nk + k}
+= \left(\sum_{n=1}^N \omega^{nk}\right)
+= S_k.
+\end{equation*}
+If by negation, \(S_k\neq 0\) then
+ \(\omega^k= 1\) which is a contradiction. Hence
+\begin{equation*}
+\frac{1}{N}S_k = \frac{1}{N}0 = 0.
+\end{equation*}
+
+Assume now that \(N\geq 3\). Compute:
+\begin{eqnarray*}
+S
+&\eqdef&
+ \sum_{n=1}^N \|x + \omega^n y\|^2 \omega^n \\
+&=&
+ \sum_{n=1}^N \langle x + \omega^n y, x + \omega^n y\rangle \omega^n  \\
+&=&
+    \|x\|^2 \sum_{n=1}^N \omega^n
+ +  \sum_{n=1}^N \left\langle \omega^n x,  \omega^{n}y \right\rangle
+ +  \sum_{n=1}^N \left\langle \omega^{2n} y, x \right\rangle
+ + \|y\|^2 \sum_{n=1}^N  \omega^n \overline{\omega^n} \omega^n \\
+&=&
+    \|x\|^2 \cdot 0
+    + \sum_{n=1}^N \left\langle x, \overline{\omega^n} \omega^{n}y \right\rangle
+    + \langle y, x \rangle \sum_{n=1}^N \omega^{2n}
+    + \|y\|^2 \sum_{n=1}^N \omega^n \\
+&=&
+    0 +
+    \sum_{n=1}^N \left\langle x, \overline{\omega^n} \omega^{n}y \right\rangle
+    + 0 + 0 \\
+&=& N \langle x, 1\cdot y \rangle.
+\end{eqnarray*}
+Hence
+\begin{equation*}
+\langle x, y \rangle = S/N.
+\end{equation*}
+
+Now for the analog integral equality.
+\begin{eqnarray*}
+I
+&\eqdef&
+ \int_{-\pi}^\pi \|x + e^{i\theta} y\|^2 e^{i\theta}\,d\theta \\
+&=&
+ \int_{-\pi}^\pi
+    \langle x + e^{i\theta} y, x + e^{i\theta} y \rangle e^{i\theta}\,d\theta \\
+&=&
+    \|x\|^2 \int_{-\pi}^\pi e^{i\theta}\,d\theta
+ +  \int_{-\pi}^\pi
+         \left\langle e^{i\theta} x,  \omega^{n} y \right\rangle\,d\theta
+ +  \int_{-\pi}^\pi
+         \left\langle e^{2i\theta} y, x \right\rangle\,d\theta
+ + \|y\|^2 \int_{-\pi}^\pi
+         e^{i\theta} \overline{e^{i\theta}} e^{i\theta}\,d\theta \\
+&=&
+     \|x\|^2 \cdot 0
+   + \int_{-\pi}^\pi
+      \left\langle x, \overline{e^{i\theta}} e^{i\theta}y
+     \right\rangle \,d\theta
+    + \langle y, x \rangle \int_{-\pi}^\pi e^{2i\theta}\,d\theta
+    + \|y\|^2 \int_{-\pi}^\pi e^{i\theta}\,d\theta \\
+&=&
+    0 +
+    \int_{-\pi}^\pi
+      \left\langle x, \overline{e^{i\theta}} e^{i\theta}y \right\rangle
+    + \langle x, 0\cdot y\rangle  + 0 \\
+&=& 2\pi \langle x, 1\cdot y \rangle.
+\end{eqnarray*}
+Hence
+\begin{equation*}
+\langle x, y \rangle = \frac{1}{2\pi}I.
+\end{equation*}
+
+\end{enumerate}

@@ -1,0 +1,1952 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%chapter 10
+\chapterTypeout{Elementary Properties of Holomorphic Functions}
+
+\newcommand{\itwopi}{\frac{1}{2\pi}}
+\newcommand{\itwopii}{\frac{1}{2\pi i}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.6 --- Power Series is Holomorphic}
+
+In the proof of theorem~10.6 the following equality
+\begin{equation} \label{eq:thm:10.6}
+\left[ \frac{z^n - w^n}{z-w} - nw^{n-1} \right]
+= (z-w)\sum_{k=1}^{n-1} kw^{k-1} z^{n-k-1}
+\end{equation}
+is used for \(n\geq 2\) and \(z\neq w\). Let's work it out.
+In order to compute the fraction we start with
+\begin{align*}
+(z-w)\sum_{k=0}^{n-1} w^k z^{n-k-1}
+&=  \left(\sum_{k=0}^{n-1} w^k z^{n-k}\right)
+  - \left(\sum_{k=0}^{n-1} w^{k+1} z^{n-k-1}\right) \\
+&=  \left(\sum_{k=0}^{n-1} w^k z^{n-k}\right)
+  - \left(\sum_{k=1}^{n} w^{k} z^{n-k}\right) \\
+&= z^n + \left(\sum_{k=0}^{n-1} \left(w^k z^{n-k} - w^k z^{n-k}\right)\right) - w^n\\
+&= z^n - w^n
+\end{align*}
+Hence
+\begin{equation} \label{eq:thm:10.6:frac}
+\frac{z^n - w^n}{z-w} = \sum_{k=0}^{n-1} w^k z^{n-k-1}
+\end{equation}
+
+Finally,
+\begin{align*}
+(z-w)\sum_{k=1}^{n-1} kw^{k-1} z^{n-k-1}
+&= \left(\sum_{k=1}^{n-1} kw^{k-1} z^{n-k}\right) -
+   \left(\sum_{k=1}^{n-1} kw^{k} z^{n-k-1}\right) \\
+&= \left(\sum_{k=0}^{n-2} (k+1)w^{k} z^{n-k-1}\right) -
+   \left(\sum_{k=1}^{n-1} kw^{k} z^{n-k-1}\right) \\
+&= (0-1)w^0z^{n-1} +
+   \left(\sum_{k=1}^{n-2} (k_1-k)w^{k} z^{n-k-1}\right) -
+   (n-1)w^{n-1}z^0 \\
+&= z^{n-1} + \left(\sum_{k=1}^{n-2} w^kz^{n-k-1}\right) + w^{n-1} - nw^{n-1} \\
+&= \left(\sum_{k=0}^{n-1} w^kz^{n-k-1}\right) - nw^{n-1} \\
+&= \frac{z^n - w^n}{z-w} - nw^{n-1}
+\end{align*}
+We used \eqref{eq:thm:10.6:frac} in the last equality,
+hence \eqref{eq:thm:10.6} holds.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.15 --- Cauchy Fromula in Convex Region}
+
+Let us work out the last derivation in the proof of theoerm~10.15.
+\begin{equation*}
+0 = \itwopii\int_\gamma g(\xi)\,d\xi
+= \itwopii\int_\gamma \frac{f(\xi)-f(z)}{\xi - z}\,d\xi
+\end{equation*}
+Hence
+\begin{equation*}
+\itwopii\int_\gamma \frac{f(\xi)}{\xi - z}\,d\xi
+= \frac{f(z)}{2\pi i}\int_\gamma \frac{d\xi}{\xi - z}\,d\xi
+= f(z)\cdot\Ind_\gamma(z)
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.25 --- Inequality}
+
+Let us show the inequality used in the proof of theoerm~10.25.
+
+Given a polynomial \(P(x) = \sum_{j=0}^n a_nz^n\) where \(a_n=1\)
+and
+\begin{equation} \label{eq:thm10.25:r}
+r > 1 + 2|a_0| + \sum_{j=1}^{n-1} |a_j|
+\end{equation}
+we need to show that
+\begin{equation} \label{eq:thm10.25}
+\left| P(re^{i\theta})\right| > |P(0)| = |a_0|.
+\end{equation}
+By \eqref{eq:thm10.25:r} we have
+\begin{equation*}
+r^n
+> r^n + 2|a_0|r^n + \sum_{j=1}^{n-1} |a_j|r^n
+> 2|a_0| + \sum_{j=1}^{n-1} |a_j|r^j
+\end{equation*}
+In the last inequality we used the fact that \(r>1\).
+Hence
+\begin{equation*}
+r^n - \sum_{j=0}^{n-1} |a_j|r^n > |a_0|.
+\end{equation*}
+Now clearly
+\begin{equation*}
+\left| P(re^{i\theta})\right|
+= \left| r^ne^{ni\theta} + \sum{j=1}^{n-1} a_j r^j e^{ji\theta}\right|
+\geq r^n - \sum{j=1}^{n-1} |a_j| r^j > |a_0| = |P(0)|.
+\end{equation*}
+Hence \eqref{eq:thm10.25} is true.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.26 --- Deriving the Estimation}
+
+Let's finalize the derivation in the proof of theoerm~10.26.
+By Theoerm~10.22 for
+\begin{equation*}
+f(z) = \sum_{n=0}^\infty c_n(z-a)^n
+\end{equation*}
+we have
+\begin{equation*}
+\sum_{n=0}^\infty |c_n|^2 r^{2n}
+= \frac{1}{2\pi}\int_0^{2\pi} \left|f(a+re^{it})\right|^2\,d\theta \leq M^2
+\end{equation*}
+for any \(r<R\). Hence \(|c_n|r^n < M\) for all \(r<R\) and for all $n$.
+Thus \(|c_n| < M/R^n\) for all $n$. Now clearly
+\begin{equation*}
+f^{(n)}(a) = n!c_n
+\end{equation*}
+and so
+\begin{equation*}
+\left|f^{(n)}(a)\right| = n!|c_n| \leq n!M/R^n.
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.28 --- Compact Argument}
+
+In the proof of theoerm~10.28, we are given a compact \(K \subset \Omega\)
+and the proof claims that there exists \(r>0\) such that
+\begin{equation*}
+E := \bigcup_{z\in K} \overline{D}(z;r)
+\end{equation*}
+is a compact subset of \(\Omega\).
+Here is the justification.
+
+Take the distance 
+\begin{equation*}
+d=d(K,\Omega^c)=\inf\{d(z,w):z\in K, w\in \C\setminus\Omega\}.
+\end{equation*}
+By compactness argument and the fat that \(\C\) is a Hausdorff space, \(d>0\).
+Put \(r=d/2\) and
+for each \(z\in K\) we pick \(r_z>0\) such that \(D(z,r) \subset \Omega\).
+By compactness of $K$, there is a finite subcover
+\begin{equation*}
+E = \subset \bigcup_{z\in I} D(z,r) \subset \Omega.
+\end{equation*}
+where \(I\subset K\) is finite.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 10.29 --- Working out an Integral}
+
+In the proof of Lemma~10.29.
+we use the formula for integration oevr path devleopped
+in section~10.8, namely for a smooth \(\gamma:[\alpha,\beta]\to\C\) path
+\begin{equation*}
+\int_\gamma f(x)\,dz = \int_\alpha^\beta f(\bigl(\gamma(t)\bigr)\gamma'(t)\,dt.
+\end{equation*}
+
+with \(\zeta(t) = (1-t)z+tw\) we can compute
+\begin{align*}
+f(w) - f(z)
+&= f(\zeta(1)) - f(\zeta(0)) \\
+&= \int_{\zeta([0,1])} f'(\xi)\,d\xi
+ = \int_{\zeta([0,1])} f'(\zeta(t))\zeta'(t)\,dt
+ = \int_{\zeta([0,1])} f'(\zeta(t))(w-z)\,dt \\
+&= (w-z)\int_{\zeta([0,1])} f'(\zeta(t))\,dt
+ = (w-z)\int_{\zeta([0,1])} f'(\zeta(t))\,dt
+\end{align*}
+Hence
+\begin{equation*}
+\int_0^1 \left[f'(\zeta(t)) - f'(a)\right]\,dt
+= \int_0^1 f'(\zeta(t))\,dt - f'(a)
+= \bigl((f(w) - f(z)\bigr)/(w-z) - f'(a).
+\end{equation*}
+
+It is tempting to try prroving this lemma directly without integration.
+For this we need to have a local bound on \(f'\) which is given
+by the fact that \(f^{(2)}\) exists and is continuous.
+The idea is to show continuity at \((0,0)\) and then for sufficiently small
+\(r>0\) and \(z,w\in D'(0,r)\) estimate
+\begin{equation*}
+\left|\frac{f(z)-f(w)}{z-w} - f'(0)\right|
+\leq \left|\frac{f(z)-f(w)}{z-w} - f'(w)\right| + |f'(w) - f(0)|
+\end{equation*}
+and show that it can be small as desired.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 10.30 --- Adding Details}
+
+The proof of theoerm~10.30 has several arguments that may use
+clarifying details.
+
+\paragraph{Setting $c$.} We can set
+\begin{equation*}
+c := \left|r\varphi'(z_0)\right|/5
+\end{equation*}
+
+\paragraph{Onto neighborhood.}
+We pick \(\lambda\) such that
+\begin{equation} \label{eq:thm10.30:lambda}
+|\lambda - \varphi(a)| < c.
+\end{equation}
+Then after we show
+\begin{equation*}
+\min_\theta \left| \lambda - \varphi(a + re^{i\theta})\right|
+\geq
+  \left(\min_\theta \left| \varphi(a + re^{i\theta}) - \varphi(a)\right|\right)
+  - |\varphi(a) - \lambda|
+> 2c - c = c
+\end{equation*}
+the proof utilizes corollary of theoerm~10.24. Let's show how.
+Set \(\psi(z) = \lambda - \varphi(z)\).
+The corollary says that if
+\(\psi(z)\) has no zeros in \(D(a;r)\) then
+\begin{equation*}
+|\psi(a)| = |\lambda - \varphi(a)|
+\geq \min_\theta \left| \lambda - \varphi(a + re^{i\theta})\right|.
+\end{equation*}
+But the last inequality contradicts \eqref{eq:thm10.30:lambda}, hence
+\(\psi\) has a zero in \(D(a;r)\).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 10.32 --- Differentiation}
+
+Given \(g'/g = h'\) for some \(h\in H(\Omega)\).
+Put \(\eta = g\cdot\exp(-h)\). Now
+\begin{equation*}
+\eta'
+= g'\cdot\exp(-h) + g(-h)'\cdot\exp(-h)
+= g'\cdot\exp(-h) + g(-g'/g)'\cdot\exp(-h)
+= (g'-g')\cdot\exp(-h)
+= 0.
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 10.32 --- Details}
+
+The term
+\index{deleted neighborhood}
+\index{deleted!neighborhood}
+\emph{deleted neighborhood} of \(z_0\) means \(V\setminus\{z_0\}\)
+where $V$ is a neighborhood of \(z_0\).
+
+Tracing the proof. Assuming by negation \(f'(z_0) = 0\).
+By theoerm~10.32 for a neighborhood $V$ of \(z_0\) we have
+\begin{equation*}
+f(z) = f(z_0) + \bigl(\varphi(z)\bigr)^m
+\qquad \textnormal{where}\;\varphi\in H(V),\; m > 1.
+\end{equation*}
+and \(\varphi\) is \emph{onto} some \(D(0;r)\).
+So if we look at inverse image
+\begin{equation*}
+A := \{\varphi^{-1}(\rho e^{2\pi k/m}\} \qquad \textnormal{for}\; \rho < r.
+\end{equation*}
+Now \(|A|=m\) and \(f(A)\) has one value, thus $f$ is $m$-to-$1$.
+This contradiction shows that \(f'(z_0) \neq 0\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.37 --- Details}
+
+There is a type in the end of the stated Theorem.
+Instead of
+\begin{quote}
+\textsl{\ldots\ if \(x\in D_-\) \ldots}
+\end{quote}
+It should be
+\begin{quote}
+\textsl{\ldots\ if \(z\in D_-\) \ldots}
+\end{quote}
+
+There are illustrations of the paths defined in the proof 
+in Figure~\ref{fig:10-37}.
+\begin{figure}[ht] \label{fig:10-37} %
+ % \centering
+ % \captionsetup[subfloat]{nearskip=-3pt}
+%
+\subfloat[\(C(s)\) and \(\gamma(s)\)]{%
+\begin{minipage}[b]{0.4\textwidth}
+\centering
+\input{10-37-a}
+\end{minipage}
+}
+%
+\hspace{0.1\textwidth}
+%
+\subfloat[\(f(s)\)]{%
+\begin{minipage}[b]{0.4\textwidth}
+\centering
+\input{10-37-b}
+\end{minipage}
+}
+%
+\\[20pt]%
+%
+\subfloat[\(g(s)\)]{%
+\begin{minipage}[b]{0.4\textwidth}
+\centering
+\input{10-37-c}
+\end{minipage}
+}
+%
+\hspace{0.1\textwidth}
+%
+\subfloat[\(h(s)\)]{%
+\begin{minipage}[b]{0.4\textwidth}
+\centering
+\input{10-37-d}
+\end{minipage}
+}
+%
+\caption{Paths in the Proof of Theorem 10.37}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 10.39 --- Details}
+
+Given \(\gamma = (\gamma_1 - \alpha) / (\gamma_0 - \alpha)\)
+perfrom the computation:
+\begin{equation*}
+\frac{\gamma'}{\gamma}
+= \frac{\gamma_1'(\gamma_0-\alpha) - (\gamma_1-\alpha)\gamma_0'}{
+               (\gamma_0 - \alpha)^2}
+   \cdot \frac{\gamma_0 - \alpha}{\gamma_1 - \alpha}
+= \frac{\gamma_1'(\gamma_0-\alpha) - (\gamma_1-\alpha)\gamma_0'}{
+               (\gamma_1 - \alpha)(\gamma_0 - \alpha)}
+= \frac{\gamma_1'}{\gamma_1-\alpha} - \frac{\gamma_0'}{\gamma_0-\alpha}.
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Edition 2 (Old) Exercises} % pages 193-195
+
+Some exercises in edition~2 do not appear or are different than in edition~3.
+We bring some of them here
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+\iffalse
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+   If $A$ and $B$ are disjoint subsets of the plane, if $A$ is compact,
+   and if $B$ is closed, then there exists
+   a~\(\delta > 0\) such that \(|\alpha-\beta| \geq 0\) for all
+   \(\alpha \in A\) and \(\beta \in B\). Prove this with an arbitrary
+   metric space in place of the plane.
+\end{excopy}
+  Let $d$ be the metric. Define
+  \[G_n = \{x \in A: d(x,B) > 1/n\}\]
+  for all \(n>0\). It is clear that for all \(x\in A\) \(d(x,B)>0\)
+  and so \(\cup G_n = A\). Since A is compact there exists $m$ such that
+  \(\cup_{n=1}^m G_n = A\).
+  Hence, for all \(x\in A\) \(d(x,B)>1/m\)
+  Put \(\delta=1/m\) that satsify the requirement.
+\fi
+
+\setcounter{enumi}{1}
+%%%%%%%%%%%%%% 2
+\begin{excopy}
+    At the end of section~10.8 occurs the definition of the length of a path
+    \(\gamma\) as
+    \[\int_\alpha^\beta|{\gamma^\prime}(t)|dt.\]
+    Does this agree with the definitions given in Exercise~10, Chapter 8?
+    Length of a graph of~$f$ is
+       \[f_s(1) + \int_0^1 \sqrt{1 + |f^\prime(t)|^2}dt.\]
+\end{excopy}
+
+\text{Note:} This is of course referring to exercise in
+edition~2 (\cite{RudinRCA80}).
+In Edition~3, it appears in chapter~7, exercise~21.
+Actually in this exercise we have shown in \eqref{eq:ex7.21:Sdif}
+what we need here. There we used the result for a specific case
+of \(x(t)=t\).
+
+%%%%%%%%%%%%%%
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Exercises} % pages 227-230
+
+Exercises of \emph{current} 3rd edition.
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% 01
+\begin{excopy}
+The following fact was tacitly used in this chapter:
+If $A$ and $B$ are disjoint subsets of the plane,
+if $A$ is compat and $B$ is closed, then there exists a \(\lambda > 0\)
+such that \(|\alpha - \beta| \geq \lambda\) for all
+\(\alpha \in A\) and \(\beta \in B\).
+Prove this, with an arbitrary metric space in place of the plane.
+\end{excopy}
+
+Let \((X,d)\) be a matric space and $A$ and $B$ as described in $X$.
+For each \(x\in A\) pick some \(\lambda_x>0\) such that
+\(D(x;\lambda_x) \cap B = \emptyset\). Such \(\delta_x\) always exists
+since otherwise \(x \in \overline{B}=B\).
+
+Clearly \(\{D(x;\lambda_x)\}_{x\in A}\) is an open covering of the compact $A$,
+hence there is a finite set \(F\subset X\) such that
+\begin{equation*}
+ X \subset \bigcup_{x\in F} D(x;\lambda_x).
+\end{equation*}
+Hence we can pick a \(\delta = \min(\{\delta_x: x\in F\}) > 0\)
+that satisfies the requirement.
+
+
+%%%%%%%%%%%%%% 02
+\begin{excopy}
+Suppose that $f$ is an entire function,
+and that in every  power series
+\begin{equation*}
+f(z) = \sum_{n=0}^\infty c_n(z-a)^n
+\end{equation*}
+at least one coefficient is $0$. Prove that $f$ is a polynomial.
+\\ \emph{Hint:} \(n!\,c_n = f^{(n)}(a)\).
+\end{excopy}
+
+For each \(a\in D(0,1)\) let \(n_a\) be the minimal \(n\in\Z^+\) such that
+\(c_n=0\) for the power series representation around $a$.
+By cardinality argument \(\|D(0,1)|=2^{\aleph_0} > \aleph_0 = \Z^+\)
+there is some \(m\in\Z^+\) and infinite subset \(A\subset D(0,1)\)
+such that \(m=n_a\) for each \(a\in A\).
+But then \(f^{(m)}\) has infinite zeros in \(D(0,1)\)
+and hence \(f^{(m)}(z) = 0\) for all \(z\in\C\),
+hence $f$ is a polynomial of degree  \(<m\).
+
+%%%%%%%%%%%%%% 03
+\begin{excopy}
+If $f$ and $g$ are entire function, and \(|f(z)| \leq |g(z)|\)
+for every $z$. What conclusions can you draw?
+\end{excopy}
+
+\textbf{Claim:}
+Under these conditions, \(f(z) = ag(z)\) for all \(z\in\C\) for some
+\(a\in\C\) such that \(a\leq 1\).
+
+If \(g = 0\) then so is \(f = 0\) and we are done.
+
+We claim that \(q(z) = f(z)/g(z)\) for \(z\notin Z(g)\)
+can be always be extended to an entire function.
+
+So we may now assume that $g$ is not constantly zero, and by theoerm~10.18
+\(Z(g)\) has no limit point.
+Assume \(g(w) = 0\)
+then bt theoerm~10.18 we have the following representations
+\begin{equation*}
+f(z) = (z-w)^m\tilde{f}(z)
+\qquad
+g(z) = (z-w)^n\tilde{g}(z)
+\end{equation*}
+and \(\tilde{f}(w) \neq 0 \neq \tilde{f}(w)\).
+If by negation \(m < n\) then for suffuciently small \(\delta>0\)
+\begin{equation*}
+\delta^{n-m} < \bigl|\ \tilde{f}(z+\delta) / \tilde{g}(z+\delta)\bigr|
+\end{equation*}
+but then \(|f(z+\delta)| > |g(z+\delta)|\) which is a contradiction.
+Hence by theoerm~10.20 \(q=f/g\) has a removable singularity at $z$
+and
+\begin{equation*}
+q(z) = \left\{\begin{array}{ll}
+\tilde{f}(z)/\tilde{g}(z) \qquad& m=n \\
+0 & m > n
+\end{array}\right.
+\end{equation*}
+
+Similarly $q$ can be defined for all \(Z(f)\),
+hence we can view it as an entire function. By the given condition,
+$q$ is bounded. By
+\index{Lioville}
+Lioville's theoerm~10.23 $q$ is constant. Hence \(f(z)= q(0) g(z)\).
+
+
+%%%%%%%%%%%%%% 04
+\begin{excopy}
+Suppose that $f$ is an entire function, and
+\begin{equation*}
+|f(x)| \leq A + B|z|^k
+\end{equation*}
+for all $z$, where $A$, $B$, and $k$ are positive numbers.
+Prove that $f$ must be a polynomial.
+\end{excopy}
+
+Let \(f(z) = \sum c_nz^n\). By
+\index{Lioville}
+theoerm~10.22 for any \(r\geq 0\) we have
+\begin{equation*}
+\sum_{n=0}^\infty |c_n|^2 r^{2n}
+= \frac{1}{2\pi}\int_{-\pi}^\pi \left| f(re^{i\theta})\right|^2\,d\theta
+\leq \frac{1}{2\pi} (2\pi)\cdot(A+Br^k)^2
+= A^2+2ABr^k + B^2r^{2k}
+\end{equation*}
+Clearly \(c_n = 0\) whenever \(n > 2k\), otherwise the above inequality
+would fail. Hence $f$ is a polynomial.
+
+%%%%%%%%%%%%%% 05
+\begin{excopy} 
+Suppose 
+\label{ex:fn:uniform}
+\(\{f_n\}\) is a uniformly bounded sequence of holomorphic function
+in \(\Omega\) such that  \(\{f_n(z)\}\) converges for every \(z\in \Omega\).
+Prove that the convergence is uniform on every compact subset of \(\Omega\).
+\\ \emph{Hint:} Apply the dominated convergence theorem to the Cauchy formula
+for \(f_n - f_m\).
+\end{excopy}
+
+Define the pointwise limit \(f(z) = \lim_{n\to\infty} f_n(z)\).
+Since \(\{f_n\}\) is a uniformly bounded, we have
+\begin{equation*}
+M := \sup_n \|f_n\|_\infty < \infty.
+\end{equation*}
+
+Let us temporarily restrict the function to some disc
+\(\overline{D}(a;r/2)\subset D(a;r) \subset\Omega\).
+Let \(\gamma(t) = a+re^{it}\), hence \(\gamma^* = \partial(D(a;r))\).
+By the Cauchy formula
+\begin{equation*}
+\left| \frac{f_n(w)}{w - z}\right| \leq 2M/r
+\qquad (z\in \overline{D}(a;r/2),\, w \in \gamma^*)
+\end{equation*}
+For abbreviation, let \(w_t = a+re^{it}\).
+Now for \(z\in \overline{D}(a;r/2)\) we have
+\begin{align*}
+|f_m(z) - f_n(z) 
+&\leq \frac{1}{2\pi} \int_{\gamma^*} \frac{|f_m(w)-f_n(w)}{|w-z|}\,d|w|
+ \leq \frac{1}{\pi r}  \int_0^{2\pi} |f_m(w_t)-f_n(w_t)|\,dt \\
+& \leq \frac{1}{\pi r}  
+       \left(\int_0^{2\pi} |f_m(w_t)-f(w_t)|\,dt +
+             \int_0^{2\pi} |f_n(w_t)-f(w_t)|\,dt\right)
+\end{align*}
+The last integrands are each dominated by \(2M\).
+By Lebesgue's dominated convergence theorem~1.34,
+for each \(\epsilon>0\) there exists $N$ such that 
+the last 2-intergrals expression is \(<\epsilon\)
+if \(m,n\geq N\), for \emph{any} \(z\in \overline{D}(a;r/2)\).
+Hence \(\{f_n(z)\}\) converges uniformly on \(\overline{D}(a;r/2)\).
+
+Any compact \(K\subset\Omega\) can be covered by finite set
+of such \(\{\overline{D}(a_j;r/2): j\in J\}\) closed discs
+with \(|J|<\infty\) and \(D(a_j;r)\subset \Omega\).
+
+Returning to the original definitions of \(\{f_n\}\) on \(\Omega\),
+the  \(\{f_n(z)\}\) converges uniformly on each closed disc, 
+and therefore the sequence converges uniformly on a finite union of them.
+Hence  \(\{f_n(z)\}\) converges uniformly on $K$.
+
+%%%%%%%%%%%%%% 06
+\begin{excopy}
+There is a region \(\Omega\) that \(\exp(\Omega) = D(1;1)\).
+Show that \(\exp\) is one-to-one in \(\Omega\),
+but that there are many such \(\Omega\). Fix one, and define
+\(\log z\), for \(|z-1|<1\), to be that \(w\in\Omega\) for which \(e^w = z\).
+Prove that \(\log'(z) = 1/z\). Find the coefficients \(a_n\) in
+\begin{equation*}
+\frac{1}{z} = \sum_{n=0}^\infty a_n(z-1)^n
+\end{equation*}
+and hence the coefficients \(c_n\) in the expansion
+\begin{equation*}
+\log z = \sum_{n=0}^\infty c_n(z-1)^n.
+\end{equation*}
+In what other discs can this be done?
+\end{excopy}
+
+For each \(z\in D(1;1)\) there exists a unique \(\theta\in (-\pi,\pi)\) 
+and \(r>0\) such that \(z=re^{i\theta}\).
+Let 
+\begin{equation*}
+\Omega = \left\{\log(r) + i\theta:  
+           re^{i\theta} \in D(1;1) \;\wedge\; \theta\in (-\pi,\pi)\right\}.
+\end{equation*}
+Clearly \(\Omega_n = \{z + 2\pi ni: z\in \Omega\}\)
+can be a region as required for all \(n\in\Z\).
+
+Now with the above definion of \(\log\), we have
+\begin{equation*}
+(\exp\circ\log)(z) = \Id_\Omega(z) \qquad (z\in\Omega).
+\end{equation*}
+Hence for \(z\in\Omega\) we have 
+\begin{equation*}
+1 
+= \log'(z)\cdot (\exp'\circ \log)(z)
+= \log'(z)\cdot (\exp\circ \log)(z) 
+= \log'(z)\cdot z.
+\end{equation*}
+Thus \(\log'(z) = 1/z\) for \(z\in \Omega\).
+
+\paragraph{Computing coefficients.}
+Differentiation of \(1/z\) gives
+\begin{equation*}
+\frac{d^n(z^{-1})}{dz^n} = 
+% z^{-1}, -z^{-2}, -2z^{-3}, 6z^{-4}, -24z^{-5}
+ (-1)^n \cdot n!\cdot z^{-n-1}
+\end{equation*}
+Hence, the coefficients of the power series of \(1/z\) around $1$ are
+\begin{equation*}
+a_n = \frac{d^n(z^{-1})}{dz^n}(z=1)/n!
+=  (-1)^n \cdot n!\cdot 1^{-n-1} / n! = (-1)^n
+\end{equation*}
+
+The coefficients of the ``primitive'' \(\log(z)\) are:
+
+This can be done on any open disc that does contains the zero.
+\begin{align*}
+c_0 &= 0 \\
+c_n &= -(-1)^n/n \qquad (n > 0)
+\end{align*}
+That is \((c_n)=0,1,-1/2,1/3,-1/4,\ldots\).
+
+%%%%%%%%%%%%%% 07
+\begin{excopy}
+If \(f\in H(\Omega)\), the Cauchy formula for the derivatives of $f$,
+\begin{equation*}
+f^{(n)}(z)
+= \frac{n!}{2\pi i} \int_\Gamma \frac{f(\xi)}{(\xi - z)^{n+1}}\,d\xi
+\qquad (n=1,2,3,\ldots)
+\end{equation*}
+is valid under conditions on $z$ and \(\Gamma\).
+State these and prove the formula.
+\end{excopy}
+
+Sufficent conditions are:
+\begin{itemize}
+\item \(\Gamma\) is a cycle in \(\Omega\).
+\item \(\Ind_\Gamma(\alpha)=0\) for every \(\alpha\in \C\setminus\Omega\).
+\item \(z\notin \Gamma^*\).
+\item \(\Ind_\Gamma(z)=1\).
+\end{itemize}
+By Cauchy's formula theorem~10.15 we have
+\begin{equation*}
+f(z) = \itwopii\int_\Gamma \frac{f(w)}{w-z}\,dw.
+\end{equation*}
+This shows the desired formula holds for \(n=0\).
+By induction assumes that it holds for \(n=k\), that is
+\begin{equation*}
+f^{(k)}(z)
+= \frac{k!}{2\pi i} \int_\Gamma \frac{f(w)}{(w - z)^{k+1}}\,dw
+\end{equation*}
+Now
+\begin{align}
+f^{(k+1)}(z)
+&= \lim_{h\to 0} \left(f^{(k)}(z+h)- f^{(k)}(z+h)\right)/h \notag \\
+&= \lim_{h\to 0} \frac{k!}{2\pi i} 
+   \left(
+    \int_\Gamma 
+    f(w)
+    \left(
+       \frac{1}{(w - (z+h))^{k+1}} - \frac{1}{(w - z)^{k+1}}
+    \right)\,dw  
+    \right) \bigm/ h
+    \notag \\
+&= \frac{k!}{2\pi i} \int_\Gamma \lim_{h\to 0} 
+    f(w)
+    \left(
+       \frac{1}{(w - (z+h))^{k+1}} - \frac{1}{(w - z)^{k+1}}
+    \right)\bigm/h\,dw  \label{eq:cauchy:diflim} \\
+&= \frac{k!}{2\pi i} \int_\Gamma 
+    f(w) \frac{d\,\left((w-z)^{-(k+1)}\right)}{dz}\,dw  \notag \\
+&= \frac{k!}{2\pi i} \int_\Gamma f(w)(k+1)(w-z)^{-(k+2)}\,dw \notag \\
+&= \frac{(k+1)!}{2\pi i} \int_\Gamma \frac{f(w)}{(w - z)^{k+2}}\,dw \notag
+\end{align}
+The justification of \eqref{eq:cauchy:diflim} is based on the fact
+that \(\Gamma^*\) is compact it is it sufficient to use
+sequences as limits and fintally utilize exercise~\ref{ex:fn:uniform} above.
+
+%%%%%%%%%%%%%% 08
+\begin{excopy}
+Suppose $P$ and $Q$ are polynomials, the  degree of $Q$ exceeds that of $P$
+by at least $2$,
+and the rational function \(R = P/Q\) has no pole on the real axis.
+Prove that the integral of $R$ over \((-\infty,\infty)\)
+is \(2\pi i\) times the sum of the residues of $R$ in the upper half plane.
+[Replace the integral over \((-A,A)\)  by one over a suitable semicircle,
+and apply the residue theorem.] What is the analogous statement for the lower
+half plane? Use this method to compute
+\begin{equation*}
+ \int_{-\infty}^\infty \frac{x^2}{1+x^4}\,dx.
+\end{equation*}
+\end{excopy}
+
+Let \(a>0\) be such that all the roots of $Q$ are in \(D(0;a)\).
+For each \(A>a\) consider the closed path 
+\(\gamma_A\: [-A, A+\pi \to\C\) that is defined as follows
+\begin{equation*}
+\Gamma_A(t) = \left\{%
+\begin{array}{ll}
+t & t \leq A \\
+Ae^{i(t-A)} \quad & t \geq A
+\end{array}\right.
+\end{equation*}
+Now define the upper arc \(U_A=\{z\in\C: |z|=A \wedge \Im(z)>0\}\) and
+\begin{equation*}
+I(A) 
+= \int_U P(z)/Q(z)\,dz 
+= \int_0^\pi P(e^{iAt})/Q(e^{iAt})\frac{dz}{dt}\,dt
+= iA\int_0^\pi P(e^{iAt})e^{iAt}/Q(e^{iAt})\frac{dz}{dt}\,dt
+\end{equation*}
+Hence \(|I(A)| \leq \pi A \sup_{z\in A} |P(e^{iAt})/Q(e^{iAt})|\).
+Since \(\deg(P) \leq \deg(Q)+2\) we have
+\begin{equation*}
+\lim_{A\to\infty} I(A) = 0.
+\end{equation*}
+\index{residue theorem}
+The set of poles of $R$ is exactly the set \(Z_Q\) of zeros of $Q$.
+We define 
+\begin{equation*}
+Z_{Q^+} = \{z\in Z_Q: \Im(z)>0\}
+\qquad
+Z_{Q^-} = \{z\in Z_Q: \Im(z)<0\}
+\end{equation*}
+By the residue theorem~10.42.
+\begin{align*}
+\int_{-\infty}^\infty R(x)\,dx 
+&= \lim_{A\to\infty} 
+   \left(\int_{\Gamma_A}  R(z)\,dz - \int_{U_A} P(z)/Q(z)\,dz\right) \\
+&= \lim_{A\to\infty} \int_{\Gamma_A}  R(z)\,dz 
+   - \lim_{A\to\infty} \int_{U_A} P(z)/Q(z)\,dz 
+ = \lim_{A\to\infty} \int_{\Gamma_A}  R(z)\,dz \\
+&= 2\pi i \sum_{z\in Z_{Q^+}} \Res(R;z).
+\end{align*}
+
+The analogous statement for \(Z_{Q^-}\) is
+\begin{equation*}
+\int_{-\infty}^{\infty} R(x)\,dx 
+= -\int_{\infty}^{-\infty} R(x)\,dx 
+= 2\pi i \sum_{z\in Z_{Q^-}} \Res(R;z).
+\end{equation*}
+Hence if all the zeros if \(Q(z)\) are on one side, then the integral
+over the real line is zero. 
+Note that if all the coefficients of \(Q(z)\) are real,
+then \(Q(z)=0\) iff \(Q(\overline{z})=0\).
+
+The set of zeros of \(x^4+1\) is \(\{e^{(2k+1)\pi i/4}: k=0,1,2,3\}\).
+Hence the zeros above the real line are \(\{e^{\pi i/4}, e^{3\pi i/4}\}\)
+or \(\{q,qi\}\) where \(q=e^{\pi i/4}=(1+i)\sqrt{2}/2\).
+Now \(Q(z)=\prod_{k=0^3} (z-qi^k)\) hence
+\begin{equation*}
+\Res(R;q_j) = q^2/ \prod_{0\leq k\leq3 \wedge k\neq j} (z-qi^k) \qquad (j=0,1,2,3)
+\end{equation*}
+Applying it gives
+\begin{align*}
+ \int_{-\infty}^\infty \frac{x^2}{1+x^4}\,dx
+ &= 2\pi i \sum_{z\in Z_Q} \Res(R;z)
+  = 2\pi i \left( \Res(R; e^{\pi i/4}) + \Res(R; e^{\pi i/4})\right) \\
+ &= 2\pi i \left( q^2/\bigl((q-qi)(q+q)(q+qi)\bigr) 
+                 -q^2/\bigl((qi-q)(qi+q)(qi+qi)\bigr)\right) \\
+ &= (2\pi i/q) \cdot
+    \left(\frac{1}{(1-i)2(1+i)} - \frac{1}{(-1+i)(1+i)2i}\right) \\
+ &= (\pi i/q)  \left(\frac{1}{2}  - \frac{1}{-2i}\right) 
+  = \pi q (1-i)/2 
+  = \sqrt{2}\pi(1+i)(1-i)/4 \\
+ &= \sqrt{2}\pi/2 \simeq 2.2214414690791831
+\end{align*}
+
+
+%%%%%%%%%%%%%% 09
+\begin{excopy}
+Compute \(\int_{-\infty}^\infty e^{-itx}/(1+x^2)\,dx\) for real $t$,
+by methods described on Exercise~8.
+Check your answer against the inversion theorem for Fourier transforms.
+\end{excopy}
+
+Put \(f_t(z) = e^{-itz}/(1+z^2)\). 
+Assume first that \(t\leq 0\). 
+If \(\Im(z)\geq 0\) then \(\Re(-itz) \leq 0\) and so \(|e^{-itz}|\geq 1\).
+% Thus \(|e^{-itz}/(1+z^2)| \leq 1/z^2\).
+Consider the 
+ upper plane half circle with radius \(r>1\) defined by:
+\begin{equation*}
+D_r = \{z\in\C: |z|\geq r \wedge \Im z \geq 0\}.
+\end{equation*}
+Integration over its boundary gives:
+\begin{equation*}
+\int_{\partial D_r} e^{-itz}/(1+z^2)\,dz 
+= (2\pi i) \Res(e^{-itz}/(1+z^2); i)
+= (2\pi i) e^{-iti}/(i-(-i)) = \pi e^t
+\end{equation*}
+On the arc part of \(D_r\) 
+we have \(|e^{-itz}/(1+z^2)| \leq |1/z^2| = 1/r^2\).
+Hence
+\begin{equation*}
+\int_{-\infty}^\infty f_t(x)\,dx
+= \lim_{r\to\infty} \int_{\partial D_r} f_t(z)\,dz 
+= \Res(e^{-itz}/(1+z^2); i) 
+= \pi e^t
+\end{equation*}
+Since \(f_t(x) = f_{-t}(-x)\) for any \(t\in\R\) we have
+\(\int_{-\infty}^\infty f_t(x)\,dx = \int_{-\infty}^\infty f_{-t}(x)\,dx\).
+Therefore
+\begin{equation*}
+\int_{-\infty}^\infty e^{-itx}/(1+x^2)\,dx = \pi e^{-|t|} \qquad(t\in\R).
+\end{equation*}
+
+\paragraph{Fourier Inversion.}
+\begin{align*}
+\int_{-\infty}^\infty e^{itx} e^{-|t|}\,dt
+&= \int_{-\infty}^0 e^{itx} e^{t}\,dt  + \int_0^\infty e^{itx} e^{-t}\,dt
+ = \int_{-\infty}^0 e^{(1+ix)t}\,dt  + \int_0^\infty e^{(-1+ix)t}\,dt \\
+&=   \left(e^{(1+ix)t}/(1+ix)\right)\biggm|_{t=-\infty}^0
+   + \left(e^{(-1+ix)t}/(-1+ix)\right)\biggm|_{t=0}^\infty \\
+&= e^{(1+ix)0}/(1+ix) - e^{(-1+ix)0}/(-1+ix) 
+ = 1/(1+ix) - 1/(-1+ix) \\
+&= 2/(x^2+1)
+\end{align*}
+Using \(\pi e^{-|t|}\) instead of \(e^{-|t|}\) 
+and factoring with \(1/\sqrt{2\pi}\) provides 
+the expected equality with the original \(1/(1+x^2)\) function.
+
+
+
+%%%%%%%%%%%%%% 10
+\begin{excopy}
+Let \(\gamma\) be a poitively oriented unit circle, and compute
+\begin{equation*}
+\itwopii \int_\gamma \frac{e^z - e^{-z}}{z^4}\,dz
+\end{equation*}
+\end{excopy}
+
+Using the residue theorem~10.42 and Taylor expansion
+\begin{align*}
+\itwopii \int_\gamma \frac{e^z - e^{-z}}{z^4}\,dz
+&= \itwopii \int_\gamma z^{-4}\left(\sum_{n=0}^\infty (z^n - (-z)^n)/n!\right)\,dz \\
+&= \itwopii \int_\gamma 2z^{-4}\left(\sum_{k=0}^\infty z^{2k+1}/(2k+1)!\right)\,dz \\
+&= 2\cdot\Res\left(\sum_{k=0}^\infty z^{2k-3}/(2k+1)!;\,0\right)
+ = 2\cdot\Res\left(z^{2\cdot 1-3}/(2\cdot 1+1)!;\,0\right) = \\
+&= 2/3! = 1/3
+\end{align*}
+
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Suppose \(\alpha\) is a complex number, \(|\alpha|\neq 1\), and compute
+\begin{equation*}
+\int_0^{2\pi} \frac{d\theta}{1 - 2\alpha \cos\theta + \alpha^2}
+\end{equation*}
+by integrating \((z-\alpha)^{-1}(z-1/\alpha)^{-1}\) over the unit circle.
+\end{excopy}
+
+Putting \(z=e^{i\theta}\) (or \(\theta = -i\log(z)\))
+then \(dz/d\theta = iz\) and \(d\theta/dz = -i/z\)
+and when \(|z|=1\)
+then \(\bar{z}=1/z\) and \(\cos \theta = (z+1/z)/2\).
+Hence
+\begin{align*}
+\int_0^{2\pi} \frac{d\theta}{1 - 2\alpha \cos\theta + \alpha^2}
+&= -i \int_{|z|=1} \bigl(1 - \alpha(z+1/z) + \alpha^2\bigr)^{-1} \bigm/ z\,dz \\
+&= -i \int_{|z|=1} \bigl(z - \alpha(z^2+1) + z\alpha^2\bigr)^{-1}\,dz \\
+&= (i/\alpha)  \int_{|z|=1} \left(z^2 - (\alpha+1/\alpha)z+1\right)^{-1}\,dz \\
+&= (i/\alpha)  \int_{|z|=1} (z-\alpha)^{-1}(z-1/\alpha)^{-1}\,dz \\
+&= (2\pi i^2/\alpha) \cdot \left\{%
+   \begin{array}{ll}
+   (1/\alpha - \alpha) \quad & \alpha > 1 \\
+   (\alpha - 1/\alpha) \quad & \alpha < 1 \\
+   \end{array}\right. \\
+&= 2\pi / |\alpha^2 - 1|
+\end{align*}
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Compute
+\begin{equation*}
+\int_{-\infty}^\infty \left(\frac{\sin x}{x}\right)^2 e^{itx}\,dx
+\qquad (\textnormal{for real }\; t).
+\end{equation*}
+\end{excopy}
+
+Using Python and MatPlotLib, I have a conjecture, that the integral equals:
+\begin{equation*}
+\left\{\begin{array}{ll} %
+\pi(2-|t|)/4 \qquad & |t| \leq 2 \\
+0 & |t| \geq 2
+\end{array}\right.
+\end{equation*}
+
+We follow the ideas of section~10.44.
+
+The function \((\sin z/z)^2 e^{itz}\) has a removable singularity at \(z=0\)
+and can be defined there as $1$ and be considered an entire function.
+Since \(2i \sin z = e^{iz} - e^{-iz}\) we have
+\begin{equation*}
+-4\sin^2 z = \left(e^{iz} - e^{-iz}\right)^2 = e^{2iz} + e^{-2iz} - 2\,.
+\end{equation*}
+Thus
+\begin{equation*}
+(\sin z/z)^2 e^{itz} = -e^{i(t+2)z}/4z^2 - e^{i(t-2)z}/4z^2 + e^{itz}/2z^2\,.
+\end{equation*}
+
+Consider the path \(\Gamma_A\) from \(-A\) to \(-1\)
+then lower unit circle and finally from $1$ to $A$.
+Put
+\begin{align*}
+% \frac{1}{\pi}\varphi_A(s) = \itwopii \int_{\Gamma_A} \frac{e^{isz}}{z}\,dz\,.
+\psi_s(z) &= \frac{e^{isz}}{z^2} \\
+\varphi_A(s) 
+  &= \int_{\Gamma_A} \frac{e^{isz}}{z^2}\,dz
+  = \int_{\Gamma_A} \psi_s(z)\,dz\,.
+  % = \int_{-A}^A \psi_s(x)\,dx\,. Not equal 
+\end{align*}
+Now
+\begin{equation} \label{eq:10.12:sin2phis}
+\int_{-A}^A \left(\frac{\sin x}{x}\right)^2 e^{itx}\,dx
+% = -\varphi_A(t+2)/4 - \varphi_A(t-2)/4 + (1/2)\int_{\Gamma_A} z^{-2}\,dz
+= \varphi_A(t)/2 - \bigl(\varphi_A(t+2)/4 - \varphi_A(t-2)\bigr)/4 
+\end{equation}
+
+We complete \(\Gamma_A\) into a closed path in two ways.
+\begin{itemize}
+\item With the lower half circle of radius $A$. Inside this closed path, 
+      \(\psi_s(z)\) is analytic.
+\item With the upper half circle of radius $A$. Inside this closed path, 
+      \(\psi_A(z)\) has one pole at \(z=0\)
+      with residue \(is\) (consider \(((isz)^1/1!)/z^2 = is/z\)).
+\end{itemize}
+
+For both path closing options, we use the substitution \(z = Ae^{i\theta}\)
+and \(dz/d\theta = iAe^{i\theta}\)
+
+Using the first choice of path closing gives:
+\begin{align}
+\varphi_A(s) 
+&= \int_{|z|=A \wedge \Im(z)<0} \psi_s(z)\,dz
+ = \int_{-\pi}^0 \psi_s(Ae^{i\theta}) \cdot iAe^{i\theta} \,d\theta \notag \\
+&= (i/A) \int_{-\pi}^0 \exp(isAe^{i\theta})/e^{i\theta}\,d\theta.
+   \label{eq:ex10.12:lowcirc}
+\end{align}
+Using the second choice with the residue in the pole gives:
+\begin{align}
+\varphi_A(s) 
+&= 2\pi i\cdot \Res(\psi_s;0) - \int_{|z|=A \wedge \Im(z)>0} \psi_s(z)\,dz
+ = -2\pi s - \int_0^\pi iAe^{i\theta} \psi_s(Ae^{i\theta})\,d\theta \notag \\
+&= -2\pi s - (i/A) \int_{-\pi}^0 \exp(isAe^{i\theta})/e^{i\theta}\,d\theta.
+   \label{eq:ex10.12:upcirc}
+\end{align}
+Since
+\begin{equation*}
+\left|\exp(isAe^{i\theta})\right| = \exp\bigl(-As\sin(\theta)\bigr),
+\end{equation*}
+and that is \(<1\) if $s$ and \(\sin(\theta)\) of the same sign.
+Hence as \(A\to\infty\)
+the integral of \eqref{eq:ex10.12:lowcirc} when \(s<0\)
+and the integral of \eqref{eq:ex10.12:upcirc} when \(s>0\)
+converges to~$0$.
+Therefore
+\begin{equation}
+\lim_{A\to\infty} \varphi_A(s) = 
+ \left\{\begin{array}{ll}%
+ -2\pi s \qquad & \textnormal{if\ }\; s > 0\\
+ 0       \qquad & \textnormal{if\ }\; s \leq 0
+ \end{array}
+ \right. \label{eq:10.12:varphiA}
+\end{equation}
+
+\iffalse
+We compute the rational integral term of \eqref{eq:10.12:sin2phis}.
+Within the real axis
+\begin{equation*}
+\int_{\R\setminus(-1,1)} \frac{dx}{x^2} 
+ = 2\int_1^{\infty} x^{-2}\,dx 
+ = 2\left(-x^{-1}\right)\bigm|_1^\infty = 2\bigl(0-(-1)\bigr)=2
+ \end{equation*}
+and within the arc part
+\begin{align*}
+\int_{-\pi}^0 e^{-2i\theta}\frac{dz}{d\theta}\,d\theta 
+&= i \int_{-\pi}^0 e^{-2i\theta}\cdot e^{i\theta}\,d\theta 
+ = i \int_{-\pi}^0 e^{-i\theta}\,d\theta
+ = i\left.\left(\frac{1}{-i}e^{-i\theta}\right)\right|_{-\pi}^0 \\
+&= -\left.e^{-i\theta}\right|_{-\pi}^0 = % BADBAD 1 - \bigl(-(-1)\bigr) = 0.
+   -\bigl(1 - (-1)\bigr) = -2
+\end{align*}
+Adding to:
+\begin{equation}
+\int_{\Gamma_A} \frac{dz}{z^2}
+ = \int_{\R\setminus(-1,1)} \frac{dx}{x^2} 
+   + \int_{-\pi}^0 \exp(isAe^{i\theta})e^{i\theta}\,d\theta \\
+ = 2 - 2 = 0 \label{eq:10.12:intrat}
+\end{equation}
+\fi % false
+
+Applying \eqref{eq:10.12:varphiA} % and \eqref{eq:10.12:intrat} 
+to \eqref{eq:10.12:sin2phis} gives
+\begin{align*}
+\int_{-\infty}^\infty (\sin x/x)^2 e^{itx}\,dx
+&= \lim_{A\to\infty} 
+   \left(\varphi_A(t) -\bigl(\varphi_A(t+2) + \varphi_A(t-2)\bigr)/4)
+   \right)\\
+&= \left\{\begin{array}{ll}%
+   0 + 0 + 0  \qquad & t \leq -2 \\
+   0 + 2\pi(t+2)/4 + 0 \qquad & -2 \leq t \leq 0 \\
+   -2\pi t/2 + 2\pi(t+2)/4 + 0 \qquad & 0 \leq t \leq 2 \\
+   -2\pi t/2 + 2\pi(t+2)/4 + 2\pi(t-2)/4 \qquad & t \geq 2
+   \end{array}\right. \\
+&= \left\{\begin{array}{ll}%
+   0  \qquad & t \leq -2 \\
+   \pi t/2+\pi \qquad & -2 \leq t \leq 0 \\
+   -\pi t/2 + \pi \qquad & 0 \leq t \leq 2 \\
+   0 \qquad & t \geq 2
+   \end{array}\right. \\
+&= \max\left(0, \pi-|\pi t/2|\right)
+\end{align*}
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Compute
+\begin{equation*}
+\int_0^\infty \frac{dx}{1 + x^n} \qquad (n=2,3,4,\ldots).
+\end{equation*}
+[For even $n$, the method of Exercise~8 can be used.
+However, a different path can be chosen, which simplifies the computation
+and which also works for odd $n$:
+from $0$ to $R$ to \(R = \exp(2\pi i/n)\) to $0$.]
+\\
+\phantom{AAAA}\emph{Answer:} \((\pi/n)\sin(\pi/n)\).
+\end{excopy}
+
+Put 
+\begin{equation*}
+f(z) = \frac{1}{1 + z^n}.
+\end{equation*}
+Assume first that n is even (\(n/2\in\Z\)) and \(n\geq 2\).
+The roots of \(z^n+1\) are \mbox{\(\{e^{\pi i(2k+1)/n}\!: k\in \Z_n\}\)}.
+Put \(\alpha_k = e^{\pi i(2k+1)/n}\) for \(k\in\Z_n\).
+The roots in the upper place are
+ \(\{\alpha_k: k\in \Z_{n/2}\}\).
+Using the result of exercise~8 above and the fact that the integrand is 
+an even function, we have
+\begin{align*}
+\int_0^\infty \frac{dx}{1 + x^n}
+&= \half\cdot \int_{-\infty}^\infty \left(1 + x^n\right)^{-1}\,dx
+ = \pi i \cdot \sum_{k\in\Z_{n/2}} 
+        \Res\left( (1 + z^n)^{-1}; \alpha_k \right) \\
+&= \pi i \cdot \sum_{k\in\Z_{n/2}}\; 
+      \prod_{j\in \Z_n\setminus\{k\}} \left(\alpha_k - \alpha_j)\right)^{-1}
+\end{align*}
+
+\iffalse
+Let's compute the residue of the ``first'' pole.
+\begin{align*}
+\Res(f, \alpha_0) 
+&= \prod_{j\in \Z_n\setminus\{0\}} (\alpha_0 - \alpha_j)^{-1}
+ = \lim_{z\to\alpha_0} \frac{z-\alpha_0}{\prod_{j\in \Z_n} (z - \alpha_j)}
+ = \lim_{z\to\alpha_0} \frac{z-\alpha_0}{z^n+1} 
+ = \lim_{z\to\alpha_0}\frac{1}{nz^{n-1}} \\
+&= e^{\pi i/n}/n
+\end{align*}
+\fi 
+
+Let's compute the residue of a pole.
+\begin{align*}
+\Res(f, \alpha_k) 
+&= \prod_{j\in \Z_n\setminus\{k\}} (\alpha_k - \alpha_j)^{-1}
+ = \lim_{z\to\alpha_k} \frac{z-\alpha_k}{\prod_{j\in \Z_n} (z - \alpha_j)}
+ = \lim_{z\to\alpha_k} \frac{z-\alpha_k}{z^n+1} 
+ = \lim_{z\to\alpha_k}\frac{1}{nz^{n-1}} \\
+&= \alpha_k^{-(n-1)}/n
+ %= \left(\alpha_k/\alpha_k^n\right)\bigm/n
+ = \alpha_k^{-n}\alpha_k/n = -e^{(2k+1)\pi i/n}/n
+% = e^{((2k+1)\pi i/n)(1-n))}/n
+% = e^{(2k+1)\pi i(1-n)/n)}/n
+\end{align*}
+In particular 
+\begin{equation*}
+\Res(f, \alpha_0) = -\alpha_0/n0) = -e^{\pi i /n}/n.
+\end{equation*}
+
+Using the hint, We consider the closed path \(\Gamma_R\)
+which is the sum of
+\begin{equation*}
+\begin{array}{ll}
+\gamma_1:[0,R]\to\C & \gamma_1(t) = t \\
+\gamma_2:[0,2\pi/n]\to\C \qquad& \gamma_2(t) = e^{it} \\
+\gamma_3:[0,R]\to\C & \gamma_3(t) = e^{2\pi i/n}(R-t) 
+\end{array}
+\end{equation*}
+
+Note that if \(z\in \gamma_3^*\) then 
+\(z^n = |z|^n\) and so \((1+z^n)^{-1} = (1+|z|^n)^{-1}\).
+For any \(R>1\) we have
+\begin{equation*} 
+\int_{\Gamma_R} \frac{dz}{1+z^n} = 2\pi i \Res(f;\alpha_0) 
+= - 2\pi i e^{-\pi i/n}/n.
+\end{equation*}
+Now
+\begin{align*}
+\lim_{R\to\infty} \int_{\Gamma_R} \frac{dz}{1+z^n}
+&= \lim_{R\to\infty} 
+   \left( \int_{\gamma_1}\cdots +\int_{\gamma_2}\cdots +\int_{\gamma_3}\cdots \right)
+ = \lim_{R\to\infty} \left( \int_{\gamma_1}\cdots +\int_{\gamma_3}\cdots \right) \\
+&= \lim_{R\to\infty} \left( 
+        \int_0^R (x^n+1)^{-1}\,dx +
+        \int_0^R \left(\bigl((R-x)e^{2\pi i /n}\bigr)^n+1\right)^{-1}
+                 \frac{dz}{dx}
+                 \,dx\right) \\
+&= (1 - e^{2\pi i /n}) \lim_{R\to\infty}  \int_0^R (x^n+1)^{-1}\,dx
+\end{align*}
+Hence 
+\begin{align*}
+ \int_0^\infty (x^n+1)^{-1}\,dx 
+ &= \frac{2\pi i \left(-e^{\pi i/n}/n\right)}{1 - e^{2\pi i /n}}
+  = \frac{-2\pi i }{ne^{-\pi i/n}(1 - e^{2\pi i /n})}
+  = \frac{2\pi i }{n(e^{\pi i/n} - e^{-\pi i /n})} \\
+ &= \frac{\pi}{n(e^{\pi i/n} - e^{-\pi i /n})/(2i)}
+  = \frac{\pi}{n\cdot\sin(\pi/n)} \\
+ &= (\pi/n)\bigm/\sin(\pi/n).
+\end{align*}
+
+
+%%%%%%%%%%%%%% 14
+\begin{excopy}
+Suppose \(\Omega_1\) and \(\Omega_2\) are plane regions, $f$ and $g$ are
+nonconstant functions defined on
+\(\Omega_1\) and \(\Omega_2\), respectively,
+and \(f(\Omega_1) \subset \Omega_2\).
+Put \(h = g\circ f\).
+If $f$ and $g$ are holomorphic, we know that $h$ is  holomorphic.
+Suppose we know that $f$ and $h$ are holomorphic.
+Can we conclude anything about $g$?
+What if we know that $g$ and $h$ are holomorphic?
+\end{excopy}
+
+In the second case we \emph{cannot} know much about $g$.
+Take \(f(z)=0\) and \(g(z)=|z|\).
+Clearly \(h=0\) and $g$ is not holomorphic.
+A More interesting question would be if we also assume that 
+$F$ is \emph{onto} \(\Omega_2\).
+
+
+In the second case we \emph{cannot} know much about $f$.
+For example, take \(g=0\) and \(h=0\) constant functions, 
+and the equality holds for any \(f \in \Omega_2^{\Omega_1}\).
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+Suppose \(\Omega\) is a region, \(\varphi \in H(\Omega)\),
+\(\varphi'\) has no zero in \(\Omega\),
+\(f\in H(\varphi(\Omega))\),
+\(g = f\circ \varphi\), \(z_0\in\Omega\), and
+\(w_0 = \varphi(z_0)\).
+Prove that if $f$ has a zero of order $m$ at \(w_0\),
+then $g$ also has a zero of order $m$ at \(z_0\).
+How is this modified if \(\varphi'\) has a zero of order $k$ at \(z_0\)?
+\end{excopy}
+
+Clearly \(g'(z_0) = f'(w_0)\varphi'(z_0)\).
+Then  both \(g'\) and \(f'\) 
+has zero of order \(m-1\) in \(w_0\) and \(z_0\) respectively.
+Hence  $f$ has a zero of order~$m$ at~\(w_0\).
+It is now easy to see that the zero order of~\(\varphi\) at~\(z_0\)
+adds to the order $g$ at~\(z_0\).
+
+%%%%%%%%%%%%%% 16
+\begin{excopy}
+Suppose \(\mu\) is a complex measure on a measure space~$X$,
+\(\Omega\)~is an open set in the plane,
+\(\varphi\)~is a bounded function on \(\Omega\times X\)
+such that \(\varphi(z,t)\) is a measurable function of $t$,
+for each \(z \in \Omega\), and \(\varphi(z,t)\) is holomorphic in \(\Omega\),
+for each \(t\in X\). Define
+\begin{equation*}
+f(x) = \int_X \varphi(z,t)\,d\mu(t)
+\end{equation*}
+for \(z\in\Omega\). Prove that \(f\in H(\Omega)\).
+\emph{Hint:} Show that to every compact \(K \subset \Omega\) there corresponds
+a constant \(M<\infty\) such that
+\begin{equation*}
+\left| \frac{\varphi(z,t) - \varphi(z_0,t)}{z - z_0}\right| < M
+\qquad (z \;\textnormal{ and }\; z_0\in K,\; t\in X).
+\end{equation*}
+\end{excopy}
+
+Obviously, in the above formula we assume \(z\neq z_0\).
+Let $U$ be some upper bound of \(|\varphi|\).
+For all~\(t\in X\),
+denote the holomorphic functions \(\varphi_t(z) = \varphi(z,t)\)
+and the ratios
+\begin{equation*}
+\Delta_t(z_1,z_0) = \frac{\varphi_t(z_1) - \varphi_t(z_0)}{z_1 - z_0}
+\qquad (\textnormal{for all distinct}\; z_0,z_1\in\Omega).
+\end{equation*}
+Recall that \(D'(a;r) = \{z: 0 < |z-a|<r\}\).
+
+Let \(K\subset \Omega\) be a compact set.
+Pick some arbitrary \(w\in K\).
+Then we can find some \(r>0\) such that \(\overline{D(w;r)}\subset \Omega\).
+We pick \(v_0\in D(w,r/2)\) and
+we will estimate \(|\Delta_t(z,v_0)|\) for all \(z\in\Omega\). 
+
+\paragraph{Local case.}
+Clearly \(D(v_0;r/2)\subset D(w;r)\subset\Omega\) and
+\(|{\varphi_t}'(v_0)| \leq 2U/r\) for all \(t\in X\) by Theorem~10.26.
+% This shows that \(|\Delta_t(w,v_0)| \leq 2U/r\) 
+for all \(t\in X\).
+
+Pick \(v_1\in D'(v_0;r/2)\). 
+Use the path segment 
+\(\gamma(\tau) = v_0 + \tau(v_1-v_0)\) with \(\tau\in[0,1]\).
+Then
+\begin{equation*}
+\varphi_t(v_1) 
+= \varphi_t(v_0) + \int_\gamma {\varphi_t}'(z)\,dz
+= \varphi_t(v_0) + \int_0^1 {\varphi_t}'(\gamma(\tau))\gamma'(\tau)\,d\tau
+\end{equation*}
+Hence
+\begin{equation*}
+\left|\varphi_t(v_1) - \varphi_t(v_0)\right|
+\leq \int_0^1 \left|{\varphi_t}'(\gamma(\tau))\gamma'(\tau)\right|\,d\tau
+\leq 2|v_1-v_0|U/r.
+\end{equation*}
+Subsequently
+\begin{equation} \label{eq:ex10.16:estimate:in}
+|\Delta_t(v_1,v_0)| \leq 2U/r 
+\qquad (\textnormal{for all} v_0\in D(w;r/2),\;v_1 \in D(v_0;r/2)\,).
+\end{equation}
+
+\paragraph{Outside case.}
+When \(v_1\in\Omega \setminus D(v_0;r/2)\)
+\begin{equation} \label{eq:ex10.16:estimate:out}
+|\Delta_t(v_1,v_0)| 
+\leq \frac{|\varphi_t(w) - \varphi_t(v)|}{|r/2|} \leq 4U/r.
+\end{equation}
+
+To combine the case, define
+\begin{equation*}
+\Omega_M := 
+\left\{z\in\Omega: 
+  \forall t\in X, \forall \zeta\in\Omega\setminus\{z\},\; |\Delta_t(z,\zeta)|<M
+\right\}.
+\end{equation*}
+
+From \eqref{eq:ex10.16:estimate:in} and \eqref{eq:ex10.16:estimate:out}
+we know that there exists \(M = M_w\) (for example \(M_w = 4U/r + 1\))
+such that 
+\begin{equation*}
+D(w;r/2) \subset \Omega_M
+\end{equation*}
+
+Since $w$ was arbitrarily chosen, \(\Omega \subset \cup_{M\in\N}\Omega_M\)
+and since $K$ is compact we can find some \(M<0\) such that 
+\(|\Delta_t(z_1,z_0)|<M\) for all \(t\in X\) and all distinct \(z_0,z_1\in K\).
+Thus establishing the hint.
+
+In order for $f$ to be differentiable at $z$, it is sufficient that
+for any sequence \(\{z_n\}_{n\in\N}\) there exists a limit 
+\begin{equation*}
+f'(z) = \lim_{n\to\infty} \frac{f(z_n) - f(z)}{z_n - z} 
+ \qquad (\text{where}\; z_n \neq z)
+\end{equation*}
+Now
+\begin{equation*}
+\frac{f(z_n) - f(z)}{z_n - z} 
+= \frac{\int_X \varphi(z_n,t)\,d\mu - \int_X \varphi(z,t)\,d\mu}{z_n - z} \\
+= \int_X \frac{\varphi(z_n,t) -  \varphi(z,t)}{z_n - z}\,d\mu
+\end{equation*}
+
+There exists some \(\delta>0\) 
+such that \({D(z,\delta)}\subset\Omega\).
+For sufficient large $m$, for all \(n>m\) 
+we have \(z_n\in \overline{D(z,\delta/2)}\) and by its compatcness
+and the established hint, \(\Delta_t(z_n,z)\) are bounded
+and we can apply 
+\index{Lebesgue}
+Lebesgue's Dominated Theorem~1.34 that here gives 
+\begin{equation*}
+f'(z) 
+= \lim_{n\to\infty} \int_X \Delta_t(z_n,t)\,d\mu
+= \int_X \lim_{n\to\infty} \Delta_t(z_n,t)\,d\mu
+= \int_X \varphi_t'(z)\,d\mu.
+\end{equation*}
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+Determine the regions in which the following functions are defined
+and holomorphic:
+\begin{equation*}
+f(z) = \int_0^1 \frac{dt}{1+tz}, \qquad
+g(z) = \int_0^\infty \frac{e^{tz}}{1+t^2}\,dt, \qquad
+h(z) = \int_{-1}^1 \frac{e^{tz}}{1+t^2}\,dt\,.
+\end{equation*}
+\emph{Hint}: either use Exercise~16, or combine
+\index{Morera}
+Morera's theorem with
+\index{Fubini}
+Fubini's.
+\end{excopy}
+
+\begin{itemize}
+
+\item The function \(f(z)\) is holomorphic on any region \(\Omega\) for which 
+\begin{equation*}
+\{1/(1+tz): t\in[0,1]\;\wedge\; z\in\Omega\}
+\end{equation*}
+is bounded. This happens when there exists \(r > 0\) such that 
+\begin{equation*}
+\Omega \subset \{w\in\C: \forall z\in (-\infty,-1],\, |w-z|>r\}.
+\end{equation*}
+
+\item
+The function \(g(z)\) is holomorphic on any region \(\Omega\) 
+such that \(\Re(z)\leq 0\) for all \(z\in\Omega\).
+Assume \(\Omega\) satisfies this condition.
+Define
+\begin{equation*}
+g_n(z) = \int_0^n \frac{e^{tz}}{1+t^2}\,dt, \qquad
+\end{equation*}
+By previous exercise, \(g_n\) are holomorphic on \(\Omega\).
+\index{Lebesgue}
+By Lebesgue's Dominated Theorem~1.34 
+\(\lim_{n\to\infty} g_n(z) = g(z)\) and it is easy to see that 
+the convergence is uniform on any bounded subset of \(\Omega\),
+in particular on triangle boudnaries. Thus the condition
+\index{Morera}
+of Morera's Theorem~10.17 holds, hence \(g\in H(\Omega)\). 
+
+\item The function \(h(z)\) is holomorphic on any region \(\Omega\) for which 
+\begin{equation*}
+\{\exp(tz): t\in[-1,1] \;\wedge\; z\in\Omega\}
+\end{equation*}
+is bounded. This happens when there exists some \(M<\infty\) such that 
+\begin{equation*}
+\forall w\in\Omega,\;\Re(w) \leq M.
+\end{equation*}
+
+\end{itemize}
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+Suppose \(f\in H(\Omega)\),
+\(\overline{D}(a;r)\subset \Omega\),
+\(\gamma\) is a positively oriented circle with center at $a$ and radius $r$,
+and $f$ has no zero on \(\gamma^*\). For \(p=0\), the integral
+\begin{equation*}
+\itwopii \int_\gamma \frac{f'(z)}{f(z)} z^p\,dz
+\end{equation*}
+is equal to the number of zeros of $f$ in \(D(a;r)\).
+What is the value of this integral (in terms of zeros of $f$)
+for \(p=1,2,3,\ldots\)?
+What is the answer if \(z^p\) is replaced by any \(\varphi\in H(\Omega)\)?
+\end{excopy}
+
+For \(p = 0\) the claim is shown in Theorem~10.43\ich{a}.
+Otherwise the number it still gives the number of zeros,
+except that if $f$ has zero of order $k$ in \(z=0\) then 
+the number is reduced by \(\min(p, k)\).
+Similarly of \(\varphi\) has zeros of order \(p_j\) on \(z_j\)
+where $f$ has zeros of order \(k_j\)
+then the number is reduced by \(\sum_j \min(p_j,k_j)\).
+
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+Suppose \(f\in H(U)\), \(g\in H(U)\),
+and neither $f$ nor $g$ has a zero in $U$. If
+\begin{equation*}
+\frac{f'}{f}\left(\frac{1}{n}\right) =
+\frac{g'}{g}\left(\frac{1}{n}\right)
+\qquad (n=1,2,3,\ldots)
+\end{equation*}
+find another simple relation between $f$ and $g$.
+\end{excopy}
+
+Both \((f'/f), (g'/g)\in H(U)\).
+By the Corollary to Theorem~10.18 we have \(f'/f = g'/g\) in \(H(U)\).
+Using line segments from $0$ to \(z=te^{i\theta}\in U\) 
+as the path: \(\gamma(\tau) = \tau\cdot e^{i\theta}\) with \(0\leq \tau\leq t\), 
+Define
+\begin{equation*}
+F(z) 
+= \int_0^t (f'/f)(\tau e^{i\theta})\cdot e^{i\theta}\,d\tau
+= e^{i\theta} \int_0^t \frac{d(\log\circ f)}{d\tau}(\tau e^{i\theta})\,d\tau
+\end{equation*}
+Similarly, we define \(G(z)\) by integrating \(g/g'\).
+Clearly $F$ and $G$ differ by a constant, say \(c=F(z)-G(z)\). Hence
+\begin{equation*}
+(\log\circ f)(z) = (\log\circ g)(z) + c
+\end{equation*}
+By taking exponents, we get the relation
+\begin{equation*}
+f(z) = e^c \cdot g(z).
+\end{equation*}
+
+%%%%%%%%%%%%%% 20
+\begin{excopy}
+Suppose \(\Omega\) is a region,
+\(f_n\in H(\Omega)\) for \(n=1,2,3,\ldots\),
+none of the functions \(f_n\) has a zero in \(\Omega\),
+and \(f_n\) converges to $f$ uniformly on compact subsets of \(\Omega\).
+Prove that either $f$ has no zero in \(\Omega\) or \(f(z)=0\)
+for all \(z\in\Omega\).
+\end{excopy}
+
+Consider \(N = f^{-1}(0) \subset\Omega\).
+If \(N=\emptyset\) or \(N = \Omega\) we are done.
+
+By negation assume \(\emptyset \subsetneq N \subsetneq \Omega\).
+By Theorem~10.18 there exists an isolated zero.
+Hence we have 
+\(B(z;r) \subset \Omega\setminus N\) for some \(z\in N\) and \(r>0\).
+We look at the circle path \(\gamma\) whose image \(\gamma^*\) 
+is the boundary of \(\overline{B(z;r/2)}\). 
+By Theorem~10.28 the derivatives 
+\({f_n}\) converge uniformly to \(f'\) on \(\gamma*\).
+But now Theorem~10.43\ich{a} gives the following
+\begin{equation*}
+0 = \lim_{n\to\infty} N_{f_n} = N_f = 1
+\end{equation*}
+contradiction.
+
+
+%%%%%%%%%%%%%% 21
+\begin{excopy}
+Suppose \(f\in H(\Omega)\), \(\Omega\) contains the closed unit disc, and
+\(|f(z)| < 1\) if \(|z|=1\).
+How many fixed points must $f$ have in the disc?
+That is, how many solutions does the equation \(f(z)=z\) have there?
+\end{excopy}
+
+By looking at \(h(z) = z/2\) we can see that the minimal number of
+solutions for such $f$ cannot exceed $1$.
+
+Let \(U_0 = \{z\in\C: |z|\leq 1\}\) be the unit circle.
+Define by induction \(U_k = f(U_{k-1})\) for \(k\geq 1\).
+Also by induction we can see that \(U_k \subset U_{k-1}\).
+These are compact sets and thus have non empty intersection
+\(X = \cap_{k\in\Z^+} U_k\). Clearly \(f(X) = X\).
+
+\index{maximum modulus}
+By the maximum modulus Theorem~10.24
+\index{Cauchy's estimates}
+and Cauchy's estimates Theorem~10.26, we have \(|f'(z)|<1\) for all \(z\in U\).
+Moreover, \(s = \max_{z\in U}|f'(z)|<1\).
+Hence the diameter of the compact sets \(\{U_k\}_{k\in\Z^+}\) is decreasing,
+such that \(\diam(U_k) \leq s^k\). Hence $X$ must be a singleton.
+
+%%%%%%%%%%%%%% 22
+\begin{excopy}
+Suppose \(f\in H(\Omega)\), \(\Omega\) contains the closed unit disc,
+\(|f(z)| > 2\) if \(|z|=1\), and \(f(0)=1\).
+Must $f$ have a zero in the unit disc?
+\end{excopy}
+
+If by negation there was no zero, then \(g = 1/f \in H(\Omega)\)
+and 
+\begin{equation*}
+|g(0)| = 1 > 1/2 > \max\{|f(z)|: |z|=1\}
+\end{equation*}
+that contradicts the
+\index{Maximum Modulus}
+Maximum Modulus Theorem~10.24.
+
+%%%%%%%%%%%%%% 23
+\begin{excopy}
+Suppose \(P_n(z) = 1 + z/1! + \cdots + z^n/n!\),
+\(Q_n(z) = P_n(z) - 1\), where \(n=1,2,3,\ldots\),
+% none of the functions
+What can you say about the location of the zeros
+of \(P_n\) and \(Q_n\) for large $n$?
+Be as specific as you can.
+\end{excopy}
+
+The polynomials \(P_n\) have zeros that converge to infinity.
+More accurately, for each \(R<0\) there exists some \(m<\infty\)
+such that \(P_n\) has \emph{no} zeros in \(B(0;R)\) for all \(n>m\).
+Otherwise, there would be an increasing sub-sequence of indices 
+\(\{s_n\}_{n\in\N}\) and zeros \(\{z_n\}_{n\in\N}\) in \(B(0;R)\) 
+such that \(P_{s_n}(z_n) = 0\) and \(\lim_{n\to\infty} z_n = z\in B(0;R)\).
+Now \(\lim_{n\to\infty} P_{s_n}(z) = \exp(z)\) uniformly on \(B(0;R)\)
+which leads to the \(\exp(z) = 0\) contradiction.
+
+In addition to \(Q_n(0)=0\) for all \(n\in\N\),
+the polynomials \(Q_n\) have zeros that converge to \(\{2\pi i k: \;k\in\Z\}\).
+But the other roots diverge. More accurately,
+for all \(R<0\) and \(r>0\)  there exists some \(m<\infty\)
+such that \(Q_n\) has \emph{no} zeros in
+\begin{equation*}
+\{z\in\C:\; |z|\leq R \;\wedge\; \Re(z)\geq r\}
+\end{equation*}
+for all \(n>m\).
+
+
+%%%%%%%%%%%%%% 24
+\begin{excopy}
+Prove the following form of
+\index{Rouche}
+Rouche's theorem:
+Let \(\Omega\) be the interior of a compact set $K$ in the plane.
+Suppose $f$ and $g$ are continuous on $K$ and holomorphic in \(\Omega\),
+and \(|f(z)-g(z)|<|f(z)|\) for all \(z\in K\setminus \Omega\).
+Then $f$ and $g$ have the same number of zeros in \(\Omega\).
+\end{excopy}
+
+Let $D$ be a connected component of  \(\Omega\).
+We will show that $f$ and $g$ have the same number of zeros in $D$.
+If by negation $f$ has have infinite number of zeros in any such $D$,
+then then \(f_{\restriction D}=0\) and by continuity
+ \(f_{\restriction \partial D}\) but this contradicts the assumption 
+that \(|f(z)-g(z)|<|f(z)|\) for all \(z\in K\setminus \Omega\).
+Thus the number of zeros of $f$ in $D$ is finite.
+Once we establish that this number of zeros of $g$ in $D$ is the same,
+we can sum up the zeros in all such components and get the desired
+result. Let \(N = \{z\in D:\; f(z) = 0\}\).
+
+The boundary \(\partial D \subset K\). For any \(\epsilon>0\),
+by introducing sufficiently small squares,
+we can find a path \(\gamma_\epsilon\) that is ``\(\epsilon\)-near'' the boundary.
+More accurately, \(d(z,K)<\epsilon\) for all \(z\in \gamma_\epsilon^*\).
+
+Since the number of zeros of $f$ in $D$ is finite, we can pick 
+\(\epsilon < d(N,\partial D)\).
+Hence \(f(z)\neq 0\) for all \(z\in \gamma_\epsilon^*\).
+Since $f$ and $g$ are continuous, we can further require \(\epsilon\)
+to sufficiently small such that the inequality \(|f(z)-g(z)|<|f(z)|\)
+also holds for all \(z\in\gamma_\epsilon^*\).
+The needed step to complete is to apply Theorem~10.43\ich{b}
+which shows that the numbers of zeros of $f$ and $g$ in $D$ are the same.
+
+
+%%%%%%%%%%%%%% 25
+\begin{excopy}
+Let $A$ be the
+\index{annulus}
+annulus \(\{x: r_1 < |z| < r_2\}\), where \(r_1\) and \(r_2\) are given
+positive numbers.
+\begin{itemize}
+
+\itemch{a} Show that the Cauchy formula
+\begin{equation*}
+f(z) = \itwopii \left(\int_{\gamma_1} + \int_{\gamma_2}\right)
+       \frac{f(\zeta)}{\zeta - z}\,d\zeta
+\end{equation*}
+is valid under the following conditions: \(f\in H(A)\),
+\begin{equation*}
+r_1 + \epsilon < |z| < r_2 - \epsilon,
+\end{equation*}
+and
+\begin{equation*}
+\gamma_1(t) = (r_1+\epsilon)e^{-it},
+\qquad
+\gamma_2(t) = (r_2-\epsilon)e^{it},
+\qquad
+(0\leq t \leq 2\pi).
+\end{equation*}
+
+\itemch{b} Show by means of \ich{a} that every \(f\in H(A)\)
+can be decmposed info a sum \(f=f_1+f_2\), when \(f_1\) is holomorphic
+outside \(\overline{D}(0;r_1)\)
+and  \(f_2 \in H(D(0;r_1))\).
+The decomposition is unique if we require that 
+\(f_1(z)\to 0\) as \(|z|\to\infty\).
+
+\itemch{c} Use this decomposition to associate with each \(f\in H(A)\) its
+so-called
+\index{Laurent series}
+``Laurent series''
+\begin{equation*}
+\sum_{-\infty}^\infty c_n z^n
+\end{equation*}
+which converges to $f$ in $A$. Show that there is only one such series for 
+each $f$. Show that it converges to $f$ uniformly on compact subsets of $A$.
+
+\itemch{d} If \(f\in H(A)\) and $f$ is bounded in $A$, show that the components
+\(f_1\) and \(f_2\) are also bounded.
+
+\itemch{e} How much of the foregoing can you extend to the case \(r_1=0\)
+(or \(r_2=\infty\), or both)?
+
+\itemch{f} How much of the foregoing can you extend  to region bounded 
+by finitely many (more than two) cycles?
+\end{itemize}
+\end{excopy}
+
+See \cite{Gamelin2003} Chapter~VI, Section~1.
+\begin{itemize}
+
+\itemch{a}
+This result follows by applying \index{Cauchy} Cauchy's Theorem~10.35
+for \(\Gamma = \gamma_1 + \gamma_2\).
+
+\itemch{b}
+We define
+\begin{align*}
+f_1(z) &= \itwopii \int_{\gamma_1} \frac{f(\zeta)}{\zeta - z}\,d\zeta \\
+f_2(z) &= \itwopii \int_{\gamma_2} \frac{f(\zeta)}{\zeta - z}\,d\zeta\,.
+\end{align*}
+Clearly \(f = f_1 +f_2\) and \(\lim_{z\to\infty} f_1(z) = 0\).
+Say  \(f = g_1 +g_2\) and \(\lim_{z\to\infty} g_1(z) = 0\).
+Then \(f_1 - g_1 = g_2 - f_2\) in $A$.
+The function \(f_1 - g_1\) is holomorphic outside of \(\gamma_1\)
+and the function \(g_2 - f_2\) is holomorphic inside \(\gamma_2\).
+Since they agree on the intersection, we have an entire function $h$
+\begin{align*}
+h(z) &= g_2(z) - f_2(z) \qquad (|z| < r_1) \\
+h(z) &= f_1(z) - g_1(z) \qquad (|z| < r_2)
+\end{align*}
+But \(\lim_{z\to\infty} h(z) = 0\), hence \(h(z)=0\) for all \(z\in\C\)
+and the uniqueness follows.
+
+\itemch{c}
+We have
+\begin{equation*}
+f_2(z) = \sum_{n=0}^\infty c_n z^n
+\end{equation*}
+We can compute the coefficients \(c_n\) using Theorem~10.7
+\begin{equation*}
+c_n = \itwopii \int_{\gamma_2} \frac{f(\zeta)}{\zeta^{n+1}} \qquad (n\geq 0).
+\end{equation*}
+
+Since \(\lim_{z\to\infty} f_1(z) = 0\), we can put \(z=1/w\) and define
+\begin{equation*}
+g_1(w) = f(1/w) = f(z) \qquad (|z|>r  \Leftrightarrow |w|<1/r)
+\end{equation*}
+and with \(g_1(0)=0\), we have \(g_1 \in H(\{w\in\C: |w|<1/r\})\).
+Hence it as a power series 
+\begin{align*}
+g_1(w) &= \sum_{n=1}^\infty b_n w^n \\
+f_1(z) &= g_1(1/z) = \sum_{n-1}^\infty b_n z^{-n}
+\end{align*}
+By putting \(c_{-n} = b_n\) we get the desired representation for $f$.
+
+For each \(n\in\Z\), we consider \(f(z)/z^{n+1}\). Now for any sub-annulus of $A$
+we can find sufficiently small \(\epsilon>0\) such that it is contained
+between the circles of \(\gamma_1^*\) and  \(\gamma_2^*\) and we can compute
+\begin{equation*}
+\int_{\gamma_1^*} \frac{f(z)\,dz}{z^{n+1}}
+ = \int_{\gamma_1^*} \frac{1}{z^{n+1}}\sum_{n\in\Z} c_k z^k\,dz
+ = \sum_{n\in\Z} c_k \int_{\gamma_1^*} z^{k-n-1}\,dz
+ = 2\pi i c_{n}
+\end{equation*}
+Since the last integral vanishes whenever \(k-n-1\neq -1\).
+Hence
+\begin{equation*}
+c_n = \itwopii \int_{\gamma_1^*} \frac{f(z)\,dz}{z^{n+1}}.
+\end{equation*}
+
+By the arguments of section~10.5, 
+the power series of
+\begin{equation*}
+f_2(z) = \sum_{n=0}^\infty c_n z^n
+\end{equation*}
+converges absolutely in \(\overline{D(0;\rho)}\) for every \(\rho<r_2\).
+Similarly by looking on \(g_1\), the power series of 
+\begin{equation*}
+f_1(z) = \sum_{n=-1}^{-\infty} c_n z^n
+\end{equation*}
+converges absolutely in \(\{z\in\C: |z|\geq \rho\}\) for every \(\rho> r_1\).
+Now for every compact \(K\subset A\) we can find 
+\(\rho_1\) and \(\rho_2\) such that
+\begin{equation*}
+K \subset \{z\in\C: \rho_1 \leq |z| \leq \rho_2\}
+\qquad \textnormal{and}\qquad 
+r_1 < \rho_1 < \rho_2 < r_2\
+\end{equation*}
+and clearlt the whole power series converges absolutely in $K$.x
+
+If by negation there was another power series, 
+then by  positive and negative powers split, we would get 
+another decomposition for $f$ that contradicts the uniqueness established 
+in~\ich{b}.
+
+\itemch{d}
+Put \(r_3 = (r_1+r_2)/2\). 
+Clearly \(f_2\) is bounded in~\(B_2 = \overline{D(0;r_3)}\)
+and  \(f_1\) is bounded in~\(B_1 = \C\setminus D(0;r_3)\).
+If \(f = f_1+f_f2\) is bounded in $A$, then 
+\(f_1\) must be bounded in \(A\setminus B_2\) and
+\(f_2\) must be bounded in \(A\setminus B_1\).
+Consequently, \(f_1\) and \(f_2\) are bounded on~$A$.
+
+\itemch{e}
+The case \(r_1=0\) and \(r_2=1\) applies for the function 
+\begin{equation*}
+f(z) = \sum_{n\geq -1} z^n = 1/z + 1/(1-z)
+\end{equation*}
+
+The cases of \(r_2=\infty\) requires different interpration of ``\(\epsilon\)''
+for selecting \(\gamma_2\). We can use the following condition;
+for any \(M<\infty\), let \(\gamma_2(t) = Me^{it}\) for \(0\leq t\leq 2\pi\).
+Function that can be applied for such case have essential singularity 
+in infinity, for example \(f(z) = \sin(z)\).
+This can be combined with \(r_1=0\) as well (add \(1/z\)).
+
+\itemch{f}
+With $n$ circles all centered at the origin, there are \(n-1\) annulus regions.
+All the above applies to each such annulus.
+
+\end{itemize}
+
+%%%%%%%%%%%%%% 26
+\begin{excopy}
+It is required to extend the function 
+\begin{equation*}
+\frac{1}{1-z^2} + \frac{1}{3-z}
+\end{equation*}
+in the series of the form \(\sum_{-\infty}^\infty c_n z^n\).
+
+How many such expansions are there?
+In which region is each of them valid?
+Find the coefficients \(c_n\) explicitly for each of these expansions.
+\end{excopy}
+
+We use the identity:
+\begin{equation*}
+f(z) = \frac{1}{1-z^2} + \frac{1}{3-z}
+= \frac{1}{2}\left(\frac{1}{z-1} - \frac{1}{z+1}\right) + \frac{1}{3-z}
+\end{equation*}
+
+Consider the following case:
+\begin{alignat*}{2}
+\frac{1}{z-1} &= \sum_{n=0}^\infty z^n && \qquad (|z|<1) \\
+\frac{1}{z+1} &= \sum_{n=0}^\infty (-1)^n z^n  && \qquad (|z|<1) \\
+\frac{1}{3-z} &= \sum_{n=0}^\infty 3^{-(n+1)} z^n  && \qquad (|z|<3) \\
+\frac{1}{z-1} 
+ &= \frac{1}{z(1-(1/z))} = 
+  \sum_{n<0} z^n && \qquad (|z|>1) \\
+\frac{1}{z+1} 
+ &= \frac{1}{z(1-(-1/z))} 
+ = \sum_{n<0} (-1)^{n+1} z^n && \qquad (|z|>1) \\
+\frac{1}{3-z} 
+  &= \frac{-1}{z} \cdot \frac{1}{1-3/z} 
+  = \sum_{n<0}^\infty (-1)^{n+1}\cdot 3^{n} z^n  && \qquad (|z|>3)
+\end{alignat*}
+
+Gathering the results:
+\begin{alignat*}{2}
+f(z) &= \sum_{n=-1}^{-\infty} 3^{-(n+1)} z^n + (2/3)z^0 + \sum_{n=1}^\infty z^n  
+  & \qquad & (|z|<1) \\
+f(z) &= \sum_{n=-1}^{-\infty} \left((-1)^{n+1} + 1\right)z^n + 
+        \sum_{n=0}^\infty 3^{-(n+1)} z^n 
+     & \qquad & (1<|z|<3) \\
+f(z) &= \sum_{n=-1}^{-\infty} \left(1 - (-1)^{n}(1+3^n) \right)z^n
+     & \qquad & (|z|>3)
+\end{alignat*}
+
+
+%%%%%%%%%%%%%% 27
+\begin{excopy}
+Suppose \(\Omega\) is a horizontal strip determined by the inequalities
+\(a<y<b\), say.
+Suppose \(f\in H(\Omega)\) and \(f(z) = f(z+1)\) for all \(z\in\Omega\).
+Prove that $f$ has a Fourier expansion in \(\Omega\),
+\begin{equation*}
+f(z) = \sum_{-\infty}^\infty c_n e^{2\pi inz},
+\end{equation*}
+which converges uniformly in \(\{z: a+\epsilon \leq y \leq b - \epsilon\}\),
+for every \(\epsilon > 0\).
+\emph{Hint:} The map \(z\to e^{2\pi i z}\) converts $f$ to a function in an 
+annulus.
+
+Find the integral formula by means on which the coefficients \(c_n\) can be 
+computed from $f$.
+\end{excopy}
+
+Denote \(z=x+iy\) with \(x,y\in\R\). The map
+\begin{equation*}
+\varphi(z) = e^{2\pi i z} = e^{2\pi i (x+iy)} = e^{-2\pi y}\cdot e^{2\pi i x}
+\end{equation*}
+maps the stripe \(\Omega = \{x+iy\in\C: x\in\R \wedge a<y<b\}\)
+onto the annulus
+\begin{equation*}
+A = \{z\in\C: e^{-2\pi b} < |z| < e^{-2\pi a}\}.
+\end{equation*}
+The mapping is not injective, but if \(\varphi(x_1+iy_1) = \varphi(x_2+iy_2)\)
+where \(x_i,y_i\in\R\) then \(y_1=y_2\) and \(x_2-x_1\in\Z\).
+Hence we can define \(g:A\to\C\) by \(g(w) = f(z)\) where \(w=\varphi(z)\)
+which is well defined since \(f(z)=f(z+1)\) for all \(z\in\Omega\).
+
+But the mapping holomorphic and 
+is locally injective, that is for each \(z\in\Omega\)
+there is a neighborhood \(V_z\subset\Omega\) such that \(\varphi\)
+is one-to-one in \(V_z\).
+Hence \(g\in H(A)\) by Theorem~1.30.
+
+By previous exercise there exists a sequence \((c_n)_{n\in\Z}\)
+of complex numbers such that 
+\begin{equation*}
+g(w) = \sum_{n\in\Z} c_n w^n \qquad (w\in A).
+\end{equation*}
+But
+\begin{equation*}
+c_nw^n = c_n  \left(e^{2\pi i z}\right)^n = e^{2\pi i nz}
+\end{equation*}
+substituting the last expression in the previous power-series gives
+the desired \index{Fourier} Fourier expansion.
+
+
+%%%%%%%%%%%%%% 28
+\begin{excopy}
+Suppose \(\Gamma\) is a closed curve in the plane, with parameter interval
+\([0,2\pi]\).
+Take \mbox{\(\alpha \notin \Gamma^*\).}
+Approximate \(\Gamma\) uniformly by trigonometric polynomials \(\Gamma_n\).
+Show that \(\Ind_{\Gamma_m}(\alpha) = \Ind_{\Gamma_n}(\alpha)\) if $m$ and $n$
+are sufficiently large. Define this common value to be \(\Ind_{\Gamma}(\alpha)\).
+Prove that the result does not depend on the choice of \(\{\Gamma_n\}\);
+prove that Lemma~10.39 is now true for closed curves, and use this to give 
+a~different proof of Theorem~1.40.
+\end{excopy}
+
+By Theorem~4.25 we for each $n$, we can find a trigonometric polynomial
+\(P_n:\T\to\C\) such that \(\max\{|\Gamma(t)-P_n(t)|: t\in\T\}< 1/n\).
+The continuous image \(\Gamma^*\) is compact, hence 
+if \(\alpha\notin \Gamma^*\) then \(d(\alpha,\Gamma^*)>0\).
+Hence, we can find some \(k<\infty\) such that \(d(\alpha,\Gamma^*)>1/k\).
+Now by Lemma~10.39
+\begin{equation} \label{eq:ex10.29:Pmn}
+\Ind_{P_m}(\alpha) = \Ind_{P_n}(\alpha) 
+\end{equation}
+for all \(m, n \geq 2k\).
+Hence 
+\begin{equation*}
+\Ind_\Gamma(\alpha) := \lim_{n\to\infty}{P_m}(\alpha)
+\end{equation*}
+is well defined and is independent of the choice 
+of the trigonometric polynomials, since with any replacment of them,
+Lemma~10.39 could still be applied and \eqref{eq:ex10.29:Pmn} will hold.
+
+Now we can simplify the proof of Theorem~10.40.
+Instead of introducing the paths 
+\begin{equation*}
+\gamma_k(s) 
+ = H\left(\frac{i}{n},\frac{k}{n}\right)(ns + 1 -i)
+ + H\left(\frac{i-1}{n},\frac{k}{n}\right)(i - ns)
+\qquad (i\in\N_n, \; k\in \Z_n, \; i-1\leq ns\leq i)
+\end{equation*}
+we can use the curves (now, not necessarily paths)
+\begin{equation*}
+\gamma_k(s) = H(s,k/n) \qquad (k\in \Z_n)
+\end{equation*}
+and proceed with the original proof.
+
+
+%%%%%%%%%%%%%% 29
+\begin{excopy}
+Define 
+\begin{equation*}
+f(z) = \frac{1}{\pi} \int_0^1 r\,dr \int_{-\pi}^\pi \frac{d\theta}{re^{i\theta}+z}.
+\end{equation*}
+Show that \(f(z) = \overline{z}\) if \(|z|<1\) and that 
+\(f(z) = 1/z\) if \(|z|\geq 1\).
+
+Thus $f$ is not holomorphic in the unit disc, 
+although the integrand is a holomorphic function of~$z$. 
+Note the contrast between this, on the one hand, and Theorem~10.7 
+and Exercise~16 on the other.
+
+\emph{Suggestion:} Compute the inner integral separately 
+for \(r<|z|\) and for \(r>|z|\).
+\end{excopy}
+
+We first compute the inner intergral. We define
+\begin{equation*}
+h(r,z) = \int_{-\pi}^\pi \frac{d\theta}{re^{i\theta}+z}.
+\end{equation*}
+\paragraph{Assuming \(|r|<z\).} In this case \(z\neq 0\) and we have
+\begin{equation*}
+\frac{1}{re^{i\theta}+z}
+= \frac{1}{z}\cdot\frac{1}{1-((-r/z)e^{i\theta})}
+= \frac{1}{z}\sum_{n=0}^\infty \left(-\frac{r}{z}\right)^n e^{in\theta}.
+\end{equation*}
+Hence
+\begin{align*}
+% \int_{-\pi}^\pi \frac{d\theta}{re^{i\theta}+z}
+h(r,z)
+&= \frac{1}{z} \int_{-\pi}^\pi
+    \left( \sum_{n=0}^\infty \left(-\frac{r}{z}\right)^n e^{in\theta} 
+    \right)\,d\theta
+ = \frac{1}{z} \sum_{n=0}^\infty \left(-\frac{r}{z}\right)^n 
+     \int_{-\pi}^\pi e^{in\theta} \,d\theta
+ = \frac{1}{z} \left(-\frac{r}{z}\right)^0 \cdot 2\pi \\
+&= 2\pi/z
+\end{align*}
+
+
+\paragraph{Assuming \(|r|>z\).} In this case we have
+\begin{equation*}
+\frac{1}{re^{i\theta}+z}
+= \frac{1}{re^{i\theta}}\cdot\frac{1}{1-(-z/r)e^{-i\theta}}
+= \frac{1}{re^{i\theta}}\sum_{n=0}^\infty (-z/r)^n e^{-in\theta}.
+\end{equation*}
+Hence
+\begin{equation*}
+% \int_{-\pi}^\pi \frac{d\theta}{re^{i\theta}+z}
+h(r,z)
+ = \int_{-\pi}^\pi \frac{1}{re^{i\theta}}
+    \left(\sum_{n=0}^\infty \left(\frac{-z}{r}\right)^n e^{-in\theta}\right) d\theta 
+ = \sum_{n=0}^\infty \frac{(-z)^n}{r^{n+1}}
+    \int_{-\pi}^\pi e^{-i(n+1)\theta}\,d\theta 
+ = 0.
+\end{equation*}
+
+Back to the outer integral, we again have two cases.
+\paragraph{Assume \(|z|\leq 1\).}
+\begin{align*}
+f(z) 
+&= \frac{1}{\pi} \left(
+   \int_0^{|z|} r\cdot h(r,z)\,dr + \int_{|z|}^1 r\cdot h(r,z)\,dr \right) 
+ = \frac{1}{\pi} \left(
+      \int_0^{|z|} \frac{2\pi r}{z}\,dr +  0\right) \\
+&= (2/z) \left.\left(r^2/2\right)\right|_0^{|z|}
+ = |z|^2/z
+ = \overline{z}\,.
+\end{align*}
+
+\paragraph{Assume \(|z|\geq 1\).}
+\begin{align*}
+f(z) 
+&= \frac{1}{\pi} \int_0^1 r\cdot h(r,z)\,dr 
+ = \frac{1}{\pi} \int_0^1 (2\pi r/z) \,dr 
+ = (1/z)\left.\left(r^2\right)\right|_{0}^1
+ = 1/z\,.
+\end{align*}
+
+
+%%%%%%%%%%%%%% 30
+\begin{excopy}
+Let \(\Omega\) be the plane minus two points, and show that some closed paths
+\(\Gamma\) in \(\Omega\) satisfy assumtion~(1) of Theorem~10.35 without being
+\index{null-homotopic}
+\index{null!homotopic}
+null-homotopic in~\(\Omega\).
+\end{excopy}
+
+Intuitively, make a double ``eight''-pattern, where each ``eight''
+is in different direction.
+Say the two deleted points are $1$ and $3$.
+Let's for the path as the a polyline passing thru the following
+points in the given order:
+{\newcommand{\qtoq}{\;\to\;}
+\begin{align*}
+2 \qtoq 3-i \qtoq 4 \qtoq 3+i &\qtoq 2 \qtoq 1-i \qtoq 0 \qtoq 1+i \qtoq \\
+2 \qtoq 3+i \qtoq 4 \qtoq 3-i &\qtoq 2 \qtoq 1+i \qtoq 0 \qtoq 1-i \qtoq 2.
+\end{align*}
+}
+Of course, there are similar paths that are nicer
+in the sense that they cross themselves only 
+in a finite number of points~($5$?).
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}
+
+

@@ -1,0 +1,2095 @@
+% -*- latex -*-
+% $Id: rudinrca7.tex,v 1.15 2006/09/05 20:39:02 yotam Exp $
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Differentiation} % 7
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Notations}
+
+\paragraph{Null Set.} We use the term
+\emph{nullset}
+\index{nullset}
+of \cite{Oxtoby1980}
+for a set of measure zero.
+
+We denote the \emph{length} of an interval $I$ by \(\ell(I)\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Outer Measure}
+
+In Rudin's treatment \cite{RudinRCA87}, measure theory is developed
+without relying in the notion of outer measure.
+In contrast, Royden gives a the following definition
+(\cite{Royden} Chapter~3, Section~2 page~56).
+
+\paragraph{Definition.}
+\index{outer measure}
+\index{measure!outer}
+The \index{outer measure} of a set \(A\subset \R\) is
+\begin{equation*}
+m^*(A) = \inf_{A\subset \cup I_n} \ell(I_n).
+\end{equation*}
+When can generalize this to sets in \(\R^n\) and also show that
+\begin{equation*}
+m^*(A) = \inf \{m(G): A\subset G \wedge G \;\mathrm{is\ open}\}.
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma of Vitali}
+
+We bring the 
+Lemma of Vitali
+\index{Vitali!of Vitali}
+from \cite{Royden}.
+
+\begin{llem} \label{lem:vitali}
+Let $E$ be a set of finite measure and \frakI\ a set of intervals
+that covers $E$ in the sense of Vitali, that is
+\begin{equation*}
+\forall x\in E\, \forall \epsilon>0\;
+ \exists I\in\frakI\, x\in I \wedge \ell(I) < \epsilon.
+\end{equation*}
+Then given \(\epsilon>0\) there exists a finite subset of intervals 
+\(\{I_n\}_{n=1}^N \subset \frakI\) such that 
+\begin{equation}
+m\left(E \setminus \cup_{n=1}^N I_n\right) < \epsilon>0.
+\end{equation}
+\end{llem}
+
+\textbf{Note} Originally, the lemma deals with \emph{outer} measure,
+but here we use less generalized version.
+
+\begin{thmproof}
+\Wlogy\ we may assume that \(\{\ell(I): I\in\frakI\}\) is bounded,
+otherwise we pick some finite measure open set \(O\supset E\) 
+and intersect each interval with this opens set, producing new interval(s)
+that still satisfy the requirements.
+Form a sequence \(\{I_j\}_{j\in\N}\) by induction. Say 
+\(\{I_j\}_{j=1}^n\) were picked. Define
+\begin{align*}
+U_n &= \cup_{j=1}^n \overline{I_j} \\
+k_n &= \sup \{\ell(I): I\in\frakI \wedge I \cap U_n = \emptyset\}.
+\end{align*}
+If \(E\subset U_n\) we are done, otherwise \(0< k_n < \infty\).
+Pick \(I_{n+1}\) such that \(\ell(I_{n+1}) > k_n/2\).
+Clearly \(\lim_{n\to\infty} \ell(I_n) = 0\), hence there exists $N$
+such that
+\begin{equation*}
+\sum_{n=N+1}^\infty \ell(I_n) < \epsilon/5.
+\end{equation*}
+Let \(x\in R\) and pick \(I\in\frakI\) such that \(I\cap U_N=\emptyset\).
+Let $n$ be the smallest integer such that \(I\cap I_n \neq \emptyset\).
+Clearly \(n>N\) 
+and by our method of forming the sequences 
+\(\ell(I) \leq k_{n-1} \leq 2(I_n)\). If \(c_n\) is the center of \(I_n\) then
+\begin{equation*}
+|x-c_n| \leq \ell(I) + \ell(I_n)/2 \leq \frac{5}{2} \ell(I_n).
+\end{equation*}
+Define  $5$-time expansions of \(I_n\)
+\begin{equation*}
+J_n = \left[c_n - \frac{5}{2} \ell(I_n),\, c_n + \frac{5}{2} \ell(I_n)\right]
+\end{equation*}
+and now  \(x\in J_n\) and so
+\begin{equation*}
+R \subset \cup_{n=N+1}^\infty J_n
+\end{equation*}
+Hence
+\begin{equation*}
+m(R) 
+\leq \sum_{n=N+1}^\infty \ell(J_n)
+= 5\sum_{n=N+1}^\infty \ell(I_n)
+< \epsilon.
+\end{equation*}
+\end{thmproof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lebesgue Differentiation Theorem}
+
+Here is a theorem given in \cite{Royden} Chapter~5, Section~1, page~100,
+Theorem~3.
+
+\begin{llem} \label{lem:leb:diff}
+If \(f:[a,b]\to\R\) be a non decreasing function
+then $f$ is differentiable almost everywhere.
+The derivative \(f'\) is measurable and 
+\begin{equation*}
+\int_a^b f'(x)\,dx \leq f(b) - f(a). \label{eq:lem:leb:diff}
+\end{equation*}
+In particular, \(f'\in L^1([a,b],m)\).
+\end{llem}
+\begin{thmproof}
+Let \(D\subset [a,b]\) be the set of points where $f$ is discontinuous.
+Since $f$ is non decreasing we now that $D$ is countable.
+
+Define
+\begin{equation} \label{eq:7:DfMDfm}
+D^+f(x) = \varlimsup_{h\to 0} \frac{f(x+h)-f(x)}{h}
+\qquad
+D^-f(x) = \varliminf_{h\to 0} \frac{f(x+h)-f(x)}{h}
+\end{equation}
+where \(x,x+h \in [a,b]\) of course.
+
+We would like to be able to use limits such that that $h$ run over
+some countable set for all \(x\in[a,b]\).
+\begin{align} 
+\Delta^+f(x) &\eqdef \label{eq:7:DfMQ} 
+   \varlimsup_{\stackrel{h\to 0}{h\in\Q}} \frac{f(x+h)-f(x)}{h} \\
+\Delta^-f(x) &\eqdef \label{eq:7:DfmQ}
+   \varliminf_{\stackrel{h\to 0}{h\in\Q}} \frac{f(x+h)-f(x)}{h}
+\end{align}
+
+\paragraph{Claim:} 
+\begin{align}
+D^+f(x) &= \Delta^+f(x)  \label{eq:DfM:eqQ} \\
+D^-f(x) &= \Delta^-f(x)  \label{eq:Dfm:eqQ}
+\end{align}
+We will show \eqref{eq:DfM:eqQ} and \eqref{eq:Dfm:eqQ} 
+will follow from \(\varliminf f = -\varlimsup -f\).
+Clearly \(\Delta^+f(x) \leq D^+f(x) \) since \(\Q\subset\R\).
+For this claim, fix \(x\in[a,b]\) and let \(u \eqdef D^+f(x)\).
+Pick an arbitrarily small \(\delta>0\).
+There is \(h\neq 0\) such that \(|h|<\delta\)
+\begin{equation*}
+\bigl(f(x+h) - f(x)\bigr)/h > u - \epsilon \qquad x+h\in(a,b).
+\end{equation*}
+Let us assume that \(h>0\). The negative case can be similarly treated.
+Put
+\begin{equation*}
+Q(x,h) = \{q\in\Q: q\geq h \wedge x+q\in[a,b]\}
+\end{equation*}
+Clearly \(Q(x,h)\neq \emptyset\) and 
+ \(f(x+h)\leq f(x+q)\) for each \(q\in Q(x,h)\).
+Thus
+\begin{equation*}
+\varlimsup_{\stackrel{q\to h}{q\in\Q(x,h)}}  \frac{f(x+q) - f(x)}{q}
+\geq \varlimsup_{\stackrel{q\to h}{q\in\Q(x,h)}}  \frac{f(x+h) - f(x)}{q}
+= \varlimsup_{\stackrel{q\to h}{q\in\Q(x,h)}}  \frac{f(x+h) - f(x)}{h}
+= u.
+\end{equation*}
+Hence \(\Delta^+f(x) \geq D^+f(x)\) for any \(x\in[a,b]\)
+and the claim \eqref{eq:DfM:eqQ} is shown.
+
+Define the ``bad'' sets
+\begin{align}
+E       &\eqdef \left\{x\in[a,b]: D^-f(x) < D^+f(x)\right\} \notag \\
+E_{u,v} &\eqdef \left\{x\in[a,b]: D^-f(x) < v < u < D^+f(x)\right\} 
+        \label{eq:7:Euv}
+\end{align}
+and clearly
+\begin{equation} \label{eq:ex7.14:Eu}
+E = \bigcup_{u,v\in\Q} E_{u,v}
+\end{equation}
+Since 
+\begin{align*}
+\Delta^+f(x) &= \inf_{r\in\Q^+} 
+    \sup\left\{ \frac{f(x+q)-f(x)}{q} :
+                q\in\Q \swedge 0<|q|<r \swedge x+q\in[a,b] \right\}
+\\
+\Delta^-f(x) &= \sup_{r\in\Q^+} 
+    \inf\left\{ \frac{f(x+q)-f(x)}{q} :
+                q\in\Q \swedge 0<|q|<r \swedge x+q\in[a,b] \right\}
+\end{align*}
+the sets $E$ and \(E_{u,v}\) are measurable! They could be defined
+by countable intersection and unions of open sets.
+Noting that inverse image of intervals via $f$ are intervals since
+$f$ is non decreasing.
+This was 
+the whole reason for the claim, thus avoiding the usage of outer measure
+and using a simplified lemma (\ref{lem:vitali}) of Vitali.
+
+We note that 
+$f$ is differentiable on \([a,b]\setminus E\) 
+and obviously \(E_{u,v} = \emptyset\) if \(u\geq v\).
+Since the above \eqref{eq:ex7.14:Eu} is a countable union 
+it will suffice to show that \(m(E_{u,v}) = 0\) whenever \(u < v\).
+Fix some \(u,v\in\R\) such that \(v<u\).
+Assume by negation 
+\begin{equation} \label{eq:7:vit:sgt0}
+s \eqdef m(E_{u,v}) > 0.
+\end{equation}
+Pick arbitrary \(\epsilon>0\) and take an open \(G \supset E_{u,v}\)
+such that \(m(G) < s + \epsilon\)
+For each \(x\in E_{u,v}\) we can find some $h$ such that
+the interval \([x,x+h]\) or  \([x+h,x]\) is contained in $G$ and 
+\begin{equation} \label{eq:7:vit:ltv}
+\bigl(f(x+h) - f(x)\bigr)/h < v.
+\end{equation}
+By local lemma (Vitali)~\ref{lem:vitali} 
+there is a finite set of disjoint open intervals 
+\(\{I_j\}_{j=1}^N = \{(a_j,b_j)\}_{j=1}^N\) (where \(a_j<b_j\))
+that 
+cover a subset \(A = \cap_{j=1}^N I_j \cap  E_{u,v}\) 
+and \(m(A) > s - \epsilon\). Summing \eqref{eq:7:vit:ltv} we get
+\begin{equation} \label{eq:7:vit:ltvs}
+\sum_{j=1}^N f(b_j) - f(a_j) 
+< v\sum_{j=1}^N b_j - a_j < v\,m(G)  <  v(s+\epsilon).
+\end{equation}
+Now for each \(y\in A\) there is an interval
+ \([y,y+k]\) or  \([y+k,y]\) is contained in some \(I_j\) such that 
+\begin{equation} \label{eq:7:vit:gtu}
+\bigl(f(y+k) - f(y)\bigr)/k > u.
+\end{equation}
+Applying the same lemma again, there are disjoint intervals
+\(\{J_j\}_{j=1}^M = \{(c_j,d_j)\}_{j=1}^M\) (where \(c_j<d_j\))
+that 
+cover a subset \(B = \cap_{j=1}^M J_j \cap  A\) 
+such that \(m(B) > s-2\epsilon\). 
+Similar summation of~\eqref{eq:7:vit:gtu} gives
+\begin{equation} \label{eq:7:vit:gtus}
+\sum_{j=1}^M f(d_j) - f(c_j) > u \sum_{j=1}^M d_j - c_j >  u(s - 2\epsilon).
+\end{equation}
+For the segment \(I_n\), since $f$ is nondecreasing we have
+\begin{equation*}
+\sum_{\stackrel{1\leq j \leq M}{J_j \subset I_n}} f(d_j) - f(c_j) 
+\leq f(b_n) - f(a_n).
+\end{equation*}
+Summing over all \(\{I_j\}_{j=1}^N\) gives
+\begin{equation} \label{eq:vit:dcltba}
+\sum_{j=1}^M f(d_j) - f(c_j) \leq \sum_{j=1}^N f(b_j) - f(a_j) 
+\end{equation}
+Combining 
+\eqref{eq:7:vit:ltvs},
+\eqref{eq:7:vit:gtus} and
+\eqref{eq:vit:dcltba}
+gives
+\begin{equation*}
+u(s - 2\epsilon) \leq v(s+\epsilon).
+\end{equation*}
+Since \(\epsilon\) is arbitrarily small, we have
+\(us \leq vs\) and by \eqref{eq:7:Euv} \(s=0\) contradiction 
+to~\eqref{eq:7:vit:sgt0}. Thus \(m(E)=0\) and $f$ is differentiable
+almost everywhere.
+
+To show the final part of this differentiation theorem, let 
+\begin{equation*}
+g_n(x) \eqdef n\bigl(f(x+1/n) - f(x)\bigr) 
+                        \qquad \forall x>b,\; f(x)\eqdef f(b).
+\end{equation*}
+Clearly \(\lim_{n\to\infty} g_n(x) = f'(x)\) hence it is measurable.
+Now by Fatou's lemma
+\index{Fatou}
+\begin{align*}
+\int_a^b f'(x)\,dx
+&\leq \varliminf_{n\to\infty} \int_a^b g_n(x)\,dx  
+= \varliminf_{n\to\infty} n \int_a^b \bigl(f(x+1/n) - f(x)\bigr) \,dx  \\
+&= \varliminf_{n\to\infty} 
+   \left(n \int_b^{b+1/n} f(x)\,dx  - \int_a^{a+1/n} f(x)\,dx  \right)
+ = \varliminf_{n\to\infty} 
+   \left(f(b)  - n\int_a^{a+1/n} f(x)\,dx  \right) \\
+& \leq f(b) - f(a).
+\end{align*}
+Hence \eqref{eq:lem:leb:diff} holds.
+\end{thmproof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Absolute Continuity and Bounded Variation.}
+
+Trvial lemma showing that absolute continuity is
+stronger than having bounded variation.
+
+\begin{llem}
+If \(f:[a,b]\to\C\) is an absolute continuous function,
+then it has bounded variation.
+\end{llem}
+\begin{thmproof}
+Pick \(\epsilon=1\) then there exists \(\delta>0\)
+such that 
+\(\sum_{j=1}^n |f(b_k) - f(a_k)| < \epsilon=1\)
+whenever
+\(\sum_{j=1}^n b_k - a_k| < \delta\)
+where \(a \leq a_k \leq b_k \leq b\).
+
+Now given an arbitrary partition \(a = t_0 < t_1 < \cdots < t_m = b\)
+we can extended it to 
+Now given a partition \(a = u_0 < u_1 < \cdots < u_n = b\)
+such that 
+\(u_k - u_{k-1} < \delta/2\) for all \(k\in\N_n\) and 
+for any \(j\in\N_m\) there exists \(k\in\N_n\) 
+such that \(t_j = u_k\).
+We split the partitions to chunks bounded by \(\delta/2\) by defining
+\begin{equation*}
+c(k) = \min \{k\in\Z^+: u_k - a \geq n\delta/2\}.
+\qquad 0\leq n \leq \lceil 2(b-a)/\delta \rceil.
+\end{equation*}
+Clearly \(u_{c(n)} - u_{c(n-1)} < \delta/2\).
+Now
+\begin{equation*}
+\sum_{j=1}^m |f(t_j) - f(t_{j-1})|
+\leq \sum_{j=1}^n |f(u_j) - f(u_{j-1})|
+= \sum_k \sum_{j=c(k) + 1}^{c(k+1)} |f(u_j) - f(u_{j-1})|
+\leq \lceil 2(b-a)/\delta \rceil\cdot 1.
+\end{equation*}
+Thus $f$ has bounded variation.
+\end{thmproof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Detailed Reference.}
+
+In the \textsc{Notes and Comments} appendix for this chapter,
+there is a reference for elementary proof of almost everywhere
+differentiability of monotone function.
+The full reference is:\\
+\emph{A Geometric Proof of the Lebesgue Differentiation Theorem},
+\textbf{Donald Austin},
+Proceedings of the American Mathematical Society, 
+Vol.~16, No.~2 (Apr.,~1965), pp.~ 220--221.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 156-159
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%% 1
+\begin{excopy}
+Show that \(|f(x)| \leq (Mf)(x)\) at every Lebesgue point of $f$ if 
+\(f\in L^1(\R^k)\).
+\end{excopy}
+
+Say $x$ is a Lebesgue point
+\index{Lebesgue point}
+then
+\begin{equation*}
+\lim_{r\to\infty} \frac{1}{m(B_r)} \int_{B(x,r)} |f(y)-f(x)|\,dm(y) = 0.
+\end{equation*}
+Pick \(\epsilon>0\) and \(r>0\) such that
+\begin{equation*}
+D = \frac{1}{m(B_r)} \int_{B(x,r)} |f(y)-f(x)|\,dm(y) < \epsilon.
+\end{equation*}
+Hence
+\begin{align*}
+D 
+&\geq \frac{1}{m(B_r)} \left( \int_{B(x,r)} |f(x)|\,dm(y) - 
+                             \int_{B(x,r)} |f(y)|\,dm(y) \right) \\
+&=  |f(x)| - \frac{1}{m(B_r)} \int_{B(x,r)} |f(y)|\,dm(y) 
+\end{align*}
+Combing the above, we get
+\begin{equation*}
+|f(x)| \leq \frac{1}{m(B_r)} \int_{B(x,r)} |f(y)|\,dm(y) + \epsilon.
+\end{equation*}
+Since \(\epsilon>0\) was arbitrary, we actually have 
+the desired
+\begin{equation*}
+|f(x)| \leq \sup_{r>0} \frac{1}{m(B_r)} \int_{B(x,r)} |f|\,dm
+\end{equation*}
+inequality.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+For \(\delta>0\), let \(I(\delta)\) be the 
+segment \((-\delta,\delta) \subset \R^1\). Given \(\alpha\) and \(\beta\),
+\(0\leq\alpha\leq \beta\leq 1\),
+construct a measurable set \(E\subset \R^1\) so that the upper and lower
+limits of 
+\begin{equation*}
+\frac{m\bigl(E\cap I(\delta)\bigr)}{2\delta}
+\end{equation*}
+are \(\beta\) and \(\alpha\) respectively, as \(\delta\rightarrow 0\).
+
+(Compare this with Section~7.12.)
+\end{excopy}
+
+Let \(0< s,u < 1\). We will soon determine their actual values.
+Define % the decreasing sequence \(s_n = s^n\) for \(n\geq 0\) and
+the sequence of clopen intervals 
+\begin{equation*}
+I_n = (s^n,s^{n-1}] \qquad n \geq 0.
+\end{equation*}
+Clearly \((0,1] = \disjunion_{n\geq 0} I_n\).
+Define ``inter-points'' and open sub-intervals.
+\begin{align*}
+t_n &= s^n + u\cdot m(I_n) \\
+U_n &= (s^n, t_n) \subsetneq I_n \qquad n \geq 0.
+\end{align*}
+and let \(U = \cup_n U_n\), put \(U^- = \{x\in\R: -x \in U\)
+and finally \(E = U \disjunion U^-\).
+Clearly 
+\begin{equation*}
+\frac{m\bigl(E\cap I(\delta)\bigr)}{2\delta} 
+= m\bigl(U\cap I(\delta)\bigr) / \delta.
+\end{equation*}
+Thus it is sufficiently to look at the limits of 
+\(m(U\cap [0,\delta]) / \delta\).
+For any \(\delta\) looking at the 
+the subsequence of \(\{U_n\}_{n\geq 0}\) below \(\delta\)
+we can see that
+\begin{equation*}
+\liminf_{\delta\to 0} m(U\cap [0,\delta]) / \delta = u.
+\end{equation*}
+Similarly, if we look at the ``shifted segments'' \(S_n = (t_{n+1},t_n)\)
+we can see that
+\begin{equation*}
+\limsup_{\delta\to 0} m(U\cap [0,\delta]) / \delta 
+= u / (s(1-u) + u) = u / (s + (1-s)u) > u.
+\end{equation*}
+Trivial solving give the desired values \(u=\alpha\)
+and for
+\begin{equation*}
+u / (s(1-u) + u) = \beta
+\end{equation*}
+we have
+\begin{equation*}
+s 
+= (u / \beta - u) / (1-u)
+= (\alpha / \beta - \alpha) / (1-\alpha).
+\end{equation*}
+
+In Section~7.12 we see that the limit exists and must be $0$ or $1$
+almost everywhere. 
+So a case like constructed above may happen only on a nullset (measure zero). 
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose that $E$ is a measurable set of real numbers with arbitrarily
+small periods. Explicitly,
+this means that there are positive numbers \(p_i\), converging to $0$
+as \(i\to \infty\), so that 
+\begin{equation*}
+E + p_i = E \qquad (i=1,2,3,\ldots).
+\end{equation*}
+
+Prove that then either $E$ or its complement has measure $0$.
+
+\emph{Hint:} Pick \(\alpha\in\R^1\), 
+put \(F(x) = m(E\cap[\alpha,x])\) for \(x>\alpha\), show that
+\begin{equation*}
+F(x + p_i) - F(x - p_i) = F(y + p_i) - F(y - p_i)
+\end{equation*}
+if \(\alpha + p_i < x < y\). 
+What does this imply about \(F(x)\) if \(m(E)>0\)?
+\end{excopy}
+
+Let \(n = \lfloor (y-x)/2p_i \rfloor\).
+Then \(x - p_i < (y-2np_i) - p_i < (y-2np_i) + p_i\).
+Now
+\begin{eqnarray*}
+F(x + p_i) - F(x - p_i) 
+&=& m(E \cap [x-p_i, x+p_i]) \\
+&=& m(E \cap ([x-p_i, (y-2np_i) - p_i] \cup [(y-2np_i) - p_i, x+p_i]) \\
+&=& m(E \cap ([x-p_i, (y-2np_i) - p_i]) \\
+& & + m(E \cap [(y-2np_i) - p_i, x+p_i]) \\
+&=& m((E - 2p_i) \cap ([x-p_i, (y-2np_i) - p_i]) \\
+& & + m(E \cup [(y-2np_i) - p_i, x+p_i]) \\
+&=& m(E \cap [(y-2np_i) - p_i, x+p_i]) \\
+& & + m(E \cap ([x+p_i, (y-2np_i) + p_i]) \\
+&=& m(E \cap [(y-2np_i) - p_i, (y-2np_i) + p_i]) \\
+&=& m(E \cap [y - p_i, y + p_i]) \\
+&=& F(y + p_i) - F(y - p_i)
+\end{eqnarray*}
+
+By Theorem~7.18 \cite{RudinRCA87}, \(F(x)\) is differentiable
+almost everywhere. By the above equality, its value is constant
+simply by looking at 
+\begin{equation*}
+F'(x) = \lim_{j\to\infty} \frac{F(x+p_j) - F(x-p_j)}{2p_j}.
+\end{equation*}
+This value is actually the 
+metric density
+\index{metric density}
+of $E$ and by the discussion in Section~7.12 \cite{RudinRCA87}
+this constant must be $0$ or $1$. If \(m(E)>0\) it must be $1$
+and thus \(F(x) = x-\alpha\) for \(x>\alpha\).
+Since \(\alpha\) was arbitrary, for any interval $I$ we have
+\(m(E\cap I) = m(I)\) and so \(m(\R\setminus E) = 0\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Call $t$ a 
+\emph{period}
+\index{period}
+of the function $f$ on \(\R^1\) if \(f(x+t)=f(x)\) for all \(x\in\R^1\).
+Suppose $f$ is a real Lebesgue measurable function with periods $s$ and $t$
+whose quotient is irrational.
+Prove that there is a constant $c$ such that \(f(x)=c\;\aded\),
+but that $f$ need not be constant.
+
+\emph{Hint}: Apply Exercise~3 to the sets \(\{f>\lambda\}\).
+\end{excopy}
+
+We construct a sequence \(\{p_j\}_{j\in\N}\) such that 
+\(\lim_{j\to\infty} p_j = 0\) and \(p_j > 0\) are periods of $f$.
+Assume \(s>t\). Let (Similar to Euclid GCD algorithm)
+\begin{align*}
+p_1 &= s \\
+p_2 &= t \\
+p_n &= p_{n-2} - p_{n-1}\left\lfloor \frac{p_{n-2}}{p_{n-1}}\right\rfloor
+       < p_{n-1}.
+\end{align*}
+Assume by negation that  $f$ is not constant almost everywhere.
+We can find some \(\lambda\) such that 
+\(\{f\leq\lambda\}\) and its complement \(\{f>\lambda\}\)
+each is not a nullset.
+The sequence \(\{p_j\}_{j\in\N}\) is also periods of these sets.
+But by previous exercise, one of these two sets must be a nullset.
+
+
+%%%%%%%%%%%%%% 5
+\begin{excopy}
+If \(A \subset \R^1\) and \(B \subset \R^1\), 
+define \(A+B = \{a+b: a\in A, b\in B\}\).
+Suppose \(m(A)>0\) and \(m(B)>0\).
+Prove that \(A+B\) contains a segment, by completing the following outline:
+
+There are points \(a_0\) and \(b_0\) where $A$ and $B$ have 
+\index{metric density}
+metric density~$1$.
+Choose a small \(\delta>0\).
+Put \(c_0 = a_0 + b_0\).
+For each \(\epsilon\), positive or negative, define \(B_\epsilon\) 
+to be the set of all \(c_0 + \epsilon - b\) for which 
+\(b\in B\) and \(|b-b_0| < \delta\).
+Then \(B_\epsilon \subset  (a_0 + \epsilon - \delta, a_0 + \epsilon + \delta)\).
+If \(\delta\) was well chosen and \(|\epsilon|\) is sufficiently small,
+it follows that $A$ intersects \(B_\epsilon\), so that 
+\(A+B \supset (c_0 - \epsilon_0, c_0 + \epsilon_0)\) 
+for some \(\epsilon_0 > 0\).
+
+Let $C$ be 
+\index{Cantor}
+Cantor's ``middle thirds'' set and show that \(C+C\) is an interval,
+although \(m(C)=0\).
+
+(See also Exercise~19, Chap. 9.)
+\end{excopy}
+
+In this exercise solution, whenever we use $X$, we mean that
+the expression or statement holds both for $A$ and for $B$.
+\Wlogy, we may assume \(a_0=b_0=0\),
+thus we have \(c_0=0\).
+Take \(\delta>0\) such that 
+\begin{align*}
+m\bigl(X\cap (-h,h)\bigr)/2h &> 2/3 \\ 
+\end{align*}
+for any \(0<h<\delta\).
+Pick \(\epsilon_0 = \delta/3\).
+For \(\epsilon < \epsilon_0\), we have
+\begin{equation*}
+X_\epsilon = \epsilon - \bigl(X \cap (-\delta,+\delta)\bigr)
+\subset (\epsilon - \delta, \epsilon + \delta).
+\end{equation*}
+Clearly \(m(X_\epsilon) = m(X\cap(-\delta,\delta))\).
+Now
+\begin{equation*}
+\bigl(X\cap(\epsilon-\delta,\epsilon+\delta)\bigr)
+\setminus
+\bigl(X\cap(-\delta,\delta)\bigr)
+\supset 
+(\epsilon-\delta,\epsilon+\delta) \setminus  (-\delta,\delta)
+\supset (\delta,\delta + \epsilon)
+\end{equation*}
+therefore,
+\begin{align*}
+   m\bigl(X \cap (\epsilon-\delta, \epsilon+\delta)\bigr)
+&\geq  m\bigl(X \cap (-\delta, +\delta)\bigr) - \epsilon.
+\end{align*}
+Thus
+\begin{align*}
+m\bigl(A \cap (\epsilon-\delta, \epsilon+\delta)\bigr) + m(B_\epsilon)
+&\geq m\bigl(A \cap (-\delta, +\delta)\bigr) - \epsilon 
+      + m\bigl(B\cap(-\delta,\delta)\bigr) \\
+&\geq \bigl((2/3)\cdot2\delta - \epsilon\bigr) + (2/3)\cdot2\delta \\
+&> 2\bigl((2/3)\cdot2\delta - \epsilon\bigr)
+ > 2(4\delta/3 - \epsilon_0) = 2\delta.
+\end{align*}
+and so \(A\cap B_\epsilon \neq \emptyset\).
+
+Equivalently, for all \(\epsilon\in(-\epsilon_0,+\epsilon_0)\), 
+there are \(a\in A\) and \(b\in B\) such that \(a=\epsilon -b\),
+that shows that \(\epsilon\in A+B\) and actually
+\((-\epsilon,\epsilon) \subset A+B\).
+ 
+\paragraph{Cantor Set.} 
+We will show that \(C+C = [0,2]\).
+Any arbitrary \(x\in[0,2]\) can be represented as
+\begin{equation*}
+x = \sum_{n=0}^\infty t_n 3^{-n}
+\end{equation*}
+where \(t_0\in\{0,1\}\) and \(t_n\in\{0,1,2\}\) for \(n\geq 1\).
+We will construct \(a,b\in C\) such that \(x=a+b\).
+Put \(c_{-1} = 0\), using
+\begin{equation*}
+v_n = t_n + 3c_{n-1}
+\end{equation*}
+we define \(a_n\),\(b_n\) and \(c_n\) 
+by induction for \(n\geq 0\) by the following 6 cases
+\begin{equation*}
+(a_n,b_n,c_n) = 
+\left
+\{\begin{array}{ll}
+(0,0,0) \quad & v_n = 0 \\
+(0,0,1) \quad & v_n = 1 \\
+(2,0,0) \quad & v_n = 2 \\
+(2,0,1) \quad & v_n = 3 \\
+(2,2,0) \quad & v_n = 4 \\
+(2,2,1) \quad & v_n = 5
+\end{array}\right.
+\end{equation*}
+Note that \(a_0 = b_0 = 0\), so  if we put
+\begin{equation*}
+a = \sum_{n=0}^\infty a_n 3^{-n} \in C
+\qquad
+b = \sum_{n=0}^\infty b_n 3^{-n} \in C
+\end{equation*}
+we get the desired \(x = a + b \in C + C\) .
+ 
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose $G$ is a subgroup of \(\R^1\) (relative to addition),
+\(G\neq \R^1\), and $G$ is Lebesgue measurable. Prove that then \(m(G)=0\).
+
+\emph{Hint}: Use Exercise~5.
+\end{excopy}
+
+Assume by negation \(m(G)>0\). By previous exercise \(G+G\) contains a segment.
+But \(G+G=G\) since it is a group. Thus $G$ contains an interval 
+\([a,b]\in G\) such that \(a<b\).
+Pick arbitrary \(x\in \R\). Define
+\begin{align*}
+d &= b - a > 0\\
+n &= \lfloor x / d \rfloor \in \Z \\
+r &= x - nd \in [a,b) \subset G
+\end{align*}
+Now 
+\begin{align*}
+x = n(b-a) + r \in G
+\end{align*}
+and so we get the \(\R \subset G\) contradiction.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Construct a continuous monotonic function $f$ on \(\R^1\) so that $f$ is not
+constant on any segment although \(f'(x)=0\;\aded\)
+\end{excopy}
+
+The function constructed in Section~7.16 Example~\ich{b} satisfies
+the requirements.
+
+%%%%%%%%%%%%%% 8
+\begin{excopy}
+Let \(V=(a,b)\) be a bounded segment in \(\R^1\).
+Choose segments \(W_n\subset V\) in  such a way that their union $W$ is dense 
+in $V$ and the set \(K = V \setminus W\) has \(m(K)>0\).
+Choose continuous function \(\varphi_n\) so that 
+\(\varphi_n(x)=0\) outside \(W_n\), \(0<\varphi_n(x)<2^{-n}\) in \(W_n\).
+Put \(\varphi = \sum \varphi_n\) and define
+\begin{equation*}
+T(x) = \int_a^x \varphi(t)\,dt \qquad (a<x<b).
+\end{equation*}
+Prove the following statements:
+\begin{itemize}
+\itemch{a} $T$ satisfies the hypothesis of Theorem~7.26, with \(X=V\).
+\itemch{b} $T$ is continuous, \(T'(x)=0\) on $K$, \(m(T(K)) = 0\).
+\itemch{c} If $E$ is a nonmeasurable subset of $K$ 
+           (See Theorem~2.22) and \(A=T(E)\), then \(\chhi_A\) 
+           is Lebesgue measurable but \(\chhi_A \circ T\) is not.
+\itemch{d} The functions \(\varphi_n\) can be so chosen that the resulting $T$
+           is an \emph{infinitely differentiable} homeomorphism of $V$ onto some
+           segment in \(\R^1\) and \ich{c} still holds.
+
+\end{itemize}
+\end{excopy}
+
+Let \(\{q_j\}_{j\in\N}\) be a sequence consisting of all of \(\Q\cap V\).
+Put \(d=b-a\) and let \(W_1 = (a_1,b_1)\) be an open segment such that
+\(q_1 \in W_1\subset V\) and \(d_1 = b_1 - a_1 < 2^{-1}d\).
+By induction, assume \(W_j\) where chosen for \(j<n\).
+Pick the first \(q_k\) in our sequence such that 
+\(q_k \notin \cup_{j<n} W_j\) and choose \(W_n = (a_n,b_n)\) such that
+\begin{align*}
+q_n &\in W_n \subset V \setminus \left(\cup_{j<n} W_j\right) \\
+d_n &= b_n - a_n < 2^{-n} d
+\end{align*}
+Clearly the chosen intervals \(\{W_j\}_{j\in\N}\) are disjoint
+and satisfy the requirements.
+
+We now use Exercise~7.1 in \cite{RudinPMA85}
+and  Example~3.11 (page 40) in \cite{Gelb1996}.
+For each interval \(W_n = (a_n,b_n)\) we define 
+\begin{equation*}
+g_n(x) = \left\{\begin{array}{ll}
+c_n\exp\left((a-b) \,/\, (x-a_n)^2(b_n-x)^2\right) \qquad & a_n < x < b_n \\
+0  & \mathrm{otherwise}.
+\end{array}
+\right.
+\end{equation*}
+and choose \(c_n\) such that \(\varphi_n(x) \leq  2^{-n+1 } < 2^{-n}\).
+Actually 
+\begin{equation*}
+c_n =   2^{-n+1 } \exp\left((b-a) \,/\, (x-a_n)^2(b_n-x)^2\right).
+\end{equation*}
+
+Note that if
+\begin{equation*}
+g_a(x) = 
+\left\{
+\begin{array}{ll}
+e^{-1/(x-a_n)^2} \quad & a_n < x  \\
+0  & \mathrm{otherwise}.
+\end{array}\right.
+\qquad
+g_b(x) = 
+\left\{
+\begin{array}{ll}
+e^{-1/(b_n-x)^2} \quad &  x < b_n \\
+0  & \mathrm{otherwise}.
+\end{array}\right.
+\end{equation*}
+Then \(g_a^{(k)}(a_n) = g_b^{(k)}(b_n) = 0\) for all \(k\in\N\)
+and for \(x\in (a_n,b_n)\) we have
+\begin{align*}
+g_a(x)g_b(x) 
+&= e^{-1/(x-a)^2} e^{-1/(b-x)^2} 
+ = \exp\left(- 1/(x-a)^2 - 1/(b-x)^2\right) \\
+&= \exp\left(\frac{(x-b) - (x-a)}{(x-a)^2 (b-x)^2}\right)
+ = \exp\left(\frac{a-b}{(x-a)^2 (b-x)^2}\right) \\
+&= \varphi_n(x)
+\end{align*}
+Each \(\varphi_n\) is continuous, and since their support sets
+are disjoint, \(\varphi\) is also continuous.
+Now that $T$ is defined we prove the above.
+\begin{itemize}
+
+\itemch{a}
+
+Now we show that $T$
+satisfies Theorem~7.26's requirements.
+\begin{itemize}
+
+\itemch{i} 
+\(X=V\) is a union of open intervals and so $V$ is open.
+The continuity of $T$ follows from continuity of \(\varphi\).
+
+\itemch{ii}
+$X$ is open and so measurable.
+Let \(x_1,x_2\in V=(a,b)\) and  \(x_1 < x_2\).
+There must be some \(W_n = (a_n,b_n) \subsetneq (x_1,x_2)\).
+Since 
+\begin{equation*}
+\int_{W_n} \varphi_n(t)\,dt > 0
+\end{equation*}
+We have \(T(x_1) < T(x_2)\) and so $T$ is injective.
+The fact that \(\varphi\) is continuous
+also implies that $T$ is differentiable on $X$.
+and \(T'(x)=\varphi(x)\) for all \(x\in X\).
+
+\itemch{iii}
+Trivially, \(m(T(V-X))=0\) since \(V-X=\emptyset\).
+\end{itemize}
+
+\itemch{b}
+As previously shown in \ich{a}-\ich{ii}, 
+\(T'(x)=\varphi(x)\) for all \(x\in X\),
+in particular \(T(x)=0\) for \(x\in K\).
+
+\itemch{c}
+Let \(E\subset K\) be a non measurable set.
+then \(A=T(E)\subset T(K)\) and clearly Lebesgue measurable
+since \(m(T(K)) = 0\).
+
+\itemch{d}
+We already took this infinitely differentiability into account
+in our construction of \(\{\varphi_n\}_{n\in\N}\).
+\end{itemize}
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose \(0<\alpha < 1\). Pick $t$ so that \(t^\alpha = 2\). Then
+\(t>2\) and the construction of Example~\ich{b} in Sec.~7.16 can be
+carried out with \(\delta_n = (2/t)^n\). Show that the resulting function $f$
+\index{Lip@\(\Lip\)}
+\index{Lipschitz condition}
+belongs to \(\Lip \alpha\) on \([0,1]\).
+\end{excopy}
+
+For each \(n\in\N\) it is easy to see that
+\begin{equation*}
+\sup_{0\leq x <y\leq1} \frac{|f(y)-f(x)|}{y-x}
+= \frac{f\bigl((2/t)^n/2^n\bigr) - f(0)}{
+        \left((2/t)^n/2^n - 0\right)^\alpha}
+= \frac{2^{-n}}{\left((2/t)^n/2^n\right)^\alpha}
+= \frac{2^{-n}}{t^{-n\alpha}}
+= (t^\alpha/2)^n.
+\end{equation*}
+Since \((t^\alpha/2)=1\) we have \(f_n\in\Lip\alpha\)
+which is a Banach space and closed. Hence \(f\in\Lip\alpha\).
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+If 
+\index{Lip@\(\Lip\)}
+\index{Lipschitz condition}
+\(f\in \Lip 1\) on \([a,b]\), prove that $f$ is absolutely continuous
+and that \(f'\in L^\infty\).
+\end{excopy}
+
+Pick arbitrary \(\epsilon>0\), choose some \(\delta < \epsilon\).
+For any set of disjoint intervals \(\{(\alpha_j,\beta_j)\}_{j\in\N}\)
+such that \(\sum_j (\beta_j - \alpha_j) < \delta\) we have
+\begin{equation*}
+\sum_j |f(\beta_j) - f(\alpha_j)|
+\leq \sum_j 1\cdot|\beta_j - \alpha_j|
+= \sum_j \beta_j - \alpha_j < \delta < \epsilon
+\end{equation*}
+Thus $f$ is absolutely continuous.
+By Theorem~7.18 $f$ is differentiable \aded\ and 
+by \(f\in\Lip 1\) we have \(\|f'\|_{\infty} \leq 1\) and thus
+\(f'\in L^\infty\).
+
+
+%%%%%%%%%%%%%% 11
+\begin{excopy}
+Assume that \(1<p<\infty\), $f$ is absolutely continuous on \([a,b]\),
+\(f'\in L^p\), and \(\alpha = 1/q\) where $q$ is the exponent conjugate to $p$.
+Prove that \(f\in \Lip\alpha\).
+\end{excopy}
+
+{\small (From Curtis T.~McMullen's\\
+\texttt{\scriptsize
+www.math.harvard.edu/{\~{}}ctm/home/text/class/harvard/212a/03/html/home/course/course.pdf})}
+
+If \(a\leq x<y\leq b\) then
+\begin{equation*}
+|f(y)-f(x)| 
+\leq \int_a^b |f'(t)| \cdot \chhi_{[x,y]}\,dt
+\leq \|f'\|_p \cdot \|\chhi_{[x,y]}\|_q 
+=    \|f'\|_p \cdot(y-x)^{1/q}.
+\end{equation*}
+Hence 
+\begin{equation*}
+\frac{|f(y)-f(x)|}{(y-x)^\alpha} < \|f'\|_p < \infty.
+\end{equation*}
+and \(f\in \Lip_\alpha\).
+
+
+
+
+
+%%%%%%%%%%%%%% 12
+\begin{excopy}
+Suppose 
+\label{ex:7.12}
+\(\varphi: [a,b]\to\R^1\) is nondecreasing.
+\begin{itemize}
+
+\itemch{a} 
+Show that there is a left-continuous nondecreasing $f$ on \([a,b]\),
+so that \(\{f\neq\varphi\}\) is at most countable. 
+[Left-continuous means: if \(a<x\leq b\) and \(\epsilon > 0\), then there is 
+a \(\delta>0\) so that \(|f(x) - f(x-t)|<\epsilon\) whenever \(0<t<\delta\).]
+
+\itemch{b}
+Imitate the proof of Theorem~7.18 to show that there is a positive Borel measure
+\(\mu\) on \([a,b]\) for which
+\begin{equation*}
+f(x) - f(a) = \mu([a,x)) \qquad (a\leq x \leq b).
+\end{equation*}
+
+\itemch{c}
+Deduce from \ich{b} that \(f'(x)\) exists \aded \([m]\), 
+that \(f'\in L^1(m)\), and that
+\begin{equation*}
+f(x) - f(a) = \int_a^b f'(t)\,dt + s(x) \qquad (a\leq x \leq b)
+\end{equation*}
+where $s$ is a nondecreasing and \(s'(x)=0\;\aded[m]\).
+
+\itemch{d}
+Show that \(\mu\perp m\) if and only if \(f'(x)=0\;\aded[m]\),
+and that \(\mu \ll m\) if and only if $f$ is AC on \([a,b]\).
+
+\itemch{e}
+Prove that \(\varphi'(x) = f'(x)\;\aded[m]\).
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+If \(x\in(a,b)\) is a point of discontinuity than
+\begin{equation*}
+\sup_{t<x} \varphi(t) < \inf_{t>x} \varphi(t) 
+\end{equation*}
+There could be at most countable number of such discontinuity points.
+Otherwise we have an uncountable sum of positive numbers
+which must be less than \(b-a\).
+Now we define \(f(x) = \varphi(a)\) and for \(x\in(a,b)\)
+\begin{equation} \label{eq:ex7.12e:f}
+f(x) = \sup_{a\leq t < x} \varphi(t).
+\end{equation}
+which is clearly left-continuous and differs from \(\varphi\)
+only where the latter is discontinuous.
+
+\itemch{b}
+Define \((g(x) = f(x) + x\), clearly $g$ is monotonic, one to one and 
+left-continuous. Let \(V\subset (a,b)\) some open set.
+We will show that \(g(V)\) is a Borel set.
+Recalling that a monotonic function can have at most countable
+number of points of discontinuity.
+We can represent $V$ is a countable disjoint union of intervals
+\(V = \disjunion_{j\in\N} I_j\) such that each \(I_j\)
+is open, closed or half open, and $g$ is continuous on it.
+Clearly, \(g(I_j)\) is an interval --- open, closed or half open.
+Thus \(g(V)\) is a Borel set. By being one-to-one, 
+\begin{equation*}
+g\bigl((a,b)\setminus V\bigr) = \bigl(g(a),g(b)\bigr) \setminus g(V) 
+\end{equation*}
+and so \(g(C)\) is a Borel set for any closed set $C$
+and consequently 
+\(g(E)\) is a Borel set for any Borel set $E$.
+
+Now we can define for each Borel set $E$
+\begin{align*}
+\nu(E) &= m\bigl(g(E)\bigr) \\
+\mu(E) &= \nu(E) - m(E).
+\end{align*}
+If follows that for each \(x\in(a,b)\)
+\begin{align*}
+g(x) - g(a) &= \nu([a,x]) \\
+f(x) - f(a) &= \nu([a,x]) - (x-a) = \mu([a,x)).
+\end{align*}
+
+\itemch{c}
+By Lebesgue differentiation theorem (local lemma~\ref{lem:leb:diff})
+\(f'\) exists almost everywhere and \(f'\in L^1([a,b],m)\). Put 
+\begin{equation} \label{eq:ex7.12:sx}
+s(x) = f(x) - f(a) - \int_a^x f'(t)\,dm(t).
+\end{equation}
+By Theorem~7.11 \cite{RudinPMA85} 
+\begin{equation*}
+\frac{d}{dx} \int_a^x f'(t)\,dm(t) = f'(x) \quad\aded
+\end{equation*}
+Hence \(s'(x) = 0\; \aded\).
+
+
+\itemch{d}
+Let 
+\begin{equation*}
+\mu = \mu_a + mu_s \qquad  d\mu = h\,dm + d\mu_s
+\end{equation*}
+be the unique and positive Lebesgue decomposition 
+of Radon-Nikodym Theorem~6.10 \cite{RudinRCA87}. 
+By Theorem~7.14 \cite{RudinRCA87}.
+\begin{equation*}
+\lim_{t\to 0+} \frac{\mu\bigl([x+t)\bigr)}{m\bigl([x+t)\bigr)}
+= \lim_{t\to 0+} \frac{\mu\bigl([x+t)\bigr)}{t}
+= h(x) \quad \aded[m].
+\end{equation*}
+But
+\begin{equation*}
+\lim_{t\to 0+} \frac{\mu\bigl([x+t)\bigr)}{t} = f'(x) \quad \aded[m].
+\end{equation*}
+So by the the uniqueness of $h$, we have \(f' = h\;\aded[m]\).
+Hence, by \eqref{eq:ex7.12:sx} we have \(\mu_s([a,x)] = s(x)\).
+
+\paragraph{Equivalence 1.}
+Assume \(\mu\perp m\), then \(\mu_a = h\,dm \perp m\).
+Since $h$ is positive \(h = 0\;\aded[m]\) and so \(f'=0\;\aded[m]\).
+Conversely, assume  \(f'=0\;\aded[m]\). Then \(\mu_a = h\,dm = 0\)
+and thus \(\mu_a \perp m\) trivially.
+Since \(\mu_s \perp m\) so is \(\mu\).
+
+\paragraph{Equivalence 2.}
+Assume  \(\mu \ll m\). Then $f$ maps nullsets to nullsets and 
+by Theorem~7.18 \cite{RudinRCA87} $f$ is absolutely continuous.
+Conversely, assume $f$ is absolutely continuous.
+then by Theorem~7.18 \cite{RudinRCA87} 
+\begin{equation*}
+f(x) - f(a) = \int_a^x f'(t)\,dt  \qquad a\leq x \leq b
+\end{equation*}
+Thus \(\mu_s = 0\) and so \(\mu = \mu_a\) and \(\mu \ll m\).
+
+\itemch{e}
+We know that by construction \eqref{eq:ex7.12e:f}
+ \(f \leq \varphi\) 
+and \(f = \varphi\;\aded[m]\) and both are nondecreasing.
+Pick \(x\in[a,b]\) such that \(f(x) = \varphi(x)\) and \(f'(x)\) exists.
+Hence if \(h>0\) and \(x\pm h \in [a,b]\) then
+\begin{equation*}
+     \frac{\varphi(x-h) - \varphi(x)}{-h} 
+\leq f'(x) 
+\leq \frac{\varphi(x+h) - \varphi(x)}{h}.
+\end{equation*}
+Therefore
+\begin{align*}
+     \varliminf_{h\to x^-} \frac{\varphi(x+h) - \varphi(x)}{h}
+&\leq \varlimsup_{h\to x^-} \frac{\varphi(x+h) - \varphi(x)}{h} \\
+&\leq f'(x) \\
+&\leq \varliminf_{h\to x^+} \frac{\varphi(x+h) - \varphi(x)}{h}
+\leq \varlimsup_{h\to x^+} \frac{\varphi(x+h) - \varphi(x)}{h}.
+\end{align*}
+
+We will show 
+\begin{equation} \label{eq:ex7.12e:desired}
+\varlimsup_{h\to x^+} \frac{\varphi(x+h) - \varphi(x)}{h} = f'(x).
+\end{equation}
+The analog equality
+\begin{equation*}
+\varliminf_{h\to x^-} \frac{\varphi(x+h) - \varphi(x)}{h}  = f'(x)
+\end{equation*}
+can be shown with similar arguments. Thus the above inequalities
+are actually equalities. Hence \(\varphi'(x) = f'(x)\).
+
+By definition of \(\varliminf\), we have
+a strictly decreasing sequence 
+\(\{h_j\}_{j\in\N}\) 
+of positive numbers
+such that
+\begin{align*}
+\lim_{j\to\infty} h_j &= 0 \\
+\lim_{j\to\infty} \frac{\varphi(x+h_j) - \varphi(x)}{h_j}
+&=\varlimsup_{h\to x^+} \frac{\varphi(x+h) - \varphi(x)}{h}
+\end{align*}
+By the construction of $f$ in \eqref{eq:ex7.12e:f} 
+the ``modified'' set \(S=\{x\in[a,b]: f(x)\neq \varphi(x)\}\)
+is countable.
+We also note that for \(\varphi(x_1) \leq f(x_2)\)
+whenever \(a\leq x_1\leq x_2 \leq b\).
+Thus in each segment \(H_n = [x + h_{n}, x + h_{n-1}]\)
+we can find a sequence \(G_n = \{g_j\}_{j\in\N}\) such that
+\begin{align*}
+f(g_j) &= \varphi(g_j) \qquad (\mathrm{since}\;g_j\notin S) \\
+\lim_{j\to\infty} g_j &= x + h_{n} 
+\end{align*}
+Hence
+\begin{equation*}
+\lim_{j\to\infty} f(g_j) \geq \varphi(x + h_{n})
+\end{equation*}
+and therefore
+\begin{equation*}
+\lim_{j\to\infty} \frac{\varphi(g_j) - \varphi(x)}{g_j - x}
+ \geq \lim_{j\to\infty} \frac{f(g_j) - f(x)}{g_j - x}
+ \geq \frac{\varphi(x+h_{n}) - \varphi(x)}{h_{n}}.
+\end{equation*}
+By a diagonal process we can pick 
+a sequence \(\{x_j\}_{j\in\N}\) such that for all $n$
+\begin{align*}
+x_n &\in G_n \subset H_n \\
+\lim_{n\to\infty} \frac{f(x_n) - f(x)}{x_n - x}
+&\geq  \frac{\varphi(x+h_{n}) - \varphi(x)}{h_{n}} + \frac{1}{n}
+\end{align*}
+Clearly 
+\begin{align*}
+\lim_{n\to\infty} x_n &= x \\
+f'(x) &= \lim_{n\to\infty} \frac{f(x_n) - f(x)}{x_n - x}
+ \geq  \lim_{n\to\infty} \frac{\varphi(x+h_{n}) - \varphi(x)}{h_{n}}.
+\end{align*}
+Hence \eqref{eq:ex7.12e:desired} is true.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 13
+\begin{excopy}
+Let \(BV\) be the class of all $f$ on \([a,b]\) that have bounded variation
+on \([a,b]\), as defined after Theorem~7.19. Prove the following statements.
+\begin{itemize}
+\itemch{a} 
+Every monotonic bounded function on \([a,b]\) is in \(BV\).
+
+\itemch{b}
+If \(f \in BV\) is real, there exists bounded monotonic functions
+\(f_1\) and \(f_2\) so that \(f=f_1-f_2\).\\
+\emph{Hint}: Imitate the proof of Theorem~7.19.
+
+\itemch{c}
+If \(f\in BV\) is left-continuous then \(f_1\) and \(f_2\) 
+can be chosen in \ich{b} so as to be also left-continuous.
+
+\itemch{d}
+If \(f\in BV\) is left-continuous then there is a Borel measure \(\mu\) 
+on \([a,b]\) that satisfies
+\begin{equation*}
+f(x) - f(a) = \mu([a,x)) \qquad (a\leq x \leq b);
+\end{equation*}
+\(\mu\ll m\) if and only if $f$ is AC on \([a,b]\).
+
+\itemch{e}
+Every \(f\in BV\) is differentiable \(\aded[m]\), and \(f'\in L^1(m)\).
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+\itemch{a}
+Let $f$ be monotonic on \([a,b]\).
+If 
+\begin{equation*}
+a\leq t_0 < t_1 < \cdots < t_N\leq b
+\end{equation*}
+then clearly 
+\begin{equation*}
+\sum_{j=1}^N |f(t_j) - f(t_{j-1})|
+= \left| \sum_{j=1}^N \bigl(f(t_j) - f(t_{j-1})\bigr) \,\right|
+= |f(t_N)-f(t_0)|.
+\end{equation*}
+Therefore,
+\begin{equation*}
+\sup_{a=t_0 < t_1 < \cdots < t_N=b} \sum_{j=1}^N |f(t_j) - f(t_{j-1})|
+= |f(b)-f(a)|
+\end{equation*}
+
+\itemch{b}
+By Theorem~7.19 \cite{RudinRCA87}
+if
+\begin{equation}  \label{eq:Fx:ex:7.13b}
+F(x) = 
+\sup_{a=t_0 < t_1 < \cdots < t_N=x} \sum_{j=1}^N |f(t_j) - f(t_{j-1})|
+= |f(b)-f(a)|
+\end{equation}
+then \(F\pm f\) are nondecreasing and continuous.
+Now
+\begin{equation*}
+f_1 = (F+f)/2 \qquad f_2 = -(F-f)/2
+\end{equation*}
+satisfy the requirements.
+
+\itemch{c}
+Assume $f$ is left-continuous, then $F$ defined in \eqref{eq:Fx:ex:7.13b}
+is left-continuous as well. To show this pick \(x\in[a,b]\) and \(\epsilon>0\).
+Take \(\delta>0\) such that \((a\leq x-\delta\) and 
+\begin{equation*}
+\sum_{j=1}^n |f(b_j) - f(a_j)| < \epsilon
+\end{equation*}
+whenever 
+\begin{equation*}
+\sum_{j=1}^n b_j - a_j < \delta \qquad  \forall j\, a\leq a_j\leq b_j\leq b
+\end{equation*}
+Now we can see that 
+\begin{equation*}
+F(x-\delta) + \epsilon \geq F(x).
+\end{equation*}
+Thus our construction satisfy the left-continuous requirement.
+
+\itemch{d}
+Assume such required Borel measure \(\mu\) exists.
+Now $f$ maps sets of measure $0$ to sets of measure $0$ since 
+\(\mu \ll m\). By Theorem~7.18 \cite{RudinRCA87} $f$ is absolutely continuous.
+
+Conversely, assume $f$ is absolutely continuous.
+By Theorem~7.20 \cite{RudinRCA87} \(f'\in L^1(m)\) and we can define
+\begin{equation*}
+\mu(E) = \int_E f'(x)\,dm(x)
+\end{equation*}
+for each Borel set $E$. Now \(\mu\) is a Borel measure and \(\mu \ll m\).
+
+\itemch{e}
+By \ich{b} we can represent \(f=f_1-f_2\) where \(f_1,f_2\) are monotonic.
+As we saw in Exercise~12\ich{a} these functions of at most countable
+number of points where they are not continuous.
+By Exercise~\ref{ex:7.12}\ich{c}
+\(f_j'\) exist \aded\ and \(f_j'\in L^1(m)\) for \(j=1,2\)
+and so is \(f' = f_1' - f_2'\).
+
+\paragraph{Note:} Here we \emph{cannot} show that 
+\(f(x)-f(a) = \int_a^x f't)\,dt\). Absolute continuity is missing for this.
+\end{itemize}
+
+%%%%%%%%%%%%%% 
+\begin{excopy}
+Show that the product of two absolutely continuous functions on \([a,b]\)
+is absolutely continuous. Use this to derive a theorem about integration
+by parts.
+\end{excopy}
+
+Let \(f_1,f_2\) be two absolutely continuous functions and \(\epsilon>0\).
+Thus there is a \(\delta>0\) such that 
+\begin{equation*}
+\sum_{j=1}^N |f(t_j) - f(t_{j-1})|<\epsilon
+\end{equation*}
+if 
+\begin{equation} \label{eq:ex7.14}
+\sum_{j=1}^N |t_j - t_{j-1}|<\delta.
+\end{equation}
+Put \(f = f_1\cdot f_2\) and 
+for abbreviation put \(a_k = f_1(a_k)\) and \(b_k = f_2(a_k)\). 
+Using:
+\begin{align*}
+|f(t_j) - f(t_{j-1})|
+&= |(f_1\cdot f_2)(t_j) - (f_1\cdot f_2)(t_{j-1})|
+ = |a_j b_j - a_{j-1}b_{j-1}| \\
+&= \left|
+    \bigl(a_{j-1} + (a_j - a_{j-1})\bigr)
+    \bigl(b_{j-1} + (b_j - b_{j-1})\bigr) - a_{j-1}b_{j-1}
+   \right| \\
+&= \bigl|
+      (a_j - a_{j-1})b_{j-1} 
+    + (b_j - b_{j-1})a_{j-1} 
+    + (a_j - a_{j-1}) (b_j - b_{j-1}) 
+   \bigr| \\
+&\leq 
+    |a_j - a_{j-1}|\cdot \|f_2\|_\infty
+    + |b_j - b_{j-1}|\cdot \|f_1\|_\infty
+    + |a_j - a_{j-1}|\cdot |b_j - b_{j-1}| \\
+&\leq 
+    |a_j - a_{j-1}|\cdot 3\|f_2\|_\infty
+    + |b_j - b_{j-1}|\cdot \|f_1\|_\infty
+\end{align*}
+Assuming \eqref{eq:ex7.14} we have:
+\begin{align*}
+\sum_{j=1}^N |f(t_j) - f(t_{j-1})|
+&\leq
+    3\|f_2\|_\infty \sum_{j=1}^N  |a_j - a_{j-1}|
+  + \|f_1\|_\infty \sum_{j=1}^N  |b_j - b_{j-1}|  \\
+&\leq \left(\|f_1\|_\infty + 3\|f_2\|_\infty \right) \epsilon
+\end{align*}
+Thus $f$ is absolutely continuous as well.
+
+Now assume \(u,v: [a,b]\to\C\) are absolutely continuous functions.
+By the above result, they are simultaneously differentiable almost everywhere.
+Hence by Leibnitz's rule
+\begin{equation*}
+\frac{d\bigl(f(x)g(x)\bigr)}{dx} = f'(x)g(x) + f(x)g'(x) \; \aded
+\end{equation*}
+Consequently
+\begin{equation*}
+f(b) - f(a) =
+\int_a^b \frac{d\bigl(f(x)g(x)\bigr)}{dx}\,dx 
+= \int_a^b f'(x)g(x)\,dx + \int_a^b f(x)g'(x)\,dx.
+\end{equation*}
+
+
+
+%%%%%%%%%%%%%% 15
+\begin{excopy}
+Construct a monotonic functions $f$ on \(\R^1\) so that \(f'(x)\) exists
+(finitely) for every \(x\in \R^1\), but \(f'\) is not a continuous function.
+\end{excopy}
+
+Based on \cite{Gelb1996} Chapter~3 counterexample~2 page~36. Let
+\begin{equation*}
+f(x) = \left\{
+\begin{array}{ll}
+x^2\sin(1/x) - 2x^2 + x \quad & \mathrm{if}\; x < 0 \\
+0            \quad & \mathrm{if}\; x =  0 \\
+x^2\sin(1/x) + 2x^2 + x \quad & \mathrm{if}\; x > 0
+\end{array}
+\right.
+\end{equation*}
+Now
+\begin{equation*}
+f'(x) = \left\{
+\begin{array}{ll}
+2\bigl(x\sin(1/x) + 2|x|\bigr) + \bigl(2-\cos(1/x)\bigr)
+    \quad & \mathrm{if}\; x\neq 0 \\
+1   \quad & \mathrm{if}\; x=0 \\
+\end{array}
+\right.
+\end{equation*}
+Clearly \(f'>0\) but is not continuous in $0$ since \(\cos(1/x)\) is not.
+
+
+%%%%%%%%%%%%%%
+\begin{excopy}
+Suppose \(E\subset [a,b]\), \(m(E)=0\).
+Construct an absolutely continuous monotonic function $f$ on \([a,b]\)
+so that \(f'(x)=\infty\) at every \(x\in E\).
+
+\emph{Hint}: \(E \subset \cap V_n\), \(V_n\) open, \(m(V_n)<2^{-n}\).
+Consider the sum of characteristic functions of these sets.
+\end{excopy}
+
+Following the hint.
+Let \(V_n\) as suggested, but also require \(V_{n+1}\subset V_n\).
+This could be easily done, by possibly replacing
+\begin{equation*}
+V_n \leftarrow \cap_{k\leq n} V_n
+\end{equation*}
+Define
+\begin{equation*}
+g(x) = \sum_{n\in\N} \chhi_{V_n}
+\end{equation*}
+Thus \(g(x)=0\) iff \(x\in E\) and \(g\in L^1([a,b])\).
+Now define
+\begin{equation*}
+f(x) = \int_a^x g(t)\,dt.
+\end{equation*}
+By Exercise~10\ich{a} of Chapter~6 \cite{RudinRCA87}
+$g$ is uniformly integrable (by itself).
+Thus $f$ is absolutely continuous.
+Now let \(x\in E\) and \(M\in\N\).
+There is some \(\delta>0\) such that
+\((x-\delta,x+\delta) \subset V_M\) and 
+\begin{equation*}
+\frac{f(x+h) - f(x)}{h} 
+= \frac{1}{h}\int_x^{x+h} g(t)\,dt
+\geq \frac{1}{h}\int_x^{x+h} \sum_{n=1}^M \chhi_{V_n}\,dt
+= Mh/h = M.
+\end{equation*}
+Hence \(f'(x)=\infty\).
+
+
+
+ By Theorem~7.19
+$f$ is differentiable \aded\ and
+\begin{equation*}
+f(x) = \int_a^x f'(t)\,dt \qquad \forall x\in[a,b]
+\end{equation*}
+
+
+%%%%%%%%%%%%%% 17
+\begin{excopy}
+Suppose \(\{\mu_n\}\) is a sequence of positive Borel measures on \(\R^k\) and
+\begin{equation*}
+\mu(E) = \sum_{n=1}^\infty \mu_n(E).
+\end{equation*}
+Assume \(\mu(\R^k)<\infty\). Show that \(\mu\) is a Borel measure.
+What is the relation between Lebesgue decomposition of the \(\mu_n\) 
+and that of \(\mu\)?
+
+Prove that 
+\begin{equation*}
+(D\mu)(x) = \sum_{n=1}^\infty (D\mu_n)(x) \quad \aded[m].
+\end{equation*}
+Derive corresponding theorems for sequences \(\{f_n\}\) 
+of positive nondecreasing functions on \(\R^1\) and their sums \(f=\sum f_n\).
+\end{excopy}
+
+Let \(\mu_n = \mu_{n,a} + \mu_{n,s}\) be the Lebesgue decomposition.
+Clearly 
+\(\sum_{n=1}^\infty \mu_{n,a}\)
+and
+\(\sum_{n=1}^\infty \mu_{n,s}\)
+are positive Borel measures and
+\begin{equation*}
+\sum_{n=1}^\infty \mu_{n,a} \ll m 
+\qquad
+\sum_{n=1}^\infty \mu_{n,s} \perp m.
+\end{equation*}
+By uniqueness, these make the Lebesgue decomposition of \(\mu\). 
+
+By Theorem~7.14 \cite{RudinRCA87} and the above observation, if 
+\(d\mu = f\,dm + d\mu_s\) and
+\(d\mu_n = f_n\,dm + d\mu_{n,s}\)
+then 
+\begin{equation*}
+(D\mu)(x) = f(x) = \sum_{n=1}^\infty f_n(x) = \sum_{n=1}^\infty (D\mu_n)(x) 
+\quad\aded[m].
+\end{equation*}
+
+Say \(\{f_n\}_n\in\N\) are positive nondecreasing functions on \(\R^1\)
+such that 
+\begin{equation*}
+f = \sum_{n=1}^\infty f_n \in L^\infty(\R,m).
+\end{equation*}
+Then
+\begin{equation*}
+f'(x) = \sum_{n=1}^\infty f_n'(x) \qquad \aded[m].
+\end{equation*}
+This can be shown by using Exercise~12 and replacing $a$ and \(f(a)\)
+by \(-\infty\) and 
+\begin{equation*}
+\lim_{t\to-\infty} f(t) = \inf_{t\in\R} f(t).
+\end{equation*}
+
+
+%%%%%%%%%%%%%% 18
+\begin{excopy}
+Let \(\varphi_0(t) = 1\) on \([0,1)\), \(\varphi_0(t) = -1\)
+on \([1,2)\), extended \(\varphi_0\) to \(\R^1\) so as to have a period $2$,
+and define \(\varphi_n(t) = \varphi_0(2^n t)\), \(n=1,2,3,\ldots\)
+
+\textsl{
+Assume that \(\sum |c_n|^2 < \infty\) and prove that the series
+\begin{equation} \label{eq:ex7.18}
+\sum_{n=1}^\infty c_n\varphi_n(t)
+\end{equation}
+converges then for almost every $t$.
+}
+
+Probabilistic Interpretation: The series \(\sum(\pm c_n)\) converges
+with probability $1$.\\
+\emph{Suggestion}: \(\{\varphi_n\}\) is orthonormal on \([0,1]\), 
+hence \eqref{eq:ex7.18} is the Fourier series of some \(f\in L^2\).
+If \(a = j\cdot 2^{-N}\), \(b = (j+1)\cdot 2^{-N}\), \(a<t<b\),
+and \(s_N = c_1\varphi_1 + \cdots + c_N\varphi_N\), then, for \(n>N\),
+\begin{equation*}
+s_N(t) = \frac{1}{b-a} \int_a^b s_N\,dm = \frac{1}{b-a} \int_a^b s_n\,dm,
+\end{equation*}
+and the last integral converges to \(\int_a^b f\,dm\), as \(n\to\infty\).
+Show that \eqref{eq:ex7.18} at almost every Lebesgue point of $f$.
+\end{excopy}
+
+If \(m<n\) then within any segment \([j 2^{-n},  (j+1) 2^{-n}]\) clearly
+\(\varphi_m\) is constant, while \(\varphi_n\) equally alternates signs
+in \(2^{n-m}\) subsegments. Thus \(\varphi_m \perp \varphi_n\).
+This argument also shows that the above equality of the integrals holds.
+
+The existence of $f$ is implied by the completeness of 
+the Hilbert space \(L^2([0,1],m)\).
+
+Let $x$ be a Lebesgue point
+\index{Lebesgue point}
+of $f$ such that \(x\in B\) --- the countable \(B = \{j2^{-n}: j,n\in\Z^+\}\). 
+We will define
+nicely shrinking sets
+\index{nicely shrinking sets}
+for $x$ with \(\alpha = 1/2\). 
+Let \(r_n=2^{-n}\) 
+and pick \(E_n = [jr_n/2, (j+1)r_n/2]\subset [0,1]\)
+such that \(x\in E_n\). 
+We have 
+\(E_n \subset B(x,r_n)\) and
+\begin{equation*}
+m(E_n) = r_n/2 = \alpha r_n = m\bigl(B(x,r_n)\bigr).
+\end{equation*}
+Now by the above observation and Theorem~7.10 \cite{RudinRCA87}
+\begin{equation*}
+f(x) 
+= \lim_{n\to\infty} \frac{1}{m(E_n)} \int_{E_n} f\,dm
+= \lim_{n\to\infty} s_n(x).
+\end{equation*}
+Thus the series converges for all Lebesgue points except for at most 
+a countable set.
+
+
+%%%%%%%%%%%%%% 19
+\begin{excopy}
+Suppose $f$ is continuous on \(\R^1\), \(f(x)>0\) if \(0 < x < 1\), \(f(x)= 0\)
+otherwise. Define
+\begin{equation*}
+  h_c(x) = \sup \{n^c f(nx): n = 1,2,3,\ldots\}.
+\end{equation*}
+Prove that
+\begin{itemize}
+\itemch{a} \(h_c\) is in \(L^1(\R^1)\) if \(0<c<1\),
+\itemch{b} \(h_1\) is in weak \(L^1\) but not in \(L^1(\R^1)\),
+\itemch{c}  \(h_c\) is not weak \(L^1\) if \(c>1\).
+\end{itemize}
+\end{excopy}
+
+\textbf{Remimder:} A function $f$ is 
+\emph{weak} \(L^1\)\
+\index{weak L1@weak \(L^1\)}
+if 
+\begin{equation*}
+\lambda\cdot m\left( \{x: |f(x)| > \lambda\}\right)
+\end{equation*}
+is a bounded function of \(\lambda\).
+
+For abbreviation we put \(M = \|f\|_\infty\).
+For any $c$ we have.
+\begin{align*}
+\int_{\R^1} |h_c(t)|\,dt
+&=    \int_0^1 h_c(t)\,dt
+ =    \sum_{m=1}^\infty \int_{1/(m+1)}^{1/m} h_c(t)\,dt \\
+&=    \sum_{m=1}^\infty \int_{1/(m+1)}^{1/m} 
+      \bigl(\sup_{n\in\N} n^c f(nt)\bigr)\,dt 
+ =    \sum_{m=1}^\infty \int_{1/(m+1)}^{1/m} 
+      \bigl(\sup_{1\leq n\leq m+1} n^c f(nt)\bigr)\,dt
+\end{align*}
+and also put \(I_m=[1/(m+1),1/m]\)
+the mid-third \(K= [1/2,2/3]\) and using continuity, let 
+\begin{equation*}
+T = \inf\{f(x): x\in K\} = \min\{f(x): x\in K\} > 0.
+\end{equation*}
+
+\begin{itemize} 
+\itemch{a}
+If \(0<c<1\) then
+\begin{align*}
+\int_{\R^1} |h_c(t)|\,dt
+&\leq \sum_{m=1}^\infty \int_{1/(m+1)}^{1/m} (m+1)^c M\,dt \\
+&=    M \sum_{m=1}^\infty (m+1)^c \left(\frac{1}{m+1} - \frac{1}{m}\right) 
+ =    M \sum_{m=1}^\infty (m+1)^c \frac{1}{m(m+1)} \\
+&=    M \sum_{m=1}^\infty m^{-1}(m+1)^{c-1} \\
+&\leq M \sum_{m=1}^\infty (m+1)^{c-2} \\
+&\leq M \int_1^\infty x^{c-2}\,dx 
+=     \frac{M}{c-1}x^{c-1}\bigm|_1^\infty = M(1-c) < \infty.
+\end{align*}
+Hence \(h_c\in L^1(\R)\).
+
+\itemch{b}
+clearly \(m\cdot I_{2m} \subset K\) for 
+any \(m\geq 1\). Thus we have the following  ``generous'' estimation:
+%  (m/2) [1/(m+1),1/m]  \subset [1/3,2/3]
+\begin{align*}
+\int_{\R^1} |h_1(t)|\,dt
+&\geq \sum_{m=1}^\infty \int_{I_m} h_1(t)\,dt 
+ \geq \sum_{m=1}^\infty \int_{I_{2m}} h_1(t)\,dt 
+ \geq \sum_{m=1}^\infty \int_{I_{2m}} 
+      \bigl(\sup_{1\leq n\leq 2m+1} n^1 f(nt)\bigr)\,dt \\
+&\geq \sum_{m=1}^\infty \int_{I_{2m}} m T 
+ =    T \sum_{m=1}^\infty m \ell(I_{2m})  
+ =    T \sum_{m=1}^\infty m \frac{1}{2m(2m+1)} \\
+&=    (T/2) \sum_{m=1}^\infty  \frac{1}{2m+1}
+ \geq (T/2) \sum_{m=1}^\infty  \frac{1}{2m+2}
+ =    (T/4) \sum_{m=2}^\infty  \frac{1}{m} = \infty.
+\end{align*}
+Hence \(h_1 \notin L^1(\R)\).
+
+To show that \(h_1\) is weak \(L^1\) we first assume that \(\lambda < M\).
+Then
+\begin{equation*}
+\lambda \cdot m\bigl( \{x\in\R: |h_1(x)| > \lambda\}\bigl)
+\leq M \cdot \ell([0,1]) = M.
+\end{equation*}
+Now assume that \(\lambda \geq M\). If \(|h_1(x)|> \lambda\)
+then \(n\cdot f(nx) > \lambda\) for some $n$. 
+Hence \(nM > \lambda\) and  \(x < 1/n\).
+Thus \(n \geq \lfloor \lambda/M \rfloor \geq 1\) and 
+\begin{equation*}
+0 < x < 1/\lfloor \lambda/M \rfloor.
+\end{equation*}
+Since
+\begin{equation*}
+\lambda < \left(\lfloor \lambda/M\rfloor + 1\right)M 
+        \leq 2 \lfloor \lambda/M\rfloor M 
+\end{equation*}
+we can estimate
+\begin{align*}
+\lambda \cdot m\bigl( \{x\in\R: |h_1(x)| > \lambda\}\bigl) 
+&<  \lambda /\lfloor \lambda/M \rfloor < 2M.
+\end{align*}
+In both cases the expression is bounded for any \(\lambda\) and 
+\(h_1\) is weak \(L^1\).
+
+\itemch{c}
+By checking odd and even cases \(\lfloor n/2\rfloor I_n \subset K\)
+for all \(n\geq 2\). 
+It is sufficient to consider \(\lambda \geq T\).
+If 
+\begin{equation*}
+n \geq 2\left\lceil \left(\frac{\lambda}{T}\right)^{1/c} \right\rceil
+  \geq        \left(\frac{\lambda}{T}\right)^{1/c} 
+\end{equation*}
+then
+\begin{equation*}
+n^c T > \lambda.
+\end{equation*}
+Therefore if \(x \in I_{2n+1} \cup I_{2n}\) then \(nx \in K\) 
+and \(h_c(x) \geq \lambda\), consequently
+\begin{equation*}
+(0,1/2n] \subset \{x\in\R: h_c(x)> \lambda\}.
+\end{equation*}
+Now since \(\lambda/T \geq 1\) we see that
+\begin{align*}
+\lambda \cdot m\bigl( \{x\in\R: |h_1(x)| > \lambda\}\bigl) 
+&\geq \lambda \cdot \ell\bigl((0,1/n]\bigr) \\
+&\geq \lambda \bigm/ 
+      \left\lceil (\lambda/T)^{1/c} \right\rceil 
+ \geq \lambda \bigm/ 2 (\lambda/T)^{1/c} \\
+&= \left(T^{-c}/2\right) \lambda^{1-1/c}
+\end{align*}
+is clearly unbounded for \(\lambda\).
+Hence \(h_c\) is not weak \(L^1(\R)\).
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 20
+\begin{excopy}
+\begin{itemize}
+\itemch{a}
+For any set \(E\subset \R^2\), the boundary \(\partial E\) of $E$ is,
+by definition the closure of $E$ minus the interior of $E$. Show that
+$E$ is Lebesgue measurable whenever \(m(\partial E) = 0\).
+
+\itemch{b}
+Suppose that $E$ is the union of a (\emph{possibly uncountable}) collection
+of \emph{closed} discs in \(\R^2\) whose radii are at least $1$.
+Use \ich{a} to show that $E$ is Lebesgue measurable.
+
+\itemch{c} 
+Show that the conclusion of \ich{b} is true even when the
+radii are unrestricted.
+
+\itemch{d}
+Show that some unions of closed discs of radius $1$
+are not Borel sets (See Sec.~2.21.)
+
+\itemch{e}
+Can discs be replaced by triangles, rectangles, arbitrary polygons, etc.,
+in all this?
+What is the relevant geometric property?
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+
+\itemch{a}
+For every set $E$ we have
+\begin{equation*}
+E = \inter{A} \disjunion (E \cap \partial E).
+\end{equation*}
+Now if \(m(\partial E) = 0\)
+then also \(m(E \cap \partial E) = 0\) and thus $E$ is measurable
+as a union of two measurable sets.
+
+
+\itemch{b}
+
+{\small Using a hint of Dmitry Ryabogin
+see 
+\linebreak[1]
+\texttt{http://www.math.ksu.edu/\~{}ryabs/tar13.pdf}
+\linebreak[1]
+or
+\texttt{http://www.math.ksu.edu/\~{}ryabs/tar13.dvi}{}.}
+
+Let \(\{D_j\}_{j\in J}\) be a family of closed discs
+with radii \(\geq 1\). 
+Let \(U = \cup_{j\in J} D_j\) and \(V = \cup_{j\in J} \inter{D_j}\).
+Let $Y$ be the boundary of the $U$. Since $Y$ is closed, it is measurable.
+Assume by negation that \(m(Y)>0\). 
+By Lebesgue's density theorem~7.7 \cite{RudinRCA87}
+there are points (actually almost all)
+\(b\in Y\) such that their denisty is $1$.
+Pick arbitrary \(b\in Y\) and let \(\iota = 1/4\)
+(Actually and value \(0 < \iota < 1/2\) will do).
+We will show that the density 
+\begin{equation*}
+\lim_{r\to 0^+} \frac{m\bigl(Y\cap B(b,r)\bigr)}{m(B_r)} \leq 1 - \iota < 1
+\end{equation*}
+which will provide the desired contradiction.
+Let \(0<r<\iota\) and \(0<\epsilon<r\).
+Since $b$ is a boundary point,
+there exist some disc with radius \(\rho\geq 1\)
+whose center $c$ such that \(\|b-c\| < \rho + \epsilon\).
+\Wlogy, assume \(b=(0,0)\) and \(c=(\rho + \epsilon, 0)\).
+Let $S$ be the intersection
+of the discs \(B(b,r)\) and \(B(c,\rho + \epsilon)\).
+These boundaries of these discs intersects in two points
+\((r\cos\alpha, \pm r \sin\alpha)\). Denote the following points
+\begin{alignat*}{2}
+Q &= (r\cos\alpha, r \sin\alpha) & & \qquad\textrm{Positive intersection} \\
+P &= (r\cos\alpha, 0)            & & \qquad\textrm{Projection of\ }\; Q \\
+A &= (\epsilon, 0)               & & \qquad\textrm{Nearest point of}\; 
+                                     B(c,\rho+\epsilon)\;\textrm{to}\; b \\
+R &= (r, 0)
+                                 & & \qquad\textrm{Nearest point of}\; 
+                                     B(b,r)\;\textrm{to}\; c \\
+\end{alignat*} 
+Now we estimate the area which is the measure of the intersection
+\begin{align*}
+m\bigl(B(b,r) \cap B(c,\rho + \epsilon)\bigr)
+&= 2m\bigl(B(b,r) \cap B(c,\rho + \epsilon) 
+           \cap \{(x,y)\in\R^2: y\geq 0\} \bigr) \\
+&\geq 2 m\bigl(\vartriangle(A,R,Q)\bigr) 
+ \geq 2 m\bigl(\vartriangle(b,R,Q)\bigr) 
+ \geq 2 m\bigl(\vartriangle(P,R,Q)\bigr) \\
+&= 2 \frac{\|P-R\|\cdot \|Q-P\|}{2}
+ = r(1-\cos\alpha)\cdot r\sin\alpha.
+\end{align*}
+
+To use this estimatation, we need to see how \(\alpha\)
+that clearly satisfies \(0<\alpha < \pi/2\)
+depends on $r$, \(\rho\) and \(\epsilon\).
+Equating the square distance of \(\overline{Qc}\) by Pythagoras
+\begin{equation*}
+\rho^2 = \|P-c\|^2 + \|Q-P\|^2 
+= \bigl((\rho+\epsilon)-r\cos\alpha\bigr)^2 +(r\sin\alpha)^2
+= (\rho+\epsilon)^2-2r(\rho+\epsilon)\cos + r^2
+\end{equation*}
+hence
+\begin{equation*}
+\cos\alpha = \frac{r^2 + (\rho+\epsilon)^2 - \rho^2}{2r(\rho+\epsilon)} > 0
+\end{equation*}
+and so
+\begin{equation*}
+\lim_{\epsilon\to 0^+} \cos\alpha = r/2\rho \leq r/2.
+\end{equation*}
+For each (sufficiently small) \(r>0\), We can pick 
+a disc \(D_{j(r)} = D_j\) of the family with distance of 
+\(\epsilon\geq 0\) to $x$ 
+(radius \(\rho\) and center $c$ such that \(\|c-x\| = \rho+\epsilon\))
+such that \(\alpha_r = \alpha > \pi/2 - r\).
+
+We start estimating the density of $Y$ in $x$. 
+We note that \(U \subset \inter{V} \subset Y\),
+hence \(U \cap Y = \emptyset\).
+\begin{equation} \label{eq:ex7.20:DYx}
+D_Y(x) = 
+\lim_{r\to0+} \frac{m\bigl( B(x,r) \cap Y\bigr)}{m(B_r)}
+\leq
+1 - \lim_{r\to0+} \frac{m\bigl( B(x,r) V\bigr)}{m(B_r)}\;.
+\end{equation}
+Focusing on the last limit 
+\begin{align*}
+\lim_{r\to 0+} \frac{m\bigl( B(x,r) \cap V\bigr)}{m(B_r)}
+&\geq \lim_{r\to 0+} \frac{m\bigl( B(x,r) \cap D_{j(r)}\bigr)}{m(B_r)} 
+ \geq \lim_{r\to 0+} \frac{r^2(1-\cos\alpha_r)\sin\alpha_r}{\pi r^2} \\
+&\geq \lim_{r\to 0+} (1-\cos\alpha_r)\sin\alpha_r / \pi = 1/\pi > 0.
+\end{align*}
+Returning to \eqref{eq:ex7.20:DYx} we see that 
+\begin{equation*}
+D_Y(x) \leq 1 - 1/\pi < 1.
+\end{equation*}
+which is the the desired contradiction.
+
+
+\itemch{c}
+The statement of \ich{b} can 
+be trivially to any lower bound \(r\geq 0\) instead of $1$ for the radii.
+So now if \calF\ is any collection if closed circles,
+let \(\calF(r)\) be the sub-collection consisting of closed circles 
+of \calF\ whose radii is at least $r$.
+Now since
+\begin{equation*}
+\calF = \cup_{n=1}^\infty \calF(1 - 1/n)
+\end{equation*}
+we have
+\begin{equation*}
+\bigcup_{C\in\calF} C
+= \cup_{n=1}^\infty \left(\bigcup_{C\in \calF(1 - 1/n)} C\right).
+\end{equation*}
+Thus any union of closed circles, is a countable union of 
+Lebesgue measurable sets
+and so the union is Lebesgue measurable as well.
+
+\itemch{d}
+Pick a non measurable set \(A\subset \R^1\). Now let
+\begin{equation*}
+U 
+= \cup_{a\in A} B\bigl((a,1),1\bigr)
+= \cup_{a\in A} \{(x,y)\in\R^2: (x-a)^2+(y-1)^2 \leq 1\}.
+\end{equation*}
+Assume by negation that $U$ is a Borel set. Then so would be
+\begin{equation*}
+A \times \{0\} = U \cap \left(\R\times \{0\}\right).
+\end{equation*}
+Now $A$ is generated by a countable sequence of countable unions
+and countable intersections of the 
+\(\sigma\)-algebra base of open sets. Restricting these open sets to \(\R^1\)
+results with open sets in \(\R^1\). Producing the same countable processes
+in \(\R^1\) now generates $A$ that must be Borel, which is a contradiction.
+
+
+\itemch{e}
+Instead of disc, the required property is that the geometric shape
+would have a lower bound on the internal angles. Not ``too accute'' angle.
+Thus perfect polygons would work.
+\end{itemize}
+
+%%%%%%%%%%%%%% 21
+\begin{excopy}
+  If $f$ is a real function on \([0,1]\) and
+\begin{equation*}
+  \gamma(t) = t + if(t)
+\end{equation*}
+the length of the graph of $f$ is, by definition, the total variation
+of \(\gamma\) on \([0,1]\). Show that this length is finite if and
+only if \(f\in BV\).  (See Exercise~13.)  Show that it is equal to
+\begin{equation*}
+  \int_0^1 \sqrt{1 + [f'(t)]^2}\,dt
+\end{equation*}
+if $f$ is absolutely continuous.
+\end{excopy}
+
+
+We will deal with more general case of a curve, 
+following Theorem~(8.4)(iii) of \cite{Saks37}.
+
+\begin{llem}
+Let \(\phi:[0,1]\to \R^2\) be a continuous curve given by 
+\(\phi(t) = \bigl(x(t),y(t)\bigr)\).
+Let
+\begin{equation*}
+d(t_0,t_1) = \|\phi(t_1) - \phi(t_0)\| = 
+\sqrt{\bigl(x(t_1) - x(t_0)\bigr)^2 + \bigl(y(t_1) - y(t_0)\bigr)^2}
+\qquad (0\leq t_0 \leq t_1 \leq 1)
+\end{equation*}
+the distance of the curve \(\phi\) on the parameter range \([t_0,t_1]\).
+Let 
+\begin{equation*}
+S(\phi,\alpha;t) = \sup_{\alpha = a_0 < a_1 < \cdots < a_n = t}
+                   \sum_{j=1}^n d(a_j,a_{j-1})
+\qquad (0\leq \alpha \leq t \leq 1)
+\end{equation*}
+be the length of the curve on the parameter range \([\alpha,t]\).
+\begin{itemize}
+\itemch{i} The length $S$ of the curve is finite iff \(x(t)\) and \(y(t)\)
+           have bounded variation.
+\itemch{ii} If  \(x(t)\) and \(y(t)\) are absolutely continuous, then
+\begin{equation} \label{eq:7.20:Seq}
+S(\phi,0;1) = \int_0^1 \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}.
+\end{equation}
+\end{itemize}
+\end{llem}
+\begin{thmproof}
+Assume the length is finite.
+Let \(0=a_0 < a_1 < \cdots a_n = 1\) be any partition, then
+\begin{equation*}
+\sum_{j=1}^n |x(a_j) - x(a_{j-1})|
+\leq \sum_{j=1}^n d(a_j,a_{j-1}) \leq S(\phi,0;1) < \infty
+\end{equation*}
+and so \(x(t)\) has bounded variation.
+Simiar estimation can be done with \(y(t)\) that  has bounded variation as well.
+
+Conversely, assume  \(x(t)\) and \(y(t)\) have  bounded variation.
+Again \(0=a_0 < a_1 < \cdots a_n = 1\) be any partition, then
+\begin{equation*}
+\sum_{j=1}^n d(a_j,a_{j-1}) 
+\leq \sum_{j=1}^n |x(a_j) - x(a_{j-1})| + |y(a_j) - y(a_{j-1})| < \infty
+\end{equation*}
+and the curve has finite length and \ich{i} is proved.
+
+Now assume that  \(x(t)\) and \(y(t)\) are absolutely continuous.
+
+
+We first show that so is \(S(\phi,0,t)\).
+Let \(\epsilon>0\) and \(\delta\) be such that 
+\(\sum_{k=1}^n |x(b_j) - x(a_j)| < \epsilon\) 
+and
+\(\sum_{k=1}^n |y(b_j) - y(a_j)| < \epsilon\) 
+whenever \(\sum_{k=1}^n b_j - a_j < \delta\) where \(0 \leq a_j < b_j \leq 1\).
+Now \(S(t) = S(\phi,0;t)\) is clearly monotonically increasing, 
+and we have
+\begin{eqnarray*}
+\sum_{j=1}^n S(b_j) - S(a_j) 
+&=&
+\sum_{j=1}^n \sup_{a_j = t_0 < t_1 < \cdots < t_n = b_j} 
+             \sum_{k=1}^n  d(t_{k-1},t_k) \\
+&\leq&
+\sum_{j=1}^n \sup_{a_j = t_0 < t_1 < \cdots < t_n = b_j} 
+             \sum_{k=1}^n  |x(k) - x(t_{k-1})| + |y(k) - y(t_{k-1})|   \\
+&\leq&
+\sum_{j=1}^n 
+\left(\sup_{a_j = t_0 < t_1 < \cdots < t_n = b_j} 
+             \sum_{k=1}^n  |x(k) - x(t_{k-1})| \right) \\
+&& +\;
+\left(\sup_{a_j = t_0 < t_1 < \cdots < t_n = b_j} 
+             \sum_{k=1}^n  |y(k) - y(t_{k-1})| \right)
+\\
+&<& 2\epsilon
+\end{eqnarray*}
+
+Thus \(S(t)\) is absolutely continuous as well.
+By Theorem~7.18 \cite{RudinRCA87} \(x(t)\), \(y(t)\) and \(S(\phi,0;t)\)
+are differentiable almost everywhere and consequently
+are differentiable \emph{simultaneously} almost everywhere.
+Let \(J\subset[0,1]\)
+the set of points all three functions are differentiable
+and \(t\in J\).
+We have
+\begin{equation*}
+S(t+h) -S(t) 
+\geq d(t+h,t) 
+= \sqrt{\bigl(x(t+h) - x(t)\bigr)^2 + \bigl(y(t+h) - y(t)\bigr)^2}
+\end{equation*}
+for any \(h>0\). Hence
+\begin{align*}
+S'(t)
+&\geq \lim_{h\to 0^+}  
+   \sqrt{\bigl(x(t+h) - x(t)\bigr)^2 + \bigl(y(t+h) - y(t)\bigr)^2} \bigm/ h \\
+&= \lim_{h\to 0^+}  
+   \sqrt{\left(\bigl(x(t+h) - x(t)\bigr)/h\right)^2 + 
+         \left(\bigl(y(t+h) - y(t)\bigr)/h\right)^2}  \\
+&= \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}.
+\end{align*}
+We will show the reversed inequality holds almost everywhere.
+For any interval \(I=(\alpha,\beta)\subset[0,1]\) we use the notations
+\begin{align*}
+x(I) &= |x(\beta) - x(\alpha)| \\
+y(I) &= |y(\beta) - y(\alpha)| \\
+S(I) &= S(\phi,\alpha;\beta). 
+\end{align*}
+Define the ``bad set''
+\begin{equation*}
+A = \left\{t\in J: 
+        S'(t) > \left(\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2\right)^{1/2}
+        \right\}. 
+\end{equation*}
+and its subsets
+\begin{align}
+A_n = \bigl\{ & t\in J:   \notag \\
+      & \forall I=(\alpha,\beta)\ni t,\; 0<m(I) < 1/n  \notag \\
+      & \Rightarrow  \label{eq:7.21:An}
+        S(I)/m(I)
+        \geq \left(
+                \bigl(x(I)/m(I)\bigr)^2 + \bigl(y(I)/m(I)\bigr)^2
+             \right)^{1/2} + 1/n
+        \bigr\}
+\qquad (n\in\N).
+\end{align}
+(Notice that \(g'(t) = \lim_{m(I)\to 0+} g(I)/m(I)\)
+if $g$ is differentiable at $t$.)
+Clearly \(A = \cup_{n\in\N} A_n\).
+
+Fix $n$ and pick arbitrary \(\epsilon>0\).
+There exist a ``sufficiently rich'' partition 
+\begin{equation*}
+0 = t_0 < t_1 < \cdots t_p = 1
+\end{equation*}
+putting \(J_k = [t_{k-1},t_k]\),
+such that 
+\(m(J_k) = t_k - t_{k-1} < 1/n\) for \(k\in\N_p\) and 
+\begin{equation} \label{eq:7.21:Sleq}
+S([0,1]) = \sum_{k=1}^p S(J_k) \leq \sum_{k=1}^p d(t_{k-1},t_k) + \epsilon
+\end{equation}
+On the other hand, by \eqref{eq:7.21:An} we have
+\begin{equation} \label{eq:7.21:Sgeq}
+S(J_k) \geq d(t_{k-1},t_k) + m(J_k)/n
+\end{equation}
+whenever \(j_k \cap A_n \neq \emptyset\). 
+By \eqref{eq:7.21:Sleq} \eqref{eq:7.21:Sgeq} we have
+\newcommand{\sumJkAn}{
+            \sum_{\stackrel{1\leq k \leq p}{J_k\cap A_n \neq \emptyset}}}
+\begin{equation*}
+m(A_n) 
+\leq \sumJkAn m(J_k) 
+\leq n \sumJkAn S(J_k) - d(t_{k-1},t_k) 
+\leq n\epsilon.
+\end{equation*}
+Since \(\epsilon\) was arbitrarily picked, \(m(A_n) = 0\) 
+hence \(m(A) = 0\) and the desired reversed inequality holds.
+Therefore
+\begin{equation} \label{eq:ex7.21:Sdif}
+S'(t) = \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2}
+\end{equation}
+which completes the proof.
+\end{thmproof}
+
+For this specifc exercise, we note that 
+in a curve of a function graph
+\(x(t)=t\) and \(x'(t)=1\).
+Now the lemma provides the solution.
+
+
+%%%%%%%%%%%%%% 22
+\begin{excopy}
+\begin{itemize}
+\itemch{a}
+Assume that both $f$ and  its maximal function \(Mf\) are in \(L^1(\R^k)\).
+Prove that then \(f(x)=0\;\aded[m]\).
+\emph{Hint}: To every other \(f\in L^1(\R^k)\) corresponds a constant
+\(c=c(f)>0\) such that
+\begin{equation*}
+  (Mf)(x) \geq |x|^{-k}
+\end{equation*}
+whenever \(|x|\) is sufficiently large.
+
+\itemch{b}
+Define \(f(x) = x^{-1}(\log x)^{-2}\) if \(0<x<\frac{1}{2}\),
+\(f(x)=0\) on the rest of \(\R^1\).
+Then \(f\in L^1(\R^1)\).
+Show that
+\begin{equation*}
+  (Mf)(x) \geq |2x \log(2x)|^{-1} \qquad (0<x<1/4)
+\end{equation*}
+so that \(\int_0^1 (Mf)(x)\,dx = \infty\).
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+
+\itemch{a}
+Assume by negation \(\|f\|_1\neq 0\).
+Then there exist and integer \(a\in\N\) such that 
+\[\alpha = \int_{B(0,a)} |f(x)|\,dm(x) > 0.\]
+Assume \(x\in\R^k\) and \(\|x\|\geq a\). 
+We note that \(m(B_r) = c_k \pi r^k\) 
+(where \(c_k = \pi^{k/2}/\Gamma(n/2+1)\)).
+Now
+\begin{align*}
+(Mf)(x)
+&= \sup_{r>0} \frac{1}{m(B_r)} \int_{B(x,r)} |f(t)|\,dt \\
+&\geq \frac{1}{m(B_{|x|+a})} \int_{B(x,|x|+a)} |f(t)|\,dt 
+ \geq \frac{1}{m(B_{|x|+a})} \int_{B(0,a)} |f(t)|\,dt \\
+&= \alpha / m(B_{|x|+a}).
+\end{align*}
+Define and estimate for each integer \(n>a\)
+\begin{align*}
+S_n
+&= \int_{B(0,n)} (Mf)(x)\,dm(x) \\
+&\geq \sum_{r=a+1}^n \int_{B(0,r)\setminus B(0,r-1) } (Mf)(x)\,dm(x) 
+ \geq \sum_{r=a+1}^n 
+     \int_{B(0,r)\setminus B(0,r-1) } \alpha / m(B_{|x|+a}) \,dm(x) \\
+&\geq \sum_{r=a+1}^n 
+     m\bigl(B(0,r)\setminus B(0,r-1)\bigr) \alpha / m(B_{2r}) \\
+&= \sum_{r=a+1}^n \alpha c_k\bigl(r^k - (r-1)^k\bigr) 
+                  \bigm/ \bigl( c_k (r+a)^k \bigr) 
+ = \frac{\alpha}{2^k} 
+   \sum_{r=a+1}^n \bigl(r^k - (r-1)^k\bigr) \bigm/ r^k \\
+&\geq \frac{\alpha}{2^k} 
+      \sum_{r=a+1}^n \frac{1}{r}.
+\end{align*}
+Since \(\lim_{n\to\infty} S_n = \infty\) we get the
+contradiction \(Mf \notin L^1(\R^k)\).
+
+\itemch{b}
+Put \(F(x) = -1/\log(x)\). Now
+\begin{equation*}
+F'(x) = (-1/x) \cdot \left(-\bigl(\log(x)\bigr)^{-2}\right) = f(x)
+\end{equation*}
+when \(0<x<1/2\).
+Hence
+\begin{equation*}
+\|f\|_1 
+= \lim_{h\to 0^+} \int_h^{1/2} f(x)\,dx
+= -1/\log(1/2) - \lim_{h\to 0^+}  1/\log(h)
+= -1/\log(1/2) 
+< \infty.
+\end{equation*}
+Thus \(f\in L^1(\R^1)\).
+But if  \(0<x<1/4\) then
+\begin{equation*}
+(Mf)(x) 
+= \sup_{r} \frac{1}{2r} \int_{x-r}^{x+r} f(t)\,dt
+\geq \frac{1}{2x} \int_0^{2x} f(t)\,dt
+= \bigl(F(2x) - F(0)\bigr)/2x 
+= |2x\log(2x)|^{-1} 
+\end{equation*}
+Hence
+\begin{align*}
+\int_0^1 (Mf)(x)\,dx
+&\geq \int_0^{1/4} (Mf)(x)\,dx \\
+&\geq \int_0^{1/4} \frac{1}{2x} \cdot \frac{-1}{\log(2x)} \,dx \\
+&= \frac{-1}{2}\left.\left(\log(|\log(2x)|)\right)\right|_0^{1/4} 
+ = \frac{-1}{2} \bigl(\log(1/2) - \lim_{x\to +\infty}\log(x)\bigr) \\
+&= \infty.
+\end{align*}
+Indeed \(Mf \notin L^1([0,1])\).
+\end{itemize}
+
+
+%%%%%%%%%%%%%% 23
+\begin{excopy}
+The definition of Lebesgue points, as made in Sec.~7.6, applies to individual
+integrable functions, not to the equivalence classes discussed in Sec.~3.10.
+However, if \(F\in L^1(\R^k)\) is one of these equivalence classes, one may call
+a point \(x\in \R^k\)
+a \emph{Lebesgue point of}
+\index{Lebesgue point}
+$F$ if there is a complex number, let us call it \((SF)(x)\) to be $0$
+at those points \(x\in \R^k\) that are not Lebesgue points of $F$.
+
+Prove the following statement: If \(f\in F\), and $x$ is a Lebesgue
+points of $f$, then $x$ is also a Lebesgue point of $F$, 
+and \(f(x)(SF)(x)\).  Hence \(SF\in F\).
+
+Thus $S$ ``selects'' a member of $F$ that has a \emph{maximal} set
+of Lebesgue points.
+\end{excopy}
+
+Assume $x$ is
+\index{Lebesgue point}
+a~Lebesgue point of $f$.
+The set $E$ of non Lebesgue points of $f$ has measure zero by 
+Theorem~7.7 \cite{RudinRCA87}. Thus
+changing $f$ on $E$ does not effect the values of 
+\begin{equation*}
+A(x) \frac{1}{m(B_r)} \int_{B(x,r} |f(y) - f(x)|\,dm(y)
+\end{equation*}
+except possibly for \(x\in E\).
+Hence Lebesgue points of $f$ are Lebesgue points of $F$ as well.
+
+%%%%%%%%%%%%%%%%%
+\end{enumerate}
