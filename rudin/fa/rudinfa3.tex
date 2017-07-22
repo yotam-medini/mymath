@@ -555,26 +555,33 @@ If \(1\leq p < \infty\), prove that \(f_n\to 0\) weakly in \(L^p\),
 but not strongly.
 \end{excopy}
 
-Clearly \(\|f_n\|_p = 1\). But for every trigonometric polynomial $p$
+Clearly \(\|f_n\|_p = 1\). But for every trigonometric polynomial $g$
 \begin{equation*}
-\forall n \geq \deg(p)\,\; \int_{-\pi}^\pi p f_n = 0,
+\forall n \geq \deg(g)\,\; \int_{-\pi}^\pi g f_n = 0,
 \end{equation*}
-so \(\lim_{n\to\infty}\int_{-\pi}^{\pi} pf_n = 0\).
+so \(\lim_{n\to\infty}\int_{-\pi}^{\pi} gf_n = 0\).
+
+Let $q$ such that \(1/p+1/q=1\) (\(q=\infty\) if \(p=1\)).
+We want to show that trigonometric polynomial are densed in \(L^q([-\pi,\pi]\),
 By Theorem~4.25 in \cite{RudinRCA87} the trigonometric polynomials
 are dense in \(C([-\pi,\pi])\) and by Theorem~3.14 \cite{RudinRCA87}
-\(C([-\pi,\pi])\) is dense in \(L^1([-\pi,\pi])\).
+\(C([-\pi,\pi])\) is dense in \(L^q([-\pi,\pi])\).
 
-Hence for any \(g\in L^q([-\pi,\pi]) \subset L^1([-\pi,\pi])\)
-and any \(\epsilon>0\) there exists a trigonometric polynomial $p$
-such that \(\int_{-\pi}^\pi |g-p|^p<\epsilon\) and so
+Hence for any \(h\in L^q([-\pi,\pi]) \subset L^1([-\pi,\pi])\)
+and any \(\epsilon>0\) there exists a trigonometric polynomial $g$
+such that \(\int_{-\pi}^\pi |g-h|^q<\epsilon\) and so
 \begin{equation*}
-\int_{-\pi}^\pi gf_n<\epsilon
-\leq \int_{-\pi}^\pi +\left|\int_{-\pi}^\pi  pf_n\right|
-\stackrel{n\to\infty}{\longrightarrow} \alpha < \epsilon.
+\left|\int_{-\pi}^\pi hf_n\right|
+\leq \int_{-\pi}^\pi \left|(g - h)f_n\right| 
+  + \left|\int_{-\pi}^\pi  gf_n\right|
+\stackrel{n\to\infty}{\longrightarrow} < \epsilon.
 \end{equation*}
 Since \(\epsilon\) was chosen arbitrarily, so
-\(\lim_{n\to\infty}\int_{-\pi}^\pi  gf_n = 0\) and
+\(\lim_{n\to\infty}\int_{-\pi}^\pi  hf_n = 0\) and
 \(f_n \stackrel{n\to\infty}{\longrightarrow} 0\) weakly.
+
+If the convergence were strongly, the it must be to $0$ as well, 
+contradiction to \(\|f_n\|_p = 1\).
 
 
 %%%%%%% 7

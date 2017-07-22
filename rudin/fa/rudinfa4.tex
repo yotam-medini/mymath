@@ -1394,12 +1394,12 @@ Let \(s_1 \leq s_2 \in [0,1]\).
 \end{eqnarray*}
 Thus \(\{Tf_i\}\) are equicontinuous.
 Enumerate \(\Q\cap[0,1]\) by \((q_n)_{n\in\Z^+}\).
-Starting with  \(\frak{F}_0=\{Tf_i\}\),
-by induction pick repatedly subsequence \(\frak{F}_n\)
-of \(\frak{F}_{n-1}\) such that  \(\frak{F}_{n-1}\) converges
+Starting with  \(\frakF_0=\{Tf_i\}\),
+by induction pick repatedly subsequence \(\frakF_n\)
+of \(\frakF_{n-1}\) such that  \(\frakF_{n-1}\) converges
 pointwise on \(q_n\).
-By diagonaly picking the $n$-th function of \(\frak{F}_n\)
-we get a subsequence of \(\frak{F}_0\) that converges
+By diagonaly picking the $n$-th function of \(\frakF_n\)
+we get a subsequence of \(\frakF_0\) that converges
 on \(\Q\cap[0,1]\). Since they are equicontinuous, the convergence
 is on the whole \([0,1]\).
 Thus $T$ is compact By local lemma \ref{lem:compact:op}.
@@ -1416,12 +1416,35 @@ prove that \(T \in \scrB(L^2)\) and that $T$ is not compact.
 of \index{Hardy} Hardy`s inequality. See p.~72 of~[23].)
 \end{excopy}
 
-Let \(f\in L^2\), for convenience assume \(f\geq 0\).
+For \(L^p\), Hardy inequality is \(\|Tf\|_p \leq (p/(p-1))\|f\|_p\).
+Applying for \(p=2\) gives \(\|T\| \leq 2\) thus $T$ is bounded.
+
+For \(a > 0\), define
 \begin{equation*}
-\|T f\|^2 = \int_0^\infty \left( \frac{1}{s} \int_0^s f(t)\,dt\right)^2\,ds
+f_a(x) = \left\{
+  \begin{array}{ll}
+  a^{-1/2} \quad & x \leq a \\
+  0        & x > a
+  \end{array}
+  \right.
+\end{equation*}
+Now
+\begin{equation*}
+\|f_a\|+2^2 = \int_0^\infty (f_a(x))^2\,dx 
+  = a\cdot \left(a^{-1/2}\right)^2 = 1.
+\end{equation*}
+If \(a < b\) then
+\begin{equation*}
+\|(T f_a) - (T f_b)\|_2^2
+  = \int_0^\infty \left|(T f_a)(x) - (T f_b)(x)\right|^2\,dx
+  \geq a \left(a^{-1/2} - b^{-1/2}\right)^2 
 \end{equation*}
 
-\unfinished
+We set \(\alpha = (1 - 2^{-1/2})^{-2} > 1\) and if \(b \geq \alpha a\)
+then \(\left(a^{-1/2} - b^{-1/2}\right)^2 = 1/2\).
+If \(g_n = f_{\alpha^{n-1}}\)
+ then \(\|(T g_m) - T g_n\|_2 \geq 2^{-1/2}\) whenever \(m \neq n\)
+and \((T g_n)\) has no converging subsequence. Thus $T$ is not compact.
 
 %%%%%%% 18
 \begin{excopy}
@@ -1462,6 +1485,17 @@ If $Y$ is reflexive and \(T\in \scrB(c_0, Y)\), then $T$ is compact.
 \begin{itemize}
 
 \itemch{a}
+Viewing \(x_n \in X^{**}\).
+For all \(\Lambda \in X^*\) we have
+\begin{equation*}
+x_n(\Lambda) = \Lambda(x_n) \stackrel{n}{\rightarrow} 0.
+\end{equation*}
+Thus 
+\begin{equation*}
+c_\Lambda = \sup_n \left|x_n(\Lambda)\right| < \infty.
+\end{equation*}
+By the uniform bound principle (Theorem~2.6)
+\((x_n\) are equicontinuous in \(X^{**}\), thus \((\|x_n\|)\) are bounded.
 
 \itemch{b}
 
