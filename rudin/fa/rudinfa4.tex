@@ -1498,8 +1498,26 @@ By the uniform bound principle (Theorem~2.6)
 \((x_n\) are equicontinuous in \(X^{**}\), thus \((\|x_n\|)\) are bounded.
 
 \itemch{b}
+If \(\Lambda \in Y^*\) then \(\Lambda\circ T \in X^*\).
+Clearly 
+\(\lim_n (\Lambda\circ T)(x_n) 
+ = \lim_n \Lambda\left( T)(x_n\right)) = (\Lambda\circ T)(x)\).
 
 \itemch{c}
+Let \(U = \{x\in X: \|x\| < \}\) and let 
+\begin{equation*}
+K = \overline{T(U)} = \overline{T(\overline{U})}.
+\end{equation*}
+The last equality holds by $T$ being continuous.
+Let \((k_n)\) be a sequence in $K$.
+Pick a sequence \((y_n)\) in \(\overline{T(\overline{U})}\)
+such that \(\|y_n - k_n\| < 1/n\).
+Clearly  \((k_n)\) has a limit iff  \((y_n)\) has a limit.
+Pick \((x_n)\) in $U$ such that \(T(x_n)=y_n\).
+By exercise~3(c) \(\overline{U}\) is compact
+and \((x_n)\) has a limit there (by Theorem A4).
+Thus \((T(x_n))=(y_n)\) has a limit point in $K$.
+Applying Theorem~A4 show that $K$ is compact and $T$ is compact.
 
 \itemch{d}
 
