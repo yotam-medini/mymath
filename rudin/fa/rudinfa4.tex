@@ -1498,13 +1498,31 @@ By the uniform bound principle (Theorem~2.6)
 \((x_n\) are equicontinuous in \(X^{**}\), thus \((\|x_n\|)\) are bounded.
 
 \itemch{b}
+Assume \(x_n\to x\) weakly in $X$
 If \(\Lambda \in Y^*\) then \(\Lambda\circ T \in X^*\).
 Clearly 
 \(\lim_n (\Lambda\circ T)(x_n) 
  = \lim_n \Lambda\left( T)(x_n\right)) = (\Lambda\circ T)(x)\).
+Thus \(Tx_n \to Tx\) weakly.
 
 \itemch{c}
-Let \(U = \{x\in X: \|x\| < \}\) and let 
+Assume \(x_n\to x\) weakly in $X$ by \ich{a} \((x_n\) are bounded
+thus \((Tx_n)\) lie within a compact set 
+\(K = \overline{T\left(\{x\in X: \|x\|< \sup_n \|x_n\| + 1\}\right)}\).
+Thus  \((Tx_n)\) has a limit point in $K$ and has a subsequence 
+\((x'_n)\)converging
+strongly to it. This must also be a weak convergence
+and so \(T(x'_n) \to Tx \in K\).
+Hence the limit point is unique.
+
+If by negation \((T(x_n)\) does not converge to \(Tx\)
+then \(Tx\) must have some neighborhood $W$ with infinitely
+many points from \((Tx_n)\) outside it.
+But then there must be another limit point in the compact \(K\setminus W\).
+Contradiction to the uniqueness of the limit.
+
+\itemch{d}
+Let \(U = \{x\in X: \|x\| < 1\}\) and let 
 \begin{equation*}
 K = \overline{T(U)} = \overline{T(\overline{U})}.
 \end{equation*}
@@ -1517,27 +1535,31 @@ Pick \((x_n)\) in $U$ such that \(T(x_n)=y_n\).
 By exercise~3(c) \(\overline{U}\) is compact
 and \((x_n)\) has a limit there (by Theorem A4).
 Thus \((T(x_n))=(y_n)\) has a limit point in $K$.
-Applying Theorem~A4 show that $K$ is compact and $T$ is compact.
-
-\itemch{d}
+Applying Theorem~A4 shows that $K$ is compact and $T$ is compact.
 
 \itemch{e}
+Assume \(x_n\to x\) weakly in $X$. By \ich{b} \(Tx_n \to Tx\) weakly
+in \(\ell^1\). By Exercise 3.18\ich{c} \(Tx_n \to Tx\) strongly as
+well.
+By \ich{d} $T$ is compact.
 
 \itemch{f}
+Clearly \(Y^*\) is reflexive as well. 
+By \ich{e} \(T^* \in \scrB(Y^*,\ell^1\)
+Applying Theorem~4.19 and the fact \(c_0^* = \ell^1\)
+shows $T$ is compact.
 
 \end{itemize}
 
-
-\unfinished
 
 %%%%%%% 19
 \begin{excopy}
 Suppose $Y$ is a closed subspace of $X$, and \(x_0^* \in X^*\), Put
 \begin{align*}
 \mu &= \sup\{|\langle x, x_0^*\rangle|: x\in Y, \|x\| \leq 1\}, \\
-\delta &= \inf\{\| x -  x_0^*\|: x^*\in Y^\perp\}
+\delta &= \inf\{\| x^* -  x_0^*\|: x^*\in Y^\perp\}
 \end{align*}
-In other words, \(\mu\) is the norm of the restriction of \(x_0^*\) to $X$
+In other words, \(\mu\) is the norm of the restriction of \(x_0^*\) to $Y$
  and \(\delta\) is the distance from
 \(x_0^*\) to the annihilator of $Y$. Prove that \(\mu = \delta\).
  Prove also that \(\delta = \|x^* - x_0^*\|\) for at
