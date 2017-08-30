@@ -185,6 +185,23 @@ from $X$ with its weak to $Y$ with its weak topology.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Subjection in Theorem 4.9}
+
+The proof of 4.9\ich{b} says:
+\begin{quote}
+There is a linear funcbound \(\Lambda\) on $Y$ such that
+\(\Lambda\pi = x^*\)
+\end{quote}
+Here is a simple argument for this.
+For any \(y \in Y = X/M\) pick \(x\in X\) such that \(y = x + M\).
+Now define \(\Lambda(y) = x^*(x)\). To see that it is well defined
+pick \(y = x_1 + M = x_2 + M\) where \(x_1,x_2\in X\).
+Clearly \(x_2 - x_1 \in M\) and since \(x^*(x_2 - x_1) = 0\) we have
+\begin{equation*}
+x^*(x_1) = x^*(x_1) + x^*(x_2 - x_1) = x^*(x_1 + x_2 - x_1) = x^*(x_2).
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Compact operators}
 
 In \textbf{4.16} the text mentions equivalent conditions
@@ -1515,7 +1532,7 @@ strongly to it. This must also be a weak convergence
 and so \(T(x'_n) \to Tx \in K\).
 Hence the limit point is unique.
 
-If by negation \((T(x_n)\) does not converge to \(Tx\)
+If by negation \((T(x_n))\) does not converge to \(Tx\)
 then \(Tx\) must have some neighborhood $W$ with infinitely
 many points from \((Tx_n)\) outside it.
 But then there must be another limit point in the compact \(K\setminus W\).
@@ -1545,7 +1562,7 @@ By \ich{d} $T$ is compact.
 
 \itemch{f}
 Clearly \(Y^*\) is reflexive as well. 
-By \ich{e} \(T^* \in \scrB(Y^*,\ell^1\)
+By \ich{e} \(T^* \in \scrB(Y^*,\ell^1)\)
 Applying Theorem~4.19 and the fact \(c_0^* = \ell^1\)
 shows $T$ is compact.
 
@@ -1566,8 +1583,49 @@ In other words, \(\mu\) is the norm of the restriction of \(x_0^*\) to $Y$
 least one \(x^* \in Y^\perp \).
 \end{excopy}
 
+By Banach-Alaoglu Theorem~3.15 the set
+\begin{equation*}
+U_Y = \{x\in Y:  \|x\| \leq 1\} = \{x\in X:  \|x\| \leq 1\} \in Y
+\end{equation*}
+is weak\({}^*\)-compact. Thus
+\(x^*(x_m) = \mu\) for some \(x_m \in U_Y\).
+\begin{align*}
+\|x_0^* - x^*\| 
+ &= \sup\left\{\left|(x_0^* - x^*)(x)\right|:
+               x\in X \,\wedge\, |x|\leq 1\right\} \\
+ &\geq \left|(x_0^* - x^*)(x_m)\right|
+  = \left|(x_0^*(m) - x^*(x_m)\right|
+  = \left|(x^*(x_m)\right| = \mu
+\end{align*}
 
-\unfinished
+Assume \(x\in X\), \(\|x\| \leq 1\) and \(x^*\in Y^\perp\).
+
+\begin{quote}
+For intuition, let us see an example in \(X = \C^4\) and 
+\begin{equation*}
+Y = \textrm{span}(e_1, e_2) = \{w\in \C^4: w_1 = w_2 = 0\}
+\end{equation*}
+with the \(\|\cdot\|_2\) norm. Consider
+\begin{align*}
+x_0^* &= (1,2,3,4) \in X^*\\
+x_m   &= (\sqrt{5}/5, 2\sqrt{5}/5, 0, 0) \in Y \\
+x_m^* &= (0, 0, 3, 4) \in Y^\perp \\
+x_0^*(x_m) &= 1\cdot \sqrt{5}/5 + 2\cdot 2\sqrt{5}/5 = \sqrt{5} \\
+\|x_0^* - x_m^*\|_2 &= \|(0, 0, 3, 4)\|_2 = \sqrt{(1-0)^2 + (2-0)^2} = \sqrt{5}
+\end{align*}
+\end{quote}
+
+Let \(\pi: X \to Q = X/Y\) be the quotient map.
+and let \({x_0}_{\restriction Y} \in Y^*\) be the restriction of \(x_0\) to $Y$.
+By its definition \(\mu = \|{x_0}_{\restriction Y}\|\).
+Applying Theorem~4.9\ich{a}. gives the isometry of \(Y^* \sim X^*/Y^\perp\)
+Thus we have some \(x_m^* + Y \in X^*/Y^\perp\) such that
+\begin{equation*}
+\mu = \|x_m^* + Y^\perp\|_Q = \inf \{\|x_n^* - z\|: z \in Y^\perp\}
+\end{equation*}
+(For the last equality, see 1.41).
+Thus the infimum is achieved and \(\mu = \delta\).
+
 
 %%%%%%% 20
 \begin{excopy}
@@ -1576,15 +1634,39 @@ Extend Sections~4.6 to 4.9 to locally convex spaces.
 course be deleted from statement of Theorem~4.9.)
 \end{excopy}
 
+The definitions of annihilators in~4.6 can trivially be extended
+to any subsets \(M\subset X\) and \(N \subset X^*\).
 
-\unfinished
+In theorem~4.7\ich{a} the qualification `'norm closed''
+should be replaced by \emph{weakly closed}
+
+The original proof of theorem~4.7 uses (Hahn-Banach) Theorem~3.5
+that requires the space to be locally convex (and not necessarily Banach).
+
+For Theorem~4.9\ich{a} the homeomorphism holds since \(M^\perp\) is closed
+Clearly the homeomorphism is onto. 
+Theorem~3.10 shows that the weak\(^*\) topology of \(X^*\) is locally convex.
+Thus we may apply of (Hahn-Banach) Theorem~3.5
+showing that the homeomorphism is injective.
+
+In Theorem~4.9\ich{b} 
+all  assumptions and results (\(\tau\) surjective) 
+are based on local convexity, except for isometry.
+Instead we only need to show that \(\tau\) is injective.
+
+If \(Y^*\ni y^* \neq 0\) then there exists
+\(y = x+M \in X/M\) such that 
+\begin{equation*}
+0 \neq y^*(y) - y^*(x + M) = y^*(\pi(x)) = (y^*\pi)(x).
+\end{equation*}
+Thus \(y^*\pi \neq 0\) and \(\tau\) is injective.
 
 %%%%%%% 21
 \begin{excopy}
 Let $B$ and \(B^*\) be the closed unit balls in $X$ and \(X^*\), respectively.
  The following is a
 converse to the Banach-Alaoglu theorem:
-\textsl{If $E$ is a convex set in \(X^*\) such that \(E \cap rB^*)\)
+\textsl{If $E$ is a convex set in \(X^*\) such that \(E \cap (rB^*)\)
 is weak\upstar-compact
  for every \(r > 0\),
  then $E$ is
