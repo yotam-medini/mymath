@@ -1,0 +1,9 @@
+\ifx\pdfoutput\undefined % We're not running pdftex
+\documentclass[11pt,twoside,letterpaper]{book}
+\else
+\documentclass[pdftex,twoside,letterpaper]{book}
+\usepackage{thumbpdf}
+\pdfcompresslevel=9
+\fi
+\input{kunen}
+
