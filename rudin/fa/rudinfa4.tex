@@ -312,7 +312,7 @@ the contrary is explicitly stated.
 
 %%%%%%% 1
 \begin{excopy}
-Let \(\phi\) be the embeddings of $X$ onto \Xss\ in Section~4.5.
+Let \(\phi\) be the embeddings of $X$ into \Xss\ in Section~4.5.
 Let \(\tau\) be the weak topology of $X$, and let \(\sigma\)
 be the weak\upstar-topology of \Xss\ --- the one induced by \(X^*\).
 \begin{itemize}
@@ -1695,7 +1695,7 @@ of \(r^{-1}B\), is exactly \(rB^*\).
 The theorem is a consequence of the following proposition:
 \textsl{
  If, in addition to the
-stated hypotheses, \(E \cap B^* = \emptyset\), there exists \(x \in X\)
+stated hypotheses, \(E \cap B^* = \emptyset\), then there exists \(x \in X\)
  such that \(\Re \lrangle{x, x^*} \geq 1\) for
 every \(x^* \in E\).
 }
@@ -1722,7 +1722,7 @@ can thus proceed. It yields
 E \cap \bigcap_{k=1}^\infty P(F_k) = \emptyset.
 \end{equation}
 Arrange the members \(\cup F_k\) in a sequence \(\{x_n\}\).
- Then \(x_n\| \to 0\). Define \(T: X^* \to c_0\)
+ Then \(\|x_n\| \to 0\). Define \(T: X^* \to c_0\)
 by
 \begin{equation*}
 Tx^* = \{\lrangle{x_n,x^*}\}.
@@ -1739,6 +1739,29 @@ for every \(x^* \in E\). To complete the proof, put \(x = \sum \alpha_n x_n\).
 \end{excopy}
 
 
+\begin{itemize}
+
+\itemch{i}
+Pick \(x^*\in \overline{E}\). 
+There is a sequence \((x_n^*)\) in $E$ such that \(\lim_n(x_n^*)=x\).
+By looking at its tail, we may assume \(\|x^* - x_n^*\| < 1\) for all $n$.
+Now \(x_n^* \in E \cap (\|x\|+1)B^*\) which is compact and thus closed.
+Hence \(x^*\in E \cap (\|x\|+1)B^* \subset E\) and $E$ is normed closed.
+
+\itemch{ii}
+\begin{align*}
+\bigcap_{\substack{F\subset r^{-1}B \\ |F|< \infty}} P(F)
+ &= \bigcap_{\substack{F\subset r^{-1}B \\ |F|< \infty}} 
+    \{x^*: \forall x\in F\; |x^*(x)| \leq 1\}
+ = \bigcap_{x\in r^{-1}B} \{x^*: |x^*(x)| \leq 1\} \\
+ &= \bigcap_{x \in B} \{x^*:  |x^*(x)| \leq r\} 
+  = \bigcap_{x \in B} \{rx^*:  |x^*(x)| \leq 1\} 
+  = rB^*.
+\end{align*}
+
+\itemch{iii}
+\itemch{v}
+\end{itemize}
 
 \unfinished
 
@@ -1755,7 +1778,7 @@ for \(k=1,2,3,\ldots\).
 
 \itemch{b}
 Prove that \ich{a} must happen for some $n$. 
-\emph{Hint:}: Consider the proof of Theorem~4.24.)
+(\emph{Hint:}: Consider the proof of Theorem~4.24.)
 
 \itemch{c}
 Let $n$ be the smallest nonnegative integer for which \ich{a} holds.
@@ -1773,14 +1796,75 @@ and that the restriction of $S$ to \(\scrR(S^n)\) is a one-to-one mapping
 \begin{itemize}
 
 \itemch{a}
+It is sufficient to show that \(\scrN(S^n) = \scrN(S^{n+2})\).
+Clearly 
+\begin{equation*}
+\scrN(S^{n+2}) \supset \scrN(S^{n+1}) = \scrN(S^n).
+\end{equation*}
+Conversely, assume \(x\in \scrN(S^{n+2})\). Then 
+\begin{equation*}
+Sx \in  \scrN(S^{n+1}) = \scrN(S^n).
+\end{equation*}
+Hence \(x \in \scrN(S^{n+1})\).
+Consequently \(\scrN(S^{n+2}) \subset \scrN(S^{n+1})\)
+and \(\scrN(S^{n+2}) = \scrN(S^n)\).
 
 \itemch{b}
+Let \(M_n = \scrN(S^n)\).
+Assume by negation \(M_n \subsetneq M_{n+1}\) for all \(n>1\).
+If \(x\in M_1\) then \(Tx = \lambda x\) and so \(T(M_1) \subset M_1\).
+By induction, assume \(T(M_k) \subset M_k\) and let \(x\in M_{k+1}\)
+Now
+\begin{equation*}
+S^{k+1}(Tx)
+ = \left((T - \lambda I)^{k+1}\right)(Tx)
+ = T\left((T - \lambda I)^{k+1}\right)(x)
+ = T(S^{k+1} x) = 0.
+\end{equation*}
+Hence \(Tx \in M_{k+1}\) and  \(T(M_n) \subset M_n\) for all \(n \geq 1\).
+
+Lemma 4.22 gives us 
+vectors \(y_n \in M_n\) 
+such that \(\|y_{n+1}\| \leq 2\) \(\|y_{n+1} - x\| \geq 1\) if \(x\in M_n\)
+for all \(n>1\).
+For \(m < n\) put \(z = Ty_m - (T - \lambda I)y_n \in M_n\).
+Now
+\begin{equation*}
+\|Ty_m - Ty_n\| = \|\lambda y_n - z\| 
+ = \lambda \| y_n - \lambda^{-1}z \| \geq \lambda.
+\end{equation*}
+Thus \((Ty_n)_{n\in\N}\) has no converging subsequence, 
+in contraditcion to $T$ being compact.
 
 \itemch{c}
+\begin{quote}
+Note that for inevitable $T$ where \(\dim X < \infty\)
+we have \(n=1\), \(\scrN(S) = \{0\}\) and \(\scrR(S) = X\).
+\end{quote}
+
+Let \(x \in \scrR(S^n)\cap \scrN(S^n)\).
+Then \(\exists y\in X, S^n(y) = X\).
+Hence \(y\in \scrN(S^{2n})\). but \(\scrN(S^{2n})=\scrN(S^n)\) by \ich{a}.
+Thus \(y\in \scrN(S^n)\) and so \(x = S^n(y) = 0\), which shows
+\begin{equation*}
+\scrR(S^n)\cap \scrN(S^n) = \{0\}.
+\end{equation*}
+
+% Let \(x\in X\).
+We will show by induction that \(\scrN(S^k\) is complemented in $X$.
+For \(k=1\), apply theorem~4.18\ich{d} and lemma~4.21\ich{a}.
+Now assume \(X = \scrN{S^k} \oplus C_1\). Now \restr{T}{C_1}
+is still compact. Reapplying the theorem and lemma 
+gives \(C_1 = \scrN(\restr{S}{C}) \oplus C_2\) and since
+\begin{equation*}
+\scrN(S^{k+1}) = \scrN(S^k) \oplus \scrN(\restr{S}{C_1})
+\end{equation*}
+we see that \(X = \scrN(S^{k+1}) \oplus C_2\).
+
+Now that we established that \(\scrN(S^k)\) is complemented in $X$
+by some subspace $C$, namely \(X = \scrN(S^n) \oplus C\).
 
 \end{itemize}
-
-
 
 \unfinished
 
@@ -1799,8 +1883,11 @@ Prove also that \(\|x\| \leq M\).
  (These facts were used in the proof of Lemma~4.13.)
 \end{excopy}
 
+Let \(\epsilon>0\), then by assumption there exists \(m < \infty\)
+sucg that \(\sum_{j=m+1}^\infty \|x_j\| < \epsilon\).
+Hence \((x_j)_{j\in\N}\) is a Cauchy sequence. By definition,
+Banach space is complete. Hence the sequence converges.
 
-\unfinished
 
 %%%%%%% 24
 \begin{excopy}
