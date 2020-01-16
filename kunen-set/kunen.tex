@@ -10,6 +10,31 @@
 \newcommand{\ra}{\ensuremath{\rightarrow}}
 \newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!}\par}
 
+\newcommand{\seqpg}[2]{\textbf{#1} (p.#2)}
+
+\newenvironment{lexcopy}[2]
+{\begin{list}{}{
+ \setlength{\topsep}{0pt}
+ \setlength{\partopsep}{0pt}
+ \setlength{\itemsep}{0pt}
+ \setlength{\parsep}{0pt}
+ \setlength{\leftmargin}{0pt}
+ \setlength{\rightmargin}{20pt}
+ \setlength{\listparindent}{0pt}
+ \setlength{\itemindent}{0pt}
+ % \setlength{\labelsep}{0pt}
+ \setlength{\labelwidth}{0pt}
+ \footnotesize
+ }
+ \item
+ \textbf{Exercise #1} (p.#2)
+}
+{\par
+ {\nullfont a}\hrulefill
+ \end{list}
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,7 +50,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \setcounter{chapter}{-1}
+\setcounter{chapter}{-1}
 \chapterTypeout{About this Document}
 
 Here I try to solve problems
@@ -48,6 +73,18 @@ or \emph{local} theorem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Notation}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Alternative Index}
+
+\begin{tabular}{ll}
+$V$ & \seqpg{I.4.8}{21} \\
+\(\textrm{SING}(x)\) & p.17 \\
+\end{tabular}
 
 
 

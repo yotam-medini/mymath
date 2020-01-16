@@ -1,5 +1,10 @@
 % 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapterTypeout{Background Material}
+
 \section{Exercises} % pages 111-115
 
 %%%%%%%%%%%%%%%%%
@@ -52,3 +57,112 @@ The \(\leq\) is needed for \(0+\omega = 1+\omega\).
 
 \end{enumerate}
 
+\begin{lexcopy}{I.4.18}{24}
+Derive \(\forall y[y \notin y]\) from the Axioms of Comprehension and
+Foundation. Don't use the Pairing or Extensionality Axioms. Then find a
+two element model for Foundation, Extensionality, Pairing, and Union, plus
+\(\exists y\forall x [x \in y]\) (so, of course, \(y \in y\)).
+\end{lexcopy}
+
+By negation \(y\in y\).
+By Comprehension, let \(\varphi(z)\) be \(z=y\). Apply
+\begin{equation*}
+  \exists x \forall z (z \in x \wedge \varphi(z))
+\end{equation*}
+gives \(x:=\{y\}\). By Foundation, $y$ being the (only) minimal
+element for which
+\mbox{\(\lnot\exists z(z\in y \wedge z \in \{y\})\)}
+should hold, but \(z=y\) gives contradiction.
+
+Let the model have two ``sets'': \(\mu\), \(\nu\).
+with the following ``\(\in\)'' relations:
+\(\mu\in\nu\), \(\nu\in\nu\).
+
+\begin{lexcopy}{I.6.23}{31}
+Define the relation $R$ on \(\N \times \N\) by saying: \((x_0,x_1)R(y_0,y_1)\)
+iff \(x_0 \leq y_0\) and \(x_1 \leq y_1\)
+and \((x_0,x_1)\neq (y_0,y_1)\).
+Show that $R$ is well-founded
+on \N\ but not a total order.
+Show that every non-empty \(X \subseteq \N\times\N\) contains
+only finitely many $R$-minimal elements, and, for each \(k \in\N\),
+there is such an
+$X$ with exactly $k$ $R$-minimal elements.
+\end{lexcopy}
+
+Let non-empty \(A \subset \N\times\N\).
+Let \(P = \{n\in\N: \exists m((n,m)\in A\).
+For each \(n\in P\) let \(Q_n = \{m\in\N: (n,m)\in A\}\).
+Let \(p = \min(P)\) and \(q = \min(Q_p)\).
+Clearly \((p,q)\in A\) is minimal in $A$.
+
+Not total order since
+\((0,1)\not{R}(1,0)\) and
+\((1,0)\not{R}(0,1)\).
+
+Given $k$, \(A=\{(n,k-n-1)\in\N\times\N: 0\leq n < k\}\)
+has $k$ elements all of which are minimal.
+
+\begin{lexcopy}{I.6.26}{31}
+Show that \(\in\) is a well-order of $3$.
+\end{lexcopy}
+
+The set 
+\(3 = \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\).
+has $3$ elements. Clearly for any two elements \(x,y\in 3\)
+we have \(x=y \lor (x\in y \lor y \in x)\).
+and any non empty subset has a minimal element.
+
+\begin{lexcopy}{I.6.29}{33}
+Show that the Axiom of Foundation implies that the successor
+function $S$ is $1-1$ on $V$.
+\end{lexcopy}
+Assume \(x \neq y\). % , \wlogy\ \(b\in x \setminus y\).
+If by negation \(S(x) = S(y)\), then % \(b = \{y\}\).
+\(x \in S(y)\) and so \(x\in y\).
+Similarly \(y \in x\). Thus \(\{x, y\}\) has no ``minimal''
+element contradiction to to the Axiom of Foundation.
+
+\begin{lexcopy}{I.7.2}{34}
+Assuming the Axiom of Foundation, show that every 
+nonempty transitive set contains $0$ and show that every non-singleton
+transitive
+set contains $1$. Then show that $1$ is the only one-element transitive set,
+and $2$
+is the only two-element transitive set.
+\end{lexcopy}
+
+\begin{lexcopy}{I.7.25}{38}
+  Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
+  a transitive set and \(\in\) satisfies trichotomy on $z$.
+\end{lexcopy}
+
+\begin{lexcopy}{I.7.26}{39}
+  Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
+a transitive set and all elements of $z$ are transitive sets.
+\end{lexcopy}
+
+\begin{lexcopy}{I.7.27}{39}
+  Show, in \(BST^{~}\), that if $A$,$B$ are finite,
+  then \(A\cup B\) and \(A\times B\)
+are finite, and \(\mathcal{P}(A)\) exists and is finite.
+\end{lexcopy}
+
+\begin{lexcopy}{I.9.6}{46}
+  Derive the Axioms of Infinity and Replacement from (2) of Lemma I.9.5.
+\end{lexcopy}
+
+\begin{lexcopy}{I.9.8}{46}
+  If $R$ is well-founded on $A$, then $R$ is acyclic on $A$; hence, \(R^*\)
+  is a strict partial order on $A$.
+  Conversely, if $A$ is finite and $R$ is acyclic on $A$,
+then $R$ is well-founded on $A$.
+\end{lexcopy}
+
+\begin{lexcopy}{I.9.27}{54}
+  Assume that each element of \R\ has rank \(\omega\);
+  this will be true
+using our Definition 1.14-2. Let \(\mu\) be Lebesgue measure on \R. Prove that
+\(\R,\mu \in WF\), with \(\textrm{rank}(\R) = \omega + 1\)
+and \(\textrm{rank}(\mu) = \omega + 4\).
+\end{lexcopy}
