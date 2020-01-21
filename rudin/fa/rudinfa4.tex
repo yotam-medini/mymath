@@ -1884,7 +1884,7 @@ Prove also that \(\|x\| \leq M\).
 \end{excopy}
 
 Let \(\epsilon>0\), then by assumption there exists \(m < \infty\)
-sucg that \(\sum_{j=m+1}^\infty \|x_j\| < \epsilon\).
+such that \(\sum_{j=m+1}^\infty \|x_j\| < \epsilon\).
 Hence \((x_j)_{j\in\N}\) is a Cauchy sequence. By definition,
 Banach space is complete. Hence the sequence converges.
 
@@ -1914,7 +1914,7 @@ Define \(T: c \to c_0\) by setting
 \begin{equation*}
  y_1 = x_\infty,\quad y_{n+1} = x_n - x_\infty \qquad \textnormal{if}\; n \geq 1.
 \end{equation*}
-Prove that $T$ is one-to—one and that \(Tc = c_0\).
+Prove that $T$ is one-to-one and that \(Tc = c_0\).
  Find \(\|T\|\) and \(\|T^{-1}\|\). Describe the
 operator \(uT^*v\) that maps \ellone\ to \ellone.
 \end{itemize}
@@ -1923,11 +1923,125 @@ operator \(uT^*v\) that maps \ellone\ to \ellone.
 \begin{itemize}
 
 \itemch{a}
+Let \(e_j \in c_0 \subset c \subset \ellinf\) the unit vectors..
+\begin{equation*}
+(v(\Lambda))_j = \Lambda(e_j) \qquad (\Lambda \in c_0^*)
+\end{equation*}
+Clearly $v$ is linear.
+Let \(x\in c_0\) where \(x=(x_j)_{j\in\N}\).
+Put \(s_n = s_n(x) = \sum_{j\leq n} x_j e_j\).
+By continuity
+\(\Lambda(x) = \lim_{n\to\infty}\Lambda(s_n)\).
+Let \(\xi_j \in \C\) such that \(|\xi_j| = |x_j|\)
+and \(\Lambda(\xi_j e_j) \geq 0\).
+Now \(\|\xi\|_\infty = \|x\|_\infty\) and 
+\begin{equation*}
+|\Lambda(x)| \leq |\Lambda(\xi)|
+ = \lim_{n\to\infty} \Lambda(s_n(\xi)).
+\end{equation*}
+\begin{equation*}
+\|v(\Lambda)\|_1
+  = \sup\left\{|\Lambda(x)|: \|x\|_\infty\leq 1\;\land\; x\in c_0\right\}
+  = \|\Lambda\|.
+\end{equation*}
+Thus $v$ is bounded.
+Assume \(v(\Lambda_1) = u(\Lambda_2) \in \ellone\).
+Assume by negation \(\Lambda_1(x) \neq \Lambda_2(x)\) for some \(x\in c_0\)
+
+By linearity \(\Lambda_1(s_n) = \Lambda_2(s_n)\)
+and by continuity \(\Lambda_1(x) = \Lambda_2(x)\).
+Thus \(\Lambda_1 = \Lambda_2\) and $v$ is injective.
+
+Pick arbitrary \(y \in \ellone\).
+Clearly if \(\Lambda_y(x) = \sum_{j\in\N} y_j x_j\) where \(x\in c_0\)
+is well defined and \(v(\Lambda_y) = y\). Thus $v$ is onto.
+
+
+Let \(\nu\in c\) be the ``constant'' vector \(\nu_i = 1\).
+Formally \(\nu = \sum_{j\in\N} e_j\).
+For \(\Lambda \in c^*\)
+\begin{equation*}
+\left(u(\Lambda)\right)_j =
+ \left\{
+   \begin{array}{ll}
+     \Lambda(\nu) \qquad & j=1 \\
+     \Lambda(e_{j-1}) \qquad & j > 1
+   \end{array}
+  \right.
+\end{equation*}
+Linearity of $u$ is obvious.
+To show \(u(\Lambda)\in\ellone\), consider the restriction
+\(\Lambda_{\restriction {c_0}} \in c_0^*\).
+Now clearly
+\begin{equation*}
+\|u(\Lambda)\|_1 \leq |\Lambda(\nu)| + \|\Lambda_{\restriction {c_0}}\|_1 < \infty.
+\end{equation*}
+
+\iffalse
+To show \(u(\Lambda)\in\ellone\)
+Let \(\mu\in c\) defined by \(\mu_j = \overline{\Lambda(e_j)}\).
+Let \(a_\Lambda \in \ellinf\) defined by
+\((a_\Lambda)_j = \exp(-i\arg(\Lambda(e_j)\) if defined or $1$ otherwise.
+Thus  \(|(a_\Lambda)_j|=1\) and
+\(\Lambda((a_\Lambda)_j\cdot e_j) = \Lambda(e_j)|\).
+Let \(\mu_\Lambda(x) : c \to c\) defined by
+\(\mu_\Lambda(x)_j = (a_\Lambda)_j \cdot x_j\).
+\fi
+
+Pick some \(x\in c^*\).
+\Wlogy\ we may assume \(\Lambda(x_j\cdot e_j) \geq 0\).
+There exist some \(n < \infty\) such that
+\(\forall j\geq n\; |x_j| < x_\infty + 1\). Now
+\begin{align*}
+\|\Lambda(x)\|_1
+= \sum_{j\in\N} |x_j\Lambda(e_j)|
+\leq \sum_{j\in\N} |x_j\Lambda(e_j)|
+\leq \sum_{j< n} |x_j\Lambda(e_j)|
+     + \sum_{j\geq n} |x_j\Lambda(e_j)|
+\end{align*}
+
+Let \(P_n: c\to c\) be a projection (using Iverson bracket notation).
+\(P_n(x))_j = x_j[j \leq n]\)
+and \(Q_n(x) = P_n(x) + x_\infty (\nu - P_n(x))\).
+Clearly \(\lim_{n\to\infty}Q_n(x) = x\) for all \(x\in c\).
+Assume \(u(\Lambda_1) = u(\Lambda_2)\).
+Clearly
+\begin{equation*}
+\forall x\in c,n\in\N\;\Lambda_1(Q_n(x)) = \Lambda_2(Q_n(x)).
+\end{equation*}
+By continuity of both \(\Lambda_1\) and \(\Lambda_2\)
+we see that 
+\(\Lambda_1(x) = \Lambda_2(x)\) and so
+\(\Lambda_1 = \Lambda_2\) and $u$ is injective.
+
+The surjectivity and boundness of $u$ can be shown as was done for $v$.
 
 \itemch{b}
+Let \(y\in \ellone\). Put \(\Lambda_y = u^{-1}(y)\).
+Now
+\begin{equation*}
+\Lambda_y(x) = y_1\cdot x_\infty + \sum_{j\in\N} y_{j+1}\cdot(x_j - x\infty).
+\qquad x\in c
+\end{equation*}
+Consider \(S^*(\Lambda_y) = {\Lambda_y}_{\restriction_{c_0}}\)
+\begin{equation*}
+\left(S^*\Lambda_y\right)(x) = \sum_{j\in\N} y_{j+1}\cdot x_j
+= \Lambda_{\Theta(y)}(x).
+\qquad x\in c+0
+\end{equation*}
+where \(\Theta\) is the left shift operator on \ellone\ with
+\((\Theta(y))_j = y_{j+1}\).
+Thus \(vS^*u^{-1} = T\).
 
 \itemch{c}
-
+Assume \(T(x) = T(y)\)
+then clearly \(x_\infty = y_\infty\)
+and \(T(x)_j = T(y)_j\) for all \(j\in_\N\) and so \(x_j = y_j\)
+this T is injective.
+If \(x\in c\) then \(\lim_{j\to\infty} x_j-x_\infty = 0\) and so \(T(x)\in c_0\).
+The restriction \(T_{\restriction c_e}\) is the identify map on \(c_0\)
+thus $T$ is surjective.
+\unfinished
 \end{itemize}
 
 
@@ -1963,6 +2077,3 @@ is an ``approximate'' eigenvalue.]
 %%%%%%%%%%%%%%%
 \end{enumerate}
 %%%%%%%%%%%%%%%
-
-
-

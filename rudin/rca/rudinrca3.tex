@@ -271,7 +271,7 @@ Equality happens iff (the columns)
 one of them is all zero.
 \end{lem}
 \begin{thmproof}
-The case where some \(\mathbf{a}_i\) is all zeros is trivial,
+The case where some \(\mathbf{a}_j\) is all zeros is trivial,
 so we exclude it from the rest of the proof.
 By induction on $m$.
 Assume \(m=0\), then \(g=1\) and (\ref{eq:eqgeom}) is a trivial equality.
@@ -427,7 +427,7 @@ if \(a_{ij}\geq 0\)
 for all \(1\leq i \leq n\), \(1\leq j \leq g\),
 then
 \begin{equation}
- \sum_{i=1}^n \prod_{j=1}^{1/g} a_{ij}^{1/g}
+ \sum_{i=1}^n \prod_{j=1}^g a_{ij}^{1/g}
  \leq
  \prod_{j=1}^g \left(\sum_{i=1}^n a_{ij}\right)^{1/g}
 \end{equation}
@@ -1884,7 +1884,8 @@ Assume, in addition to the hypotheses of Exercise~4, that
 %
 \itemch{a}
 If \(\|f\|_s=\infty\) the inequality trivially holds. Otherwise
-We use lemma~\ref{lem:holder:eq} to compute, for simplify assume \(f\geq 0\).
+We use lemma~\ref{lem:holder:eq} to compute, for simplification
+assume \(f\geq 0\).
 \begin{equation*}
 \|f\|_r^r
  = \int_X f^r\,d\mu

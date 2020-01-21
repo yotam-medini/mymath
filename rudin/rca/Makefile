@@ -28,7 +28,21 @@ rudinrca-dvi-old:
 
 #	 ln -s ../rudinrca-a4.tex ../rudinrca.tex .; 
 # rudinrca-a4.pdf: rudinrca-a4.tex rudinrca.tex
-rudinrca-a4.pdf: rudinrca-a4.tex rudinrca.tex 10-37-fig.tex
+RUDINTEXS = \
+	rudinrca1.tex \
+	rudinrca2.tex \
+	rudinrca3.tex \
+	rudinrca4.tex \
+	rudinrca5.tex \
+	rudinrca6.tex \
+	rudinrca7.tex \
+	rudinrca8.tex \
+	rudinrca9.tex \
+	rudinrca10.tex \
+	rudinrca11.tex \
+
+
+rudinrca-a4.pdf: rudinrca-a4.tex rudinrca.tex ${RUDINTEXS} 10-37-fig.tex
 	rm -rf scr
 	mkdir -p scr
 	(cd scr; touch dum; rm -f rudin*; \
