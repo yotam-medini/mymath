@@ -120,7 +120,7 @@ function $S$ is $1-1$ on $V$.
 Assume \(x \neq y\). % , \wlogy\ \(b\in x \setminus y\).
 If by negation \(S(x) = S(y)\), then % \(b = \{y\}\).
 \(x \in S(y)\) and so \(x\in y\).
-Similarly \(y \in x\). Thus \(\{x, y\}\) has no ``minimal''
+Similarly \(y \in x\). Thus \(\{x, y\}\) has no ``\(\in\)-minimal''
 element contradiction to to the Axiom of Foundation.
 
 \begin{lexcopy}{I.7.2}{34}
@@ -131,6 +131,23 @@ set contains $1$. Then show that $1$ is the only one-element transitive set,
 and $2$
 is the only two-element transitive set.
 \end{lexcopy}
+
+Let \(T\neq\emptyset\) be transitive set.
+By Axiom of Foundation there is an
+element \(e\in T\) if by negation \(x\in e\),
+by transitivity \(x\in T\) contradicting the existance of $e$,
+thus \(e = \emptyset \in T\).
+Clearly \(1= \{\empty\}\) is the only singleton transitive set.
+
+If $T$ is non-singleton, let \(S = T \setminus \{\emptyset\} \neq \emptyset\).
+Since $S$ is not transitive, let \(u \in S\) be such that \(u \subsetneq S\).
+Since \(u\subset T\), we have \(\emptyset \in u\)
+that is \(1 = \{\emptyset\} \in u\).
+
+If $T$ is two element set, then \(u\in T\) and also \(u \subset T\).
+But \(u \neq \{\emptyset\}\), so we must have 
+
+\unfinished
 
 \begin{lexcopy}{I.7.25}{38}
   Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
