@@ -144,20 +144,33 @@ Since $S$ is not transitive, let \(u \in S\) be such that \(u \subsetneq S\).
 Since \(u\subset T\), we have \(\emptyset \in u\)
 that is \(1 = \{\emptyset\} \in u\).
 
-If $T$ is two element set, then \(u\in T\) and also \(u \subset T\).
-But \(u \neq \{\emptyset\}\), so we must have 
-
-\unfinished
+If $T$ is two element set,
+then \(S = T \setminus \{\emptyset\}=\{u\}\) is a singleton.
+Also \(u \subset T = \{\emptyset, u\}\).
+But \(u \neq \emptyset\}\),
+so $u$ must be singleton conisting of some element of $T$.
+Since \(u\notin u\) its element must be \(\emptyset\),
+namely \(u = \{\emptyset\}\) and
+\(T = \{\emptyset, \{\emptyset\}\} = 2\).
 
 \begin{lexcopy}{I.7.25}{38}
   Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
   a transitive set and \(\in\) satisfies trichotomy on $z$.
 \end{lexcopy}
 
+If $z$ is an ordinal, then by definition it is transitive
+and since  \(\in\) is an order, it satisfies trichotomy.
+
+Conversely, assume that  $z$ is  a transitive set
+and \(\in\) is trichotomy on $z$.
+Let \(\emptyset \neq S\subset z\).
+
+
 \begin{lexcopy}{I.7.26}{39}
   Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
 a transitive set and all elements of $z$ are transitive sets.
 \end{lexcopy}
+
 
 \begin{lexcopy}{I.7.27}{39}
   Show, in \(BST^{~}\), that if $A$,$B$ are finite,
