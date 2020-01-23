@@ -201,6 +201,17 @@
 \makeatother
 \newtheorem{Def}{Definition}
 
+\newtheorem{manualtheoreminner}{Theorem}
+\newenvironment{manualtheorem}[1]{%
+  \renewcommand\themanualtheoreminner{#1}%
+  \manualtheoreminner
+}{\endmanualtheoreminner}
+
+\newtheorem{manuallemmainner}{Lemma}
+\newenvironment{manuallemma}[1]{%
+  \renewcommand\themanuallemmainner{#1}%
+  \manuallemmainner
+}{\endmanuallemmainner}
 
 \newcommand{\loclemma}{Lemma}
 
