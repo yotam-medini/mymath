@@ -5,7 +5,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapterTypeout{Background Material}
 
-\section{Exercises} % pages 111-115
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+\begin{manuallemma}{I.7.8}
+\(ON\) is a transitive class. That is, if \(\alpha \in ON\)
+and \(z \in \alpha\),
+then \(z \in ON\).
+\end{manuallemma}
+The proof says ``it is easy to check that $z$ is a transitive set.''
+\\
+Here is how. Let \(y \in z\), we need to show \(y \subseteq z\).
+By transitivity, \(z \subseteq \alpha\) and so \(y \in \alpha\).
+Again by transitivity, \(y \subseteq \alpha\).
+Let \(x\in y\), thus \(x \in \alpha\) and actually \(x,y,z \in \alpha\).
+By orering of \(\alpha\), we have \(x\in y \in z\) and hence \(x\in z\)
+giving the desired \(y \subseteq z\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Old Edition Exercises } % pages 111-115
+
 
 %%%%%%%%%%%%%%%%%
 \begin{enumerate}
@@ -56,6 +76,9 @@ The \(\leq\) is needed for \(0+\omega = 1+\omega\).
 \unfinished
 
 \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Current Edition Exercises } % pages 111-115
 
 \begin{lexcopy}{I.4.18}{24}
 Derive \(\forall y[y \notin y]\) from the Axioms of Comprehension and
@@ -140,8 +163,9 @@ thus \(e = \emptyset \in T\).
 Clearly \(1= \{\emptyset\}\) is the only singleton transitive set.
 
 If $T$ is non-singleton, let \(S = T \setminus \{\emptyset\} \neq \emptyset\).
-Since $S$ is not transitive, let \(u \in S\) be such that \(u \subsetneq S\).
-Since \(u\subset T\), we have \(\emptyset \in u\)
+Since $S$ is not transitive, let \(u \in S\)
+be such that \(u \not\subseteq S\).
+Since \(u\subseteq T\), we have \(\emptyset \in u\)
 that is \(1 = \{\emptyset\} \in u\).
 
 If $T$ is two element set,
@@ -163,7 +187,7 @@ and since  \(\in\) is an order, it satisfies trichotomy.
 
 Conversely, assume that  $z$ is  a transitive set
 and \(\in\) is trichotomy on $z$.
-Let \(S\subset z\) some non-empty set. By Axiom of Foundation,
+Let \(S\subseteq z\) be some non-empty set. By Axiom of Foundation,
 we have \(y \in S\) such that \(\forall z\in y (z\notin S)\).
 If by negation $y$ uis not \(\in\)-minimal in $S$,
 then \(\exists m\in s(m\in y)\) is a contradiction.
@@ -175,20 +199,31 @@ Ths \(\in\) well orders $z$ and thus $z$ is an ordinal.
 a transitive set and all elements of $z$ are transitive sets.
 \end{lexcopy}
 
-If $z$ is an ordinal, then by definition it is transitive.
-Let \(s\in z\) and by negation is not transitive.
-Thus we have \(e\in s \land e \subsetneq s\).
-\unfinished
+If $z$ is an ordinal, the by definition it is transitive,
+its elements are ordinals by Lemma~ I.7.8 thus transitive.
+
+Conversely, we need to show that \(\in\) is well-order on \(\alpha\).
+Assume by negation \(\in\) is not a total order.
+Let \(x\in z\) be \(\in\)-minimal such that it is non-comparable
+with some elemet in $z$.
+Let \(y\in z\) be \(\in\)-minimal such that it is non-comparable
+with $x$.
+Now if \(u\in y\) then \(u\in x\) hence \(y \subseteq x\).
+Similarly, if \(u\in x\) then \(u\in y\) hence \(x \subseteq y\),
+thus \(x = y\) is a contradiction, and \(\in\) is a total-order on $z$
+and by the Axiom of Foundation is well-order. Hence $z$ is an ordinal.
 
 \begin{lexcopy}{I.7.27}{39}
   Show, in \(BST^{~}\), that if $A$,$B$ are finite,
   then \(A\cup B\) and \(A\times B\)
 are finite, and \(\mathcal{P}(A)\) exists and is finite.
 \end{lexcopy}
+\unfinished
 
 \begin{lexcopy}{I.9.6}{46}
   Derive the Axioms of Infinity and Replacement from (2) of Lemma I.9.5.
 \end{lexcopy}
+\unfinished
 
 \begin{lexcopy}{I.9.8}{46}
   If $R$ is well-founded on $A$, then $R$ is acyclic on $A$; hence, \(R^*\)
@@ -196,6 +231,7 @@ are finite, and \(\mathcal{P}(A)\) exists and is finite.
   Conversely, if $A$ is finite and $R$ is acyclic on $A$,
 then $R$ is well-founded on $A$.
 \end{lexcopy}
+\unfinished
 
 \begin{lexcopy}{I.9.27}{54}
   Assume that each element of \R\ has rank \(\omega\);
@@ -204,3 +240,4 @@ using our Definition 1.14-2. Let \(\mu\) be Lebesgue measure on \R. Prove that
 \(\R,\mu \in WF\), with \(\textrm{rank}(\R) = \omega + 1\)
 and \(\textrm{rank}(\mu) = \omega + 4\).
 \end{lexcopy}
+\unfinished
