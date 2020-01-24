@@ -214,11 +214,49 @@ thus \(x = y\) is a contradiction, and \(\in\) is a total-order on $z$
 and by the Axiom of Foundation is well-order. Hence $z$ is an ordinal.
 
 \begin{lexcopy}{I.7.27}{39}
-  Show, in \(BST^{~}\), that if $A$,$B$ are finite,
+  Show, in \(BST^{-}\), that if $A$,$B$ are finite,
   then \(A\cup B\) and \(A\times B\)
 are finite, and \(\mathcal{P}(A)\) exists and is finite.
 \end{lexcopy}
-\unfinished
+Here without Axiom of Foundation.
+
+By induction on ordinal $n$ for which \(B \preccurlyeq n\).
+Let \(B \preccurlyeq n + 1 = \{0, 1, \ldots n - 1\}\).
+Pick the (last) element \(b\in B\) that is mapped to \(n-1\),
+and let \(B' = B \setminus \{b\}\), so now \(B \preccurlyeq n\).
+
+\(\mathbf{A\cup B}\):
+Let \(f'\) be a 1-1 function \(A \cup B' \to n - 1\)
+If \(b\in A\) the the same \(f'\) maps  \(A \cup B \to n - 1\),
+Otherwise we define \(f: A \cup B \to n\), by
+\(f(b) = n - 1\) and \(f(b') = f'(b')\) for \(b'\in B'\).
+
+\(\mathbf{A\times B}\):
+Let \(g: A \to m\) be 1-1 mapping, and let \(a_i = g^{-1}(i)\)
+for \(0 \leq i < m\).
+Let \(f'\) be a 1-1 function \(A \times B' \to M\)
+It is easy to have 1-1- map
+\(A \times B \to (A \times B') \cup (\{x\} \times B)\),
+we can pick any \(x\notin A\) for example \(\{A\}\).
+The finiteness is now derived from the previous result.
+
+\(\mathbf{P(A)}\): Similarly we
+set the disjoint union \(A = A' \cup \{a\}\).
+Given a 1-1 map \(f': P(A') \to m\)
+Define
+\begin{equation*}
+f: P(A) \to (\{0\}\times m) \cup (\{1\}\times m)
+\end{equation*}
+by:
+\begin{equation*}
+f(B) =
+\left\{
+\begin{array}{ll}
+(\{0\}, f'(B)) & \textrm{if}\; B \subseteq A' \\
+(\{1\}, f'(B \setminus \{a\})) & \textrm{if}\; B \not\subseteq A'
+\end{array}
+\right.
+\end{equation*}
 
 \begin{lexcopy}{I.9.6}{46}
   Derive the Axioms of Infinity and Replacement from (2) of Lemma I.9.5.
