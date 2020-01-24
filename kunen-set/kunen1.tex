@@ -272,7 +272,15 @@ f(B) =
   Conversely, if $A$ is finite and $R$ is acyclic on $A$,
 then $R$ is well-founded on $A$.
 \end{lexcopy}
-\unfinished
+If there was an $R$-cylce there would be no $R$ minimal element in $A$.
+The definition of \(R^*\) via $R$-path gives transitivitym namely
+\begin{equation*}
+\forall x,y,z\,\left(xRy \wedge yRz \;\to\; xRz\right).
+\end{equation*}
+
+Conversely, each $R$-path must be finite for there are no cycles
+and $A$ is finite. Thus there exists $R$-minimal element
+(or \(A=\emptyset\)).
 
 \begin{lexcopy}{I.9.27}{54}
   Assume that each element of \R\ has rank \(\omega\);
