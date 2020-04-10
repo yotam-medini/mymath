@@ -289,7 +289,27 @@ using our Definition 1.14-2. Let \(\mu\) be Lebesgue measure on \R. Prove that
 \(\R,\mu \in WF\), with \(\textrm{rank}(\R) = \omega + 1\)
 and \(\textrm{rank}(\mu) = \omega + 4\).
 \end{lexcopy}
-\unfinished
+Since the members of each \(x\in \R\) all have rank of \(\omega\),
+\begin{equation*}
+\rank(\R)=\max(\{\rank(x)+1: x\in\R\|) = \omega+1.
+\end{equation*}
+Nonempty subsets of \(\R\) have rank of \(\omega+2\).
+Rank of pairs where \(a\in\R\) and \(\emptyset \neq A \subset \R\)
+\begin{equation*}
+\rank(\langle A, a\rangle)
+ = \max(\rank(A),\rank(a)) + 2
+ = \max(\omega+1,\omega) + 2 = \omega + 3.
+\end{equation*}
+Now \(\mu\) is a nonempty set cosisting of such pairs,
+Thus
+\begin{equation*}
+\omega + 3 + 1 \leq \rank(\mu)
+\leq \rank\left(
+  \mathcal{P}(\{\langle A, a\rangle): a\in\R \wedge A\subset\R\}
+   \right)
+= \omega + 4.
+\end{equation*}
+So the abpve inequalities are actually equalities.
 
 \begin{lexcopy}{I.9.39}{59}
 Assume that $R$ is well-founded and set-like on $A$. Then
