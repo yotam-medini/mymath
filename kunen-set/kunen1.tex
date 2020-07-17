@@ -315,16 +315,87 @@ So the abpve inequalities are actually equalities.
 Assume that $R$ is well-founded and set-like on $A$. Then
 \(\textrm{rank}_{A,R}\) is 1-1 iff \(R^*\) is a total order of $A$.
 \end{lexcopy}
-\unfinished
+
+Assume \(\textrm{rank}_{A,R}\) is 1-1
+and by negation \((x,y),(y,x) \notin R^*\).
+Let \(W = \{x,y\}\,\cup\,\{w\in A: (w,x)\in R^*\;\lor\; (w,y)\in R^*\}\).
+
+
+Let \(E=\{y'\in W: y'\neq x\;\land\; (y',x)\notin R^*\}\neq \emptyset\).
+\(y\in E\), so let \(y_0\in E\) be \(R^*\)-minimal.
+Similarly, 
+let \(F=\{x'\in E: x'\neq y' \;\land\; (x',y')\notin R^*\}\neq \emptyset\)
+and let \(x_0\in F\) be \(R^*\)-minimal and \(x_0 \neq y_0\).
+
+Being minimal we now have
+\begin{equation*}
+\{z\in A: (z,x_0)\in R^*\} = \{z\in A: (z,y_o)\in R^*\}.
+\end{equation*}
+Hence \(\rank(x_0) = \rank(y_0)\) a contradiction.
+
+Conversely, assume \(\R^*\) is a total order.
+Let \(x,y\in A\), \wlogy \((x,y)\in R^*\) thus \(\rank(y)>\rank(x)\).
+
 
 \begin{lexcopy}{1.9.40}{59}
 If \(R_1 \subseteq R_2\) are both well-founded and set-like on $A$, then
-\(\textrm{rank}_{A,R}(y) \leq \textrm{rank}_{A,R}(y)\)
+\(\rank_{A,R_1}(y) \leq \rank_{A,R_2}(y)\)
 for all \(y \in A\). Also, 
-\(\textrm{rank}_{A,R}(y) = \textrm{rank}_{A,R}(y)\)
+\(\rank_{A,R_1}(y) = \rank_{A,R_2}(y)\)
 if \(R_1 \subseteq R_2 \subseteq (R_1)^*\).
 \end{lexcopy}
-\unfinished
+
+By negation assume
+\begin{equation} \label{eq:1.9.40:neg}
+\rank_{A,R_1}(y) > \rank_{A,R_2}(y).
+\end{equation}
+By looking at \(\pred_{A,R_2}(y)\) we can assume that $y$ is \(R_2\)-mininal
+for \eqref{eq:1.9.40:neg}.
+Now we have the contradiction:
+\begin{equation*}
+\rank_{A,R_1}(y)
+= \sup\{\rank_{A,R_1}(x): xR_1y\}
+\leq 
+  \sup\{\rank_{A,R_2}(x): xR_2y\} = \rank_{A,R_2}(y).
+\end{equation*}
+
+We will now show that for any well-founded and set-like $R$ on $A$
+\begin{equation} \label{eq:1.9.40:ReqRstar}
+\rank_{A,R}(x) = \rank_{A,R^*}(x) \quad \forall x\in A.
+\end{equation}
+By induction define \(R^0=\emptyset\), \(R^1=R\)
+and for each \(n<\omega \land n > 1\)
+\begin{equation*}
+R^n = \left\{\langle x, y \rangle: \exists z, xR^{n-1}z \land zR^{n-1}y\right\}.
+\end{equation*}
+Clearly \(R^* = \cup_{n<\omega}R^n\), so it will
+be sufficient to show by induction that
+\begin{equation}  \label{eq:1.9.40:ReqRn}
+\rank_{A,R}(x) = \rank_{A,R^n}(x) \quad \forall x\in A.
+\end{equation}
+Let \(n > 1\).
+By previous result we have \(\rank_{A,R^{n-1}}(x) \leq \rank_{A,R^n}(x)\).
+By negation assume
+\begin{equation} \label{eq:1.9.40:negstar}
+\rank_{A,R^{n-1}}(x) < \rank_{A,R^n}(x).
+\end{equation}
+By considereing \(\pred_{A,R^n}(x)\)
+we can assume that $x$ is \(R^n\)-mininal for \eqref{eq:1.9.40:negstar}.
+By induction, for each $y$ such that \(yR^{n-1}x\) we have
+\(\rank_{A,R^{n-1}}(y) = \rank_{A,R^n}(y)\). Hence there is some $y$
+such that \(\langle y, x \rangle \in R^n \setminus R^{n-1}\).
+THus there is in $R$-path of $n$ steps via $s$ function,
+where \(s(0)=y\), \(s(k)\,R\,s(k+1)\) and \(s(n)=x\)
+Put \(x'=s(n-1)\), so \(\rank_{A,R^{n-1}}(x') < \rank_{A,R^n}(x')\)
+Since \(x'Rx\) and $y$ and $s$ are arbitrary \eqref{eq:1.9.40:ReqRn}
+and so \eqref{eq:1.9.40:ReqRstar} is proved.
+
+Back to the exercise's last part.  we already shown
+\begin{equation*}
+\rank_{A,R_1}(y) \leq \rank_{A,R_2}(y) \leq \rank_{A,R_*^*}(y)
+\end{equation*}
+by \eqref{eq:1.9.40:ReqRn} the last inequalities are actual equalities,
+that is \(\rank_{A,R_1}(y) = \leq \rank_{A,R_e2}(y)\).
 
 \begin{lexcopy}{1.9.41}{59}
 Assume that $R$ is well-founded and set-like on $A$, and that $R$
