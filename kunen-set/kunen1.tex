@@ -337,7 +337,7 @@ Conversely, assume \(\R^*\) is a total order.
 Let \(x,y\in A\), \wlogy \((x,y)\in R^*\) thus \(\rank(y)>\rank(x)\).
 
 
-\begin{lexcopy}{1.9.40}{59}
+\begin{lexcopy}{I.9.40}{59}
 If \(R_1 \subseteq R_2\) are both well-founded and set-like on $A$, then
 \(\rank_{A,R_1}(y) \leq \rank_{A,R_2}(y)\)
 for all \(y \in A\). Also, 
@@ -346,11 +346,11 @@ if \(R_1 \subseteq R_2 \subseteq (R_1)^*\).
 \end{lexcopy}
 
 By negation assume
-\begin{equation} \label{eq:1.9.40:neg}
+\begin{equation} \label{eq:I.9.40:neg}
 \rank_{A,R_1}(y) > \rank_{A,R_2}(y).
 \end{equation}
 By looking at \(\pred_{A,R_2}(y)\) we can assume that $y$ is \(R_2\)-mininal
-for \eqref{eq:1.9.40:neg}.
+for \eqref{eq:I.9.40:neg}.
 Now we have the contradiction:
 \begin{equation*}
 \rank_{A,R_1}(y)
@@ -360,7 +360,7 @@ Now we have the contradiction:
 \end{equation*}
 
 We will now show that for any well-founded and set-like $R$ on $A$
-\begin{equation} \label{eq:1.9.40:ReqRstar}
+\begin{equation} \label{eq:I.9.40:ReqRstar}
 \rank_{A,R}(x) = \rank_{A,R^*}(x) \quad \forall x\in A.
 \end{equation}
 By induction define \(R^0=\emptyset\), \(R^1=R\)
@@ -370,38 +370,67 @@ R^n = \left\{\langle x, y \rangle: \exists z, xR^{n-1}z \land zR^{n-1}y\right\}.
 \end{equation*}
 Clearly \(R^* = \cup_{n<\omega}R^n\), so it will
 be sufficient to show by induction that
-\begin{equation}  \label{eq:1.9.40:ReqRn}
+\begin{equation}  \label{eq:I.9.40:ReqRn}
 \rank_{A,R}(x) = \rank_{A,R^n}(x) \quad \forall x\in A.
 \end{equation}
 Let \(n > 1\).
 By previous result we have \(\rank_{A,R^{n-1}}(x) \leq \rank_{A,R^n}(x)\).
 By negation assume
-\begin{equation} \label{eq:1.9.40:negstar}
+\begin{equation} \label{eq:I.9.40:negstar}
 \rank_{A,R^{n-1}}(x) < \rank_{A,R^n}(x).
 \end{equation}
 By considereing \(\pred_{A,R^n}(x)\)
-we can assume that $x$ is \(R^n\)-mininal for \eqref{eq:1.9.40:negstar}.
+we can assume that $x$ is \(R^n\)-mininal for \eqref{eq:I.9.40:negstar}.
 By induction, for each $y$ such that \(yR^{n-1}x\) we have
 \(\rank_{A,R^{n-1}}(y) = \rank_{A,R^n}(y)\). Hence there is some $y$
 such that \(\langle y, x \rangle \in R^n \setminus R^{n-1}\).
-THus there is in $R$-path of $n$ steps via $s$ function,
+Thus there is in $R$-path of $n$ steps via $s$ function,
 where \(s(0)=y\), \(s(k)\,R\,s(k+1)\) and \(s(n)=x\)
 Put \(x'=s(n-1)\), so \(\rank_{A,R^{n-1}}(x') < \rank_{A,R^n}(x')\)
-Since \(x'Rx\) and $y$ and $s$ are arbitrary \eqref{eq:1.9.40:ReqRn}
-and so \eqref{eq:1.9.40:ReqRstar} is proved.
+Since \(x'Rx\) and $y$ and $s$ are arbitrary \eqref{eq:I.9.40:ReqRn}
+and so \eqref{eq:I.9.40:ReqRstar} is proved.
 
 Back to the exercise's last part.  we already shown
 \begin{equation*}
 \rank_{A,R_1}(y) \leq \rank_{A,R_2}(y) \leq \rank_{A,R_*^*}(y)
 \end{equation*}
-by \eqref{eq:1.9.40:ReqRn} the last inequalities are actual equalities,
-that is \(\rank_{A,R_1}(y) = \leq \rank_{A,R_e2}(y)\).
+by \eqref{eq:I.9.40:ReqRn} the last inequalities are actual equalities,
+that is \(\rank_{A,R_1}(y) = \rank_{A,R_2}(y)\).
 
-\begin{lexcopy}{1.9.41}{59}
+\begin{lexcopy}{I.9.41}{59}
 Assume that $R$ is well-founded and set-like on $A$, and that $R$
 is a transitive relation on $A$.
-Then \(\textrm{mos}_{A,R}(a) = \textrm{rank}_{A,R}(a)\) for all \(a \in A\).
+Then \(\mos_{A,R}(a) = \rank_{A,R}(a)\) for all \(a \in A\).
 \end{lexcopy}
+
+% using:  frederic-wang.fr/mathematics/set-theory/kunen/chapter_1.html
+By transitivity \(R=R^*\).
+By negation we have \(\mos_{A,R}(a) \neq \rank_{A,R}(a)\)
+for some $R$-minimal $a$.
+Since \(\mos(\emptyset)=\emptyset=\rank(\emptyset])\)
+clearly \(a\neq\emptyset\).
+% By Lemma~I.9.14 rank values are oridinals.
+By Lemma~I.7.13 union of ordinals that is a set --- is an ordinal.
+% and Lemma~I.9.16 there is an ordinal \(\alpha\) % and \(b\in A\) such that
+By minimally
+\begin{equation*}
+\mos(a)
+= \{\mos(x): xRa\}
+= \{\rank(x): xRa\} % = \alpha. % = \beta = \rank(b).
+\end{equation*}
+% Now \(\alpha = \{\beta: \beta < \alpha\}\).
+and by Lemma~I.9.16
+\begin{equation*}
+\{\rank(x): xRa\} = \{\alpha: \alpha < \rank(a)\} = \rank(a),
+\end{equation*}
+\iffalse
+\{\beta: \beta < \alpha\} = \{\rank(b): bRa\}
+and supremum of ordinals equals their union, thus
+\begin{equation*}
+\rank(a) = \sup\{\rank(x)+1: xRa\}
+= \sup\{\mos(x) + 1: xRa\}.
+\end{equation*}
+\fi
 \unfinished
 
 \begin{lexcopy}{I.9.42}{59}
@@ -412,13 +441,13 @@ Theorem~1.8.2, are all the same.
 \end{lexcopy}
 \unfinished
 
-\begin{lexcopy}{1.9.43}{59}
+\begin{lexcopy}{I.9.43}{59}
 Work in \(ZF^-\). Let $K$ be any class and assume that every
 subset of $K$ is a member of $K$. Prove that \(WF \subseteq K\).
 \end{lexcopy}
 \unfinished
 
-\begin{lexcopy}{1.9.44}{59}
+\begin{lexcopy}{I.9.44}{59}
 For any relation $R$ on a class $A$, and \(a \in A\): $R$
 is well-founded on \(\textrm{pred}_{A,R^*}(a)\) iff $R$
 is well-founded on \(\{a\} \cup \textrm{pred}_{A,R^*}(a)\).
