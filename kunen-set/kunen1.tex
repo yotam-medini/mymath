@@ -438,12 +438,127 @@ By previous exercise is equals to \(\mos\) as well.
 Work in \(ZF^-\). Let $K$ be any class and assume that every
 subset of $K$ is a member of $K$. Prove that \(WF \subseteq K\).
 \end{lexcopy}
-\unfinished
+
+By negation \(WF \not\subseteq K\) and by Lemma~I.6.28
+let $a$ be \(\in\)-minimal element in \(WF\setminus K\).
+Now
+\begin{equation*}
+a = \{x\in a\} = \{x \in a\cap K\} \subseteq K.
+\end{equation*}
+The last equality holds by minimality of $a$.
+But \(a \in K\) by the assumption which is a contradiction.
 
 \begin{lexcopy}{I.9.44}{59}
 For any relation $R$ on a class $A$, and \(a \in A\): $R$
 is well-founded on \(\textrm{pred}_{A,R^*}(a)\) iff $R$
 is well-founded on \(\{a\} \cup \textrm{pred}_{A,R^*}(a)\).
 \end{lexcopy}
-\unfinished
+Let \(A_0 = \textrm{pred}_{A,R^*}(a)\) and let \(A_1 = \{a\} \cup A_0\).
 
+\(\rightarrow\): Let $B$ be a subset of \(A_1\).
+If \(a \notin B\) then \(B \subset A_0\) and has a $R$-minimal element.
+Otherwise \(a \in B\) then either $a$ is $R$-minimal in $B$
+or \(B \setminus \{a\} \subset A_0\) has $R$-minimal element.
+
+\(\leftarrow\):  Let $B$ be a subset of \(A_0 \subset A_1\),
+and by assumption has a $R$-minimal element.
+
+\begin{lexcopy}{I.9.46}{60}
+Let $R$ be set-like on $A$, and let \(W = WF_{A,R}\) Then:
+\begin{enumerate}
+\item \(A\setminus W\) has no $R$-minimal elements.
+\item $R$ is well-founded on $W$.
+\item For \(a \in W\), \(\rank_{A,R}(a) = \rank_{W,R}(a)\).
+\item For \(a\in A\): \(a\in W\) iff \(\pred_{A,R^*}(a) \subseteq W\)
+      iff \(\pred_{A,R}(a) \subseteq W\).
+\end{enumerate}
+\end{lexcopy}
+
+\begin{enumerate}
+  \item
+    Using item~2.\ If by negation $a$ is $R$-minimal in \(A \setminus W\)
+    then \(P=\pred_{A,R^*}(b) \subset W\).
+    Then by following \textbf{2.}, $R$ is well-founded on $P$
+    contrdiction to \(a\notin W\).
+  
+  \item
+    Let \(B \subset W\) be non-empty subset.
+    Pick some \(b\in B\). Let \(P = \pred_{A,R^*}(b)\) which is well-founded.
+    Now $R$ is well-founded on \(B \cap P\) and has a $R$-minimal
+    element \(c \in B \cap P)\). But $c$ must also be $R$-minimal in $B$
+    since otherwise there exists \(x\in B\) and \(xRc\), and then \(x\in P\)
+    contradicting $R$-minimality of $c$ in \(B \cap P)\).
+    Hence $W$ is well-founded.
+
+  \item
+    For \(a\in W\)
+    \begin{align}
+      \rank_{A,R}(a) &= \rank_{\{a\}\cup\pred_{A,R^*},R}(a) \nonumber \\
+      &= \sup\{\rank_{\pred_{A,R^*},R}(x) + 1: xRa\} \nonumber \\
+      &= \sup\{\rank_{W,R}(x) + 1: xRa\} = \rank_{W,R}(a) \label{eq:rank:W}
+    \end{align}
+    The \eqref{eq:rank:W} equality
+    is justified by the fact the the \(\sup\) operator
+    recursively runs in both cases on \(\pred_{A,R^*}(a)\).
+
+  \item
+    Assume \(a \in W\). Then $R$ is well founded on \(P_a=\pred_{A,R^*}(a)\).
+    Clearly for each \(b\in P\)
+    \begin{equation*}
+      P_b = \pred_{A,R^*}(b) \subset \pred_{A,R^*}(a) = P_a.
+    \end{equation*}
+    and  $R$ is well founded on \(P_n\) and thus \(b\in W\)
+    and so \(P_a\subset W\).
+
+    Assume \(\pred_{A,R^*}(a) \subset W\). Clearly
+    \begin{equation*}
+      \pred_{A,R}(a) \subset \pred_{A,R^*}(a) \subset W
+    \end{equation*}
+
+    Assume \(P_a = \pred_{A,R}(a) \subset W\).
+    For each \(b \in P_a\) we have $R$ well founded on\(P_b = \pred_{A,R^*}(b)\).
+    \begin{align*}
+       \pred_{A,R^*}(a) = \cup_{b\in P_a} \{b\} \cup \pred_{A,R^*}(b) \subset W.
+    \end{align*}
+    By item~2.\ $R$ is well-founded on $W$ and thus also on \(P_a\).
+    Hence \(a\in W\).
+\end{enumerate}
+
+\begin{lexcopy}{I.9.47}{60}
+Call a relation $R$ on a set $A$ anti-transitive iff it satisfies
+\(\forall x y z \in A\, [xRy \land yRz \to xRz]\).
+Prove that if $R$ is any well-founded relation
+on a set $A$, and all elements of $A$ have finite rank,
+then there is a unique anti-transitive \(H \subset R\)
+such that \(H^* — R^*\). Then give a counter-example to this
+where $R$ is a well-order of a countable set.
+\end{lexcopy}
+
+The exercise is wrong.
+Consider \(A = \{0, 1, 2\}\) and the natural
+\begin{align*}
+  R &= \{(0, 1), (1, 2), (0, 2)\} \\
+  H_0 &= \{(0, 1), (1, 2)\} \\
+  H_1 &= R
+\end{align*}
+and \(H_0^* = H_1^* = R\) but \(H_0 \neq H_1\)..
+
+\begin{lexcopy}{I.9.48}{60}
+The requirements for a Ph.D. in math at \(\aleph\)U are only the
+courses \framebox{\(\sigma\)} for each
+\(\sigma \in \omega^{<\omega}\) (see Definition~1.6.11). The prerequisites for
+\framebox{a} are all \framebox{\(\tau\)} such that
+\(\tau\) is obtained from \(\tau\) by replacing one term $n$ from
+\(\tau\)r by a finite (possibly empty) sequence of numbers less than $n$.
+For example,
+\framebox{\(2,1,7,1\)} teaches you all about the sequence \((2,1, 7,1)a\),
+and has as prerequisites
+\framebox{\(1,7,1\)},
+\framebox{\(|0,1,1,0,1,7,1\)},
+\framebox{\(2,1,5,5,4,0,1,1\)}, etc.
+\framebox{\ } teaches you all about the empty sequence \(\emptyset\),
+and has no prerequisite. No number is less than $0$, so
+the only prerequisite for \framebox{$0$} is \framebox{\ }.
+\end{lexcopy}
+
+\unfinished
