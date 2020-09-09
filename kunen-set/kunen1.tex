@@ -559,6 +559,105 @@ and has as prerequisites
 \framebox{\ } teaches you all about the empty sequence \(\emptyset\),
 and has no prerequisite. No number is less than $0$, so
 the only prerequisite for \framebox{$0$} is \framebox{\ }.
+
+\begin{enumerate}
+\renewcommand{\theenumi}{\alph{enumi}}
+\item
+Prove that the prerequisite relation is well-founded; so, you can graduate
+in some ordinal number of semesters.
+\item
+Compute the \(\rank\) function; note that here, \(rank(x)\) is the first semester
+in which you can possibly take course $x$.
+\end{enumerate}
 \end{lexcopy}
 
+\begin{enumerate}
+\renewcommand{\theenumi}{\alph{enumi}}
+\item
+ For each sequence \(\tau\) consider its canonical reduction
+ \(tau'\) to strictly reducing sequence where for each $n$ in \(tau\),
+ $n$ appears exactly once in \(tau\).
+ Consider the lexicographic order on the canonical reductions.
+ For each subset $S$ sequences, we can find some \(\sigma\in S\) with the minimal
+ canonical reduction.
+ By considering the first difference in the canonical reductions,
+ it is easy to see that \(\sigma\)  has no strict prerequisite in $S$.
+\item
+Let $R$ be the prerequisite relation.
+Let \(z_0 = \emptyset\) and for any natural \(n>1\)
+\(z_n = \bigl(\overbrace{0,\ldots,0}^n\bigr)\).
+Clearly \(\rank(z_n) = n\).
+For any \(\tau\)
+having \(m>0\) in its sequence we have \(z_n R \tau\)
+and thus \(\rank(\tau)=\omega\).
+\end{enumerate}
+
+\begin{lexcopy}{I.9.49}{60}
+Let $R$ be well-founded and set-like on $A$. Prove that there is
+a class $M$ and an isomorphism from \((A,R)\) onto \((M, \in)\).
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.50}{61}
+Assume that $R$ is set-like on $A$ and not well-founded. Define
+a \(G(x,s)\) that is an explicit counter-example to Theorem~I1.9.11.
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.51}{61}
+Work in ZF. Assume that $R$ is well-founded on $A$, and that
+$X$ is a non-empty sub-class of $A$. Prove that $X$ has an $R$-minimal element.
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.52}{61}
+Verify the statements made about exponentiation in Table~1.1
+on page~40.
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.53}{61}
+Let \(\gamma\) be a limit ordinal. Show that the following are 
+equivalent:
+\begin{enumerate}
+\renewcommand{\theenumi}{\alph{enumi}}
+\item
+\(\forall \alpha,\beta < \gamma [\alpha + \beta < \gamma]\).
+
+\item
+\(\forall \alpha < \gamma [ \alpha + \gamma = \gamma]\).
+
+\item
+\(\forall X \subseteq \gamma
+  [\type(X) = \gamma \lor \type(\gamma\setminus X) = \gamma]\).
+
+\item
+\(\exists\delta[\gamma = \omega^\delta]\).
+\end{enumerate}
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.54}{61}
+Prove the Cantor Normal Form Theorem: Each ordinal
+\(\alpha > 0\) can be represented uniquely in the form:
+\begin{equation*}
+\alpha =\omega^{\beta_1}\cdot n_1 + \cdots + \omega^{\beta_k}\cdot n_k .
+\end{equation*}
+where \(k,n_1m\ldots,n_k \in \omega \setminus \{0\}\)
+and
+\(\alpha \geq \beta_1 > \cdots > \beta_k\).
+
+If \(\alpha = \beta_1\) then \(\alpha = \omega^\alpha\) and \(k = n_1 = 1\).
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.55}{62}
+Let \(F(\alpha, \beta)\) be the set of all functions $f$ from
+\(\beta\) to \(\alpha\) such
+that \(\{\xi < \beta: f(\xi) \neq 0\}\) finite.
+For \(f,g \in F(\alpha,\beta)\) with \(f \neq g\), define \(f \triangleleft g\)
+iff \(f(\xi) < g(\xi)\), where \(\xi\) is the largest ordinal such
+that \(f(\xi) \neq g(\xi)\). Prove that
+\(\triangleleft\) well-orders \(F(\alpha, \beta)\) in type \(\alpha^\beta\).
+\end{lexcopy}
 \unfinished
