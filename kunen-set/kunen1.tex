@@ -596,19 +596,82 @@ and thus \(\rank(\tau)=\omega\).
 Let $R$ be well-founded and set-like on $A$. Prove that there is
 a class $M$ and an isomorphism from \((A,R)\) onto \((M, \in)\).
 \end{lexcopy}
-\unfinished
+Following hint. For \(y\in A\)
+let \(T(y) = \{\lrangle{0,y},\lrangle{1,y},\lrangle{2,y}\}\)
+and let
+\begin{equation*}
+F(y) = \{F(x): x\in y\kdownarrow\} \cup T(y). %  = \textrm{mos}(y)\cup T(y).
+\end{equation*}
+% Similar to Mostowsky function which is not necessarily \(1-1\).
+If \(xRy\) then by definition \(F(x)\in F(y)\).
+Assume \(F(y_1) = F(y_2)\). Then \(z_1 = \lrangle{0,y_1} \in F(y_2)\).
+But \(\lrangle{0,y_1}\) has at most two elements,
+while \(F(x)\) has at least three.
+Hence \(\lrangle{0,y_1} \in T(y_2)\) and by uniqueness of pairs (Lemma~I.4.12)
+\(\lrangle{0,y_1} = \lrangle{0,y_2}\) and so \(y_1 = y_2\).
+Thus $F$ is 1-1, and with \(M=F(A)\) we have isomorphism.
 
 \begin{lexcopy}{I.9.50}{61}
 Assume that $R$ is set-like on $A$ and not well-founded. Define
 a \(G(x,s)\) that is an explicit counter-example to Theorem~I1.9.11.
 \end{lexcopy}
-\unfinished
+Define
+\begin{equation*}
+\widehat{S}(y) =
+ \left\{
+ \begin{array}{ll}
+ y + 1 & y \in ON \\
+ \emptyset & \textnormal{otherwise}
+ \end{array}\right.
+\end{equation*}
+Now define for \(x\in A\)
+\begin{equation*}
+G(x,s) =
+ \left\{
+ \begin{array}{ll}
+  \bigcup \{\widehat{S}(s(y)) &
+    s \;\textnormal{is a function and}\, \dom(s)=x\kdownarrow \\
+ \emptyset & \textnormal{otherwise}
+ \end{array}\right.
+\end{equation*}
+If by negation there exists $F$ such that
+\(F(x) = G(x,F\vert x\kdownarrow)\).
+Union of ordinals is an orfinal and so is \(F(x)\).
+If \(xRy\) then
+\begin{equation*}
+F(x) < F(x) + 1 = \widehat{S}(x) \leq F(y).
+\end{equation*}
+By Lemma~I.9.9, $R$ is well-founded, a contradiction.
 
 \begin{lexcopy}{I.9.51}{61}
 Work in ZF. Assume that $R$ is well-founded on $A$, and that
 $X$ is a non-empty sub-class of $A$. Prove that $X$ has an $R$-minimal element.
 \end{lexcopy}
-\unfinished
+Using Definition~I.9.28 \(R(\alpha) = \{x \in WF : \rank(x) < \alpha\}\)
+Assume by negation $X$ has no $R$-minimal element.
+For each (set!) \(x\in X\) let
+\begin{equation*}
+f(x) = \min\{\rank(z) : z \in X \wedge zRx\}
+\end{equation*}
+Clearly \(f(x)\) are ordinals. Pick \(x_0 \in X\) and let
+\(\gamma_0 = \rank(x_9) + 1\). By induction define for any natural \(n\in\omega\)
+\begin{equation*}
+\gamma_{n+1} = \sup\left(\{f⁢(x): x \in X\cap R⁢(\gamma_n)\} \cup
+  \{\gamma_n + 1\}\right).
+\end{equation*}
+Let \(\gamma = \sup_{n\in\omega} \gamma_n\). Now
+\begin{equation*}
+x_0 \in X\cap R⁢(\gamma_0) \subseteq X\cap R⁢(\gamma).
+\end{equation*}
+and \(\rank⁡(x) < \gamma\) for all \(x\in X\cap R⁢(\gamma)\).
+% So there is \(n<\omega\) such that \(\rank(x) < \gamma_n\).
+% Then \(f⁢(x) \leq \gamma_n + 1 < \gamma\).
+
+Now, let \(x_1\) be a $R$-minimal element of the set \(X\cap R⁢(\gamma)\).
+By the definition of $f$, 
+let \(z\in X\) be such that \(z⁢R⁢x_1\) and \(\rank⁡(z)=f⁢(x_1)\).
+Then \(\rank⁡(z) < \gamma\) and so actually \(z \in X\cap R⁢(\gamma)\).
+This contradicts the minimality of \(x_1\).
 
 \begin{lexcopy}{I.9.52}{61}
 Verify the statements made about exponentiation in Table~1.1
