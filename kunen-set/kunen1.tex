@@ -677,7 +677,72 @@ This contradicts the minimality of \(x_1\).
 Verify the statements made about exponentiation in Table~1.1
 on page~40.
 \end{lexcopy}
-\unfinished
+Recall the definitions:
+\(\alpha^0=1\),
+\(\alpha^{S(\beta)}=\alpha^\beta\cdot\alpha\)
+and
+\(\alpha^{\gamma}=\sup_{\beta<\gamma}\alpha^\beta\) for \(\gamma\) a limit.
+
+We need to show
+\(\alpha^{\beta+\gamma} = \alpha^\beta \cdot \alpha^\gamma\)
+and 
+\(\alpha^{(\beta\gamma)} = (\alpha^\beta)^\gamma\).
+
+By negation, let \(\gamma\) be the minimal ordinal for which
+\begin{equation} \label{eq:apbg:neq}
+\alpha^{\beta+\gamma} \neq  \alpha^\beta \cdot \alpha^\gamma.
+\end{equation}
+If \(\gamma\) is a successor, then we have \(\gamma'+1=\gamma\)
+then
+\begin{equation*}
+\alpha^{\beta+\gamma}
+= \alpha^{\beta+(\gamma'+1)} 
+= \alpha^{(\beta+\gamma')+1)} 
+= \alpha^{\beta+\gamma'}\cdot\alpha
+= \left(\alpha^\beta\cdot\alpha^{\gamma'}\right)\cdot\alpha
+= \alpha^\beta\cdot\left(\alpha^{\gamma'}\right)\cdot\alpha
+= \alpha^\beta\cdot\alpha^{\gamma'+1}
+= \alpha^\beta\cdot\alpha^\gamma.
+\end{equation*}
+Otherwise \(\gamma\) is a successor,
+and we have \(\gamma = \sup\{\mu: \mu<\gamma\}\) and then
+\begin{align*}
+\alpha^{\beta+\gamma}
+&= \alpha^{\beta+(\sup_{\mu<\gamma}\mu)}
+= \alpha^{\sup_{\mu<\gamma}(\beta+\mu)}
+= \alpha^{\sup_{\mu<\gamma}(\beta+\mu)} \\
+&= \sup_{\mu<\gamma}\alpha^{\beta+\mu}
+= \sup_{\mu<\gamma}\alpha^\beta\cdot\alpha^\mu
+= \alpha^\beta\cdot\sup_{\mu<\gamma}\alpha^\mu
+= \alpha^\beta\cdot\alpha^\gamma.
+\end{align*}
+and both cases contradict \eqref{eq:apbg:neq}.
+
+By negation, let \(\gamma\) be the minimal ordinal for which
+\begin{equation} \label{eq:apbpg:neq}
+\alpha^{\beta\cdot\gamma} \neq  \left(\alpha^\beta\right)^\gamma.
+\end{equation}
+If \(\gamma\) is a successor, then we have \(\gamma'+1=\gamma\)
+then
+\begin{equation*}
+\alpha^{(\beta\cdot\gamma)}
+= \alpha^{(\beta\cdot(\gamma'+1))}
+= \alpha^{(\beta\cdot\gamma'+\beta)}
+= \alpha^{(\beta\cdot\gamma')}\cdot\alpha^\beta
+= \left(\alpha^\beta\right)^{\gamma'}\cdot\alpha^\beta
+= \left(\alpha^\beta\right)^{\gamma'+1}
+= \left(\alpha^\beta\right)^\gamma.
+\end{equation*}
+Otherwise \(\gamma\) is a successor,
+and we have \(\gamma = \sup\{\mu: \mu<\gamma\}\) and then
+\begin{equation*}
+\alpha^{(\beta\cdot\gamma)}
+= \alpha^{(\beta\cdot(\sup_{\mu<\gamma}\mu)}
+= \sup_{\mu<\gamma}\alpha^{(\beta\cdot\mu)}
+= \sup_{\mu<\gamma}\left(\alpha^\beta\right)\mu
+= \left(\alpha^\beta\right)\gamma
+\end{equation*}
+and both cases contradict \eqref{eq:apbpg:neq}.
 
 \begin{lexcopy}{I.9.53}{61}
 Let \(\gamma\) be a limit ordinal. Show that the following are 
