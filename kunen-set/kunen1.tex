@@ -764,13 +764,44 @@ equivalent:
 \end{enumerate}
 \end{lexcopy}
 
-Using \cite{Levy2002Basic}.
+Using \cite{Levy2002Basic} IV.2.16.
+
+\ich{a} \(\rightarrow\) \ich{b}.\\
+By unique subtraction, there exists unique \(\delta\) such  that
+\(\alpha + \delta = \gamma\). By \ich{a} \(\delta \geq \gamma\).
+If by negation \(\delta > \gamma\)
+then \(\alpha + \delta > \alpha + \gamma \geq \gamma\)
+is a contradiction. Hence \(\delta = \gamma\) and so
+\(\alpha + \gamma = \gamma\).
+
+\ich{b} \(\rightarrow\) \ich{c}.\\
+Clearly \(\type(X) \leq \gamma\)
+If by negation \(\type(X)<\gamma\)
+and \(\type(\gamma\setminus X)<\gamma\)
+then we weould have \(\type(X) + \type(\gamma\setminus X) = \gamma\)
+contradiction to \ich{b}.
+
+\ich{c} \(\rightarrow\) \ich{d}.\\
+Using (next I.9.54) Cantor Normal Form Theorem.
+\begin{equation*}
+\gamma = \omega^{\beta_1}\cdot n_1 + \cdots + \omega^{\beta_k}\cdot n_k
+\qquad (\beta_j > \beta_{j+1}).
+\end{equation*}
+If by negation \(k > 1\) then by putting \(X =  \omega^{\beta_1}\cdot n_1\)
+contradicts \ich{c}. So now we have \(\gamma = \omega^{\beta_1}\cdot n_1\).
+If by negation \(n_1 > 1\), then putting \(X =  \omega^{\beta_1}\cdot (n_1 - 1)\)
+again contradicts \ich{c}.
 
 \ich{d} \(\rightarrow\) \ich{a}.\\
-\(\delta \neq 0\) since \(gamma\) is a limit.
-
-
-\unfinished
+\(\delta \neq 0\) since \(\gamma\) is a limit.
+Assume \(\alpha_1, \leq \alpha_2 < \gamma\)
+Again by (next I.9.54) Cantor Normal Form Theorem.
+\begin{equation*}
+\alpha_m = \omega^{\beta_{m,1}}\cdot n_{m,1} + \cdots + \omega^{\beta_{m,k_m}}\cdot n_{m,k}
+\qquad (m=1,2\;n_{n,1}\geq 1\;\land\;\beta_j > \beta_{j+1}).
+\end{equation*}
+By assumption \(\beta_{1,1} \leq \beta_{2,1} < \delta\).
+Hence \(\alpha_1 + \alpha_2 < \gamma\).
 
 \begin{lexcopy}{I.9.54}{61}
 Prove the Cantor Normal Form Theorem: Each ordinal
@@ -778,12 +809,14 @@ Prove the Cantor Normal Form Theorem: Each ordinal
 \begin{equation*}
 \alpha =\omega^{\beta_1}\cdot n_1 + \cdots + \omega^{\beta_k}\cdot n_k .
 \end{equation*}
-where \(k,n_1m\ldots,n_k \in \omega \setminus \{0\}\)
+where \(k,n_1,\ldots,n_k \in \omega \setminus \{0\}\)
 and
 \(\alpha \geq \beta_1 > \cdots > \beta_k\).
 
 If \(\alpha = \beta_1\) then \(\alpha = \omega^\alpha\) and \(k = n_1 = 1\).
 \end{lexcopy}
+
+See \cite{Levy2002Basic} IV.2.14 or \cite{Jech2006Set} 2.26.
 \unfinished
 
 \begin{lexcopy}{I.9.55}{62}
@@ -794,5 +827,12 @@ For \(f,g \in F(\alpha,\beta)\) with \(f \neq g\), define \(f \triangleleft g\)
 iff \(f(\xi) < g(\xi)\), where \(\xi\) is the largest ordinal such
 that \(f(\xi) \neq g(\xi)\). Prove that
 \(\triangleleft\) well-orders \(F(\alpha, \beta)\) in type \(\alpha^\beta\).
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.9.56}{62}
+If \(\alpha,\beta\) are non-zero ordinals, then there is a largest \(\xi\) such
+that \(\xi \mid \alpha\) and \(\xi \mid \beta\).
+Here, \(\xi \mid \alpha\) iff \(\alpha = \xi\cdot\mu\) for some \(\mu\).
 \end{lexcopy}
 \unfinished
