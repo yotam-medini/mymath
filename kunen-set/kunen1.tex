@@ -838,6 +838,41 @@ iff \(f(\xi) < g(\xi)\), where \(\xi\) is the largest ordinal such
 that \(f(\xi) \neq g(\xi)\). Prove that
 \(\triangleleft\) well-orders \(F(\alpha, \beta)\) in type \(\alpha^\beta\).
 \end{lexcopy}
+
+Associativity:\\
+Let \(f_1 \triangleleft F_2 \triangleleft f_2\).
+For \(j=1,2\) let \(\xi_j\) be the maximal such that
+\(f_j(\xi_j) \neq f_{j+1}(\xi_j)\) and
+assume \mbox{\(f_j(\xi_j) < f_{j+1}(\xi_j)\)}.
+Let \(\xi_3\) be maximal such that \(f_1(\xi_3) \neq f_3(\xi_3)\).
+For all \(x>\max(\xi_1,\xi_2)\) we have \(f_1(x)=f_2(x)=f_3(x)\).
+Hence \(\xi_3 \leq \max(\xi_1,\xi_2)\).
+
+Let's examine cases:
+\begin{center}
+\begin{tabular}{l c p{0.6\textwidth}}\\
+\textbf{Case} & & \textbf{Implies} \\
+\(\xi_1 < \xi_2\) & \(\quad\rightarrow\) & 
+  \(\xi_3=\xi_2 \;\land\; f_1(\xi_3)=f_2(\xi_3)<f_3(\xi_3)\)\\
+\(\xi_1 > \xi_2\) & \(\quad\rightarrow\) & 
+  \(\xi_3=\xi_1 \;\land\; f_1(\xi_3)<f_2(\xi_3)=f_3(\xi_3)\)\\
+\(\xi_1 = \xi_2\) & \(\quad\rightarrow\) & 
+  \(\xi_3=\xi_1=\xi_2\;\land\; f_1(\xi_3)<f_2(\xi_3)<f_3(\xi_3)\)\\
+\end{tabular}
+\end{center}
+Hence \(\triangleleft\) is an order.
+
+Let \(\emptyset\neq X \subseteq F(\alpha, \beta)\).
+Denote the constant zero function \(\zeta\in F(\alpha, \beta)\), \(\zeta(x)=0\)
+for all \(x\in\beta\). If \(\zeta \in X\) then \(\zeta\) is a mininal.
+Otherwise,
+for each \(f\in X\) let \(\gamma_f=\max\{x\in \beta: f(x)\neq 0\}\).
+Let \(\xi = \min(\gamma_f: f\in X\}\).
+Let \(Y = \{f(\xi): \gamma_f = \xi\) and
+let \(y = \min(Y)\). Now pick some \(f\in F(\alpha, \beta)\)
+such that \(f(\xi)=y\). Note that \(f(x)=0\) for all \(x>\xi\).
+Clearly $f$ is mininal in $X$.
+Thus \(\triangleleft\) well orders \(F(\alpha, \beta)\)
 \unfinished
 
 \begin{lexcopy}{I.9.56}{62}
@@ -845,4 +880,16 @@ If \(\alpha,\beta\) are non-zero ordinals, then there is a largest \(\xi\) such
 that \(\xi \mid \alpha\) and \(\xi \mid \beta\).
 Here, \(\xi \mid \alpha\) iff \(\alpha = \xi\cdot\mu\) for some \(\mu\).
 \end{lexcopy}
-\unfinished
+We calll such \(\xi\) as \(\gcd(\alpha,\beta)\).
+
+Euclid algorithm,
+Induction on \(\max(\alpha,\beta)\).
+\Wlogy, \(\alpha\geq \beta\).
+If \(\alpha = 1\) then (also \(\beta=1\) \(\gcd(1,1)=1\).
+By the division rule, there exists oridinals
+$q$ and $r$ such that \(\alpha = \beta\cdot q + r\)
+and \(r<\beta\), clearly \(q > 0\) must hold.
+By induction we can put \(\mu = \gcd(\beta, r)\)
+Now common divisors of \(\alpha\) and \(beta\)
+are the common divisors of \(beta\) and $r$.
+Thus \(\mu = \gcd(\alpha, \beta)\).
