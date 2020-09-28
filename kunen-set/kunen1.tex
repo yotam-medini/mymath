@@ -829,14 +829,16 @@ such that \(\delta< \omega\) (finite!) and \(\rho \omega^\delta<\).
 By induction \(\rho\) has a Cantor finite normal form
 which completes the desired finite normal form for \(\alpha\).
 
+{
+\newcommand*{\Fab}{\ensuremath{F(\alpha, \beta)}}
 \begin{lexcopy}{I.9.55}{62}
-Let \(F(\alpha, \beta)\) be the set of all functions $f$ from
+Let \Fab\ be the set of all functions $f$ from
 \(\beta\) to \(\alpha\) such
 that \(\{\xi < \beta: f(\xi) \neq 0\}\) finite.
-For \(f,g \in F(\alpha,\beta)\) with \(f \neq g\), define \(f \triangleleft g\)
+For \(f,g \in \Fab\) with \(f \neq g\), define \(f \triangleleft g\)
 iff \(f(\xi) < g(\xi)\), where \(\xi\) is the largest ordinal such
 that \(f(\xi) \neq g(\xi)\). Prove that
-\(\triangleleft\) well-orders \(F(\alpha, \beta)\) in type \(\alpha^\beta\).
+\(\triangleleft\) well-orders \Fab\ in type \(\alpha^\beta\).
 \end{lexcopy}
 
 Associativity:\\
@@ -862,18 +864,61 @@ Let's examine cases:
 \end{center}
 Hence \(\triangleleft\) is an order.
 
-Let \(\emptyset\neq X \subseteq F(\alpha, \beta)\).
-Denote the constant zero function \(\zeta\in F(\alpha, \beta)\), \(\zeta(x)=0\)
+Let \(\emptyset\neq X \subseteq \Fab\).
+Denote the constant zero function \(\zeta\in \Fab\), \(\zeta(x)=0\)
 for all \(x\in\beta\). If \(\zeta \in X\) then \(\zeta\) is a mininal.
 Otherwise,
 for each \(f\in X\) let \(\gamma_f=\max\{x\in \beta: f(x)\neq 0\}\).
 Let \(\xi = \min(\gamma_f: f\in X\}\).
 Let \(Y = \{f(\xi): \gamma_f = \xi\) and
-let \(y = \min(Y)\). Now pick some \(f\in F(\alpha, \beta)\)
+let \(y = \min(Y)\). Now pick some \(f\in \Fab\)
 such that \(f(\xi)=y\). Note that \(f(x)=0\) for all \(x>\xi\).
 Clearly $f$ is mininal in $X$.
-Thus \(\triangleleft\) well orders \(F(\alpha, \beta)\)
-\unfinished
+Thus \(\triangleleft\) well orders \Fab.
+
+We now show \(\type(\Fab) = \alpha^\beta\) following \cite{WangFrederic}
+by induction on \(\beta\).
+
+If \(\beta=\emptyset\) then \(\alpha^\beta=\{\emptyset\}\)
+and \(\type(\alpha^\emptyset)=1=\type(\{\emptyset\})\).
+
+\newcommand*{\Faet}{\ensuremath{F(\alpha, \eta)}}
+\newcommand*{\Fag}{\ensuremath{F(\alpha, \gamma)}}
+If \(\beta=\eta+1\) is a successor, then
+let \(G_\xi = \{f\in\Fab:f(\eta)=\xi\}\) for \(\xi<\alpha\), now
+\begin{equation*}
+\Fab \sim G_0 + G_1 + \cdots = \sum_{\xi<\alpha} G_\xi.
+\end{equation*}
+Each \(G_\xi \simeq \Faet\). Thus
+\begin{equation*}
+\type(\Fab) = \type\left(\overbrace{G_0 + G_1 + \cdots}^\alpha\right)
+  = \type\left(\sum_{\xi<\alpha} G_\xi\right)
+  = \type(\Faet\cdot\alpha)
+  = \alpha^{\eta+1} = \alpha^\beta.
+\end{equation*}
+
+Assume \(\beta\) is a limit ordinal.
+For all \(\gamma < \beta\) let
+\begin{equation*}
+X_\gamma = \{f\in\Fab: \forall \xi\geq\gamma\; f(\xi)=0\}.
+\end{equation*}
+Each \(X_\gamma\) is an initial segment of \Fab\ isomorphic
+to \Fag\ and by induction to \(\alpha^\gamma\).
+ׁHence \(\alpha^{\gamma}\leq \type(\Fag)\).
+Since this holds for all \(\gamma < \beta\) we have
+\(\alpha^\beta \leq \type(\Fab)\).
+Assume by negation \(\alpha^\beta < \type(\Fab)\)
+and let \(g\in\Fab\) be a function such that the initial segment
+\(\{f\in\Fab:f\triangleleft g\}\) is isomorphic to \(\alpha^\beta\).
+Let \(\xi<\beta\) be the largest element such that
+\(g⁢(\xi)\neq 0\) and let \(\gamma=\xi+1\).
+Let \(f=\chi_{\{\gamma\}} \in \Fab\).
+The inital segment of $f$ is the set \(X_\gamma\) for which
+\(\type(X_\gamma) = \alpha^\gamma < \alpha^\beta\)
+and so \(f\triangleleft g\) by definition of $g$.
+But by construction of $f$ we also have \(g\triangleleft f\), a contradiction.
+Hence \(\type(\Fab) = \alpha^\beta\).
+} % for newcommands
 
 \begin{lexcopy}{I.9.56}{62}
 If \(\alpha,\beta\) are non-zero ordinals, then there is a largest \(\xi\) such
