@@ -1118,9 +1118,44 @@ Finally,
 \end{equation*}
 as wanted.
 
+For any \(1\leq n<\omega\) and \(\alpha \geq 1\),
+if \(1\leq \beta < \omega\alpha\)
+then
+\begin{equation*}
+\log_{\omega}(\beta) < \alpha = \log_{\omega}(\omega^{\alpha}\cdot n).
+\end{equation*}
+Hence the relation of the previous paragraph
+gives
+\begin{equation*}
+\gamma(\omega^{{\omega^{\alpha}\cdot n} + \beta})
+  = \gamma(\omega^{{\omega^{\alpha}\cdot n}}) + \omega^{{\omega^{\alpha}\cdot{2n}} + \beta}.
+\end{equation*}
+Then by continuity of \(\gamma\) and of the sum/exponentiation
+in the second variable, we can consider the limit
+\(\beta \rightarrow \omega^{\alpha}\).
+This gives
+\begin{equation*}
+{\gamma(\omega^{\omega^{\alpha}\cdot(n + 1)})}
+  ={\gamma(\omega^{\omega^{\alpha}\cdot n})} + \omega^{\omega^{\alpha}\cdot{(2n + 1)}}.
+\end{equation*}
+By induction, we deduce on \(2\leq n < \omega\) we deduce
+\begin{equation*}
+\gamma(\omega^{\omega^{\alpha}\cdot n})
+  = \gamma(\omega^{\omega^{\alpha}}) + \omega^{\omega^{\alpha}\cdot{(2n-1)}}
+\end{equation*}
+and in particular
+\begin{equation*}
+\forall 2\leq n < \omega,\,
+ \gamma(\omega^{\omega^{\alpha}\cdot n}) > \omega^{\omega^{\alpha}\cdot n}.
+\end{equation*}
+We can also consider the limit \(n \rightarrow \omega\) and we obtain
+\begin{equation*}
+{\gamma(\omega^{\omega^{\alpha + 1}})}
+ = {\gamma(\omega^{\omega^{\alpha}})} + \omega^{\omega^{\alpha+1}}.
+\end{equation*}
+
 \iffalse
 
-For any 1\leq n<\omega and \alpha \geq 1, if 1\leq  \beta <\omega\alpha then \log\omega⁡( \beta )<\alpha=\log\omega⁡(\omega\alpha \cdot n). Hence the relation of the previous paragraph gives \gamma⁢(\omega\omega\alpha \cdot n +  \beta )=\gamma⁢(\omega\omega\alpha \cdot n) + \omega\omega\alpha \cdot 2⁢n +  \beta . Then by continuity of \gamma and of the sum/exponentiation in the second variable, we can consider the limit  \beta →\omega\alpha. This gives \gamma⁢(\omega\omega\alpha \cdot (n + 1))=\gamma⁢(\omega\omega\alpha \cdot n) + \omega\omega\alpha \cdot (2⁢n + 1). By induction, we deduce on 2\leq n<\omega we deduce \gamma⁢(\omega\omega\alpha \cdot n)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha \cdot (2⁢n-1) and in particular \forall2\leq n<\omega,\gamma⁢(\omega\omega\alpha \cdot n)>\omega\omega\alpha \cdot n. We can also consider the limit n→\omega and we obtain \gamma⁢(\omega\omega\alpha + 1)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha + 1.
 
 To conclude, we have found the following fixed points of \gamma: 0,1,\omega,\omega\omega and in general we saw that infinite fixed points can only be of the form \omega\omega\alpha. But we can prove that these are indeed fixed points by induction on \alpha \geq 1. For \alpha=1, this is \omega\omega and the limit case is obvious by continuity of \gamma and of the exponentiation in the second variable. For the successor case, we use the formula obtained in the previous paragraph: \gamma⁢(\omega\omega\alpha + 1)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha + 1=\omega\omega\alpha + \omega\omega\alpha + 1=\omega\omega\alpha + 1.
 \fi
