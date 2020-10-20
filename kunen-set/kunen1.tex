@@ -1073,9 +1073,52 @@ and so
  = \omega^{\omega}
 \end{equation*}
 
-\iffalse
+We try to generalize the relation on
+\(\gamma(\omega^{\alpha+1})\)
+as follows. For any \(\alpha, \beta \geq 1\) such that
+\(\log_{\omega}(\alpha) > \log_{\omega}(\beta)\)
+we have
+\begin{equation*}
+\gamma(\omega^{\alpha+\beta})
+  = \gamma(\omega^{\alpha}) + \omega^{\alpha\cdot 2 + \beta}.
+\end{equation*}
+This is done by induction on \(\beta < \alpha\) for a fixed \(\alpha\).
+We already verified the case \(\beta = 1\) in
+the previous paragraph and the limit case is obvious by continuity
+of \(\gamma\) and of the sum/exponentiation in the second variable.
+For the successor step, we have
+\begin{equation*}
+\gamma(\omega^{\alpha+\beta + 1})
+  = {\gamma(\omega^{\alpha + \beta})} + \omega^{{(\alpha + \beta)}\cdot 2 + 1}
+\end{equation*}
+and by induction hypothesis,
+\begin{equation*}
+\gamma(\omega^{\alpha+\beta})
+  = \gamma(\omega^{\alpha}) + \omega^{\alpha\cdot 2 + \beta}.
+\end{equation*}
+Since
+\begin{equation*}
+\log_{\omega}(\alpha) > \log_{\omega}(\beta + 1) = \log_{\omega}(\beta)
+\end{equation*}
+we have
+\begin{equation*}
+(\alpha+\beta)\cdot 2 + 1
+  = \alpha+\beta + \alpha+\beta + 1 = \alpha\cdot 2 + \beta + 1 >
+  \alpha\cdot 2 + \beta
+\end{equation*}
+and so
+\begin{equation*}
+\omega^{\alpha\cdot 2 + \beta} + \omega^{\alpha\cdot 2 + \beta + 1}
+  = \omega^{\alpha\cdot 2 + \beta + 1}
+\end{equation*}
+Finally,
+\begin{equation*}
+{\gamma(\omega^{\alpha + \beta + 1})}
+  = {\gamma(\omega^{\alpha + \beta})} + \omega^{\alpha\cdot 2 + \beta + 1}
+\end{equation*}
+as wanted.
 
-We try to generalize the relation on \gamma⁢(\omega\alpha + 1) as follows. For any \alpha, \beta  \geq 1 such that \log\omega⁡(\alpha)>\log\omega⁡( \beta ) we hace \gamma⁢(\omega\alpha +  \beta )=\gamma⁢(\omega\alpha) + \omega\alpha \cdot 2 +  \beta . This is done by induction on  \beta <\alpha for a fixed \alpha. We already verified the case  \beta =1 in the previous paragraph and the limit case is obvious by continuity of \gamma and of the sum/exponentiation in the second variable. For the successor step, we have \gamma⁢(\omega\alpha +  \beta  + 1)=\gamma⁢(\omega\alpha +  \beta ) + \omega(\alpha +  \beta ) \cdot 2 + 1 and by induction hypothesis, \gamma⁢(\omega\alpha +  \beta )=\gamma⁢(\omega\alpha) + \omega\alpha \cdot 2 +  \beta . Since \log\omega⁡(\alpha)>\log\omega⁡( \beta  + 1)=\log\omega⁡( \beta ) we have (\alpha +  \beta ) \cdot 2 + 1=\alpha +  \beta  + \alpha +  \beta  + 1=\alpha \cdot 2 +  \beta  + 1>\alpha \cdot 2 +  \beta  and so \omega\alpha \cdot 2 +  \beta  + \omega\alpha \cdot 2 +  \beta  + 1=\omega\alpha \cdot 2 +  \beta  + 1. Finally, \gamma⁢(\omega\alpha +  \beta  + 1)=\gamma⁢(\omega\alpha +  \beta ) + \omega\alpha \cdot 2 +  \beta  + 1 as wanted.
+\iffalse
 
 For any 1\leq n<\omega and \alpha \geq 1, if 1\leq  \beta <\omega\alpha then \log\omega⁡( \beta )<\alpha=\log\omega⁡(\omega\alpha \cdot n). Hence the relation of the previous paragraph gives \gamma⁢(\omega\omega\alpha \cdot n +  \beta )=\gamma⁢(\omega\omega\alpha \cdot n) + \omega\omega\alpha \cdot 2⁢n +  \beta . Then by continuity of \gamma and of the sum/exponentiation in the second variable, we can consider the limit  \beta →\omega\alpha. This gives \gamma⁢(\omega\omega\alpha \cdot (n + 1))=\gamma⁢(\omega\omega\alpha \cdot n) + \omega\omega\alpha \cdot (2⁢n + 1). By induction, we deduce on 2\leq n<\omega we deduce \gamma⁢(\omega\omega\alpha \cdot n)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha \cdot (2⁢n-1) and in particular \forall2\leq n<\omega,\gamma⁢(\omega\omega\alpha \cdot n)>\omega\omega\alpha \cdot n. We can also consider the limit n→\omega and we obtain \gamma⁢(\omega\omega\alpha + 1)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha + 1.
 
