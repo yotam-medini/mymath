@@ -935,22 +935,84 @@ By the division rule, there exists oridinals
 $q$ and $r$ such that \(\alpha = \beta\cdot q + r\)
 and \(r<\beta\), clearly \(q > 0\) must hold.
 By induction we can put \(\mu = \gcd(\beta, r)\)
-Now common divisors of \(\alpha\) and \(beta\)
-are the common divisors of \(beta\) and $r$.
+Now common divisors of \(\alpha\) and \(\beta\)
+are the common divisors of \(\beta\) and $r$.
 Thus \(\mu = \gcd(\alpha, \beta)\).
 
 
 \begin{lexcopy}{I.11.7}{67}
 For \(\alpha > \omega\), show that
-\(\type(\alpha, \alpha, \triangleleft) = \alpha\) iff
+\(\type(\alpha \times \alpha, \triangleleft) = \alpha\) iff
 \(\alpha = \omega^\mu\) where
 \(\mu\) is either $1$ or an infinite indecomposable ordinal
 (see Exercise~\jumplink{I.9.53}{I.9.53}).
 \end{lexcopy}
 
+Using \cite{WangFrederic}.
+
+Put \(\gamma(\alpha) = \type(\alpha \times \alpha, \triangleleft)\).
+The ordering on \((\alpha+1)\times(\alpha+1)\) is ordered as follows:
+\begin{equation*}
+\type(\alpha, \alpha, \triangleleft)
+\quad,\quad \{(\xi,\alpha): 0\leq\xi<\alpha\}
+\quad,\quad \{(\alpha,\xi): 0\leq\xi\leq\alpha\}
+\end{equation*}
+So for all \(\alpha\),
+\(\gamma(\alpha+1) = \gamma(\alpha) + \alpha\times 2 + 1\).
+If \(\alpha \geq 1\) then \(\alpha\cdot ⁢2+1 > \alpha+1\).
+Hence any successor ordinal \(\alpha \geq 2\)
+is not a fixed point of \(\gamma\).
+We note that if $n$ is a finite ordinal then \(|n\times n| = n^2\)
+so \(\gamma⁢(n) = n^2\).
+In particular, \(n=0\) and \(n=1\) are fixed points of \(\gamma\)
+and moreover \(\gamma⁢(\omega) = \sup_{n<\omega⁡}\gamma⁢(n) = \omega\).
+
+By induction on \(n < \omega\), it’s easy to generalize the induction relation
+for \(\gamma⁢(\alpha+1)\) by
+\begin{equation*}
+\forall \alpha \geq \omega, \gamma⁢(\alpha+n)=\gamma⁢(\alpha)+\alpha⋅2⁢n+n
+\end{equation*}
+and so
+\begin{equation*}
+\gamma⁢(\alpha + \omega) = \sup_{n<\omega⁡}\gamma⁢(\alpha + n) =
+\gamma⁢(\alpha) + \alpha⋅\omega.
+\end{equation*}
+If \(\alpha \geq \omega\) and
+\(\omega^{\beta_1}⁢ n_1 + \cdots + \omega^{\beta_k}⁢ n_k\)
+its Cantor
+Normal Form, then for all \(n < \omega\)
+we have
+\begin{equation*}
+\alpha \cdot n =
+ \omega^{\beta_1⁢}\cdot (n_1\cdot⁢ n) + \omega^{\beta_2}⁢\cdot n_2 + \cdots +
+   \omega^{\beta_k}⁢\cdot n_k
+\end{equation*}
+and
+so
+\begin{equation*}
+\alpha \cdot \omega = \sup_{n<\omega}⁡\omega^{\beta_1} \cdot n = \omega^{\beta_1 + 1}.
+\end{equation*}
+Finally,
+\begin{equation*}
+\gamma⁢(\alpha + \omega)=\gamma⁢(\alpha) + \omega^{\log_\omega⁡(\alpha) + 1}.
+\end{equation*}
+
+\iffalse
+We generalize the previous expression: for any \alpha \geq \omega and  \beta  \geq 1 such that log\omega⁡(\alpha) + 1 \geq  \beta  we have \gamma⁢(\alpha + \omega \beta )=\gamma⁢(\alpha) + \omegalog\omega⁡(\alpha) +  \beta . We prove by induction on  \beta  that for all such \alpha the expression is true. We just verified  \beta =1 and the limit case is obvious by continuity of \gamma and of the sum/exponentiation in the second variable. For the successor step, if log\omega⁡(\alpha) + 1 \geq  \beta  + 1 then a fortiori \forall1≤n<\omega,log\omega⁡(\alpha + \omega \beta  \cdot n) + 1 \geq  \beta  + 1 \geq  \beta . We can then use the induction hypothesis to prove by induction on 1≤n<\omega that \gamma⁢(\alpha + \omega \beta  \cdot n)=\gamma⁢(\alpha) + \omegalog\omega⁡(\alpha) +  \beta  \cdot n. For n=1, this is just the induction hypothesis of  \beta  (for the same \alpha!). For the successor step, we need to use the induction hypothesis of  \beta  (for \alpha + \omega \beta  \cdot n) which is \gamma⁢(\alpha + \omega \beta  \cdot (n + 1))=\gamma⁢(\alpha + \omega \beta  \cdot n) + \omegalog\omega⁡(\alpha) +  \beta . Finally, \gamma⁢(\alpha + \omega \beta  + 1)=sup1≤n<\omega⁡\gamma⁢(\alpha + \omega \beta  \cdot n)=\gamma⁢(\alpha) + \omegalog\omega⁡(\alpha) +  \beta  + 1, as wanted.
+
+If \alpha is a limit ordinal and \omega \beta 1⁢n1 + … + \omega \beta k⁢nk its Cantor Normal Form, then from the previous relation we deduce \gamma⁢(\alpha)=\gamma⁢(\omega \beta 1) + \omega \beta 1 \cdot 2⁢(n1-1) + \omega \beta 1 +  \beta 2 \cdot n2 + … + \omega \beta 1 +  \beta k \cdot nk. In particular, \gamma⁢(\alpha)>\alpha if k \geq 2 or n1 \geq 2. For all \alpha \geq 1, log\omega⁡(\omega\alpha) + 1=\alpha + 1 so the previous paragraph also gives \gamma⁢(\omega\alpha + 1)=\gamma⁢(\omega\alpha + \omega\alpha + 1)=\gamma⁢(\omega\alpha) + \omega\alpha \cdot 2 + 1. In particular, \gamma⁢(\omega\alpha + 1) \geq \omega\alpha \cdot 2 + 1>\omega\alpha + 1. Moreover, by induction on n<\omega, we can show that \gamma⁢(\omegan + 1)=\omega2⁢n + 1 and so \gamma⁢(\omega\omega)=sup1≤n<\omega⁡\gamma⁢(\omegan)=\omega\omega.
+
+We try to generalize the relation on \gamma⁢(\omega\alpha + 1) as follows. For any \alpha, \beta  \geq 1 such that log\omega⁡(\alpha)>log\omega⁡( \beta ) we hace \gamma⁢(\omega\alpha +  \beta )=\gamma⁢(\omega\alpha) + \omega\alpha \cdot 2 +  \beta . This is done by induction on  \beta <\alpha for a fixed \alpha. We already verified the case  \beta =1 in the previous paragraph and the limit case is obvious by continuity of \gamma and of the sum/exponentiation in the second variable. For the successor step, we have \gamma⁢(\omega\alpha +  \beta  + 1)=\gamma⁢(\omega\alpha +  \beta ) + \omega(\alpha +  \beta ) \cdot 2 + 1 and by induction hypothesis, \gamma⁢(\omega\alpha +  \beta )=\gamma⁢(\omega\alpha) + \omega\alpha \cdot 2 +  \beta . Since log\omega⁡(\alpha)>log\omega⁡( \beta  + 1)=log\omega⁡( \beta ) we have (\alpha +  \beta ) \cdot 2 + 1=\alpha +  \beta  + \alpha +  \beta  + 1=\alpha \cdot 2 +  \beta  + 1>\alpha \cdot 2 +  \beta  and so \omega\alpha \cdot 2 +  \beta  + \omega\alpha \cdot 2 +  \beta  + 1=\omega\alpha \cdot 2 +  \beta  + 1. Finally, \gamma⁢(\omega\alpha +  \beta  + 1)=\gamma⁢(\omega\alpha +  \beta ) + \omega\alpha \cdot 2 +  \beta  + 1 as wanted.
+
+For any 1≤n<\omega and \alpha \geq 1, if 1≤ \beta <\omega\alpha then log\omega⁡( \beta )<\alpha=log\omega⁡(\omega\alpha \cdot n). Hence the relation of the previous paragraph gives \gamma⁢(\omega\omega\alpha \cdot n +  \beta )=\gamma⁢(\omega\omega\alpha \cdot n) + \omega\omega\alpha \cdot 2⁢n +  \beta . Then by continuity of \gamma and of the sum/exponentiation in the second variable, we can consider the limit  \beta →\omega\alpha. This gives \gamma⁢(\omega\omega\alpha \cdot (n + 1))=\gamma⁢(\omega\omega\alpha \cdot n) + \omega\omega\alpha \cdot (2⁢n + 1). By induction, we deduce on 2≤n<\omega we deduce \gamma⁢(\omega\omega\alpha \cdot n)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha \cdot (2⁢n-1) and in particular \forall2≤n<\omega,\gamma⁢(\omega\omega\alpha \cdot n)>\omega\omega\alpha \cdot n. We can also consider the limit n→\omega and we obtain \gamma⁢(\omega\omega\alpha + 1)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha + 1.
+
+To conclude, we have found the following fixed points of \gamma: 0,1,\omega,\omega\omega and in general we saw that infinite fixed points can only be of the form \omega\omega\alpha. But we can prove that these are indeed fixed points by induction on \alpha \geq 1. For \alpha=1, this is \omega\omega and the limit case is obvious by continuity of \gamma and of the exponentiation in the second variable. For the successor case, we use the formula obtained in the previous paragraph: \gamma⁢(\omega\omega\alpha + 1)=\gamma⁢(\omega\omega\alpha) + \omega\omega\alpha + 1=\omega\omega\alpha + \omega\omega\alpha + 1=\omega\omega\alpha + 1.
+\fi
+
+
 \unfinished
 
-\begin{lexcopy}{I.11.8}
+\begin{lexcopy}{I.11.8}{67}
 Applying transfinite recursion, define \(\delta_\xi\) by:
 \begin{equation*}
 \begin{array}{lll}
