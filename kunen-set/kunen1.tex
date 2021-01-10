@@ -1280,7 +1280,38 @@ Now \(B=\{v_\beta: \beta < \alpha\}\) is a basis.
 (\((\textnormal{ZF}^- \minusP)\)
 Prove that the Tychonov Theorem is equivalent to \AC.
 \end{lexcopy}
-\unfinished
+
+The Tychonov Theorem is proved in all Topology text books.
+For example \cite{Kelley2017general} Chapter 5, 13~Theorem \textsc{Tychonoff}.
+
+Assume Tychonov Theorem. Let \(\{F_i: i\in I\}\) be a family
+of non-empty sets. Define \(A_i = F \sqcup\{i\}\)
+with the cofinite topology where the open-sets are
+all \(G \subset A_i\) such that \(G=\{i\}\) or \(A_i \setminus G\) is finite.
+It is easy to see that $G$ is ``closed'' under unions and finite intersections
+and thus a topology. Let $C$ be on open cover of \(A_i\).
+Thus \(i\in V\) for some \(V \in C\).
+If \(a \in A_i \setminus V\) (not empty), then
+\(a \in U\) for some \(U \in C\) and \(R = A_i \setminus U\) is finite
+and clearly $R$ has a sub-finite open cover \(H \subset C\).
+Now \(H \cup \{U, V\} \subset C\) is a sub-finite open cover of \(A_i\).
+Hence \(A_i\) are compact and so are \(F_i\) being a closed subset of \(A_i\).
+By Tychonov's theorem \(A = \prod_{i\in I} A_i\) is compact.
+
+Let \(\pi_i: A \to A_i\) be the projection maps.
+Let \(x \in F_j\), its inverse imaage \(M = {\pi_j}^{-1}(x) \subset A\)
+contains the point \(p\in M\)
+such that \(P_j = x \in A_j\) and \(P_i = i\) for \(i \neq j\).
+Thus \(M\neq \emptyset\) and so any inverse imaage of non empty
+subsets of \(F_i\). In particular \(K_i = {\pi_j}^{-1}(F_i) \neq \emptyset\).
+
+Now the sets \(K_i\) have the finite intersection property.
+That is any finite intersection is non empty in $A$.
+By compactness of
+\begin{equation*}
+\prod_{i\in I} F_i = \bigcap_{i\in I} {\pi_j}^{-1}(F_i) \neq \emptyset.
+\end{equation*}
+which is \AC.
 
 \begin{lexcopy}{I.12.17}{72}
 Prove, in \ZF, that \AC\ is equivalent to the statement that
