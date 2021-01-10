@@ -10,9 +10,9 @@
 \section{Notes}
 
 \begin{manuallemma}{I.7.8}
-\(ON\) is a transitive class. That is, if \(\alpha \in ON\)
+\ON\ is a transitive class. That is, if \(\alpha \in \ON\)
 and \(z \in \alpha\),
-then \(z \in ON\).
+then \(z \in \ON\).
 \end{manuallemma}
 The proof says ``it is easy to check that $z$ is a transitive set.''
 \\
@@ -430,12 +430,12 @@ Theorem~1.8.2, are all the same.
 The proof of Theorem~1.8.2 dedines a map from \(a\in A\)
 to a unique oridinal \(\xi\) so \((\xi,\in)\)
 is isomorphic with \((a\kern -0.2em\downarrow,R)\).
-By Lemma~I.9.17 \(rank_{ON,\in}(\xi) = \xi\)
+By Lemma~I.9.17 \(rank_{\ON,\in}(\xi) = \xi\)
 and since the isomorphism is unique, it is equals to \(\rank\).
 By previous exercise is equals to \(\mos\) as well.
 
 \begin{lexcopy}{I.9.43}{59}
-Work in \(ZF^-\). Let $K$ be any class and assume that every
+Work in \(\ZF^-\). Let $K$ be any class and assume that every
 subset of $K$ is a member of $K$. Prove that \(WF \subseteq K\).
 \end{lexcopy}
 
@@ -620,7 +620,7 @@ Define
 \widehat{S}(y) =
  \left\{
  \begin{array}{ll}
- y + 1 & y \in ON \\
+ y + 1 & y \in \ON \\
  \emptyset & \textnormal{otherwise}
  \end{array}\right.
 \end{equation*}
@@ -644,7 +644,7 @@ F(x) < F(x) + 1 = \widehat{S}(x) \leq F(y).
 By Lemma~I.9.9, $R$ is well-founded, a contradiction.
 
 \begin{lexcopy}{I.9.51}{61}
-Work in ZF. Assume that $R$ is well-founded on $A$, and that
+Work in \ZF. Assume that $R$ is well-founded on $A$, and that
 $X$ is a non-empty sub-class of $A$. Prove that $X$ has an $R$-minimal element.
 \end{lexcopy}
 Using Definition~I.9.28 \(R(\alpha) = \{x \in WF : \rank(x) < \alpha\}\)
@@ -1198,20 +1198,22 @@ Assume \(\eta\) is a limit ordinal, Then
 \unfinished
 
 \begin{lexcopy}{I.12.5}{70}
-Assume \(\textnormal{AC}^+\), and do not assume the Power Set Axiom. Let
+Assume \(\AC^+\), and do not assume the Power Set Axiom. Let
 $A$ be a vector space over some field $K$. Prove that $A$ has a basis.
 \end{lexcopy}
 \unfinished
 
 \begin{lexcopy}{I.12.16}{72}
-(\((\textnormal{ZF}^- -\textnormal{P})\)
-Prove that the Tychonov Theorem is equivalent to AC.
+(\((\textnormal{ZF}^- \minusP)\)
+Prove that the Tychonov Theorem is equivalent to \AC.
 \end{lexcopy}
 \unfinished
 
 \begin{lexcopy}{I.12.17}{72}
-Prove, in ZF, that AC is equivalent to the statement that
+Prove, in \ZF, that \AC\ is equivalent to the statement that
 \(\mathcal{P}(\delta)\) can be well-ordered
-for all \(\delta \in \textnormal{ON}\).
+for all \(\delta \in \ON\).
 \end{lexcopy}
+Every set $A$ has a trivial mapping \(i: A \to \mathcal{P}(A)\)
+by \(i(x) = \{x\}\).
 \unfinished
