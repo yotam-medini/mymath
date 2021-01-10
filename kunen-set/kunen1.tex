@@ -1187,15 +1187,73 @@ Applying transfinite recursion, define \(\delta_\xi\) by:
 Show that \(\aleph_{\delta_\eta} = \delta_\eta\) for all limit \(\eta\).
 \end{lexcopy}
 
-Assume \(\eta\) is a limit ordinal, Then
-\(\xi < \eta \; \leftrightarrow \; \xi + 1 < \eta\). Now
-\begin{align*}
-\aleph_{\delta_\eta}
-  &= \aleph_{\delta_{\sup\{\xi < \eta\}}} \\
-  &= \aleph_{\delta_{\sup\{\xi + 1 < \eta\}}}
-\end{align*}
+Using \cite{WangFrederic} solution.
 
-\unfinished
+By Lemma~I.11.5, \(\aleph\) is strictly increasing.
+We now show
+\begin{equation} \label{eq:aleph:alpha}
+\aleph_{\alpha} \geq \alpha.  %% Can it be always srict ??
+\end{equation}
+Clearly \eqref{eq:aleph:alpha} holds for \(\alpha=0\).
+By induction.
+If (successor) if \(\alpha=\beta+1\) and \(\beta < \aleph_\beta\) then
+\begin{equation*}
+\beta < \beta + 1 = \alpha \leq \aleph_\beta < \aleph_\alpha.
+\end{equation*}
+Otherwise if \(\alpha\) is a limit ordinal, then
+\begin{equation*}
+\aleph_\alpha
+= \sup_{\beta < \alpha} \aleph_\beta
+\geq \sup_{\beta < \alpha} \beta = \alpha.
+\end{equation*}
+Thus \eqref{eq:aleph:alpha} holds for all \(\alpha\).
+
+For all \(\xi\in\ON\)
+\begin{equation*}
+\delta_{\xi+1}=\aleph_{\delta_{\xi}}\geq\delta_{\xi}.
+\end{equation*}
+Thus, and by applying limits \(\delta\) is (non-strictly) increasing.
+
+Let \(\eta\) be a limit ordinal.
+
+\textbf{Successor Case}: \(\delta_\eta = \gamma+1\).
+If by negation \(\delta_\xi \leq \gamma\) for all \(\xi < \eta\)
+then \(\delta_\eta \leq \gamma\). Hence
+\begin{equation*}
+\exists \xi < \eta \quad \delta_\xi = \delta_\eta.
+\end{equation*}
+Then
+\begin{equation*}
+\forall \xi \leq \zeta < \eta \quad
+  \aleph_{\delta_\zeta} = \delta_{\zeta + 1} = \delta_\eta.
+\end{equation*}
+and by taking limit
+\begin{equation*} \label{eq:aleph:zeta:eta}
+  \aleph_{\delta_\eta} = \sup_{\zeta<\eta}\delta_{\zeta} \leq \delta_\eta.
+\end{equation*}
+By \eqref{eq:aleph:alpha} we have equality in \eqref{eq:aleph:zeta:eta}.
+
+\textbf{Limit Case}:
+\begin{equation*} \label{eq:delta:eta:xi}
+\aleph_{\delta_\eta}
+  = \sup_{\xi < \delta_\eta} \aleph_\xi
+  = \sup_{\xi < \eta} \aleph_{\delta_\xi}.
+\end{equation*}
+If by negatoion
+\begin{equation*}
+\aleph_{\delta_\eta} > \delta_\eta
+\end{equation*}
+Then by \eqref{eq:delta:eta:xi}
+\begin{equation*}
+\exists \xi < \eta \quad
+ \aleph_{\delta_\eta} < \aleph_{\delta_\xi} = \delta_{\xi + 1} \leq \delta_\eta
+\end{equation*}
+contradicting \eqref{eq:aleph:alpha}.
+Thus
+\begin{equation*} \label{eq:delta:eta:limit}
+\aleph_{\delta_\eta} \leq \delta_\eta.
+\end{equation*}
+By \eqref{eq:aleph:alpha} we have equality in \eqref{eq:delta:eta:limit}.
 
 \begin{lexcopy}{I.12.5}{70}
 Assume \(\AC^+\), and do not assume the Power Set Axiom. Let
