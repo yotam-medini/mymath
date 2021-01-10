@@ -1259,7 +1259,22 @@ By \eqref{eq:aleph:alpha} we have equality in \eqref{eq:delta:eta:limit}.
 Assume \(\AC^+\), and do not assume the Power Set Axiom. Let
 $A$ be a vector space over some field $K$. Prove that $A$ has a basis.
 \end{lexcopy}
-\unfinished
+
+Let \(<\) be a well-order on $A$ and thus isomorphic to somne \(\alpha\in\ON\).
+Let \(i:A\to\alpha\) be the isomorphic mapping.
+Define
+% by induction \(v_0 = i(0) \in A\) and for \(0 < \beta < \alpha\) let
+\begin{equation*}
+v_\beta :=
+\left\{
+ \begin{array}{ll}
+ i(\beta) \quad & \{v_\gamma: \gamma \leq \beta\} \;
+          \textnormal{is linearly independent}\\
+ v_0 \quad & otherwise
+ \end{array}
+\right.
+\end{equation*}
+Now \(B=\{v_\beta: \beta < \alpha\}\) is a basis.
 
 \begin{lexcopy}{I.12.16}{72}
 (\((\textnormal{ZF}^- \minusP)\)
