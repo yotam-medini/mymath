@@ -1318,6 +1318,15 @@ Prove, in \ZF, that \AC\ is equivalent to the statement that
 \(\mathcal{P}(\delta)\) can be well-ordered
 for all \(\delta \in \ON\).
 \end{lexcopy}
+If \AC\ then trivially \(\mathcal{P}(\delta)\) can be well-ordered.
+
+Conversely, assume \(\mathcal{P}(\delta)\) can be well-ordered
+for all \(\delta \in \ON\).
 Every set $A$ has a trivial mapping \(i: A \to \mathcal{P}(A)\)
 by \(i(x) = \{x\}\).
-\unfinished
+Let \(<_P\) be a well-ordered on \(\mathcal{P}(A)\)
+Define \(<\) on $A$ by
+\begin{equation*}
+x < y \quad \leftrightarrow \quad \{x\} <_P \{y\}.
+\end{equation*}
+
