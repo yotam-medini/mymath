@@ -23,6 +23,24 @@ Let \(x\in y\), thus \(x \in \alpha\) and actually \(x,y,z \in \alpha\).
 By orering of \(\alpha\), we have \(x\in y \in z\) and hence \(x\in z\)
 giving the desired \(y \subseteq z\).
 
+\begin{llem} \label{llem:Rab}
+Assuming the Power Set Axiom, if \(\alpha < \beta \in \ON\)
+then \(R(\alpha) \in R(\beta)\).
+\end{llem}
+\begin{proof}
+By Lemma~I.9.30 \(R(\alpha)\) is a set.
+Applying Lemma~I.9.29 using \(b=R(\alpha)\)
+gives \(R(\alpha) \in R(\alpha + 1) \subseteq R(\beta)\).
+\end{proof}
+
+\begin{manuallemma}{I.13.29}
+For cardinals \(\kappa > \omega\), \(H(\kappa) = R(\kappa)\)
+iff \(\kappa = \beth_\kappa\).
+\end{manuallemma}
+
+The proof says \(R(\alpha) \in R(\kappa)\).
+This can be justified by Local Lemma~\ref{llem:Rab}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Old Edition Exercises } % pages 111-115
 
