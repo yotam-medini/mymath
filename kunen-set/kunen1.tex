@@ -1368,7 +1368,29 @@ is defined to be
 \(|\calF|\), where
 \(\calF = \{f \in {}^\omega(\beth_\omega): \forall n f(n) \in \beth_n\}\).
 \end{lexcopy}
-\unfinished
+
+Clearly
+\(\left|(\beth_\omega)^{\aleph_0}\right| \geq \left|\prod_{n\in\omega}\beth_n\right|\).
+Now
+\begin{equation*}
+\left|(\beth_\omega)^{\aleph_0}\right|
+\leq \left|\left(2^{\beth_\omega}\right)^{\aleph_0}\right|
+= \left|2^{(\beth_\omega\cdot\aleph_0)}\right|
+= \left|2^{\beth_\omega}\right|.
+\end{equation*}
+
+By definition: \(\beth_{\omega + 1} =  2^{\beth_\omega}\).
+Let the ordinal \(\beta_\alpha = \beth_\alpha\). Now define \(\delta_0 = \beta_0\)
+and \(\delta_n = \beta_n \setminus \beta_{n - 1}\) for \(n > 0\).
+Clearly
+\(|\delta_n| = \beth_n\) and
+\(\beta_\omega = \disjunion_{n\in\omega}\delta_n\).
+
+Let \(\varphi_n: \delta_n \to \beth_n\) be a one-to-one onto mappings.
+Let \(\varphi: P(\delta_\omega) \to \prod_{n\in\omega}\beth_n\) by:
+\(\varphi(A) = f\) where \(f(n) = \{\varphi_n(x): x\in A\cap \delta_n)\}\).
+Thus \(|\prod_{n\in\omega}\beth_n| = \beth_{\omega + 1} - 2^{\beth_\omega}\).
+Combining with the above we get the desireed first equality.
 
 \begin{lexcopy}{I.13.34}{79}
 Let $W$ be a vector space over some field $F$, and let \(W^* = \Hom(W, F)\)
