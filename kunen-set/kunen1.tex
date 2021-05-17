@@ -1389,7 +1389,7 @@ Clearly
 Let \(\varphi_n: \delta_n \to \beth_n\) be a one-to-one onto mappings.
 Let \(\varphi: P(\delta_\omega) \to \prod_{n\in\omega}\beth_n\) by:
 \(\varphi(A) = f\) where \(f(n) = \{\varphi_n(x): x\in A\cap \delta_n)\}\).
-Thus \(|\prod_{n\in\omega}\beth_n| = \beth_{\omega + 1} - 2^{\beth_\omega}\).
+Thus \(|\prod_{n\in\omega}\beth_n| = \beth_{\omega + 1} = 2^{\beth_\omega}\).
 Combining with the above we get the desireed first equality.
 
 \begin{lexcopy}{I.13.34}{79}
@@ -1403,4 +1403,54 @@ Now assume that
 \(|F| < \beth_\omega\) and \(\aleph_0 \leq \dim(W) < \beth_\omega\).
 Prove that \(|W_\omega| = \dim(W_\omega) = \beth_\omega\).
 \end{lexcopy}
-\unfinished
+
+See \url{https://en.wikipedia.org/wiki/Dual_space#Infinite-dimensional_case}.
+
+Let \(B=\{w_\alpha: \alpha \in A\}\)
+be a basis for $W$. Note \(|B|=|A|=\dim(W)\).
+Thus for each \(w\in W\)
+there is a unique function/vector \(f_w: A \to F\)
+such that \(w = \sum_{\alpha\in A} f_w(\alpha)e_\alpha\)
+and \hbox{\(|\{\alpha\in I: f_w(\alpha)\neq 0\}| < \aleph_0\)},
+thus the sum is infinity.
+Looking at possible \(f_w\)-s, we see that
+\begin{equation*}
+|W| = \left\{
+ \begin{array}{ll}
+ |F|^{|A|}       &\quad |A| < \aleph_0\\
+ \max(|F|, |A|) &\quad |A| \geq \aleph_0
+ \end{array}
+\right.
+\end{equation*}
+
+Any \(\varphi \in W^*\) is determined by its values on $B$.
+Thus for each \(\theta \in F^A\) we can define
+\(\varphi_\theta \in W^*\) by
+\begin{equation*}
+\varphi_\theta(w) = \sum_{\alpha \in A} \theta(\alpha)f_w(\alpha)
+\qquad \textnormal{where} \quad
+w = \sum_{\alpha\in A} f_w(\alpha)e_\alpha\,.
+\end{equation*}
+Note that in the ``where'' conditions has \(f_w\) is unique
+and the sum is finite. Thus the sum in the definition is finite as well.
+Thus \(|W^*| = |F|^{|A|}\).
+
+In our exercise given cardinality inequalities, we must have
+\(|W^*| = \dim W^* = |F|^{(\dim W)}\).
+Subsequently,
+\begin{equation*}
+|W^{**}| = |F|^{|F|^{(\dim W)}}.
+\end{equation*}
+Now clearlly \(|W_\omega| \geq \beth_\omega\).
+
+Note that if \(\kappa < \beth_\omega\) there exists \(n < \omega\)
+such that \(\kappa < \beth_n\) and thus \(2^\kappa < \beth_{n+1} < \beth_\omega\).
+Similarly, if \(\kappa, \mu < \beth_\omega\) then \(\kappa^\mu < \beth_\omega\).
+
+Applying to $F$ and \(W_n\) we have \(|W_n| < \beth_\omega\)
+and so \(|W_\omega| \leq \beth_\omega\).
+Gathering the above inequalities we get the desired
+\begin{equation*}
+|W_\omega| = \dim(W_\omega) = \beth_\omega.
+\end{equation*}
+
