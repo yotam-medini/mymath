@@ -1454,3 +1454,169 @@ Gathering the above inequalities we get the desired
 |W_\omega| = \dim(W_\omega) = \beth_\omega.
 \end{equation*}
 
+\begin{lexcopy}{I.13.35}{79}
+Let $B$ be a Banach space over \(\R\) or \(\C\), and let \(B^*\) be the
+dual Banach space. Consider $B$ to be a subspace of \(B^{**}\) in the usual way.
+Let
+\(B_9 = B\) and \(B_{n+i} = (B_n)^{**}\). \(Let B_\omega\) be the completion
+of \(\cup_n B_n\).
+\begin{enumerate}
+\renewcommand{\theenumi}{\alph{enumi}}
+\item
+Give an example of a separable $B$ such that \(|B_\omega|= \beth_{\omega + 1}\).
+\item
+Prove that if $B$ is a Banach space and \(B \geq \beth_\omega\) then
+\(B \geq \beth_{\omega + 1}\).
+\end{enumerate}
+\end{lexcopy}
+
+\begin{enumerate}
+\renewcommand{\theenumi}{\alph{enumi}}
+\item
+\(\ell^1\) (over \R) is seperable, since
+\(S = \{s\in \ell^1: \forall n<\omega\; s_n \in\Q\}\)
+is a countable dense subset.
+All Banach (complete) duals contain the algebraic duals.
+Thus, by previous exercise \(|B_\omega| \geq \beth_\omega\).
+Since each completion step involves limits of \(\omega\)-sequences from
+$S$, each completion adds ``just'' another power-set.
+Thus the pre-completed \(\cup_n B_n\) has cardinality \(\beth_\omega\).
+Its own completion adds mostly another power-set step,
+so \(|B_\omega| \leq \beth_{\omega+1}\).
+By next item (b), \(|B_\omega| \geq \beth_{\omega+1}\),
+hence \(|B_\omega| = \beth_{\omega+1}\).
+\item
+\unfinished
+\end{enumerate}
+
+\begin{lexcopy}{I.13.36}{79}
+Assume CH, but don't assume GCH. Show that \(\aleph_n^{\aleph_0} = \aleph_n\)
+whenever \(1 < n < \omega\).
+\end{lexcopy}
+The \(n=1\) using CH
+\begin{equation*}
+\aleph_1^{\aleph_0} = \left(2^{\aleph_0}\right)^{\aleph_0}
+= 2^{(\aleph_0\cdot\aleph_0)} = 2^{\aleph_0} = \aleph_1.
+\end{equation*}
+
+%% By induction Assume the claim is true for \(n < k\). Now
+%% \begin{equation*}
+%% \aleph_k^{\aleph_0}
+%% \end{equation*}
+
+For the \(n > 1\) case, 
+we first prove Hausdorff formula.
+Proof taken from \cite{Hrbacek1999}~{3.11} page~168.
+\begin{llem} \label{llem:Hausdorff:formula}
+For all \(\alpha, \beta \in \ON\)
+\begin{equation} \label{eq:Hausdorff}
+\aleph_{\alpha+1}^{\aleph_\beta} = \aleph_\alpha^{\aleph_\beta} \cdot \aleph_{\alpha+1}.
+\end{equation}
+\end{llem}
+\begin{proof}
+\textbf{Case 1:} \(\alpha+1 \leq \beta\)
+\begin{equation*}
+2^{\aleph_\beta} 
+\leq \aleph_\alpha^{\aleph_\beta} 
+\leq \aleph_{\alpha+1}^{\aleph_\beta} 
+\leq \left(2^{\alpha+1}\right)^{\aleph_\beta} 
+= 2^{(\alpha+1){\aleph_\beta}}
+= 2^{\aleph_\beta}.
+\end{equation*}
+Thus \(\aleph_\alpha^{\aleph_\beta} = \aleph_{\alpha+1}^{\aleph_\beta} = 2^{\aleph_\beta}\)
+and \(\aleph_{\alpha+1} \leq \aleph_{\alpha+1}^{\aleph_\beta} = 2^{\aleph_\beta}\).
+Thus
+\begin{equation*}
+ 2^{\aleph_\beta} = \aleph_{\alpha+1}^{\aleph_\beta}
+ = \max\left(2^{\aleph_\beta}, \aleph_{\alpha+1}\right)
+ = \aleph_\alpha^{\aleph_\beta} \cdot \aleph_{\alpha+1}
+\end{equation*}
+\\
+\textbf{Case 2:} \(\alpha+1 \geq \beta\)\\
+Clearly
+\begin{equation} \label{eq:Hausdorff:ineq1}
+ \aleph_\alpha^{\aleph_\beta} \cdot \aleph_{\alpha+1}
+ \leq \aleph_\alpha^{\aleph_\beta} \cdot \aleph_\alpha^{\aleph_\beta}
+ \leq \aleph_{\alpha+1}^{\aleph_\beta} \cdot \aleph_{\alpha+1}^{\aleph_\beta}
+ = \aleph_{\alpha+1}^{\aleph_\beta}.
+\end{equation}
+
+By Lemma~I.13.10~(5) \(\omega_{\alpha+1}\) is regular.
+Hence any function \(f:\omega_\beta \to \omega_{\alpha+1}\) is bounded,
+that is
+\begin{equation*}
+\exists \gamma < \omega_{\alpha+1}\, \forall \xi\in \omega_\beta\, f(\xi) < \gamma.
+\end{equation*}
+Hence
+\begin{equation*}
+\omega_{\alpha+1}^{\omega_\beta}
+= \bigcup_{\gamma < \omega_{\alpha+1}} \gamma^{\omega_\beta}.
+\end{equation*}
+Every \(\gamma < \omega_{\alpha+1}\)
+has cardinality \(|\gamma| \leq \aleph_\aleph\).
+By definition of infinite sum of cardinals (see \cite{Hrbacek1999} 1.5 page 157)
+\begin{equation*}
+\left|\bigcup_{\gamma < \omega_{\alpha+1}} \gamma^{\omega_\beta}\right|
+\leq
+\sum_{\gamma < \omega_{\alpha+1}} |\gamma|^{\aleph_\beta}.
+\end{equation*}
+Thus
+\begin{equation} \label{eq:Hausdorff:ineq2}
+\aleph_{\alpha+1}^{\aleph_\beta}
+\leq \omega_{\alpha+1} |\gamma|^{\aleph_\beta}
+\leq \aleph_\alpha |\gamma|^{\aleph_\beta}
+= \aleph_\alpha^{\aleph_\beta} \cdot \aleph_{\alpha+1}.
+\end{equation}
+Combining  \eqref{eq:Hausdorff:ineq1} and \eqref{eq:Hausdorff:ineq2}
+we get \eqref{eq:Hausdorff}
+\end{proof}
+
+Back to the exercise, we apply \(\alpha=n\) and \(\beta = 0\) getting
+\begin{equation*}
+\aleph_{n+1}^{\aleph_\beta} = \aleph_n^{\aleph_0} \cdot \aleph_{n+1}.
+\end{equation*}
+By induction
+\begin{equation*}
+\aleph_{n+1}^{\aleph_\beta}
+= \aleph_n^{\aleph_0} \cdot \aleph_{n+1}
+= \aleph_n \cdot \aleph_{n+1}
+= \aleph_{n+1}.
+\end{equation*}
+
+\begin{lexcopy}{I.13.37}{79}
+Let \(\kappa\) be an infinite cardinal and let \(\triangleleft\)
+be any well-order of \(\kappa\).
+Show that there is an \(X \subseteq \kappa\) with \(|X| = k\)
+such that \(\triangleleft\) and $<$ agree on $X$.
+\end{lexcopy}
+First case: \(\kappa = \omega\).
+Define \((x_n)_{n\in \omega}\) strictly \(\triangleleft\) and $<$ increasing.
+Let \(x_0\) be the \(\triangleleft\) minimal of \(\kappa\).
+Assume \(x_n\) were defined for all \(n < k\).
+Let
+\begin{equation*}
+B_k := \{x\in\kappa: n<k\;\to\; x \triangleleft x_n\,\wedge\, x < x_n\}.
+\end{equation*}
+Clearly \(B_k\) is finite. Let \(x_n\) be the \(\triangleleft\)-minimal
+in \(\kappa \setminus B\).
+Now \(X=\{x_n: n\in \omega\) satisfies the requirements.
+
+By negation, assume \(\kappa\) is the minimal cardinal (and ordinal)
+for which no such $X$ exists.
+
+\unfinished
+
+\begin{lexcopy}{I.13.38}{80}
+Prove the Milner-Rado ``Paradox'' (1965): If \(\kappa\) is an 
+infinite cardinal and \hbox{\(\kappa \leq \alpha < \kappa^+\)},
+then there are \(X_n \subseteq \alpha\) for \(n < \omega\) such that
+\(\cup_{n < \omega} X_n = \alpha\) and each \(\type(X_n) \leq \kappa^n\).
+\end{lexcopy}
+\unfinished
+
+\begin{lexcopy}{I.13.39}{80}
+If \(\kappa\) is an infinite cardinal and \(\alpha = \cup_{n < c}X_n\),
+where \(c < \omega\)
+and each \(\type(X_n) < \kappa^\omega\), then \(\alpha < \kappa^\omega\).
+\end{lexcopy}
+\unfinished
