@@ -1489,23 +1489,7 @@ hence \(|B_\omega| = \beth_{\omega+1}\).
 \unfinished
 \end{enumerate}
 
-\begin{lexcopy}{I.13.36}{79}
-Assume CH, but don't assume GCH. Show that \(\aleph_n^{\aleph_0} = \aleph_n\)
-whenever \(1 < n < \omega\).
-\end{lexcopy}
-The \(n=1\) using CH
-\begin{equation*}
-\aleph_1^{\aleph_0} = \left(2^{\aleph_0}\right)^{\aleph_0}
-= 2^{(\aleph_0\cdot\aleph_0)} = 2^{\aleph_0} = \aleph_1.
-\end{equation*}
-
-%% By induction Assume the claim is true for \(n < k\). Now
-%% \begin{equation*}
-%% \aleph_k^{\aleph_0}
-%% \end{equation*}
-
-For the \(n > 1\) case, 
-we first prove Hausdorff formula.
+We prove the \textbf{Hausdorff formula}.
 Proof taken from \cite{Hrbacek1999}~{3.11} page~168.
 \begin{llem} \label{llem:Hausdorff:formula}
 For all \(\alpha, \beta \in \ON\)
@@ -1571,7 +1555,23 @@ Combining  \eqref{eq:Hausdorff:ineq1} and \eqref{eq:Hausdorff:ineq2}
 we get \eqref{eq:Hausdorff}
 \end{proof}
 
-Back to the exercise, we apply \(\alpha=n\) and \(\beta = 0\) getting
+\begin{lexcopy}{I.13.36}{79}
+Assume CH, but don't assume GCH. Show that \(\aleph_n^{\aleph_0} = \aleph_n\)
+whenever \(1 < n < \omega\).
+\end{lexcopy}
+The \(n=1\) using CH
+\begin{equation*}
+\aleph_1^{\aleph_0} = \left(2^{\aleph_0}\right)^{\aleph_0}
+= 2^{(\aleph_0\cdot\aleph_0)} = 2^{\aleph_0} = \aleph_1.
+\end{equation*}
+
+%% By induction Assume the claim is true for \(n < k\). Now
+%% \begin{equation*}
+%% \aleph_k^{\aleph_0}
+%% \end{equation*}
+
+For the \(n > 1\) case, 
+we apply Hausdorff formula with \(\alpha=n\) and \(\beta = 0\) getting
 \begin{equation*}
 \aleph_{n+1}^{\aleph_\beta} = \aleph_n^{\aleph_0} \cdot \aleph_{n+1}.
 \end{equation*}
@@ -1599,12 +1599,61 @@ B_k := \{x\in\kappa: n<k\;\to\; x \triangleleft x_n\,\wedge\, x < x_n\}.
 \end{equation*}
 Clearly \(B_k\) is finite. Let \(x_n\) be the \(\triangleleft\)-minimal
 in \(\kappa \setminus B\).
-Now \(X=\{x_n: n\in \omega\) satisfies the requirements.
+Now \(X=\{x_n: n\in \omega\}\) satisfies the requirements.
 
-By negation, assume \(\kappa\) is the minimal cardinal (and ordinal)
-for which no such $X$ exists.
+% By negation, assume \(\kappa\) is the minimal cardinal (and ordinal)
+% for which no such $X$ exists.
 
-\unfinished
+See: \cite{WangFrederic}.
+Assume \(\kappa\) is regular.
+Simialrly, define  \((x_n)_{\alpha \in \kappa}\) by induction.
+If \(x_\xi\) is constructed for any \(\xi<\alpha\),
+then we let \(y_\alpha = \sup_{\xi<\alpha⁡}(x_\xi+1)\)
+and so \(y_\alpha < \kappa\) by regularity of \(\kappa\).
+Then \(Y_\alpha =\kappa \setminus∖y_\alpha\) is nonempty and we pick
+\(x_\alpha\) the \(\triangleleft\)-least element of \(Y_\alpha\).
+For all \(\alpha<\kappa\) and \(\xi<\alpha\)
+we have \(x_\alpha \geq y_\alpha > x_\xi\)
+so the sequence \((x_\alpha)\) is $<$-increasing.
+Hence the sequence \((y_\alpha)\) is $<$-increasing,
+\((Y_\alpha)\) is \(\subset\)-decreasing and finally
+\(x_\alpha\) is \(\triangleleft\)-increasing.
+Finally, if we take \(X=\{x_\alpha: \alpha<\kappa\}\),
+we obtain a subset of cardinal \(\kappa\) where $<$ and \(\triangleleft\) agree.
+
+
+If \(\kappa\) is singular,
+we let
+\begin{equation*}
+\kappa = \sup \{\kappa_\alpha :
+  \alpha<\operatorname{cf}(\kappa)
+  \;\wedge\; \kappa_\alpha\,\textnormal{is regular}\}.
+\end{equation*}
+By the previous paragraph,
+we can find \(X_\alpha \subseteq \kappa_\alpha\) of cardinal \(\kappa_\alpha\)
+where $<$ and \(\triangleleft\) agree.
+If we define
+\begin{equation*}
+X = \bigcup_{\alpha < \operatorname{cf}(\kappa)} X_\alpha \subseteq \kappa
+\end{equation*}
+then
+\begin{equation*}
+|X| \geq \sup_{\alpha < \operatorname{cf}(\kappa)} \kappa_\alpha \geq \kappa
+\end{equation*}
+For any \(x,y \in X\) there is \(\alpha\)
+such that \(x,y \in X_\alpha\) and so $<$ and \(\triangleleft\) agree
+on the way to order $x$, $y$. Hence $<$ and \(\triangleleft\) agree on $X$.
+
+Assume by negation there is a singular cardinal such that
+the claim (of the exercise) fails. Let \(\mu = \aleph_\alpha\) be the minimal
+failing cardinal. 
+By induction, we will define mutual disjoing
+\(X_\beta\subset \nu\) sets for each \(\beta < \alpha\)
+such that \(|X_\beta| = \aleph_\beta\)
+and $<$ and \(\triangleleft\) agree on \(X_\beta\).
+Let \(X = \cup_{\beta<\alpha} X_\beta\).
+If \(|X| < \aleph_\aleph\) then the latter is a successor cardinal.
+Hence \(|X| = \aleph_\aleph\) and so \(\mu\) is \emph{not} a failing cardinal.
 
 \begin{lexcopy}{I.13.38}{80}
 Prove the Milner-Rado ``Paradox'' (1965): If \(\kappa\) is an 
@@ -1612,6 +1661,11 @@ infinite cardinal and \hbox{\(\kappa \leq \alpha < \kappa^+\)},
 then there are \(X_n \subseteq \alpha\) for \(n < \omega\) such that
 \(\cup_{n < \omega} X_n = \alpha\) and each \(\type(X_n) \leq \kappa^n\).
 \end{lexcopy}
+
+If \(\alpha = \kappa\) then we simply put \(X_n=\kappa\)
+and clearly \(X_n^n=\kappa^n=\kappa\)
+and so \(\cup_{n < \omega} X_n = \kappa = \alpha\).
+
 \unfinished
 
 \begin{lexcopy}{I.13.39}{80}
