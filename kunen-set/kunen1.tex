@@ -1662,11 +1662,73 @@ then there are \(X_n \subseteq \alpha\) for \(n < \omega\) such that
 \(\cup_{n < \omega} X_n = \alpha\) and each \(\type(X_n) \leq \kappa^n\).
 \end{lexcopy}
 
-If \(\alpha = \kappa\) then we simply put \(X_n=\kappa\)
-and clearly \(X_n^n=\kappa^n=\kappa\)
-and so \(\cup_{n < \omega} X_n = \kappa = \alpha\).
+If \(\alpha = \kappa\) then we simply put \(X_1=\kappa\)
+and \(X_n=\emptyset\) for \(n\neq 1\).
+% Clearly \(X_n^n=\kappa^n=\kappa\)
+% and so \(\cup_{n < \omega} X_n = \kappa = \alpha\).
 
-\unfinished
+By negation, we may assume that  \(\kappa\) is the minimal ordinal
+for which the Milner-Rado claim fails.
+
+If \(\alpha = \alpha' + 1\) is a successor ordinal,
+Then we have
+\begin{equation*}
+\cup_{n < \omega} X'_n = \alpha' \qquad
+\forall n<\omega\; \type(X'_n) \leq \kappa^n.
+\end{equation*}
+
+we can put now put \(X_0 = \{\alpha'\}\)
+and \(X_{n+1} = X'_n\) for \(n<\omega\).
+Clearly
+\begin{equation*}
+\cup_{n < \omega} X_n = \{\alpha'\} \cup \bigcup_{n < \omega} X'_n =
+\alpha' \cup \{\alpha'\} = \alpha
+\end{equation*}
+and \(X_n \subset X'_n\) and so \(\type(X_n) \leq \kappa^n\).
+
+\newcommand{\cfalpha}{\ensuremath{\operatorname{cf}(\alpha)}}
+So now we assume \(\alpha\) is a limit ordinal.
+See \cite{Levy2002Basic} Exercise~IV~3.17
+and \cite{wikipedia:Milner:Rado}.
+Let \(\{\beta_\gamma: \gamma < \cfalpha\}\) be in increasing
+sequence or ordinals, satisfying \(\beta_0 = \emptyset\)
+and \(\beta_\gamma < \alpha\)
+and \(\sup_{\gamma<\alpha} \beta_\gamma = \alpha\).
+
+By induction,
+for each \(\beta < \alpha\),
+let \(X_{\beta,n}\) satisfy the partition requirement
+\begin{equation*}
+\beta = \cup_{n<\omega} X_{\beta,n}.
+\end{equation*}
+Let
+\begin{align*}
+X_0 &= \{\emptyset\} \\
+X_{n+1} &= \bigcup_{\gamma < \cfalpha} X_{\gamma+1,n} \setminus \beta_\gamma
+\end{align*}
+Now
+\begin{align*}
+\bigcup_{n>0} X_n
+ &= \bigcup_{n>0} \bigcup_{\gamma < \cfalpha} X_{\gamma+1,n} \setminus \beta_\gamma
+  = \bigcup_{\gamma < \cfalpha} \bigcup_{n>0} X_{\gamma+1,n} \setminus \beta_\gamma
+  = \bigcup_{\gamma < \cfalpha} \beta_{\gamma+1} \setminus \beta_\gamma
+  = \alpha \setminus \beta_0
+\end{align*}
+and with \(\beta_0\) we have \(\cup_{n<\omega} X_n = \alpha\).
+
+Now \(\type(X_0) = 1 = \kappa^0\)
+and each \(\beta_{\gamma+1} \setminus \beta_\gamma\) is 
+a tail of \(\beta_{\gamma+1}\). Thus for \(n\geq 0\)
+\begin{equation*}
+\type(X_{n+1})
+= \sum_{\gamma < \cfalpha}
+    \type\left(\beta_{\gamma+1,n+1} \setminus \beta_{\gamma,n}\right)
+\leq \sum_{\gamma < \cfalpha} \kappa^n
+= \sum_{\gamma < \cfalpha} \kappa^n
+= \kappa^n \cdot \cfalpha
+= \kappa^{n+1}.
+\end{equation*}
+
 
 \begin{lexcopy}{I.13.39}{80}
 If \(\kappa\) is an infinite cardinal and \(\alpha = \cup_{n < c}X_n\),
