@@ -1735,4 +1735,73 @@ If \(\kappa\) is an infinite cardinal and \(\alpha = \cup_{n < c}X_n\),
 where \(c < \omega\)
 and each \(\type(X_n) < \kappa^\omega\), then \(\alpha < \kappa^\omega\).
 \end{lexcopy}
+
+See \cite{WangFrederic}
+
+By negation, suppose that \(\alpha \geq \kappa^\omega\).
+For all \(n<c\), let \(k_n<\omega\) such that
+\(\type⁡(X_n)<\kappa^{k_n}\).
+Denote
+\begin{equation*}
+\otimes(j) = \kappa^{k_0} \times \kappa^{k_1} \times \cdots \times \kappa^{k_j}.
+\end{equation*}
+Consider the isomorphism
+\begin{equation*}
+% \kappa^{k_0} \times \kappa^{k_1} \times \cdots \times \kappa^{k_{c-1}}
+\otimes(c-1)
+\quad\leftrightarrow\quad
+% \kappa^{k_0+k_1+ \cdots + k_n}
+\kappa^{k_0+k_1+ \cdots + k_{c-1}}
+\end{equation*}
+provided by the lexical ordering.
+Since
+\begin{equation*}
+\kappa^{k_0+k_1+ \dots +k_n} < \kappa^\omega  \leq \alpha,
+\end{equation*}
+this gives an increasing function
+\begin{equation*}
+% f_0 : \kappa^{k_0} \times \kappa^{k_1} \times  \dots ⁢\kappa^{k_{c-1}}
+f_0 : \otimes(c-1)
+\to \alpha = \bigcup_{n<c} X_n.
+\end{equation*}
+
+More generally, we define by induction on \(i<c\) an increasing function
+\begin{equation*}
+% f_i : \kappa^{k_0} \times \kappa^{k_1} \times  \dots ⁢\kappa^{k_{c-1-i}}
+f_i : \otimes(c-1-i)
+\to
+\bigcup_{n<c-i} X_n.
+\end{equation*}
+If \(f_i\) is defined for \(i<c-1\), then
+for any
+\(\beta \in \otimes(c-2-i)\)
+\iffalse
+\begin{equation*}
+\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots ⁢\kappa^{k_{c-2-i}}
+\end{equation*}
+\fi
+we can find \(\gamma_\beta <\kappa^{k_{c-1-i}}\) such that
+\(f_i⁢(\beta, \gamma_\beta) \neq X_{c-1-i}\).
+Otherwise, \(X_{c-1-i}\) contains the increasing sequence
+\(\{f_i⁢(\beta,\gamma): \gamma < \kappa^{k_{c-1-i}}\}\)
+and moreover \(\type⁡(X_{c-1-i}) \geq \kappa^{k_{c-1-i}}\),
+a contradiction.
+Hence we define for any
+%\(\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots ⁢\kappa^{k_{c-2-i}}\),
+\(\beta \in \otimes(c-2-i)\),
+\(f_{i+1}⁢(\beta) = f_i⁢(\beta, \gamma_\beta)\).
+
+Finally, \(f_{c-1}: \kappa^{k_0} \to X_0\)
+is an increasing function,
+and so \(\type⁡(X_0) \geq \kappa^{k_0}\),
+a contradiction.
+
+\unfinished
+
+\textbf{Alternative solution}
+
+By setting \(Y_n = X_n \setminus \left(\cup_{j<n} X_j\right)\)
+and looking at \(Y_n\) instead, we may assume that \(X_n\)
+are mutually disjoint.
+
 \unfinished
