@@ -1902,7 +1902,7 @@ consists of all $x$ with \(x_\infty = 0\).
 
 \itemch{a}
 Describe explicitly two isomeric isomorphisms $u$ and $v$,
- such that $u$ maps \(c^*\) unto \(\ellone\)
+ such that $u$ maps \(c^*\) onto \(\ellone\)
 and $v$ maps \(c_0^*\) onto \ellone.
 
 \itemch{b}
@@ -2041,6 +2041,17 @@ this T is injective.
 If \(x\in c\) then \(\lim_{j\to\infty} x_j-x_\infty = 0\) and so \(T(x)\in c_0\).
 The restriction \(T_{\restriction c_e}\) is the identify map on \(c_0\)
 thus $T$ is surjective.
+
+Let \(x\in c\) and \(\|x\| \leq 1\). Clearly \(\|x_\infty| \leq 1\)
+and \(|T(x)_j| \leq 2\). Thus \(\|T\| \leq 2\).
+This bound is attained. Consider $x$ defined by (using Iverson bracket)
+\begin{equation*}
+x_j = [j \leq 1] - [j > 1] = (1, -1, -1, \ldots).
+\end{equation*}
+Since \(T(x)_1 = 2\) we have \(\|T\| = 2\).
+
+Now \((T^{-1}(y))_n = x_n = y_{n+1} + x_\infty = y_1 + y_{n+1}\).
+So \(\|T^{-1}\| = 2\).
 \unfinished
 \end{itemize}
 
