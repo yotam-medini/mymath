@@ -1916,14 +1916,14 @@ Define \(T: c \to c_0\) by setting
 \end{equation*}
 Prove that $T$ is one-to-one and that \(Tc = c_0\).
  Find \(\|T\|\) and \(\|T^{-1}\|\). Describe the
-operator \(uT^*v\) that maps \ellone\ to \ellone.
+operator \(uT^*v^{-1}\) that maps \ellone\ to \ellone.
 \end{itemize}
 \end{excopy}
 
 \begin{itemize}
 
 \itemch{a}
-Let \(e_j \in c_0 \subset c \subset \ellinf\) the unit vectors..
+Let \(e_j \in c_0 \subset c \subset \ellinf\) the unit vectors.
 \begin{equation*}
 (v(\Lambda))_j = \Lambda(e_j) \qquad (\Lambda \in c_0^*)
 \end{equation*}
@@ -1954,7 +1954,15 @@ Thus \(\Lambda_1 = \Lambda_2\) and $v$ is injective.
 
 Pick arbitrary \(y \in \ellone\).
 Clearly if \(\Lambda_y(x) = \sum_{j\in\N} y_j x_j\) where \(x\in c_0\)
-is well defined and \(v(\Lambda_y) = y\). Thus $v$ is onto.
+then
+\begin{equation*}
+\left|\sum_{j\in\N} y_j x_j \right|
+\leq \sum_{j\in\N} | y_j x_j |
+\leq \|x\|_\infty \sum_{j\in\N} | y_j |
+\leq \|x\|_\infty \| y\|_1 < \infty.
+\end{equation*}
+Hence \(\Lambda_y\) is well defined
+and \(v(\Lambda_y) = y\). Thus $v$ is onto.
 
 
 Let \(\nu\in c\) be the ``constant'' vector \(\nu_i = 1\).
@@ -1988,7 +1996,7 @@ Let \(\mu_\Lambda(x) : c \to c\) defined by
 \(\mu_\Lambda(x)_j = (a_\Lambda)_j \cdot x_j\).
 \fi
 
-Pick some \(x\in c^*\).
+Pick some \(x\in c\).
 \Wlogy\ we may assume \(\Lambda(x_j\cdot e_j) \geq 0\).
 There exist some \(n < \infty\) such that
 \(\forall j\geq n\; |x_j| < x_\infty + 1\). Now
@@ -2000,9 +2008,14 @@ There exist some \(n < \infty\) such that
      + \sum_{j\geq n} |x_j\Lambda(e_j)|
 \end{align*}
 
-Let \(P_n: c\to c\) be a projection (using Iverson bracket notation).
-\(P_n(x))_j = x_j[j \leq n]\)
+Let \(P_n: c\to c\) be a projection (using Iverson bracket notation)
+\((P_n(x))_j = x_j[j \leq n]\),
+\(D_n(x) = x - P_n(x)\)
 and \(Q_n(x) = P_n(x) + x_\infty (\nu - P_n(x))\).
+
+% Let aritrary \(\epsilon > 0\), so there exists $n$ such that
+
+
 Clearly \(\lim_{n\to\infty}Q_n(x) = x\) for all \(x\in c\).
 Assume \(u(\Lambda_1) = u(\Lambda_2)\).
 Clearly
@@ -2052,11 +2065,43 @@ Since \(T(x)_1 = 2\) we have \(\|T\| = 2\).
 
 Now \((T^{-1}(y))_n = x_n = y_{n+1} + x_\infty = y_1 + y_{n+1}\).
 So \(\|T^{-1}\| = 2\).
-\unfinished
+
+Clearly \(T^*: c_0^* \to c^*\). Consider \(e_j \in \ellone\)
+and let \(\Lambda_j = v^{-1}(e_j)  \in c_0^*\),
+so \(\Lambda_j(x) = x_j\).
+We have \(T^* (\Lambda_j) \in c^*\) and now for all \(y\in c\)
+\begin{equation*}
+\left(T(y)\right)_j = y_\infty[j = 1] + (y_{j - 1} - y_\infty)[j > 1].
+\end{equation*}
+and
+\begin{equation*}
+\left(T^*(\Lambda_j)\right)(y)
+ = \Lambda_j\left(T(y)\right)
+ = y_\infty[j = 1] + (y_{j - 1} - y_\infty)[j > 1].
+\end{equation*}
+
+Now % # Let \(x\in \ellone\) now
+\begin{align*}
+\left(uT^*v^{-1}\right)(e_j)
+ &= \left(uT^*\right)\left(v^{-1}(e_j)\right)
+  = \left(uT^*\right)(\Lambda_j)
+  = u\left(T^*(\Lambda_j)\right) \\
+ &= u\left(y \to y_\infty[j = 1] + (y_{j - 1} - y_\infty)[j > 1]\right)
+\end{align*}
+and
+\begin{align*}
+\left(\left(uT^*v^{-1}\right)(e_j)\right)_k
+ &= \left(u\left(
+      y \to y_\infty[j = 1] + (y_{j - 1} - y_\infty)[j > 1]\right)\right)_k \\
+ &= 1\cdot[k = 1] + 1\cdot[k = j + 1].
+\end{align*}
+Thus
+\begin{equation*}
+\left(uT^*v^{-1}\right)(e_j) = e_1 + e_{j + 1}.
+\end{equation*}
+
 \end{itemize}
 
-
-\unfinished
 
 %%%%%%% 25
 \begin{excopy}
