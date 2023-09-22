@@ -685,21 +685,21 @@ f(x) = \min\{\rank(z) : z \in X \wedge zRx\}
 Clearly \(f(x)\) are ordinals. Pick \(x_0 \in X\) and let
 \(\gamma_0 = \rank(x_9) + 1\). By induction define for any natural \(n\in\omega\)
 \begin{equation*}
-\gamma_{n+1} = \sup\left(\{f⁢(x): x \in X\cap R⁢(\gamma_n)\} \cup
+\gamma_{n+1} = \sup\left(\{f(x): x \in X\cap R(\gamma_n)\} \cup
   \{\gamma_n + 1\}\right).
 \end{equation*}
 Let \(\gamma = \sup_{n\in\omega} \gamma_n\). Now
 \begin{equation*}
-x_0 \in X\cap R⁢(\gamma_0) \subseteq X\cap R⁢(\gamma).
+x_0 \in X\cap R(\gamma_0) \subseteq X\cap R(\gamma).
 \end{equation*}
-and \(\rank⁡(x) < \gamma\) for all \(x\in X\cap R⁢(\gamma)\).
+and \(\rank(x) < \gamma\) for all \(x\in X\cap R(\gamma)\).
 % So there is \(n<\omega\) such that \(\rank(x) < \gamma_n\).
 % Then \(f⁢(x) \leq \gamma_n + 1 < \gamma\).
 
-Now, let \(x_1\) be a $R$-minimal element of the set \(X\cap R⁢(\gamma)\).
+Now, let \(x_1\) be a $R$-minimal element of the set \(X\cap R(\gamma)\).
 By the definition of $f$, 
-let \(z\in X\) be such that \(z⁢R⁢x_1\) and \(\rank⁡(z)=f⁢(x_1)\).
-Then \(\rank⁡(z) < \gamma\) and so actually \(z \in X\cap R⁢(\gamma)\).
+let \(z\in X\) be such that \(z R x_1\) and \(\rank(z)=f(x_1)\).
+Then \(\rank(z) < \gamma\) and so actually \(z \in X\cap R(\gamma)\).
 This contradicts the minimality of \(x_1\).
 
 \begin{lexcopy}{I.9.52}{61}
@@ -933,14 +933,14 @@ X_\gamma = \{f\in\Fab: \forall \xi\geq\gamma\; f(\xi)=0\}.
 \end{equation*}
 Each \(X_\gamma\) is an initial segment of \Fab\ isomorphic
 to \Fag\ and by induction to \(\alpha^\gamma\).
-ׁHence \(\alpha^{\gamma}\leq \type(\Fag)\).
+Hence \(\alpha^{\gamma}\leq \type(\Fag)\).
 Since this holds for all \(\gamma < \beta\) we have
 \(\alpha^\beta \leq \type(\Fab)\).
 Assume by negation \(\alpha^\beta < \type(\Fab)\)
 and let \(g\in\Fab\) be a function such that the initial segment
 \(\{f\in\Fab:f\triangleleft g\}\) is isomorphic to \(\alpha^\beta\).
 Let \(\xi<\beta\) be the largest element such that
-\(g⁢(\xi)\neq 0\) and let \(\gamma=\xi+1\).
+\(g(\xi)\neq 0\) and let \(\gamma=\xi+1\).
 Let \(f=\chi_{\{\gamma\}} \in \Fab\).
 The inital segment of $f$ is the set \(X_\gamma\) for which
 \(\type(X_\gamma) = \alpha^\gamma < \alpha^\beta\)
@@ -988,46 +988,46 @@ The ordering on \((\alpha+1)\times(\alpha+1)\) is ordered as follows:
 \end{equation*}
 So for all \(\alpha\),
 \(\gamma(\alpha+1) = \gamma(\alpha) + \alpha\times 2 + 1\).
-If \(\alpha \geq 1\) then \(\alpha\cdot ⁢2+1 > \alpha+1\).
+If \(\alpha \geq 1\) then \(\alpha\cdot 2+1 > \alpha+1\).
 Hence any successor ordinal \(\alpha \geq 2\)
 is not a fixed point of \(\gamma\).
 We note that if $n$ is a finite ordinal then \(|n\times n| = n^2\)
-so \(\gamma⁢(n) = n^2\).
+so \(\gamma(n) = n^2\).
 In particular, \(n=0\) and \(n=1\) are fixed points of \(\gamma\)
-and moreover \(\gamma⁢(\omega) = \sup_{n<\omega⁡}\gamma⁢(n) = \omega\).
+and moreover \(\gamma(\omega) = \sup_{n<\omega}\gamma(n) = \omega\).
 
 By induction on \(n < \omega\), it’s easy to generalize the induction relation
-for \(\gamma⁢(\alpha+1)\) by
+for \(\gamma(\alpha+1)\) by
 \begin{equation*}
-\forall \alpha \geq \omega, \gamma⁢(\alpha+n)=\gamma⁢(\alpha)+\alpha⋅2⁢n+n
+\forall \alpha \geq \omega, \gamma(\alpha+n)=\gamma(\alpha)+\alpha\cdot 2n+n
 \end{equation*}
 and so
 \begin{equation*}
-\gamma⁢(\alpha + \omega) = \sup_{n<\omega⁡}\gamma⁢(\alpha + n) =
-\gamma⁢(\alpha) + \alpha⋅\omega.
+\gamma(\alpha + \omega) = \sup_{n<\omega}\gamma(\alpha + n) =
+\gamma(\alpha) + \alpha\cdot\omega.
 \end{equation*}
 If \(\alpha \geq \omega\) and
-\(\omega^{\beta_1}⁢ n_1 + \cdots + \omega^{\beta_k}⁢ n_k\)
+\(\omega^{\beta_1} n_1 + \cdots + \omega^{\beta_k} n_k\)
 its Cantor
 Normal Form, then for all \(n < \omega\)
 we have
 \begin{equation*}
 \alpha \cdot n =
- \omega^{\beta_1⁢}\cdot (n_1\cdot⁢ n) + \omega^{\beta_2}⁢\cdot n_2 + \cdots +
-   \omega^{\beta_k}⁢\cdot n_k
+ \omega^{\beta_1}\cdot (n_1\cdot n) + \omega^{\beta_2}\cdot n_2 + \cdots +
+   \omega^{\beta_k}\cdot n_k
 \end{equation*}
 and
 so
 \begin{equation*}
-\alpha \cdot \omega = \sup_{n<\omega}⁡\omega^{\beta_1} \cdot n = \omega^{\beta_1 + 1}.
+\alpha \cdot \omega = \sup_{n<\omega}\omega^{\beta_1} \cdot n = \omega^{\beta_1 + 1}.
 \end{equation*}
 Finally,
 \begin{equation*}
-\gamma⁢(\alpha + \omega)=\gamma⁢(\alpha) + \omega^{\log_\omega⁡(\alpha) + 1}.
+\gamma(\alpha + \omega)=\gamma(\alpha) + \omega^{\log_\omega(\alpha) + 1}.
 \end{equation*}
 
 We generalize the previous expression: for any \(\alpha \geq \omega\)
-and \(\beta \geq 1\) such that \(\log_\omega⁡(\alpha) + 1 \geq \beta\)
+and \(\beta \geq 1\) such that \(\log_\omega(\alpha) + 1 \geq \beta\)
 we have
 \begin{equation*}
 \gamma(\alpha+\omega^{\beta})=\gamma(\alpha)+\omega^{\log_{\omega}(\alpha)+\beta}.
@@ -1036,10 +1036,10 @@ We prove by induction on \(\beta\)
 that for all such \(\alpha\) the expression is true. We just
 verified \(\beta =1\) and the limit case is obvious by continuity
 of \(\gamma\) and of the sum/exponentiation in the second variable. For
-the successor step, if \(\log_\omega⁡(\alpha) + 1 \geq \beta + 1\) then a
+the successor step, if \(\log_\omega(\alpha) + 1 \geq \beta + 1\) then a
 fortiori
 \begin{equation*}
-\forall_{1\leq n<\omega} \log_\omega⁡(\alpha + \omega^\beta \cdot n) + 1
+\forall_{1\leq n<\omega} \log_\omega(\alpha + \omega^\beta \cdot n) + 1
   \geq \beta + 1 \geq \beta.
 \end{equation*}
 We can then use the induction hypothesis
@@ -1608,9 +1608,9 @@ See: \cite{WangFrederic}.
 Assume \(\kappa\) is regular.
 Simialrly, define  \((x_n)_{\alpha \in \kappa}\) by induction.
 If \(x_\xi\) is constructed for any \(\xi<\alpha\),
-then we let \(y_\alpha = \sup_{\xi<\alpha⁡}(x_\xi+1)\)
+then we let \(y_\alpha = \sup_{\xi<\alpha}(x_\xi+1)\)
 and so \(y_\alpha < \kappa\) by regularity of \(\kappa\).
-Then \(Y_\alpha =\kappa \setminus∖y_\alpha\) is nonempty and we pick
+Then \(Y_\alpha =\kappa \setminus y_\alpha\) is nonempty and we pick
 \(x_\alpha\) the \(\triangleleft\)-least element of \(Y_\alpha\).
 For all \(\alpha<\kappa\) and \(\xi<\alpha\)
 we have \(x_\alpha \geq y_\alpha > x_\xi\)
@@ -1667,8 +1667,9 @@ and \(X_n=\emptyset\) for \(n\neq 1\).
 % Clearly \(X_n^n=\kappa^n=\kappa\)
 % and so \(\cup_{n < \omega} X_n = \kappa = \alpha\).
 
-By negation, we may assume that  \(\kappa\) is the minimal ordinal
-for which the Milner-Rado claim fails.
+% By negation, we may assume that  \(\kappa\) is the minimal ordinal
+% for which the Milner-Rado claim fails.
+Otherise, induction on \(\alpha\) (within \([\kappa, \kappa^+)\)).
 
 If \(\alpha = \alpha' + 1\) is a successor ordinal,
 Then we have
@@ -1740,7 +1741,7 @@ See \cite{WangFrederic}
 
 By negation, suppose that \(\alpha \geq \kappa^\omega\).
 For all \(n<c\), let \(k_n<\omega\) such that
-\(\type⁡(X_n)<\kappa^{k_n}\).
+\(\type(X_n)<\kappa^{k_n}\).
 Denote
 \begin{equation*}
 \otimes(j) = \kappa^{k_0} \times \kappa^{k_1} \times \cdots \times \kappa^{k_j}.
@@ -1760,14 +1761,14 @@ Since
 \end{equation*}
 this gives an increasing function
 \begin{equation*}
-% f_0 : \kappa^{k_0} \times \kappa^{k_1} \times  \dots ⁢\kappa^{k_{c-1}}
+% f_0 : \kappa^{k_0} \times \kappa^{k_1} \times  \dots \kappa^{k_{c-1}}
 f_0 : \otimes(c-1)
 \to \alpha = \bigcup_{n<c} X_n.
 \end{equation*}
 
 More generally, we define by induction on \(i<c\) an increasing function
 \begin{equation*}
-% f_i : \kappa^{k_0} \times \kappa^{k_1} \times  \dots ⁢\kappa^{k_{c-1-i}}
+% f_i : \kappa^{k_0} \times \kappa^{k_1} \times  \dots \kappa^{k_{c-1-i}}
 f_i : \otimes(c-1-i)
 \to
 \bigcup_{n<c-i} X_n.
@@ -1777,23 +1778,23 @@ for any
 \(\beta \in \otimes(c-2-i)\)
 \iffalse
 \begin{equation*}
-\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots ⁢\kappa^{k_{c-2-i}}
+\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots \kappa^{k_{c-2-i}}
 \end{equation*}
 \fi
 we can find \(\gamma_\beta <\kappa^{k_{c-1-i}}\) such that
-\(f_i⁢(\beta, \gamma_\beta) \neq X_{c-1-i}\).
+\(f_i(\beta, \gamma_\beta) \neq X_{c-1-i}\).
 Otherwise, \(X_{c-1-i}\) contains the increasing sequence
-\(\{f_i⁢(\beta,\gamma): \gamma < \kappa^{k_{c-1-i}}\}\)
-and moreover \(\type⁡(X_{c-1-i}) \geq \kappa^{k_{c-1-i}}\),
+\(\{f_i(\beta,\gamma): \gamma < \kappa^{k_{c-1-i}}\}\)
+and moreover \(\type(X_{c-1-i}) \geq \kappa^{k_{c-1-i}}\),
 a contradiction.
 Hence we define for any
-%\(\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots ⁢\kappa^{k_{c-2-i}}\),
+%\(\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots \kappa^{k_{c-2-i}}\),
 \(\beta \in \otimes(c-2-i)\),
-\(f_{i+1}⁢(\beta) = f_i⁢(\beta, \gamma_\beta)\).
+\(f_{i+1}(\beta) = f_i(\beta, \gamma_\beta)\).
 
 Finally, \(f_{c-1}: \kappa^{k_0} \to X_0\)
 is an increasing function,
-and so \(\type⁡(X_0) \geq \kappa^{k_0}\),
+and so \(\type(X_0) \geq \kappa^{k_0}\),
 a contradiction.
 
 \unfinished
