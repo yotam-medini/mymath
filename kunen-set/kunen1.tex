@@ -1774,6 +1774,8 @@ where \(c < \omega\)
 and each \(\type(X_n) < \kappa^\omega\), then \(\alpha < \kappa^\omega\).
 \end{lexcopy}
 
+Implicitlt, \(\alpha\) is an ordinal.
+
 See \cite{WangFrederic}
 
 By negation, suppose that \(\alpha \geq \kappa^\omega\).
@@ -1781,17 +1783,18 @@ For all \(n<c\), let \(k_n<\omega\) such that
 \(\type(X_n)<\kappa^{k_n}\).
 Denote
 \begin{equation*}
-\otimes(j) = \kappa^{k_0} \times \kappa^{k_1} \times \cdots \times \kappa^{k_j}.
+\otimes(j) = \kappa^{k_0} \times \kappa^{k_1} \times \cdots \times \kappa^{k_{j-1}}.
 \end{equation*}
 Consider the isomorphism
 \begin{equation*}
 % \kappa^{k_0} \times \kappa^{k_1} \times \cdots \times \kappa^{k_{c-1}}
-\otimes(c-1)
+\otimes(c)
 \quad\leftrightarrow\quad
 % \kappa^{k_0+k_1+ \cdots + k_n}
 \kappa^{k_0+k_1+ \cdots + k_{c-1}}
+= \kappa^{\sum_{n<c} k_n}
 \end{equation*}
-provided by the lexical ordering.
+provided by the lexical ordering (see Definition I.8.4).
 Since
 \begin{equation*}
 \kappa^{k_0+k_1+ \dots +k_n} < \kappa^\omega  \leq \alpha,
@@ -1799,47 +1802,39 @@ Since
 this gives an increasing function
 \begin{equation*}
 % f_0 : \kappa^{k_0} \times \kappa^{k_1} \times  \dots \kappa^{k_{c-1}}
-f_0 : \otimes(c-1)
-\to \alpha = \bigcup_{n<c} X_n.
+f_c : \otimes(c)
+\to \alpha = \cup_{n<c} X_n.
 \end{equation*}
 
-More generally, we define by induction on \(i<c\) an increasing function
+More generally, we define by (decreasing) induction
+on \(0<i<c\) an increasing function
 \begin{equation*}
-% f_i : \kappa^{k_0} \times \kappa^{k_1} \times  \dots \kappa^{k_{c-1-i}}
-f_i : \otimes(c-1-i)
-\to
-\bigcup_{n<c-i} X_n.
+f_i : \otimes(i) \to \cup_{n<c-i} X_n.
 \end{equation*}
-If \(f_i\) is defined for \(i<c-1\), then
-for any
-\(\beta \in \otimes(c-2-i)\)
-\iffalse
-\begin{equation*}
-\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots \kappa^{k_{c-2-i}}
-\end{equation*}
-\fi
-we can find \(\gamma_\beta <\kappa^{k_{c-1-i}}\) such that
-\(f_i(\beta, \gamma_\beta) \neq X_{c-1-i}\).
-Otherwise, \(X_{c-1-i}\) contains the increasing sequence
-\(\{f_i(\beta,\gamma): \gamma < \kappa^{k_{c-1-i}}\}\)
-and moreover \(\type(X_{c-1-i}) \geq \kappa^{k_{c-1-i}}\),
+If \(f_i\) is defined for \(i<c\), then for any
+\(\beta \in \otimes(i-1)\)
+we can find \(\gamma_\beta < \kappa^{k_i}\) such that
+\(f_i(\beta, \gamma_\beta) \notin X_i\).
+Otherwise, \(X_{c-i}\) contains the increasing sequence
+\(\{f_i(\beta,\gamma): \gamma < \kappa^{k_{c-i}}\}\)
+and we have \(\type(X_{c-i}) \geq \kappa^{k_{c-i}}\),
 a contradiction.
 Hence we define for any
-%\(\beta \in \kappa^{k_0} \times \kappa^{k_1} \times \dots \kappa^{k_{c-2-i}}\),
-\(\beta \in \otimes(c-2-i)\),
-\(f_{i+1}(\beta) = f_i(\beta, \gamma_\beta)\).
+\(\beta \in \otimes(c-i-1)\), picking the minimal such \(\gamma_\beta)\)
+\begin{equation*}
+f_{i-1}(\beta) = f_i(\beta, \gamma_\beta)
+ \in \left(\cup_{n < i} X_n\right) \setminus X_i
+ = \cup_{n < i-1} X_n\,.
+\end{equation*}
+Not that the \(f_i\) is increasing in \(\beta\)
+since if \(\beta_x < \beta_y\) then
+\begin{equation*}
+f_i(\beta_x, \gamma_{\beta_x}) = f_i(\beta_y, \gamma_{\beta_y})
+\end{equation*}
+even if \(\gamma_{\beta_x} > \gamma_{\beta_y}\)
+since the \(\gamma\)s appear after the \(\beta\)s in lexicographic order.
 
-Finally, \(f_{c-1}: \kappa^{k_0} \to X_0\)
+Finally, \(f_1: \kappa^{k_0} \to X_0\)
 is an increasing function,
 and so \(\type(X_0) \geq \kappa^{k_0}\),
 a contradiction.
-
-\unfinished
-
-\textbf{Alternative solution}
-
-By setting \(Y_n = X_n \setminus \left(\cup_{j<n} X_j\right)\)
-and looking at \(Y_n\) instead, we may assume that \(X_n\)
-are mutually disjoint.
-
-\unfinished
