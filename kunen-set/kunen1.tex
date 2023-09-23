@@ -109,6 +109,7 @@ The \(\leq\) is needed for \(0+\omega = 1+\omega\).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Current Edition Exercises } % pages 111-115
 
+%%%%%%% 
 \begin{lexcopy}{I.4.18}{24}
 Derive \(\forall y[y \notin y]\) from the Axioms of Comprehension and
 Foundation. Don't use the Pairing or Extensionality Axioms. Then find a
@@ -130,6 +131,7 @@ Let the model have two ``sets'': \(\mu\), \(\nu\).
 with the following ``\(\in\)'' relations:
 \(\mu\in\nu\), \(\nu\in\nu\).
 
+%%%%%%% 
 \begin{lexcopy}{I.6.23}{31}
 Define the relation $R$ on \(\N \times \N\) by saying: \((x_0,x_1)R(y_0,y_1)\)
 iff \(x_0 \leq y_0\) and \(x_1 \leq y_1\)
@@ -155,6 +157,7 @@ Not total order since
 Given $k$, \(A=\{(n,k-n-1)\in\N\times\N: 0\leq n < k\}\)
 has $k$ elements all of which are minimal.
 
+%%%%%%% 
 \begin{lexcopy}{I.6.26}{31}
 Show that \(\in\) is a well-order of $3$.
 \end{lexcopy}
@@ -165,6 +168,7 @@ has $3$ elements. Clearly for any two elements \(x,y\in 3\)
 we have \(x=y \lor (x\in y \lor y \in x)\).
 and any non empty subset has a minimal element.
 
+%%%%%%% 
 \begin{lexcopy}{I.6.29}{33}
 Show that the Axiom of Foundation implies that the successor
 function $S$ is $1-1$ on $V$.
@@ -175,6 +179,7 @@ If by negation \(S(x) = S(y)\), then % \(b = \{y\}\).
 Similarly \(y \in x\). Thus \(\{x, y\}\) has no ``\(\in\)-minimal''
 element contradiction to to the Axiom of Foundation.
 
+%%%%%%% 
 \begin{lexcopy}{I.7.2}{34}
 Assuming the Axiom of Foundation, show that every 
 nonempty transitive set contains $0$ and show that every non-singleton
@@ -206,6 +211,7 @@ Since \(u\notin u\) its element must be \(\emptyset\),
 namely \(u = \{\emptyset\}\) and
 \(T = \{\emptyset, \{\emptyset\}\} = 2\).
 
+%%%%%%% 
 \begin{lexcopy}{I.7.25}{38}
   Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
   a transitive set and \(\in\) satisfies trichotomy on $z$.
@@ -222,7 +228,7 @@ If by negation $y$ uis not \(\in\)-minimal in $S$,
 then \(\exists m\in s(m\in y)\) is a contradiction.
 Ths \(\in\) well orders $z$ and thus $z$ is an ordinal.
 
-
+%%%%%%% 
 \begin{lexcopy}{I.7.26}{39}
   Assuming the Axiom of Foundation, $z$ is an ordinal iff $z$ is
 a transitive set and all elements of $z$ are transitive sets.
@@ -242,6 +248,7 @@ Similarly, if \(u\in x\) then \(u\in y\) hence \(x \subseteq y\),
 thus \(x = y\) is a contradiction, and \(\in\) is a total-order on $z$
 and by the Axiom of Foundation is well-order. Hence $z$ is an ordinal.
 
+%%%%%%% 
 \begin{lexcopy}{I.7.27}{39}
   Show, in \(BST^{-}\), that if $A$,$B$ are finite,
   then \(A\cup B\) and \(A\times B\)
@@ -287,6 +294,7 @@ f(B) =
 \right.
 \end{equation*}
 
+%%%%%%% 
 \begin{lexcopy}{I.9.6}{46}
   Derive the Axioms of Infinity and Replacement from (2) of Lemma I.9.5.
 \end{lexcopy}
@@ -295,6 +303,7 @@ f(B) =
 \textbf{Replacement:} Define $R$ by \(xRy\) iff
 \(\forall z(\varphi(x, z) \to y = z)\).
 
+%%%%%%% 
 \begin{lexcopy}{I.9.8}{46}
   If $R$ is well-founded on $A$, then $R$ is acyclic on $A$; hence, \(R^*\)
   is a strict partial order on $A$.
@@ -311,6 +320,7 @@ Conversely, each $R$-path must be finite for there are no cycles
 and $A$ is finite. Thus there exists $R$-minimal element
 (or \(A=\emptyset\)).
 
+%%%%%%% 
 \begin{lexcopy}{I.9.27}{54}
   Assume that each element of \R\ has rank \(\omega\);
   this will be true
@@ -340,6 +350,7 @@ Thus
 \end{equation*}
 So the abpve inequalities are actually equalities.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.39}{59}
 Assume that $R$ is well-founded and set-like on $A$. Then
 \(\textrm{rank}_{A,R}\) is 1-1 iff \(R^*\) is a total order of $A$.
@@ -366,6 +377,7 @@ Conversely, assume \(\R^*\) is a total order.
 Let \(x,y\in A\), \wlogy \((x,y)\in R^*\) thus \(\rank(y)>\rank(x)\).
 
 
+%%%%%%% 
 \begin{lexcopy}{I.9.40}{59}
 If \(R_1 \subseteq R_2\) are both well-founded and set-like on $A$, then
 \(\rank_{A,R_1}(y) \leq \rank_{A,R_2}(y)\)
@@ -426,6 +438,7 @@ Back to the exercise's last part.  we already shown
 by \eqref{eq:I.9.40:ReqRn} the last inequalities are actual equalities,
 that is \(\rank_{A,R_1}(y) = \rank_{A,R_2}(y)\).
 
+%%%%%%% 
 \begin{lexcopy}{I.9.41}{59}
 Assume that $R$ is well-founded and set-like on $A$, and that $R$
 is a transitive relation on $A$.
@@ -450,6 +463,7 @@ and by Lemma~I.9.16
 \{\rank(x): xRa\} = \{\alpha: \alpha < \rank(a)\} = \rank(a),
 \end{equation*}
 
+%%%%%%% 
 \begin{lexcopy}{I.9.42}{59}
 Assume that $R$ well-orders the set $A$. Then the three 
 functions \(\textrm{mos}_{A,R}\), \(\textrm{rank}_{A,R}\),
@@ -463,6 +477,7 @@ By Lemma~I.9.17 \(rank_{\ON,\in}(\xi) = \xi\)
 and since the isomorphism is unique, it is equals to \(\rank\).
 By previous exercise is equals to \(\mos\) as well.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.43}{59}
 Work in \(\ZF^-\). Let $K$ be any class and assume that every
 subset of $K$ is a member of $K$. Prove that \(WF \subseteq K\).
@@ -477,6 +492,7 @@ a = \{x\in a\} = \{x \in a\cap K\} \subseteq K.
 The last equality holds by minimality of $a$.
 But \(a \in K\) by the assumption which is a contradiction.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.44}{59}
 For any relation $R$ on a class $A$, and \(a \in A\): $R$
 is well-founded on \(\textrm{pred}_{A,R^*}(a)\) iff $R$
@@ -492,6 +508,7 @@ or \(B \setminus \{a\} \subset A_0\) has $R$-minimal element.
 \(\leftarrow\):  Let $B$ be a subset of \(A_0 \subset A_1\),
 and by assumption has a $R$-minimal element.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.46}{60}
 Let $R$ be set-like on $A$, and let \(W = WF_{A,R}\) Then:
 \begin{enumerate}
@@ -553,6 +570,7 @@ Let $R$ be set-like on $A$, and let \(W = WF_{A,R}\) Then:
     Hence \(a\in W\).
 \end{enumerate}
 
+%%%%%%% 
 \begin{lexcopy}{I.9.47}{60}
 Call a relation $R$ on a set $A$ anti-transitive iff it satisfies
 \(\forall x y z \in A\, [xRy \land yRz \to xRz]\).
@@ -572,6 +590,7 @@ Consider \(A = \{0, 1, 2\}\) and the natural
 \end{align*}
 and \(H_0^* = H_1^* = R\) but \(H_0 \neq H_1\)..
 
+%%%%%%% 
 \begin{lexcopy}{I.9.48}{60}
 The requirements for a Ph.D. in math at \(\aleph\)U are only the
 courses \framebox{\(\sigma\)} for each
@@ -621,6 +640,7 @@ having \(m>0\) in its sequence we have \(z_n R \tau\)
 and thus \(\rank(\tau)=\omega\).
 \end{enumerate}
 
+%%%%%%% 
 \begin{lexcopy}{I.9.49}{60}
 Let $R$ be well-founded and set-like on $A$. Prove that there is
 a class $M$ and an isomorphism from \((A,R)\) onto \((M, \in)\).
@@ -640,6 +660,7 @@ Hence \(\lrangle{0,y_1} \in T(y_2)\) and by uniqueness of pairs (Lemma~I.4.12)
 \(\lrangle{0,y_1} = \lrangle{0,y_2}\) and so \(y_1 = y_2\).
 Thus $F$ is 1-1, and with \(M=F(A)\) we have isomorphism.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.50}{61}
 Assume that $R$ is set-like on $A$ and not well-founded. Define
 a \(G(x,s)\) that is an explicit counter-example to Theorem~I1.9.11.
@@ -672,6 +693,7 @@ F(x) < F(x) + 1 = \widehat{S}(x) \leq F(y).
 \end{equation*}
 By Lemma~I.9.9, $R$ is well-founded, a contradiction.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.51}{61}
 Work in \ZF. Assume that $R$ is well-founded on $A$, and that
 $X$ is a non-empty sub-class of $A$. Prove that $X$ has an $R$-minimal element.
@@ -702,6 +724,7 @@ let \(z\in X\) be such that \(z R x_1\) and \(\rank(z)=f(x_1)\).
 Then \(\rank(z) < \gamma\) and so actually \(z \in X\cap R(\gamma)\).
 This contradicts the minimality of \(x_1\).
 
+%%%%%%% 
 \begin{lexcopy}{I.9.52}{61}
 Verify the statements made about exponentiation in Table~1.1
 on page~40.
@@ -773,6 +796,7 @@ and we have \(\gamma = \sup\{\mu: \mu<\gamma\}\) and then
 \end{equation*}
 and both cases contradict \eqref{eq:apbpg:neq}.
 
+%%%%%%% 
 \begin{lexcopy}{I.9.53}{61} \anchor{I.9.53}
 Let \(\gamma\) be a limit ordinal. Show that the following are 
 equivalent:
@@ -832,6 +856,7 @@ Again by (next I.9.54) Cantor Normal Form Theorem.
 By assumption \(\beta_{1,1} \leq \beta_{2,1} < \delta\).
 Hence \(\alpha_1 + \alpha_2 < \gamma\).
 
+%%%%%%% 
 \begin{lexcopy}{I.9.54}{61}
 Prove the Cantor Normal Form Theorem: Each ordinal
 \(\alpha > 0\) can be represented uniquely in the form:
@@ -858,6 +883,7 @@ such that \(\delta< \omega\) (finite!) and \(\rho \omega^\delta<\).
 By induction \(\rho\) has a Cantor finite normal form
 which completes the desired finite normal form for \(\alpha\).
 
+%%%%%%% 
 {
 \newcommand*{\Fab}{\ensuremath{F(\alpha, \beta)}}
 \begin{lexcopy}{I.9.55}{62}
@@ -949,6 +975,7 @@ But by construction of $f$ we also have \(g\triangleleft f\), a contradiction.
 Hence \(\type(\Fab) = \alpha^\beta\).
 } % for newcommands
 
+%%%%%%% 
 \begin{lexcopy}{I.9.56}{62}
 If \(\alpha,\beta\) are non-zero ordinals, then there is a largest \(\xi\) such
 that \(\xi \mid \alpha\) and \(\xi \mid \beta\).
@@ -968,7 +995,7 @@ Now common divisors of \(\alpha\) and \(\beta\)
 are the common divisors of \(\beta\) and $r$.
 Thus \(\mu = \gcd(\alpha, \beta)\).
 
-
+%%%%%%% 
 \begin{lexcopy}{I.11.7}{67}
 For \(\alpha > \omega\), show that
 \(\type(\alpha \times \alpha, \triangleleft) = \alpha\) iff
@@ -1203,6 +1230,7 @@ previous paragraph:
   =\omega^{\omega^{\alpha + 1}}.
 \end{equation*}
 
+%%%%%%% 
 \begin{lexcopy}{I.11.8}{67}
 Applying transfinite recursion, define \(\delta_\xi\) by:
 \begin{equation*}
@@ -1284,6 +1312,7 @@ Thus
 \end{equation*}
 By \eqref{eq:aleph:alpha} we have equality in \eqref{eq:delta:eta:limit}.
 
+%%%%%%% 
 \begin{lexcopy}{I.12.5}{70}
 Assume \(\AC^+\), and do not assume the Power Set Axiom. Let
 $A$ be a vector space over some field $K$. Prove that $A$ has a basis.
@@ -1305,6 +1334,7 @@ v_\beta :=
 \end{equation*}
 Now \(B=\{v_\beta: \beta < \alpha\}\) is a basis.
 
+%%%%%%% 
 \begin{lexcopy}{I.12.16}{72}
 (\((\textnormal{ZF}^- \minusP)\)
 Prove that the Tychonov Theorem is equivalent to \AC.
@@ -1343,6 +1373,7 @@ By compactness of
 \end{equation*}
 which is \AC.
 
+%%%%%%% 
 \begin{lexcopy}{I.12.17}{72}
 Prove, in \ZF, that \AC\ is equivalent to the statement that
 \(\mathcal{P}(\delta)\) can be well-ordered
@@ -1360,6 +1391,7 @@ Define \(<\) on $A$ by
 x < y \quad \leftrightarrow \quad \{x\} <_P \{y\}.
 \end{equation*}
 
+%%%%%%% 
 \begin{lexcopy}{I.13.33}{79}
 Prove that
 \((\beth_\omega)^{\aleph_0} = \prod_{n\in\omega}\beth_n = \beth_{\omega + 1}\)
@@ -1392,6 +1424,7 @@ Let \(\varphi: P(\delta_\omega) \to \prod_{n\in\omega}\beth_n\) by:
 Thus \(|\prod_{n\in\omega}\beth_n| = \beth_{\omega + 1} = 2^{\beth_\omega}\).
 Combining with the above we get the desireed first equality.
 
+%%%%%%% 
 \begin{lexcopy}{I.13.34}{79}
 Let $W$ be a vector space over some field $F$, and let \(W^* = \Hom(W, F)\)
 be the dual vector space. Consider $W$ to be a subspace of \(W^{**}\) in
@@ -1454,6 +1487,7 @@ Gathering the above inequalities we get the desired
 |W_\omega| = \dim(W_\omega) = \beth_\omega.
 \end{equation*}
 
+%%%%%%% 
 \begin{lexcopy}{I.13.35}{79}
 Let $B$ be a Banach space over \(\R\) or \(\C\), and let \(B^*\) be the
 dual Banach space. Consider $B$ to be a subspace of \(B^{**}\) in the usual way.
@@ -1555,6 +1589,7 @@ Combining  \eqref{eq:Hausdorff:ineq1} and \eqref{eq:Hausdorff:ineq2}
 we get \eqref{eq:Hausdorff}
 \end{proof}
 
+%%%%%%% 
 \begin{lexcopy}{I.13.36}{79}
 Assume CH, but don't assume GCH. Show that \(\aleph_n^{\aleph_0} = \aleph_n\)
 whenever \(1 < n < \omega\).
@@ -1583,6 +1618,7 @@ By induction
 = \aleph_{n+1}.
 \end{equation*}
 
+%%%%%%% 
 \begin{lexcopy}{I.13.37}{79}
 Let \(\kappa\) be an infinite cardinal and let \(\triangleleft\)
 be any well-order of \(\kappa\).
@@ -1655,6 +1691,7 @@ Let \(X = \cup_{\beta<\alpha} X_\beta\).
 If \(|X| < \aleph_\aleph\) then the latter is a successor cardinal.
 Hence \(|X| = \aleph_\aleph\) and so \(\mu\) is \emph{not} a failing cardinal.
 
+%%%%%%% 
 \begin{lexcopy}{I.13.38}{80}
 Prove the Milner-Rado ``Paradox'' (1965): If \(\kappa\) is an 
 infinite cardinal and \hbox{\(\kappa \leq \alpha < \kappa^+\)},
@@ -1730,7 +1767,7 @@ a tail of \(\beta_{\gamma+1}\). Thus for \(n\geq 0\)
 = \kappa^{n+1}.
 \end{equation*}
 
-
+%%%%%%% 
 \begin{lexcopy}{I.13.39}{80}
 If \(\kappa\) is an infinite cardinal and \(\alpha = \cup_{n < c}X_n\),
 where \(c < \omega\)
