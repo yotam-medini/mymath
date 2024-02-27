@@ -1,0 +1,2063 @@
+% $Id: langalg.tex,v 1.4 2001/05/04 12:24:45 yotam Exp yotam $
+\documentclass[12pt]{book}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+% \usepackage{amsthm}
+\usepackage{makeidx}
+\makeindex % enable
+
+\usepackage{multicol,supertabular}
+
+\setlength{\parindent}{0pt}
+
+% \usepackage{amsmath}
+
+\usepackage{enumerate}
+
+% 'Inspired' by:
+%% This is file `uwamaths.sty',
+%%%     author   = "Greg Gamble",
+%%%     email     = "gregg@csee.uq.edu.au (Internet)",
+
+\makeatletter
+\def\DOTSB{\relax}
+\def\dotcup{\DOTSB\mathop{\overset{\textstyle.}\cup}}
+ \def\@avr#1{\vrule height #1ex width 0pt}
+ \def\@dotbigcupD{\smash\bigcup\@avr{2.1}}
+ \def\@dotbigcupT{\smash\bigcup\@avr{1.5}}
+ \def\dotbigcupD{\DOTSB\mathop{\overset{\textstyle.}\@dotbigcupD%
+                               \vphantom{\bigcup}}}
+
+\def\dotbigcupT{\DOTSB\smash{\mathop{\overset{\textstyle.}\@dotbigcupT%
+                              \vphantom{\bigcup}}}%
+                       \vphantom{\bigcup}\@avr{2.0}}
+\def\dotbigcup{\mathop{\mathchoice{\dotbigcupD}{\dotbigcupT}
+                                  {\dotbigcupT}{\dotbigcupT}}}
+\let\disjunion\dotcup
+\let\Disjunion\dotbigcup
+\makeatother
+
+\input{mymacs}
+
+\title{
+ Notes and Solutions to Exercises\\
+ for\\
+ ``Algebra'' \quad by\quad  Serge Lang}
+\author{Yotam Medini\\\texttt{yotam\_medini@yahoo.com}}
+
+\newcommand{\Zm}[1]{\Z/#1\Z} % The Cyclic group
+
+% Trivial group
+\newcommand{\eG}{\ensuremath{\{e\}}}
+
+\newcommand{\UNFINISHED}{\large\textbf{UNFINISHED!}}
+
+% \newcommand{\disjunion}{\.\cup}      % Some use \sqcup or \uplus
+% \newcommand{\Disjunion}{\.\bigsqcup} % Some use \bigsqcup or \biguplus
+% \newcommand{\disjunion}{{\bigsqcup}}
+% \newcommand{\Disjunion}{\bigsqcup}
+
+\def\Aut{\mathop{\rm Aut}\nolimits}
+\def\card{\mathop{\rm card}\nolimits}
+\def\Ch{\mathop{\rm Ch}\nolimits}
+\def\Id{\mathop{\rm Id}\nolimits}
+\def\id{\mathop{\rm id}\nolimits}
+\def\Inn{\mathop{\rm Inn}\nolimits}
+\def\Irr{\mathop{\rm Irr}\nolimits}
+\def\Ker{\mathop{\rm Ker}\nolimits}
+\def\Map{\mathop{\rm Map}\nolimits}
+\def\Stab{\mathop{\rm Stab}\nolimits}
+\def\subnormal{\vartriangleleft}
+
+% \renewenvironment{excopy}
+% {\begin{minipage}[t]{.8\textwidth}\footnotesize}
+% {\smallskip\hrule\end{minipage}}
+
+
+\newcounter{myenumi}
+\newenvironment{myenumerate}
+{\begin{enumerate}
+ \setcounter{enumi}{\themyenumi}
+}
+{\setcounter{myenumi}{\theenumi}
+ \end{enumerate}}
+
+% End of proof
+% \newcommand{\eop}{{\small\quad\(\square\)}}
+
+% \newtheorem{thm}{Theorem}[chapter]
+% \newtheorem{cor}[thm]{Corollary}
+% \newtheorem{lem}[thm]{Lemma}
+% \newtheorem{llem}[thm]{Local Lemma}
+
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Introduction}
+
+This document is a companion to \cite{Lan94}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Notation}
+
+For each natural \(n\in\N\) we define
+\begin{equation*}
+\N_n \eqdef \{m\in\N: 1\leq m \leq n\} \qquad
+\Z_n \eqdef \{m\in\Z: 0\leq m < n\}.
+\end{equation*}
+
+We borrow \textbf{C}-programming language modulo operator 
+to define the residue function
+\begin{equation*}
+\bres{n}{d} = n - n \left\lfloor \frac{n}{d} \right\rfloor
+\end{equation*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Groups}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fixed proof of 5.5}
+
+In an old edition:
+
+Page~33 in the proof of Theorem~5.5.
+
+The last paragraph of the proof deals with the case
+in which the orbit of \(\langle\sigma\rangle\) has \(\geq3\) elements.
+With the defined \(\tau = [krs]\) the text claims that
+with \(\sigma' =  \tau\sigma\tau^{-1}\sigma^{-1}\) we have
+\(\sigma'(i) = i\).
+
+If we set \(\sigma = [ijkrs]\) then \(\sigma'(i)\neq i\) \emph{contrary}
+to what is claimed in the text!
+
+With the defined \(\tau = [krs]\) we actually have in the case
+\begin{eqnarray}
+\sigma'(i) & = & \tau\sigma\tau^{-1}\sigma^{-1}(i) \\
+           & = & \tau\sigma\tau^{-1}(s) \\
+           & = & \tau\sigma(r) \\
+           & = & \tau(s) \\
+           & = & k \neq i
+\end{eqnarray}
+
+In the current Third Edition, \(\tau = [rsk]\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 8.3}
+The \(c\in A_1\) may be explicitly taken as
+\[c = p^{k-r}\mu a_1.\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises (page 75)}
+
+%%%%%%%%%%%%%%%%
+\begin{myenumerate}
+\addtolength{\itemsep}{10pt}
+
+%%%%%
+\begin{excopy}
+Show that every group of order \(\leq 5\) is abelian.
+\end{excopy}
+
+If \(|G|=1\) then \(G=\eG\) and it is obvious.
+For \(|G|\in\{2,3,5\}\) then the order is prime and $G$ is cyclic
+and therefore abelian.
+
+Now assume \(|G|=4\). If $G$ is cyclic then it is abelian.
+If $G$ is not cyclic then \(G=(\Zm{2})\times(\Zm{2})\)
+and a simple check verifies that $G$ is abelian.
+
+%%%%%
+\begin{excopy}
+Show that there are two non-isomorphic groups of order $4$,
+namely the cyclic one and the product of two cyclic groups of order $2$.
+\end{excopy}
+
+Note: This was actually used in the solution of previous exercise.
+Let $G$ be a non cyclic group of order $4$ and
+\(G = \{e, g_1, g_2, g_3\}\).
+Since \(g_i^4=e\) for all \(i=1,2,3\) and therefore we must also
+have \(g_i^2=e\) for all \(g_i\) since otherwise \(\{g_i^k\}_{k=0}^3\)
+generates $G$ cotradicting it being non-cyclic.
+Denote \(h = g_1 g_2\). This product $h$
+ cannot be equal to $e$ since \(g_1\)  and \(g_2\)
+The product $h$ cannot be equal to either \(g_1\) nor \(g_2\)
+Since niether of them is the unit.
+Thus \(g_1 g_2 = g_3\). With this the homomorphism
+of $G$ onto \((\Zm{2})\times(\Zm{2})\)
+generated by:
+\begin{eqnarray*}
+ g_1 & \rightarrow &  (1,0) \\
+ g_2 & \rightarrow &  (0,1) \\
+\end{eqnarray*}
+exists and satisfies isomorphism.
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be agroup. A \textbf{commutator} in $G$ is
+an element of the form \(aba^{-1}b^{-1}\) with \(a,b\in G\).
+Let \(G^c\) be the subgroup generated by the commutators.
+Then \(G^c\) is called the \textbf{commutator subgroup}.
+Show that \(G^c\) is normal. Show that any homomorphism of
+$G$ into an abelian group factors through \(G/G^c\).
+\end{excopy}
+
+Let \(g\in G\) and \(m\in G^c\).
+By definition \(g^{-1}mgm^{-1} \in G^c\) and so
+\(g^{-1}mg \in G^c m = G^c\) and \(G^c\) is normal.
+
+Let $A$ be an abelian group and
+\(h: G\rightarrow A\) a group homomorphism.
+We need to show that \(G^c \subseteq \Ker h\).
+It is sufficient to show it on the generators
+\begin{eqnarray*}
+h(aba^{-1}b^{-1}) & = & h(a)h(b)h(a^{-1})h(b^{-1}) \\
+                  & = & h(a)h(a^{-1})h(b)h(b^{-1}) \\
+                  & = & h(aa^{-1})h(bb^{-1}) \\
+                  & = & h(e_G)h(e_G) = e_A\\
+\end{eqnarray*}
+
+
+%%%%%
+\begin{excopy}
+Let \(H,K\) be subgroups of a finite group $G$
+with \(K \subset N_H\). Show that
+\[\#(HK) = \frac{\#(H)\#(K)}{\#(H\cap K)}.\]
+\end{excopy}
+
+On page~17 (Example \textbf{iv}) it was shown that
+\[H/(H\cap K) \approx HK/K.\]
+From this we get
+\[\#(H)/\#(H\cap K) = \#(HK)/\#(K)\]
+and the desired equality follows.
+
+%%%%%
+\begin{excopy}
+{\normalsize (Note: Using different notation.)}\newline
+\textbf{Goursat's Lemma.} Let \(G_1, G_2\) be groups,
+and let $H$ be a subgroup of \(G_1\times G_2\) such that
+the two projections
+\(p_i:H\rightarrow G_i\) for \(i=1,2\) are surjective.
+Let \(N_1\) be the kernel of \(p_2\)
+and \(N_2\) be the kernel of \(p_1\).
+One can identify \(N_i\) as a normal subgroup of \(G_i\) (\(i=1,2\)).
+Show that the image of $H$
+in \(G_1/N_1 \times G_2/N_2\) is the graph of an isomorphism
+\[G_1/N_1 \approx G_2/N_2.\]
+\end{excopy}
+
+It is easy to see that
+\begin{eqnarray*}
+\Ker{p_1} & = & H \cap (\{e_G\}\times G')\\
+\Ker{p_2} & = & H \cap (G\times\{e_{G'}\})\\
+\end{eqnarray*}
+
+We have the natural mappings
+\[\widetilde{p_i}: H \rightarrow G_i/N_i\qquad(i=1,2).\]
+We first need to show that the graph of \((\widetilde{p_1},\widetilde{p_2})\)
+defines a surjective bijection function
+\begin{equation}\label{eq:g1n1g2n2}
+G_1/N_1 \rightarrow G_2/N_2.
+\end{equation}
+The natural mapping \(H\rightarrow G_1/N_1\) is surjective
+and the grapg covers \(G_1/N_1\).
+Hence it suffices to show that for any element of \(G_1/N_1\)
+there is only one associated element in \(G_2/N_2\).
+Let
+\((g_1,g_2),(g'_1,g'_2)\) be any elements of $H$ such that
+\[\widetilde{p_1}((g_1,g_2)) = \widetilde{p_1}((g'_1,g'_2)).\]
+It is obvious that
+\((g_1^{-1}g'_1,g_2^{-1}g'_2) \in \Ker(\widetilde{p_1})\)
+and so \(g_2^{-1}g'_2\in N_2\) and thus \(g_2 N_2 = g'_2 N_2\).
+This shows
+\[\widetilde{p_2}(\left(g_1,g_2\right)) =
+  \widetilde{p_2}(\left(g'_1,g'_2\right))\]
+and the graph defines the mapping of (\ref{eq:g1n1g2n2}) we had to show.
+Similarly, we can show the inverse mapping
+\[G_2/N_2 \rightarrow G_1/N_1\]
+and thus the graph is an surjective bijection.
+
+Now to show homomorphism. Let
+\(x_1N_1,y_1N_1 \in G_1/N_1\).
+For \(i=1,2\)
+There must be some
+% \((a_i,b_i)\in H\) so
+\((a_1,a_2),(b_1,b_2)\in H\) so
+\(a_iN = x_iN\) and
+\(b_iN = y_iN\).
+The mapping (\ref{eq:g1n1g2n2}) we have established has:
+\(x_1N_1 \rightarrow a_2N2\) and
+\(y_1N_1 \rightarrow b_2N2\).
+By looking at
+\((a_1 b_1,a_2 b_2)\in H\) we get
+\(x_1 y_1 N_1 \rightarrow a_2 b_2 N2\).
+
+
+%%%%%
+\begin{excopy}
+Prove that the group of inner automorphisms of a group $G$
+is normal in \(Aut(G)\).
+\end{excopy}
+
+The \textbf{inner} automorphisms
+(\(\Inn(G)\), See: \cite{Scott87})
+are the conjunctions.
+
+Let \(T\in \Aut(G)\) and
+let \(\gamma_x\in \Inn(G)\).
+For \(y\in G\) We have
+\(\gamma_x(y) = xyx^{-1}\) and
+\begin{eqnarray*}
+(T\gamma_x T^{-1})(y)
+  & = & T(xT^{-1}(y)x^{-1})\\
+  & = & T(x)T(T^{-1}(y))T(x^{-1})\\
+  & = & T(x)yT(x^{-1})\\
+  & = & \gamma_{T(x)}(y).\\
+\end{eqnarray*}
+So \(T\gamma_x T^{-1} \in \Inn(G)\) and \(\Inn(G)\) is normal.
+
+%%%%%
+\begin{excopy}
+Let $G$ be a group such that \(\Aut(G)\) is cyclic.
+Prove that $G$ is abelian.
+\end{excopy}
+
+Let \(T\in\Aut(G)\) be a generator.
+For all \(g\in G\) we denote the inner mapping \(\gamma_g(x)=gxg^{-1}\).
+So for any \(g\in G\) there exists a minimal \(n(g)\geq 0\) such that
+\(T^{n(g)} = \gamma_g\). G is abelian iff \(n(g)=0\) for all \(g\in G\).
+In negation we can assume there is some \(t \in G\)
+with minimal \(m=n(t)>0\). We will show that \(\gamma_t\)
+generates all of \(\Inn(G)\).
+
+Let \(g\in G\), \(d=\lfloor n(g)/m\rfloor\) and the residue
+\(r = n(g) - md\) where \(0\leq r<m\).
+% Now \(\gamma_g = T^{n(g)} = T^r(T^m)^{d} = T^r \gamma_t^d\).
+Set \(g'=gt^{-d}\) and we get
+\[\gamma_{g'}(x) = (T^{n(g)}(T^m)^d)(x) = T^{n(g)-md}(x) = T^r(x).\]
+By minimality of $m$ we must have \(r=0\).
+
+So for all \(g\in G\) there exists a \(d\geq0\) such that
+\(T^{md}=\gamma_g\) that is for all \(x\in G\)
+\(t^{md}xt^{-md} = gxg^{-1}\). Substituting $x$ with $t$ we get
+\(t = t^{md}tt^{-md} = gtg^{-1}\) from which we get \(gt=tg\)
+and \(T^m\) is the identity that generates \(\Inn(G)\).
+Since \(\Inn(G)=\{\Id_G\}\) we conclude that $G$ is abelian.
+
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be a group and let \(H, H'\) be subgroups.
+By a \textbf{double coset} of \(H, H'\) one means
+a subset of $G$ of the form \(HxH'\).
+\begin{itemize}
+  \item[(a)] Show that $G$ is a disjoint union of double cosets.
+  \item[(b)] Let $C$ be a family of representatives for
+     double cosets. For each \(a \in G\) denote by \([a]H'\)
+     the conjugate \(aH'a^{-1}\) of \(H'\).
+     For each \(c\in C\) we have a decomposition into ordinary cosets
+  \begin{equation} \label{eq:decoxcHHp}
+    H = \Disjunion_{x\in X_c} x(H\cap[c]H'),
+    % H = \Disjunion_{x\in X_c} x(H\cap[c]H'),
+  \end{equation}
+     where \(X_c\) is a family of elements of $H$, depending on $c$.
+     Show that the elements
+     \(\{xc: c\in C,\,x\in X_c\}\) form a family of left cosets
+     representatives for \(H'\) in $G$; that is,
+  \begin{equation} \label{eq:decoGxccHp}
+    G = \Disjunion_{c\in C}\,\Disjunion_{x\in X_c} xcH',
+  \end{equation}
+
+  \begin{quote}
+   \textbf{Note:} In the original text,
+   equation (\ref{eq:decoxcHHp})  appears as
+   \[ H = \bigcup_c x_c(H\cap[c]H'),\]
+   and equation (\ref{eq:decoGxccHp}) appears as
+   \[ G = \bigcup_{x_c}\,\bigcup_{x_c} x_c cH'.\]
+  I believe these are notational mistakes
+   or unclear indices style.
+  \end{quote}
+
+\end{itemize}
+\end{excopy}
+
+To prove (a) let us assume that for some \(x_1,x_2\in G\)
+\((Hx_1H')\cap(Hx_2H')\neq\emptyset\).
+So we have \(h_1,h_2\in H\) and \(h'_1,h'_2\in H'\) so
+\(h_1 x_1 h'_1 = h_2 x_2 h'_2\).
+So we
+\(x_1 = ({h_1}^{-1}h_2) x_2 (h'_2{h'_1}^{-1}).\)
+Now for any \(g\in Hx_1H'\) there are
+\(h\in H,h'\in H'\) such that we have
+\[g = hx_1h' = (h{h_1}^{-1}h_2) x_2 (h'_2{h'_1}^{-1}) \in Hx_2H'.\]
+Thus \(Hx_1H'\subset Hx_2H'\). Similarly,
+\(Hx_2H'\subset Hx_1H'\) and they are equal and so the double cosets
+are disjoint.
+
+Now we turn to (b). For each \(c\in C\)
+\(H_c = H\cap(cH'c^{-1})\subseteq H\). So we have
+cosets of \(H_c\) form a disjoint union
+\[H = \disjunion_{x\in X_c} xH_c = \disjunion_{x\in X_c} xcH'c{-1}\]
+with some family \(X_c\) of representatives.
+
+We compute
+\begin{eqnarray} \label{eq:hch}
+ HcH' & = & \left(\Disjunion_{x\in X_c} xcH'c^{-1}\right)cH' \\
+      & = & \left(\Disjunion_{x\in X_c} xcH'c^{-1}c\right)H' \nonumber \\
+      & = & \left(\Disjunion_{x\in X_c} xcH'\right)H' \nonumber\\
+      & = & \Disjunion_{x\in X_c} xcH'H' \nonumber\\
+      & = & \Disjunion_{x\in X_c} xcH'  \nonumber
+\end{eqnarray}
+
+From (a) we have a family $C$ of representatives of the double cosets
+and using \ref{eq:hch} for substitution we get:
+\[
+G = \Disjunion_{c\in C} HcH'\\
+  = \Disjunion_{c\in C} \, \Disjunion_{x\in X_c} xcH'.\]
+
+
+
+%%%%%
+\begin{excopy}
+\begin{itemize}
+ \item[(a)] Let $G$ be a group and $H$ a subgroup of finite index.
+   Show that there exists a normal subgroup $N$ of $G$ contained in $H$
+   and also of a finite index. [\emph{Hint}: If \((G:H)=n\),
+   find a homomorphism if $G$ into \(S_n\) whose kernel is contained in $H$.]
+ \item[(b)] Let $G$ be a group and let \(H_1\), \(H_2\) be subgroups of
+   finite index. Prove that \(H_1\cap H_2\) has finite index.
+\end{itemize}
+\end{excopy}
+
+Let $G$ act on the set of cosets of $H$ with \(\pi_g(cH) = gcH\)
+for every \(g\in G\) and ever coset \(cH\) with \(c\in G\).
+We want to show that this definition is independent of choice of
+the $c$ representative.
+So let \(c_1H = c_2H\), % so there must be some \(h\in H\)
+and by associativity of the group multiplication
+\[\pi_g(c_1H) = g(c_1H) = g(c_2H) = \pi_g(c_2)\]
+and for each \(g_1,g_2\in G\), \(c\in G\)
+\begin{eqnarray} \label{eq:pig1g2}
+\pi_{g_1g_2}(cH) = (g_1g_2)(cH) = g_1(g_2(cH)) =  g_1(\pi_{g_2}cH) \\
+  \hfill = \pi_{g_1}(\pi_{g_2}cH) = (\pi_{g_1}\pi_{g_2})(cH). \nonumber
+\end{eqnarray}
+The set of $H$ has $n$ elements.
+By labeling the cosets
+and from (\ref{eq:pig1g2})
+we see that the association \(g\rightarrow \pi_g\)
+is homomorphism\(T:G\rightarrow S_n\).
+We have \(\Ker T \subseteq H\) since
+for every \(g\in G\setminus H\) we have \(gH\neq H\).
+Obviously, \(G/\Ker(T) \equiv T(G) \subseteq S_n\) and so
+\[[G:H] \leq [G:\Ker(T)] = |T(G)| \leq |S_n| = n! < \infty.\]
+
+To prove (b) we can assume that \(H_1\), \(H_2\) are normal.
+Otherwise we simply use (a) and substitute them with normal subgroups.
+Now we can use Example~(iv) of \S~3 (page~17)
+\begin{equation}
+H_1/(H_1\cap H_2) = H_1 H_2 / H_2
+\end{equation}
+that gives
+\begin{equation}
+[H_1:(H_1\cap H_2)] =
+|G/(H_1\cap H_2)| =
+|H_1 H_2 / H_2| \leq
+|G/H_2|
+\end{equation}
+and so
+\begin{equation}
+[G:(H_1\cap H_2)] =
+[G:H_1]\cdot[H_1:(H_1\cap H_2)] \leq
+|G/H_1|\cdot|G/H_2| < \infty.
+\end{equation}
+
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be a group and let $H$ be a subgroup of a finite index.
+Prove that there is only a finite number of right cosets of $H$, and that
+the number of right cosets is equal to the number of left cosets.
+\end{excopy}
+
+We will show a one to one surjective mapping between
+the left cosets to the right cosets. It is defined by
+\begin{equation} \label{eq:xH2Hx}
+xH \rightarrow Hx^{-1} \qquad\textrm{for\ } x\in G
+\end{equation}
+
+The map is obviously surjective since \(x\rightarrow x^{-1}\) is.
+Now assume \(Hx^{-1} = Hy^{-1}\). Then  \(x^{-1}y\in H\)
+and so \((x^{-1}y)^{-1} = y^{-1}x \in H\) and so \(xH = yH\)
+and so (\ref{eq:xH2Hx}) is one to one.
+
+%%%%%
+\begin{excopy}
+Let $G$ be a group, and $A$ a normal abelian subgroup.
+Show that \(G/A\) operates on $A$ by conjunction,
+and in this manner get a homomorphism of \(G/A\) into \(\Aut(A)\).
+\end{excopy}
+
+Let \(xA\in G/A\) operate as \(a\mapsto xax^{-1}\) for all \(a\in A\).
+To show that this operation as well defined, assume \(xA=yA\).
+So \(x^{-1}y, y^{-1}x\in A\) and using the fact that $A$ is abelian, we get
+\begin{equation}
+xax^{-1} =
+xax^{-1}(xy^{-1})^{-1}(xy^{-1}) =
+(xy^{-1})^{-1}xax^{-1}(xy^{-1}) =
+yay^{-1}.
+\end{equation}
+Now since \(y(xax^{-1}y^{-1} = (yx)a(yx)^{-1}\) the homomorphism follows.
+
+\end{myenumerate}
+\textbf{Semidirect product}
+\begin{myenumerate}
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be a group and let $H$, $N$ be subgroups with $N$ normal.
+Let \(\gamma_x\) be conjunction by an element \(x\in G\).
+\begin{itemize}
+ \item[(a)] Show that \(x\rightarrow \gamma_x\) induces
+    a homomorphism \(f:\,H\mapsto\Aut(N)\).
+ \item[(b)] If \(H\cap N = \eG\), show that the map
+    \(H \times N \rightarrow HN\) given by
+    \((x,y) \mapsto xy\) is a bijection, and that this map
+    is an isomorphism if and only if $f$ is trivial,
+    i.e. \(f(x) = \id_N\) for all \(x\in H\).
+\end{itemize}
+We define $G$ to be the \textbf{semidirect product} of $H$ and $N$
+if \(G=NH\) and \(H\cap N = \eG\).
+\begin{itemize}
+ \item[(c)] Conversely, let $H$, $N$ be groups,and let
+   \(\psi:\,H\mapsto \Aut(N)\) be a given homomorphism.
+  Construct a semidirect product as follows.
+  Let $G$ be the set of pairs \((x,h)\) with \(x\in N\) and \(h\in H\).
+  Define the composition law
+  \begin{equation}
+    (x_1,h_1)(x_2,h_2) = (x_1x_2^{\psi(h_1x_2)}, h_1h_2),
+  \end{equation}
+  Show that this is a group law, and yields a semidirect product of $N$ and $H$,
+  identifying
+       $N$ with the set of elements \((x,1)\)
+   and $H$ with the set of elements \((1,h)\).
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+
+ \item[(a)] Let \(x,y\in H\). For any \(u\in N\)
+ \[\gamma_{xy}(u) = xyu(xy)^{-1} = x\gamma_y(u)x^{-1} = \gamma_x(\gamma_y(u)).\]
+ \item[(b)]
+    Assume \(x_1y_1 = x_2y_2\) where \((x_1,y_1),\,(x_2,y_2)\in H\times N\).
+   Multiplying both sides with
+    \(x_1^{-1}\) from the left and
+    \(y_2^{-1}\) from the right, we get
+     \[x_2^{-1}x_1 = y_2y_1^{-1} \in H\cap N = \eG\]
+   and thus \(x_1 = x_2\)
+   and  \(y_1 = y_2\).
+ \item[(c)]
+    Seems that the problem isnot well formed.
+
+
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+\begin{itemize}
+ \item[(a)]
+    Let $H$, $N$, be normal subgroups of a finite group $G$.
+    Assume that the orders  of $H$ and $N$ are relatively prime.
+    Prove that \(xy=yx\) for all \(x\in H\) and \((y\in N\),
+    and that \(H\times N=HN\).
+ \item[(b)]
+    Let \(H_1,\ldots\,H_r\) be normal subgroups of $G$ such that the order
+    of \(H_i\) is relatively prime to the order of \(H_j\) for \(i\neq j\).
+    Prove that
+    \begin{equation}
+      H_1\times \ldots \times H_r = H_1\cdots H_r.
+    \end{equation}
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \item[(a)]
+    We look at \(N\cap H\) since its order must divide both that
+    of $H$ and $N$ we have \(|N\cap H| = 1\) and \(N\cap H = \eG\).
+    Now
+   \[ xyx^{-1}y^{-1} = (xyx^{-1})y^{-1} = x(yx^{-1}y^{-1}) \in N\cap H.\]
+   and thus \(xyx^{-1}y^{-1} = e\) and we get \(xy=yx\).
+ \item[(b)]
+    Trivial by induction on $r$.
+\end{itemize}
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be a finite group and let $N$ be a normal subgroup such that
+$N$ and \(G/N\) have relatively prime orders.
+ \begin{itemize}
+   \item[(a)]
+      Let $H$ be a subgroup of $G$ having the same order as \(G/N\).
+      Prove that \(G = HN\).
+   \item[(b)]
+      Let $G$ be an automorphism of $G$. Prove that \(g(N) = N\).
+ \end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \item[(a)]
+    The subgroup \(H\cap N\) has on order that must divide
+    both $H$ and $N$ and therefore is $1$ and so the subgroup is trivial.
+    Now assume \(h_1g_1 = h_2g_2\)
+    for \(h_i\in H\), \(g_i\in N\), \(i=1,2\).
+    Then \(h_2^{-1}h_1 = g_2g_1^{-1} \in H\cap N\) and
+    \(h_1 = h_2\) and \(g_1 = g_2\). Thus counting the elements
+    \(|HN| = |H|\cdot|N| = |G|\) and thus \(HN=G\).
+ \item[(b)]
+    Let \(h: N \rightarrow G/N\) be defined by \(h(x)=g(x)+N\).
+    We will show the $h$ must be trivial.
+    Now \(H=h(N)\) is a subgroup of \(G/N\) and \(|H|\)
+    divides both \(|N|\) and \(G/N\) and therefore \(H=\eG\)
+    which means that \(g(N)\subseteq N\). Since $g$ is automorphism
+    we have \(g(N) = N\).
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+\label{gop:nofix}
+Let $G$ be a finite group operating on a finite set $S$ with \(\#(S)\geq2\).
+Assume that there is only one orbit. Prove that there exist an element
+\(x\in G\) which has no fixed point,i.e. \(xs\neq s\) for all \(s\in S\).
+\end{excopy}
+
+Solution using \cite{Scott87}~10.1.5.
+
+Define \(\Ch(g) = |\{s\in S: gs=s\}|\)  \label{def:Ch}.
+\begin{llem}
+If $G$ acts on a finite set $S$ has $N$ orbits, then
+\begin{equation}
+\sum_{g\in G} \Ch(g) = n\cdot |G|.
+\end{equation}
+\end{llem}
+
+Let \(T\subseteq S\) be an orbit of $G$ and \(a,b\in T\).
+It is clear that \(|G_a| = |G_b| = |G|/|T|\).
+
+We may view \(g\in G\) as permutations of $S$.
+Let \(F = \{(s,g)\in S\times G: gs=s\}\) be the set of fixed points.
+Now
+\begin{eqnarray}
+\sum_{g\in G} \Ch(g) & = & |F|\\
+ & = & \sum_{s\in S} |G_s| \\
+ & = & \sum_{T\ \textrm{orbit}} \sum_{s\in T} |G_s| \\
+ & = & \sum_{T\ \textrm{orbit}} |T|\cdot|G|\\
+ & = & n\cdot|G|.
+\end{eqnarray}
+
+Now back to the exercise, if \(n=1\)
+\index{transitive}
+($G$ is \emph{transitive})
+and $G$ is finite then
+\begin{eqnarray}
+\sum_{g\in G} \Ch(g) = |G|.
+\end{eqnarray}
+Now assume by negation that for all \(g\in G\) \(\Ch(g)\geq 1\)
+(at least one fixed point), then
+\begin{eqnarray*}
+|G| & = & \sum_{g\in G} \Ch(g) \\
+    & = & \Ch(e) + \sum_{g\in G\setminus\eG} \Ch(g) \\
+    & = & |S| + \sum_{g\in G\setminus\eG} \Ch(g) \\
+    & \geq & |S| + |G| - 1
+\end{eqnarray*}
+Hence, \(|S| \leq 1\) which contradicts the assumption.
+
+%%%%%
+\begin{excopy}
+Let $H$ be a proper subgroup of a finite group $G$. Show that $G$
+is not the union of all the conjugates of $H$.
+\end{excopy}
+
+We look at $G$ as a group operating on the finite sets of the conjugates of $H$.
+From the previous Exercise~\ref{gop:nofix}, there must be some \(x\in G\)
+for which \(x(gHg^{-1})x^{-1} \neq gHg^{-1}\) for all \(g\in G\).
+That is \(x\notin gHg^{-1}\) for all \(g\in G\) and
+\[x \notin \bigcup_{g\in G}gHg^{-1}.\]
+
+%%%%%
+\begin{excopy}
+Let $X$,$Y$ be finite sets and let $C$ be a subset of \(X\times Y\).
+For \(x\in X\) let \(\phi(x)=\) number of elements \(y\in Y\) such that
+\((x,y)\in C\). Verify that \[\#(C) = \sum_{x\in X}\varphi(x).\]
+
+\emph{Remark}. A subset $V$ as in the above exercise is often called
+\index{correspondence}
+a \textbf{correspondence}, and \(\varphi(x)\) is the number of elements in $Y$
+which correspond to a given element \(x\in X\).
+\end{excopy}
+
+This is simple result of looking at the disjoint union:
+\[C = \Disjunion_{x\in X} \{(x,y)\in X\times Y: (x,y)\in C\}.\]
+
+%%%%%
+\begin{excopy}
+Let $S$, $T$ be finite sets. Show that \(\#\Map(S,T) = (\#T)^{\#(S)}\).
+\end{excopy}
+
+Simple induction on \(\#(S)\).
+If \(S'=S\cup\{x\}\) then we can extend each map \(S\rightarrow T\)
+to \(S'\) by assigning \(\#(T)\) different values to $x$.
+
+%%%%%
+\begin{excopy}
+Let $G$ be a finite groupopeon a finite set $S$.
+ \begin{itemize}
+  \item[(a)]
+    For each \(s\in S\) show that \[\sum_{t \in Gs} {\frac{1}{\#(Gt)}} = 1.\]
+  \item[(b)]
+    For each \(x \in G\) define \(f(x)=\) number of element \(s\in S\)
+    such that \(xs=s\). Prove that the number of orbits of $G$ in $S$
+    is equal to
+      \[\frac{1}{\#(G)}\sum_{x\in G} f(x).\]
+ \end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \item[(a)]
+   For all \(t \in Gs\) we have \(|Gs|=|Gt|\) and so
+   \begin{equation}
+   \sum_{t \in Gs} {\frac{1}{\#(Gt)}} =
+   |Gs|\cdot{\frac{1}{|Gs|}} = 1,
+   \end{equation}
+ \item[(b)]
+  Let us compute the number of ``fixed occurrences''.
+  \begin{eqnarray}
+   \sum_{x\in G} f(x)
+     & = & \sum_{x\in G} \Ch(x)                 \label{eq:f2Ch} \\
+     & = & \sum_{s\in S} |\{g\in G: gs = s\}|    \label{eq:Ch2gss} \\
+     & = & \sum_{s\in S} |G_s|                   \label{eq:gss2Gs} \\
+     & = & \sum_{\textrm{orbit\ } T\subseteq S}
+             \sum_{t\in T} |G_t|                 \label{eq:Gsrob} \\
+     & = & \sum_{\textrm{orbit\ } T\subseteq S}
+             \sum_{t\in T} |G|/|Gt|              \label{eq:GfsGGs} \\
+     & = & |G|\cdot\sum_{\textrm{orbit\ } T\subseteq S}
+             \sum_{t\in T} 1/|Gt|                \label{eq:1overGs} \\
+     & = & |G|\cdot\sum_{\overset{s\in S}{\textrm{orbits repr.}}}
+             \sum_{t\in Gs} 1/|Gt|                \label{eq:orbrep} \\
+     & = & |G|\cdot\sum_{\overset{s\in S}{\textrm{orbits repr.}}} 1.
+                                                  \label{eq:orb1}
+  \end{eqnarray}
+
+  Equalities explanation:
+  \begin{itemize}
+   \item[(\ref{eq:f2Ch})] --- simply using the definition
+                              in Exercise~\ref{def:Ch}.
+   \item[(\ref{eq:Ch2gss})] --- counting fixed points via $S$ instead of $G$.
+   \item[(\ref{eq:gss2Gs})] --- definition of \(G_s\).
+   \item[(\ref{eq:Gsrob})] --- separating the summation over orbits.
+   \item[(\ref{eq:GfsGGs})] --- basic result of group operating on set.
+   \item[(\ref{eq:1overGs})] --- factoring \(|G|\) out
+   \item[(\ref{eq:orbrep})] ---  Looking at an orbit $T$ via
+                                 a representative \(s\in S\).
+   \item[(\ref{eq:orb1})] --- Using the previous item (a) of this exercise.
+  \end{itemize}
+
+  Now we simply divide both ends of the equation by \(|G|\)
+  to get the desired result.
+
+\end{itemize}
+
+\end{myenumerate}
+
+Throughout, $p$ is a prime number.
+
+\iffalse
+% Global remark - so fake an item
+\item[]
+ \setlength{\leftmargin}{0pt}
+ \setlength{\labelwidth}{0pt}
+ \setlength{\labelwidth}{0pt}
+ Throughout, $p$ is a prime number.
+% {\nullfont kaka}
+\addtocounter{enumi}{-1}
+\fi
+
+\begin{myenumerate}
+%%%%%
+\begin{excopy}
+Let $P$ be a $p$-group. Let $A$ be a normal subgroup of order $p$.
+Prove that $A$ is contained in the center of $P$.
+\end{excopy}
+
+We can view $P$ as operating on $A$ by conjunction.
+That is for any \(x\in P\),we have \(\gamma_x(a) = xax^{-1}\).
+Let \(x\in P\) and \(a\in A\) be any elements.
+Say \(|P|=p^n\)
+and so we have \(\gamma_x^{p^n}=\Id_A\).
+% Assume \(\gamma_x(a)\neq a\), so \(a\neq e\) for sure.
+Note that
+\[\underbrace{\gamma_x(\gamma_x(\ldots(\gamma_x(}_{n\ \textrm{times}}a)\ldots))
+ =  \gamma_x^n(a).\]
+So because of \(A\setminus\eG\)
+let \(k>0\) be the minimal such that \(\gamma_x^k(a)=a\).
+So we have \(k|p^n\) and \(k\neq p-1\) and so \(k=1\) and \(\gamma_x(a)=a\).
+Thus \(xa=ax\) and $a$ is in the center of $P$.
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be a finite group and $H$ a subgroup. Let \(P_H\) be
+a $P$-Sylow subgroup of $H$. Prove that there exists a $p$-Sylow subgroup $P$
+  of $G$ such that \(P_H = P\cap H\).
+\end{excopy}
+
+Since any $p$-subgroup is continaed in a $p$-Sylow subgroup,
+We have a subgroup $P$ such that \(P_H\subseteq P\subseteq G\).
+Obviously \(P_H\subseteq P\cap H\).
+Now \(P\cap H\) has an order that divides \(|P|\) so it is a power of $p$.
+But from the maximality of \(P_H\) the equality follows.
+
+%%%%%
+\begin{excopy}
+Let $H$ be a normal subgroup of a finite group $G$
+and assume that \(\#(H)=p\). Prove that $H$ is contained in every $p$-Sylow
+subgroup of $G$
+\end{excopy}
+
+We know that $H$ is contained in some $p$-Sylow subgroup S.
+All $p$-Sylow subgroups are conjugates. Now for all \(x\in G\)
+\[H=xHx^{-1}\subseteq xSx^{-1}.\]
+
+
+%%%%%
+\begin{excopy}
+Let $P$, \(P'\) be $p$-Sylow subgroups of a finite group $G$.
+\begin{itemize}
+ \item[(a)]  If \(P'\subset N(P)\) (normalizer of $P$), then \(P'=P\).
+ \item[(b)]  If \(N(P')=N(P)\), then \(P'=P\).
+ \item[(c)]  We have \(N(N(P))=N(P)\).
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \item[(a)] (Following argument in the proof of Theorem~6.4).
+     Since \(P'\subseteq N(P)\)
+     we have \(P'P\) is a sybgroup of \(N(P)\) and $P$ is normal in it.
+     Now
+     \begin{equation}\label{eq:pppcp}
+     (P'P:P) = (P':P'\cap P)
+     \end{equation}
+     (see~(iv) page~17).
+     Now if by negation \(P'\neq P\) then $p$ divides
+     the right side of~(\ref{eq:pppcp}) and so \(P'P\) contains
+     a~$p$-Sylow subgroup with higher power of $p$ than that of $P$
+     contradicting the fact that $P$ itself is a $p$-Sylow subgroup.
+ \item[(b)] Immediate from (a) and the fact that \(P'\subseteq N(P')\).
+ \item[(c)] By negation, say \(x\in N(N(P))\setminus N(P)\).
+   So \(P' = xPx^{-1}\) is a $p$-Sylow subgroup and \(P'\neq P\).
+   Now \[P' = xPx^{-1} \subseteq xN(P)x^{-1} = N(P)\]
+   and from (a) we get \(P'=P\) a contradiction.
+\end{itemize}
+%%%%%%%%%%%%%%
+\end{myenumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Explicit determiniation of groups}
+
+Let us have some lemmas.
+
+\begin{llem} \label{llem:npdiv}
+Let $G$ be a group or order $m$,
+let \(p^r\) be the highest power of~$p$ that divides~$m$
+and let~\(n_p\) be the number of $p$-Sylow subgroups.
+Then \(n_p \mid m/p^r\).
+\end{llem}
+%\textbf{Proof:}
+\begin{proof}
+Immediate result from Proposition~5.2.
+\end{proof}
+
+\begin{llem} \label{rose94:p2q}
+\textnormal{\small [See \cite{Rose94} Theorem~5.19]}
+Let $G$ be a group and \(|G|=p^2q\) where $p$, $q$ are distinct primes,
+then $G$ has a normal  Sylow subgroup and so $G$ is not simple.
+\end{llem}
+\begin{proof}
+Indeed, if $G$ has a normal Sylow subgroup $H$ then
+\[\eG\subnormal H \subnormal G\]
+is an abelian tower by exercise \ref{ex:p2abel}.
+This is true for either \(|H|=p^2\) or \(|H|=q\).
+Thus $G$ is simple.
+
+Now let's show the existence of a normal Sylow subgroup.
+
+If \(q<p\) then by Lemma~6.7 the Sylow $p$-subgroup is normal.
+So we now can assume \(p<q\).
+Let \(n_p\) and \(n_q\) be the numbers of
+Sylow $p$-subgroup and $q$-subgroups. By negation we assume
+\(n_p > 1\) and \(n_q > 1\).
+By local-lemma~\ref{llem:npdiv}
+\begin{itemize}
+ \item
+   \(n_p\mid q\) and so \(n_p=q\).
+   % Also \(n_q \equiv 1 \bmod\).
+ \item
+   \(n_q\mid p^2\), hence \(n_q=p\) or \(n_q=p^2\).
+   But  if \(n_q=p\) then by \(n_q\equiv 1 \bmod q\) we have \(p>q\)
+   contradicting our assumption and so \(n_q=p^2\).
+\end{itemize}
+Now any two different $q$-subgroups intersect in \eG
+and so the number of elements of order $q$ is \(n_q(q-1)\).
+The number of the ``non $q$ order'' elements in $G$ is \(p^2q - n_q(q-1)=p^2\).
+Now a Sylow $p$-subgroup has an order \(p^2\) and all its elements
+have order different than $q$ and so such subgroup is determined
+by its \(p^2\) ``non $q$ order'' elements
+and thus it is unique and normal.
+\end{proof}
+
+\begin{llem} \label{rose94:pqr}
+\textnormal{\small [See \cite{Rose94} Theorem~5.20.]}
+Let $G$ be a group and \(|G|=pqr\) where $p$, $q$, $r$ are distinct primes,
+then $G$ is not simple.
+\end{llem}
+\begin{proof}
+Let \(n_p\),\(n_q\) and \(n_r\) be the respective
+numbers of Sylow subgroups.
+Assume by negation that these three numbers are \(\>1\)
+since otherwise
+we have a normal Sylow subgroup and we are done.
+Assume \(p>q>r\)
+So any two distinct Sylow subgroups intersect in~\eG.
+So the numbers of elements in $G$ of order $p$, $q$ and $r$
+are
+\(n_p(p-1)\), \(n_q(q-1)\) and \(n_r(r-1)\) respectively.
+Therefore
+\begin{equation}
+|G|=pqr\geq 1 + n_p(p-1) + n_q(q-1) + n_r(r-1).
+\end{equation}
+By Sylow theorem, \(n_p \mid qr\) and \(n_p\equiv 1\bmod p\).
+Since \(n_p>q\) and \(p>q\), \(p>r\), it follows that \(n_p=qr\).
+
+Also \(n_q\mid pr\) and \(n_q\equiv 1\bmod q\)..
+Since \(n_q>1\) and \(q>r\), it follows that \(n_q\geq p\).
+
+Finally, \(n_r\mid pq\) so \(n_r\geq q\). Now we have
+\begin{equation}
+pqr \geq 1 + qr(p-1) + p(q-1) + q(r-1) = pqr + pq + qr - p - q  + 1,
+\end{equation}
+and hence \((p-1)(q-1)\leq 0\) which is impossible.
+\end{proof}
+
+\textbf{Definition:}
+\textnormal{\small [See \cite{Rose94}~Exercise~90]}
+Let $H$ be a subgroup of $G$.
+\index{core!of group}
+\index{normal interior}
+Define the \emph{core} or \emph{normal interior} of $H$ in $G$ as
+\begin{equation}
+H_G = \bigcap_{g\in G} g^{-1}Hg
+\end{equation}
+
+It is clear that \(H_G\) is the largest normal subgroup of $G$ that
+is contained in $H$.
+
+\begin{llem} \label{llem:GsCoreSn}
+\textnormal{\small [See \cite{Rose94}~Theorem~4.13]}
+if $H$ is a subgroup of $G$ of finite index \(n=[G:H]\) then \(G/H_G\)
+can be embedded in \(S_n\).
+\end{llem}
+\begin{proof}
+Let \(\hat{H}\) be the set of $n$ left cosets of $H$ in $G$.
+Let $G$ operate on this set by left multiplication.
+Each \(g\in G\) permutates \(\hat{H}\).
+By enumerating the cosets we identify \(S_n\)
+with the permutations of \(\hat{H}\) and we have a mapping
+\(\rho: G \rightarrow S_n\).
+The kernel of \(\rho\) is the elements \(g\in G\)
+for which each coset is fixed.
+
+Let's first compute the \index{stabilizer} \index{Stab}
+of a coset \(xH\)
+\begin{eqnarray}
+\Stab_G(xH)
+  & = & \{g\in G: gxH=xH\} \\
+  & = & \{g\in G: x^{-1}gxH=H\} \\
+  & = & \{g\in G: x^{-1}gx \in H\} \\
+  & = & \{g\in G: g \in xHx^{-1}\} \\
+  & = & xHx^{-1}
+\end{eqnarray}
+We compute:
+\begin{eqnarray}
+\Ker\rho
+  & = & \bigcap_{xH\in\hat{H}} \Stab_G(xH) \\
+  & = & \bigcap_{g\in G} \Stab_G(gH) \\
+  & = & \bigcap_{g\in G} gHg^{-1} \\
+  & = & H_G. \\
+\end{eqnarray}
+And so \(G/H_G\approx \rho(G)\) a subgroup of \(S_n\).
+\end{proof}
+
+
+\begin{llem} \label{llem:pmr:divfac}
+\textnormal{\small [See \cite{Rose94}~Exercise~279]}
+Let $G$ be a simple group of order \(p^m r\) where \(p\nmid r\).
+Then \(p^m \mid (r-1)!\).
+\end{llem}
+\begin{proof}
+Let $H$ be a $p$-Sylow subgroup if $G$. Since $G$ is simple \(H_G = \eG\)
+and from local-lemma~\ref{llem:GsCoreSn} $G$ can be embedded in \(S_{[G:H]}\).
+Hence \(p^m r \mid r!\) and therefore \(p^m \mid (r-1)!\).
+\end{proof}
+
+\begin{myenumerate}
+
+%%%%%
+\begin{excopy}
+Let $p$ be a prime number. Show that a group of order \(p^2\)
+is abelian, and that there are only two such groups up to isomorphism.
+\end{excopy}  \label{ex:p2abel}
+
+Let $G$ be the group and $Z$ its center and \(Z\subnormal G\).
+If \(G=Z\) then clearly $G$ is abelian.
+Assume by negation that \(Z\subsetneq G\).
+Since $Z$ is not trivial by Theorem~6.5 it must be of order $p$
+and so \(G/Z\) has an order of $p$ as well and is cyclic generated by \(a+Z\).
+Now let  \(a_1,a_2 \in G\) be any elements in $G$. For \(i=1,2\) we can
+have the representation \(a_i=a^{n_i}g_i\) where \(n_i\neq 0\) and \(g_i\in Z\).
+Now
+\begin{equation} \label{eq:a1a2}
+a_1a_2 = a^{n_1}g_1 a^{n_2}g_2 =
+  a^{n_1+n_2}g_1g_2 =
+  a^{n_2}a^{n_1}g_2g_1 =
+  a^{n_2}g_2a^{n_1}g_1 = a_2a_1.
+\end{equation}
+Thus $G$ is abelian.
+
+Now by Theorem~8.2, $G$ is isomorphic to a product of cyclic $p$-group.
+Hence, isomorphic to\, \(\Zm{p^2}\) \, or \, \(\Zm{p}\times\Zm{p}\).
+
+
+%%%%%
+\begin{excopy}
+Let $G$ be a group of order \(p^3\), where $p$ is prime, and $G$ is not abelian.
+Let $Z$ be its center. Let $C$ be a cyclic group of order $p$.
+\begin{enumerate}[(a)]
+\item Show that \(Z \approx C\) and \(G/Z \approx C \times C\).
+\item) Every subgroup of $G$ of order \(p^2\) contains $Z$ and is normal.
+\item Suppose \(x^p = 1\) for all \(x \in G\),
+ Show that $G$ contains a normal subgroup \hbox{\(H \approx C \times C\)}.
+\end{enumerate}
+\end{excopy}
+
+\begin{itemize}
+ \item[(a)]
+     The $Z$ subgroup cannot be the whole $G$ since $G$ is not abelian.
+     It cannot be trivial because of Theorem~6.5. That leaves the possibilities
+     for its order to be $p$ or \(p^2\). If by negation the order is \(p^2\),
+     then \(G/Z\) is cyclic and as in exercise~\ref{ex:p2abel}
+     similar arguments like in (\ref{eq:a1a2}) gives a contradiction
+     by showing that $G$ is abelian. Thus $Z$ is cyclic of order $p$
+     and isomorphic to $C$ and \(G/Z\) is of order \(p^2\).
+
+     Now from the previous exercise we know that groups of order \(p^2\)
+     must be isomorphic to either \(\Zm{p}\times\Zm{p}\)
+     or to the cyclic
+     \(\Zm{p^2}\). The latter leads to contradiction that $g$ is abelian
+     using the same arguments with \(G/Z\) cyclic.
+     Thus \(G/Z\) is isomorphic to \(\Zm{p}\times\Zm{p}\) which is
+     isomorphic to \(C\times C\).
+
+ \item[(b)]
+     Say $H$ is a subgroup of order \(p^2\). By Lemma~6.7 $H$ is normal.
+     The subgroup \(H\cap Z\)
+     could be or order $p$ or $1$.
+     If by negation it is the latter case, then \(H\cap Z = \eG\).
+     To show that \(HZ = \{hc: h\in H \, \textrm{and} \, c\in Z\}\)
+     has exactly \(|H|\cdot|Z|=p^3\) we will show that the products
+     differ. If
+     \(h_1 c_1 = h_2 c_2\) with \(h_i\in H\), \(c_i\in Z\) we get
+     \(c_1c_2^{-1} = h_1^{-1}h_2 \in H\cap Z\) and so this product equals $e$
+     and \(h_1=h_2\), \(c_1=c_2\). Hence \(HZ=G\) and we can
+     represent any \(a_1,a_2\in G\) by \(a_i=h_i c_i\) where
+      \(h_i\in H\), \(c_i\in Z\) for \(i=1,2\).
+      From exercise~\ref{ex:p2abel} $H$ is abelian and so
+      \begin{equation}
+      a_1a_2 = h_1 c_1 h_2 c_2 = h_1 h_2  c_1 c_2 =
+          h_2 h_1  c_2 c_1 = h_2 c_2 h_1 c_1 = a_2a_1
+      \end{equation}
+      contradicting the fact that $G$ is abelian.
+      Thus  \(H\cap Z\) is of order $p$ and $H$ must contain $Z$.
+
+ \item[(c)]
+      Examining the proof of Corollary~6.6 we see that
+      in the sequence
+      \[\eG=G_0 \subset G_1 \cdots \subset G_n = G\]
+      every $p$-group $G$ has, the subgroup \(G_1\) is in the center.
+      So in our case \(G_1 = Z\) and  let $H$ be \(G_2\)
+      that has order of \(p^2\)
+      and again by Lemma~6.7 is normal.
+      Now $H$ cannot be cyclic, since if it were then
+      its generator $x$ would not satisfy the required
+      \(x^p=1\) equation.
+      Now by exercise~\ref{ex:p2abel}  $H$
+      must be isomorphic to \(C\times C\) and not to the cyclic \(\Zm{p^2}\).
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+\begin{itemize}
+ \item[(a)] Let $G$ be a group of order \(pq\), where $p$, $q$ are primes
+            and \(p<q\). Assume that \(q\not\equiv 1 \bmod p\).
+            Prove that  $G$ is cyclic.
+ \item[(b)] Show that every group of order \(15\) is cyclic.
+\end{itemize}
+\end{excopy}  \label{ex:GpLTq}
+
+\begin{itemize}
+ \item[(a)]
+   [Similar to the example on page~36 with $G$ of \(35\)].
+   Let \(H_p\) and \(H_q\) be a $p$-Sylow and $q$-Sylow subgroups respectively.
+   Then \(H_q\) is normal by Lemma~6.7.
+   Now \(H_p\) operates by conjunction on \(H_q\) and we have
+   a homomorphism \(H_p\rightarrow \Aut(H_q) \approx \Zm{(q-1)}\).
+   So the image order must divide $p$ and \(q-1\).
+   Since \(q-1\not\equiv 0 \bmod p\) clearly \(p\nmid q-1\)
+   and so the image is trivial and so elements of \(H_p\) and \(H_q\)
+   commutes with each other.
+
+   We will show that \(H_pH_q = G\).
+   The set \(H_{pq}=\{x_p^m x_q^n: 0\leq m<p, 0\leq n<q\}\)
+   contains \(pq\) elements
+   since if \(x_p^{m_1} x_q^{n_1} = x_p^{m_2} x_q^{n_2}\)
+   we use the commutativity and the fact that \(H_p\cap H_q=\eG\)
+   to get \(x_p^{m_1-m_2} = x_q^{n_2-n_1} = e\) and so \(H_pq=G\)
+   and $G$ is abelian. By Proposition 4.3(\textbf{v}) $G$ is cyclic.
+
+   Let \(x_p\) and \(x_q\) be generators of \(H_p\) and \(H_q\) respectively.
+   % Then these generators commutes with each other and th
+ \item[(b)] By (a) with \(p=3\), \(q=5\) and we have
+      \(5\equiv 2\not\equiv 1 \bmod 3\).
+
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+Show that every group of order \(<60\) is solvable.
+We use the results from Corollary~6.6 and
+exercises \ref{ex:GpLTq}, \ref{ex:p2q} and \ref{ex:2pq}.
+\end{excopy}
+
+{
+% \begin{multicols}{2}
+
+\tablefirsthead{\hline \(|G|\)   &   $=$ & $p$   &   $q$ & $r$ \\ \hline}
+\tablehead{\hline \multicolumn{5}{|c|}{\small\textsl{continuation}} \\ \hline}
+\tabletail{\hline \multicolumn{5}{|c|}{\small\textsl{to be continued}}\\ \hline}
+\tablelasttail{\hline}
+\begin{supertabular}{|r|c|r|r|r|}
+ 1 & \multicolumn{4}{|l|}{Trivial}  \\ \hline
+ 2 & $p$       & $2$  &      &   \\ \hline
+ 3 & $p$       & $3$  &      &   \\ \hline
+ 4 & \(p^2\)   & $3$  &      &   \\ \hline
+ 5 & $p$       & $5$  &      &   \\ \hline
+ 6 & $pq$      & $2$  & $3$  &   \\ \hline
+ 7 & $p$       & $7$  &      &   \\ \hline
+ 8 & \(p^n\)   & $2$  &      &   \\ \hline
+ 9 & \(p^n\)   & $3$  &      &   \\ \hline
+10 & $pq$      & $2$  & $5$  &   \\ \hline
+11 & $p$       & $11$ &      &   \\ \hline
+12 & \(p^2q\)  & $2$  & $3$  &   \\ \hline
+13 & $p$       & $13$ &      &   \\ \hline
+14 & $pq$      & $2$  & $7$  &   \\ \hline
+15 & $pq$      & $3$  & $5$  &   \\ \hline
+16 & \(p^n\)   & $2$  &      &   \\ \hline
+17 & $p$       & $17$ &      &   \\ \hline
+18 & $p^2q$    & $3$  & $2$  &   \\ \hline
+19 & $p$       & $19$ &      &   \\ \hline
+20 & $p^2q$    & $2$  & $5$  &   \\ \hline
+21 & $pq$      & $3$  & $7$  &   \\ \hline
+22 & $pq$      & $2$  & $11$ &   \\ \hline
+23 & $p$       & $23$ &      &   \\ \hline
+% 24 &           &      &      &   \\ \hline
+\hline
+25 & \(p^n\)   & $5$  &      &   \\ \hline
+26 & $pq$      & $2$  & $13$ &   \\ \hline
+27 & \(p^n\)   & $3$  &      &   \\ \hline
+28 & \(p^2q\)  & $2$  & $7$  &   \\ \hline
+29 & $p$       & $29$ &      &   \\ \hline
+30 & \(pqr\)   & $2$  & $3$  & $5$  \\ \hline
+31 & $p$       & $31$ &      &   \\ \hline
+32 & \(p^n\)   & $2$  &      &   \\ \hline
+33 & $pq$      & $3$  & $11$ &   \\ \hline
+34 & $pq$      & $2$  & $17$ &   \\ \hline
+35 & $pq$      & $5$  & $7$  &   \\ \hline
+\hline
+37 & $p$       & $37$ &      &   \\ \hline
+38 & $pq$      & $2$  & $19$ &   \\ \hline
+39 & $pq$      & $3$  & $13$ &   \\ \hline
+41 & $p$       & $41$ &      &   \\ \hline
+42 & \(pqr\)   & $2$  & $3$  & $7$  \\ \hline
+43 & $p$       & $43$ &      &   \\ \hline
+44 & \(p^2q\)  & $2$  & $11$ &   \\ \hline
+45 & \(p^2q\)  & $3$  & $5$  &   \\ \hline
+46 & $pq$      & $2$  & $23$ &   \\ \hline
+47 & $p$       & $47$ &      &   \\ \hline
+\hline
+49 & \(p^n\)   & $7$  &      &   \\ \hline
+50 & \(p^2q\)  & $5$  & $2$  &   \\ \hline
+51 & $p$       & $51$ &      &   \\ \hline
+52 & \(p^2q\)  & $2$  & $13$ &   \\ \hline
+53 & $p$       & $53$ &      &   \\ \hline
+\hline
+55 & $pq$      & $5$  & $11$ &   \\ \hline
+\hline
+57 & $pq$      & $3$  & $19$ &   \\ \hline
+58 & $pq$      & $2$  & $29$ &   \\ \hline
+59 & $p$       & $59$ &      &   \\ \hline
+\end{supertabular}
+% \end{multicols}
+}
+
+Now we need to solve some cases specifically.
+Let $G$ be a group. For most orders upto $60$ solvability was shown
+in the above table. In each of the following remaining cases
+we will show the existence of some proper normal subgroup $H$.
+Because of  results for lower orders of $G$,
+A sequence
+\(\eG\subnormal H \subnormal G\) can be completed to an abelian tower.
+
+\begin{itemize}
+ \item Assume \(|G|=24=2^3\cdot3\).\\
+    From local-lemma \ref{llem:GsCoreSn} $G$ is not simple since otherwise
+    \(2^3\mid(3-1)!\).
+ \item Assume \(|G|=36=2^2\cdot3^2\).
+    From local-lemma \ref{llem:GsCoreSn} $G$ is not simple since otherwise
+    \(3^2\mid(4-1)!\).
+ \item Assume \(|G|=40=2^3\cdot5\).
+    Exercise~\ref{ex:G40G12} shows that $G$ is not simple.
+ \item Assume \(|G|=48=2^4\cdot3\).
+    From local-lemma \ref{llem:GsCoreSn} $G$ is not simple since otherwise
+    \(2^4\mid (3-1)!\).
+ \item Assume \(|G|=54=2\cdot3^3\).
+    From Lemma~6.7 \(H_3\) is normal and $G$ is not simple
+ \item Assume \(|G|=56=2^3\cdot7\).
+    Let \(n_p\) be the number of $p$-Sylow subgroups for \(p=2,7\).
+    Now \(n_7\equiv 1 \bmod 7\) and \(n_7\mid 8\).
+    If \(n_7=1\) then such \(H_7\) is normal and we are done.
+    % if by negation $G$ is simple, then \(n_7=8\). % and \(n_2=7\)
+
+    Otherwise, we can assume \(n_7=8\). % and \(n_2=7\)
+    Since such $7$-Sylow subgroups intersect in \eG,
+    the number of elements
+    in $G$ with order $7$ is \(n_7(7-1)=48\).
+    The elements of any $2$-Sylow subgroup are of order \(\neq7\).
+    And since \(56-48=8\) there could be only
+    one such subgroup \(H_2\{g\in G: g^7\neq e\}\) whose order is $8$
+    and must be normal.
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+Let $p$, $q$ be distinct primes. Prove that a group of order \(p^2q\)
+is solvable, and that one of its Sylow subgroups is normal.
+\end{excopy}  \label{ex:p2q}
+
+By Local Lemma~\ref{rose94:p2q} one of its Sylow subgroups is normal.
+Then one of the normal towers
+\begin{itemize}
+ \item[] \(\eG \subnormal H_p \subnormal G\)
+ \item[] \(\eG \subnormal H_q \subnormal G\)
+\end{itemize}
+exist and can be refined into abelian (and even cyclic) tower.
+
+%%%%%
+\begin{excopy}
+Let $p$, $q$ be odd primes. Prove that a group of order \(2pq\) is solvable.
+\end{excopy}  \label{ex:2pq}
+
+By Local Lemma~\ref{rose94:pqr} such group $G$ has a normal subgroup $H$.
+
+Now \(|H|\in \{p,q,r,pq,pr,qr\}\) and
+by Proposition~6.8 the tower \(\eG\subnormal H\subnormal G\)
+can be refined to abelian (and cyclic) tower.
+
+
+
+%%%%%
+\begin{excopy}
+\begin{itemize}
+ \item[(a)]
+   Prove that one of the Sylow subgroups of a group of order $40$ is normal.
+ \item[(b)]
+   Prove that one of the Sylow subgroups of a group of order $12$ is normal.
+\end{itemize}
+\end{excopy} \label{ex:G40G12}
+
+\begin{itemize}
+\item[(a)] We have \(40=2^3\cdot5\) so the number of 5-Sylow subgroups
+  must satisfy \(n_5\mid 8\) and \(n_5\equiv 1 \bmod 5\)
+  and so \(n_5=1\) and the unique 5-Sylow subgroup is normal.
+\item[(b)]
+ From exercise~\ref{ex:p2q}  with \(p^2q=12\) where \(p=2\) and \(q=3\).
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+Determine all groups of order \(\leq 10\) up to isomorphism.
+In particular, show that a non-abelian group of order $6$
+is isomorphic to \(S_3\).
+\end{excopy}
+
+The groups with prime order are cyclic. For otehr case of a group $G$:
+\begin{itemize}
+  \item Assume \(|G|=6=2\cdot3\). It could be isomorphic to:
+    \begin{itemize}
+       \item \(\Zm{6}\) cyclic.
+       \item \(\Zm{2}\times\Zm{3}\) abelian.
+       \item \(S_3\).
+    \end{itemize}
+  \item Assume \(|G|=8=2^3\). It could be isomorphic to:
+    \begin{itemize}
+       \item \(\Zm{8}\) cyclic.
+       \item \(\Zm{2}\times\Zm{2}\times\Zm{2}\) abelian.
+       \item \(\Zm{2}\times\Zm{4}\) abelian.
+    \end{itemize}
+  \item Assume \(|G|=9=3^2\). It could be isomorphic to:
+    \begin{itemize}
+       \item \(\Zm{9}\) cyclic.
+       \item \(\Zm{3}\times\Zm{3}\) abelian.
+    \end{itemize}
+  \item Assume \(|G|=10=2\cdot5\). It could be isomorphic to:
+    \begin{itemize}
+       \item \(\Zm{10}\) cyclic.
+       \item \(\Zm{2}\times\Zm{5}\) abelian.
+    \end{itemize}
+
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+Let \(S_n\) be the permutation group on $n$ elements.
+Determine the $p$-Sylow subgroups of
+\(S_3\), \(S_4\), \(S_5\) for \(p=2\) and \(p=3\).
+\end{excopy}
+
+\begin{itemize}
+ \item[\(S_3\)]
+    The $2$-Sylow subgroups % generated by transposition and they
+    are:
+    \(\{e,(12)\}\), \(\{e,(13)\}\) and \(\{e,(23)\}\).
+    The $3$-Sylow subgroup is
+    \(\{e,(123),(132)\}\).
+ \item[\(S_4\)]
+    The $2$-Sylow subgroup is \(S_4\) itself and no $3$-Sylow subgroups.
+ \item[\(S_5\)] No $2$-Sylow and no $3$-Sylow subgroups.
+\end{itemize}
+
+%%%%%
+\begin{excopy}
+Let \(\sigma\) be a permutation of a finite set $I$ having $n$ elements.
+Define \(e(\sigma)\) to be \((-1)^m\) where
+\[m = n - \textrm{number of orbits of }\, \sigma.\]
+If \(I_1,\ldots,I_r\) are orbits of \(\sigma\), then $m$ is also equal
+to the sum
+\[ m= \sum_{v=1}^r [\card(I_v)-1].\]
+If \(\tau\)  is a transposition, show that \(e(\sigma\tau) = -e(\sigma)\)
+be considering the two cases where $i$, $j$ lie in the same orbit of \(\sigma\),
+or lie in different orbits. In the first case, \(\sigma\tau\) has one more
+orbit and in theses case one less orbit that \(\sigma\).
+In particular, the sign of a transposition is \(-1\).
+Prove that \(e(\sigma)=\epsilon(\sigma)\) is the sign of the permutation.
+\end{excopy}
+
+We show the equality of $m$,
+\[ \sum_{v=1}^r [\card(I_v)-1] =
+   \sum_{v=1}^r \card(I_v) - \sum_{v=1}^r 1 =
+   \sum_{v=1}^r \card(I_v) - \sum_{v=1}^r 1 =
+   n - r.\]
+
+We now show \(e(\sigma\tau)= -e(\sigma)\). Let \(\tau=(ij)\).
+There are two cases:
+\begin{itemize}
+ \item
+   The elements $i$, $j$  lie in the same orbit $I$ of \(\sigma\).
+   Let \(l=|I|\geq 2\) and \(1\leq k<l\) such that \(\sigma^k(i)=j\).
+   It is clear that \(\sigma^{l-k}(j)=i\).
+   Now \(\sigma\tau\) has all the orbits of \(\sigma\)
+   with $I$ split into two orbits:
+     \((i, \sigma(j), \ldots \sigma^{l-k-1}(j))\)
+   and
+     \((j, \sigma(i), \ldots \sigma^{k-1}(j))\).
+ \item
+   The elements $i$, $j$  lie in different orbits \(I_i\) and \(I_j\)
+   respectively of \(\sigma\).
+   Now \(\sigma\tau\) has all the orbits of \(\sigma\)
+   but with \(I_i\) and \(I_j\) united.
+\end{itemize}
+In both cases the number of orbits of \(\sigma\tau\) differs by $1$
+from that of \(\sigma\).
+Hence
+\(e(\sigma\tau) = (-1)^{m+1} = -(-1)^m = -e(\sigma)\).
+
+Since the transpositions  generates \(S_n\) and both $e$ and \(\epsilon\)
+agree on the transpositions and the identity (\(e(\id)=\epsilon(\id)=1\))
+they agree on all permutations.
+
+%%%%%
+\begin{excopy}
+\begin{itemize}
+ \item[(a)]
+   Let $n$ be an even positive integer. Show that there exists  a group
+   of order \(2n\), generated bt two elements \(\sigma\), \(\tau\)
+   such that \(\sigma^n=e=\tau^2\), and \(\sigma\tau=\tau\sigma^{n-1}\).
+   (Draw a picture of a regular $n$-gon, number the vertices,
+   and use the picture as an inspiration to get \(\sigma\), \(\tau\).)
+   Thus group is called the
+   \index{dihedral} \index{group!dihedral}
+   \textbf{dihedral group}.
+ \item[(b)]
+   Let $n$ be an odd positive integer. Let \(D_{4n}\) be the group generated
+   by the matrices
+   \begin{equation}
+     \left(
+      \begin{array}{lr}
+       0 & -1 \\
+       1 & 0 \\
+      \end{array}
+     \right)
+     \quad\textrm{and}\quad
+     \left(
+      \begin{array}{lc}
+       \zeta & 0 \\
+       0 & \zeta^{-1} \\
+      \end{array}
+     \right)
+   \end{equation}
+   where \(\zeta\) is a primitive $n$-th root of unity. Show that \(D_{4n}\)
+   has order \(4n\), and give the commutation relations between the above
+   generators.
+\end{itemize}
+\end{excopy}
+
+\begin{itemize}
+ \item[(a)]
+ Let \(\theta=2\pi/n\). Now let\(\sigma\) be a \(1/n\) rotation
+ and \(\tau\) a reflection. More formally:
+   \begin{equation}
+     \sigma = \left(
+      \begin{array}{rl}
+       \cos\theta & \sin\theta \\
+       -\sin\theta & \cos\theta \\
+      \end{array}
+     \right)
+     \quad\textrm{and}\quad
+     \tau = \left(
+      \begin{array}{lr}
+       1 & 0 \\
+       0 & -1 \\
+      \end{array}
+     \right)
+   \end{equation}
+
+ \item[(b)]
+  Denote
+   \begin{equation}
+     \sigma = \left(
+      \begin{array}{lr}
+       0 & -1 \\
+       1 & 0 \\
+      \end{array}
+     \right)
+     \quad\textrm{and}\quad
+     \tau = \left(
+      \begin{array}{lc}
+       \zeta & 0 \\
+       0 & \zeta^{-1} \\
+      \end{array}
+     \right)
+   \end{equation}
+
+  From that we compute \(\sigma^2 = -\Id\) and \(\sigma^4 = \tau^n = \Id\).
+  Thus \(\sigma^2\tau=\tau\sigma^2\) and \(\tau^n\sigma=\sigma\tau^n\).
+\end{itemize}
+
+\iffalse
+\begin{itemize}
+  \item[(a)] Rotation and mirroring. Consider the subgruop of \(S_n\)
+     where
+   \begin{equation*}
+     \sigma(i) =
+       \left\{
+         \begin{array}{ll}
+         i + i \;& \textnormal{if}\; i < n \\
+         0     \;& \textnormal{if}\; i = n
+         \end{array}
+       \right.
+   \end{equation*}
+   and \(\tau(i) = (n - i + 1)\).
+
+  \item[(b)]
+  Say $J$ is the first matrix. Then
+  \begin{equation*}
+    J^2 =
+      \left(
+        \begin{array}{rr}
+        -1 & 0 \\
+        0  & -1
+        \end{array}
+      \right)
+     \quad\textrm{and}\quad
+    J^3 =
+      \left(
+        \begin{array}{rr}
+        0 & 1 \\
+        -1 & 0
+        \end{array}
+      \right)
+     \quad\textrm{and}\quad
+    J^4 =
+      \left(
+        \begin{array}{rr}
+        1 & 0 \\
+        0 & 1
+        \end{array}
+      \right).
+  \end{equation*}
+\end{itemize}
+\fi
+
+
+%%%%%
+\begin{excopy}
+Show that there are exactly two non-isomorphic non-abelian groups of order~$8$.
+(one of them is given by the generators \(\sigma\), \(\tau\) with the relations
+\begin{equation*}
+\sigma^4 = 1, \qquad \tau^2 = 1, \qquad \tau\sigma\tau = \sigma^3.
+\end{equation*}
+The other is the quaternion group.)
+\end{excopy}
+
+Let $G$ be non-abelian group of order~$8$.
+Let $m$ be the maximal period of the elements of $G$.
+Since \(m|8\) we must have \(m\in\{1,2,4,8\}\).
+
+We will show that \(m=4\).
+If \(m=1\) then \(|G|=1\), contradiction.
+If \(m=2\) then for any \(a,b\in G\)
+\begin{equation*}
+1 = (ab)(ab) = a(bb)a = (ab)(ba)
+\end{equation*}
+and so
+\begin{equation*}
+(ab)^{-1} = ab = ba
+\end{equation*}
+and $G$ is abelian, contradiction.
+If \(m=8\) then $G$ is cyclic, contradiction.
+
+Let \(\sigma\in G\) be of period $4$. It generates
+the subgroup \(H=\{\sigma^1,\sigma^2,\sigma^3,1\}\).
+\newcommand{\coH}{\ensuremath{\tilde{H}}}
+Put  \(\coH = \coH\).
+Since \([G:H]=2\) there are two cosets of $H$ and \coH\ in $G$.
+Now for any \(g_1,g_2\in \coH\) we have
+\begin{equation} \label{eq:H=g1g2H}
+H = g_1 g_2 H = g_1 H g_2 = H g_1 g_2.
+\end{equation}
+and in particular \(H \triangleleft G\).
+
+Since conjunction is automorphism, \(g\sigma g^{-1} \in H\) is
+of period $4$ for each \(g\in G\).
+Thus
+\begin{equation*}
+\forall g\in G,\; g\sigma g^{-1} \in \{\sigma^1,\sigma^3\}.
+\end{equation*}
+
+Assume by negation \(\exists y\in \coH,\; g\sigma g^{-1}=\sigma\).
+Then
+\begin{equation*}
+\exists y\in \coH\, \forall k\in\{0,1,2,3\},\; g\sigma^kg^{-1}=\sigma^k.
+\end{equation*}
+Thus
+\begin{equation*}
+\exists y\in \coH\, \forall h\in H,\; yh=hy.
+\end{equation*}
+But any \(z \in \coH\) is of the form \(z = yh'\) for some \(h'\in H\)
+and so for any \(h\in H\) we have
+\begin{equation*}
+zh = (yh')h = y(h'h) = (h'h)y = (hh')y = h(h'y) = hz.
+\end{equation*}
+and now
+\begin{equation*}
+\forall y\in \coH\, \forall h\in H,\; yh=hy.
+\end{equation*}
+
+Let \(y_1,y_2\in \coH\). By looking at \(\coH\) as a coset,
+\(y_2 = h y_1 = y_1 h\) for some \(h\in H\).
+Now since \((y_1)^2\in H\) as we saw in \eqref{eq:H=g1g2H}
+\begin{equation*}
+y_1 y_2 = y_1 (h y_1) = y_1 (y_1 h) = (y_1)^2 h = h (y_1)^2 = (h y_1)y_1
+= (y_1 h) y_1 = y_2 y_1.
+\end{equation*}
+Thus $G$ is abelian, and by contradiction
+\begin{equation*}
+\forall y\in \coH,\; y\sigma y^{-1}=\sigma^3.
+\end{equation*}
+Similarly,
+\begin{eqnarray*}
+\forall y\in \coH,\; & y^{-1}\sigma y &= \sigma^3 \\
+\forall y\in \coH,\; & y\sigma^3 y^{-1} &= \sigma \\
+\forall y\in \coH,\; & y^{-1}\sigma^3 y &= \sigma.
+\end{eqnarray*}
+
+Clearly the periods of \(y\in \coH\) could be $2$ or $4$.
+If all these periods are $2$ then
+
+Assume the index of $y$ is $2$ for some \(y\in\coH\).
+Then \(y^2=1\) and \(u=y^{-1}\) and so
+\begin{equation*}
+(\sigma y)^2 = \sigma(y \sigma y^{-1}) = \sigma^{1+3}=1.
+\end{equation*}
+Since conjunction is automorphism, \(y\sigma^2 y^{-1} = \sigma^2\)
+begin the only element of orer $2$ in $H$.
+Noting that \(y\cdot 1 \cdot y{-1} = 1\)
+we have
+\begin{equation*}
+\left\{y\sigma^n y^{-1}: n\in\{0,1,2\}\right\}
+=
+\left\{y\sigma^n y^{-1}: n\in\{0,3,2\}\right\}.
+\end{equation*}
+So by looknig at the reminder
+\(y\sigma^3 y^{-1} = \sigma\).
+\begin{equation*}
+(\sigma^3 y)^2 = \sigma^3 (y \sigma^3) y = \sigma^{3+1} = 1.
+\end{equation*}
+Thus all elements of \coH\ are of \emph{equal} period, $2$ or $4$.
+
+Thus we have two possibilities.
+\begin{enumerate}
+
+\item If the order of \(y\in\coH\) is $2$ then $G$ is the diehedral group
+with the relations specified in the exercise.
+
+\item If the order of \(y\in\coH\) is $8$ then $G$ is the quaternion group.
+We put \(i=\sigma\), pick arbitrary \(j\in\coH\), and put \(k=ij\).
+Now since the ordes of $j$ and $k$ are also $4$,
+we have \(|\{i^3,j^3,k^3\}|=3\) (different elements) and
+\begin{equation*}
+rsr^{-1}=s^3 \qquad \textnormal{where} \qquad
+(r,s) \in \left\{(i,j), (i,k), (j,i), (j, k), (k,i), k,j)\right\}.
+\end{equation*}
+and \(i^2 = j^2 = k^2\) which we conveniently denote as \((-1)\).
+With this we have the 3 elements
+\begin{eqnarray*}
+(-i) &=& i^{3} = (-1)i = i(-1) \\
+(-j) &=& j^{3} = (-1)j = j(-1) \\
+(-k) &=& k^{3} = (-1)k = k(-1).
+\end{eqnarray*}
+Also
+\begin{eqnarray*}
+ji &=& ji(j^{-1}j) = (jij^{-1})j = i^{3}j = i^2k = (-1)k \\
+jk &=& j(ij)(i^{-1}i) = (ii^{-1})j(ij) = i(i^{-1}ji)j = ij^{3+1} = i \\
+kj &=& (kj)(k^{-1}k) = (kjk^{-1})k = j^{2+1}k = (-1)jk = (-1)i   \\
+ik &=& ik(jj^3) = i(kj)j^3 = i^{1+2+1}j^{2+1} = (-1)j \\
+ki &=& ki(k^{-1}k) = (kik^{-1})k = i^{2+1}k = (-1)(ik) = (-1)j
+\end{eqnarray*}
+\end{enumerate}
+
+
+%%%%%
+\begin{excopy}
+Let \(\sigma = [123 \ldots n]\) in \(S_n\).
+Show that the conjugacy class of \(\sigma\) has \((n - 1)!\) elements.
+Show that the centralizer of \(\sigma\) is the cyclic group generated by
+\(\sigma\).
+\end{excopy}
+
+The following relation on \(S_n\)
+\begin{equation*}
+\tau_1 \sim \tau_2 
+\qquad \textnormal{iff} \qquad
+\exists k\in \N_n,\, \tau_1 \sigma^k = \tau_2.
+\end{equation*}
+is an equivalence relation, since
+\(k=0\) gives reflexivity, symmetry by considering 
+\(\tau_2 \sigma^{n-k} = \tau_1\) and associativity
+since if \(\tau_1 \sim \tau_2\)
+and if \(\tau_2 \sim \tau_3\)
+with \(k_1\) and \(k_2\) respectively, then
+\begin{equation*}
+\tau_1 \sigma^{k_3} = \tau_3
+\qquad \textnormal{where}\; k_3 = k_1+k_2.
+\end{equation*}
+
+For any \(\tau\in S_n\) and \(k \in \N_n\)
+\begin{equation*}
+(\tau\sigma^k)\sigma\left(\tau\sigma^k\right)^{-1}
+= \tau\sigma^{k+1-k}\tau^{-1}
+= \tau\sigma\tau^{-1}.
+\end{equation*}
+
+Assume \(\tau_1 \nsim \tau_2\).
+We choose \(\tau'_1 \sim \tau_1\)
+and \(\tau'_2 \sim \tau_2\)
+such that 
+\(\tau'_1(1) = \tau'_2(1)\).
+
+Clearly we can find some \(j\in\N_n\) such that
+\(\tau'_1(j) = \tau'_2(j) = j\)
+and
+\({\tau'_1}^{-1}(j + 1) \neq {\tau'_2}^{-1}(j + 1)\).
+Now
+\begin{equation*}
+\left(\tau'_1 \sigma {\tau'_1}^{-1}\right)(j')
+\neq
+\left(\tau'_2 \sigma {\tau'_2}^{-1}\right)(j')
+\end{equation*}
+Thus 
+\begin{equation*}
+\tau'_1 \sigma {\tau'_1}^{-1}
+=
+\tau'_2 \sigma {\tau'_2}^{-1}
+\qquad \textnormal{iff} \qquad
+\tau'_1 \sim \tau'_2.
+\end{equation*}
+Thus the size of the conjugacy class of \(\sigma\)
+is the same as the number of classes of the equivalence relation \(\sim\)
+which is \(n!/n = (n-1)!\).
+
+%%%%%
+\begin{excopy}
+\begin{enumerate}[(a)]
+\item
+Let \(\sigma = [i_1\cdots i_m]\) be a cycle.
+Let \(\gamma \in S_n\). Show that \(\gamma\sigma\gamma^{-1}\)
+is  the cycle \([\gamma(i_1)\cdots \gamma(i_m)]\).
+\item
+Suppose that a permutation \(\sigma\) in \(S_n\) can be written
+as a product of $r$ disjoint
+cycles, and let \(d_1,\ldots,d_r\) be the number of elements in each cycle,
+in increasing order.
+ Let \(\tau\) be another permutation which can be written as a product of
+disjoint cycles, whose cardinalities are
+\(d'_1,\ldots,d'_r\)
+in increasing order. Prove
+that \(\tau\) is conjugate to \(\tau\) in \(S_n\) if and only if
+\(r = s\) and \(d_i = d'_i\) for all \(i=1,\ldots,r\).
+\end{enumerate}
+\end{excopy}
+
+\begin{enumerate}[(a)]
+\item
+\begin{equation*}
+\left(\gamma\sigma\gamma^{-1}\right)(\gamma(i_j)) 
+= \left(\gamma\sigma\right)\left(\gamma^{-1}\gamma\right)(i_j)
+= \left(\gamma\sigma\right)(i_j)
+= \gamma(\sigma(i_j))
+= \gamma(i_{\bres{(j+1}{m}}).
+\end{equation*}
+\item
+If \(\tau\) is conjugate to \(\sigma\) then the equalities
+of the cycles sizes follow from (\emph{a}).
+Conversely, if the cycles sizes agree then
+if \([i_1,\ldots,i_m]\) is a cycle of \(\sigma\)
+and  \([j_1,\ldots,j_m]\) is a cycle of \(\tau\)
+we define \(\mu(i_k)=j_k\) for \(k\in \N_n\).
+Since \(\N_n\) is a disjoint union of any permutation in \(S_n\)
+we have \(\mu\in S_n\) well defined 
+and \(\tau = \mu\sigma\mu^{-1}\).
+\end{enumerate}
+
+%%%%%
+\begin{excopy}
+\begin{enumerate}[(a)]
+\item
+Show that \(S_n\) is generated by the transpositions
+\([12]\), \([13]\),\(\ldots\),\([1n]\).
+\item
+Show that \(S_n\) is generated by the transpositions
+\([12]\), \([23]\), \([34]\),\(\ldots\),\([n-1,n]\).
+\item
+Show that \(S_n\) is generated by the cycles \([12]\) and \([1 2 3 \ldots n]\).
+\item
+Assume that $n$ is prime. 
+Let \(\sigma = [1 2 3 \ldots n]\) and let \(\tau = [rs]\) be any transposition.
+Show that \(\sigma\), \(\tau\) generate \(S_n\).
+\end{enumerate}
+\end{excopy}
+
+Note that given a generator \(g\in S_n\),
+we always have \(\Id\in S_n\) gernerated by \(\Id = g^k\) for some \(k\in\N\).
+Given \(\sigma,\tau\in S_n\). We define the distance
+\begin{equation*}
+d(\sigma,\tau) = \left\|\{i\in\N_n: \sigma(i) \neq \tau(i)\}\right|.
+\end{equation*}
+\begin{enumerate}[(a)]
+\item Let \(\sigma\in S_n\). Let \(G\subset S_n\) be the group generated
+by the given generators. Let \(g\in G\) be with the minimal
+distance with \(sigma\).
+If by negation \(d(\sigma,g) > 0\) then let \(j\in\N_n\)
+be the minimal index such that \(\sigma(j)\neq g(j)\).
+Define
+\begin{equation*}
+g' = [1 j][1 g^{-1}\sigma(j)][1 j]g
+\end{equation*}
+and now \(d(\sigma, g') < d(\sigma, g)\) contrdicting the minimal choice.
+\item
+For each \(k \in \N_n\) we have
+\begin{equation*}
+[1 k] = [1 2]\cdot[2 3]\cdots[(k-2),(k-1)]\cdot[(k-1),k]\cdots[2 3]\cdot[1 2]
+\end{equation*}
+Thus we get the generators of previous case (a).
+\item
+For each \(k \in \N_n\) we have
+\begin{equation*}
+[k,(k+1)] = [1 2 3\ldots n]^{(k-1)}\cdot[12]\cdot [1 2 3\ldots n]^{n - (k-1)}.
+\end{equation*}
+Thus we get the generators of previous case (b).
+\item
+Assume \(d=r-s>0\). for any \(k\in \N_n\)
+\begin{equation*}
+[k,\bres{(k+d)}{n}] = \sigma^{k-r}[r s]\cdot\sigma^{r-k}
+\end{equation*}
+and
+\begin{equation*}
+\tau_k = [\bres{1 + kd}{n}, \bres{1 + (k+1)d}{n}].
+\end{equation*}
+are all generated.
+Since $n$ is prime, for any \(m < n\) there exists \(q\in\N\) 
+such that \(d^q = (m - 1) \bmod n\). Thus
+\begin{equation*}
+[1 m] = \tau_0\cdot\tau_1\cdots\tau_q\cdots\tau_1\cdots\tau_0.
+\end{equation*}
+Hence the generators of (b) are generated.
+\end{enumerate}
+
+\end{myenumerate}
+
+Let $G$ be a finite group operating on a set $S$.
+Then $G$ operates in a natural way on
+the Cartesian product \(S^{(n)}\) for each positive integer $n$ .
+We define the operation on $S$
+to be \hbox{\boldmath$n$\textbf{-transitive}} if given $n$ distinct elements 
+\((s_1,\ldots,s_n)\) and $n$ distinct elements
+\((s'_1,\ldots,s'_n)\) of $S$, there exists \(\sigma\in G\)
+such that \(\sigma s_i = s'_i\) for all \(i = 1,\ldots,n\).
+
+\begin{myenumerate}
+%%%%%
+\begin{excopy}
+Show that the action of the alternating group \(A_n\)
+on \(\{1,\ldots,n\}\) is \((n - 2)\)-transitive.
+\end{excopy}
+
+Given arbitrary
+\(n-2\) elements \((s_1,\ldots,s_{n-2})\)  in \(\N_n\)
+and
+\(n-2\) elements \((s'_1,\ldots,s'_{n-2})\)  in \(\N_n\).
+We have a pair of two remaining elements
+\begin{eqnarray*}
+\{s_{n-1}, s_n\} &= \N_n \setminus \{(s_1,\ldots,s_{n-2}\}\\
+\{s'_{n-1}, s'_n\} &= \N_n \setminus \{(s'_1,\ldots,s'_{n-2}\}.
+\end{eqnarray*}
+For \(i\in\N_n\) define  \(\sigma_1(s_i) = s'_i\) and
+\begin{equation*}
+  \sigma_2(s_i) = 
+    \left\{
+      \begin{array}{ll}
+        s'_i \quad &\textnormal{iff}\; i \leq n - 2 \\
+        s'_n \quad &\textnormal{iff}\; i = n - 1 \\
+        s'_{n-1} \quad &\textnormal{iff}\; i = n \\
+      \end{array}
+    \right.
+\end{equation*}
+Clearly \(\sigma_1,\sigma_2\in\S_n\) having different signs, thus
+(exactly) one of them \(\in A_n\).
+
+%%%%%
+\begin{excopy}
+Let \(A_n\) be the alternating group of even permutations of
+\(\{1,\ldots,n\}\), For \(j = 1,\ldots,n\)
+let \(H_j\) be the subgroup of \(A_n\) fixing $j$, 
+so \(H_j \approx A_{n-1}\), and \((A_n: H_j) = n\) for \(n > 3\).
+Let \(n \geq 3\) and let $H$ be a subgroup of index $n$ in \(A_n\).
+\begin{enumerate}[(a)]
+\item
+Show that the action of \(A_n\) on cosets of $H$ by left translation
+gives an isomorphism \(A_n\) with the alternating group of permutations
+of \(A_n/H\).
+\item
+Show that there exists an automorphism of \(A_n\) mapping \(H_1\) on $H$,
+and that
+such an automorphism is induced by an inner automorphism of \(S_n\) if and only
+if \(H = H_i\) for some~$i$.
+\end{enumerate}
+\end{excopy}
+
+Note that 
+\begin{equation*}
+(A_n: H_j) = |A_n|/|A_{n-1}| = (n!/2)/\left((n-1)!/2)\right) = n!/(n-1)! = n.
+\end{equation*}
+Let \(A_n\) act on cosets \(\tau H_j\) by multiplication from left.
+We need to show that this action is well defined.
+Let \(\tau_1 H_j = \tau_2 H_j\),
+Thus we have \(h_1,h_2\in H_j\) such that  
+\(\tau_1 h_1 = \tau_2 h_2\)
+and so
+\(\sigma\tau_1 h_1 = \sigma\tau_2 h_2\) for all \(\sigma \in S_n\)
+and so 
+\(\sigma\tau_1 H_j = \sigma\tau_2 H_j\) for all \(\sigma \in A_n\)
+showing that the action is well defined.
+\begin{enumerate}[(a)]
+\item
+With similar argunent we showed that the action is well definded,
+we can also show that the action is an homomorphism of \(A_n\)
+on the permutations of \(A_n/H\).
+We still need to show it is an injection and surjection..
+
+Assume \(\sigma \in A_n\) is in the kernel
+of the left multiplication mapping.Then 
+\begin{equation} \label{eq:sigma-in-kern:An}
+\forall \tau\in A_n\quad \sigma\tau H = \tau H.
+\end{equation}
+Now
+\begin{equation*}
+\sigma\tau H = \tau H
+\;\Leftrightarrow\;
+\tau^{-1}\sigma\tau H = H
+\;\Leftrightarrow\;
+\tau^{-1}\sigma\tau \in H
+\;\Leftrightarrow\;
+\sigma \in \tau H \tau^{-1}
+\end{equation*}
+Thus \eqref{eq:sigma-in-kern:An} gives
+\begin{equation*}
+\sigma \in \bigcap_{\tau\in A_n} \tau H \tau^{-1}
+\end{equation*}
+The latter intersection is clearly a normal subgroup of \(A_n\)
+Since it is a subgroup of $H$ it is a proper subgroup of \(A_n\)
+so it must be the trivial \(\{e\}\) since \(A_n\) is simple.
+Thus the left multiplication is injective.
+
+
+\begin{llem} \label{llem:half:normal}
+Let $H$ be a subgroup of $G$. If \([G:h]=1\) then \(H \subnormal G\).
+\end{llem}
+\begin{proof}
+Let \(g \in G\setminus \) then
+\begin{equation*}
+G = H \dotcup gH = H \dotcup g^{-1}H = H \dotcup Hg = H \dotcup Hg^{-1}.
+\end{equation*}
+Thus \(gH = Hg\) and so \(gHg^{-1}= (Hg)g^{-1} = H\).
+\end{proof}
+
+\begin{llem} \label{llem:unique:Sn:half}
+For \(n\geq 2\) there exists a unique subgroup of \(S_n\) of order \(n!/2)\)
+namely \(A_n\).
+\end{llem}
+\begin{proof}
+Let \(\sigma\;S_n\to \{+1,-1\}\) be the sign group homomorphism.
+Its kernal is clearly \(A_n\).
+Now let \(H\subset S_n\) with \(|H|=n!/2\).
+By local-lemma~\ref{llem:half:normal} \(H\subnormal G\).
+% Since \(G/H \simeq C_2 = \{+1,=1\}\) 
+% Consider the natural homomorphism \(\Lambda G \to G/H \{+1,=\{+1,=1\}\).
+As was shown in the text, \(A_n\) is generated by all 3-cycles
+using \([ij][rs] = [ijr]Urs]\).
+If by negation \(H \neq A_n\) then both $H$ and \(S_n\setminus H\)
+contains some 3-cycles. Say
+\begin{equation*}
+[ijk] \in H \qquad [xyz]\in S_n\setminus H
+\end{equation*}
+Say \(I = \{i,j,k\}\cap \{x,y,z\}\).
+Without loss of generality we may assume
+that if \(|I|\geq 1\) then \(i=x\)
+and  if \(|I|=2\) then \(j=y\)
+Now consider 
+\begin{equation*}
+\sigma = 
+ \left\{
+  \begin{array}{ll}
+   {[ix]}[jy][kz] \quad &\textnormal{if}\; |I|=0 \\
+   {[jy]}[kz] \quad &\textnormal{if}\; |I|=1 \\
+   {[kz]} \quad &\textnormal{if}\; |I|=2 \\
+  \end{array}
+ \right.
+\end{equation*}
+Now \([xyz] = \sigma [ijk] \sigma^{-1}\).
+And by \(H \subnormal S_n\) we have the contrdiction \([xyz] \in H\).
+\end{proof}
+
+Back to the exercise.
+The left multiplication $L$ maps \(A_n\) to permutations
+of the $n$ cosets of $H$.
+Thus we have a one-to-one mapping \(L: A_n \rightarrow S_n\).
+Thus \(|L(A_n)|=|A_n|=|S_n|/2 = n!/2\).
+By local-lemma~\ref{llem:unique:Sn:half} \(L(A_n)=A_n\).
+
+\item
+\end{enumerate}
+
+\UNFINISHED
+
+%%%%%
+\begin{excopy}
+Let $H$ be a simple group of order \(60\).
+\begin{enumerate}[(a)]
+\item
+Show that the action of $H$ by conjugation on the set of its Sylow subgroups
+gives an imbedding \(H \hookrightarrow A_6\).
+\item
+Using the preceding exercise, show that \(H \approx A_5\).
+\item
+Show that \(A_6\) has an automorphism which is not induced by an inner
+automorphism of \(S_6\).
+\end{enumerate}
+\end{excopy}
+
+%%%%%
+\begin{excopy}
+\end{excopy}
+
+%%%%%
+\begin{excopy}
+\end{excopy}
+
+\end{myenumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+\bibliography{langalg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \input{langalg.ind}
+\printindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
