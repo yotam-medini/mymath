@@ -7,7 +7,7 @@ endif
 
 .DELETE_ON_ERROR:
 
-langalg.pdf: langalg.tex
+langalg.pdf: langalg.tex mymacs.tex
 	pdflatex $<
 	makeindex $<
 	pdflatex $<
