@@ -1916,7 +1916,7 @@ For \(i\in\N_n\) define  \(\sigma_1(s_i) = s'_i\) and
 Clearly \(\sigma_1,\sigma_2\in\S_n\) having different signs, thus
 (exactly) one of them \(\in A_n\).
 
-%%%%%
+%%%%% ex 40
 \begin{excopy}
 Let \(A_n\) be the alternating group of even permutations of
 \(\{1,\ldots,n\}\), For \(j = 1,\ldots,n\)
@@ -1957,6 +1957,39 @@ we can also show that the action is an homomorphism of \(A_n\)
 on the permutations of \(A_n/H\).
 We still need to show it is an injection and surjection..
 
+We check manually for n=3,4.
+\begin{equation*}
+A_3 = \{e, [1,2,3], [1, 3, 2]\}
+\end{equation*}
+and thus \(|H|=1\) so \(H=\{e\}\) and the isomorphism is clear.
+
+\begin{align*}
+A_4 = \{&e, \\
+  &[1,2,3], [1, 3, 2], [1,2,4], [1, 4, 2], [1, 3, 4], [1, 4, 3], 
+    [2, 3, 4], [2, 4, 3], \\
+  &[1, 2][3, 4], [1, 3][2, 4], [1, 4][2, 3]\}.
+\end{align*}
+and this \(|H|=3\) the possible subgroups are of the 
+form \(\{e, h, h^2\}\) where 
+\(h \in \{[i,j,k]\in A_4: i\neq j \neq k\}\).
+Note we always have \(h^3=e\).
+Now there are 4 disjoint cosets \(eH, \tau_1 H, \tau_2 H, \tau_3 H\)
+where \(\tau_i \in A_n\) for \(i=1,2,3\), and put \(\tau_0 = e\).
+To show innjection, let \(\sigma_1, \sigma_2 \in A_4\) 
+and assume \(\sigma_2\tau_i H = \sigma_2\tau_i H\) for \(i=0,1,2,3\).
+Looking at \(i=0\), we have 
+\(\sigma_1(e) \in \{\sigma_2 e, \sigma_2 h, \sigma_2 h^2\}\).\\
+Cases:
+\begin{itemize}
+\item \(\sigma_1 e = \sigma_2 e\). Clearly \(\sigma_1 = \sigma_2\).
+\item \(\sigma_1 e = \sigma_2 h\). Then \(\sigma_2^{-1}\sigma_1 = h\).
+\item \(\sigma_1 e = \sigma_2 h^2\). 
+  Putting \(h' = h^2\) and then \(h'^2 = h^4 = h\).
+  So we can apply the previous case.
+\end{itemize}
+
+\UNFINISHED
+
 Assume \(\sigma \in A_n\) is in the kernel
 of the left multiplication mapping.Then 
 \begin{equation} \label{eq:sigma-in-kern:An}
@@ -1995,7 +2028,7 @@ Thus \(gH = Hg\) and so \(gHg^{-1}= (Hg)g^{-1} = H\).
 \end{proof}
 
 \begin{llem} \label{llem:unique:Sn:half}
-For \(n\geq 2\) there exists a unique subgroup of \(S_n\) of order \(n!/2)\)
+For \(n\geq 2\) there exists a unique subgroup of \(S_n\) of order \(n!/2\)
 namely \(A_n\).
 \end{llem}
 \begin{proof}
