@@ -19,7 +19,6 @@ def cycles_up(n, cycles):
     
 def cycles_to_perm(n, cycles):
     # vlog(f"n={n}, cycles={cycles}")
-    # cycles0 = list(map(lambda c: cycle_down(c), cycles))
     perm = list(range(n))
     for ci in range(len(cycles) - 1, -1, -1):
         # vlog(f"ci={ci}, perm={perm}")
@@ -41,16 +40,16 @@ def perm_to_cycles(perm):
     cycles = []
     used = set()
     for i in range(n):
-        if not i in used:
+        if perm[i] != i and i not in used:
             i0 = i
-            cycle = [(i0 + n - 1) % n]
+            cycle = [i0]
             used.add(i0)
             while perm[i] != i0:
                 i = perm[i]
-                cycle.append((i + n - 1) % n)
+                cycle.append(i)
                 used.add(i)
             cycles.append(cycle)
-    # cycles = list(map(lambda c: cycle_up(n, c), cycles))
+    # vlog(f"perm={perm}, cycles={cycles}")
     return cycles
 
     
@@ -95,19 +94,34 @@ def ex40():
     e = [0, 1, 2, 3]
     h = [1, 2, 0, 3]
     h2 = [2, 1, 0, 3]
-    H = set([e, h, h2])
+    H = [e, h, h2];
+    vlog(f"H={H}")
+    H.sort()
+    vlog(f"sorted: H={H}")
     cosets = [H]
     taus = [e]
     for i in range(len(A4)):
         p = A4[i]
         p_cycles = perm_to_cycles(p)
+        # vlog(f"p_cycles={p_cycles}")
         coset = []
         for h in H:
             h_cycles = perm_to_cycles(h)
             cycles = p_cycles + h_cycles
-            p_coset = cycles_to_perm(cycles)
+            # vlog(f"cycles={cycles}")
+            p_coset = cycles_to_perm(4, cycles)
+            coset.append(p_coset)
+        coset.sort()
+        if coset in cosets:
+            vlog(f"p[i={i}] = {p}, pH already in cosets")
+        else:
+            vlog(f"adding: tau={p} coset={coset}")
+            taus.append(p)
+            cosets.append(coset)
+    vlog(f"taus={taus}")
+    vlog(f"cosets={cosets}")
     
-if __name__ == "__main__":
+if __name__ == "__main__Debug":
     rc = 0
     # sys.stdout.write(f"perm: %s\n" % cycles_to_perm(4, [[1, 2, 3]]))
     perm = args_to_perm(sys.argv[1:])
