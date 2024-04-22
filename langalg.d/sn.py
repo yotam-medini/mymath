@@ -58,6 +58,8 @@ def perm_to_cycles(perm):
     # vlog(f"perm={perm}, cycles={cycles}")
     return cycles
 
+def perm_to_cycles_p1(perm):
+    return cycles_plus1(perm_to_cycles(perm))
     
 def args_to_perm(args):
     n = int(args[0])
@@ -136,7 +138,30 @@ def ex40():
         stau1 = f"{tau1}"
         vlog(f"tau[{ci}]={stau1:11s}  coset[{ci}] = {cycles_s1}")
     for pi, p in enumerate(A4):
-        pass
+        # ps = f"{p}"; ps = f"{ps:11s}"
+        p_cycles = perm_to_cycles(p)
+        # vlog(f"pi={pi} p={p} p_cycles={p_cycles}")
+        Hperm = []
+        for hi in range(4):
+            coset = cosets[hi]
+            p_coset = []
+            for perm in coset:
+                pc_cycles = p_cycles + perm_to_cycles(perm)
+                p_perm = cycles_to_perm(4, pc_cycles)
+                p_coset.append(p_perm)
+                # vlog(f"hi={hi} perm={perm} p_perm={p_perm}")
+            p_coset.sort()
+            nhi = None
+            for k in range(4):
+                if p_coset == cosets[k]:
+                    if nhi is not None:
+                        vlog("Error: dup\n"); sys.exit(1)
+                    nhi = k
+            if nhi is None:
+                vlog("Error: not found\n"); sys.exit(1)
+            Hperm.append(nhi + 1)
+        p1 = list(map(lambda k: k + 1, p))
+        vlog(f"{pi+1:2d} {p1}(Hs)={Hperm}")
         
     
 if __name__ == "__main__Debug":
