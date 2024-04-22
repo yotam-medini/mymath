@@ -11,11 +11,17 @@ def cycle_down(cycle):
 def cycle_up(n, cycle):
     return list(map(lambda i: (i + 1) % n, cycle))
 
+def cycle_plus1(cycle):
+    return list(map(lambda i: i + 1, cycle))
+
 def cycles_down(cycles):
     return list(map(cycle_down, cycles))
     
 def cycles_up(n, cycles):
     return list(map(lambda c: cycle_up(n, c), cycles))
+    
+def cycles_plus1(cycles):
+    return list(map(lambda c: cycle_plus1(c), cycles))
     
 def cycles_to_perm(n, cycles):
     # vlog(f"n={n}, cycles={cycles}")
@@ -119,7 +125,19 @@ def ex40():
             taus.append(p)
             cosets.append(coset)
     vlog(f"taus={taus}")
-    vlog(f"cosets={cosets}")
+    # vlog(f"cosets={cosets}")
+    for ci, coset in enumerate(cosets):
+        vlog(f"coset[{ci}] permutations: ={coset}")
+    for ci, coset in enumerate(cosets):
+        cycles_s = list(map(perm_to_cycles, coset))
+        cycles_s1 = list(map(cycles_plus1, cycles_s))
+        # vlog(f"coset0[{ci}] = {cycles_s}")
+        tau1 = cycles_plus1(perm_to_cycles(taus[ci]))
+        stau1 = f"{tau1}"
+        vlog(f"tau[{ci}]={stau1:11s}  coset[{ci}] = {cycles_s1}")
+    for pi, p in enumerate(A4):
+        pass
+        
     
 if __name__ == "__main__Debug":
     rc = 0
