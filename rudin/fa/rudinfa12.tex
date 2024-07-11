@@ -5,6 +5,29 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Notes}
+
+\subsection{Proof of Theorem 12.4}
+
+% \newcommand{\inprod}[2]{\ensuremath{\langle #1, #2 \rangle}}
+
+The proof of Theorem~12.4 says that \(E^\perp\) is closed by the
+Schwartz inequality of Theorem~12.2. Here is the justification.
+
+Let \(x_n \xrightarrow{n\to \infty} x\) and \(x_n \in E^\perp\).
+
+Pick \(\epsilon > 0\). Let \(N<\infty\) such that
+\(\forall n>N \quad \|x-x_n\| < \epsilon/\|y\|\).
+Now
+\begin{equation*}
+|\lrangle{x, y}| = |\lrangle{x-x_n, y} + \lrangle{x_n, y}| =
+  |\lrangle{x-x_n, y}| 
+ \leq \|x - x_n\|\cdot \|y\| \leq (\epsilon/\|y\|)\|y\| = \epsilon.
+\end{equation*}
+Since \(\epsilon\) is arbitrary \(\lrangle{x,y} = 0\) and \(E^\perp\) is closed.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises} % pages 341-346
 
 Throughout these exercises, the letter $H$ denotes a Hillbert space.
