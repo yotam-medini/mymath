@@ -43,6 +43,22 @@ Make this statement more precise, and prove it.
 (See the proof of Theorem 12.40 for an application.)
 \end{excopy}
 
+Let $G$ be an inner product space.
+Let $S$ be the set of all Cauchy sequences in $G$.
+Define an equivalence relation on $S$.
+Denote \(s_k = (s_{k,j})_{j\in\N}\) for \(k=1,2\)
+where  \((s_1 \simeq s_2\) (in $S$)
+if \((t_j)_{j\in\N}\) defined by \(t_j = s_{1,j}-s_{2,j}\)
+is a Cauchy sequence (clearly) converging to \(0\in G\).
+Let \(H = S/\simeq\). We identify \(T: G\to H\) by
+\(T(g)=(x_j)_{j\in\N}\)  where \(\forall j\in\N\, x_j=g\).
+Define 
+\begin{equation*}
+\lrangle{s_1,s_2} = \lim_{j\to\infty} \lrangle{s_{1,j},s_{2,j}}.
+\end{equation*}
+By Theorem~12.2 that does not use completeness, it is clear
+that the deinition is independent of representatives.
+
 %%%%%%% 2
 \begin{excopy}
 Suppose $N$ is a positive integer,
@@ -66,6 +82,41 @@ identity
 
 \end{excopy}
 
+Let \(A = \{\alpha^j: 0\leq j < N\) and
+\(\alpha\cdot A = \{\alpha x: x\in A\}\) and \(S=\sum_{x\in A} x\).
+Clearly \(\alpha \cdot A = A\).
+Thus \(\alpha S = S\) and so \(S=0\) since \(\alpha \neq 1\).
+
+Let \(S_2 = \sum_{0\leq j<N} \alpha^{2j}\).
+If $N$ is odd then \(\{x^2: x\in A\} = A\) and so \(S_2 = 0\).
+If $N$ is even put \(\alpha S_2 = \sum_{0\leq j<N} \alpha\cdot\alpha^{2j}\).
+Thus \((1+\alpha)S_2 = 2A = 0\). Since \(\alpha \neq -1\) we have \(S_2=0\).
+
+Now
+\iffalse
+\begin{align*}
+ \|x + \alpha^n y\|^2
+   &= \|x\|^2 + \lrangle{x, \alpha^n y} + \lrangle{\alpha^n y, x} + \|y\|^2 \\
+   &= \|x\|^2 + \overline{\alpha^n}\lrangle{x, y}
+             + \alpha^n\overline{\lrangle{x, y}} + \|y\|^2. \\
+   &= \|x\|^2 + 2\Re\left(\alpha^{-n}\lrangle{x, y}\right) + \|y\|^2.
+\end{align*}
+\fi
+\begin{equation*}
+ \|x + \alpha^n y\|^2
+   = \|x\|^2 + \lrangle{x, \alpha^n y} + \lrangle{\alpha^n y, x} + \|y\|^2
+   = \|x\|^2 + \|y\|^2 + \alpha^{-n}\lrangle{x, y} + \alpha^n \lrangle{y, x} 
+\end{equation*}
+
+Now
+\begin{align*}
+\sum_{n=1}^N \alpha^n \cdot \|x + \alpha^n y\|^2 
+ &= N\left(S(\|x\|^2 + \|y\|^2)
+    + \alpha^{-n+n}\lrangle{x, y} + \alpha^{2n} \lrangle{y, x}\right) \\
+ &= N\left( 1\cdot \lrangle{x, y} + S_2\lrangle{y, x}\right)
+    = N\cdot \lrangle{x, y}.
+\end{align*}
+This proves the first desired equality.
 
 \unfinished
 
