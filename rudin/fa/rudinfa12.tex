@@ -93,15 +93,6 @@ If $N$ is even put \(\alpha S_2 = \sum_{0\leq j<N} \alpha\cdot\alpha^{2j}\).
 Thus \((1+\alpha)S_2 = 2A = 0\). Since \(\alpha \neq -1\) we have \(S_2=0\).
 
 Now
-\iffalse
-\begin{align*}
- \|x + \alpha^n y\|^2
-   &= \|x\|^2 + \lrangle{x, \alpha^n y} + \lrangle{\alpha^n y, x} + \|y\|^2 \\
-   &= \|x\|^2 + \overline{\alpha^n}\lrangle{x, y}
-             + \alpha^n\overline{\lrangle{x, y}} + \|y\|^2. \\
-   &= \|x\|^2 + 2\Re\left(\alpha^{-n}\lrangle{x, y}\right) + \|y\|^2.
-\end{align*}
-\fi
 \begin{equation*}
  \|x + \alpha^n y\|^2
    = \|x\|^2 + \lrangle{x, \alpha^n y} + \lrangle{\alpha^n y, x} + \|y\|^2
@@ -118,7 +109,40 @@ Now
 \end{align*}
 This proves the first desired equality.
 
-\unfinished
+By periodic argument \(\int_{-\pi}^\pi e^{i\theta} = 0\)
+and also \(\int_{-\pi}^\pi e^{2i\theta} = 0\).
+
+\begin{align*}
+\int_{-\pi}^\pi \|x + e^{i\theta} y\|^2 e^{i\theta}\,d\theta
+ &= \int_{-\pi}^\pi e^{i\theta}\left(\|x\|^2 + e^0\|y\|^2 +
+     e^{-i\theta}\lrangle{x, y} + e^{i\theta}\lrangle{y, x}\right) \,d\theta \\
+ &= \left(\|x\|^2 + e^0\|y\|^2 \right)\int_{-\pi}^\pi e^{i\theta}\,d\theta
+    + \int_{-\pi}^\pi e^0\lrangle{x, y}\,d\theta
+    + \int_{-\pi}^\pi e^{2i\theta}\lrangle{x, y}\,d\theta \\
+ &= 0 + 2\pi \lrangle{x, y} + 0 =  2\pi \lrangle{x, y}.
+\end{align*}
+This proves the second desired equality.
+
+Now if
+\begin{itemize}
+\item \(|f(p)| = 1\) (and then \(f(p)\overline{f(p)}=1\).
+\item \(\int_\Omega 1\,d\mu(p) = 0\).
+\item \(\int_\Omega \overline{f(p)}\,d\mu(p) = 1\).
+\item \(\int_\Omega f(p)\,d\mu(p) = 0\).
+\end{itemize}
+then
+\begin{align*}
+\int_\Omega \|x + f(p)y\|^2 \,d\mu(p)
+ &= \int_\Omega \left(\|x\|^2 + f(p)\overline{f(p)}\|y\|^2
+   + \overline{f(p)}\lrangle{x, y}
+   + f(p)\lrangle{y, x}\right)\,d\mu(p) \\
+ &= \left(\|x\|^2 + \|y\|^2\right)\int_\Omega 1\,d\mu(p)
+    + \lrangle{x, y}\int_\Omega \overline{f(p)}\,d\mu(p)
+    + \lrangle{y, x}\int_\Omega f(p)\,d\mu(p) \\
+ &= 0 + \lrangle{x, y} + 0 = \mu(\Omega)\lrangle{x, y}.
+\end{align*}
+and the last identity holds.
+
 
 %%%%%%%%%%%%%%%
 \end{enumerate}
