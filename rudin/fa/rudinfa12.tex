@@ -7,6 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Notes}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Proof of Theorem 12.4}
 
 % \newcommand{\inprod}[2]{\ensuremath{\langle #1, #2 \rangle}}
@@ -25,6 +26,20 @@ Now
  \leq \|x - x_n\|\cdot \|y\| \leq (\epsilon/\|y\|)\|y\| = \epsilon.
 \end{equation*}
 Since \(\epsilon\) is arbitrary \(\lrangle{x,y} = 0\) and \(E^\perp\) is closed.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Theorem 12.5}
+
+The equality
+\begin{equation*}
+(\Lambda x)s - (\Lambda s)x \in \scrN(\Lambda)
+\end{equation*}
+is true for all \(s\in H\) (not just \(s\in \scrN(\Lambda)^\perp\)).
+Simply because:
+\begin{equation*}
+\Lambda\left((\Lambda x)s - (\Lambda s)x\right)
+= (\Lambda x)\Lambda(s) - (\Lambda s)(\Lambda(x).
+\end{equation*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,10 +164,10 @@ and the last identity holds.
 \itemch{a}
 Assume \(X_n\) and \(y_n\) are in the closed unique ball of $H$,
 and \(\lrangle{x_n, y_n} \to 1\) as \(n\to\infty\).
-Prove that \(\|x_N -y_n\| \to 0\).
+Prove that \(\|x_n -y_n\| \to 0\).
 \itemch{b}
 Assume \(x_n\in H\), \(x_n\to x\) weakly, and \(\|x_n\| \to \|x\|\).
-Prove rgar then \(\|x_n - x\|\to 0\).
+Prove that then \(\|x_n - x\|\to 0\).
 \end{itemize}
 \end{excopy}
 
