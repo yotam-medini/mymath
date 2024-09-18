@@ -183,6 +183,34 @@ Prove that then \(\|x_n - x\|\to 0\).
 \end{itemize}
 \end{excopy}
 
+\begin{llem} \label{llem:mindist-z-real}
+If \(z\in\C\) and \(r\in\C\) and \(r\geq 0\)
+then \(\left|\,|z| - r\right| \leq |z-r|\). 
+\end{llem}
+\begin{proof}
+Let \(z = a+ib\) where \(a,b\in\R\). We have following derivations:
+\begin{align*}
+a &\leq |a| \leq \sqrt{a^2+b^2} \\
+2ar &\leq 2r\sqrt{a^2+b^2} \\
+2ar &\leq 2r\sqrt{a^2+b^2} \\
+- 2r\sqrt{a^2+b^2} &\leq - 2ar \\
+a^2+b^2+r^2 - 2r\sqrt{a^2+b^2} &\leq (a-r)^2+b^2 = a^2+b^2+r^2 - 2ar \\
+\left|\sqrt{a^2+b^2} - r\right| &\leq \sqrt{(a-r)^2+b^2} \\
+\left|\,|a + ib| - r\right| &\leq |a+ib-r| \\
+\left|\,|z| - r\right| &\leq |z-r|
+\end{align*}
+\end{proof}
+
+\begin{itemize}
+\itemch{a}
+By negation assume \(d > 0\) and for any \(N<\infty\) we have \(n\geq N\)
+such that \(\|x_n - y_n\| \geq d\),
+\unfinished
+\itemch{b}
+If \(x=0\) then \(\lim_{n\to\infty}\|x_n - x\| = \lim_{n\to\infty}\|x_n\| = \|x\|=9\).
+% Otherwise by dividing \(x_n\) and $x$ by \(\|x\|\) we mat assume 
+\end{itemize}
+
 \unfinished
 
 %%%%%%%%%%%%%%%
