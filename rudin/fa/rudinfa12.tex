@@ -275,10 +275,28 @@ Two cases:
 \end{enumerate}
 \itemch{b}
 If \(x=0\) then \(\lim_{n\to\infty}\|x_n - x\| = \lim_{n\to\infty}\|x_n\| = \|x\|=0\).
-% Otherwise by dividing \(x_n\) and $x$ by \(\|x\|\) we mat assume 
+Otherwise we want to use \ich{a} of the exercise.
+By dividing \(x_n\) and $x$ by \(\|x\|\) we may assume
+that \(\|x\|=1\).
+Define for \(n\in\N\)
+\begin{equation*}
+ z_n =
+ \left\{\begin{array}{ll}
+ 0 \quad & \textnormal{if}\;\|x_n\| > 1 \;\wedge \|x_n - x\| \geq 1 \\ 
+ x_n \quad & \textnormal{if}\;\|x_n\|\leq 1 \\
+ 2x_n/\|x_n\|-x_n   \quad & \textnormal{otherwise}
+ \end{array}
+ \right.
+\end{equation*}
+Clearly \(\|z_n\|\leq 1\), \(z_n=0\) for mostly finite number of \(n\in \N\).
+Also \hbox{\(\lim_{n\to\infty}\|x_n-z_n\| = 0\)}, hence by weak convergence
+\begin{equation*}
+\lim_{n\to\infty}\lrangle{z_n,x} = \lim_{n\to\infty}\lrangle{x_n,x}
+ = \lrangle{x,x} = 1.
+\end{equation*}
+By previous \ich{a} \(\lim_{n\to\infty} \|x_n - x\| = 0\).
 \end{itemize}
 
-\unfinished
 
 %%%%%%%%%%%%%%%
 \end{enumerate}
