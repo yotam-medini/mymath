@@ -205,9 +205,76 @@ a^2+b^2+r^2 - 2r\sqrt{a^2+b^2} &\leq (a-r)^2+b^2 = a^2+b^2+r^2 - 2ar \\
 \itemch{a}
 By negation assume \(d > 0\) and for any \(N<\infty\) we have \(n\geq N\)
 such that \(\|x_n - y_n\| \geq d\),
-\unfinished
+Since \(\|x_n - y_n\|\leq 2\) we can ensure \(d \leq 2\).
+Abbreviate \(x=x_n\) and \(y=y_n\). We may assume \(\|y\|\leq \|x\|\).
+Decomosing \(y = y_x + y_\perp\) such that \(y_x = ax\) where \(a \in \C\)
+and \(\lrangle{y_\perp,x} = 0\). Clearly \(|a|\leq 1\).
+By triangle inequality
+\begin{equation*}
+d \leq \|x - y\| = \|x - y_x - y_\perp\| \leq \|x - y_x\| + \|y_\perp\|.
+\end{equation*}
+Hence
+\begin{equation*}
+\|y_\perp\| \geq d/2 \;\vee\: \|x - y_x\| \geq d/2.
+\end{equation*}
+Two cases:
+\begin{enumerate}
+\itemch{1} \(\|y_\perp\| \geq d/2\).\\
+  Since \(\|y_x\|^2 + \|y_\perp\|^2 = \|y\|^2 \leq \|x\|^2 \leq 1\)
+  we have \
+  \begin{equation*}
+   \|y_x\| \leq \sqrt{1 - \|y_\perp\|^2} \leq \sqrt{1 - d^2/4}.
+  \end{equation*}
+  That leads to the contradiction:
+  \begin{equation*}
+  1 = \lim_{n\to\infty}\lrangle{x_n,y_n} =
+   \lim_{n\to\infty}\left|\lrangle{x_n,y_n}\right| \leq \|y_{nx}\|
+   \leq \sqrt{1 - d^2/4} < 1.
+  \end{equation*}
+\itemch{2} \(\|x - y_x\| \geq d/2\).\\
+  Let \(a = b +ic\) where \(b,c\in\R\) and \(-1\leq b,c,\leq 1\). Now let
+  \begin{equation*}
+  h = \|x - y_x\| = |1-a|\cdot\|x\| \geq d/2.
+  \end{equation*}
+  Squaring:
+  \begin{equation*}
+  h^2 = ((1-b)^2 + c^2)\cdot\|x\|^2 \geq d^2/4.
+  \end{equation*}
+  Again two cases: 
+  \begin{itemize}
+  \itemch{i} \((1-b)\|x\| \geq \sqrt{2}d/4\).\\
+    Then \(b \leq 1 - \sqrt{2}d/\left(4\|x\|\right) \leq 1 - \sqrt{2}d/4\).
+    Now
+    \begin{align*}
+    |1 - \lrangle{y,x}|
+    &= |1 - \lrangle{y_x,x}|
+    = |1 - (b + ic)\|x\|^2
+    = \left((1 - b)^2 + c^2\right)\cdot\|x\|^2 \\
+    &\geq (1 - b)^2\|x\|^2
+    \geq d\|x\|^2/8
+    \end{align*}
+  \itemch{ii} \(|c|\cdot\|x\| \geq \sqrt{2}d/4\).\\
+    Then \(|c| \geq \sqrt{2}d/\left(4\|x\|\right) \geq \sqrt{2}d/4\).
+    Now similarly,
+    \begin{align*}
+    |1 - \lrangle{y,x}|
+    &= |1 - \lrangle{y_x,x}|
+    = |1 - (b + ic)\|x\|^2
+    = \left((1 - b)^2 + c^2\right)\cdot\|x\|^2 \\
+    &\geq c^2\|x\|^2
+    \geq d\|x\|^2/8
+    \end{align*}
+  \end{itemize}
+    For (infinitely many) \(x_n\) such that
+    \(\|x_n\| > \sqrt{2}\cdot2/3\)  % \sqrt{8/9}
+    we have
+    \begin{equation*}
+    |1 - \lrangle{y_n,x_n}| \geq d \|x_n\|^2/8 > d/9 > 0.
+    \end{equation*}
+    Contadiction to \(\lim_{n\to\infty} \lrangle{x_n,y_n} = 0\).
+\end{enumerate}
 \itemch{b}
-If \(x=0\) then \(\lim_{n\to\infty}\|x_n - x\| = \lim_{n\to\infty}\|x_n\| = \|x\|=9\).
+If \(x=0\) then \(\lim_{n\to\infty}\|x_n - x\| = \lim_{n\to\infty}\|x_n\| = \|x\|=0\).
 % Otherwise by dividing \(x_n\) and $x$ by \(\|x\|\) we mat assume 
 \end{itemize}
 
