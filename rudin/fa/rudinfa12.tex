@@ -378,33 +378,14 @@ are equivalent to each other:
 \end{enumerate}
 This generalizes Theorem 12.6.
 \end{excopy}
-\iffalse
-Derive inequalities.
-\begin{equation*}
-|\alpha_j \alpha_k| \leq \max_{m\leq \iota \leq n}\left\{|\alpha_\iota|^2\right\}
-\leq \sum_{\iota=m}^n |\alpha_\iota|^2
-\qquad \textnormal{where}\; m \leq j,k \leq n.
-\end{equation*}
-\begin{equation*}
-\sum_{j,k=m \wedge j\neq k}^n |\alpha_j \alpha_k|\cdot|\lrangle{u_j, u_k}\|
-\leq \left(\sum_{i=m}^n |\alpha_i|^2\right)
-  \sum_{j,k=m \wedge j\neq k}^n \left|\lrangle{u_j, u_k}\right|
-\end{equation*}
-
-\begin{align*}
-\left|\sum_{j,k=m \wedge j\neq k}^n \lrangle{\alpha_j u_j, \alpha_k u_k} \right|
- &\leq \sum_{j,k=m \wedge j\neq k}^n
-   \left|\lrangle{\alpha_j u_j, \alpha_k u_k}\right| 
-  \leq \sum_{j\neq k} \left|\lrangle{\alpha_j u_j, \alpha_k u_k}\right| \\
- &= \sum_{j\neq k} |\alpha_j \alpha_k|\cdot\left|\lrangle{u_j, u_k}\right|
-\end{align*}
-\fi
 Denote
-\begin{equation*}
-S = \sum_{j,k=m \wedge j\neq k}^n \lrangle{\alpha_j u_j, \alpha_k u_k}
+\begin{align*}
+S &= \sum_{j,k=m \wedge j\neq k}^n \lrangle{\alpha_j u_j, \alpha_k u_k}
   = \sum_{m\leq j<k\leq n} 2\Re\left(\lrangle{\alpha_j u_j, \alpha_k u_k}\right)
-  \in \R.
-\end{equation*}
+  \in \R \\
+A &= \sum\nolimits_{j=m}^n |\alpha_j|^2 \\
+M &= \left\| \sum\nolimits_{j=m}^n \alpha_i u_j \right\|^2
+\end{align*}
 Now, let \(a=\max_{j=m}^n\{|\alpha_j|\}\)
 \begin{align*}
 S
@@ -415,28 +396,23 @@ S
         \sum_{j,k=m \wedge j\neq k}^n \left|\lrangle{u_j, u_k}\right|
   \leq  \left(\sum_{j=m}^n |\alpha_j|^2\right)\cdot
         \sum_{j\neq k} \left|\lrangle{u_j, u_k}\right| \\
-  &= \Gamma \sum_{j=m}^n |\alpha_j|^2
+  &= \Gamma A.
 \end{align*}
 Then
 \begin{align*}
-\left\| \sum_{j=m}^n \alpha_i u_j \right\|^2
+M
  &= \lrangle{\sum_{j=m}^n \alpha_j u_j, \sum_{j=m}^n \alpha_j u_j}
  = \left(\sum_{j=m}^n \lrangle{\alpha_j u_j, \alpha_j u_j}\right)
    + \sum_{j,k=m \wedge j\neq k}^n \lrangle{\alpha_j u_j, \alpha_k u_k} \\
- % &= \sum_{j=m}^n |\alpha_j|^2\|u_j\|^2
- %   + \sum_{j,k=m \wedge j\neq k}^n \lrangle{\alpha_j u_j, \alpha_k u_k}
  &= \sum_{j=m}^n |\alpha_j|^2\|u_j\|^2
     + \sum_{m\leq j<k\leq n}
       2\Re\left(\lrangle{\alpha_j u_j, \alpha_k u_k}\right) \\
- &= S + \sum_{j=m}^n |\alpha_j|^2
+ &= S + A
 \end{align*}
-Thus
-\begin{align*}
-\left\| \sum_{j=m}^n \alpha_i u_j \right\|^2
-  &\leq (1+\Gamma)\sum_{j=m}^n |\alpha_j|^2 \\ 
-\left\| \sum_{j=m}^n \alpha_i u_j \right\|^2
-  &\geq (1-\Gamma)\sum_{j=m}^n |\alpha_j|^2 \\ 
-\end{align*}
+Thus we get the desired double inequality
+\begin{equation*}
+(1 - \Gamma)A \leq M \leq (1 + \Gamma)A.
+\end{equation*}
 
 \unfinished
 
