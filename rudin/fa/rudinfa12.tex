@@ -371,7 +371,7 @@ If \(\{\alpha_n\}\) is any sequence of scalars, prove that
 and deduce that the following three properties of \(\{\alpha_i\}\)
 are equivalent to each other:
 \begin{enumerate}
-\item \(\sum_{i=1}^\infty |\alpha_i| < \infty\).
+\item \(\sum_{i=1}^\infty |\alpha_i|^2 < \infty\).
 \item \(\sum_{i=1}^\infty \alpha_i u_i\) converges, in the norm of $H$.
 \item \(\sum_{i=1}^\infty \alpha_i \lrangle{u_i,y}\) converges,
   for even \(y\in H\).
@@ -414,7 +414,43 @@ Thus we get the desired double inequality
 (1 - \Gamma)A \leq M \leq (1 + \Gamma)A.
 \end{equation*}
 
-\unfinished
+Assuming \ich{a}.
+Pick \(\epsilon > 0\). By the inequality we have, there's \(\mu < 0\) such that
+\begin{equation*}
+\left\| \sum\nolimits_{j=\mu}^\infty \alpha_j u_j\right\| \leq
+ \left(\left(\sum\nolimits_{j=\mu}^\infty |\alpha_j|\right) /
+   (1 + \Gamma)\right)^{1/2}.
+\end{equation*}
+Thus \ich{b} holds.
+
+Assuming \ich{b}. By Theorem~12.5
+\(\exists \Lambda\in H^*\) such that
+\(\forall x\in H\; \Lambda x = \lrangle{x, y}\).
+Since \(\Lambda\) is continuous
+\begin{equation*}
+\sum\nolimits_{j=1}^\infty \alpha_j \lrangle{u_j,y} =
+\sum\nolimits_{j=1}^\infty \lrangle{\alpha_j u_j,y} =
+\sum\nolimits_{j=1}^\infty \Lambda(\alpha_j u_j) =
+\Lambda\left(\sum\nolimits_{j=1}^\infty \alpha_j u_j\right).
+\end{equation*}
+Thus \ich{c} holds.
+
+Assuming \ich{c}.
+Define \(\Lambda_n \in H^*\) by
+\begin{equation*}
+\Lambda_n x = \sum\nolimits_{j=1}^n \lrangle{x, \alpha_j u_j}
+\qquad (x\in H, n\in \Z^+)
+\end{equation*}
+By \ich{c} \(\{\Lambda_n x\}\) converges for all \(x\in H\).
+By Banach-Steinhaus Theorem~2.5 \(\{\|\Lambda_m\|\}\) is bounded.
+But
+\begin{equation*}
+\|\Lambda_n\|
+ = \left\|\sum\nolimits_{j=1}^n \alpha_j u_j\right\|
+ = \left(\sum\nolimits_{j=1}^n \|\alpha_j u_j\|^2\right)^{1/2}
+ = \left(\sum\nolimits_{j=1}^n |\alpha_j|^2\right)^{1/2}
+\end{equation*}
+Thus \ich{b} holds.
 
 %%%%%%% 6
 \begin{excopy}
