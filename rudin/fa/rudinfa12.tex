@@ -472,11 +472,7 @@ We need to show
  \lrangle{Tx,x}\lrangle{Ty,y}
 \end{equation}
 
-Since $T$ is self-adjoint
-\(\lrangle{Tx,x} = \lrangle{x,Tx}=\overline{\lrangle{Tx,x}}\).
-Hence \(\lrangle{Tx,x}\in\R\).
-
-Since $T$ is also a projection (\(T=T^2\))
+Since $T$ is a projection (\(T=T^2\)), for any \(x\in H\)
 \begin{equation*}
 \lrangle{Tx,x}
 = \lrangle{Tx,x - Tx + Tx} 
@@ -499,26 +495,12 @@ Now for all \(t\in \R\)
 = \|Tx\|^2 + 2|r|t + t^2\|Ty\|^2
 \geq 0.
 \end{equation*}
-Hence the discriminant \(4r^2 -4 \|Tx\|^2\|Ty\|^2 \leq 0\)
+Hence the discriminant \(4|r|^2 -4 \|Tx\|^2\|Ty\|^2 \leq 0\)
 implying \eqref{eq:12.6:goal2}.
-
-% The inequality trivially holds if \(Tx = 0\).
-% So we may assume \(Tx \neq 0\) and clearly \(x\neq 0\).
-% % Let \(y = aTx + y_\perp\) be such that \(a\in\C\) and
-% % \(\lrangle{Tx, y_\perp} = 0\).
-
-\iffalse
-Also
-\begin{equation*}
-\lrangle{Tx, \overline{x}}
-= \lrangle{x, T\overline{x}}
-= \overline{\lrangle{T\overline{x}, x}
-\end{equation*}
-\fi
 
 %%%%%%% 7
 \begin{excopy}
-Suppose\( U \in \scrB(H)\) is unitary,
+Suppose \( U \in \scrB(H)\) is unitary,
 and \(\epsilon > 0\). Prove that scalars \(\alpha_0,\ldots,\alpha_n\)
 can be chosen so that
 \begin{equation*}
