@@ -461,7 +461,10 @@ Suppose $E$ is a resolution of the identity, as in Section~12.17, and prove that
 for all \(x\in H\), \(y\in H\), and \(\omega \in \frakM\).
 \end{excopy}
 
-Let \(T=E(\omega)\in\scrB(H)\). So \(E_{x,y}(\omega) = \lrangle{Tx,y}\).
+This is similar to Theorem~11.31\ich{b}.
+
+Let \(T=E(\omega)\in\scrB(H)\) which by definition is self-adjoint projection.
+So \(E_{x,y}(\omega) = \lrangle{Tx,y}\).
 We need to show
 \begin{equation} \label{eq:12.6:goal}
 \left|\lrangle{Tx,y}\right|^2
@@ -470,16 +473,48 @@ We need to show
 \end{equation}
 
 Since $T$ is self-adjoint
-\begin{equation*}
-\lrangle{Tx,x} = \lrangle{x,Tx}=\overline{\lrangle{Tx,x}}.
-\end{equation*}
+\(\lrangle{Tx,x} = \lrangle{x,Tx}=\overline{\lrangle{Tx,x}}\).
 Hence \(\lrangle{Tx,x}\in\R\).
-The inequality trivially holds if \(Tx = 0\).
-So we may assume \(Tx \neq 0\) and clearly \(x\neq 0\).
-Let \(y = aTx + y_\perp\) be such that \(a\in\C\) and
-\(\lrangle{Tx, y_\perp} = 0\).
 
-\unfinished
+Since $T$ is also a projection (\(T=T^2\))
+\begin{equation*}
+\lrangle{Tx,x}
+= \lrangle{Tx,x - Tx + Tx} 
+= \lrangle{Tx,x - Tx} + \|Tx\|^2
+= \lrangle{x,Tx - T^2x} + \|Tx\|^2
+= \|Tx\|^2 \geq 0.
+\end{equation*}
+Thus \eqref{eq:12.6:goal} becomes
+\begin{equation} \label{eq:12.6:goal2}
+\left|\lrangle{Tx,y}\right|^2 \leq \|Tx\|^2\|Ty\|^2.
+\end{equation}
+
+The inequality trivially holds if \(\lrangle{Tx,y} = 0\).
+So we may assume \(r=\lrangle{Tx,y} \neq 0\).
+Let \(u = r/|r|\).
+Now for all \(t\in \R\)
+\begin{equation*}
+\lrangle{T(x+tuy),x+tuy}
+= \|Tx\|^2 + t\overline{u}r + tu\overline{r} + t^2\|Ty\|^2
+= \|Tx\|^2 + 2|r|t + t^2\|Ty\|^2
+\geq 0.
+\end{equation*}
+Hence the discriminant \(4r^2 -4 \|Tx\|^2\|Ty\|^2 \leq 0\)
+implying \eqref{eq:12.6:goal2}.
+
+% The inequality trivially holds if \(Tx = 0\).
+% So we may assume \(Tx \neq 0\) and clearly \(x\neq 0\).
+% % Let \(y = aTx + y_\perp\) be such that \(a\in\C\) and
+% % \(\lrangle{Tx, y_\perp} = 0\).
+
+\iffalse
+Also
+\begin{equation*}
+\lrangle{Tx, \overline{x}}
+= \lrangle{x, T\overline{x}}
+= \overline{\lrangle{T\overline{x}, x}
+\end{equation*}
+\fi
 
 %%%%%%% 7
 \begin{excopy}
