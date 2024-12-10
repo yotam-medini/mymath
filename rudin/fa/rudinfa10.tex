@@ -2,3 +2,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapterTypeout{Banach Algebras}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises} % pages 271-274
+
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%% 1
+\begin{excopy}
+Use the identity \((xy)^n = x(yx)^{n-1}y\) to prove that \(xy\) and \(yx\)
+always have the same spectral radius.
+\end{excopy}
+
+\begin{align*}
+ \rho(xy) &= \lim_{n\to\infty} \|(xy)^n\|^{1/n} = \lim_{n\to\infty}\|x(yx)^{n-1}y\|^{1/n} \\
+  &\leq \lim_{n\to\infty} \left(\|x\|\cdot \|(yx)^{n-1}\|\cdot \|y\|\right)^{1/n} \\
+  &= \left(\lim_{n\to\infty} \|x\|^{1/n}\right)
+     \cdot
+     \left(\lim_{n\to\infty} \|(yx)^{n-1}\|^{1/n}\right)
+     \cdot
+     \left(\lim_{n\to\infty} \|y\|^{1/n}\right) \\
+  &= 1 \cdot \left(\lim_{n\to\infty} \|(yx)^{n-1}\|^{1/n}\right) \cdot 1
+   = \lim_{n\to\infty} \|(yx)^{n-1}\|^{1/n} \\
+  &= \lim_{n\to\infty} \left(\|(yx)^{n-1}\|^{1/(n-1)}\right)^{n/n-1} \\
+  &= \lim_{n\to\infty} \left(\rho(yx)\right)^{n/(n-1)} = \rho(yx)
+\end{align*}
+
+%%%%%%%%%%%%%%%
+\end{enumerate}
+%%%%%%%%%%%%%%%
