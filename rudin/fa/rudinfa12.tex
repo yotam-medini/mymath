@@ -53,6 +53,31 @@ we compute:
 \end{equation*}
 \unfinished
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Theorem 12.15}
+
+In the proof of Theorem~12.15~\ich{a}
+the assertion of \(|\lambda|\leq 1\)
+is justified by Theorem~10.13.
+
+In \ich{b} let
+\begin{align*}
+ R &= \lrangle{Sx - \alpha x, - i\beta x} + \lrangle{-i\beta x, Sx - \alpha x}\\
+  &= i\beta\lrangle{Sx, x}  -i\alpha\beta \|x\|^2
+     -i\beta\lrangle{x, Sx} + i\alpha\beta \|x\|^2 = \\
+  &=  i\beta\left(\lrangle{Sx, x} - \lrangle{S^*x, x}\right) 
+   =  i\beta\left(\lrangle{Sx, x} - \lrangle{S^*x, x}\right) = 0.
+\end{align*}
+The last equality holds since since \(S=S^*\),
+
+Now, denote \(D = Sx - \alpha x\). Now
+\begin{equation*}
+\|S_\lambda x\|^2 = \lrangle{D - i\beta x, D - i\beta x} 
+  = \|D\|^2 + i\beta \overline{i\beta} \|x\|^2 + R 
+  = \|S - \alpha x\|^2 + \beta^2 \|x\|^2 
+\end{equation*}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises} % pages 341-346
