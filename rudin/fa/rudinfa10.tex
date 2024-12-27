@@ -7,6 +7,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises} % pages 271-274
 
+Throughout this set of exercises,
+$A$ denotes a Banach algebra and \(x, y, \ldots\) denote
+elements of $A$, unless the contrary is stated.
+
 %%%%%%%%%%%%%%%%%
 \begin{enumerate}
 %%%%%%%%%%%%%%%%%
@@ -30,6 +34,36 @@ always have the same spectral radius.
   &= \lim_{n\to\infty} \left(\|(yx)^{n-1}\|^{1/(n-1)}\right)^{n/n-1} \\
   &= \lim_{n\to\infty} \left(\rho(yx)\right)^{n/(n-1)} = \rho(yx)
 \end{align*}
+
+%%%%%%% 2
+\begin{excopy}
+\begin{itemize}
+  \itemch{a}
+    If $x$ and \(xy\) are invertible in $A$, prove that $y$ is invertible.
+  \itemch{b}
+    If \(xy\) and \(yx\) are invertible in $A$,
+    prove that $x$ and $y$ are invertible. (The
+    commutative case of this was tacitly used in the proofs of Theorems~10.13
+    and 10.28.)
+  \itemch{c}
+    Show that it is possible to have \(xy = e\) but \(yx \neq e\).
+    For example, consider the
+    right and left shifts \(S_R\), and \(S_L\),
+    defined on some Banach space of functions $f$
+    on the nonnegative integers by
+    \begin{align*}
+     (S_R f)(n) &= f(n - 1) \qquad \textnormal{if}\quad n \geq 1,\\
+     (S_R f)(0) &= 0, \\
+     (S_L f)(0) &= f(n + 1) \qquad \textnormal{for all}\quad n \geq 0.
+    \end{align*}
+  \itemch{d}
+    If \(xy = e\) and \(yx = z \neq e\),
+    show that $z$ is a nontrivial idempotent. (This
+    means that \(z^2 = z\), \(z \neq 0\), \(z \neq 0\).)
+\end{itemize}
+\end{excopy}
+
+\unfinished
 
 %%%%%%%%%%%%%%%
 \end{enumerate}
