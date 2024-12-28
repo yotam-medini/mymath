@@ -59,7 +59,7 @@ always have the same spectral radius.
   \itemch{d}
     If \(xy = e\) and \(yx = z \neq e\),
     show that $z$ is a nontrivial idempotent. (This
-    means that \(z^2 = z\), \(z \neq 0\), \(z \neq 0\).)
+    means that \(z^2 = z\), \(z \neq 0\), \(z \neq e\).)
 \end{itemize}
 \end{excopy}
 
@@ -76,8 +76,20 @@ always have the same spectral radius.
     \end{align*}
     Hence \(z = y^{-1}\).
   \itemch{b}
+    We have two sides ``inverses'':
+    \(((yx)^{-1}y)\cdot x = e\)
+    and
+    \(x\cdot(y(xy)^{-1}) = e\).
+    Put \(a = (yx)^{-1}y\) and \(b = y(xy)^{-1}\)
+    so \(ax = xb = e\). Now
+    \(a = a(xb) = (ax)b = b\)
+    Thus \(x^{-1} = a = b\).
+    By symmetry $y$ is invertible as well.
   \itemch{c}
+    Indeed \(S_L\cdot S_R = e\) but \(S_R\cdot S_L \neq e\).
   \itemch{d}
+    Showing idempotent: \(z^2 = (yx)(yx) = y(xy)x = yex = yx = z\).
+    If by negation \(z=0\) then \(e = xy = x(yx)y = 0\) contradiction.
 \end{itemize}
 
 \unfinished
