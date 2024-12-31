@@ -92,6 +92,94 @@ always have the same spectral radius.
     If by negation \(z=0\) then \(e = xy = x(yx)y = 0\) contradiction.
 \end{itemize}
 
+%%%%%%% 3
+\begin{excopy}
+Prove that every finite-dimensional $A$ is isomorphic to an algebra of matrices.
+\emph{Hint}:
+The proof of Theorem~10.2 shows that every $A$ is isomorphic to
+a sub-algebra of \(\scrB(A)\).
+Conclude that \(xy = e\) implies \(yx = e\) if \(\dim A < \infty\).
+\end{excopy}
+
+Let \seq{a}{n} be a base for $A$.
+Let \(\beta: A \to \C^n\) defined such that
+\begin{equation*}
+ \forall x\in A, \qquad
+ x = \sum\nolimits_{j=1}^n \left(\beta(x)\right)_j a_j.
+\end{equation*}
+Any operator in \(\scrB(A)\) is determined by its action on the base.
+For any \(j,k\in\N_n\) let \(b_{j,k}\) be defined such that
+\begin{equation*}
+a_j\cdot a_k = \sum\nolimits_{k=1}^n b_{j,k} a_k.
+\end{equation*}
+Let \(\rho,x \in A\), now
+\begin{equation*}
+\rho\cdot x =
+  \left(\sum\nolimits_{j=1}^n \left(\beta(\rho)\right)_j a_j\right)
+  \cdot
+  \left(\sum\nolimits_{k=1}^n \left(\beta(x)\right)_k a_k\right)
+\end{equation*}
+\unfinished
+
+%%%%%%% 4
+\begin{excopy}
+\begin{itemize}
+\itemch{a}
+Prove that \(e - yx\) is invertible in $A$
+if \(e - xy\) is invertible. \emph{Suggestion:} Put
+\(z =(e-xy)^{-1}\), write $z$ as a geometric series
+(assume \(\|x\| < 1\), \(\|y\| < 1\)), and
+use the identity stated in Exercise~1
+to obtain a finite formula for \((e - yx)^{-1}\)
+in terms of $x$, $y$, $z$. Then show that this formula works without any
+restrictions on \(\|x\|\) or \(\|y\|\).
+\itemch{b}
+If \(\lambda \in \C\) \(\lambda \neq 0\),
+  and \(\lambda \in \sigma(xy)\), prove that \(\lambda \in \sigma(yx)\).
+  Thus \(\sigma(xy) \cup \{0\} = \sigma(yx) \cup \{0\}\).
+  Show, however, that \(\sigma(xy)\) is not always equal to \(\sigma(yx)\).
+\end{itemize}
+\end{excopy}
+
+\unfinished
+
+%%%%%%% 5
+\begin{excopy}
+Let \(A_0\) and \(A_1\),
+be the algebras of all complex 2-by-2 matrices of the form
+
+\begin{equation*}
+\left(
+  \begin{array}{ll}
+   \alpha & 0 \\
+   0 & \beta
+  \end{array}
+\right),
+\qquad
+\left(
+  \begin{array}{ll}
+   \alpha & \beta \\
+   0 & \alpha
+  \end{array}
+\right),
+\end{equation*}
+Prove that every two-dimensional complex algebra $A$ with unit $e$ is isomorphic
+to one of these
+  and that \(A_0\) is not isomorphic to \(A_1\).
+    \emph{Hint:} Show that $A$ has a
+basis \(\{e, a\}\) in which \(a^2 = \lambda e\) for some \(\lambda \in \C\).
+  Distinguish between the cases
+  \(\lambda=0\), \(\lambda \neq 0\).
+  Show that there exists a three-dimensional noncommutative
+Banach algebra.
+\end{excopy}
+
+\unfinished
+
+%%%%%%% nn
+\begin{excopy}
+\end{excopy}
+
 \unfinished
 
 %%%%%%%%%%%%%%%
