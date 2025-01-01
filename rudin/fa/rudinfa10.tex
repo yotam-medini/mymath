@@ -184,11 +184,12 @@ so as a conjecture
 \begin{equation} \label{eq:conj:inv:emyx}
 e + yzx = \sum\nolimits_{k=0}^\infty (yx)^k = (e - yx)^{-1}.
 \end{equation}
-Checking from Left
+Checking from left
 \begin{align*}
 (e + yzx)\cdot(e - yx)
  &= e - yx + yzx - yzxyx
-  = e + y(z - zxy - e)x = e + y(z(e - xy) - e)x \\
+  = e + y(z - zxy - e)x \\
+ &= e + y(z(e - xy) - e)x 
   = e + y\cdot 0\cdot x = e
 \end{align*}
 and checking from right
@@ -200,9 +201,21 @@ and checking from right
 \end{align*}
 So the \eqref{eq:conj:inv:emyx} conjecture holds.
 \itemch{b}
-\end{itemize}
+Let \(\mu = \lambda^{-1}\).
+Note that \(\mu (xy) = (\mu x)y = x(\mu y)\)
+and \(\mu (yx) = (\mu y)x = y(\mu x)\).
+By assumption \(xy -\lambda e\) is not invertible
+and so \(\mu xy - e\) is not invertible.
+By \ich{a} \(\mu yx - e\) is not invertible
+and so \(yx - \lambda e\) is not invertible. Thus \(\lambda \in \sigma(yx)\).
 
-\unfinished
+Using exercise~2.\ich{c},
+We have \(S_L\cdot S_R = e\) and \(S_R\cdot S_L \neq e\)
+and for any \(x\in\ell^p\) we have \(((S_R\cdot S_L)(x))(0) = 0\)
+which shows that \(S_R\cdot S_L\) is not invertible.
+Thus \(0 \in \sigma(S_R\cdot S_L) \setminus  \sigma(S_L\cdot S_R) \),
+and \(\sigma(S_R\cdot S_L) \neq  \sigma(S_L\cdot S_R)\).
+\end{itemize}
 
 %%%%%%% 5
 \begin{excopy}
