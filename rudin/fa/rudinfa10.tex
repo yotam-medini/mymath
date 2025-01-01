@@ -102,11 +102,13 @@ Conclude that \(xy = e\) implies \(yx = e\) if \(\dim A < \infty\).
 \end{excopy}
 
 Let \seq{a}{n} be a base for $A$.
-Let \(\beta: A \to \C^n\) defined such that
+Using the unique linear combination of the base,
+let \(\beta: A \to \C^n\) defined such that
 \begin{equation*}
  \forall x\in A, \qquad
  x = \sum\nolimits_{j=1}^n \left(\beta(x)\right)_j a_j.
 \end{equation*}
+Clearly \(\beta\) is a linear operator.
 Any operator in \(\scrB(A)\) is determined by its action on the base.
 \iffalse
 For any \(j,k\in\N_n\) let \(b_{j,k}\) be defined such that
@@ -124,7 +126,27 @@ Let see how \(\beta(x)\) is \(\rho\)-mapped to \(\beta(y)\).
   =
   \left(\sum\nolimits_{j=1}^n \left(\beta(y)\right)_j a_j\right)
 \end{equation*}
-\unfinished
+Let \(r_{j,k} = \left(\beta(\rho(a_j)\right)_k\) where \(j,k\in\N_n\).
+Let \(R_\rho = (r_{j,k})_{j,k=1}^n\) be a \(n\times n\) matrix.
+we need to show the following equality in \(\C^n\)
+\begin{equation*}
+R_\rho\cdot \beta(x) = \beta(y).
+\end{equation*}
+By linearity, it is sufficient to show the equality for \(x=a_j\).
+For each \(k\in\N_n\)
+\begin{equation*}
+\left(R_\rho\cdot \beta(a_j) \right)_k = r_{j,k}.
+\end{equation*}
+Thus we have an isomorphism \(A \leftrightarrow \C^{n^2}\).
+From the theory of matrices, we know that a matrix $M$ is
+invertible iff \(\det(M)\neq 0\).
+
+Now say the isomorphism maps \(x\to M_1\) and \(y\to M_2\).
+If \(M_1\times M_2 = I_n\) as \(n\times n\) matrices,
+then \(\det(M_1) \neq 0 \neq \det(M_2)\).
+Thus both matrices are invertible, the inverse is unique
+and so  \(M_2\times M_1 = I_n\) as well.
+So if \(xy=e\) then \(yx=e\).
 
 %%%%%%% 4
 \begin{excopy}
