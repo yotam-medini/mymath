@@ -108,16 +108,21 @@ Let \(\beta: A \to \C^n\) defined such that
  x = \sum\nolimits_{j=1}^n \left(\beta(x)\right)_j a_j.
 \end{equation*}
 Any operator in \(\scrB(A)\) is determined by its action on the base.
+\iffalse
 For any \(j,k\in\N_n\) let \(b_{j,k}\) be defined such that
 \begin{equation*}
 a_j\cdot a_k = \sum\nolimits_{k=1}^n b_{j,k} a_k.
 \end{equation*}
-Let \(\rho,x \in A\), now
+\fi
+Let \(\rho,x \in A\), and \(\rho\cdot x = y\).
+Let see how \(\beta(x)\) is \(\rho\)-mapped to \(\beta(y)\).
 \begin{equation*}
 \rho\cdot x =
   \left(\sum\nolimits_{j=1}^n \left(\beta(\rho)\right)_j a_j\right)
   \cdot
-  \left(\sum\nolimits_{k=1}^n \left(\beta(x)\right)_k a_k\right)
+  \left(\sum\nolimits_{j=1}^n \left(\beta(x)\right)_j a_j\right)
+  =
+  \left(\sum\nolimits_{j=1}^n \left(\beta(y)\right)_j a_j\right)
 \end{equation*}
 \unfinished
 
@@ -141,6 +146,40 @@ If \(\lambda \in \C\) \(\lambda \neq 0\),
 \end{itemize}
 \end{excopy}
 
+\begin{itemize}
+\itemch{a}
+As geometric series
+\begin{equation*}
+z = \sum\nolimits_{k=0}^\infty (xy)^k
+\end{equation*}
+Now
+\begin{equation*}
+yzx
+= \sum\nolimits_{k=0}^\infty y(xy)^kx
+= \sum\nolimits_{k=1}^\infty (yx)^k
+\end{equation*}
+so as a conjecture
+\begin{equation} \label{eq:conj:inv:emyx}
+e + yzx = \sum\nolimits_{k=0}^\infty (yx)^k = (e - yx)^{-1}.
+\end{equation}
+Checking from Left
+\begin{align*}
+(e + yzx)\cdot(e - yx)
+ &= e - yx + yzx - yzxyx
+  = e + y(z - zxy - e)x = e + y(z(e - xy) - e)x \\
+  = e + y\cdot 0\cdot x = e
+\end{align*}
+and checking from right
+\begin{align*}
+(e - yx)\cdot(e + yzx)
+ &= e + yzx - yx - yxyzx = e + y(z - xyz - e)x \\
+ &= e + y((e - xy)z - e)x
+    = e + e\cdot 0\cdot x = e
+\end{align*}
+So the \eqref{eq:conj:inv:emyx} conjecture holds.
+\itemch{b}
+\end{itemize}
+
 \unfinished
 
 %%%%%%% 5
@@ -161,7 +200,7 @@ be the algebras of all complex 2-by-2 matrices of the form
    \alpha & \beta \\
    0 & \alpha
   \end{array}
-\right),
+\right).
 \end{equation*}
 Prove that every two-dimensional complex algebra $A$ with unit $e$ is isomorphic
 to one of these
