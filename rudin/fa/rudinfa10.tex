@@ -248,7 +248,116 @@ basis \(\{e, a\}\) in which \(a^2 = \lambda e\) for some \(\lambda \in \C\).
 Banach algebra.
 \end{excopy}
 
-\unfinished
+We have \(a\in A_0\) such that \(\{I, a\}\) is a base and
+\(a^2 = \lambda e\) with \(\lambda \neq 0\).
+for example: \(a = \left(
+\begin{smallmatrix}
+1 & 0 \\
+0 & -1
+\end{smallmatrix}
+\right)\).
+But by negation if we have such an \(a\in A_1\) we would have
+\begin{equation*}
+a^2 =
+\left(
+\begin{array}{ll}
+\alpha & \beta \\
+0 & \alpha \\
+\end{array}\right)^2 =
+\left(
+\begin{array}{ll}
+\alpha^2 & 2\alpha\beta \\
+0 & \alpha^2 \\
+\end{array}\right) = \lambda I
+\end{equation*}
+But then \(\alpha=0\) or \(\beta=0\) and in both cases \(\{I, a\}\)
+would not span $A$, contradicting the base assumption.
+This \(A_0\) and \(A_1\) are not isomorphic.
+
+Let \(\{e, b\}\) be an arbitrary base for 2-dimensional $A$.
+Look at a linear combination \(b^2 = \alpha e + \beta b\)
+where \(\alpha,\beta \in \C\).
+Consider
+\((b + ze)^2 = (\alpha + z^2) e + (\beta + 2z)b\),
+so we pick \(z = -\beta/2\), \(a = b + ze\) and \(\lambda = \alpha + z^2\)
+so we have (as the hint) a base \(\{e, a\}\) and \(a^2 = \lambda e\).
+If \(\lambda \neq 0\) we have isomorphism with \(A_0\)
+\begin{equation*}
+  \alpha e + \beta a \to
+  \left(
+  \begin{array}{ll}
+  \alpha + \beta & 0 \\
+  0 & \alpha - \beta
+  \end{array}
+  \right).
+\end{equation*}
+If \(\lambda = 0\) we have isomorphism with \(A_1\)
+\begin{equation*}
+  \alpha e + \beta a \to
+  \left(
+  \begin{array}{ll}
+  \alpha & \beta \\
+  0 & \alpha
+  \end{array}
+  \right).
+\end{equation*}
+
+Look at the $3$-dimensional algebra of the \(2\times 2\)
+complex matrices of the form
+\(\left(
+\begin{smallmatrix}
+\alpha & \beta \\
+0 & \gamma
+\end{smallmatrix}
+\right)\).
+Now
+\begin{equation*}
+\left(
+  \begin{array}{ll}
+   \alpha_1 & \beta_1 \\
+   0 & \gamma_1
+  \end{array}
+\right)
+\cdot
+\left(
+  \begin{array}{ll}
+   \alpha_2 & \beta_2 \\
+   0 & \gamma_2
+  \end{array}
+\right)
+=
+\left(
+  \begin{array}{ll}
+   \alpha_1\alpha_2 & \alpha_1\beta_2 + \beta_1\gamma_2 \\
+   0 & \gamma_1\gamma_2
+  \end{array}
+\right).
+\end{equation*}
+and
+\begin{equation*}
+\left(
+  \begin{array}{ll}
+   \alpha_2 & \beta_2 \\
+   0 & \gamma_2
+  \end{array}
+\right)
+\cdot
+\left(
+  \begin{array}{ll}
+   \alpha_1 & \beta_1 \\
+   0 & \gamma_1
+  \end{array}
+\right)
+=
+\left(
+  \begin{array}{ll}
+   \alpha_2\alpha_1 & \alpha_2\beta_1 + \beta_2\gamma_1 \\
+   0 & \gamma_2\gamma_1
+  \end{array}
+\right).
+\end{equation*}
+So if we pick \(\alpha_1 = \alpha_2 = \beta_1 = \gamma_2 = 0\)
+and \(\beta_2 = \gamma_1 = 1\) we see that this algebra is noncommutative.
 
 %%%%%%% nn
 \begin{excopy}
