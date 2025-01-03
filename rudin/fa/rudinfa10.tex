@@ -359,6 +359,63 @@ and
 So if we pick \(\alpha_1 = \alpha_2 = \beta_1 = \gamma_2 = 0\)
 and \(\beta_2 = \gamma_1 = 1\) we see that this algebra is noncommutative.
 
+%%%%%%% 6
+\begin{excopy}
+Let $A$ be the algebra of all complex functions $f$ on
+\(\{1, 2, 3, \ldots\}\) which are $0$
+except at finitely many points, with pointwise addition and multiplication and
+norm
+\begin{equation*}
+ \|f\| = \sum\nolimits_{k=1}^\infty k^{-2}|f(k)|.
+\end{equation*}
+Show that multiplication is left-continuous
+  (hence also right-continuous, since $A$
+is commutative) but not jointly continuous. (Adjunction of a unit element, as
+suggested in Section~10.1, would make no difference.)
+  Show, in fact, that there is
+a~sequence \(\{f_n\}\) in $A$ so that \(\|f_n\| \to 0\)
+  but \(\|f_n^2\| \to \infty\), as \(n \to \infty\).
+\end{excopy}
+
+The continuity of single side is trivial
+since in the limit of
+\(\lim_{n\to\infty} f_n\cdot g\)
+or
+\(\lim_{n\to\infty} g\cdot f_n\)
+the g function is constant
+and the formal infinite sum is actually a finite sum,
+since $g$ is $0$ except or finite set of points.
+The finite sum of limits is clearly the limit of the sums.
+
+Let \(h(n) = (1/\left(\log(n))^{1/4}\right)\)
+Clearly
+Define \(f_n : \N \to \C\) by
+\begin{equation*}
+f_n(k) = \left\{
+\begin{array}{ll}
+h(n)\cdot k^{2/3} & \quad \textnormal{if}\; n > 1 \land 0 < k \leq n \\
+0 & \quad \textnormal{if}\; n = 1 \lor k > n 
+\end{array}\right.
+\end{equation*}
+\begin{equation*}
+h(n)\cdot\|f_n\|
+  = \sum\nolimits_{k=2}^n k^{-2+2/3}\
+  \leq \sum\nolimits_{k=2}^\infty k^{-4/3}
+  \leq \int\nolimits_0^\infty x^{-4/3}\,dx
+  = -1/(-4/3 + 1) = 3.
+\end{equation*}
+Thus \(\lim_{n\to\infty} \|f_n\| = 0\).
+But
+\begin{align*}
+\lim_{n\to\infty} \|f_n^2\|
+ &= \lim_{n\to\infty} \sum\nolimits_{k=1}^n (h(n))^2\cdot k^{-2+4/3}
+   = \lim_{n\to\infty} h(n)^2\cdot \sum\nolimits_{k=1}^n k^{-2/3} \\
+ & \geq \lim_{n\to\infty} \left(\log(n)\right)^{-1/2}
+     \cdot  \sum\nolimits_{k=1}^\infty k^{-1}
+   \geq \lim_{n\to\infty} \left(\log(n)\right)^{-1/2} \log(n) \\
+ &= \lim_{n\to\infty} \left(\log(n)\right)^{1/2} = \infty.
+\end{align*}
+
 %%%%%%% nn
 \begin{excopy}
 \end{excopy}
