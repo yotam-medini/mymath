@@ -492,13 +492,25 @@ For example:
 \begin{excopy}
 Suppose that \(\Omega\) is open in \(\C\)
 and that \(f: \Omega \to A\)
-and \(\phi: \Omega \to \C\) are holomorphic.
-Prove that \(\phi : \Omega \to A\) is holomorphic.
+and \(\varphi: \Omega \to \C\) are holomorphic.
+Prove that \(\varphi f : \Omega \to A\) is holomorphic.
 [This was used in the proof of Theorem~10.13,
   with \(\phi(\lambda) = \lambda^n\).]
 \end{excopy}
 
-\unfinished
+[See \cite{RudinPMA85} Theorem~5.3]
+If \(\varphi f \) is holomorphic, then
+\((\varphi f)' = \varphi'f + \varphi f'\).
+Using the continuity of multiplication with scalar
+\begin{align*}
+ \lim_{w\to z} \frac{\varphi(w)f(w) - \varphi(z)f(z)}{w - z}
+ &= \lim_{w\to z} \frac{
+   \varphi(w)(f(w) - f(z)) + (\varphi(w) - \varphi(z))f(z)}{w - z} \\
+ &= \left(\lim_{w\to z} \varphi(w)\frac{f(w) - f(z)}{w - z}\right) +
+    \left(\lim_{w\to z} \frac{\varphi(w) - \varphi(z)}{w - z}\right)f(z) \\
+ &= \varphi(z)f'(z) + \varphi'(z)+f(z).
+\end{align*}
+and the limits exist.
 
 %%%%%%% nn
 \begin{excopy}
