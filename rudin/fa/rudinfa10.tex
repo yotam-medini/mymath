@@ -416,6 +416,61 @@ But
  &= \lim_{n\to\infty} \left(\log(n)\right)^{1/2} = \infty.
 \end{align*}
 
+%%%%%%% 7
+\begin{excopy}
+Let \(C^2 = C^2([0, 1))\) be the space of all complex functions
+  on \([0, 1]\) whose
+second derivative is continuous. Choose \(a > 0\), \(b > 0\), and define
+\begin{equation*}
+\|f\| = \|f\|_\infty + a\|f'\|_\infty +  b\|f''\|_\infty +
+\end{equation*}
+Show that this makes \(C^2\) into a Banach space,
+  for every choice of $a$, $b$, but that
+the Banach algebra axioms hold
+ if and only if \(2b \leq a^2\).
+ (For necessity, consider $x$ and \(x^2\).)
+\end{excopy}
+
+Assume the defined \(\|\|\) is an algebra norm.
+Let \(f(x)=x\). So \((f^2)'(x) = 2x\) and
+\hbox{\((f^2)''(x) = 2\)}.
+We need \(\|f\cdot f\| \leq \|f\|\cdot\|f\|\) to hold.
+\begin{align*}
+1 + a\cdot 2 + b\cdot 2 &\leq (1 + a\cdot 1 + b\cdot 0)^2 \\
+\Rightarrow 2a + 2b + 1 &\leq (a + 1)^2 \\
+\Rightarrow 2b &\leq a^2.
+\end{align*}
+
+Conversely, assume \(2b \leq a^2\).
+Pick arbitrary \(f,g\in C^2\).
+\begin{equation*}
+\newcommand{\IN}[1]{\|{#1}\|_\infty}
+\arraycolsep=1.4pt
+\def\arraystretch{1.6}
+\begin{array}{lcl}
+\|fg\|
+ &=& \IN{fg} + a\IN{f'g + fg'} +  b\IN{f''g + 2f'g' + fg''} \\
+ &\leq&  \IN{f}\cdot\IN{g} +
+         a\left(\IN{f'}\cdot\IN{g} + \IN{f}\cdot\IN{g'}\right) + \\
+ &&      b\left(\IN{f''}\cdot\IN{g} + \IN{f}\cdot\IN{g''}\right) +
+         2b\IN{f'}\cdot\IN{g'} \\
+ &\leq& \IN{f}\cdot\IN{g} +
+         a\left(\IN{f'}\cdot\IN{g} + \IN{f}\cdot\IN{g'}\right) + \\
+ &&      b\left(\IN{f''}\cdot\IN{g} + \IN{f}\cdot\IN{g''}\right) +
+         a^2\IN{f'}\cdot\IN{g'} \\
+ &\leq& \IN{f}\cdot\IN{g} +
+        a\left(\IN{f}\cdot\IN{g'} + \IN{f'}\cdot\IN{g}\right) + \\
+ &&     b\left(\IN{f}\cdot\IN{g''} + \IN{f''}\cdot\IN{g}\right) +
+        a^2\IN{f''}\IN{g''} +
+        ab\IN{f'}\IN{g''} \\
+ &=& (\IN{f} + a\IN{f'} +  b\IN{f''})
+     \cdot
+     (\IN{g} + a\IN{g'} +  b\IN{g''}) \\
+ &=& \IN{f}\cdot\IN{g}.
+\end{array}
+\end{equation*}
+So the inequality of norm required for algebra holds.
+
 %%%%%%% nn
 \begin{excopy}
 \end{excopy}
