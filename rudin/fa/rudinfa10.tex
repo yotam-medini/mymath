@@ -516,9 +516,22 @@ and the limits exist.
 \begin{excopy}
 Another proof that \(\sigma(x) \neq \emptyset\)
   can be based on Liouville’s theorem~3.32 and the
-fact that \(\lambda e - x)^{-1} \to 0\) as \(\lambda \to \infty\).
+fact that \((\lambda e - x)^{-1} \to 0\) as \(\lambda \to \infty\).
   Complete the details.
 \end{excopy}
+
+If \(x = \lambda e\) for some \(\lambda \in C\) then
+clearly this \(\lambda \in \sigma(x)\).
+
+So we can assume that \(x \neq \lambda e\) for all  \(\lambda \in C\).
+If by negation  \(\sigma(x) = \emptyset\) then
+and \(f(\lambda) = ((\lambda e - x)^{-1}\) is entire holomorphic
+function (using proof similar to that of Theorem~5.3 \cite{RudinPMA85}.
+Clearly \(\lim_{\lambda\to\infty}f(\lambda) = 0\).
+Hence there exists \(r>0\) such that \(|f(z)| < 1\) whenever \(|z|>r\)
+and \(|f|\) achieves a maximum in the \(B(0,r)\) ball
+and so $f$ is bounded. By Liouville’s theorem~3.32 $f$ is constant
+which is a contrdiction (\(|f(0)| > 0\) and it vanishes at infinity).
 
 %%%%%%% 11
 \begin{excopy}
@@ -538,6 +551,8 @@ a topological divisor of zero.
 In which Banach algebras is $0$ the only topological divisor of $0$?
 \end{itemize}
 \end{excopy}
+
+\unfinished
 
 %%%%%%% nn
 \begin{excopy}
