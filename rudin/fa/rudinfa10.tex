@@ -545,7 +545,7 @@ if there is a sequence \(\{y_n\}\) in $A$, with
 \itemch{a}
 Prove that every boundary point $x$
   of the set of all invertible elements of $A$ is
-a topological divisor of zero.
+a topological divisor of zeroq.
   \emph{Hint:} Take \(y_n = x_n^{-1} /\|x_n^{-1}\|\), where \(x_n \to x\).
 \itemch{b}
 In which Banach algebras is $0$ the only topological divisor of $0$?
@@ -562,10 +562,32 @@ In which Banach algebras is $0$ the only topological divisor of $0$?
 
 \unfinished
 
+%%%%%%% 12
+\begin{excopy}
+Find the spectrum of the operator \(T \in \scrB(\ell^2)\) given by
+\begin{equation*}
+T(x_1,x_2,x_3,x_4,\ldots) = (-x_2,x_1,-x_4,x_3,\ldots).
+\end{equation*}
+\end{excopy}
+It is sufficient to look on \((x_1,x_2)\)
+and restricy $T$ to \(\C^2\). Thus $T$ can be represented as
+\(\left(
+\begin{smallmatrix}
+0 & -1 \\
+1 & 0
+\end{smallmatrix}
+\right)\). It characteristic polynomial is \(p_T(x) = x^2 + 1\)
+whose roots are \(i\) and \(-i\).
+Indeed \(T \pm iI\) are non invertible with two non empty kernels.
+One kernel
+consisting of all \((-x_2,x_1,-x_4,x_3,\ldots)\)
+such that \(x_{2n} = ix_{2n-1}\) for all \(n\in\N\).
+A Similar kernel, such that \(x_{2n} = -ix_{2n-1}\) for all \(n\in\N\).
+So \(\sigma(T) = \{i, -i\}\).
+
 %%%%%%% nn
 \begin{excopy}
 \end{excopy}
-
 \unfinished
 
 %%%%%%%%%%%%%%%
