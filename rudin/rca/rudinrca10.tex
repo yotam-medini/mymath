@@ -54,6 +54,26 @@ hence \eqref{eq:thm:10.6} holds.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.7 --- Geometric Equality}
+
+The proof of Theoerm 10.7 uses the following equality
+\begin{equation*}
+\sum_{n=0}^\infty \frac{(z - a)^n}{\left(\varphi(\zeta) - a\right)^{n+1}}
+  = \frac{1}{\varphi(\zeta) - a}.
+\end{equation*}
+Let us derive it.
+\begin{align*}
+\sum_{n=0}^\infty \frac{(z - a)^n}{\left(\varphi(\zeta) - a\right)^{n+1}}
+ &= \frac{1}{\varphi(\zeta) - a}
+  \sum_{n=0}^\infty \left(\frac{z - a}{\varphi(\zeta) - a}\right)^n
+  = \frac{1}{\varphi(\zeta) - a}
+    \cdot
+    \frac{1}{1 - \frac{z - a}{\varphi(\zeta) - a}} \\
+ &= \frac{1}{\varphi(\zeta) - a) - (z - a)}
+  = \frac{1}{\varphi(\zeta) - a}.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Theoerm 10.15 --- Cauchy Fromula in Convex Region}
 
 Let us work out the last derivation in the proof of theoerm~10.15.
