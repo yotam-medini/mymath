@@ -74,6 +74,34 @@ Let us derive it.
 \end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theoerm 10.10 --- Winding Number Equality}
+
+The proof of Theoerm~10.0 defines
+\begin{equation*}
+ \varphi(t) = \exp\left\{\int_\alpha^t \frac{\gamma'(s)}{\gamma(s) - z}ds\right\}
+\end{equation*}
+and later claims that the derivative of \(\varphi/(\gamma - z)\)
+is zero in \(V = [\alpha, \beta] \setminus S\) where $S$ is where \(\gamma\)
+is not differentiable.
+Let us show it in $V$.
+Put
+\begin{equation*}
+h(t) = \int_\alpha^t \frac{\gamma'(s)}{\gamma(s) - z}ds
+\end{equation*}
+so \(\varphi(t) = \exp(h(t))\) and
+\(h'(t) = \frac{\gamma'(t)}{\gamma(t) - z}\)
+and \(\varphi'(t) = h'(t)\varphi(t)\).\\
+Now \(\frac{d}{dt} \frac{\varphi(t)}{\gamma(t) - z} = N/D\)
+where \(D=(\gamma(t) - z)^2\) and
+\begin{equation*}
+  N = \varphi'(t)(\gamma(t) - z) - \varphi(t)\gamma'(t) 
+   = h'(t)e^{h(t)}(\gamma(t) - z) - e^{h(t)}\gamma'(t) 
+    = e^{h(t)}\gamma'(t) - e^{h(t)}\gamma'(t) = 0.
+\end{equation*}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Theoerm 10.15 --- Cauchy Fromula in Convex Region}
 
 Let us work out the last derivation in the proof of theoerm~10.15.

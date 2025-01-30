@@ -43,14 +43,7 @@ RUDINTEXS = \
 
 
 rudinrca-a4.pdf: rudinrca-a4.tex rudinrca.tex ${RUDINTEXS} 10-37-fig.tex
-	rm -rf scr
-	mkdir -p scr
-	(cd scr; touch dum; rm -f rudin*; \
-	touch rudinrca-a4.aux; \
-	TEXINPUTS=.:..:$$TEXINPUTS pdflatex rudinrca-a4.tex; \
-	mpost myfigs.mp; \
-	TEXINPUTS=.:..:$$TEXINPUTS pdflatex rudinrca-a4.tex; \
-	 mv rudinrca-a4.pdf ..)
+	TEXINPUTS=.:..:${TEXINPUTS} latexmk -pdf -halt-on-error rudinrca-a4.tex
 	ls -l $@
 
 # 10-37-fig.tex: 10-37.py
