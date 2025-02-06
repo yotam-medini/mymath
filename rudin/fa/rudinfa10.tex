@@ -654,7 +654,17 @@ subalgebra of \(C(K)\) that contains $1$ and $f$.
 Let $B$ be the smallest closed sub-algebra
   of \(C(K)\) that contains $f$ and \(1/f\).
   Describe the spectra \(\sigma_A(f)\) and \(\sigma_B(f)\) .
-\end{excopy}
+\end{excopy}
+
+If by negation \(1/f \in A\) then we can find polynomials \((p_n)_{n\in\N}\)
+such that \(\lim_{n\to\infty} p(f) = 1/f\) on \(C(K)\).
+But then on the unit circle path \(\gamma(t) = e^{2\pi i t}\)
+we would have
+\begin{equation*}
+0 = \frac{1}{2\pi i}\int_{\gamma} (p_n(f))(\zeta)d\zeta
+  = \lim_{n\to\infty}\frac{1}{2\pi i}\int_{\gamma} (p_n(f))(\zeta)d\zeta
+  = \frac{1}{2\pi i}\int_{\gamma} d\zeta/f(\zeta) = 1.
+\end{equation*}
 \unfinished
 
 %%%%%%% 14
