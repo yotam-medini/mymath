@@ -10,14 +10,15 @@
 \subsection{Proof of Theorem~10.13}
 
 The proof defines \(f(\lambda) = (\lambda e - x)^{-1}\)
-and claims \(f(\lambda) = \sum_{n=0}^\infty \lambda^{-n-1} x^n\).
+and for \(\|x\|< |\lambda |\) claims that
+\(f(\lambda) = \sum_{n=0}^\infty \lambda^{-n-1} x^n\).
 To show it, define \(S = \sum_{n=0}^\infty \lambda^{-n-1} x^n\).
 Now \(S = (e/\lambda) \sum_{n=0}^\infty (x/\lambda)^n\).
-Clearly \((S - (x/\lambda)S = e/\lambda\) and so 
+Clearly \(S - (x/\lambda)S = e/\lambda\) and so 
 \begin{equation*}
 S
-= e / \left(\lambda(e - (x/\lambda))\right)
-= e / (\lambda(e - x) = f(\lambda).
+= e \cdot \left(\lambda(e - (x/\lambda))\right)^{-1}
+= e \cdot (\lambda e - x)^{-1} = f(\lambda).
 \end{equation*}
 
 
@@ -631,7 +632,7 @@ T(x_1,x_2,x_3,x_4,\ldots) = (-x_2,x_1,-x_4,x_3,\ldots).
 \end{equation*}
 \end{excopy}
 It is sufficient to look on \((x_1,x_2)\)
-and restricy $T$ to \(\C^2\). Thus $T$ can be represented as
+and restrict $T$ to \(\C^2\). Thus $T$ can be represented as
 \(\left(
 \begin{smallmatrix}
 0 & -1 \\
@@ -665,6 +666,7 @@ we would have
   = \lim_{n\to\infty}\frac{1}{2\pi i}\int_{\gamma} (p_n(f))(\zeta)d\zeta
   = \frac{1}{2\pi i}\int_{\gamma} d\zeta/f(\zeta) = 1.
 \end{equation*}
+Thus \(A \subsetneq B\).
 \unfinished
 
 %%%%%%% 14
