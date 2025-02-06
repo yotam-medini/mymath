@@ -667,7 +667,23 @@ we would have
   = \frac{1}{2\pi i}\int_{\gamma} d\zeta/f(\zeta) = 1.
 \end{equation*}
 Thus \(A \subsetneq B\).
-\unfinished
+
+Clearly \(K \subset \sigma_B(f) \subset \sigma_A(f)\).
+As we saw above \(1/f \notin A\)
+hence \(0 \in \sigma_A(f) \setminus \sigma_B(f)\).
+Let \(z \in \{z \in \C: 0 < |z| < 1\}\), then
+\begin{equation*}
+(ze - f)^{-1}
+= (ze - \lambda)^{-1}
+= z^{-1}(e - z\lambda)^{-1}
+= z^{-1}\sum_{n=0}^\infty (z\lambda)^n.
+\end{equation*}
+The last series converges iff \(|z\lambda| < 1\) for all \(\lambda \in K\).
+Since in $K$, we can have \(|\lambda|=2\)
+the series converges iff \(|z|<1/2\).
+
+To summarize, \(\sigma_B(f) = \{z\in \C: 1/2 \leq |z| \leq 2\}\)
+and  \(\sigma_A(f) = \sigma_B(f) \cup \{0\}\).
 
 %%%%%%% 14
 \begin{excopy}
