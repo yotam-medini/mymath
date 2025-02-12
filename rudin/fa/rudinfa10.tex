@@ -23,22 +23,6 @@ S
 \end{equation*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{On Section 10.26 Comments}
-
-In comment \ich{c} of Section~10.26 the text claims
-\(\tilde{f}(\alpha e) = f(\alpha)e\). To show it
-\begin{equation*}
-\tilde{f}(\alpha e)
-  = \frac{1}{2\pi i}\int_{\Gamma} f(\lambda)(\lambda e - \alpha e)^{-1} d\lambda
-  = \frac{1}{2\pi i}\int_{\Gamma} \frac{f(\lambda)e}{\lambda \alpha} d\lambda
-  = \frac{1}{2\pi i}
-    \left(\int_{\Gamma} \frac{f(\lambda)}{\lambda \alpha} d\lambda\right)e
-  = f(\alpha)e.
-\end{equation*}
-\unfinished
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Proof of Theorem~10.24}
 
 The proof says that when \(\lambda \notin \sigma(x)\), then
@@ -54,6 +38,46 @@ an equivalent equality which is trivially true.
 \alpha  e -x = (\lambda e -x) + (\alpha - \lambda)e.
 \end{equation*}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{On Section 10.26 Comments}
+
+In comment \ich{c} of Section~10.26 the text claims
+\(\tilde{f}(\alpha e) = f(\alpha)e\). To show it
+\begin{equation*}
+\tilde{f}(\alpha e)
+  = \frac{1}{2\pi i}\int_{\Gamma} f(\lambda)(\lambda e - \alpha e)^{-1} d\lambda
+  = \frac{1}{2\pi i}\int_{\Gamma} \frac{f(\lambda)e}{\lambda \alpha} d\lambda
+  = \frac{1}{2\pi i}
+    \left(\int_{\Gamma} \frac{f(\lambda)}{\lambda \alpha} d\lambda\right)e
+  = f(\alpha)e.
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proof of Theorem 10.28}
+
+The proof of Theorem~10.28 claims that if
+\(f\in H(\Omega)\) and \(f(\alpha)=0\)
+then there exists \(h\in H(\Omega)\) such that
+\((\lambda - \alpha)h(\lambda) = f(\lambda)\) where \(\lambda\in\Omega\).
+
+Looking at
+\begin{equation*}
+\lim_{\lambda\to\alpha} \frac{f(\lambda)}{\lambda - \alpha}
+= \lim_{\lambda\to\alpha} \frac{f(\lambda) - f(\alpha)}{\lambda - \alpha}
+= f'(\alpha).
+\end{equation*}
+So for \(\lambda\in \Omega\) we can define
+\begin{equation*}
+h(\lambda) = \left\{
+\begin{array}{ll}
+ f(\lambda)/(\lambda - \alpha) & \textnormal{if}\;\lambda \neq \alpha \\
+ f'(\alpha) &                    \textnormal{if}\;\lambda = \alpha \\
+\end{array}
+\right.
+\end{equation*}
+Clearly \(h\in H(\Omega\setminus\{\alpha\})\) and continuous on \(\Omega\).
+By Theorem~10.20 of \cite{RudinRCA80} \(h\in H(\Omega)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
