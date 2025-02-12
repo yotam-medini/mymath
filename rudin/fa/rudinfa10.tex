@@ -7,6 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Notes} % 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Proof of Theorem~10.13}
 
 The proof defines \(f(\lambda) = (\lambda e - x)^{-1}\)
@@ -20,6 +21,21 @@ S
 = e \cdot \left(\lambda(e - (x/\lambda))\right)^{-1}
 = e \cdot (\lambda e - x)^{-1} = f(\lambda).
 \end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{On Section 10.26 Comments}
+
+In comment \ich{c} of Section~10.26 the text claims
+\(\tilde{f}(\alpha e) = f(\alpha)e\). To show it
+\begin{equation*}
+\tilde{f}(\alpha e)
+  = \frac{1}{2\pi i}\int_{\Gamma} f(\lambda)(\lambda e - \alpha e)^{-1} d\lambda
+  = \frac{1}{2\pi i}\int_{\Gamma} \frac{f(\lambda)e}{\lambda \alpha} d\lambda
+  = \frac{1}{2\pi i}
+    \left(\int_{\Gamma} \frac{f(\lambda)}{\lambda \alpha} d\lambda\right)e
+  = f(\alpha)e.
+\end{equation*}
+\unfinished
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
