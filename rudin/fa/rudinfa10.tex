@@ -80,6 +80,79 @@ Clearly \(h\in H(\Omega\setminus\{\alpha\})\) and continuous on \(\Omega\).
 By Theorem~10.20 of \cite{RudinRCA80} \(h\in H(\Omega)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Equality in Proof of Theorem~10.29}
+
+Given \(x\in A_\Omega\), \(f\in H(\Omega)\),
+open \(\Omega_1 \supset f(\sigma(x))\),
+\(g\in H(\Omega_1)\)\\
+and \(h(\lambda)=g(f(\lambda))\)
+in \hbox{\(\Omega_0 = \{\lambda \in \Omega: f(\lambda) \in \Omega_1\}\)}.
+We have
+\begin{equation*}
+\tilde{f}(x)
+  = \frac{1}{2\pi i}\int_{\Gamma_0} f(\lambda)(\lambda e - x)^{-1}\,d\lambda.
+  \qquad (x\in A_{\Omega_0})
+\end{equation*}
+and
+\begin{equation*}
+\tilde{g}(y)
+  = \frac{1}{2\pi i}\int_{\Gamma_1} g(\zeta)(\zeta e - y)^{-1}\,d\zeta.
+  \qquad (y\in A_{\Omega_1})
+\end{equation*}
+For appropriate \(\Gamma\) contours.
+We have
+\begin{equation*}
+\Ind_{\Gamma_1} (f(\lambda))
+  = \frac{1}{2\pi i}\int_{\Gamma_1} \frac{dz}{z - \lambda}  = 1
+\end{equation*}
+Similarly
+\begin{equation*}
+g(f(\lambda)) =
+\Ind_{\Gamma_1} g(f(\lambda))
+  = \frac{1}{2\pi i}\int_{\Gamma_1} \frac{g(\zeta)}{\zeta - f(\lambda)}\,d\zeta
+\end{equation*}
+and using Theorem 10.27 we also have
+\begin{equation*}
+\left(\zeta e - \tilde{f}(x)\right)^{-1}
+ = \frac{1}{2\pi i}\int_{\Gamma_0}
+   (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\lambda.
+\end{equation*}
+Thus
+\begin{align*}
+\tilde{g}\left(\tilde{f}(x)\right)
+  &= \frac{1}{2\pi i}\int_{\Gamma_1}
+    g(\zeta)\left(\zeta e - \tilde{f}(x)\right)^{-1}\,d\zeta \\
+  &= \frac{1}{2\pi i}\int_{\Gamma_1}
+    g(\zeta)
+      \left(
+        \frac{1}{2\pi i}\int_{\Gamma_0}
+          (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\lambda
+      \right)\,d\zeta \\
+  &= \frac{1}{(2\pi i)^2}
+    \int_{\Gamma_0}
+      \left(
+        \int_{\Gamma_1}
+          g(\zeta)
+          (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\zeta
+      \right)
+      \,d\lambda \\
+  &= \frac{1}{(2\pi i)^2}
+    \int_{\Gamma_0}
+      \left(
+        \int_{\Gamma_1}
+          g(\zeta)
+          (\zeta - f(\lambda))^{-1}\,d\zeta
+      \right)
+      (\lambda e - x)^{-1}
+      \,d\lambda \\
+  &= \frac{1}{(2\pi i)} \int_{\Gamma_0} g(f(\lambda))(\lambda e - x)^{-1}\,d\lambda
+    = \frac{1}{(2\pi i)} \int_{\Gamma_0} h(\lambda)(\lambda e - x)^{-1}\,d\lambda \\
+  &= \tilde{h}(x).
+\end{align*}
+\unfinished
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises} % pages 271-274
 
