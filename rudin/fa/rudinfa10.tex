@@ -80,79 +80,6 @@ Clearly \(h\in H(\Omega\setminus\{\alpha\})\) and continuous on \(\Omega\).
 By Theorem~10.20 of \cite{RudinRCA80} \(h\in H(\Omega)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Equality in Proof of Theorem~10.29}
-
-Given \(x\in A_\Omega\), \(f\in H(\Omega)\),
-open \(\Omega_1 \supset f(\sigma(x))\),
-\(g\in H(\Omega_1)\)\\
-and \(h(\lambda)=g(f(\lambda))\)
-in \hbox{\(\Omega_0 = \{\lambda \in \Omega: f(\lambda) \in \Omega_1\}\)}.
-We have
-\begin{equation*}
-\tilde{f}(x)
-  = \frac{1}{2\pi i}\int_{\Gamma_0} f(\lambda)(\lambda e - x)^{-1}\,d\lambda.
-  \qquad (x\in A_{\Omega_0})
-\end{equation*}
-and
-\begin{equation*}
-\tilde{g}(y)
-  = \frac{1}{2\pi i}\int_{\Gamma_1} g(\zeta)(\zeta e - y)^{-1}\,d\zeta.
-  \qquad (y\in A_{\Omega_1})
-\end{equation*}
-For appropriate \(\Gamma\) contours.
-We have
-\begin{equation*}
-\Ind_{\Gamma_1} (f(\lambda))
-  = \frac{1}{2\pi i}\int_{\Gamma_1} \frac{dz}{z - \lambda}  = 1
-\end{equation*}
-Similarly
-\begin{equation*}
-g(f(\lambda)) =
-\Ind_{\Gamma_1} g(f(\lambda))
-  = \frac{1}{2\pi i}\int_{\Gamma_1} \frac{g(\zeta)}{\zeta - f(\lambda)}\,d\zeta
-\end{equation*}
-and using Theorem 10.27 we also have
-\begin{equation*}
-\left(\zeta e - \tilde{f}(x)\right)^{-1}
- = \frac{1}{2\pi i}\int_{\Gamma_0}
-   (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\lambda.
-\end{equation*}
-Thus
-\begin{align*}
-\tilde{g}\left(\tilde{f}(x)\right)
-  &= \frac{1}{2\pi i}\int_{\Gamma_1}
-    g(\zeta)\left(\zeta e - \tilde{f}(x)\right)^{-1}\,d\zeta \\
-  &= \frac{1}{2\pi i}\int_{\Gamma_1}
-    g(\zeta)
-      \left(
-        \frac{1}{2\pi i}\int_{\Gamma_0}
-          (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\lambda
-      \right)\,d\zeta \\
-  &= \frac{1}{(2\pi i)^2}
-    \int_{\Gamma_0}
-      \left(
-        \int_{\Gamma_1}
-          g(\zeta)
-          (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\zeta
-      \right)
-      \,d\lambda \\
-  &= \frac{1}{(2\pi i)^2}
-    \int_{\Gamma_0}
-      \left(
-        \int_{\Gamma_1}
-          g(\zeta)
-          (\zeta - f(\lambda))^{-1}\,d\zeta
-      \right)
-      (\lambda e - x)^{-1}
-      \,d\lambda \\
-  &= \frac{1}{(2\pi i)} \int_{\Gamma_0} g(f(\lambda))(\lambda e - x)^{-1}\,d\lambda
-    = \frac{1}{(2\pi i)} \int_{\Gamma_0} h(\lambda)(\lambda e - x)^{-1}\,d\lambda \\
-  &= \tilde{h}(x).
-\end{align*}
-\unfinished
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises} % pages 271-274
 
@@ -744,7 +671,7 @@ In which Banach algebras is $0$ the only topological divisor of $0$?
   \begin{align*}
   \limn \|z_n x\|
     &= \limn \|z_n(x - x_n) + z_n x_n\| \\
-    &\leq \limn \|(x - x_n\| + \limn \|x_n^{-1} \cdot x_n/\|x_n{-1}\|
+    &\leq \limn \|x - x_n\| + \limn \|x_n^{-1} \cdot x_n/\|x_n{-1}\|
     = 0 + 0 = 0.
   \end{align*}
   Thus $x$ is a topological divisor of $0$.
@@ -829,7 +756,128 @@ follows: Prove the theorem first for polynomials $g$, then for rational
   theorem.
 \end{itemize}
 \end{excopy}
+
+Given \(x\in A_\Omega\), \(f\in H(\Omega)\),
+open \(\Omega_1 \supset f(\sigma(x))\),
+\(g\in H(\Omega_1)\)\\
+and \(h(\lambda)=g(f(\lambda))\)
+in \hbox{\(\Omega_0 = \{\lambda \in \Omega: f(\lambda) \in \Omega_1\}\)}.
+
+\begin{itemize}
+\itemch{a}
+We have
+\begin{equation*}
+\tilde{f}(x)
+  = \frac{1}{2\pi i}\int_{\Gamma_0} f(\lambda)(\lambda e - x)^{-1}\,d\lambda.
+  \qquad (x\in A_{\Omega_0})
+\end{equation*}
+and
+\begin{equation*}
+\tilde{g}(y)
+  = \frac{1}{2\pi i}\int_{\Gamma_1} g(\zeta)(\zeta e - y)^{-1}\,d\zeta.
+  \qquad (y\in A_{\Omega_1})
+\end{equation*}
+For appropriate \(\Gamma\) contours.
+We have
+\begin{equation*}
+\Ind_{\Gamma_1} (f(\lambda))
+  = \frac{1}{2\pi i}\int_{\Gamma_1} \frac{dz}{z - \lambda}  = 1
+\end{equation*}
+Similarly
+\begin{equation*}
+g(f(\lambda)) =
+\Ind_{\Gamma_1} g(f(\lambda))
+  = \frac{1}{2\pi i}\int_{\Gamma_1} \frac{g(\zeta)}{\zeta - f(\lambda)}\,d\zeta
+\end{equation*}
+and using Theorem 10.27 we also have
+\begin{equation*}
+\left(\zeta e - \tilde{f}(x)\right)^{-1}
+ = \frac{1}{2\pi i}\int_{\Gamma_0}
+   (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\lambda.
+\end{equation*}
+Thus
+\begin{align}
+\widetilde{g}\left(\widetilde{f}(x)\right)
+  &= \frac{1}{2\pi i}\int_{\Gamma_1}
+    g(\zeta)\left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta \nonumber \\
+  &= \frac{1}{2\pi i}\int_{\Gamma_1}
+    g(\zeta)
+      \left(
+        \frac{1}{2\pi i}\int_{\Gamma_0}
+          (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\lambda
+      \right)\,d\zeta \nonumber \\
+  &= \frac{1}{(2\pi i)^2}  
+    \int_{\Gamma_0}
+      \left(
+        \int_{\Gamma_1}
+          g(\zeta)
+          (\zeta - f(\lambda))^{-1}(\lambda e - x)^{-1}\,d\zeta
+      \right)
+      \,d\lambda  \label{eq:10.14:fubini} \\
+  &= \frac{1}{(2\pi i)^2}
+    \int_{\Gamma_0}
+      \left(
+        \int_{\Gamma_1}
+          g(\zeta)
+          (\zeta - f(\lambda))^{-1}\,d\zeta
+      \right)
+      (\lambda e - x)^{-1}
+      \,d\lambda \nonumber \\
+  &= \frac{1}{(2\pi i)} \int_{\Gamma_0} g(f(\lambda))(\lambda e - x)^{-1}\,d\lambda
+    = \frac{1}{(2\pi i)} \int_{\Gamma_0} h(\lambda)(\lambda e - x)^{-1}\,d\lambda
+      \nonumber \\
+  &= \widetilde{h}(x) \nonumber.
+\end{align}
+The Fubini's theorem is applied in \eqref{eq:10.14:fubini}.
+Both measures on \(\Gamma_0\) and \(\Gamma_1\) are finite.
+\itemch{b}
+Assume
+\(g(x) = \sum_{p=0}^n a_p x^p\) s a polynomial. So
+\begin{align}
+\widetilde{g}\left(\widetilde{f}(x)\right)
+  &= \frac{1}{2\pi i}\int_{\Gamma_1}
+    g(\zeta)\left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta \nonumber \\
+  &=  \frac{1}{2\pi i}\int_{\Gamma_1}
+        \sum_{p=0}^n
+        a_p \zeta^p \left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta
+          \nonumber
+   =  \sum_{p=0}^n
+        a_p
+        \frac{1}{2\pi i}
+        \int_{\Gamma_1}
+          \zeta^p \left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta
+            \nonumber \\
+  &= \sum_{p=0}^n a_p \left(\widetilde{f}(x)\right)^p \label{eq:10.14b:poly} \\
+  &= \sum_{p=0}^n a_p \widetilde{f^p}(x) \nonumber \\
+  &= \sum_{p=0}^n a_p
+    \frac{1}{2\pi i}
+    \int_{\Gamma_0}
+    (f(\lambda))^p(\lambda e - x)^{-1}\,d\lambda 
+  = \frac{1}{2\pi i}\int_{\Gamma_0}
+    \sum_{p=0}^n a_p(f(\lambda))^p(\lambda e - x)^{-1}\,d\lambda \nonumber \\
+  &= \frac{1}{2\pi i}\int_{\Gamma_0} g(f(\lambda))(\lambda e - x)^{-1}\,d\lambda
+    \nonumber \\
+  &= \widetilde{(g\circ f)}(x) = \widetilde{h}(x) \nonumber
+\end{align}
+Equality (7) of section~10.13 gives \eqref{eq:10.14b:poly}.
+
+\iffalse
+Let \(f^p(x) = (f(x))^p\), from the other side:
+\begin{align*}
+\widetilde{h}(x) &= \widetilde{(g\circ f)}(x) \\
+  &= \frac{1}{2\pi i}\int_{\Gamma_0} g(f(\lambda))(\lambda e - x)^{-1}\,d\lambda \\
+  &= \frac{1}{2\pi i}\int_{\Gamma_0}
+    \sum_{p=0}^n a_p(f(\lambda))^p(\lambda e - x)^{-1}\,d\lambda \\
+  &= \sum_{p=0}^n a_p
+    \frac{1}{2\pi i}
+    \int_{\Gamma_0}
+    (f(\lambda))^p(\lambda e - x)^{-1}\,d\lambda \\
+  &= \sum_{p=0}^n a_p \widetilde{f^p}(x)
+\end{align*}
+\fi
+
 \unfinished
+\end{itemize}
 
 %%%%%%% nn
 \begin{excopy}
