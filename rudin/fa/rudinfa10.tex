@@ -865,39 +865,37 @@ Assume $g$ is of form \(g(\lambda) = (\lambda - \alpha)^{-k}\)
 with integer \(k>0\) and where the pole \(\alpha\) is
 outside
 \(\Omega_1 \supset f(\sigma(x)) = \sigma\left(\widetilde{f}(x)\right)\).
-\begin{align*}
+\begin{align}
 \widetilde{g}\left(\widetilde{f}(x)\right)
- &= \frac{1}{2\pi i}
+  &= \frac{1}{2\pi i}
      \int_{\Gamma_1}
        (\zeta - \alpha)^{-k}\left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta
-     \\
- &= \frac{(-1)^k}{2\pi i}
+     \nonumber \\
+  &= \frac{(-1)^k}{2\pi i}
      \int_{\Gamma_1}
        (\alpha - \zeta)^{-k}\left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta
-     \\
- &= (-1)^k(\alpha e -  \widetilde{f}(x))^{-k}
-  = (\widetilde{f}(x) - \alpha e)^{-k} \\
- &?=? \widetilde{(g \circ f)}(x)
-\end{align*}
-
-From other side
-\begin{align*}
-\widetilde{(g \circ f)}(x)
-  &= \frac{1}{2\pi i}\int_{\Gamma_0}
-    (f(\lambda) - \alpha)^{-k}(\lambda e - x)^{-1}\,d\lambda \\
+     \nonumber \\
+  &= (-1)^k(\alpha e -  \widetilde{f}(x))^{-k} \label{eq:10.14b:lem:10.24} \\
   &= \frac{(-1)^k}{2\pi i}\int_{\Gamma_0}
-    (\alpha - f(\lambda))^{-k}(\lambda e - x)^{-1}\,d\lambda \\
-  &= (-1)^k(\alpha e - f(x))^{-k} = (f(x) - \alpha e)^{-k}
-\end{align*}
+    (\alpha - f(\lambda))^{-k}(\lambda e - x)^{-1}\,d\lambda \nonumber \\
+  &= \frac{1}{2\pi i}\int_{\Gamma_0}
+    (f(\lambda) - \alpha)^{-k}(\lambda e - x)^{-1}\,d\lambda \nonumber \\
+  &= \widetilde{(g \circ f)}(x). \nonumber
+\end{align}
+Lemma~10.24 gives \eqref{eq:10.14b:lem:10.24}.
 
+We saw that the desired equality
+\(\widetilde{g}\left(\widetilde{f}(x)\right) = \widetilde{(g \circ f)}(x)\)
+holds when $g$ is polynomial or of the form \((\lambda - \alpha)^{-k}\).
+Using simple additive argument (as done in the polynomial case),
+we deduce that the equality holds also for any rational function
+with poles outside \(\Omega\).
 
-Assume $g$ is a rational function (See Theorem~10.25). Then
-\begin{align*}
-\widetilde{g}\left(\widetilde{f}(x)\right)
- = \frac{1}{2\pi i}\int_{\Gamma_1} g(f(\zeta))(\zeta e - x)^{-1}\,d\zeta
-\end{align*}
- 
-\unfinished
+Now let \(g\in H(\Omega\).
+Using Runge's theorem we have sequence of rational functions \((g_n)_{n\in\N}\),
+all with poles outside \(\Omega\) that converges uniformly
+on the compact \(\Gamma_1\).
+Now the desired equality is provided by Theorem~10.27.
 \end{itemize}
 
 %%%%%%% nn
