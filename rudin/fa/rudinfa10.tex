@@ -861,21 +861,42 @@ Assume
 \end{align}
 Equality (7) of section~10.13 gives \eqref{eq:10.14b:poly}.
 
-\iffalse
-Let \(f^p(x) = (f(x))^p\), from the other side:
+Assume $g$ is of form \(g(\lambda) = (\lambda - \alpha)^{-k}\)
+with integer \(k>0\) and where the pole \(\alpha\) is
+outside
+\(\Omega_1 \supset f(\sigma(x)) = \sigma\left(\widetilde{f}(x)\right)\).
 \begin{align*}
-\widetilde{h}(x) &= \widetilde{(g\circ f)}(x) \\
-  &= \frac{1}{2\pi i}\int_{\Gamma_0} g(f(\lambda))(\lambda e - x)^{-1}\,d\lambda \\
-  &= \frac{1}{2\pi i}\int_{\Gamma_0}
-    \sum_{p=0}^n a_p(f(\lambda))^p(\lambda e - x)^{-1}\,d\lambda \\
-  &= \sum_{p=0}^n a_p
-    \frac{1}{2\pi i}
-    \int_{\Gamma_0}
-    (f(\lambda))^p(\lambda e - x)^{-1}\,d\lambda \\
-  &= \sum_{p=0}^n a_p \widetilde{f^p}(x)
+\widetilde{g}\left(\widetilde{f}(x)\right)
+ &= \frac{1}{2\pi i}
+     \int_{\Gamma_1}
+       (\zeta - \alpha)^{-k}\left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta
+     \\
+ &= \frac{(-1)^k}{2\pi i}
+     \int_{\Gamma_1}
+       (\alpha - \zeta)^{-k}\left(\zeta e - \widetilde{f}(x)\right)^{-1}\,d\zeta
+     \\
+ &= (-1)^k(\alpha e -  \widetilde{f}(x))^{-k}
+  = (\widetilde{f}(x) - \alpha e)^{-k} \\
+ &?=? \widetilde{(g \circ f)}(x)
 \end{align*}
-\fi
 
+From other side
+\begin{align*}
+\widetilde{(g \circ f)}(x)
+  &= \frac{1}{2\pi i}\int_{\Gamma_0}
+    (f(\lambda) - \alpha)^{-k}(\lambda e - x)^{-1}\,d\lambda \\
+  &= \frac{(-1)^k}{2\pi i}\int_{\Gamma_0}
+    (\alpha - f(\lambda))^{-k}(\lambda e - x)^{-1}\,d\lambda \\
+  &= (-1)^k(\alpha e - f(x))^{-k} = (f(x) - \alpha e)^{-k}
+\end{align*}
+
+
+Assume $g$ is a rational function (See Theorem~10.25). Then
+\begin{align*}
+\widetilde{g}\left(\widetilde{f}(x)\right)
+ = \frac{1}{2\pi i}\int_{\Gamma_1} g(f(\zeta))(\zeta e - x)^{-1}\,d\zeta
+\end{align*}
+ 
 \unfinished
 \end{itemize}
 
