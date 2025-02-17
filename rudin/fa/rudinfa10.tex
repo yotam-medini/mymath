@@ -926,9 +926,25 @@ then \(\widetilde{f}(T) = 0\); hence:
 \end{equation*}
 The extra hypotheses in \ich{c} and \ich{d} of Theorem~10.33 are thus needed.
 \end{excopy}
-\unfinished
+
+Assume by negation \(f\in C([0,1])\) is a nonzero eigenvector of $T$
+with eigenvalue \(\lambda\in \C\), that is \(Tf = \lambda f\).
+Clearly \(Tf = \lambda f \not\equiv 0\), so clearly \(\lambda\neq 0\).
+We also have \(\lambda f(0) = (Tf)(0) = 0\) and \((Tf)' = f\).
+
+Let's solve the differentiall equation \(f'(x)=\lambda f(x)\)
+Using tip from \cite{coddington1984theory}.
+\begin{equation*}
+0 = f'(x) - \lambda f(x) 
+  = \exp(-\lambda x)\cdot(f'x() - \lambda f(x))
+  = \frac{d}{dx} \exp(-\lambda x)\cdot f(x).
+\end{equation*}
+Therefore \(\exp(-\lambda x)\cdot f(x) = c\) for some constant $c$,
+ans so \(f(x) = c \cdot \exp(\lambda x)\).
+Now since \(f(0) = 0\) we get the contradiction \(f\equiv 0\).
 
 %%%%%%% 17
+\begin{excopy}
 Suppose that the spectrum of some \(x \in A\) is not connected.
 Prove that $A$ contains a nontrivial idempotent $z$.
 (This is defined in Exercise~2.)
@@ -936,7 +952,6 @@ Prove also that \(A = A_0 \oplus A_1\), where
 \begin{equation*}
 A_0 = \{x: zx=0\}, \qquad A_1 = \{x: zx=x\}.
 \end{equation*}
-\begin{excopy}
 \end{excopy}
 \unfinished
 
