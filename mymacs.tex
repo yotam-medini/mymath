@@ -231,7 +231,7 @@
 % abbreviations, ensuremath
 \newcommand{\fx}{\ensuremath{f(x)}}
 \newcommand{\gx}{\ensuremath{g(x)}}
-\newcommand{\lrangle}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\lrangle}[1]{\ensuremath{\left\langle #1 \right\rangle}}
 \newcommand{\lrbangle}[1]{\ensuremath{\left\langle #1 \right\rangle}}
 \newcommand{\M}{\ensuremath{\mathfrak{M}}}
 \newcommand{\mldots}{\ensuremath{\ldots}}
@@ -241,6 +241,15 @@
 \newcommand{\Wlogy}{Without loss of generality}
 \newcommand{\twopii}{\ensuremath{2\pi i}}
 \newcommand{\dtwopii}{\ensuremath{\frac{1}{\twopii}}}
+
+% https://tex.stackexchange.com/
+% questions/22252/how-to-typeset-function-restrictions
+\newcommand\restr[2]{\ensuremath{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
 
 \newenvironment{excopyOLD}
 {\item\begin{minipage}[t]{.8\textwidth}\footnotesize}
@@ -264,6 +273,7 @@
  \item
 }
 {\par
- {\nullfont a}\hrulefill
+ % {\nullfont 0}
+ \hrulefill
  \end{list}
 }
