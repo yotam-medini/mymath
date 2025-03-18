@@ -946,14 +946,72 @@ Now since \(f(0) = 0\) we get the contradiction \(f\equiv 0\).
 %%%%%%% 17
 \begin{excopy}
 Suppose that the spectrum of some \(x \in A\) is not connected.
-Prove that $A$ contains a nontrivial idempotent $z$.
+Prove that $A$ contains a nontrivial idempotent~$z$.
 (This is defined in Exercise~2.)
 Prove also that \(A = A_0 \oplus A_1\), where
 \begin{equation*}
 A_0 = \{x: zx=0\}, \qquad A_1 = \{x: zx=x\}.
 \end{equation*}
 \end{excopy}
-\unfinished
+
+See Corollary of Theorem~3.3 in \cite{wermer2013banach}
+and Theorem~5.5.2 in \cite{hille1974functional}.
+
+Assume \(\sigma(x) = K_1 \disjunion K_2\) where \(K_j\) are non-empty compact and disjoint, and let \(\Omega_j\) (where \(j=1,2\)) be disjoint regions
+such that \(K_j\subset \Omega_j\)
+and \(\Gamma\) be a contour surrounding
+ \(\Omega = \Omega_1 \disjunion \Omega_2\).
+\iffalse
+such that
+\begin{equation*}
+\Ind_{\Gamma_j}(z) = \frac{1}{2\pi i} \int_{\Gamma_j} \frac{dw}{w - z} =
+  \left\{
+    \begin{array}{ll}
+    1 & \quad z \in K_j \\
+    0 & \quad z \notin \Omega_j
+    \end{array}
+  \right.    
+\end{equation*}
+\fi
+
+Now for any \(f\in H(\Omega)\)
+\begin{equation*}
+\widetilde{f}(x) = \frac{1}{2\pi i}
+  \int_{\Gamma}
+    (\zeta e - x)^{-1}f(\zeta)\,d\zeta\,.
+\end{equation*}
+Put \(c_j = \chi_{\restriction \Omega_j}\)
+% Since $f$  is holomorphic on \(\Omega = \Omega_1 \disjunion \Omega_2\)
+% and put
+and clearly \(c_1 + c_2 = \bm{1}_\Omega\).
+Put
+\begin{equation*}
+z_j = \frac{1}{2\pi i} \int_{\Gamma} (\zeta e - x)^{-1} c_j(\zeta)\,d\zeta\
+\qquad (j=1,2).
+\end{equation*}
+% so by Theorem~10.27
+Since the mapping \(f\to\widetilde{f}\) as defined in Section~10.26
+is algebra isomorphism (by Theorem~10.27) we have \(z_j^2 = z_j\)
+and \(z_1 + z_2 = e\). %% _{\widetilde{H}(A_\Omega)}\).
+% The value of \(\widetilde{f}(x)\) integral does not change if we enlarge
+% \(\Omega\) thus we can vuew it as a mapping to the whole $A$.
+
+Clealy this mapping maps the constant functions \(0_\Omega\) and \(1_\Omega\)
+to \(0_{A_\Omega}\) and \(e_{A_\Omega}\) respectabley.
+Again since this mapping is isomorphism, and $f$ is not constant,
+it is mapped to a different element than either \(0_{A_\Omega}\) nor \(e_{A_\Omega}\).
+Thus each \(z_j\) is a non-trivial idempotent.
+
+Now let \(A_j = \{z_j w: w\in A\).
+For each \(w\in A\) we have \(w = z_1 w + z_2 w\), thus \(A = A_1 + A_2\).
+If \(w\in A_1 \cap A_2\) then
+\(w = z_1 w_1 = z_2 w_2 \) for some \(w_1, w_2 \in A\) and
+\begin{equation*}
+w = ew = (z_1 + z_2)w
+  = z_1z_1w_1 + z_2z_2w_2 =
+  = z_1w_1 + z_2w_2 = w + w = 2w.
+\end{equation*}
+Hence \(w = 0\) and so \(A = A_0 \oplus A_1\).
 
 %%%%%%% 18
 \begin{excopy}
@@ -968,7 +1026,7 @@ is bounded as \(\lambda \to \alpha\).
 If \(n > 0\), then $f$ is said to have a pole of order $n$ at \(\alpha\).
 \begin{itemize}
 \itemch{a}
-Suppose \(x \in A\) and \((\lambda e — x)^{-1}\)
+Suppose \(x \in A\) and \((\lambda e - x)^{-1}\)
 has a pole at every point of \(\sigma(x)\). [Note that
 this can happen only when \(\sigma(x)\) is a finite set.]
   Prove that there is a non-trivial polynomial $P$ such that \(P(x) = 0\).
