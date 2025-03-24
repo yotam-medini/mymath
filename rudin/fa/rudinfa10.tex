@@ -1069,14 +1069,27 @@ for some \(r > 0\). Then $f$ has a removable singularity in $a$.
 \end{quote}
 can be easily
 generalized to holomorphic functions with range of complex Banch space.
-Thus \(P(\lambda) R(\lambda,x)\) can be considered holomorphic.
-So now
+Thus \(Q(\lambda) = P(\lambda) R(\lambda,x)\) can be considered holomorphic.
+Let \(N=\deg)(P)=\sum_j n_j \geq 1\).
+We have \(\lim_{\lambda\to\infty} \|\lambda R(\lambda,x)\| = 1\)
+and \(\lim_{\lambda\to\infty} \|\lambda^{-N} P(\lambda)\| = 1\).
+
+Exercise~10.4 in \cite{RudinRCA80}
+\begin{quote}
+Suppose that $f$ is an entire function, and
+\(|f(x)| \leq A + B|z|^k\)
+for all $z$, where $A$, $B$, and $k$ are positive numbers.
+Prove that $f$ must be a polynomial.
+\end{quote}
+
+By extending this exercise to $A$-valued function, we conclude that
+\(Q(\lambda)\) is a polynomial.
+
+So now we have a \emph{polynomial} equality:
 \begin{equation*}
-P(x)R(\lambda,x)(\lambda e - x) = P(x)e.
+P(\lambda) = P(\lambda)R(\lambda,x)(\lambda e - x) = Q(x)(\lambda e - x)
 \end{equation*}
-
-
-\unfinished
+We substitute \(\lambda\) with $x$ and we get \(P(x) = 0\).
 
 %%%%%%% 19
 \begin{excopy}
