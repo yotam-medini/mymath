@@ -1036,6 +1036,46 @@ assume \(\sigma(x) = \{0\}\) and \((\lambda e - x)^{-1}\) has a pole of order
 $n$ at $0$. Prove that \(x^n = 0\).
 \end{itemize}
 \end{excopy}
+
+If by negation there were infinite number of poles,
+then there would be accumulation point $a$ of them in the compact \(\sigma(x)\).
+But there could be no pole in $a$, since for any $n$
+and for any neighborhood of $a$, 
+the value \(|\lambda - a|^n \|f(\lambda\|\) would be infinite
+for some other \(\alpha \in \sigma(x)\).
+
+If  $X$ is a Banach space,
+we define \(D(f)\) derivative of function \(f:\C\to X\) at \(z\in \C\)
+\begin{equation*}
+(Df)(z) = \lim_{\lambda \to z} \frac{f(\lambda) - f(z)}{\lambda - z}
+\end{equation*}
+if the limit exists.
+We say the $f$ is holomorphic in region \(\Omega \subset \C\)
+if it has a derivative in all points of \(\Omega\).
+
+Now, being finite, \(\sigma(x) = \{\seq{\alpha}{m}\}\) and
+\(\alpha_j\) is a pole of order \(n_j\) of \(R(\lambda,x)=(\lambda e - x)^{-1}\).
+Then put \(P(x) = \Pi_{j=1}^m (x - \alpha_j)^{n_j}\).
+
+So now \(P(x)R(\lambda,x)\) is holomorphic as a function of \(\lambda\)
+in punctured neighborhoods \(\{z\in\C: 0 < |z - \alpha_j| < \delta\}\)
+of the poles. The Theorem~10.20 in \cite{RudinRCA80}
+\begin{quote}
+\textbf{Theorem~10.20}
+\textit{
+Suppose \(f\in H(\Omega\setminus\{a\})\) and $f$ is bounded in \(D'(a;r)\)
+for some \(r > 0\). Then $f$ has a removable singularity in $a$.
+}
+\end{quote}
+can be easily
+generalized to holomorphic functions with range of complex Banch space.
+Thus \(P(\lambda) R(\lambda,x)\) can be considered holomorphic.
+So now
+\begin{equation*}
+P(x)R(\lambda,x)(\lambda e - x) = P(x)e.
+\end{equation*}
+
+
 \unfinished
 
 %%%%%%% 19
@@ -1057,6 +1097,19 @@ and define \(T \in scrB(\ell^2)\) by \(T = MS_R\).
 \itemch{d} Show that \((\lambda I - T)^{-1}\) does not have a pole at $0$.
 \itemch{e} Show that $T$ is a compact operator.
 \end{itemize}
+\end{excopy}
+\unfinished
+
+%%%%%%% 20
+\begin{excopy}
+Suppose \(x \in A\), \(x_n \in A\), and \(\lim x_n = x\).
+  Suppose \(\Omega\) is an open set in \C\ that
+contains a component of \(\sigma(x)\).
+  Prove that \(\sigma(x_n)\) intersects \(\Omega\) for all sufficiently
+large $n$. (This strengthens Theorem~10.20.) Hint:
+  If \(\sigma(x) \subset \Omega \cup \Omega_0\), where \(\Omega_0\) is
+an open set disjoint from \(\Omega\),
+  consider the function $f$ that is $1$ in \(\Omega\), $0$ in \(\Omega_0\).
 \end{excopy}
 \unfinished
 
