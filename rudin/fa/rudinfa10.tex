@@ -1089,7 +1089,7 @@ complex numbers such that \(c_n \neq 0\) but \(c_n\to 0\) as \(n\to\infty\).
 \end{equation*}
 and define \(T \in scrB(\ell^2)\) by \(T = MS_R\).
 \begin{itemize}
-\itemch{a}  Compute \(\|T^m\|\), for \(m = 1,2,3,\ldots\).
+\itemch{a} Compute \(\|T^m\|\), for \(m = 1,2,3,\ldots\).
 \itemch{b} Show that \(\sigma(T) = \{0\}\).
 \itemch{c} Show that $T$ has no eigenvalue.
   (Its point spectrum is therefore empty,
@@ -1098,7 +1098,63 @@ and define \(T \in scrB(\ell^2)\) by \(T = MS_R\).
 \itemch{e} Show that $T$ is a compact operator.
 \end{itemize}
 \end{excopy}
-\unfinished
+
+\begin{itemize}
+\itemch{a} For \(n \leq m\) we have \((T^m f)(n) = 0\),\\
+  for \(n > m\)
+  we have \((T^m f)(n) = \left(\Pi_{j=n-m}^n C_j\right)f(n-m-1)\).
+\itemch{b} \((Tf)(0)\) thus $T$ is not invertible, and so \(0\in\sigma(T)\).
+  Assume \(\lambda\in\sigma(x)\setminus\{0\}\), then
+  \begin{equation*}
+  ((\lambda e - T)(f))(n)
+  = (\lambda f(1), \lambda f(2) - c_2 f(1), \lambda f(3) - c_3 f(2), \ldots,)
+  \end{equation*}
+  So
+  \begin{align}
+  \left((\lambda e - T)^{-1}(g)\right)(n)
+  &= (g(1)/\lambda, (g(2) + c_2 f(1))/\lambda, (g(3) + c_3 f(2))/\lambda, \ldots)
+  \notag \\
+  &= g(1)/\lambda,
+    c_2 g(1)/\lambda^2 g(2)/\lambda,
+    c_2c_3 g(1)/\lambda^3 + c_3 g(2)/\lambda^2 + g(3)/\lambda, 
+    \ldots) \label{eq:ex10.19b}
+  \end{align}
+  Thus \(\lambda \notin \sigma(T)\) and \(\sigma(T)=\{0\}\).
+\itemch{c}
+  \begin{equation*}
+  (Tf)(n) = T(f(1),f(2),\ldots,) = (0, c_2f(1), c_2f(2), \ldots.)
+  \end{equation*}
+  If $f$ is an eigenvector, then \(f(1)=0\) and by induction \(f(n)=0\)
+  for all \(n\in\N\). Thus \(f=0\) and there are no eigenvalues.
+\itemch{d}
+  From \eqref{eq:ex10.19b} we see that \((\lambda e - T)^{-1}\)
+  has a term with \(\lambda^{-n}\) for any $n$.
+  Thus there cannot be a pole of order $n$ that cancels all the terms
+  to get a bounded value of \(\lambda^n (\lambda e - T)^{-1}\).
+\itemch{e}
+  We need to show that \(\overline{T(U)}\) is compact in \(\ell^2]\)
+  where \(U=\{x\in \ell^2: \|x\|_2 < 1\}\).
+  Let a sequence \(F_0\) in \(\overline{T(U)}\).
+  Note that each element of \(F_0\) is in \(\ell^2\) a sequence itself.
+  By induction we will build
+  a sequence of sequences \(F_n\) in \(\overline{T(U)}\) such that
+  We denote the sequence elements of \(F_n\) by \(f_{n,k}\)
+  \begin{itemize}
+  \item \(F_{n+1}\) is a subsequence of \(F_n\),
+  \item \(\Lambda_k = \lim_{k\to\infty} f_{n,k}(k) \) exists within \(B(0,|c_k|)\)
+        for each \(k \leq n\).
+  \item \(|f_{n,m}(k) - \Lambda_k| < 2^{-k}\)
+  \end{itemize}
+  By induction, assume \(f_n\) are defined for for \(n\leq m\).
+  Now the set of \(\{f_{m,k}(m)\} \subset B(0,|c_m|)\).
+  This complex ball is compact, so we take as \(F_{m+1}\)
+  a subsequence of \(F_m\) such that \(\{f_{m+1,k}(m)\}\) has a limit.
+  and all the elements are within \(B(\Lambda_m,2^{-m})\).
+  Now we take a ``diagonal'' subsequence $G$ such that \(G_k = f_{n,n}\).
+  Now \(\lim_{p\to\infty} G_k(p)\) converges.
+  Thus every sequence in \(\overline{T(U)}\) has a converging subsequence.
+  Thus being closed in a metric space it is compact and so is $T$.
+\end{itemize}
 
 %%%%%%% 20
 \begin{excopy}
