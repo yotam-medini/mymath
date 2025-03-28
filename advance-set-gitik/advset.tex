@@ -7,6 +7,7 @@
 \input{mymacs}
 
 \newcommand{\B}[1]{\textbf{#1}}
+\newcommand{\ccc}{c.c.c.}
 
 %% \newtheorem{manualclaiminner}{Claim}
 %% \newenvironment{manualclaim}[1]{%
@@ -174,9 +175,84 @@ Using Tychonoff product:
 \end{itemize}
 
 \begin{thm}
-bla
+Let \lrangle{X_i,\tau_i}, \(i\in I\) be \ccc\ topological spaces.
+Assume that any finite product is \ccc\ then
+the Tychonoff product \lrangle{\Pi X_i, =\Pi \tau_i} is \ccc.
 \end{thm}
+\begin{proof}
+We will Specify the  topology of the product
+\begin{equation*}
+X = \Pi_{i\in I} = \{f | 
+  f: I \to\mathsmaller{\bigcup_{i\in I}} X_i
+  \quad\land\quad \forall i\in I, f(i)\in X_i\}.
+\end{equation*}
+The base neighborhoods are defined, for \(\{i_1,\ldots,i_n\}\)
+for any \(i \in \{i_1,\ldots,i_n\}\)
+we choose \(U_i \in \tau_i\) and get
+\begin{equation*}
+ U = U_{i_1} \times U_{i_2} \times \cdots \times U_{i_n}.
+\end{equation*}
+\begin{equation*}
+ V_U = \{f \in \pi_{i\in I}| \forall i \in \{i_1,\ldots,i_n\}, f(i)\in U_i\}.
+\end{equation*}
+By negation, assume that the product is not \ccc.
+Then at least \(\aleph_1\) disjoint non-empty sets.
+Then at least \(\aleph_1\) base non-empty open sets:
+\begin{equation*}
+ \{W_\beta | \beta < \aleph_1\}.
+\end{equation*}
+For each \(\beta\) there exists finite set
+\(\{i_1^\beta, i_2^\beta, \ldots, i_{n_\beta}^\beta\}\)
+and open sets \(\{U_{i_\beta}^\beta\}\)
+with ??  \(\{a_\beta | \beta < \aleph_1\}\)
+\(\aleph_1\) finite subsets of $I$.
+Then we have \(J \subseteq \aleph_1\) with \(|J|=\aleph_1\)
+and a set $a$ such that for any \(i,j\in J\), 
+if \(i\neq j\) then \(a_i \cap a_j = a\).
+\end{proof}
 
+% Delta System ??
+Let \(a = \{x_1,\ldots,x_k\}\). Our assumption is that
+\begin{equation*}
+X_{x_1} \times X_{x_2} \times \cdots X_{x_k}
+\end{equation*}
+is \ccc.
+\begin{equation*}
+U_{x_1}^\beta \times U_{x_2}^\beta \times \cdots U_{x_k}^\beta \qquad (\beta \in J)
+\end{equation*}
+Form \ccc\ there exist \(\beta,\gamma \in J\), \(\beta\neq\gamma\)
+such that \(W = W^\beta \cap W^\gamma \neq \emptyset\)
+open in the finite product.
 
+Define \(f\in \Pi_{i\in I} X_i\)
+\begin{equation*}
+\begin{array}{lll}
+x_1,\ldots,x_n & 
+  e_1^\beta,\ldots,e_{k_\beta}^\beta & e_1^\gamma,\ldots,e_{k_\gamma}^\gamma
+\\
+a\;\textnormal{kernel} & 
+  a_\beta\; \textnormal{kernel} & a_\gamma\;\textnormal{kernel} 
+\end{array}
+\end{equation*}
+
+The ``problem'' is with the common coordinates, otherwise
+it does not matter what is chosen.
+\begin{equation*}
+ \begin{array}{llll}
+ U_{x_1}^\beta \cap U_{x_1}^\gamma, &
+ U_{x_2}^\beta \cap U_{x_2}^\gamma, &
+ \cdots &
+ U_{x_k}^\beta \cap U_{x_k}^\gamma, \\
+ x_1 & x_2 & \ldots & x_k
+ \end{array}
+\end{equation*}
+
+\begin{equation*}
+\begin{array}{ll}
+a_\beta \setminus\{x_1,\ldots,x_k\}  & a_\gamma \setminus\{x_1,\ldots,x_k\} \\
+\rotatebox[origin=c]{90}{\(=\)} & \rotatebox[origin=c]{90}{\(=\)} \\
+\{i_1^\beta, \ldots, i_{k_\beta}^\beta\} & \{i_1^\gamma, \ldots, i_{k_\gamma}^\gamma \}
+\end{array}
+\end{equation*}
 
 \end{document}
