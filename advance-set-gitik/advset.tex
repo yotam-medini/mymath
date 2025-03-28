@@ -1,0 +1,182 @@
+\documentclass[11pt,pdftex,twoside,a4paper]{article}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{relsize}
+
+\input{mymacs}
+
+\newcommand{\B}[1]{\textbf{#1}}
+
+%% \newtheorem{manualclaiminner}{Claim}
+%% \newenvironment{manualclaim}[1]{%
+%%   \renewcommand\themanualclaiminner{#1}%
+%%   \manualclaiminner
+%% }{\endmanualclaiminner}
+%% 
+%% \newtheorem{claim}{Claim}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{ldef}[thm]{Definition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+
+\title{Advanced Set Theory
+          \\
+       Lecture Notes --- Professor Mordechai Gitik}
+
+\author{Yotam Medini}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2025/March/23}
+
+In this course we will deal with infinite combinatorics.
+
+Text book for the course:
+  \B{Kunen} / \textit{Set SET THEORY, 
+    An Introduction to Independence Proofs}
+
+We will use strengthening of the continuum-hypothesis
+and strengthening of negation of the continuum-hypothesis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Almost Disjoint Sets}
+
+\begin{ldef}
+Let \(\kappa\) be infinite cardinal, \(\scrA \subseteq P(\kappa\)
+is a family of of \emph{almost disjoint sets} iff 
+\begin{enumerate}
+\item For any \(A\in \scrA\), \(|A|=\kappa\).
+\item For any \(A,B \in scrA\) if \(A\neq B\) then \(|A \cap B|<\kappa\).
+\end{enumerate}
+\end{ldef}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Maximal Families of Almost Disjoint Sets}
+
+\begin{claim}
+Let \(\kappa \geq \aleph_0\) be a regular cardinal.
+Let \(\calA \subset P(\kappa)\) be a family of almost disjoint sets.
+Then:
+\begin{itemize}
+\itemch{a} If \(|A|=\kappa\) then \calA\ is not maximal,
+that is there exists \(d\leq \kappa\) and for any \(a\in \calA\),
+\(d\cap a| < \kappa\).
+\itemch{b} There exists a maximal family \(\calB \supset \calA\)
+of almost disjoint sets, \(|B| \geq \kappa^+\).
+\end{itemize}
+\end{claim}
+\begin{proof}
+\ich{a} \(\implies\) \ich{b} by the Zorn lemma.
+
+Prooving \ich{a}. Let \(\calA = \{A_\alpha | \alpha < \kappa\}\).
+We will ``convert'' it to be ``disjoint''. We will define a family
+\(\{A_\alpha'|\alpha < \kappa\}\) of disjoint sets.
+\begin{align*}
+ A_0' &= A_0 \\
+ A_1' &= A_1 \setminus A_0 \\
+ A_\alpha' &= A_\alpha \setminus 
+   \mathsmaller{\bigcup_{\beta<\alpha}} (A_\alpha \setminus A_\beta).
+\end{align*}
+We get completely disjoint sets.
+
+Define \(B=\{b_\alpha| \alpha<\kappa\}\) where \(b_\alpha \in A_\alpha'\).
+\\
+\vspace{-12pt}
+\begin{center}
+\begin{tabular}{llll}
+\(A_0'\) & \(A_1'\) & \(\cdots\) & \(A_\alpha'\) \\
+\rotatebox[origin=c]{90}{\(\in\)} &
+\rotatebox[origin=c]{90}{\(\in\)} &
+\(\cdots\) &
+\rotatebox[origin=c]{90}{\(\in\)} \\
+\(b_0\) & \(b_1\) & \(\cdots\) & \(b_\alpha\)
+\end{tabular}
+\end{center}
+Therefore \(|A_\alpha \cap B| < \kappa\).
+\end{proof}
+
+How can we get maximal cardinal?\\
+In \(\omega\) such family would have \(2^{\aleph_0}\) cardinality.
+We can generalize.
+
+\begin{claim}
+Let \(\kappa \geq \aleph_0\) infinite cardinal.
+
+\B{Assumption}: for each \(\alpha < \kappa\), \(2^\alpha \leq \kappa\).
+\begin{equation*}
+2^{>\kappa} = \mathsmaller{\bigcup_{\alpha < \kappa}}2^\alpha.
+\end{equation*}
+\(\implies 2^{<\kappa} = \kappa\).
+This assumption is kind of the continuum-hypothesis.
+
+There exists \(\calA \subset P(\kappa)\) a family of almost disjoint sets
+with maximal cardinality \(2^\kappa\).
+\end{claim}
+Here we do not assume regularity of \(\kappa\)
+\begin{proof}
+(With a nice trick.)
+Let
+\begin{equation*}
+I = \{X \subseteq \kappa | \exists \alpha < \kappa, \alpha \supseteq X\}.
+\end{equation*}
+Therefore \(|I| = \kappa\).
+Now argument of \(\leq\) and \(\geq\).
+For each \(y \supseteq \kappa\) let
+\begin{equation*}
+A_y = \{y \cap \alpha | \alpha < \kappa\} \subset I.
+\end{equation*}
+Assume \(y_1,y_2 \subset \kappa\), \(y_1 \neq y_2\).
+So 
+\begin{equation*}
+ |A_{y_1} \cap A_{y_2}| < \kappa.
+\end{equation*}
+\emph{Note:} A difference in one element implies a cardinality difference.
+Assume \(\delta \in y_1 \setminus y_2\). Then for each \(\alpha\)
+such that \(\delta < \alpha < \kappa\) then
+\begin{equation*}
+ \delta \in y_1\cap \alpha \neq y_2 \cap \alpha
+\end{equation*}
+\end{proof}
+Thus we got a maximal family of disjoint sets.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Topological Spaces}
+
+\begin{ldef}
+A topological space \(\lrangle{X, \tau}\) is \B{separable}
+iff there exists \(D\subset X\) countable and dense.
+\end{ldef}
+
+\begin{ldef}
+A topological space \(\lrangle{X, \tau}\) is called \B{c.c.c.} 
+(Countable Chain Condition) iff there are no more than \(\aleph_0\)
+disjoint open sets.
+\end{ldef}
+
+Separability implies c.c.c. But the opposite direction depends
+on conjectures.
+
+Using Tychonoff product:
+\begin{itemize}
+\item Product of c.c.c spaces is c.c.c.
+\item Product of separable spces is not necessarily separable.
+\end{itemize}
+
+\begin{thm}
+bla
+\end{thm}
+
+
+
+\end{document}
