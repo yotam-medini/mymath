@@ -8,6 +8,9 @@
 
 \newcommand{\B}[1]{\textbf{#1}}
 \newcommand{\ccc}{c.c.c.}
+\newcommand{\MA}{\mathop{\rm MA}\nolimits}
+\newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
+\newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
 
 %% \newtheorem{manualclaiminner}{Claim}
 %% \newenvironment{manualclaim}[1]{%
@@ -160,17 +163,17 @@ iff there exists \(D\subset X\) countable and dense.
 \end{ldef}
 
 \begin{ldef}
-A topological space \(\lrangle{X, \tau}\) is called \B{c.c.c.} 
+A topological space \(\lrangle{X, \tau}\) is called \B{\ccc} 
 (Countable Chain Condition) iff there are no more than \(\aleph_0\)
 disjoint open sets.
 \end{ldef}
 
-Separability implies c.c.c. But the opposite direction depends
+Separability implies \ccc. But the opposite direction depends
 on conjectures.
 
 Using Tychonoff product:
 \begin{itemize}
-\item Product of c.c.c spaces is c.c.c.
+\item Product of \ccc\ spaces is \ccc.
 \item Product of separable spces is not necessarily separable.
 \end{itemize}
 
@@ -265,4 +268,192 @@ U_{x_1}^\beta \cap \cdots \cap U_{x_k}^\beta
   U_{i_{l_\gamma}}^\gamma \cap \cdots \cap  U_{i_{n_\gamma}}^\gamma
 \end{equation*}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Guiding Questions}
+
+Assume \(\aleph_1 < 2^{\aleph_0}\)
+\begin{itemize}
+\itemch{a} Is for any \(\kappa \in 2^{\aleph_0}\), \(2^\kappa = 2^{\aleph_0}\).
+\itemch{b} Is there a family \(\scrA \subset P(\omega)\)
+of almost disjoint sets which is maximal such that \(|A| < 2^{\aleph_0}\).
+\itemch{c} Let \(\kappa < 2^{\aleph_0}\). Is a union of \(\kappa\)
+sets of Lebesgue's $0$-measure is a set of Lebesgue's $0$-measure ?
+\itemch{d} Let \(\kappa < 2^{\aleph_0}\). 
+Is a union of \(\kappa\) sets of first category is a set of first category.
+\\
+\emph{Note}: A set $A$ is meager if its closure has empty interior.
+% ? what was said about empty segment ?
+$B$ is of first category iff $B$ is a countable union of meager sets.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Developing Tools}
+
+We will develop tools to address the questions above.
+(Forcing term?)
+
+\begin{ldef}
+Let \lrangle{P,\leq} be a \B{partially ordered set},
+iff for any \(x,y,z\in P\) the following hold:
+\begin{enumerate}
+\item \(x\leq x\).
+\item \(x\leq y \; \land\; y\leq z \implies x \leq z\).
+\item \(x \leq y\; \land\; y \leq z \implies x = z\).
+\end{enumerate}
+\end{ldef}
+Frequently, we can do without the 3rd requirement, by equivalence relation.
+
+\begin{ldef}
+Let \lrangle{P,\leq} be a {partially ordered set}..
+\(p,q \in P\) are \B{compatible} \(p \| q\) if there exists \(r\in P\)
+such that \(p,q < r\).\\
+\emph{Note}: \textnormal{In Kunen's book it is the opposite.}\\
+Otherwise \(p,q\) are called \B{non-compatible}.
+\end{ldef}
+
+\begin{ldef}
+\(A\subseteq P\) is called \B{antichain} iff for any
+ distinct \(p,q\in A\) are non-compatible.
+$A$ is a \B{maximal antichain} iff thete is no antichain $B$
+such that \(A \subsetneq B\).
+\end{ldef}
+
+\begin{ldef}
+\lrangle{\mathbb{P},\leq} \B{has the \ccc} iff 
+for any antichain \(A \subseteq \mathbb{P}\), 
+\(|A|\leq \aleph_0\).
+\end{ldef}
+
+\begin{ldef}
+Let \lrangle{\mathbb{P},\leq} be partially ordered.
+\(D\subseteq P\) is called \B{dense} iff fir each \(p\in P\)
+the exists \(q\in D\) such that \(q\leq p\).
+\end{ldef}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Examples}
+
+\begin{enumerate}
+\item \lrangle{L,\leq} linear ordered (any two are comparable)
+is \ccc\ since there are no non-compatible.
+Here, dense means not bounded.
+
+\item \lrangle{P(\omega)\setminus\{0\},\leq}. % \supseteq ?
+For \(a,b\subset \omega\), \(a\|b\) iff \(a\cap b \neq \emptyset\).
+
+\item \lrangle{X,\tau} topological space.
+Let \(P = \tau \setminus \{\emptyset\}\) and \(p,q \in P\).\\
+\(p \geq q\ \;\iff\; p \subseteq q\).
+\(p,q\) are comparable iff \(p\cap q\neq \emptyset\).\\
+$P$ has \ccc\ iff \lrangle{X,\tau} has \ccc.
+
+\item \(C = \{f| f: \omega \to 2 \mathsmaller=\{0,1\}\)
+(partial finite ?).\\
+$f$ \emph{continues} $g$ iff  \(f \geq g\) (as graph).\\
+? If $C$ is , countable \(|C| = \aleph_1\) the \ccc.
+\end{enumerate}
+
+\emph{Note}: Cohen forcing !?!
+
+\begin{ldef}
+Let \scrF\ be a collection of dense sets of $P$.
+\(G \subseteq P\) is called \scrF-\B{generic} iff 
+\begin{enumerate}
+\item \(p\in G \land q\leq p \implies q \in G\).
+\item \(p,q \in G \implies \exists r\in G, p,q\leq r\) Like an ideal.
+\item \(\forall D \in \scrF\, G\cap D \neq \emptyset\).
+\end{enumerate}
+\end{ldef}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Martin Axiom}
+
+\begin{ldef}
+Let \(\kappa \geq \aleph_0\).
+\B{Martin axiom} \(\MA(\kappa)\) means:
+For any partially ordered \lrangle{P,\leq} that has \ccc\
+and for any collection \scrF\ of dense subsets, \(|\scrF| \leq \kappa\)
+then there exists an \scrF-generic \(G\subset P\).
+\end{ldef}
+
+\begin{claim}
+\(\MA(\aleph_0)\) holds.
+\end{claim}
+\begin{proof}
+Let \lrangle{P,\leq} be partially ordered (\ccc\ not needed).
+Let \scrF\ collection of dense subsets of $P$
+and \(|\scrF| = \aleph_0\). Let \(\scrF = \{D_n| n < \omega\}\).
+Let arbitrary \(p\in P\).  \(D_0\) is dense, so 
+\begin{align*}
+p \leq & p0 \in D_0 \\
+p_0 \leq & p1 \in D_1 \\
+\end{align*}
+By induction, assume we picked \(p_n \in D_n\).
+We pick \(p_{n+1}\) such that \(p_n \leq p_{n+1} \in D_{n+1}\).
+We have 
+\begin{equation*}
+\begin{array}{lllll}
+p \leq & p_0 \leq & p_1 \leq &\cdots \leq & p_n \\
+       &\crotin   &\crotin   &            & \crotin \\
+       & D_0      & D_1      &\cdots      & D_n
+\end{array}
+\end{equation*}
+Now \(G = \{q \in P |\exists n, q \leq p_n\) is \scrF-generic.
+This proves \(\MA(\aleph_0\).
+\end{proof}
+
+\begin{claim}
+\(\MA(e^{\aleph_0})\) fails.
+\end{claim}
+\begin{proof}
+Let \(C = \{f| f: \omega \to 2 \;\textnormal{parially finite}\}\). ??
+\\
+\(f \geq g \iff f \supseteq g\).
+\\
+For any \(n\in \omega\) let
+\begin{equation*}
+D_n = \{f\in C| n \in\dom(f)\}
+\end{equation*}
+is dense.
+Let \(G \subset C\)  be  \(\{D_n|n < \omega\}\)-generic.
+
+Let \(g = \cup GL \omega \to 2\) partial function.
+
+\begin{equation*}
+ G \cap D_n \neq \emptyset \;\implies\; n \in \dom(g)
+\end{equation*}
+Hence  \(g:\omega \to 2\).
+
+For any \(h:w\to 2\) let
+\begin{equation*}
+D^h - \{f\in C| \exists n\in \dom(f) f(n)\neq h(n)\}.
+\end{equation*}
+\B{Claim:} \(D^h\) is dense.
+\(f\in C\) is partially finite, then \(\exists n \notin \dom(f_0)\)
+\begin{equation*}
+f_1 = f_0 \cup \{(n,1 - h(n)\} \qquad \textnormal{(differs from $h$)}.
+\end{equation*}
+Let
+\begin{equation*}
+\scrF = \{D_n | n < \omega\} \cup \{D^h | h : \omega \to 2\}.
+\end{equation*}
+$G$ is generic for \scrF.
+Let
+\begin{equation*}
+f = \cup G_i \omega \to 2.
+\end{equation*}
+\begin{equation*}
+ G \cap D^g \neq \emptyset
+\end{equation*}
+contradiction.
+\end{proof}
+
+\(\MA\)i ?
+\begin{equation*}
+\forall \\kappa < 2^{\aleph_0}, \MA(\kappa).
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
