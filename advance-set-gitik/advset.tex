@@ -7,10 +7,12 @@
 \input{mymacs}
 
 \newcommand{\B}[1]{\textbf{#1}}
+\newcommand{\Cohen}{\mathop{\rm Cohen}\nolimits}
+\newcommand{\finitepartial}{\textnormal{finite partial}}
+\newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
 \newcommand{\ccc}{c.c.c.}
-\newcommand{\MA}{\mathop{\rm MA}\nolimits}
-\newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
+\newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
 
 %% \newtheorem{manualclaiminner}{Claim}
 %% \newenvironment{manualclaim}[1]{%
@@ -399,7 +401,7 @@ p \leq & p_0 \leq & p_1 \leq &\cdots \leq & p_n \\
 \end{array}
 \end{equation*}
 Now \(G = \{q \in P |\exists n, q \leq p_n\) is \scrF-generic.
-This proves \(\MA(\aleph_0\).
+This proves \(\MA(\aleph_0)\).
 \end{proof}
 
 \begin{claim}
@@ -450,7 +452,195 @@ contradiction.
 
 \(\MA\)i ?
 \begin{equation*}
-\forall \\kappa < 2^{\aleph_0}, \MA(\kappa).
+\forall \kappa < 2^{\aleph_0}, \MA(\kappa).
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2025/March/30}
+
+Some repeat contents.
+
+\begin{ldef}
+Let \lrangle{P,\leq} partially ordered
+{\small (interesting for ``far'' from linear)}.
+\(p,q\in P\) are \B{compatible}
+iff \(\exists r\in P, r\geq p,q\)
+\end{ldef}
+We denote \(p\| q\) if compatible, \(p\perp q\) otherwise.
+
+\begin{ldef}
+Let \lrangle{P,\leq} partially ordered.
+\(D\subseteq P\) is \B{dense} iff for each \(q\in P\) there exists \(p\in D\)
+such that \(q\leq p\).
+\end{ldef}
+
+\begin{ldef}
+Let \lrangle{P,\leq} partially ordered.
+\(A\subseteq P\) is called \B{antichain} iff
+\hbox{\(\forall p,q\in A, p\neq q \implies p\perp q\)}.
+\end{ldef}
+
+For each dense set, we can find antichain that generates it.
+
+Of $A$ is a maximal antichain then
+\begin{equation*}
+D_n = \{ p\in P | \exists p \in A, q \geq p\}.
+\end{equation*}
+Such set must be dense, Why ?\\
+Let \(r\in P\). There exists \(a\in A\), \(a \leq r\) (because of maximality).
+Then there exists \(t\in P\), \(a,r\leq t \in D_A\).
+
+We got some something a little stronger (open set).
+
+\begin{ldef}
+Let \lrangle{P, \leq} has \ccc\ iff for all antichain in $P$ 
+is infinite countable.
+\end{ldef}
+
+If \(|P|=\aleph_0\) then any antichain, and any subset is dense countable.
+But what happens if \(|P| > \aleph_0\). Two possibilities:
+\begin{itemize}
+\item Small antichains.
+\item Dense large antichains.
+\end{itemize}
+
+\B{Example:} Let \(\kappa\) %  \geq \aleph_0\) 
+be a cardinal.
+\begin{equation*}
+\Cohen(\omega,\kappa) 
+  = \{f | f: \kappa \times omega \; \textnormal{finite partial}\}.
+\end{equation*}
+If \(\kappa \geq \aleph_0\) then \(|\Cohen(\omega,\kappa)| = \kappa\).
+
+For each \(\alpha < \kappa\), \(n < \omega\)
+\begin{equation*}
+D_{n,\alpha} = \{f\in \Cohen(\omega,\kappa)| (\alpha,n)\in\dom(f)\}.
+\end{equation*}
+This set is dense. The cardinality stays \(\kappa\)
+since we remove ``just few''.
+\(|D_{n,\alpha}|=\kappa\).
+
+We can argue simpler. $P$ is dense in $P$ (in itself).
+We will show that it has \ccc.
+
+\begin{claim}
+\(\Cohen(\omega,\kappa)\) has \ccc.
+\end{claim}
+(Does not depend on \(\kappa\)).
+\begin{proof}
+Let
+\begin{equation*}
+\{f_i| i < \omega\} \subseteq \Cohen(\omega,\kappa).
+\end{equation*}
+We look at \(i\neq j\).
+\(f_i \perp f_j\)  \(\implies\) there exists \((n,\alpha)\)
+\begin{equation*}
+\exists(n,\alpha) \in \dom(f_i)\cap\dom(f_j), f_i(\alpha,n) \neq f_j(\alpha,n).
+\end{equation*}
+We will find distinct \(i^*,j^* < \omega_1\) such that
+\(f_{i^*}\), \(f_{j^*}\) are compatible
+\begin{equation*}
+\{\dom(f_i) | i < \omega_1.
+\end{equation*}
+Forom the \(\Delta\)-system theorem, there exists \(S\subseteq \omega_1\),
+\(|S|=\aleph_1\), there exists $a$ such that for any \(i\neq j\in S\)
+\begin{equation*}
+a = \dom(f_1) \cap \dom(f_2).
+\end{equation*}
+\({}^a 2\) is finite, thus there exists \(S'\subseteq S\), \(|S^*| = \aleph_1\)
+and \(e: a\to 2\) such that for each \(i\in S^*\), \(f_i|_a = e\)
+\(i,j\in S^*\), \(f_i \cup f_j\) a function, \(f_i\| f_j\).
+\end{proof}
+
+\begin{ldef}
+Let \lrangle{P,\leq} partially ordered.
+Let \scrF\ be a family of dense sets of $P$. \(G\subseteq P\)
+is called $F$-geberic iff
+\begin{enumerate}
+\item \(p\in G,\,p \geq q\,\implies\, q\in G\).
+\item \(p,q\in G,\; \exists r\in G\, p,q \leq r\).
+\item \(\forall D\in F\; G\cap D\neq \emptyset\).
+\end{enumerate}
+\end{ldef}
+In Kunen's book, requirements \ich{1}+\ich{2} define a \B{filter}.
+
+\begin{ldef}
+Let \(\kappa\) be a cardinal.
+\(\MA(\kappa)\) says: For each partially ordered \lrangle{P,\leq} that 
+has \ccc\ and for all collection \scrF\ of subsets of $P$,
+if \(|\scrF| \leq \kappa\) then there exists \(G\subset P\) \scrF-generic.
+\end{ldef}
+We saw: \(\MA(\aleph_0)\), \(\lnot\MA(2^{\aleph_0})\) and 
+\(\forall \kappa < 2^{\aleph_0}\, \MA(\kappa)\).
+
+\begin{claim}
+Let \(\kappa \geq \aleph_0\). If \(\MA(\kappa)\) then \(\kappa < 2^{\aleph_0}\).
+\end{claim}
+\begin{proof}
+By negation.
+\begin{equation*}
+C = \{f|: f: \omega \to \;\textnormal{finite partial}\}
+\end{equation*}
+We look at $C$ with inclusion order.
+\begin{equation*}
+D_n = \{f\in C| n \in \dom(f)\}
+\end{equation*}
+For \(h:\omega\to 2\),
+\begin{equation*}
+D^h = \{f\in C | \exists \kappa < \omega\, f(k)\neq h(k)\}.
+\end{equation*}
+% lecture break 
+
+Let \(G\subseteq C\) and 
+\begin{equation*}
+\{D^h | h:\omega\to t\} \cup \{D_n | n < \omega\}
+\end{equation*}
+-generic. We get a complete function \(g = \cup G:\omega \to 2\)
+\(G \cap D^g\neq \emptyset\). 
+If $f$ in this non-empty interesction, then $f$ contradicts $g$.
+\end{proof}
+
+An alternative, would be by applying Cohen's forcing.
+
+Let \(n<\omega\), \(\alpha < \kappa\).
+\begin{equation*}
+D_{n,\alpha} = \{f | (\alpha,n)\in \dom(f)\}.
+\end{equation*}
+is dense. The quantity of the sets is \(\kappa\) ??!.
+
+For distinct \(\alpha,\beta < \kappa\)
+\begin{equation*}
+D^{\alpha,\beta} = \{f | \exists n < \omega\; (\alpha,n),(\beta,n)\in \dom(f)
+\;\land\; f(\alpha,n) \neq f(\beta,n)\}
+\end{equation*}
+is dense. Let
+\begin{equation*}
+G = \{D^{\alpha,\beta}| \alpha,\beta<\kappa\land \alpha\neq\beta\}
+\;\cup\; \{D_{n,\alpha} | n < \omega \land \alpha < \kappa\}
+\end{equation*}
+--generic. We get complete function
+\begin{equation*}
+f = \cup G: \kappa\times\omega \to 2\}
+\end{equation*}
+for each \(\alpha<\kappa\) a sub-function \(g_\alpha : \omega \to 2\)
+By \(g_\alpha(n) = g_{\alpha,n}\)
+For distinct \(\alpha,\beta <\kappa\) then \(g_\alpha \neq g_\beta\).
+We got \(|\{g_\alpha | \alpha < \kappa\}|= \kappa\).
+Hence \(\kappa \leq 2^{\aleph_0}\).
+This is the way Paul Cohen showed \ldots ?
+
+General remark on \MA.
+In the proof of \(\MA(\aleph_0)\) we did not use \ccc.
+But for \(\MA(\aleph_1\) we did.
+For \(\MA(\kappa)\) and above we need that \lrangle{P, \leq} has \ccc.
+\begin{equation*}
+\textnormal{Col}(\omega,\omega_1) 
+  = \{f| f: \omega\to\omega_1 \;\finitepartial\}
+\end{equation*}
+For all \(\alpha< \omega_1\)
+\begin{equation*}
+D^\alpha< = \{f| \alpha\in\rng(f)\}
 \end{equation*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
