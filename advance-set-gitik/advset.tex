@@ -26,6 +26,7 @@
 \newtheorem{ldef}[thm]{Definition}
 \newtheorem{lemma}[thm]{Lemma}
 \newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
 
 \title{Advanced Set Theory
           \\
@@ -632,7 +633,7 @@ This is the way Paul Cohen showed \ldots ?
 
 General remark on \MA.
 In the proof of \(\MA(\aleph_0)\) we did not use \ccc.
-But for \(\MA(\aleph_1\) we did.
+But for \(\MA(\aleph_1)\) we did.
 For \(\MA(\kappa)\) and above we need that \lrangle{P, \leq} has \ccc.
 \begin{equation*}
 \textnormal{Col}(\omega,\omega_1) 
@@ -642,6 +643,225 @@ For all \(\alpha< \omega_1\)
 \begin{equation*}
 D^\alpha< = \{f| \alpha\in\rng(f)\}
 \end{equation*}
+\begin{equation*}
+D_n = \{f| n \dom(f)\| \qquad (n < \omega).
+\end{equation*}
+We will tak a generic set that meets any (dense?) set.
+Let \(G\subset \textnormal{Col}(\omega,\omega_1)\)
+\begin{equation*}
+\{D_n| n < \omega\} \cup \{D^\alpha| \alpha < \omega_1\}
+\end{equation*}
+and again, \(g = \cup G: \omega\to\omega_1\)
+and this is a \emph{surjective} function, contradiction.
+
+This set does not have \ccc.
+\(\{(0,\alpha)| \alpha < \omega_1\}\) is antichain, 
+\(\aleph_1\) functions send $0$ to different values. Hence \ccc\ is required.
+
+\begin{ldef}
+Let \(\scrA \subset P(\omega)\) and define
+\begin{equation*}
+P_\scrA = \{(s,F)|  s\subseteq\omega \,\land\, F\subset\scrA 
+  \,\land\, |s|<\aleph_0 \,\land\, |F|<\aleph_0\}
+\end{equation*}
+\(F\subset P(P(\omega))\) with the order relation:
+\begin{equation*}
+  \lrangle{s_1,F_1} \leq \lrangle{s_2,F_2}
+\end{equation*}
+iff
+\begin{enumerate}
+\item \(s_1 \subset s_2\)
+\item \(F_1 \subset F_2\)
+\item \(\forall x\in F_1\, s_2\cap x \subset S_1\).
+\end{enumerate}
+\end{ldef}
+Intuitively, can grow, but \ich{3} limits.
+
+Assume \((s,F), (s',F') \in P_\scrA\) what can harm the compatibility ?
+
+Without \ich{3}, we could pick \((s\cup s',F\cup F')\).
+Assume \((w,T)\) that makes the assumed pair compatible. But then 
+\((s\cup s',F\cup F')\in P_\scrA\) and \(F\cup F' \subseteq T\)
+and
+\begin{align*}
+\forall x\in F\;
+r \cap x \subset S   &\implies (s\cup s')\cap x\subset S \\
+\forall x\in F'\;
+r \cap x' \subset S' &\implies (s\cup s')\cap x'\subset S' \\
+\end{align*}
+Now \((s,F) \| (s', F') \; \Leftrightarrow\)
+for all \(x\in T\) % ??
+\begin{align*}
+(S\cup S')\cap x &\subseteq X'\\
+S'\cap x &\subseteq S\\
+\forall x'\in F'\; s \cap x' &\subseteq S'
+\end{align*}
+
+\begin{claim}
+Let \((s,F)\in P_\scrA\)
+then 
+\((s,F)\leq (s,F\cup\{x\})\)
+for all \(x\in\scrA\).
+\end{claim}
+
+\begin{claim}
+\(P_\scrA\) has \ccc.
+\end{claim}
+\begin{proof}
+Let 
+\begin{equation*}
+\scrT_\scrA = \{(s_\alpha, F_\alpha)|\alpha < \omega_1\}.
+\end{equation*}
+and \(s_\alpha \subset \omega\) finite.
+There exists \(I \subseteq \omega_1\), \(|I| = \aleph_1\)
+and there exists \(S^*\) such that \(\forall \alpha\in I\, S_\alpha=S^*\)
+\begin{equation*}
+\{(s^*,F_\alpha)| \alpha\in I\}
+\end{equation*}
+\begin{equation*}
+(s^*,F_\alpha),(s^*,F_\beta) \leq (S^*,F_\alpha\cup F_\beta)
+   \qquad (\alpha,\beta\in I).
+\end{equation*}
+so we have \ccc.
+\end{proof}
+
+Consider the next
+\begin{claim}
+For any \(x\in \scrA\)
+\begin{equation*}
+D_x = \{(s, F)\in P_\scrA | x\in F\}
+\end{equation*}
+is dense.
+\end{claim}
+Let \(G\subseteq P_\scrA\) and \(\{D_x|x\in\scrA\}\)x generoc.
+\begin{equation*}
+ \omega \supseteq d = \cup \{s|\exists F\,(s,F)\in G\}.
+\end{equation*}
+For all \(x\in \scrA \; |d\cap x| < \aleph_0\)
+From requirement \ich{3}: \((s_1,F_1) \in G\cap D_x\) and so \(x\in F_1\).
+Assume
+\begin{equation*}
+ (s_1,F_1) \leq (s_2,F_2) \in G
+\end{equation*}
+we get \(d\cap x\subseteq S_1\)
+(We need that $d$ be infinite).
+
+Assume \scrA\ is am infinite set of almost disjoint sets of \(\omega\).
+Our objective is \(|d|=\aleph_0\).
+% lecture break
+For all \(n < \omega\)
+\begin{equation*}
+D_n = \{(s,F)| \max(s)>n\} % ??
+\end{equation*}
+We have \((s_1,F_1)\in P_\scrA\)
+and we want to add to \(s_1\).
+\(\omega \setminus F_1| = \aleph_0\) and therefore
+there exists \(n < m \in \omega \setminus \cup F_1\)
+\begin{equation*}
+(s_1,F_1) \leq (s_1\cup\{m\}, F_1)
+\end{equation*}
+We take \(s_1\cup\{m\}\cap x \subseteq s_1\), \(x \in F_1\).
+\\
+\emph{Explanation}:
+\begin{equation*}
+ F_1 = \{B_1,B_2,\ldots, B_L\}\\
+B \in \scrA \setminus F_1 \\
+\end{equation*}
+\(B\cap B_1\), \(B\cap B_2\), \ldots \(B\cap B_L\) are finite,
+hence \(|B \setminus \cup F_1| = \aleph_0\).
+
+We claim: Assume for each \(n<\omega\) \(D_n\) is dense.
+Let
+\begin{equation*}
+G = \{D_x| x\in\scrA\} \cup \{D_n | n < \omega\}
+\end{equation*}
+generic.
+Then for all \(x\in\scrA\), \(|d\cap x|< \aleph_0\) and \(|d|=\aleph_0\)
+
+\begin{thm}
+Assum \(\MA(\kappa)\). Let \(\scrA,\scrB\in P(\omega)\) and 
+\(|\scrA|,|\scrB| \leq \kappa\).
+Assume for each finite \(y\in\scrB\) and for each finite \(F\subseteq \scrA\),
+\(|t\setminus \cup F|=\aleph_0\).
+Then there exists \(d\leq \omega\) such that for all \(b\in\scrB\),
+\(|d\cap b|=\aleph_0\) 
+\(\forall a\in\scrA\, |d\cap a|<\aleph_0\).
+\end{thm}
+\begin{proof}
+Look at \(P_\scrA\). For each \(a\in\scrA\) we take \(D_a\).
+for all \(n<\omega\), \(b\in\scrB\) we take
+\begin{equation*}
+D_n^b = \{(s,F)\in P_\scrA | \max(s\cap b) > n\}.
+\end{equation*}
+\((s_1,F_1)\leq(s_1\cup\{m\},F_1) \in D_n^b\).
+\\
+We want to show that \(D_n^b\) is dense.
+Let \((s_1,F_1)\in P_\scrA\), \(n < m\in b \setminus \cup F_1\),
+We define $d$ as before, ``we lose initial coordinates''.
+With the same arguments \(\forall a\in\scrA\, |d\cap a|<\aleph_0\).
+\end{proof}
+
+\begin{claim}
+Assume \(\MA(\kappa)\). Let \(\scrA \subseteq P(\omega)\)
+infinite family of almost disjoint sets. Then \(\scrA\) is not maximal.
+\end{claim}
+\begin{proof}
+(There are several ways.)\\
+\(\scrA,\scrB=\{\omega\}\).
+From the last theorem, we get infinite $d$ almost disjoint 
+for all sets in \scrA. Hence \scrA\ is not maximal.
+\end{proof}
+
+\begin{corollary}
+\(\MA \implies\) if \(\scrA \subseteq P(\omega\) is a family
+of almost disjoint sets of \(\omega\) infinite and maximal, then
+\(|\scrA| = 2^{\aleph_0}\).
+\end{corollary}
+
+\begin{claim}
+Let \(\scrB \subseteq P(\omega)\) an infinite family of 
+almost disjoint sets. Then for all \(scrA \subseteq \scrB\)
+there exists \(d \leq \omega\) such that for all \(a\in\scrA\)
+and for all \(b\in \scrB\setminus\scrA\) \(|d\cap b|=\aleph_0\).
+\end{claim}
+\begin{proof}
+\ldots
+\end{proof}
+
+\begin{thm}
+If \(\MA(\kappa)\) then \(2\kappa = 2_{\aleph_1}\).
+\end{thm}
+\begin{corollary}
+(\(\MA\)) \(\forall \kappa < 2^{\aleph_0},\,2^\kappa = 2^{\aleph_0}\).
+\end{corollary}
+\begin{proof}
+Take \(|\scrB|=\kappa\).
+Define \(H: P(\omega) \xrightarrow{\text{onto}} P(\scrB)\).
+This will be sufficient. We will use ``encryption-like mapping''.
+For each \(d\leq\omega\)
+\begin{equation*}
+H(d) = \{x\in\scrB| |x\cap d| < \aleph_0\}
+\end{equation*}
+For each \(\scrA\subseteq\scrB\) there exists \(d\subseteq\omega\)
+such that \(\scrA = H(d)\) by the previous claim.
+\end{proof}
+\begin{corollary}
+ (\MA). \(2^{\aleph_0}\) is a regular cardinal.
+\end{corollary}
+\begin{proof}
+Assume otherwise. \(\textnormal{cof}(2^{\aleph_0})=\kappa < 2^{\aleph_0}\).
+But \(2^\kappa = 2^{\aleph_0}\) and \(\kappa < \textnormal{cof}(2^\kappa)\).
+Contradiction.
+\end{proof}
+
+The trick that we can encrypt a set in \(omega\) by an element in \(\omega\).
+
+\begin{thm}
+Assume \(\MA(\kappa)\).
+A union of \(\kappa\) sets of real numbers of first category
+is of first category.
+\end{thm}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
