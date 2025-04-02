@@ -1,16 +1,98 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapterTypeout{Infinitary combinatorics}
+\chapterTypeout{II. Infinitary combinatorics}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Notes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 1.3}
+
+In the proof of Theorem~1.3
+\begin{equation*}
+  A_X = \{X\cap \alpha: \alpha<\kappa\}.
+\end{equation*}
+It claims: If \(|X|=\kappa\) then \(|A_X|=\kappa\). Why?\\
+For each distinct \(\alpha,\beta < \kappa\)
+we \emph{cannot} simply show \(X\cap \alpha \neq X\cap\beta\), since
+if we pick \(X' = X \setminus (\alpha \cup \beta)\)
+we still have \(|X'|=\kappa\) but
+\(X' = X'\cap \alpha = X' \cap \beta\).
+
+We enumerate \(X=\{x_\beta: \beta < \kappa\}\).
+For each \(\beta < \kappa\), we have \(\{x\in X: x< x_\beta\} = X\cap \alpha\)
+for some \(\alpha\) (not necessarily unique \(\alpha\) for \(\beta\).
+So the families:
+\begin{itemize}
+\item \(\{x\in X: x< x_\beta\}\) for each \(\beta < \kappa\)
+\item \(X\cap \alpha\) for each \(\alpha < \kappa\)
+\end{itemize}
+are the same, and so \(|X|=\kappa\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 1.6}
+
+In the proof of Theorem~1.6 it says:
+\begin{quote}
+Since \(\theta\) is regular and \(\theta > \kappa\), 
+there is some \(\rho < \kappa\), such that
+ \(\scrA_1 = \{x\in\scrA: x \;\textnormal{has type}\; \rho\}\)
+has cardinality \(\theta\).
+\end{quote}
+To Justify:
+\begin{equation*}
+\scrA = \mathsmaller{\Disjunion_{\rho<\kappa}} 
+  \{x\in\scrA: x \;\textnormal{has type}\; \rho\}.
+\end{equation*}
+
+In the proof of Theorem~1.6 it also says:
+\begin{quote}
+For each \(\alpha < \theta\), \(|\alpha^{<\kappa}| < \theta\)
+implies that less than \(\theta\) elements of \(\scrA_1\) are
+subsets of \(\alpha\) Thus, \(\cup \scrA_1\) is unbounded in \(\theta\).
+\end{quote}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises}
 
+%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%
+
+%%%%%%% 1
+\begin{excopy}
+Prove the \(\Delta\)-system lemma (1.5) directly. 
+\emph{Hint}. One may assume that for
+some $n$, \(\forall x \in \scrA (|x| =n)\). 
+Now proceed by induction on $n$. Observe that
+there is an uncountable \(\scrB \subset \scrA\) such that either 
+\(\cap \scrB \neq \emptyset\) or \scrB\ is pairwise
+disjoint.
+\end{excopy}
+
+The Theorem~1.5 says:
+\begin{quote}
+If \scrA\ is any uncountable family of finite sets, there is an uncountable
+\(\scrB \subset \scrA\) which forms a \(\Delta\)-system.
+\end{quote}
+Put \(\scrA_n = \{A \in \scrA: |A|=n\}\).
+Now the must exists some $n$ such that \(\scrA_n\) is uncountable.
+
+Assume \(n=1\). Then take \(\scrB = \scrA_1\) 
+and for each distinct \(B_1,B_2 \in scrB\), \(B_1\cap B_2 = \emptyset\)
+thus \scrB\ is \(\Delta\)-system.
+
+Induction step.
+Assume that if all sets in \scrA\ are of the same size $s$ and \(s<n\)
+then there exists \(\scrB_s\subset \scrA\) which is \(\Delta\)-system.
+and assumee now that \(\scrA_n\) is uncountable.
+Put \(R = \cup \scrA_n\) and well-order $R$.
+
+\unfinished
 
 
+\end{enumerate}
