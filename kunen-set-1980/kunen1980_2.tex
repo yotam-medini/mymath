@@ -86,6 +86,7 @@ are distinct elements of \(A_2\). Since \(|\alpha*{<\kappa}| < \theta\),
 \end{quote}
 \fi
 
+\subsubsection{Cardinality \(\theta\)}
 In the proof of Theorem~1.6 it says:
 \begin{quote}
 Since \(\theta\) is regular and \(\theta > \kappa\), 
@@ -99,13 +100,15 @@ To Justify:
   \{x\in\scrA: x \;\textnormal{has type}\; \rho\}.
 \end{equation*}
 
+\subsubsection{Subsets Estimation}
+
 In the proof of Theorem~1.6 it also says:
 \begin{quote}
 For each \(\alpha < \theta\), \(|\alpha^{<\kappa}| < \theta\)
 implies that less than \(\theta\) elements of \(\scrA_1\) are
 subsets of \(\alpha\) Thus, \(\cup \scrA_1\) is unbounded in \(\theta\).
 \end{quote}
-Estimatiom of subsets is justified by:
+Estimation of subsets is justified by:
 \begin{equation*}
 \left|\alpha^{<\kappa}\right| 
   = \left|\cup_{\gamma<\kappa}\alpha^\gamma\right|
@@ -116,6 +119,31 @@ Estimatiom of subsets is justified by:
 \end{equation*}
 It is bounded, since \(\theta\) is a limit ordinal, 
 \(|\cup \scrA_1|=\theta\) and \(\forall x\in\scrA (|x|<\theta\).
+
+\subsection{Final existence of $r$ and \scrB}
+
+The proof of Theorem~1.6 ends with
+\begin{quote}
+Since \(|\alpha_0^{<\kappa}| < \theta\)
+there is an \(r \subset \alpha_0\) and a
+\(\scrB \subset \scrA_2\) with \(|\scrB| = \theta\)
+  and \(\forall x \in \scrB (x \cap \alpha_0 = r)\)
+\end{quote}
+
+\B{Justifyication:} \\
+\(x_\mu(\xi_0)> \alpha_0\) and is above all elements of earlier \(x_\nu\).
+Hence \(x\cap y\subset\alpha_0\) for distinct \(x,y\in\scrA_2\).
+\\
+\(|\scrA_2|=\theta\), so among \(\{x\cap \alpha_0:x\in\scrA_2\)
+(Whose size \(\leq \alpha_0\)
+there there are \(\theta\) with intersection to some $r$.
+So we pick such \(\scrB \subset \scrA_2\)
+so \(|\{x\cap \alpha_0:x\in\scrB|=\theta\)
+and \(\forall x\in\scrB (r = x\cap \alpha)\).
+\\
+By the transfinite construction of \(x_\mu\)
+\(x\cap y = r\) for all distinct \(x,y\in\scrB\),
+since they differ above \(x(\xi_0)\) and \(y(\xi_0)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
