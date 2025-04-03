@@ -34,6 +34,58 @@ are the same, and so \(|X|=\kappa\).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Theorem 1.6}
 
+\iffalse
+\begin{quote}
+1.6. THEOREM. 
+Let \(\kappa\) be any infinite cardinal. 
+Let \(\theta > \kappa\) be regular and satisfy
+\(\forall \alpha < \theta (|\alpha^{-\kappa}| < \theta\).
+Assume \(|A| \geq \theta\) and \(\forall x\in A (|x|<\kappa)\),
+then there is a
+\(B \subset A\), such that \(|B| = \theta\) and $B$ forms a \(\Delta\)-system,
+namely \(\exists r, \forall x,y\in B (x\neq y \implies x\cap y = r\).
+
+Proof. By shrinking $A$ if necessary, we may assume \(|A| = \theta\). Then
+\(|\cup A| \leq \theta\). Since what the elements of $A$ are as individuals
+is irrelevant, we
+may assume \(\cup A \subset \theta\). 
+  Then each \(x \in A\)/ has some order type \(<\kappa\) as a subset
+of \(\theta\), Since \(\theta\) is regular and \(\theta > \kappa\), 
+  there is some \(\rho < \kappa\), such that 
+\(A_1 = \{x\in A: x \;\textnormal{has type}\; \rho\}\) has cardinality \(\theta\). 
+  We now fix such a \(\rho\) and deal only with \(A_1\)
+
+For each \(a <\theta\), \(|\alpha^{<\kappa}| < \theta\)
+  implies that less than \(\theta\) elements of \(A_1\) are
+subsets of \(\alpha\).
+  Thus, \(\cup A_1\) is unbounded in \(\theta\). 
+If \(x\in A_1\) and \(\xi < \rho\), let \(x(\xi)\)
+be the \(\xi\)-th element of $x$. 
+  Since \(\theta\) is regular, there is some \(\xi\) such that
+\(\{x(\xi): x\in A_1\}\) is unbounded in \(\theta\). 
+  Now fix \(\xi_0\) to be the least such \(\xi\) 
+  (\(\xi_0\) may be $0$). Let
+\begin{equation*}
+\alpha_0  = \sup\{x(\eta) + 1: x\in A_1 \land \eta < \xi_o\};
+\end{equation*}
+then \(\alpha_0 < \theta\) and \(x(\eta) < \alpha_0\) 
+  for all \(x \in A_1\) and all \(n < \xi_0\).
+By transfinite recursion on \(\mu < \theta\),
+  pick \(x_\mu \in A_1\) sO that \(x_\mu(\xi_0) > \alpha_0\) and
+\(x_\mu(\xi_0)\) is above all elements of earlier \(x_\nu\); i.e.
+\begin{equation*}
+X_\mu(\xi_0) > \max(\alpha_0, \sup \{x_\nu(\eta): \eta<\rho \land \nu<\mu\}).
+\end{equation*}
+Let \(A_2 = \{x_\mu: \mu < \theta\}\). 
+  Then \(|A_2| = \theta\) and \(x\cap y \subset \alpha_0\) whenever $x$ and $y$
+are distinct elements of \(A_2\). Since \(|\alpha*{<\kappa}| < \theta\), 
+  there is an \(r\subset \alpha_0\) and a
+\(B \subset A_2\)of, with \(|B| = \theta\) 
+  and \(\forall x \in B (x \cap \alpha_0 = r)\),
+  whence $B$ forms a \(\Delta\)-system with root $r$.
+\end{quote}
+\fi
+
 In the proof of Theorem~1.6 it says:
 \begin{quote}
 Since \(\theta\) is regular and \(\theta > \kappa\), 
@@ -53,7 +105,17 @@ For each \(\alpha < \theta\), \(|\alpha^{<\kappa}| < \theta\)
 implies that less than \(\theta\) elements of \(\scrA_1\) are
 subsets of \(\alpha\) Thus, \(\cup \scrA_1\) is unbounded in \(\theta\).
 \end{quote}
-
+Estimatiom of subsets is justified by:
+\begin{equation*}
+\left|\alpha^{<\kappa}\right| 
+  = \left|\cup_{\gamma<\kappa}\alpha^\gamma\right|
+  \geq \left|\cup_{\gamma<\min(\alpha,\kappa)}\alpha^\gamma\right|
+  \geq \left|\cup_{\gamma<\min\alpha,\kappa)} 
+    \{\rng(f): f\in \alpha^\gamma\}\right|
+  = \left|\{\alpha': \alpha'\subseteq \alpha\}\right|.
+\end{equation*}
+It is bounded, since \(\theta\) is a limit ordinal, 
+\(|\cup \scrA_1|=\theta\) and \(\forall x\in\scrA (|x|<\theta\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
