@@ -156,13 +156,38 @@ Because it may fail the \ich{a} condition.
 \subsection{Example 5 \(\bbP\)}
 
 Example 5 defines
-\begin{equation*}
+\begin{equation} \label{eq:example5}
 \bbP = \{p: p \subset \omega\times 2 \land |p|<\omega 
   \land p \;\textnormal{is a function}\}.
-\end{equation*}
+\end{equation}
 
 and says: \bbP\ clearly has \ccc. \\
-\emph{why?};
+\emph{why?:} Simply because there are \(\aleph_0\) finite subsets of \(\omega\).
+and there could be at most countable functions from 
+such finite subsets to $2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 2.6(b)}
+
+The proof of Lemma~2.6 says: ``\ich{b} was just done''.
+But in the preceding text, the discussion deals with 
+a specific \bbP\ of \eqref{eq:example5}.
+To show that \(\MA(2^\omega)\) is false, it is sufficient
+to show failure for some case.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 2.7}
+
+The lemma says:\\
+Let \(e_i=\lrangle{S_i,F_i}\) for \(i=1,2\). Put
+\begin{equation*}
+R(i) = \forall x\in F_i(x \cap s_{3-i} \leq s_i) \qquad (i=1,2).
+\end{equation*}
+Show \(e_1\|e_2\) iff \(R(1) \land R(2)\)
+with \(\lrangle{s_1\cup s_2,F_1\cup F_2}\) a common extension.
+
+we need to show (for \(i=1,2\)) that (here for \(i=1\))
+\(\forall x \in F_1\;(x\cap (s_1\cup s_2) \subset s_1)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
