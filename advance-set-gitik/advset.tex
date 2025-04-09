@@ -401,7 +401,7 @@ p \leq & p_0 \leq & p_1 \leq &\cdots \leq & p_n \\
        & D_0      & D_1      &\cdots      & D_n
 \end{array}
 \end{equation*}
-Now \(G = \{q \in P |\exists n, q \leq p_n\) is \scrF-generic.
+Now \(G = \{q \in P |\exists n, q \leq p_n\}\) is \scrF-generic.
 This proves \(\MA(\aleph_0)\).
 \end{proof}
 
@@ -510,7 +510,7 @@ But what happens if \(|P| > \aleph_0\). Two possibilities:
 be a cardinal.
 \begin{equation*}
 \Cohen(\omega,\kappa) 
-  = \{f | f: \kappa \times omega \; \textnormal{finite partial}\}.
+  = \{f | f: \kappa \times \omega \; \textnormal{finite partial}\}.
 \end{equation*}
 If \(\kappa \geq \aleph_0\) then \(|\Cohen(\omega,\kappa)| = \kappa\).
 
@@ -560,8 +560,8 @@ Let \scrF\ be a family of dense sets of $P$. \(G\subseteq P\)
 is called $F$-generic iff
 \begin{enumerate}
 \item \(p\in G,\,p \geq q\,\implies\, q\in G\).
-\item \(p,q\in G,\; \exists r\in G\, p,q \leq r\).
-\item \(\forall D\in F\; G\cap D\neq \emptyset\).
+\item \(p,q\in G,\; \exists r\in G\, (p,q \leq r)\).
+\item \(\forall D\in F\; (G\cap D\neq \emptyset)\).
 \end{enumerate}
 \end{ldef}
 In Kunen's book, requirements \ich{1}+\ich{2} define a \B{filter}.
@@ -589,7 +589,7 @@ D_n = \{f\in C| n \in \dom(f)\}
 \end{equation*}
 For \(h:\omega\to 2\),
 \begin{equation*}
-D^h = \{f\in C | \exists \kappa < \omega\, f(k)\neq h(k)\}.
+D^h = \{f\in C | \exists \kappa < \omega\, (f(k)\neq h(k))\}.
 \end{equation*}
 % lecture break 
 
