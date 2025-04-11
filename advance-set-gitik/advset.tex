@@ -460,6 +460,8 @@ contradiction.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{2025/March/30}
 
+% https://tau-ac-il.zoom.us/rec/share/CvWMQAysHRKdrJNRQeh8r8b7PLGekyuIH_0z8LgoaSD5GmOv_cI9zS4e3aUNeaMh.HulZNhXY_C65aaxt
+
 Some repeat contents.
 
 \begin{ldef}
@@ -861,6 +863,210 @@ Assume \(\MA(\kappa)\).
 A union of \(\kappa\) sets of real numbers of first category
 is of first category.
 \end{thm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2025/April/6}
+
+
+We will see how some set can separate between two families.
+
+\begin{thm} \label{thm:MAk:AB:sepd}
+\(\MA(\kappa)\).
+Let \(\scrA,\scrB \subseteq P(\omega)\)) and \(|\scrA|,|\scrB| < \kappa\).
+Assume for each each \(y\in\scrB\) and for each finite \(F\subseteq \scrA\),
+\(|y \setminus \cup F|=\aleph_0\).
+Then there exists \(d\subseteq \omega\) such that 
+\(\forall y\in\scrB\,(|d\cap y|=\aleph_0\) and
+\(\forall y\in\scrA\,(|d\cap y|<\aleph_0\).
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sets of First Category}
+
+An application:
+\begin{thm}
+\(\MA(\kappa)\).
+A union of \(\leq \kappa\) subsets of \R\ of first category, is a set of
+first category.
+\end{thm}
+\B{Reminder:} \(X\subset\R\) is of first category iff
+it is contained in a countable union of closed sets nowhere dense
+(its closure has empty interior).
+(We want to show additivity above \(\aleph_0\)).
+\begin{proof}
+Let \(\{\mathscr{K}_\aleph: \aleph < \kappa\}\) 
+a family of closed and nowhere dense subsets of \R.
+\iffalse
+We need to find countable family of closed nowhere dense subsets
+\(\{H_n: n < \omega\}\) such that
+\begin{equation*}
+\mathsmaller{\bigcup_{d<\kappa}} \mathscr{K}_d \subseteq 
+  \mathsmaller{\bigcup_{n<\omega}} H_n.
+\end{equation*}
+\fi
+We will work with complementa \(\{U_\alpha: \alpha<\kappa\}\)
+open dense subsets of \R. We need to find \(\{V_n: n<\omega\}\)
+such that 
+\begin{equation*}
+\mathsmaller{\bigcap_{n<\omega}} V_n \subseteq 
+  \mathsmaller{\bigcap_{\alpha<\kappa}} U_\alpha\,.
+\end{equation*}
+Look at all open segments with rational endpoints
+\(B=\{(a_i, b_i): i < \omega \land a_i,b_i \in \Q\}\).
+Assume \(d\subset \omega\).
+\begin{alignat*}{2}
+V_n &= \mathsmaller{\bigcup} \{B_i: i > n \land i \in d\} 
+  \qquad && (\forall n < \omega) \\
+c_j &= \{i < \omega: B_i \subset B_j\}
+  \qquad && (\forall j < \omega) \\
+\end{alignat*}
+If \(|d \cap c_j| = \aleph_0\) 
+then \(\forall n < \omega\, (V_n \cap B_j \neq \emptyset)\).
+And if \(\forall j < \omega\, (|d \cap c_j| = \aleph_0)\) 
+then \(V_n\) is dense for all \(n \leq \omega\).
+
+Put 
+\begin{equation*}
+a_\alpha = \{i < \omega: B_i \not\subseteq U_\alpha\} \qquad (\alpha < \kappa).
+\end{equation*}
+If \(a_\alpha \cap d \subseteq n\) (finite and bounded by $n$)
+then \(\forall i\in d\,(i < n \implies B_i \subseteq U_\alpha)\)
+and also 
+\begin{equation*}
+\mathsmaller{\bigcup_{m<\omega}} V_m \subseteq V_n \subset U_\alpha.
+\end{equation*}
+If \(\forall \alpha<\kappa\,(|a_\alpha \cap d|<\aleph_0)\)
+then 
+\begin{equation*}
+\mathsmaller{\bigcap_{n<\omega}} V_n \subset
+  \mathsmaller{\bigcap_{\alpha<\kappa}} U_\alpha .
+\end{equation*}
+\end{proof}
+
+We want to create a set $d$
+(with conditions on \(c_j\) and \(a_\alpha\)).
+We will want to show that the families satisfy 
+the conditions of \ref{thm:MAk:AB:sepd}.
+We take
+\begin{align*}
+A &= \{ a_\alpha: \alpha < \kappa\} \\
+B &= \{c_j: j<\omega\}
+\end{align*}
+A finite \(F\subset  \kappa\)
+\begin{align*}
+c_j \setminus \mathsmaller{\bigcap_{\alpha\in F}} a_\alpha 
+  &= \Pi<\omega: B_j \subseteq B_j\;\land\; 
+    \forall \alpha\in F\,(B_i \subseteq U_\alpha\} \\
+  &= \{i < \omega: B_j \subseteq B_j\;\land\;  
+    B_i \subseteq \cup_{\alpha\in F} U_\alpha\} \\
+  &= \{i < \omega: 
+    B_j \subseteq B_j\cap
+      \left(\mathsmaller{\bigcap_{\alpha\in F}} U_\alpha\right)\}.
+\end{align*}
+The latter \(\mathsmaller{\bigcap_{\alpha\in F}} U_\alpha\) is a dense open set,
+therefore the difference above is infinite.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sets of Measure Zero}
+
+\begin{thm}
+\(\MA(\kappa)\).
+A union of \(\kappa\) subsets of \(\R\) with measure-$0$
+has measure-$0$.
+\end{thm}
+\begin{proof}
+We will use a forcing-notion in a different way.
+Let \(X\subseteq\R\) and \(\mu(X)=0\).
+For each \(\epsilon>0\) there exists an open \(U\supseteq X\)
+such that \(\mu(U)<\epsilon\).
+Assume there is a sequence \(\{M\_\alpha: \alpha<\kappa\}\)
+such that \(\forall \alpha<\kappa\,(\mu(M_\alpha)=0\).
+We need to show \(\mu(\cup_{\alpha<\kappa}M_\alpha) = 0\).
+For any \(\epsilon > 0\) we need to find an open set 
+\(U_\epsilon \supseteq \cup_{\alpha<\kappa}M_\alpha\)
+such that \(\mu(U_\epsilon)<\epsilon\).
+
+Let \(\epsilon>0\) and define
+\begin{equation*}
+P_\epsilon = \{p; \mu(p)<\epsilon\;\land\;p\textnormal{ is open}\}.
+\end{equation*}
+\end{proof}
+We define \(p \geq q \; \iff \; p \supseteq q\).
+
+Let \(G \subseteq P_\epsilon\) ``sufficiently'' generic.
+and \(\cup \) is open.
+We want to show that \(\mu(\cup G) \leq \epsilon\).
+
+Let \(p,q\in P_\epsilon\), now \(p\| q\;\iff\; \mu(p\cup q)<\epsilon\).
+If \(p_1,\ldots,p_n\) are compatible, then \(\mu(\cup_{i=1}^n p_i) < \epsilon\)
+Note: any two compatible elements in $G$ by element in $G$.
+So \(\cup_{i=1}^n p_i \in G\).
+
+If there exists a countable \(A \subseteq G\) such that
+\(\cup G = \cup A\) then \(\mu(\cup A) = \mu(\cup G) < \epsilon\).
+Thus it is sufficient to find a countable subset.
+Again we will use $B$ the family of all open sets with rational endpoints,
+\(|B|=\aleph_0\).
+
+Let \(A = G \cap B\). We will show wthat \(\cup G = \cup A\).
+Clearly \(\cup A \subseteq \cup G\).
+For the other direction, let \(x\in\cup G\).
+Then there exists an open set \(p\in G\) such that \(x\in p\).
+So \(\exists a,b\in\Q\,(x\in (a,b)\subseteq p\),
+since $G$ is ``closed'' downwards. Thus \(x\in \cup A\).
+
+Let \(\alpha<\kappa\) and 
+\begin{equation*}
+D_\alpha = \{p \in P_\epsilon : p \supseteq M_\alpha\}.
+\end{equation*}
+We will show that \(D_\alpha\) is dense.
+Let \(q\in P_\epsilon\), \(\epsilon - \mu(q) > 0\).
+Find an open \(r \supseteq M_\alpha\) such that \(\mu(r) < \epsilon - \mu(q)\).
+\begin{equation*}
+p - e \cup q \supseteq M_\alpha\;\implies\;\mu(p)<\epsilon.
+\end{equation*}
+Hence \(p\in D_\alpha\).
+
+Take generic \(G = \{D_\alpha: \alpha < \kappa\}\).
+Then \(\cup_{\alpha<\kappa}M_\alpha \supseteq \cup G\)
+and \(\mu(\cup G)<\epsilon\).
+We still need to show that the partial order has \ccc.
+Assume otherwise, let \(\{p_\alpha: \alpha < \alpha < \omega_1\}\)
+be an antichain (any two are not compatible),
+\(\forall \alpha<\omega_1\,(\mu(p_\alpha)<\epsilon)\).
+
+Take an increasing sequence
+ \(\{\epsilon_n: n < \omega\land\; \epsilon_n<\epsilon\}\).
+For each \(\alpha<\omega_1\) there exists \(n_\alpha<\omega\) 
+such that 
+ \(\forall n<\omega\,(n_\alpha<n\,\implies\,\mu(p_\alpha)<\epsilon_n)\).
+
+By the ``pigeonhole principle'' there exist \(n^*\) and \(S\subseteq \omega_1\),
+\(|S|=\aleph_1\) such that for all \(\alpha \in S\), \(n_\alpha<n^*\)
+and \(\forall \alpha\in S\,(\mu(p_\alpha)<\epsilon_{n^*} < \epsilon)\).
+We select \(\delta>0\)  such that 
+\(\forall\alpha\in S\,(\mu(p_\alpha) < \epsilon - 3\delta)\)
+
+Any open set can be approximated by finite unions.
+Let $C$ be a family of finite unions (of open segments) from $B$.
+For each open $U$ and \(\tau > 0\) there exists \(v\in C\)
+such that \(\mu(U \Delta V) < \tau\).
+\(|C|=\aleph_0\).
+For all \(\alpha\in S\) pick \(C_\alpha\subseteq C\) such that
+\(\mu(p_\alpha \Delta C_\alpha) < \delta\).
+We reduce $S$ into \(\tilde{S}\), so still \(|\tilde{S}|=\alpha_1\)
+and \(\forall \alpha\in\tilde{S}\,(C_\alpha=C)\).
+Pick distinct \(\alpha,\beta\in \tilde{S}\).
+Now \(\mu(p_\alpha\cup p_\beta) \geq \epsilon\) since \(p_\alpha\perp p_\beta\)
+and we have:
+\begin{align*}
+ \mu(p_\alpha \cap p_\beta) &< \epsilon < 3\delta\\
+  \mu(p_\alpha \Delta C) &< \delta \\
+  \mu(p_\beta \Delta C) &< \delta
+\end{align*}
+This gives \ccc\ and we can apply \(\MA(\kappa)\).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
