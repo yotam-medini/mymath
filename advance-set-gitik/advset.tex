@@ -64,7 +64,7 @@ Let \(\kappa\) be infinite cardinal, \(\scrA \subseteq P(\kappa\)
 is a family of of \emph{almost disjoint sets} iff 
 \begin{enumerate}
 \item For any \(A\in \scrA\), \(|A|=\kappa\).
-\item For any \(A,B \in scrA\) if \(A\neq B\) then \(|A \cap B|<\kappa\).
+\item For any \(A,B \in \scrA\) if \(A\neq B\) then \(|A \cap B|<\kappa\).
 \end{enumerate}
 \end{ldef}
 
@@ -1062,12 +1062,229 @@ Pick distinct \(\alpha,\beta\in \tilde{S}\).
 Now \(\mu(p_\alpha\cup p_\beta) \geq \epsilon\) since \(p_\alpha\perp p_\beta\)
 and we have:
 \begin{align*}
- \mu(p_\alpha \cap p_\beta) &< \epsilon < 3\delta\\
+ \mu(p_\alpha \cap p_\beta) &< \epsilon - 3\delta \\
   \mu(p_\alpha \Delta C) &< \delta \\
   \mu(p_\beta \Delta C) &< \delta
 \end{align*}
 This gives \ccc\ and we can apply \(\MA(\kappa)\).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Intersection in Compact Space}
+
+\begin{thm}
+Let $X$ be a topological compact space that has \ccc\
+(No \(\omega_1\) disjoint open subsets), Hausdorff (\(T_2\)).
+Let \(\{U_\alpha: \alpha < \kappa\}\) be a family
+of open dense subsets, then
+\(\mathsmaller{\bigcap_{\alpha<\kappa}}U_\alpha \neq \emptyset\).
+\end{thm}
+\begin{proof}
+Let \(P = \{p\subseteq X: p\neq\emptyset \land\,p\;\textnormal{is open}\}\).
+Define \(p\geq q \;\iff\; p \subseteq q\) (opposite to what we had before).
+(stronger means smaller). % $P$ has \ccc.
+\(p\| q\;\iff\; p\cap q\neq \emptyset\)
+Hence $P$ has \ccc.
+
+We will have ``sufficiently'' generic \(G \subseteq P\).
+Put \(F = \{\overline{p}: p\in G\}\) (closed subsets).
+By compactness \(\cap F \neq \emptyset\).
+We want to show \(\cap F \subseteq \cap_{\alpha<\kappa} U_\alpha\).
+
+Let \(\alpha<\kappa\), and
+ \(D_\alpha = \{p\in P: \overline{p}\subseteq U_\alpha\}\).
+We will show that \(D_\alpha\) is dense.
+Let nonempty \(q\in P\). \(V=U_\alpha \cap q\) is open and nonempty.
+Find nonempty open \(p\) such that \(\overline{p} \subseteq V\)
+
+We cover the boundary of $V$ by finite collection of open sets
+that separate the boundary from a neighborhood $p$ of internal \(a\in V\)
+and \(\overline{p}\) does not intersect the boundary of $V$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Product of \ccc\ Spaces}
+
+\begin{thm} \label{thm:prod:ccc}
+\(\MA(\kappa)\).
+An product of \ccc\ spaces is \ccc.
+\end{thm}
+It is sufficient to treat final products, and actually product of two.
+\begin{claim} \label{claim:open:subset:finite:sect}
+\(\MA(\omega_1)\).
+Let $X$ be a topological space that has \ccc.
+Let \(\{U_\alpha \: U_\alpha\subseteq X \;\land\; \alpha < \aleph_1\}\) 
+be a family of nonempty open subsets.
+Then there exists \(A \subseteq \omega_1\), \(|A|=\aleph_1\)
+such that \(\{U_\alpha: \alpha\in A\}\)
+has finite intersection property, 
+namely, every intersection of finite number of subsets \(\neq\emptyset\).
+Formally:
+\begin{equation*}
+\forall F\subset A: |F|\leq \omega\;\implies\; 
+  \cap_{\beta\in F} A_\beta \neq \emptyset\}.
+\end{equation*}
+\end{claim}
+Before the proving the claim, we will use it to prove \ref{thm:prod:ccc}.
+\begin{proof}
+Assume \ref{claim:open:subset:finite:sect}.
+By negation, assume otherwise namely, $X$ and $Y$ are \ccc\ 
+and \(X\times Y\) is not \ccc.
+So we have \(\{W_\alpha \subset X\times Y:\alpha<\omega_1\}\)
+nonempty disjoint open sets. For each \(\alpha<\omega_1\)
+we have \(V_{1\alpha}\subset X\) and \(V_{2\alpha}\subset Y\) such that
+\(V_{1\alpha}\times V_{2\alpha} \subseteq W_\alpha \).
+
+We look at the family \(\{V_{1\alpha}:\alpha<\omega_1\}\).
+From \ref{claim:open:subset:finite:sect} there exists \(A\subseteq \omega_1\),
+\(|A|=\aleph_1\) such that \(\{V_{1\alpha}:\alpha\in A\}\)
+has finite intersection property.
+Pick distinct \(\alpha,\beta\in A\), \(W_\alpha\cap W_\beta=\emptyset\)
+but \(V_{1\alpha}\cap V_{2\beta} \neq \emptyset\). Therefore 
+\(V_\alpha\cap V_\beta = \emptyset\).
+Hence \(\{V_{2\alpha}:\alpha\in A\}\) contradicts the \ccc\ of $Y$,
+which proves the theorem.
+\end{proof}
+We now prove \ref{claim:open:subset:finite:sect}.
+\begin{proof}
+For each \(\alpha <\omega_1\) define 
+\(V_\alpha = \bigcup_{\alpha<\gamma<\omega_1} U_\gamma\).
+If \(\alpha<\beta<\omega_1\) then \(V_\alpha \supseteq V_\beta\),
+that is non-increasing.
+
+\B{Supporting Claim:} There exists \(\alpha^* <\omega_1\) 
+such that 
+\begin{equation*}
+\forall \beta<\omega_1\,\left(\alpha<\beta\,\implies\, 
+ \overline{V_{\alpha^*}} = \overline{V_\beta}\right)
+\end{equation*}
+Intuitively, the closures sequence must stabilize.
+To prove by negation, define properly decreasing sequence
+\(\{\overline{V_{\beta_i}}: i < \omega_1\}\), 
+where \(\overline{V_{\beta_i}} \supsetneq \overline{V_{\beta_j}}\)
+whenever \(i<j<\omega_1\). 
+Now \(\{V_{\beta_i} \setminus \overline{V_{\beta_{i+1}}}\}\)
+are open and disjoint contradicting \ccc.
+This proves the supporting claim.
+
+Let
+\begin{equation*}
+P = \{p \subset V_{\alpha^*}: p\neq\emptyset\;\land\; p\textnormal{ is open}\}.
+\end{equation*}
+Define \(p\geq q\,\iff\, p\subseteq q\).
+$P$ has \ccc since $X$ has \ccc.
+Let \(G\subseteq P\) ``sufficiently'' generic.
+$G$ has finite intersection property because
+ant two members are compatible and so any finite number of members.
+
+Put \(A=\{\alpha<\omega_1: \exists p\in G (p\subseteq U_\alpha)\}\).
+If \(|A|=\aleph_1\) then \(\{U_\alpha: \alpha\in A\}\) as required.
+
+We will need to choose open dense sets to ensure \(|A|=\aleph_1\).
+For any \(\gamma\) such that \(\alpha^*<\gamma<\omega_1\) define 
+\begin{equation*}
+D_\gamma = \{p\in P: \exists \alpha>\gamma\,(U_\alpha \subseteq p\}.
+\end{equation*}
+We want to show that \(D_\gamma\) is dense.
+Let \(p\in P\), \(p\subseteq V_{\alpha^*}\), 
+\(p\subseteq \overline{V_{\alpha^*}} = \overline{V_\gamma}\),
+\(p \cap V_\gamma \neq \emptyset\).
+(Here there was an argument looking at \(x\in \partial V_\gamma\).)
+\begin{equation*}
+V_\gamma = \cup_{\alpha<\gamma} U_\alpha\;\implies\;
+ \exists \alpha>\gamma\,(p\cap U_\alpha \neq \emptyset).
+\end{equation*}
+\end{proof}
+
+There will be an application related to Suslin conjecture.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Invariants of Continuum}
+
+\begin{ldef}
+Let \(f,g:\omega\to\omega\). We say that $f$ \B{dominates} $g$
+written as \(f \geq^* g\) iff there exists \(n_0<\omega\)
+such that \(\forall n\geq n_0\,(f(n)\geq g(n))\).
+\end{ldef}
+We look at \(\lrangle{\omega^\omega, \leq^*}\).
+\begin{ldef}
+{\nullfont a}
+\begin{itemize}
+\itemch{a} \(F\subseteq \omega^\omega\) is called \emph{unbounded}
+if there is no \(f:\omega\to\omega\) that dominates all \(g\in F\).
+\itemch{b} \(F\subseteq \omega^\omega\) is called \emph{cofinal} if
+\begin{equation*}
+ \forall f \in \omega^\omega\,\exists g\in F\,(g \geq^* f).
+\end{equation*}
+\end{itemize}
+\end{ldef}
+
+\begin{ldef}
+\begin{equation*}
+\underset{\sim}{b} 
+  = \min\{|F|: f\subseteq \omega^\omega\;\land\; F\textnormal{ is unbounded}\}
+\end{equation*}
+is called \emph{bounding number}.
+\begin{equation*}
+\underset{\sim}{d}
+  = \min\{|F|: f\subseteq \omega^\omega\;\land\; F\textnormal{ is cofinal}\}
+\end{equation*}
+is called \emph{dominating number}.
+\end{ldef}
+We always have \(\underset{\sim}{b} \leq \underset{\sim}{d}\).
+intuitively, if cofinal then unbounded.
+
+\begin{thm}
+\MA. 
+\begin{equation*}
+\underset{\sim}{b} = \underset{\sim}{d} = 2^{\aleph_0}.
+\end{equation*}
+\end{thm}
+\begin{proof}
+We will show \(\MA(\kappa)\;\implies\; \underset{\sim}{b}>\kappa\).
+For any \(\{f_\alpha: \alpha>\kappa\}\) there exists $f$
+that dominates all.
+(We introduce forcing notion).
+Define
+\begin{equation*}
+P = \{(s,F): s: n\to\omega\,\land\,n<\omega\,\land\,|F|<\aleph_0\}.
+\end{equation*}
+and \((s_1,F_1) \geq (s_2,F_2) \;\iff\)
+\begin{enumerate}
+\item \(s_1\supseteq s_2\)
+\item \(F_1 \supseteq F_2\)
+\item \(\forall k \in \dom(s_1)\setminus\dom(s_2)\,\forall \alpha\in F_2\;
+  (s_1(k) > f_\alpha(k))\).
+\end{enumerate}
+We want that ``the generated function will dominate \(F_2\)''.
+We will have a generic \(G\subseteq P\) and \(f=\cup G\).
+we want to show \(f:\omega\to\omega\).
+
+For eack \(k\in\omega\) define
+\begin{equation*}
+D_k = \{(s,F): k\in \dom(s)\}
+\end{equation*}
+which is dense.
+Assume \((s,F)\), \(k<\omega\). If \(k\in\dom(s)\) then no problem.
+Otherwise, \(\dom(s^*)= \dom(s) \cup\{k\}\) with
+\begin{equation*}
+s^*(k) = \max(\{f_\alpha(k): \alpha\in F\}) + 1.
+\end{equation*}
+This \(\max\) is possibile for $F$ is finite.
+Note:
+\begin{equation*}
+(s,F) \leq (s^*,F> \in D_k.
+\end{equation*}
+Put \(f=\cup G: \omega\to\omega\).
+\begin{equation*}
+D^{\alpha} = \{(s,F): \alpha\in F\} \qquad (\alpha<\kappa).
+\end{equation*}
+We assume for $G$ (condition (3.) is not involved)
+\((s,F) \in G \cap D^\alpha\)
+Hence \(f >^* f_\alpha\).
+\end{proof}
+
+We will discuss \(\alpha_1\) relative to \(\aleph_0\),
+and Hechlen forcing.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
