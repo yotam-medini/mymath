@@ -190,6 +190,90 @@ we need to show (for \(i=1,2\)) that (here for \(i=1\))
 \(\forall x \in F_1\;(x\cap (s_1\cup s_2) \subset s_1)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Lemma 2.12}
+
+\textsc{Lemma}~2.12 says:\\
+If $G$ is a filter in \(\mathbb{P}_\scrA\) and 
+\(G\cap D_x\neq 0\), then \(|x\cap d_G|< \omega\).
+\begin{proof}
+It was defined \(D_x = \{\lrangle{s,F}\in\mathbb{P}_\scrA: x\in F\}\).
+Pick some \(\lrangle{s,F}\in G\cap D_x\).
+Now \(x\in F\) and by \textsc{Lemma}~2.12 \(x\cap d_G \subset s\)
+since \(|s|<\omega\) so is \(|x\cap d_G|<\omega\).
+
+
+and for any \(\lrangle{s',F'}\in G\)
+we have \(\lrangle{s,F}\|\lrangle{s',F'}\).
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 2.15}
+
+The proof of \textsc{Theorem}~2.15 says:
+\begin{quote}
+If \(y\in \mathscr{C}\), then \(d_G \cap y \not\subset n\) for all $n$.
+\end{quote}
+This is because, given \(y\in\mathscr{C}\), $G$ intersects
+all \(\{E_n^y\}\) and \(d_G = \cup\{s: \exists F(\lrangle{s,F}\in G)\|\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Corollary 2.16}
+
+The proof of \textsc{Corollary}~2.16 says
+\begin{quote}
+ \(|\omega \setminus \cup F|=\omega\) for all finite \(F\subset \scrA\).
+\end{quote}
+The requirement for \(\scrA\subset P(\omega)\) is that 
+it is an almost disjoint families and \(|\scrA|=\omega\).
+Let us define following sets:
+\(A_0=\omega\) and \(A_n = \{n\}\) for \(0 < n < \omega\).
+Now \(\scrA = \{A_n: n < \omega\}\) is almost disjoint family, 
+\(|\scrA| = \omega\).
+\B{But} if we take \(F=\{A_0\}\) (\(|F|=1)\)
+then we have \(\omega \setminus \cup F = \emptyset\)
+and \(|\omega \setminus \cup F| = 0 < \omega\).
+
+So where am I wrong ?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 2.18}
+
+The proof of \textsc{Theorem}~2.18 says:
+\begin{quote}
+Lemma~2.17 says \(\Phi\) is onto.
+\end{quote}
+Pick a subset \(A\subset(P(\scrB)\), and put \(B=\P(\scrB)\setminus A\).
+now applying Lemma~2.17 gives the desired $d$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 2.20}
+
+The proof of \textsc{Theorem}~2.20 ends
+with non-triaval sete subsection.
+Let's look at it in more details.
+We have the definitions:
+\begin{align*}
+c_j &= \{i\in\omega: B_j \subset B_j\} \qquad(j\in\omega) \\
+a_\alpha &= \{i\in\omega: B_i \not\subset U_\alpha\} \qquad(\alpha<\kappa).
+\end{align*}
+Now
+\begin{align*}
+D &= c_j \setminus \mathsmaller{\bigcup_{\alpha\in F}} a_\alpha \\
+  &= \{i\in\omega: B_i \subset B_j\}
+    \setminus
+    \left(\mathsmaller{\bigcap_{\alpha\in F}} 
+      \{i\in\omega: B_i \not\subset U_\alpha\}\right)  \\
+  &= \{i\in\omega: B_i \subset B_j\;\land\;
+       \left(\forall \alpha\in F (\lnot (B_i \not\subset U_\alpha))\right)\} \\
+  &= \{i\in\omega: B_i \subset B_j\;\land\;
+       \left(\forall \alpha\in F (B_i \subset U_\alpha)\right)\} \\
+  &= \{i\in\omega: (B_i \subset B_j)\;\land\;
+       (B_i \subset \mathsmaller{\bigcap_{\alpha\in F}} U_\alpha)\} \\
+  &= \left\{i\in\omega: B_i \subset 
+    \left(B_j\cap\mathsmaller{\bigcap_{\alpha\in F}} U_\alpha\right)\right\}.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exercises}
 
@@ -217,7 +301,7 @@ Put \(\scrA_n = \{A \in \scrA: |A|=n\}\).
 Now the must exists some $n$ such that \(\scrA_n\) is uncountable.
 
 Assume \(n=1\). Then take \(\scrB = \scrA_1\) 
-and for each distinct \(B_1,B_2 \in scrB\), \(B_1\cap B_2 = \emptyset\)
+and for each distinct \(B_1,B_2 \in \scrB\), \(B_1\cap B_2 = \emptyset\)
 thus \scrB\ is \(\Delta\)-system.
 
 Induction step.
