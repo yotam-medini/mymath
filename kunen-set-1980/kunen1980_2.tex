@@ -242,7 +242,7 @@ The proof of \textsc{Theorem}~2.18 says:
 \begin{quote}
 Lemma~2.17 says \(\Phi\) is onto.
 \end{quote}
-Pick a subset \(A\subset(P(\scrB)\), and put \(B=\P(\scrB)\setminus A\).
+Pick a subset \(A\subset(P(\scrB)\), and put \(B=P(\scrB)\setminus A\).
 now applying Lemma~2.17 gives the desired $d$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -272,6 +272,54 @@ D &= c_j \setminus \mathsmaller{\bigcup_{\alpha\in F}} a_\alpha \\
   &= \left\{i\in\omega: B_i \subset 
     \left(B_j\cap\mathsmaller{\bigcap_{\alpha\in F}} U_\alpha\right)\right\}.
 \end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 2.20}
+
+About the proog of \textsc{Theorem}~2.20:
+\begin{itemize}
+\item \(|\mathscr{C}|=\aleph_0\) being a set of all finite unions of \scrB.
+  This used to get a contradiction.
+\item Justifying \(\mu(C_\alpha \Delta C_\beta) \geq \delta\).
+
+  Assume \(x\in p_\alpha \setminus p_\beta\).\\
+  If \(x\in C_\alpha\) then 
+  \((x \in (C_\alpha \setminus C_\beta))\lor(x\in (p_\beta \setminus C_\beta))\)
+  and then \(x\in (C_\alpha \Delta C_\beta) \cup (p_\beta \Delta C_\beta)\).
+  \\
+  If \(x\notin C_\alpha\) then \(x \in p_\alpha \Delta C_\alpha\).\\
+  So in both cases 
+    \(x \in (p_\alpha \Delta C_\alpha) \cup (p_\beta \Delta C_\beta) 
+      \cup  (C_\alpha \Delta C_\beta)\).
+
+  Similarly, if \(x\in p_\beta \setminus p_\alpha\)
+    \(x \in (p_\alpha \Delta C_\alpha) \cup (p_\beta \Delta C_\beta) 
+      \cup  (C_\alpha \Delta C_\beta)\). Hence
+  \begin{equation*}
+    p_\alpha \Delta p_\beta \subseteq
+    (p_\alpha \Delta C_\alpha) \cup (p_\beta \Delta C_\beta) 
+      \cup  (C_\alpha \Delta C_\beta).
+  \end{equation*}
+  Therefore:
+  \begin{equation*}
+    \mu(p_\alpha \Delta p_\beta) \leq
+    \mu(p_\alpha \Delta C_\alpha) + \mu(p_\beta \Delta C_\beta) 
+      + \mu(C_\alpha \Delta C_\beta).
+  \end{equation*}
+
+  We know that \(\mu(p_\alpha \Delta p_\beta) \geq 3\delta\)
+  and that 
+  \(\mu(p_\alpha \Delta C_\alpha),\,\mu(p_\beta \Delta C_\beta) \leq \delta\).
+  So
+  \begin{equation*}
+  \mu(C_\alpha \Delta C_\beta) \geq
+    \mu(p_\alpha \Delta p_\beta)
+      - \mu(p_\alpha \Delta C_\alpha) - \mu(p_\beta \Delta C_\beta) 
+  \geq 3\delta - \delta - \delta = \delta.
+  \end{equation*}
+
+
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
