@@ -61,7 +61,7 @@ and strengthening of negation of the continuum-hypothesis.
 \subsection{Almost Disjoint Sets}
 
 \begin{ldef}
-Let \(\kappa\) be infinite cardinal, \(\scrA \subseteq P(\kappa\)
+Let \(\kappa\) be infinite cardinal, \(\scrA \subseteq P(\kappa)\)
 is a family of of \emph{almost disjoint sets} iff 
 \begin{enumerate}
 \item For any \(A\in \scrA\), \(|A|=\kappa\).
@@ -1107,13 +1107,13 @@ and \(\overline{p}\) does not intersect the boundary of $V$.
 
 \begin{thm} \label{thm:prod:ccc}
 \(\MA(\kappa)\).
-An product of \ccc\ spaces is \ccc.
+A product of \ccc\ spaces is \ccc.
 \end{thm}
 It is sufficient to treat final products, and actually product of two.
 \begin{claim} \label{claim:open:subset:finite:sect}
 \(\MA(\omega_1)\).
 Let $X$ be a topological space that has \ccc.
-Let \(\{U_\alpha \: U_\alpha\subseteq X \;\land\; \alpha < \aleph_1\}\) 
+Let \(\{U_\alpha: U_\alpha\subseteq X \;\land\; \alpha < \aleph_1\}\) 
 be a family of nonempty open subsets.
 Then there exists \(A \subseteq \omega_1\), \(|A|=\aleph_1\)
 such that \(\{U_\alpha: \alpha\in A\}\)
@@ -1122,10 +1122,10 @@ namely, every intersection of finite number of subsets \(\neq\emptyset\).
 Formally:
 \begin{equation*}
 \forall F\subset A: |F|\leq \omega\;\implies\; 
-  \cap_{\beta\in F} A_\beta \neq \emptyset\}.
+  \cap_{\beta\in F} A_\beta \neq \emptyset.
 \end{equation*}
 \end{claim}
-Before the proving the claim, we will use it to prove \ref{thm:prod:ccc}.
+Before proving the claim, we will use it to prove \ref{thm:prod:ccc}.
 \begin{proof}
 Assume \ref{claim:open:subset:finite:sect}.
 By negation, assume otherwise namely, $X$ and $Y$ are \ccc\ 
@@ -1138,10 +1138,11 @@ we have \(V_{1\alpha}\subset X\) and \(V_{2\alpha}\subset Y\) such that
 We look at the family \(\{V_{1\alpha}:\alpha<\omega_1\}\).
 From \ref{claim:open:subset:finite:sect} there exists \(A\subseteq \omega_1\),
 \(|A|=\aleph_1\) such that \(\{V_{1\alpha}:\alpha\in A\}\)
+(and also  \(\{V_{2\alpha}:\alpha\in A\}\))
 has finite intersection property.
 Pick distinct \(\alpha,\beta\in A\), \(W_\alpha\cap W_\beta=\emptyset\)
-but \(V_{1\alpha}\cap V_{2\beta} \neq \emptyset\). Therefore 
-\(V_\alpha\cap V_\beta = \emptyset\).
+but \(V_{1\alpha}\cap V_{1\beta} \neq \emptyset\). Therefore 
+\(V_{2\alpha}\cap V_{2\beta} = \emptyset\).
 Hence \(\{V_{2\alpha}:\alpha\in A\}\) contradicts the \ccc\ of $Y$,
 which proves the theorem.
 \end{proof}
