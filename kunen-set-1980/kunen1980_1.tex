@@ -30,3 +30,88 @@ Hence $A$ is well-ordered.
 With these two conclusions, the requirements of \textsc{Definition}~7.1
 are met and thus $A$ is an ordinal.
 \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercises}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+
+%%%%%%% 1
+\begin{excopy}
+Write a formula expressing
+\(z = \lrangle{\lrangle{x, y}, \lrangle{v, w}}\).
+using just \(\in\) and $=$.
+\end{excopy}
+
+Let's start with a simpler challenge, expressing \(z = \lrangle{x, y}\),
+meaning \(z = \{x, \{x,y\}\}\).
+\begin{equation*}
+ a \in z\;\iff\; (a=x \lor (b \in a \iff ((b=x) \lor (b=y)))
+\end{equation*}
+\unfinished
+
+%%%%%%% 2
+\begin{excopy}
+Show that
+\(\alpha < \beta\) implies that \(\gamma + \alpha < \gamma + \beta\)
+and \(\alpha + \gamma \leq \beta + \gamma\).
+Give
+ example to show that the \(\leq\) cannot be replaced by $<$. Also, show:
+\begin{equation*}
+ \alpha \leq \beta \,\implies\, \exists!\delta(\alpha + \delta = \beta).
+\end{equation*}
+\end{excopy}
+By definition and by \textsc{Theorem}~6.3
+\(\exists y\in\beta\,(\alpha \simeq \pred(\beta,y)\).
+So we have unique isomorphism
+\(\varphi: \alpha \to \pred(\beta,y)\).
+Following \textsc{Definition}~7.17
+define
+\begin{align*}
+\tilde{\varphi} &:
+  \type\left(\gamma\times\{0\}\cup \alpha\times\{1\}\right)
+  \to
+  \type\left(\gamma\times\{0\}\cup \beta\times\{1\}\right) \\
+\tilde{\varphi}(x) &=
+  \left\{
+  \begin{array}{ll}
+    x &\quad x\in \gamma\times\{0\} \\
+    \lrangle{\varphi(a),1} &\quad x \in\alpha\times\{1\}\,\land\,x=\lrangle{a,1}
+  \end{array}
+  \right.
+\end{align*}
+Clearly \(\tilde{\varphi}\) is injective but not surjective
+since \(\varphi\) is not. Thus \(\gamma + \alpha < \gamma + \beta\).
+
+If \(\alpha\leq\beta\) then \(\alpha \subsetneq \beta\).
+Put \(d=\beta \setminus \alpha\).
+Now $d$ is well ordered and \(\delta = \type(d)\)
+satisfies the \(\alpha + \delta = \beta\) equality.
+If \(\alpha + \eta = \beta\)
+then there is an isomorphism \(\varphi: \alpha + \delta \to \alpha + \eta\),
+By lookin at \textsc{Definition}~7.16 we can ``reduce''
+\(\varphi\) to \(\delta \to \eta\) and by \textsc{Theorem}~7.3(2)
+\(\eta = \delta\), thus uniqueness of \(\delta\) was shown.
+
+If \(\alpha=0\), \(\beta=1\) and \(\gamma=\omega\)
+then \(\alpha+\gamma = 0+\omega = \omega = 1 + \omega = \beta+\gamma\).
+So \(\leq\) is needed.
+
+% we \(\alpha \in \beta\) and by 
+% transitivity
+% \(\alpha \subset\) and again by definition \(\alpha \subsetneq \beta\).
+% So there exists a unique injective mapping \(\phi:\alpha\to\beta\).
+\unfinished
+
+%%%%%%% N
+\begin{excopy}
+\end{excopy}
+\unfinished
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{enumerate}
+

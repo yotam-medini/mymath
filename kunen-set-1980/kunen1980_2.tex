@@ -356,15 +356,45 @@ since $X$ is compact Hausdorff.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Lemma 2.23}
 
-The proof \textsc{Lemma}~2.3 
-define non increasing open sets \(\{V_\alpha:\alpha<\omega_1\}\)
+The proof \textsc{Lemma}~2.23 
+defines non increasing open sets \(\{V_\alpha:\alpha<\omega_1\}\)
 with \(\forall \alpha<\omega_1\,(V_\alpha \supset V_{\alpha+1}\)
 and implicitly says:
 \begin{equation*}
-\overline{V_{\alpha_{\xi+1}}} \neq \overline{V_{\alpha_\xi}} 
+\overline{V}_{\alpha_{\xi+1}} \neq \overline{V}_{\alpha_\xi}
 \;\implies\;
-V_{\alpha_\xi} \setminus \overline{V_{\alpha_{\xi+1}}} \neq \emptyset.
+V_{\alpha_\xi} \setminus \overline{V}_{\alpha_{\xi+1}} \neq \emptyset.
 \end{equation*}
+To prove it Let \(G_1 \subset G\) be open sets
+and \(\overline{G}_1 \neq \overline{G}\).
+We want to show that \(G\setminus \overline{G}_1\neq \emptyset\).
+Clearly  \(\overline{G}_1 \supsetneq \overline{G}\).
+Pick \(x\in \overline{G}\setminus\overline{G}_1\).
+Any open neighborhood of $x$ intersects $G$.
+Pick an open neighborhood \(V\ni x\),
+set \(W=V\cap (X\setminus \overline{G}_1)\).
+So also \(x \in W\). Pick any \(y \in W\cap G\), 
+now \(y\in G \setminus \overline{G}_1 \neq \emptyset\),
+
+The proof also says:
+\vspace{-10pt}
+\begin{quote}
+If $G$ is a filter in \(\mathds{P}\), then $G$ jas the 
+finite intersection property.
+\end{quote}
+% (As explained in by Gitik)
+This is because any two members in $G$
+are compatible and so any finite number of members
+(downward closure).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Theorem 4.2}
+
+Theorem~4.2 says: \(\MA(\omega_1) \,\implies\, \SH\)
+How?\\
+If by negation $X$ is Suslin line, then it is separable
+and so \(x^2\) is separable and so \(X^2\) is \ccc.
+But by Lemma~4.3 \(X^2\) is not \ccc, a contradiction.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,7 +421,7 @@ If \scrA\ is any uncountable family of finite sets, there is an uncountable
 \(\scrB \subset \scrA\) which forms a \(\Delta\)-system.
 \end{quote}
 Put \(\scrA_n = \{A \in \scrA: |A|=n\}\).
-Now the must exists some $n$ such that \(\scrA_n\) is uncountable.
+Now there must exists some $n$ such that \(\scrA_n\) is uncountable.
 
 Assume \(n=1\). Then take \(\scrB = \scrA_1\) 
 and for each distinct \(B_1,B_2 \in \scrB\), \(B_1\cap B_2 = \emptyset\)
@@ -400,10 +430,26 @@ thus \scrB\ is \(\Delta\)-system.
 Induction step.
 Assume that if all sets in \scrA\ are of the same size $s$ and \(s<n\)
 then there exists \(\scrB_s\subset \scrA\) which is \(\Delta\)-system.
-and assumee now that \(\scrA_n\) is uncountable.
-Put \(R = \cup \scrA_n\) and well-order $R$.
+and assume now that \(\scrA_n\) is uncountable.
+Put \(R = \cup \scrA_n\) and well-order $R$ by $<$.
 
-\unfinished
+Now for any set \(A\in \scrA_n\) we define \(A' = A\setminus \max(A)\).
+Thus \(|A'| = n - 1\). Consider \(\mathscr{C} = \{A': A\in\scrA_n\}\).
+By the induction hypothesis has a uncountable
+subset \(\mathscr{D}\subset\mathscr{C}\)
+which forms a \(\Delta\)-system with root $r$.
+Now condider the ``deleted elements''
+\(E = \{\max(A): (A\in\scrA_n) \land (A'\in \mathscr{D})\}\).
+For each \(e\in E\) Let
+\(\scrF_e = \{A\in \scrA_n: (e\in A) \land (A'\in\mathscr{D})\}\).
 
+Consider two cases:
+\begin{itemize}
+\item There exists \(e\in E\) such that \(|\scrF_e|>\aleph_0\).
+Then \(\scrF\) forms a \(\Delta\)-system with root \(r\cup\{e\}\).
+\item Otherwise, \(|E|>\aleph_0\) and for each \(e\in E\)
+we select a single \(S_e\in scrF_e\). Now \(\mathscr{S} = \{S_e: e\in E\}\)
+forms a  \(\Delta\)-system with the same root $r$.
+\end{itemize}
 
 \end{enumerate}
