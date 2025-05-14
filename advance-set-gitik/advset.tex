@@ -1,6 +1,7 @@
 \documentclass[11pt,pdftex,twoside,a4paper]{article}
 \usepackage{amsthm}
 \usepackage{array}
+\usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{relsize}
 
@@ -1176,7 +1177,7 @@ Define \(p\geq q\,\iff\, p\subseteq q\).
 $P$ has \ccc since $X$ has \ccc.
 Let \(G\subseteq P\) ``sufficiently'' generic.
 $G$ has finite intersection property because
-ant two members are compatible and so any finite number of members.
+any two members are compatible and so any finite number of members.
 
 Put \(A=\{\alpha<\omega_1: \exists p\in G (p\subseteq U_\alpha)\}\).
 If \(|A|=\aleph_1\) then \(\{U_\alpha: \alpha\in A\}\) as required.
@@ -1184,7 +1185,7 @@ If \(|A|=\aleph_1\) then \(\{U_\alpha: \alpha\in A\}\) as required.
 We will need to choose open dense sets to ensure \(|A|=\aleph_1\).
 For any \(\gamma\) such that \(\alpha^*<\gamma<\omega_1\) define 
 \begin{equation*}
-D_\gamma = \{p\in P: \exists \alpha>\gamma\,(U_\alpha \subseteq p\}.
+D_\gamma = \{p\in P: \exists \alpha>\gamma\,(U_\alpha \subseteq p)\}.
 \end{equation*}
 We want to show that \(D_\gamma\) is dense.
 Let \(p\in P\), \(p\subseteq V_{\alpha^*}\), 
@@ -1287,6 +1288,33 @@ Hence \(f >^* f_\alpha\).
 
 We will discuss \(\alpha_1\) relative to \(\aleph_0\),
 and Hechlen forcing.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2025/April/27}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Suslin Hypothesis}
+
+\B{Suslin Hypothesis} --- source of Martin Axiom.
+
+The real numbers \lrangle{\R, \leq} have:
+\begin{enumerate}[label=\alph*]
+\item Linear dense order with neither first nor last element.
+\item Completeness. For all bounded subset, there exists supremmum infimum.
+\item Separable. The exists countable dense subset.
+\end{enumerate}
+
+\B{Question} Can Separability be replaced by \ccc.
+
+\ccc says that there are no \(\aleph_1\) open (non-empty?) disjoing segments.
+
+{Suslin Hypothesis (SH) says: ``Yes replace is possible''.
+Jech, Tenenbaum, Solvay showed consistenct with negation (of SH).
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
