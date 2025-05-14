@@ -9,11 +9,14 @@
 
 \newcommand{\B}[1]{\textbf{#1}}
 \newcommand{\Cohen}{\mathop{\rm Cohen}\nolimits}
-\newcommand{\finitepartial}{\textnormal{finite partial}}
 \newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
 \newcommand{\ccc}{c.c.c.}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
+\newcommand{\finitepartial}{\textnormal{finite partial}}
+\newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
+\newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
+\newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
 
 %% \newtheorem{manualclaiminner}{Claim}
 %% \newenvironment{manualclaim}[1]{%
@@ -1300,7 +1303,7 @@ and Hechlen forcing.
 \B{Suslin Hypothesis} --- source of Martin Axiom.
 
 The real numbers \lrangle{\R, \leq} have:
-\begin{enumerate}[label=\alph*]
+\begin{enumerate}[label=(\alph*)]
 \item Linear dense order with neither first nor last element.
 \item Completeness. For all bounded subset, there exists supremmum infimum.
 \item Separable. The exists countable dense subset.
@@ -1308,13 +1311,78 @@ The real numbers \lrangle{\R, \leq} have:
 
 \B{Question} Can Separability be replaced by \ccc.
 
-\ccc says that there are no \(\aleph_1\) open (non-empty?) disjoing segments.
+\ccc\ says that there are no \(\aleph_1\) open (non-empty?) disjoing segments.
 
 {Suslin Hypothesis (SH) says: ``Yes replace is possible''.
 Jech, Tenenbaum, Solvay showed consistenct with negation (of SH).
 
+\begin{ldef}
+  Let \lrangle{L,\leq} be a set with linear order.
+  It is called \emph{Suslin line} iff
+  iff it has \ccc\ but not separable (And also dense order).
+\end{ldef}
 
+To discuss existence or non-existence we need to move from a line to a tree.
+\begin{ldef}
+  A poset \lrangle{T,\leq_T} is called a \emph{tree} iff
+  for all \(x\in T\) the subset
+  \(\hat{x} = \{t\in T: t\leq_T x\}\) is well-ordered.
+\end{ldef}
 
+The \emph{height} of $x$ is \(\tht(x) = \otp(\hat(x),<_T)\).
+
+The \emph{height} of $T$ is \(\tht(T) = \sup_{x\in T} (\tht(x) + 1)\).
+
+The \emph{level} ---
+ \(\forall \alpha<\tht(T), \Lev_\alpha(T) = \{x\in T: \tht_T(x)=\alpha\}\).
+
+\begin{ldef}
+Let \lrangle{T,\leq_T} be a tree. \(b\subseteq T\) is called
+a \emph{branch} (\emph{chain}?) iff 
+\begin{enumerate}[label=(\alph*)]
+\item \lrangle{b,\leq_T} is well ordered.
+\item \(\forall x\in b, \forall y\leq_T x\, y\in b\).
+\end{enumerate}
+\end{ldef}
+
+A branch $b$ is called \emph{maximal branch} iff there is no 
+branch $c$ such that \(b\subsetneq c\).
+
+Let \lrangle{T,\leq_T} be a tree. \(x,y\in T\) 
+are \emph{compatible} iff \(x=y\) or \(x\leq_T y\) or \(y\leq_Tx\).
+Existence of \(z\geq x,y\) is equivalentm since \(x,y\) are on a same branch.
+
+\(A\subseteq T\) is \emph{antichain} iff any two distinct elements 
+are not compatible.
+
+\begin{ldef}
+\lrangle{T,\leq_T} is called \(\aleph_1\)\emph{-tree} iff
+\begin{enumerate}[label=(\alph*)]
+\item \(\tht(T)=\aleph_1\).
+\item \(\forall \alpha<\aleph_1\, |\Lev_\alpha(T)\leq\aleph_0\).
+\end{enumerate}
+\end{ldef}
+
+\begin{ldef}
+\lrangle{T,\leq_T}  is called \emph{Suslin tree} 
+\begin{enumerate}
+\item It has no branch of length \(\aleph_1\).
+\item Every level is an antichain.
+\end{enumerate}
+\end{ldef}
+Looks like the definition can be simplified.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Relation between Suslin Tree and Suslin Line}
+
+\begin{claim}
+Assume there exists a Suslin line. Then there exists a Suslin tree. 
+\end{claim}
+\begin{proof}
+Let \lrangle{L,\leq_L} be a Suslin line. Let
+\(C=\{c\in L: c\;\textnormal{is isolated}\}\).
+By \ccc, \(|C|\leq\aleph_0\).
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
