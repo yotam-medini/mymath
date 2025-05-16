@@ -1490,6 +1490,35 @@ We put
 \begin{equation*}
 L = \{b \subseteq T: b\; \textnormal{ is a maximal branch in}\; T\}.
 \end{equation*}
+We will define an order \(\leq_L\) on $L$.
+For each two distinct branches we will look at split point
+(like dictionary order).
+It is easy(?) to see that this is a linear order.
+We need to show it is dense.
+On the successors we impose an order by a one-to-one onto mapping
+\(\aleph_0\to\Q\). As in \Q\ we get a dense order.
+
+% We will show that there is no countable dense subset.
+Assume \(D\subset L\) a countable subset.
+For each \(b\in D\) there exists \(\alpha_b < \omega_1\)
+so $b$ does not achieve level \(\alpha_b\).
+Now \(\cup_{b\in D} \alpha_b = \alpha^* < \omega_1\).
+Let $c$, $e$ be distinct maximal branches that continues beyond \(\alpha^*\).
+all branches ends at \(\alpha^*\) so in $D$ we have no elements in the
+the segment \((c,e)\). Thus $D$ cannot be dense.
+
+We need to show \ccc.
+By negation, assume \lrangle{L,\leq_L} has
+an antichain \(A=\{(a_\alpha,b_\alpha): \alpha < \omega_1\}\).
+These are segments of branches.
+We will need to show \(\aleph_1\)-antichain in T.
+In each segment \((a_\alpha,b_\alpha)\)
+We look at last common $T$-node \(x_\alpha\) of \(\{a_\alpha,b_\alpha\}\),
+we look on the successors of \(x_\alpha\). By the ordered inherited from \Q.
+A split can be before \(x_\alpha\) (simpler)
+or after in the successors of \(x_\alpha\).
+
+Formal argument is missing.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
