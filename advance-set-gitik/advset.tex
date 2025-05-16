@@ -16,6 +16,7 @@
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
+\newcommand{\Suc}{\ensuremath{\mathop{\rm Suc}\nolimits}}
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
 
 %% \newtheorem{manualclaiminner}{Claim}
@@ -1382,6 +1383,113 @@ Assume there exists a Suslin line. Then there exists a Suslin tree.
 Let \lrangle{L,\leq_L} be a Suslin line. Let
 \(C=\{c\in L: c\;\textnormal{is isolated}\}\).
 By \ccc, \(|C|\leq\aleph_0\).
+\end{proof}
+We look at \(L\setminus C\). We will build by induction
+a set of closed segments \(\{[a_\alpha,b_\alpha]: \alpha<\omega_1\}\).
+We also require \((a_\alpha,b_\alpha)\neq\emptyset\).
+Assume we selected  \(\{[a_\beta,b_\beta]: \beta<\alpha\}\)
+for \(\alpha<\omega_1\). We will select \([a_\alpha,b_\alpha]\).
+Let \(X_\alpha = \{a_\beta,b_\beta: \beta<\alpha\} \cup C\).
+We have \(|X_\alpha|\leq \aleph_0\).
+Since \lrangle{L,\leq_L} is not separable,
+we take \([a_\alpha,b_\alpha]\) such that 
+\((a_\alpha,b_\alpha)\neq \emptyset\) 
+and \([a_\alpha,b_\alpha]\cap X_\alpha = \emptyset\).
+We define a tree \(T=\{[a_\alpha,b_\alpha]: \alpha<\omega_1\}\) and
+\begin{equation*}
+[a_\alpha,b_\alpha] <_T [a_\beta,b_\beta]
+\;\iff\; 
+[a_\alpha,b_\alpha] \supsetneq [a_\beta,b_\beta].
+\end{equation*}
+(opposite Containment). We will show that $T$ is Suslin-tree.
+
+If \(x\in T\) then there exists \(b\in\omega_1\)
+such that \(x=[a_\beta,b_\beta]\).
+
+\(\{t\in T: t <_T x\}\).
+\([a_\beta,b_\beta]\subset t\) then there exists \(\gamma < \beta\)
+such that \(t = [a_\gamma,b_\gamma]\).
+The order between the indices respects the order of the ordinals.
+
+On each step, we select a segment that is contained in
+previous segment or disjoint to all previous segments.
+Every antichain in $T$ consist of disjoint segments \([a_\alpha, b_\beta]\).
+By \ccc\ of $L$ we get \ccc\ fot $T$.
+
+Assume \(b\subseteq T\) a branch of length \(\aleph_1\).
+\(e=\{[a_{\alpha_i},b_{\alpha_i}]: i < \omega_1\}\)
+a decreasing sequence of segments. We will look at ``left segments'':
+\(\{(a_{\alpha_i},a_{\alpha_{i+1}}): i < \omega_1\}\)
+and we get \(\aleph_1\) disjoint segments, a contradiction.
+
+Opposite direction. 
+\begin{claim} \label{claim:suslin:tree:line}
+If there exists Suslin tree, then there exists Suslin line.
+\end{claim}
+\begin{ldef}
+An \(\aleph_1\)-tree \lrangle{T,\leq_T} is called (normal) 
+\emph{well pruned tree} iff
+\begin{enumerate}
+\item \(\Lev_0(T)=1\) that is single root.
+\item \(\forall x\in T\,\forall \alpha<\omega_1\, 
+ \alpha > \tht_T(x) \implies \exists y\in\Lev_\alpha(T)\).
+\item \(\forall x\in T\) the set 
+  \(\Suc_T(x) = \{y\in T: x<_T y \land \tht_T(y)=\tht_T(x)+1\}\)
+  is countable.
+\item For each limit ordinal \(\alpha<\omega_1\) if a branch \(b\subseteq T\)
+that consists of points of levels \(< \alpha\) and $b$ continues
+to level \(\alpha\) then there exists a unique continuation 
+of $b$ to level \(\alpha\).
+\end{enumerate}
+\end{ldef}
+\begin{claim}
+If there exists Suslin tree, then there exists a well pruned Suslin tree.
+\end{claim}
+\begin{proof}
+Let \lrangle{T,\leq_T} a Suslin tree. We will well prune it.
+FOr all \(x\in T\) let \(T_x = \{y\in T: x\leq_T y \lor y\leq_T x\}\).
+We look at the first level \(|\Lev_0(T)|\leq \aleph_0\).
+We must have at least some \(x\in \Lev_0(T)\) such that \(|T_x| = \aleph_1\).
+So we pick such $x$. This is the first pruning step.
+We  put \(T^1 = T_x\) (now \(|\Lev_0(T^1)|=1\)).
+
+We now look at \(\Lev_1(T^1\). Again \(\exists x\in T^1\) 
+such that \(|T^1_x| = \aleph_1\).
+We leave 
+\begin{equation*}
+\{x\in T^1: x\in \Lev_1(T^1) \land |T^1_x| = \aleph_1\}.
+\end{equation*}
+So now \(\Lev_1(T^2) = \{x\in\Lev_1(T^1): |T^1_x| = \aleph_1\}\).
+We similarly continue pruning for exah level \(\alpha\) (\(1<\alpha<\omega_1\)).
+In each step we drop at most \(\aleph_0\) nodes.
+\(\Lev_\alpha(T^2) = \{x\in \Lev_\alpha(T^1): |T^1_x| = \aleph_1\}\).
+This defined \(T^2\).
+
+We need to handle requirement (3), 
+that is \(\forall x\in T^3\,|\Suc_{T^3}(x)|=\aleph_1\).
+
+For each \(x\in T^2\) looking at successors, at some point
+there will be more than single successor.
+
+Every sub-sequence of unique successors, we collapse into single node.
+Now we have a Suslin tree, but in each node we have more than a single successor.
+
+we look at splitting steps from \(\alpha\) to \(\alpha+\omega\).
+We again collapse such sequence.
+We skip formalizing this step.
+
+This is ``ending'' the proof thta there exists well pruned Suslin tree.
+\end{proof}
+
+Back to the claim \ref{claim:suslin:tree:line}
+\begin{proof}
+Let \lrangle{T,\leq_T} be a well pruned Suslin tree.
+For each \(x\in T\) we order \(\Suc_T(x)\) in a linear dense order
+without first and without last element.
+We put
+\begin{equation*}
+L = \{b \subseteq T: b\; \textnormal{ is a maximal branch in}\; T\}.
+\end{equation*}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
