@@ -11,11 +11,14 @@
 \newcommand{\Cohen}{\mathop{\rm Cohen}\nolimits}
 \newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
 \newcommand{\ccc}{c.c.c.}
+\newcommand{\CH}{\ensuremath{\mathop{\rm CH}\nolimits}}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
 \newcommand{\finitepartial}{\textnormal{finite partial}}
+\newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
+\newcommand{\SH}{\ensuremath{\mathop{\rm SH}\nolimits}}
 \newcommand{\Suc}{\ensuremath{\mathop{\rm Suc}\nolimits}}
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
 
@@ -1526,6 +1529,9 @@ Formal argument is missing.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{2025/May/4}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Suslin --- Line and Tree}
+
 \begin{ldef}
 \lrangle{L,\leq} with linear dense order is called
 \emph{Suslin line} iff it has \ccc\ but is not separable.
@@ -1535,16 +1541,145 @@ Formal argument is missing.
 
 \begin{ldef}
 A poset \lrangle{T,\leq_T} is called
-\emph{Suslin tree} iff 
+\emph{tree} iff 
 \(forall x\in T, \hat{x} = \{y\in T: y <_T x\}\) is well ordered by \(<_T\).
 \end{ldef}
-
+\vspace{-20pt}
 \begin{align*}
  \tht_T(x) &= \otp(\hat{x}) \\
  \tht(T) &= \sup_{x\in T} (\tht(x)+1) \\
   \Lev_\alpha(T) &= \{x\in T: \tht(x)=\alpha\}
 \end{align*}
 
+\begin{ldef}
+A tree \lrangle{T,\leq_T} is called \emph{\(\aleph_1\)-tree} iff
+\begin{enumerate}
+\item \(|T| = \aleph_1\).
+\item \(\forall\alpha<\aleph_1\, |\Lev_\alpha(T)|\leq\aleph_0\).
+\end{enumerate}
+\end{ldef}
+
+\begin{ldef}
+A \(\aleph_1\)-tree \lrangle{T,\leq_T} is called 
+\emph{Suslin tree} iff
+\begin{enumerate}
+\item There is no branch of length \(\aleph_1\).
+\item There is no antichain of length \(\aleph_1\).
+\end{enumerate}
+\end{ldef}
+
+\begin{ldef}
+A tree \lrangle{T,\leq_T} is \emph{well pruned} iff
+\begin{enumerate}
+\item Single root, \(|\Lev_0(T)|=1\).
+\item  \(\forall x\in T, \forall \alpha < \tht(T), 
+  \left(\tht(x) < \alpha \implies \exists y\in \Lev_\alpha(T)\right)\)
+\item \(\forall x\in T 
+  \Suc_T(x) = \{y\in T: y\geq_T x \land \tht(y)=\tht(x) + 1\}
+  \land |\Suc_T(x)|=\aleph_0\).
+\item No splits in limit level.
+\end{enumerate}
+\end{ldef}
+
+\begin{claim}
+ If there exists Suslin line, then there exists well pruned Suslin tree.
+\end{claim}
+
+\begin{thm}
+There exists Suslin line iff there exists Suslin tree.
+\end{thm}
+
+SH = There is no Suslin line.
+We will show connection with MA.
+
+\begin{thm}[Solovay, Tennenbaum]
+\(\MA(\aleph_1) \implies \SH\).
+\end{thm}
+In particular, we ass ume \(\aleph_1 < 2^{\aleph_0}\), 
+that is \(\lnot \textnormal{CH}\).
+\begin{proof}
+By negation assume there exists Suslin tree, therefore, there
+exists well prumed Suslin tree \lrangle{T,\leq_T}
+that has \ccc\ and has no branches of length \(\aleph_1\).
+To get a contradiction, we will define a branch of \(\aleph_1\) length.
+
+For each \(\alpha<\aleph_1\), let \(D_\alpha = \{t\in T: \tht(t)>\alpha\}\).
+Let \(s\in T\). If \(\alpha<\tht(s)\) then \(s\in D_\alpha\).
+Assume \(\alpha \geq \tht(s)\). From (2) of well-pruned tree
+\(\exists t >_T s\, \alpha < \tht(t)\)
+thus \(t\in D_\alpha\).
+Let \(G\subseteq T\) generic for \(\{D_\alpha: \alpha<\omega_1\}\).
+Pick \(x,y\in G\) then \(\exists z\in G\, (x,y<_T z)\).
+Hence \(x,y,z\) are on the same branch.
+The length of $G$ is \(\aleph_1\), a contradiction.
+\end{proof}
+
+Generalization and more can be found in:\\
+David Heaver Fremlin / \emph{Consequences of Martin's axiom}.
+
+We used a negation of CH (Maybe we could do without).
+What about connection between SH and CH.
+It is possible to build models of ZFX+GCH where SH holds.
+
+D. Aspera + Muhamad Galshani 
+have results on GCH+\(\SH_{\kappa}\), with  \(\kappa > \aleph_1\)
+and using Ramsey related conjectures.
+Difficuly genetalizing to higher cardinals.
+
+Opposite direction, existence of Suslin tree (\(\lnot\SH\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Diamond \(\Diamond\)}
+
+The \(\Diamond\) principle (by R. Jensen)
+(Intuitively ``guessing'' subsets).
+There exists \lrangle{S_\alpha, \alpha<\omega_1} such that 
+\begin{enumerate}
+\item \(\forall \alpha<\omega_1\, (S_\alpha \subseteq \alpha)\).
+\item \(\forall S\subseteq \omega_1\) the set
+  \(\{\alpha < \aleph_1: S\cap \alpha = S_\alpha\}\) is stationary.
+\end{enumerate}
+This principle strengthens CH.
+
+\begin{claim}
+\(\Diamond \implies \CH\).
+\end{claim}
+\begin{proof}
+We will show \(P(\omega)\subseteq \{S_\alpha: \alpha<\omega_1\}\)
+where \(\{S_\alpha: \alpha<\omega_1\}\) is \(\Diamond\)-sequence.
+Pick \(S \subseteq \omega\).
+\(\{\alpha < \aleph_1: S\cap \alpha = S_\alpha\}\) is stationary.
+In particular, for \(\alpha \geq \omega\) 
+we have \(S_\alpha = S \cap \alpha = S\).
+\end{proof}
+
+\begin{ldef}[R. Jensen]
+Let \(\kappa > \aleph_0\) be ordinal cardinal. 
+\(\Diamond_\kappa\) is a statement:
+There exists a sequence \lrangle{S_\alpha, \alpha<\kappa} such that
+\begin{enumerate}
+\item \(\forall \alpha < \kappa\, (S_\alpha \subseteq \alpha)\).
+\item \(\forall S \subseteq \kappa\)
+  the set
+  \(\{\alpha < \kappa: S \cap \alpha = S_\alpha\}\) is stationary.
+\end{enumerate}
+\end{ldef}
+
+\begin{claim}
+\(\Diamond_\kappa\;\implies\;2^\kappa = \kappa^+\).
+\end{claim}
+
+It took about 30 year to get 
+\begin{thm}[Saharon Shelah]
+Let \(\kappa > \aleph_0\) be an ordinal.
+Then  \(2^\kappa = \kappa^+\;\implies\;\Diamond_\kappa\).
+\end{thm}
+We still have related open questions. For example,
+let \(\kappa\) be an inaccessible cardinal (orderable and limit)
+\begin{itemize}
+\item Is \(\GCH_{<\kappa} \implies \Diamond_\kappa\) ?
+\item Is \(\GCH \implies \Diamond_\kappa\) ?
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
