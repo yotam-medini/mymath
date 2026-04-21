@@ -1681,6 +1681,39 @@ let \(\kappa\) be an inaccessible cardinal (orderable and limit)
 \item Is \(\GCH \implies \Diamond_\kappa\) ?
 \end{itemize}
 
+\begin{claim}
+Let \(\kappa > \aleph_0\) be a cardinal. Assume \(\Diamond_\kappa\).
+Then there exists a family \(\{X_i: i < 2^\kappa\}\)
+of stationary subsets of \(\kappa\) almost disjoint.
+That is
+\begin{equation*}
+\forall i,i'\in 2^\kappa\,(i\neq i'\,\implies\, |X_i \cap X_{i'}|<\kappa)\).
+\end{equation*}
+\end{claim}
+\begin{proof}
+ For each \(X \subseteq \kappa\) let
+\(S_X = \{\alpha < \kappa: X\cap \alpha = S_\alpha\}\) stationary
+where \lrangle{S_\alpha:\alpha<\kappa} is a diamond sequence.
+Pick distinct \(X,Y\subseteq \kappa\), \(|S_X\cap S_Y|<\kappa\).
+Assume \(\delta \in X\setminus Y\) then 
+\(S_X\cap \S_y \subseteq \delta + 1\).
+\end{proof}
+
+\begin{thm}[Jensen]
+\(\Diamond\; \implies\) there exists Suslin tree, hence \(\lnot\SH\).
+\end{thm}
+Before proof:
+\begin{ldef}
+A \(aleph_1\)-tree \lrangle{T,\leq_T} is called
+\emph{Aronszajn tree} iff it gas no branches of length \(\aleph_1\).
+\end{ldef}
+\begin{thm}[Aronszajn]
+There exists Aronszajn tree.
+\end{thm}
+\begin{proof}
+\end{proof}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

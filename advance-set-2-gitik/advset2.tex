@@ -1,0 +1,158 @@
+\documentclass[11pt,pdftex,twoside,a4paper]{article}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{relsize}
+
+\input{mymacs}
+
+\newcommand{\B}[1]{\textbf{#1}}
+\newcommand{\Cohen}{\mathop{\rm Cohen}\nolimits}
+\newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
+\newcommand{\ccc}{c.c.c.}
+\newcommand{\CH}{\ensuremath{\mathop{\rm CH}\nolimits}}
+\newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
+\newcommand{\finitepartial}{\textnormal{finite partial}}
+\newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
+\newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
+\newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
+\newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
+\newcommand{\SH}{\ensuremath{\mathop{\rm SH}\nolimits}}
+\newcommand{\Suc}{\ensuremath{\mathop{\rm Suc}\nolimits}}
+\newcommand{\TC}{\ensuremath{\mathop{\rm TC}\nolimits}}
+\newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{ldef}[thm]{Definition}
+
+\title{Advanced Set Theory 2
+          \\
+       Lecture Notes --- Professor Mordechai Gitik}
+
+\author{Yotam Medini}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2026/April/12}
+
+In this course we will deal with independence of set theory axioms
+Mainly with forcing methods introduced by Paul Cohen (1963).
+Notably independence of the continuum hypothesis.
+
+Text books for the course:
+\begin{itemize}
+  \item \B{Kunen} / \textit{SET THEORY,
+    An Introduction to Independence Proofs}
+  \item \B{Jech} / \textit{Set Theory}
+\end{itemize}
+
+The forcing technique facilitate other independency results.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Axioms System --- ZFC}
+
+We introduce a generally accepted, Zermelo-Fraenkel and Choice
+(ZFC) system of axioms.
+
+\begin{enumerate}
+
+\item (\B{Extensionality}) If $X$ and $Y$ has the same elements then \(X=Y\).
+
+\item (\B{Pairing}) If $X$ and $Y$ are sets, then there is a set \((X, Y)\).
+Cab be built as \(\{X\}, \{X,Y\}\}\).
+
+\item (\B{Separation Scheme}) For any set $X$, the elements of $X$
+that satisfy some attribute make a set. 
+Formally, for any formula \(\phi(x)\)
+made of ($=$, $\in$, \(\neg\), \(\exists\), \(\rightarrow\)), then
+\(\{x\in X | \phi(x)\}\) is a set.
+Also called \B{Comprehension Scheme}.
+
+\item (\B{Union}) For any set $X$, \(\cup X = \cup \{x|x\in X\}\) is a set.
+
+\item (\B{Power}) For any set $X$, then \(\{Y| T\subseteq X\}\) is set.
+
+\item (\B{Infinity}) 
+  \(\exists X, \emptyset\in S, \forall x\in S (x\cup \{x\} \in S\).
+
+\item (\B{Replacement Scheme}) An image of a set by a function is a set. 
+  Formally, let \(\phi(v,u)\) a formula 
+such that \(\forall v\exists!u\, \phi(v,u)\) then for any set $A$
+there exists a set $B$ such that
+ \(\forall v\in A \,\exists u\in B\, \phi(v,u)\).
+To get an ``exact'' image we can use the separation axiom.
+
+\item (\B{Regularity}) Any non-empty set $S$ has \(\in\)-minimal element.\\
+Formally \(S\neq \emptyset \,\implies\, \exists x\in S\, x\cap S=\emptyset\).
+\\
+This Regularity axiom will be essential in our later development.
+Also called \B{Foundation} or \B{Separation}.
+
+\item (\B{Choice} --- \B{AC}) For any set $X$ (of sets)
+\begin{equation*}
+\left(\emptyset\notin X \,\land\, 
+  \forall x,y\in X x=y\lor x\cap y=\emptyset\right)
+\implies
+ \exists C, \forall x\in X\,\exists!y\, y\in C\cap x.
+\end{equation*}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Separation and Classes}
+
+Given a formula \(\phi\) we can refer to the class \(\{x|\phi(x)\}\).
+``Intersection'' of a set with a class is a set.
+
+Say we a formula \(\phi(\seq{v}{n},\seq{u}{k}\)
+and sets \seq{a}{k} we can form
+\begin{equation*}
+ \{(\seq{x}{n}\,|\,\phi(\seq{x}{n},\seq{a}{k})\}.
+\end{equation*}
+and later by pairing get a set.
+
+\begin{claim}
+For any class $C$ if \(C\neq\emptyset\) then there exists \(a\in C\)
+such that \(a\cap C=\emptyset\).
+\end{claim}
+This is a generalization of the regularity axiom.
+\begin{proof}
+Let \(S\in C\), an element of a class must be a set.
+Let \(A = S\cap C\). If \(A=\emptyset\) we are done.
+Otherwise, \(A\neq \emptyset\) and we take \(\TC(A)\)
+the \B{transitive closure} of $A$ as follows:
+\begin{align*}
+A_0 &= A\\
+A_1 &= A_0 \cup (\cup A_0) \\
+A_{n+1} &= A_n \cup (\cup A_n) \\
+\TC(A) &= \bigcup_{n<\omega} A_n.
+\end{align*}
+\(\TC(A)\) is a set. This is the minimal set that contains $A$.
+Put \(X = \TC(A)\). Now \(X \cap C \supseteq A \neq \emptyset\).
+
+By regularity there exists \(x\in\ X \cap C\)
+which is \(\in\)-minimal. We will show \(x\in C\), that is
+\(x \cap (X\cap C)=\emptyset\). We will show that also
+\(x \cap C=\emptyset\). By negation, there exists \(y \in x \cap C\).
+So \(y\in x \in \TC(A)\). By transitivity \(y\in \TC(A)\),
+this \(y \in X \cap C\), contradiction to minimality of $x$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
