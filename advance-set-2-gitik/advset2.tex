@@ -1,6 +1,7 @@
 \documentclass[11pt,pdftex,twoside,a4paper]{article}
 \usepackage{amsthm}
 \usepackage{array}
+\usepackage{dsfont}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{relsize}
@@ -12,16 +13,20 @@
 \newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
 \newcommand{\ccc}{c.c.c.}
 \newcommand{\CH}{\ensuremath{\mathop{\rm CH}\nolimits}}
+\newcommand{\dsP}{\ensuremath{\mathds{P}}}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
 \newcommand{\finitepartial}{\textnormal{finite partial}}
 \newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
+\newcommand{\On}{\ensuremath{\mathit{On}}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
 \newcommand{\SH}{\ensuremath{\mathop{\rm SH}\nolimits}}
 \newcommand{\Suc}{\ensuremath{\mathop{\rm Suc}\nolimits}}
 \newcommand{\TC}{\ensuremath{\mathop{\rm TC}\nolimits}}
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
+\newcommand{\ZF}{\ensuremath{\mathop{\rm ZF}\nolimits}}
+\newcommand{\ZFC}{\ensuremath{\mathop{\rm ZFC}\nolimits}}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lemma}[thm]{Lemma}
@@ -150,6 +155,94 @@ which is \(\in\)-minimal. We will show \(x\in C\), that is
 So \(y\in x \in \TC(A)\). By transitivity \(y\in \TC(A)\),
 this \(y \in X \cap C\), contradiction to minimality of $x$.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%4
+\subsection{Hierarchy}
+
+Let us define the following hierarchy.
+\begin{align*}
+V_0 &= \emptyset \\
+V_{\alpha+1} &= \mathds{P}(V_\alpha) \qquad\textnormal{power set} \\
+V_\alpha &= \bigcup_{\beta<\alpha} V_\beta 
+  \qquad \alpha\ \textit{is a limit ordinal} \\
+W &= \bigcup_{\alpha \in \On} V_\alpha.
+\end{align*}
+
+\begin{thm}
+The regularity axiom implies \(V=W\) where $V$ is the world of sets.
+\end{thm}
+\begin{proof}
+Assume regularity axiom, we will show \(V=W\).
+By negation, let \(C = V \setminus W\neq \emptyset\)
+There exists a set \(X \in C\) such that \(X \cap C = \emptyset\).
+Thus \(\forall x\in X\, x\in W\) and so \(x \subseteq W\) and 
+there exists and \(\alpha\in \On\) such that \(X\subseteq V_\alpha\).
+Thus \(x\in V_{\alpha+1} \subseteq W\) a contradiction.
+
+Assume \(V=W\). For each set $X$ we define \(\rank(X)\)
+the minimal ordinal \(\alpha\) such that \(X\in V_{\alpha+1}\).
+\\
+\B{Claim}: For any \(\alpha,\beta\in\On\):
+\begin{enumerate}
+\item \(V_\alpha\) is transitive.
+\item \(\alpha < \beta \;\implies\; V_\alpha \subset V_\beta\).
+\item \(x\in y\;\implies\; \rank(x) < \rank(y)\).
+\item \(\rank(\alpha) = \alpha\).
+\end{enumerate}
+The claim can be easily proved by induction.
+
+Using the claim, let $S$ be a non-empty set.
+Pick \(x\in S\) having the minimal rank.
+By negation, consider \(y \in x \cap S\).
+Then \(\rank(y)<\rank(x)\), a contradiction.
+\end{proof}
+
+we conclude:
+\begin{thm}
+$W$ satisfies \(\textnormal{ZF} \setminus \textnormal{regularity}\).
+\(W \;\models\; (\textnormal{ZF} \setminus \textnormal{regularity})\).
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forcing Methods}
+
+Say we have a formula \(\phi\) in the language of set-theory.
+What does: \(\;\textnormal{ZFC}\,\vdash\,\phi\;\) means?
+
+It means that we have a sequence \(\seqn{\psi}{n}\) of claims,
+such that each \(\psi_i\) is derived from ZFC or preceding claims
+and \(\psi_n = \phi\).
+So we need just a finite number of axioms from ZFC.
+
+For example, if \(\ZFC \models \CH\),
+then there is a \emph{finite} \(\ZFC' \models \CH\).
+
+Later, we will use a countable transitive model $M$ of ZFC,
+(or a finite sufficiently large subset of ZFC).
+In this context, the reflection theorem
+Mostowski Collapse Theorem, and G\"odel incomplete theorem were mentioned.
+
+Then for any countable transitive model $M$ of ZFC', \(M \models \CH\).
+We will want to contradict this by extend $M$ to \(M^*\)
+still modeling \(\ZFC'\) but \(M^*\, \models \,\neg\CH\).
+
+Let 
+\(\lrangle{\dsP,\leq_\dsP,0_\dsP}\) 
+also abbreviated by
+\(\lrangle{\dsP,\leq,0}\) 
+be a partially ordered set
+where \(0_\dsP\) is the smallest, \(\forall p\in\dsP\,(0_\dsP \leq_\dsP p)\).
+\\
+Note: in the books of Kunen and Jech use opposite terms, 
+like the largest  \(1_\dsP\).
+
+For \(p,q\in\dsP\) We will say that $p$ is \emph{stronger} than $q$
+or $q$ is weaker than $p$ iff  \(q \leq p\).
+
+\begin{ldef}
+Let \(p,q\in\dsP\). $p$ and $q$ are \emph{compatible} iff
+\(\exists r\in\dsP\,(p,q\leq r)\).
+\end{ldef}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
