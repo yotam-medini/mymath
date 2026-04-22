@@ -25,6 +25,7 @@
 \newcommand{\Suc}{\ensuremath{\mathop{\rm Suc}\nolimits}}
 \newcommand{\TC}{\ensuremath{\mathop{\rm TC}\nolimits}}
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
+\newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!}\par}
 \newcommand{\ZF}{\ensuremath{\mathop{\rm ZF}\nolimits}}
 \newcommand{\ZFC}{\ensuremath{\mathop{\rm ZFC}\nolimits}}
 
@@ -81,7 +82,7 @@ We introduce a generally accepted, Zermelo-Fraenkel and Choice
 Cab be built as \(\{X\}, \{X,Y\}\}\).
 
 \item (\B{Separation Scheme}) For any set $X$, the elements of $X$
-that satisfy some attribute make a set. 
+that satisfy some attribute make a set.
 Formally, for any formula \(\phi(x)\)
 made of ($=$, $\in$, \(\neg\), \(\exists\), \(\rightarrow\)), then
 \(\{x\in X | \phi(x)\}\) is a set.
@@ -91,11 +92,11 @@ Also called \B{Comprehension Scheme}.
 
 \item (\B{Power}) For any set $X$, then \(\{Y| T\subseteq X\}\) is set.
 
-\item (\B{Infinity}) 
+\item (\B{Infinity})
   \(\exists X, \emptyset\in S, \forall x\in S (x\cup \{x\} \in S\).
 
-\item (\B{Replacement Scheme}) An image of a set by a function is a set. 
-  Formally, let \(\phi(v,u)\) a formula 
+\item (\B{Replacement Scheme}) An image of a set by a function is a set.
+  Formally, let \(\phi(v,u)\) a formula
 such that \(\forall v\exists!u\, \phi(v,u)\) then for any set $A$
 there exists a set $B$ such that
  \(\forall v\in A \,\exists u\in B\, \phi(v,u)\).
@@ -109,7 +110,7 @@ Also called \B{Foundation} or \B{Separation}.
 
 \item (\B{Choice} --- \B{AC}) For any set $X$ (of sets)
 \begin{equation*}
-\left(\emptyset\notin X \,\land\, 
+\left(\emptyset\notin X \,\land\,
   \forall x,y\in X x=y\lor x\cap y=\emptyset\right)
 \implies
  \exists C, \forall x\in X\,\exists!y\, y\in C\cap x.
@@ -163,7 +164,7 @@ Let us define the following hierarchy.
 \begin{align*}
 V_0 &= \emptyset \\
 V_{\alpha+1} &= \mathds{P}(V_\alpha) \qquad\textnormal{power set} \\
-V_\alpha &= \bigcup_{\beta<\alpha} V_\beta 
+V_\alpha &= \bigcup_{\beta<\alpha} V_\beta
   \qquad \alpha\ \textit{is a limit ordinal} \\
 W &= \bigcup_{\alpha \in \On} V_\alpha.
 \end{align*}
@@ -175,7 +176,7 @@ The regularity axiom implies \(V=W\) where $V$ is the world of sets.
 Assume regularity axiom, we will show \(V=W\).
 By negation, let \(C = V \setminus W\neq \emptyset\)
 There exists a set \(X \in C\) such that \(X \cap C = \emptyset\).
-Thus \(\forall x\in X\, x\in W\) and so \(x \subseteq W\) and 
+Thus \(\forall x\in X\, x\in W\) and so \(x \subseteq W\) and
 there exists and \(\alpha\in \On\) such that \(X\subseteq V_\alpha\).
 Thus \(x\in V_{\alpha+1} \subseteq W\) a contradiction.
 
@@ -226,15 +227,19 @@ Then for any countable transitive model $M$ of ZFC', \(M \models \CH\).
 We will want to contradict this by extend $M$ to \(M^*\)
 still modeling \(\ZFC'\) but \(M^*\, \models \,\neg\CH\).
 
-Let 
-\(\lrangle{\dsP,\leq_\dsP,0_\dsP}\) 
+Let
+\(\lrangle{\dsP,\leq_\dsP,0_\dsP}\)
 also abbreviated by
-\(\lrangle{\dsP,\leq,0}\) 
+\(\lrangle{\dsP,\leq,0}\)
 be a partially ordered set
-where \(0_\dsP\) is the smallest, \(\forall p\in\dsP\,(0_\dsP \leq_\dsP p)\).
+where \(0_\dsP\) is the smallest, \(\forall p\in\dsP\,(0_\dsP \leq_\dsP p)\)
+is called \B{forcing notion}.
 \\
-Note: in the books of Kunen and Jech use opposite terms, 
+Note: in the books of Kunen and Jech use opposite terms,
 like the largest  \(1_\dsP\).
+
+From now on, we asssume $M$ is a countable transitive model for ZFC
+or a sufficiently large finite subset of ZFC.
 
 For \(p,q\in\dsP\) We will say that $p$ is \emph{stronger} than $q$
 or $q$ is weaker than $p$ iff  \(q \leq p\).
@@ -244,6 +249,168 @@ Let \(p,q\in\dsP\). $p$ and $q$ are \emph{compatible} iff
 \(\exists r\in\dsP\,(p,q\leq r)\).
 \end{ldef}
 
+\begin{ldef}
+A set \(D\subseteq \dsP\) is \emph{dense} iff
+\(\forall q\in\dsP\,\exists p\in\dsP\, q\leq p\).
+\end{ldef}
+
+\begin{ldef}
+A set \(G\subseteq\dsP\) is called \emph{generic} iff
+\begin{enumerate}
+\item \(\forall p\in G\,(q\leq p\,\implies\,q\in G)\).
+\item \(\forall p,q\in G\,\exists r\in G\, p,q\leq r\).
+  That is compatible by element in $G$.
+\item For any dense \(D\subseteq \dsP\),
+  suh that \(D\in M\) and \(G\cap D\neq \emptyset\).
+  % \label{item:generic:dense}.
+\end{enumerate}
+\end{ldef}
+
+\begin{claim}
+Let \(\lrangle{\dsP,\leq,0}\in M\) and \(p\in\dsP\)
+then there exists a generic \(G\subseteq \dsP\) such that \(p\in G\).
+\end{claim}
+\begin{proof}
+\(|M|=\aleph_0\). So there are countable number of dense sets
+\(\{D_n|n<\omega\}\). Pick \(p_0\in D_0\) such that \(p \leq p_0\).
+By induction, pick \(p_{n+1}\in D_{n+1}\) such that \(p_n \leq p_{n+1}\).
+Let \(G=\{q\in\dsP|\exists n\, q \leq p_n\}\).
+Clearly, $G$ satisfies the generic requirements
+% but we need to show that \(G\in M\). ???
+\end{proof}
+
+\begin{ldef}
+A partially ordere set \(\lrangle{\dsP,\leq}\) is called \emph{splitting}
+If for any \(p\in\dsP\) there exists \(p_1\),\(p_2\) such that
+\(p\leq p_1,p_2\) and \(p_1\),\(p_2\) are not compatible.
+\end{ldef}
+
+\begin{claim}
+If \(\lrangle{\dsP,\leq,0}\) is splitting,
+then each generic \(G\subseteq \dsP\),
+\(G\notin M\).
+\end{claim}
+\begin{proof}
+Let \(D = \dsP\setminus G\). We will show that $D$ is dense.
+For each \(p\in\dsP\) there exists non-compatible \(p_1,p_2\in\dsP\).
+So \(p_i\notin G\) for at least some \(i\in\{1,2\}\).
+We can assume \(p\leq p_1 \in D\), thus $D$ is dense.
+If by negation\(G\in M\) so is \(D\in M\),
+but gives a contradiction since \(D\cap G=\emptyset\).
+\end{proof}
+Comment: If the order is linear, generic set must be everything.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Examples}
+We look at partial finite functions
+\begin{equation*}
+C = \{f\,|\, f:\omega\to 2\,\land\,|\dom f|<\aleph_0\}.
+\end{equation*}
+with $f$ \emph{continues} $g$
+\begin{equation*}
+g \leq f \; \Leftrightarrow \; g \subseteq f.
+\end{equation*}
+
+Let \(\lrangle{C,\leq,0}\) be a forcing notion
+--- Real-Cohen-forcing.
+The set
+\begin{equation*}
+D_n = \{f\in C|\, n\in \dom(f)\}\qquad n < \omega
+\end{equation*}
+is dense. Let \(h\in C\). If \(n\in \dom(h)\) then \(h\in D_n\).
+Otherwise \(h' = h\cup\{(n,0)\} \in D_n\).
+
+Let \(G\subseteq C\) generic and let \(g = \cup G\).
+Then $g$ is parial function \(\omega \to 2\).
+Actually $G$ is a total function, since \(G\cap D_n\) for each \(n<\omega\).
+But \(g\notin M\), since if by negation \(h:\omega\to w\) and \(h\in M\),
+then
+\begin{equation*}
+D^h = \{f\in C|\, \exists n\in \dom(f)\, f(n)\neq h(n)\}
+\end{equation*}
+We show that \(D^h\) is dense.
+Let \(\tilde{f} \in C\). Pick sufficiently large \(n<\omega\)
+such that \(n\notin\dom(\tilde{f})\) and define
+\(f = \tilde{f}\cup \{(n, 1 - h(n))\}\).
+So \(G\cap D^h \neq \emptyset\).
+By negatiom, we take \(h=g\in M\). 
+Pick some \(p\in (G\cap D^h\).
+\(p\in G\) so 
+\(p\forall n\in \dom(p)\, p(n)=g(n)\)
+but \(p\in D^h\) so 
+\(p\forall n\in \dom(p)\, p(n)\neq h(n)=g(n)\)
+a contradiction.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{An Advanced Example}
+
+We present a more advanced example in $M$.
+Let \(\lambda \leq \aleph_2\). Define
+\begin{equation*}
+C(\lambda) = \{f|\, f:\lambda\times\omega\to 2 \,\wedge\, |\dom(f)|<\aleph_0\}.
+\end{equation*}
+With similar order: 
+\(\tilde{f}\leq f \,\Leftrightarrow\, \tilde{f} \subseteq f\).
+Let \(G \subseteq C(\lambda\) be generic.
+Let \(\alpha < \lambda\). Put
+\begin{align*}
+D_\alpha &= \{f\in C(\lambda)|\, \exists n<\omega\, (\alpha,n)\in \dom(f)\} \\
+D_{\alpha,n} &= \{f\in C(\lambda)|\, (\alpha,n)\in \dom(f)\}
+\end{align*}
+For any \(\alpha<\lambda\) and \(n<\omega\) \(D_{\alpha,n}\) is dense
+\(G\cap D_{\alpha,n} \neq \emptyset\).
+Let \(g = \cup G\). For each \(\alpha<\lambda\) 
+define \(g_\alpha:\omega\to 2\) by \(g_\alpha(n) = g(\alpha,n)\).
+
+Assume \(\alpha,\beta<\lambda\) and \(\alpha\neq\beta\), then
+\begin{equation*}
+D^{\alpha,\beta} = \{f |\,\exists n<\omega\,(f(\alpha,n)\neq f(\beta,n))\}
+\end{equation*}
+is dense \(G\cap D^{\alpha,\beta} \neq \emptyset\)
+and \(g_\alpha \neq g_\beta\).
+
+The idea is later to add $G$ to $M$, and destroy \CH.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\(\aleph_2\) in $M$}
+
+In $M$ \(\aleph_2\) can become countable.
+
+Again, let \(\lambda \leq \aleph_2\). Define
+\begin{equation*}
+\textnormal{Col}(\omega,\lambda) 
+  = \{f|\, f: S\to\lambda \wedge S\subset\omega\ \wedge \dom(f)<\aleph_0\}.
+\end{equation*}
+Take \(G\subseteq \textnormal{Col}(\omega,\lambda)\) generic,
+and \(g = \cup G\) and onto \(g:\twoheadrightarrow \lambda\).
+This shows that \(\lambda\) becomes countable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Extending Model}
+
+Let \(\lrangle{\dsP,\leq_\dsP,0_\dsP}\) be a forcing notion in $M$.
+We build in $M$ a class \(M^\dsP\) of \emph{name}s by \dsP.
+\begin{enumerate}
+\item \(\emptyset\) is a name.
+\item \(\tau\) is a name in \(M^\dsP\) if and element of \(\tau\)
+   is an ordered pair \((\sigma,p)\) where \(\sigma\) is a name and
+  \(p\in \tau\). This is seems like a cyclic definition, but
+  \(\rank(\sigma)<\rank(\tau\) so we have recursion on reducing ranks.
+\end{enumerate}
+
+Let \(G\subseteq \dsP\) generic. For each \dsP-name (element in \(M^\dsP\))
+\(\tau\) we define \emph{interpretation} of \(\tau\) 
+\begin{equation*}
+\tau_G = \{\tau_G|\,\exists p\in G (\sigma.p)\in \tau\}.
+\end{equation*}
+This is a recursive definition.
+
+We define generic extension
+\begin{equation*}
+M[G] = \{\tau_h|\, \tau\in M^\dsP\}.
+\end{equation*}
+
+We will use \(M[G]\) to show negation of \CH\ and more.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
