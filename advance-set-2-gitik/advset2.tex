@@ -19,6 +19,7 @@
 \newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
 \newcommand{\On}{\ensuremath{\mathit{On}}}
+\newcommand{\op}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
 \newcommand{\SH}{\ensuremath{\mathop{\rm SH}\nolimits}}
@@ -26,6 +27,7 @@
 \newcommand{\TC}{\ensuremath{\mathop{\rm TC}\nolimits}}
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
 \newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!}\par}
+\newcommand{\up}{\ensuremath{\mathop{\rm up}\nolimits}}
 \newcommand{\ZF}{\ensuremath{\mathop{\rm ZF}\nolimits}}
 \newcommand{\ZFC}{\ensuremath{\mathop{\rm ZFC}\nolimits}}
 
@@ -474,7 +476,143 @@ denoted by \(\tau_G\) (not a standard notation) is
 \begin{equation*}
 \tau_G = \{\sigma_G|\, \exists p\in G\, (\sigma,p)\in \tau\}.
 \end{equation*}
+and
+\begin{equation*}
+M[G] = \{\tau_G|\,\tau \in M^\dsP\}.
+\end{equation*}
 \end{ldef}
+
+Note: \(\tau \to \tau_G\) is (``very'') not one-to-one.
+
+\begin{claim}
+\(M[G]\) is a transitive set.
+\end{claim}
+\begin{proof}
+Let \(b\in a\in M[G]\). We neet to show \(b\in M[G]\).
+There exists \(\tau \in M^\dsP\) such that \(a = \tau_G\)
+and \(b\in\tau_G\). So there exists \(\sigma\in M^\dsP\)
+such that \(b=\sigma_G\) but \(\sigma_G\in M[G]\).
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Satisfying ZFC}
+
+We will show axioms satisfied by \(M[G]\).
+
+\begin{claim}
+\(M(G)\models \textnormal{extensionality and regularity axioms}\).
+\end{claim}
+\begin{proof}
+Transitivity gives extensionality.
+Let $S$ be such that \(\emptyset\neq S \in M[G]\).
+We have regularity in the world. So we have \(x\in S\) such that
+\(x\cap S=\emptyset\). But \(x\in M[G]\)
+\end{proof}
+
+Minimality of \(M[G]\):
+\begin{claim}
+Let $N$ be transitive (and some of ZF?)
+and \(M\subseteq \) and \(G\in N\)
+then \(M[G]\subseteq N\).
+\end{claim}
+
+We call $M$ as the \emph{base? world}.
+\begin{claim}
+\(M \subseteq M[G]\).
+\end{claim}
+\begin{proof}
+Let \(x\in M\). 
+Recursively define \(\breve{x} = \{(\breve{y},0_\dsP)|\,y\in x\}\)
+\emph{canonical name}.
+Let $G$ generic.
+\(0_\dsP\in G\) (for any generic). By induction
+\begin{equation*}
+\breve{x}_G = \{\breve{y}_G|\, y\in x\} = \{y|\, y\in x\} = x.
+\end{equation*}
+\end{proof}
+
+\begin{claim}
+If \(G\subseteq \dsP\) generic then \(G\in M[G]\).
+\end{claim}
+\begin{proof}
+Let \(\Gamma = \{(\breve{p},p)|\,p\in\dsP\}\).
+Now 
+\begin{equation*}
+\Gamma_G = \{\breve{p}_G|\, p\in G\} = \{p|\, p\in G\} = G.
+\end{equation*}
+\end{proof}
+
+% lecture-break
+
+\begin{claim}
+\phantom{a}
+\begin{enumerate}[label={(\alph*)}]
+\item For each name \(\tau\), \(\rank(\tau_G) \leq \rank(\tau)\).
+\item \(M\cap \On = M[G]\cap \On\).
+\end{enumerate}
+\end{claim}
+\begin{proof}
+\phantom{a}
+\begin{enumerate}[label = {(\alph*)}]
+\item By definition and induction.
+\item \(M \subseteq M[G]\), hence \(M\cap\On \subseteq M[G] \cap\On\).
+By (\emph{a}) \(M[G]\cap\On \subseteq M \cap\On\).
+\end{enumerate}
+\end{proof}
+
+\begin{figure}[hb]
+  \centering
+  \includegraphics[width=0.5\textwidth]{MG}
+  \caption{World of \(M[G]\) and \On}
+  \label{fig:MG}
+\end{figure}
+
+Our goal if to have \(M[G]\) as a model of ZFC.
+
+\begin{ldef}
+Givne names \(\sigma,\tau\), we define \emph{unordered pair}
+\(\up(\sigma,\tau) = \{(\sigma,0_\dsP),(\tau,0_\dsP)\}\).
+\end{ldef}
+
+\begin{claim}
+For all names \(\sigma,\tau\), \(\{\sigma_G,\tau_G\}\).
+\end{claim}
+
+\begin{ldef}
+Givne names \(\sigma,\tau\), we define \emph{ordered pair}
+\(\op(\sigma,\tau) = \up(\up(\sigma, \sigma), \up(\sigma,\tau))\).
+This is evaluated to \((\sigma_G,\tau_G)=\{\{\sigma_G\},\{\sigma_G,\tau_G\}\}\).
+\end{ldef}
+
+\begin{claim}
+\(M[G] \models \textnormal{pairing axiom}\).
+\end{claim}
+\begin{proof}
+Simple build of pair of names.
+\end{proof}
+
+\begin{claim}
+\(M[G] \models \textnormal{infinity axiom}\).
+\end{claim}
+\begin{proof}
+Simply by \(M\subseteq M[G]\).
+\end{proof}
+
+\begin{claim}
+\(\forall a\in M[G]\, b\in M[G]\, \cup a \subseteq b\).
+\end{claim}
+With separation we get the union axiom.
+\begin{proof}
+Let \(a\in M[G]\) be some set. We have a class of names \(\sigma\in M^\dsP\)
+such that \(a = \sigma_G\).
+Looking on first coordinate, \(\dom(\sigma)\) (set of names).
+Take \(\up = \cup \dom(\sigma) \in M^\dsP\).
+Put \(b=\pi_G\). We will show that \(\cup a \subseteq b\).
+Let \(c\in \cup a\) we will show that \(c\subseteq b\).
+From \(a\in c\) there exist \((\tau,p)\in \sigma\) and \(p\in G\).
+such that \(c = \tau_G\). Therefore \(\tau \subseteq \cup \dom \sigma\)
+and \(\tau_G \subseteq (\cup\dom\sigma)_G = \pi_G = b\).
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
