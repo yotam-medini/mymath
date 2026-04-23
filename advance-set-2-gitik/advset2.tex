@@ -16,6 +16,8 @@
 \newcommand{\dsP}{\ensuremath{\mathds{P}}}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
 \newcommand{\finitepartial}{\textnormal{finite partial}}
+\newcommand{\forces}{\ensuremath{\Vdash}}
+\newcommand{\forcesstar}{\ensuremath{\Vdash^*}}
 \newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
 \newcommand{\On}{\ensuremath{\mathit{On}}}
@@ -28,6 +30,7 @@
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
 \newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!}\par}
 \newcommand{\up}{\ensuremath{\mathop{\rm up}\nolimits}}
+\newcommand{\utilde}[1]{\ensuremath{\underset{\sim}{#1}}}
 \newcommand{\ZF}{\ensuremath{\mathop{\rm ZF}\nolimits}}
 \newcommand{\ZFC}{\ensuremath{\mathop{\rm ZFC}\nolimits}}
 
@@ -335,11 +338,11 @@ Let \(\tilde{f} \in C\). Pick sufficiently large \(n<\omega\)
 such that \(n\notin\dom(\tilde{f})\) and define
 \(f = \tilde{f}\cup \{(n, 1 - h(n))\}\).
 So \(G\cap D^h \neq \emptyset\).
-By negatiom, we take \(h=g\in M\). 
+By negatiom, we take \(h=g\in M\).
 Pick some \(p\in (G\cap D^h\).
-\(p\in G\) so 
+\(p\in G\) so
 \(p\forall n\in \dom(p)\, p(n)=g(n)\)
-but \(p\in D^h\) so 
+but \(p\in D^h\) so
 \(p\forall n\in \dom(p)\, p(n)\neq h(n)=g(n)\)
 a contradiction.
 
@@ -351,7 +354,7 @@ Let \(\lambda \leq \aleph_2\). Define
 \begin{equation*}
 C(\lambda) = \{f|\, f:\lambda\times\omega\to 2 \,\wedge\, |\dom(f)|<\aleph_0\}.
 \end{equation*}
-With similar order: 
+With similar order:
 \(\tilde{f}\leq f \,\Leftrightarrow\, \tilde{f} \subseteq f\).
 Let \(G \subseteq C(\lambda\) be generic.
 Let \(\alpha < \lambda\). Put
@@ -361,7 +364,7 @@ D_{\alpha,n} &= \{f\in C(\lambda)|\, (\alpha,n)\in \dom(f)\}
 \end{align*}
 For any \(\alpha<\lambda\) and \(n<\omega\) \(D_{\alpha,n}\) is dense
 \(G\cap D_{\alpha,n} \neq \emptyset\).
-Let \(g = \cup G\). For each \(\alpha<\lambda\) 
+Let \(g = \cup G\). For each \(\alpha<\lambda\)
 define \(g_\alpha:\omega\to 2\) by \(g_\alpha(n) = g(\alpha,n)\).
 
 Assume \(\alpha,\beta<\lambda\) and \(\alpha\neq\beta\), then
@@ -380,7 +383,7 @@ In $M$ \(\aleph_2\) can become countable.
 
 Again, let \(\lambda \leq \aleph_2\). Define
 \begin{equation*}
-\textnormal{Col}(\omega,\lambda) 
+\textnormal{Col}(\omega,\lambda)
   = \{f|\, f: S\to\lambda \wedge S\subset\omega\ \wedge \dom(f)<\aleph_0\}.
 \end{equation*}
 Take \(G\subseteq \textnormal{Col}(\omega,\lambda)\) generic,
@@ -401,7 +404,7 @@ We build in $M$ a class \(M^\dsP\) of \emph{name}s by \dsP.
 \end{enumerate}
 
 Let \(G\subseteq \dsP\) generic. For each \dsP-name (element in \(M^\dsP\))
-\(\tau\) we define \emph{interpretation} of \(\tau\) 
+\(\tau\) we define \emph{interpretation} of \(\tau\)
 \begin{equation*}
 \tau_G = \{\tau_G|\,\exists p\in G (\sigma.p)\in \tau\}.
 \end{equation*}
@@ -445,7 +448,7 @@ A set \(G\subseteq\dsP\) is \emph{Generic} iff
 \begin{enumerate}
 \item \(\forall p\in G\ \forall q\,(q\leq p \,\implies\, q\in G\).
 \item \(\forall p,q\in G\,\exists r\in G\, p,q\leq r\).
-\item For any dense set 
+\item For any dense set
   \(D\subseteq \dsP\) (where \(D\in M\))  \(G\cap D\neq\emptyset\).
 \end{enumerate}
 \end{ldef}
@@ -495,7 +498,7 @@ such that \(b=\sigma_G\) but \(\sigma_G\in M[G]\).
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Satisfying ZFC}
+\subsection{Satisfying ZFC Simple axioms}
 
 We will show axioms satisfied by \(M[G]\).
 
@@ -516,12 +519,12 @@ and \(M\subseteq \) and \(G\in N\)
 then \(M[G]\subseteq N\).
 \end{claim}
 
-We call $M$ as the \emph{base? world}.
+We call $M$ as the \emph{base? world} or \emph{ground model}?.
 \begin{claim}
 \(M \subseteq M[G]\).
 \end{claim}
 \begin{proof}
-Let \(x\in M\). 
+Let \(x\in M\).
 Recursively define \(\breve{x} = \{(\breve{y},0_\dsP)|\,y\in x\}\)
 \emph{canonical name}.
 Let $G$ generic.
@@ -536,7 +539,7 @@ If \(G\subseteq \dsP\) generic then \(G\in M[G]\).
 \end{claim}
 \begin{proof}
 Let \(\Gamma = \{(\breve{p},p)|\,p\in\dsP\}\).
-Now 
+Now
 \begin{equation*}
 \Gamma_G = \{\breve{p}_G|\, p\in G\} = \{p|\, p\in G\} = G.
 \end{equation*}
@@ -611,7 +614,203 @@ Put \(b=\pi_G\). We will show that \(\cup a \subseteq b\).
 Let \(c\in \cup a\) we will show that \(c\subseteq b\).
 From \(a\in c\) there exist \((\tau,p)\in \sigma\) and \(p\in G\).
 such that \(c = \tau_G\). Therefore \(\tau \subseteq \cup \dom \sigma\)
-and \(\tau_G \subseteq (\cup\dom\sigma)_G = \pi_G = b\).
+and \(c = \tau_G \subseteq (\cup\dom\sigma)_G = \pi_G = b\).
+\end{proof}
+
+We still have some more complicated axioms.
+This is going to be the essential subject of the course.
+Using forcing technique.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Forcing --- 3 Lemmas}
+
+\iffalse
+\begin{ldef}
+Let \(p\in\dsP\), \(\Phi\) a formula in the language of set theory.
+\(p \Vdash \Phi\) ($p$ \emph{forces} \(\Phi\)) iff
+for each generic \(G\subseteq \dsP\), \(p\in G\)
+we have \(M[G] \models \Phi\).
+\end{ldef}
+\fi
+
+\begin{ldef}
+Let \(p\in\dsP\), \(\Phi(\seqn{v})\) a formula in the language of set theory,
+\((\seqn{\sigma})\in M^\dsP\)
+\(p \Vdash \Phi(\seqn{v})\) ($p$ \emph{forces} \(\Phi\)) iff
+for each generic \(G\subseteq \dsP\), \(p\in G\)
+we have \(M[G] \models \Phi(\sigma_{1G},\ldots,\sigma_{nG})\).
+\end{ldef}
+
+We present the following 3 lemmas.
+
+% Lemma of definability.
+\begin{lemma}[Definability]
+Let \(\Phi(\seqn{v})\) be a formula, then
+\begin{equation*}
+\left\{(p,\seqn{\sigma})|\, p\in \dsP, \seqn{\sigma}\in M^\dsP,
+  p\Vdash \Phi(\seqn{\sigma})\right\}
+\end{equation*}
+is a class in $M$.
+\end{lemma}
+
+A second
+\begin{lemma}[The Extension]
+If \(p\Vdash \Phi\) and \(p\leq q\) then \(q\Vdash \Phi\).
+\end{lemma}
+
+And last lemma (for now)
+\begin{lemma}[The truth]
+For each generic \(G\subseteq \dsP\)
+\(M[G] \models \Phi\)
+iff \(\exists p\in G\, p\Vdash \Phi\).
+\end{lemma}
+Note: \(\Phi\) can have variables.
+
+In order to prove the 3 lemmas, we will define
+a (\emph{weak forcing}) variant of \forcesstar\ of
+\forces.
+We will prove the 3 lemmas, replacing \forces\ by \forcesstar\
+and show for each formula \(\Phi\) and each \(p\in\dsP\),
+\(p\forces \Phi\) iff \(p \forcesstar \neg\neg\Phi\).
+Then in the 3 lemmas we will replace \(\Phi\) by \(\neg\neg\Phi\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Defining Weak Forcing --- \forcesstar}
+
+In formulas we have connectors, quantifiers: \(\neq\), \(\lor\), \(\exists\)
+and relations \(\in\) and \(\neq\). We can use \(\neg\neq\) for $=$.
+We now define \forcesstar.
+
+Let \(a,b\) names, \(p\in\dsP\). By inductive recursion in $M$
+\begin{align}
+p \forcesstar a\in b &\;\Leftrightarrow\; \exists c \exists q\leq p
+ \land b\in(c,q) \land p \forcesstar a=c \label{eq:pforce:in} \\
+p \forcesstar a \neq b &\;\Leftrightarrow\; \exists c \exists q\leq p
+ \bigl( (c,q)\in a \land p\forcesstar c\notin b\bigr)
+ \lor
+ \bigl( (c,q)\in b \land p\forcesstar c\notin a\bigr) \label{eq:pforce:neq} \\
+p \forcesstar \neg\Phi &\;\Leftrightarrow\;
+ \forall p\leq q\, p\not\forcesstar\Phi \label{eq:pforce:neg} \\
+p \forcesstar (\Phi \lor\Psi) &\;\Leftrightarrow\;
+  p \forcesstar \Phi \lor p \forcesstar \Psi \label{eq:pforce:or} \\
+p \forcesstar \exists v\,\Phi(v) &\;\Leftrightarrow\;
+ \exists b \;\textnormal{(a name)} \, p \forcesstar \Phi(b).
+   \label{eq:pforce:exists}
+\end{align}
+
+% lecture break
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\forcesstar\ lemmas}
+
+\begin{lemma}[\forcesstar-Extension]
+If \(p \forcesstar \Phi\,\land\,p \leq q\) then \(q\forcesstar \Phi\).
+\end{lemma}
+\begin{proof}
+Assume \(q\geq p \forcesstar \Phi\), we will show \(q\forcesstar \Phi\).
+There is no \(r'\geq r\) such that \(r'\forcesstar \Phi\)
+since \(r' \geq p\).
+Therefore \(r' \not\forcesstar \Phi\). Thus \(r \forcesstar \neg \Phi\).
+
+Justifying (\ref{eq:pforce:or}) and (\ref{eq:pforce:exists})
+can be done by induction.
+\end{proof}
+
+\begin{lemma}[The truth \forcesstar]
+For each generic \(G\subseteq \dsP\)
+\(M[G] \models \Phi\)
+iff \(\exists p\in G\, p\forcesstar \Phi\).
+\end{lemma}
+\begin{proof}
+Let generic \(G\subseteq \dsP\). Assume \(M[G] \models a_G \in b_G\).
+Then there exist a name $c$ and \(q\in G\) such that \((c,q)\in b\)
+and \(M[G] \models a_G = c_G\). By induction \(\exists r\in G\)
+such that \(r\forcesstar a=c\). Being generic, we have \(p\in G\)
+such that \(q,r\leq p\) and then \(p\forcesstar a=c\).
+Now by (\ref{eq:pforce:in}) \(p\forcesstar a\in b\).
+
+Opposite direction. Assume \(p\in G\) and
+ \(\exists c \exists q\leq p \land b\in(c,q) \land p \forcesstar a=c\).
+From latter assumptions \(q\in G\), \(c_G\in b_G\) and \(a_G = c_G\).
+
+Handling (\ref{eq:pforce:neq}) is similar, left as exercise.
+
+Negation connector. Assume
+ \(M[G] \models\neg\Phi\).
+We have
+ \(M[G] \models\neg\Phi \Leftrightarrow M[G] \not\models\Phi\).
+Also \(\Leftrightarrow \neg(\exists q\in G\, q\forcesstar \Phi)\).
+We need
+\begin{claim}
+The set \(D = \{r\in\dsP|\, r\forcesstar\Phi \lor r\forcesstar \neg\Phi\}\)
+is dense (in $M$).
+\end{claim}
+\begin{proof}
+Let \(t\in\dsP\). If \(\exists r\geq t\, r\forcesstar\Phi\) then \(r\in D\).
+Otherwise, \(\forall r\geq t\, r \not\forcesstar \Phi\)
+and then \(t\forcesstar\neg\Phi\).
+\end{proof}
+Back to the lemma. \(G\cap D\neq \Phi\),
+therefore \(\exists p\in G\, p\forcesstar \neg\Phi\).
+
+Conversely, assume \(\exists p\in G\, p\forcesstar \neg\Phi\)
+and by negation \(M[G]\not\models\Phi\) and so \(M[G]\models\neg\Phi\).
+By induction, \(\exists r\in G\, r\forcesstar\Phi\).
+So \(\exists q\in G\,q\geq p,r\). By the \forcesstar-extension lemma,
+\(q\forcesstar\Phi\) which contradicts (\ref{eq:pforce:neg}).
+
+Showing the last two equivalences
+(\ref{eq:pforce:or}) and (\ref{eq:pforce:exists}) are trivial.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Connecting \forces\ with \forcesstar}.
+
+\begin{claim}
+For any \(p\in\dsP\) and any formula \(\Phi\),
+\(p\forces\Phi\) iff \(p\forcesstar\,\neg\neg\Phi\).
+\end{claim}
+\begin{proof}
+Assume \(p\forces \Phi\) and by negation \(p\not\forcesstar\neg\neg \Phi\).
+Then \(\exists q\geq p\, q \forcesstar \neg\Phi\).
+Let \(G\subseteq\dsP\) be generic such that \(q\in G\).
+By the truth-\forcesstar lemma, \(M[G]\models \neg\Phi\) but \(q\geq p\)
+implies \(p\in G\) contradiction to the \forces\ definition.
+
+Conversely, let \(p\forces \neg\neg \Phi\).
+By the truth-\forcesstar\ lemma, \(M[G]\models \neg\neg\Phi\),
+then \(M[G]\models Phi\).
+Since $G$ is arbitrary as long as \(p\in G\), hence \(p\forces \Phi\).
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Satisfying Separation axiom}
+
+\begin{claim}
+\(M[G]\models \textnormal{Separation axiom}\).
+\end{claim}
+\begin{proof}
+Let a set \(S\in M[G]\) and a formula \(\phi(\seqn{v})\)
+and \(\seqn{x}\in M[G]\).
+We look at \(X=\{a\in A|\,M[G]\models \phi(\seqn{x})\).
+% where \seqn{x} are names.
+We need to show \(X\in M[G]\).
+We need to build a name for it.
+Pick \(\utilde{A}\) and
+% \seqn{\utilde{x}}
+\(\utilde{x_1},\ldots,\utilde{x_2}\)
+names such that \(A={\utilde{A}}_G\) and \(x_i={\utilde{x_i}}_G\).
+Let
+\begin{equation*}
+X = \left\{((\utilde{a},p)\,|\, \utilde{a}\in\dom(\utilde{A})\,\wedge\,
+  p\in\dsP \,\wedge\,
+  p\forces(\utilde{a}\in\utilde{A}) \,\wedge\,
+  p\forces \phi(\utilde{a},\utilde{x_1},\ldots,\utilde{x_2})
+  \right\}.
+\end{equation*}
+We will show \(X=\utilde{X_G}\).
+(\(\subseteq\):) Let \(a\in X\), then \(a\in A\) 
+\unfinished
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
