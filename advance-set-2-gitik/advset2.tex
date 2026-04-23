@@ -414,5 +414,69 @@ We will use \(M[G]\) to show negation of \CH\ and more.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2026/April/19}
+
+Let $M$ be a countable transitive model of ZFC,
+or a sufficiently large subset of ZFC.
+In $M$ a forcing notion \(\lrangle{\dsP,\leq_\dsP,0_\dsP}\),
+witg \(\leq_\dsP\) a partial order or pre-partial order,
+\(0_\dsP\) the smallest.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\dsP-names}
+
+We define a class of \dsP-names \(M^\dsP\).
+
+\begin{ldef}
+\(\tau\in M^\dsP\) is a \dsP-\emph{name} if every element of \(\tau\)
+is an ordered pair \(\sigma,p)\) such that \(\sigma\) is a \dsP-name
+and \(p\in\dsP\) and \(\rank(p)<\rank(\tau)\).
+\end{ldef}
+This is a recursive definition with decreasing ranks.
+\(M^\dsP\) is a class in $M$.
+Names a are tools to refer to sets that are not in $M$.
+
+\subsection{Genric Set}
+
+\begin{ldef}
+A set \(G\subseteq\dsP\) is \emph{Generic} iff
+\begin{enumerate}
+\item \(\forall p\in G\ \forall q\,(q\leq p \,\implies\, q\in G\).
+\item \(\forall p,q\in G\,\exists r\in G\, p,q\leq r\).
+\item For any dense set 
+  \(D\subseteq \dsP\) (where \(D\in M\))  \(G\cap D\neq\emptyset\).
+\end{enumerate}
+\end{ldef}
+
+\subsection{Reminders from previous lecture.}
+
+In most interesting cases, generic sets are not in $M$.
+\begin{claim}
+Let \(\lrangle{\dsP,\leq}\) be a splitting order, and \(G\subseteq \dsP\)
+generic, then \(G\notin M\).
+\end{claim}
+
+\begin{claim}
+For any \(p\in\dsP\) there exists a generic $G$, such that \(p\in G\).
+\end{claim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generic Extension}
+
+Let \(G\subseteq M\) be generic.
+We will define \(M[G]\) a \emph{generic extension} of $M$
+We start wih \emph{names interpretations}
+
+\begin{ldef}
+Let \(G\subseteq M\) be generic for \(\lrangle{\dsP,\leq,0}\).
+Let \(\tau\) be name, its \emph{interpretation by} $G$,
+denoted by \(\tau_G\) (not a standard notation) is
+\begin{equation*}
+\tau_G = \{\sigma_G|\, \exists p\in G\, (\sigma,p)\in \tau\}.
+\end{equation*}
+\end{ldef}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
