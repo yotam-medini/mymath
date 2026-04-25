@@ -31,6 +31,7 @@
 \newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!}\par}
 \newcommand{\up}{\ensuremath{\mathop{\rm up}\nolimits}}
 \newcommand{\utilde}[1]{\ensuremath{\underset{\sim}{#1}}}
+% \newcommand{\utilde}[1]{\ensuremath{\underset{\smash{\sim}}{#1}}}
 \newcommand{\ZF}{\ensuremath{\mathop{\rm ZF}\nolimits}}
 \newcommand{\ZFC}{\ensuremath{\mathop{\rm ZFC}\nolimits}}
 
@@ -805,12 +806,30 @@ Let
 X = \left\{((\utilde{a},p)\,|\, \utilde{a}\in\dom(\utilde{A})\,\wedge\,
   p\in\dsP \,\wedge\,
   p\forces(\utilde{a}\in\utilde{A}) \,\wedge\,
-  p\forces \phi(\utilde{a},\utilde{x_1},\ldots,\utilde{x_2})
+  p\forces \phi(\utilde{a},\utilde{x_1},\ldots,\utilde{x_n})
   \right\}.
 \end{equation*}
 We will show \(X=\utilde{X_G}\).
-(\(\subseteq\):) Let \(a\in X\), then \(a\in A\) 
-\unfinished
+
+(\(\subseteq\):) Let \(a\in X\), then \(a\in A\) so there exists
+\(\utilde{a}\in\dom(\utilde{A})\) such that \(a=\utilde{a}_G\).
+Now \(M[G]\models a\in A\), \(M[G] \models \phi(a,\seqn{x})\).
+and from the truth lemma there is (a stronger) \(p\in G\) such that
+\begin{align}
+p &\forces \utilde{a} \in \utilde{A} \label{eq:pforce:aA} \\
+p &\forces \phi(\utilde{a},\utilde{x_1},\ldots,\utilde{x_n}). 
+  \label{eq:pforce:phix}
+\end{align}
+We see that \((\utilde{a},p)\in \utilde{X}\).
+Since $p$ in a generic set, \(a\in \utilde{X_G}\).
+
+(\(\supseteq\):) Let \(\in \utilde{X_G}\).
+Then \(\exists (\utilde{a},p)\in\utilde{X}\, 
+  (p\in G\,\land\,a={\utilde{a}}_G)\).
+From \((\utilde{a},p)\in\utilde{X}\) 
+we have (\ref{eq:pforce:aA}) and (\ref{eq:pforce:phix}).
+From \(p\in G\) we have \(M[G] \models \phi(a,\seqn{x})\)
+and \(a\in X\) as desired.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
