@@ -425,7 +425,7 @@ We will use \(M[G]\) to show negation of \CH\ and more.
 Let $M$ be a countable transitive model of ZFC,
 or a sufficiently large subset of ZFC.
 In $M$ a forcing notion \(\lrangle{\dsP,\leq_\dsP,0_\dsP}\),
-witg \(\leq_\dsP\) a partial order or pre-partial order,
+with \(\leq_\dsP\) a partial order or pre-partial order,
 \(0_\dsP\) the smallest.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -435,7 +435,7 @@ We define a class of \dsP-names \(M^\dsP\).
 
 \begin{ldef}
 \(\tau\in M^\dsP\) is a \dsP-\emph{name} if every element of \(\tau\)
-is an ordered pair \(\sigma,p)\) such that \(\sigma\) is a \dsP-name
+is an ordered pair \((\sigma,p)\) such that \(\sigma\) is a \dsP-name
 and \(p\in\dsP\) and \(\rank(p)<\rank(\tau)\).
 \end{ldef}
 This is a recursive definition with decreasing ranks.
@@ -447,7 +447,7 @@ Names a are tools to refer to sets that are not in $M$.
 \begin{ldef}
 A set \(G\subseteq\dsP\) is \emph{Generic} iff
 \begin{enumerate}
-\item \(\forall p\in G\ \forall q\,(q\leq p \,\implies\, q\in G\).
+\item \(\forall p\in G\ \forall q\,(q\leq p \,\implies\, q\in G)\).
 \item \(\forall p,q\in G\,\exists r\in G\, p,q\leq r\).
 \item For any dense set
   \(D\subseteq \dsP\) (where \(D\in M\))  \(G\cap D\neq\emptyset\).
@@ -603,7 +603,7 @@ Simply by \(M\subseteq M[G]\).
 \end{proof}
 
 \begin{claim}
-\(\forall a\in M[G]\, b\in M[G]\, \cup a \subseteq b\).
+\(\forall a\in M[G]\, \exists b\in M[G]\, \cup a \subseteq b\).
 \end{claim}
 With separation we get the union axiom.
 \begin{proof}
