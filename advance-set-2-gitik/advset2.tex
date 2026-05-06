@@ -14,12 +14,14 @@
 \usepackage{accents}
 
 
+\newcommand{\AC}{\ensuremath{\mathop{\rm AC}\nolimits}}
 \newcommand{\B}[1]{\textbf{#1}}
 \newcommand{\Cohen}{\mathop{\rm Cohen}\nolimits}
 \newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
 \newcommand{\ccc}{c.c.c.}
 \newcommand{\CH}{\ensuremath{\mathop{\rm CH}\nolimits}}
 \newcommand{\dsP}{\ensuremath{\mathds{P}}}
+\newcommand{\cof}{\ensuremath{\mathop{\rm cof}\nolimits}}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
 \newcommand{\finitepartial}{\textnormal{finite partial}}
 \newcommand{\forces}{\ensuremath{\Vdash}}
@@ -27,7 +29,7 @@
 \newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
 \newcommand{\On}{\ensuremath{\mathit{On}}}
-\newcommand{\op}{\ensuremath{\mathop{\rm otpo}\nolimits}}
+\newcommand{\op}{\ensuremath{\mathop{\rm op}\nolimits}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\Power}{\ensuremath{\mathcal{P}}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
@@ -121,7 +123,7 @@ To get an ``exact'' image we can use the separation axiom.
 Formally \(S\neq \emptyset \,\implies\, \exists x\in S\, x\cap S=\emptyset\).
 \\
 This Regularity axiom will be essential in our later development.
-Also called \B{Foundation} or \B{Separation}.
+Also called \B{Foundation}.
 
 \item (\B{Choice} --- \B{AC}) For any set $X$ (of sets)
 \begin{equation*}
@@ -582,7 +584,7 @@ By (\emph{a}) \(M[G]\cap\On \subseteq M \cap\On\).
 
 Our goal if to have \(M[G]\) as a model of ZFC.
 
-\begin{ldef}
+\begin{ldef} \label{def:unordered:pair}
 Givne names \(\sigma,\tau\), we define \emph{unordered pair}
 \(\up(\sigma,\tau) = \{(\sigma,0_\dsP),(\tau,0_\dsP)\}\).
 \end{ldef}
@@ -591,7 +593,7 @@ Givne names \(\sigma,\tau\), we define \emph{unordered pair}
 For all names \(\sigma,\tau\), \(\{\sigma_G,\tau_G\}\).
 \end{claim}
 
-\begin{ldef}
+\begin{ldef} \label{def:ordered:pair}
 Givne names \(\sigma,\tau\), we define \emph{ordered pair}
 \(\op(\sigma,\tau) = \up(\up(\sigma, \sigma), \up(\sigma,\tau))\).
 This is evaluated to \((\sigma_G,\tau_G)=\{\{\sigma_G\},\{\sigma_G,\tau_G\}\}\).
@@ -942,7 +944,7 @@ add undesired subsets.
 \(M[G]\) satisfies the power axiom.
 \end{claim}
 \begin{proof}
-Let \(A\in M[G]\). We will show that 
+Let \(A\in M[G]\). We will show that
 \begin{equation*}
 \left(\Power(A)\right)^{M[G]} = \{a\in M[G]|\, a\subseteq A\} \in M[G].
 \end{equation*}
@@ -994,6 +996,152 @@ and so \(y = \utilde{y}_G\in\tau_G\).
 This finshes the proof of the power axiom main claim.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{M[G] and Axiom of Choice}
+
+The last axiom we want to show
+\begin{claim}
+\(M[G] \models \AC\).
+\end{claim}
+\begin{proof}
+Let \(A\in M[G]\) and \utilde{A} a name for it.
+$M$ satisfies \AC\ so it has a partial order. Using it
+we look at
+\(\dom\utilde{A} = \{\pi_\gamma|\,\gamma\in\delta\}\).
+
+Refreshing \ref{def:unordered:pair} and \ref{def:unordered:pair}
+\begin{align*}
+\up(\sigma,\tau) &= \{(\sigma,0_\dsP),(\tau,0_\dsP)\} \\
+(\up(\sigma,\tau))_G &= \{\sigma_G,\tau_G\} \\
+\op(\sigma,\tau) &= \{(\up(\sigma,\sigma),0_\dsP), \up(\sigma,\tau),0_\dsP),
+\end{align*}
+we define
+\begin{equation*}
+S = \{\op(\breve{\gamma},\pi_\gamma)|\,\gamma<\delta\}
+\end{equation*}
+where \(\breve{\gamma}\) is a canonical name for \(\gamma\).
+We want to make the set $S$ of names to a name
+\begin{equation*}
+(S\times\{0_\dsP\})_G = \{(\gamma,\pi_\gamma)|\, \gamma<\delta\}
+\end{equation*}
+Containing 
+\begin{equation*}
+\{(\pi_\gamma)_G|\,\gamma<\delta\} \subseteq A
+\end{equation*}
+on which we have a well order. Thus \AC.
+\end{proof}
+
+With this, we completed showing the generic extension is a model for \ZFC.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cohen-Real Forcing}
+
+Let 
+\begin{equation*}
+C = \left\{p|\, p\;\textnormal{partial finite function}: \omega\to 2\right\}.
+\end{equation*}
+With the continuation order \(q\leq p\;\Leftrightarrow q \subseteq p\).
+Let \(G\subseteq C\) be generic. Let \(g=\cup G\) 
+which is a function, since being generic, there no inconsistencies in $G$.
+We alreadt saw that \(g:\omega \to 2\) is a complete function
+and \(g\notin M\).
+For any \(h\in M\), look at 
+\(D^j = \{p\in C|\, \exists n\in\dom p\, p(n)\neq h(n)\}\).
+which is dense. Thus \(G\cap D^h\neq\emptyset\) and so \(g\neq h\).
+
+\B{Conclusion}: \(V \neq L\) (G\"del model) is consistent.
+or
+\begin{equation*}
+M[G] \models \textnormal{There exists real not constructible, not in }L. 
+\end{equation*}
+
+Let \(\lambda\) be a cardinal and 
+\begin{equation*}
+C(\lambda) = 
+  \left\{p|\, p\;\textnormal{partial finite function}: 
+    \omega\times\lambda\to 2\right\}.
+\end{equation*}
+Here we try to build Cohen-\(\lambda\)-real forcing.
+Let \(G\subseteq C(\lambda)\) be generic. For each \(\alpha<\lambda\)
+define \(g_\alpha:\omega\to 2\) by
+\(g_\alpha(n) = (\cup G)(n,\alpha)\).
+\begin{enumerate}[label={(\alph*)}]
+\item \(\forall \alpha<\gamma\, g_\alpha\notin M\).
+\item \(\forall \alpha,\beta<\gamma\,
+  (\alpha\neq\beta\,\implies\,g_\alpha\neq g_\beta)\).
+\end{enumerate}
+
+If we take \(\lambda=\aleph_2\) we get \(\aleph_2\) different functions.
+This ``almost'' contradicts \CH.
+So far we have not disussed cardinals. Being cardinal,
+is not necessarily maintained in other model(?).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cardinals in M[G]}
+
+\begin{ldef}
+\begin{enumerate}[label={(\alph*)}]
+\item \(M[G]\) \emph{preserves cardinalities} iff for each cardinal
+  \(\kappa\) in $M$, \(\kappa\) is still a cardinal in \(M[G]\).
+  Note: the converse is trivial. \(M[G]\) has more functions,
+  it is ``harder '' to be a cardinal there.
+\item \(M[G]\) \emph{preserves cofinality} iff for each cardinal
+  \(\kappa\) in $M$
+  \begin{equation*}
+    (\cof(\kappa))^M = (\cof(\kappa))^{M[G]}.
+  \end{equation*}
+\item \(M[G]\) \emph{preserves regularity}
+  If every regular cardinal in $M$ remains like this in \(M[G]\).
+\end{enumerate}
+\end{ldef}
+
+\begin{claim}
+If \(M[G]\) preserves cofinality, then \(M[G]\) preserves cardinalities.
+\end{claim}
+\begin{proof}
+By negation, assumes \(M[G]\) does not preserves cardinalities.
+Let \(\kappa\) be the smallest cardinal in $M$
+that is not a cardinal in \(M[G]\).
+Clealy \(\kappa\) cannot be neither finite nor \(\omega\).
+Since it is the firsr, it also cannot be a limit cardinal.
+By looking at preceding functions, see figure \ref{fig:non-lim-kappa}.
+\begin{figure}[!hb]
+  \centering
+  \includegraphics[height=0.2\textheight]{kappa-non-limit}
+  \caption{Non limit \(\kappa\)}
+  \label{fig:non-lim-kappa}
+\end{figure}
+Thus \(\kappa\) is a successor cardinal, and so it is regular cardinal in $M$.
+But \(\kappa\) is not a cardinal in \(M[G]\) so it cannot be regular.
+A contradiction.
+\end{proof}
+Note that here we did not use generic $G$.
+
+\begin{claim}
+If \(M[G]\) preserves regularity then it preserves cofinality.
+\end{claim}
+\begin{proof}
+By negation, there exists a limit order \(\delta\) such that
+\begin{equation*}
+  \rho = (\cof(\delta))^M \neq (\cof(\kappa))^{M[G]} = \mu.
+\end{equation*}
+Then \(\rho > \mu\). Then we have two one-to-one unbounded functions:
+\begin{align*}
+ f_\rho&: \rho \to \delta \\
+ f_\mu&: \mu \to \delta
+\end{align*}
+Then we can build a one-to-one unbounded \(f:\mu\to\rho\)
+(see figure \ref{fig:mulambdarow})
+\begin{figure}[!hb]
+  \centering
+  \includegraphics[height=0.4\textheight]{rho-lambda-mu}
+  \caption{\(\rho\rightarrow\lambda\leftarrow\mu\)}
+  \label{fig:mulambdarow}
+\end{figure}
+Thus \(\rho\) changed it cofinality in \(M[G]\) to \(\mu\),
+a contradiction.
+\end{proof}
+Again we (did not need?) generic extension(?).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
