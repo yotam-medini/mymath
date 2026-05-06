@@ -46,6 +46,7 @@
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lemma}[thm]{Lemma}
 \newtheorem{claim}[thm]{Claim}
+\newtheorem{subclaim}[thm]{Sub-Claim}
 \newtheorem{corollary}[thm]{Corollary}
 \theoremstyle{definition}
 \newtheorem{ldef}[thm]{Definition}
@@ -957,22 +958,40 @@ implies \(a\subseteq B\). In $M$, let us look at
 Given a set $S$ of names, we want to convert it to a name:
 \(\utilde{B} = S\times{0_\dsP}\).
 
-Let \(x\subseteq A\), \(x\in M[G]\). We will show that then
+Let \(x\subseteq A\), \(x\in M[G]\) and pick a name \(\utilde{x}\)
+such that \(\utilde{x}_G = x\).
+We will show that then
 \(x\in B = \utilde{B}_G\).
 
 {\small at the point the video is focused on board}
 
-Define another name 
-\(\tau = \{(\tilde{a},p)|\, 
+Define another name
+\(\tau = \{(\tilde{a},p)|\,
   \utilde\in\dom\utilde{A}\,\land\,
-  p\forces \tilde{a}\in\utilde{x}\}\).
+  p\forces \tilde{a}\in\utilde{x}\}\).\\
 Now
   \(\dom \tau \subseteq \dom\utilde{a}
-    \;\implies \tau \in S 
-    \;\omega \tau_G \in \utilde{B}_G = B\).
+    \;\implies \tau \in S
+    \;\implies \tau_G \in \utilde{B}_G = B\).
 
+\begin{subclaim}
+\(\tau_G = x\).
+\end{subclaim}
+\begin{proof}
+(\(\subseteq\)): Let \(y\in\tau_G\) so there exist \(p\in G\)
+and \utilde{y} such that \((\utilde{y},p)\in\tau\) and \(\utilde{y}_G=y\).
+Since \((\utilde{y},p)\in\tau\), we have \(p\forces y\in x\)
+and by the truth lemma \(y\in x\).
 
-\unfinished
+(\(\supseteq\)): Let Let \(y\in x\subseteq A\) and \utilde{y} a name for it,
+\(\utilde{y}_G = y\) such that \(utilde{y}\in\dom A\).
+This can be found, since \(y\in A\).
+\(y\in x\) implies \(\exists p\in G\, p\forces \utilde{y}\in\utilde{x}\).
+Thus \((\utilde{y},p)\in\tau_G\), \(p\in G\)
+and so \(y = \utilde{y}_G\in\tau_G\).
+\end{proof}
+
+This finshes the proof of the power axiom main claim.
 \end{proof}
 
 
