@@ -8,6 +8,12 @@
 
 \input{mymacs}
 
+% Undefine the conflicting commands
+\let\dddot\undefined
+\let\ddddot\undefined
+\usepackage{accents}
+
+
 \newcommand{\B}[1]{\textbf{#1}}
 \newcommand{\Cohen}{\mathop{\rm Cohen}\nolimits}
 \newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
@@ -30,8 +36,9 @@
 \newcommand{\tht}{\ensuremath{\mathop{\rm ht}\nolimits}}
 \newcommand{\unfinished}{\par\textbf{Unfinished !!!!!!!!!!!!}\par}
 \newcommand{\up}{\ensuremath{\mathop{\rm up}\nolimits}}
-\newcommand{\utilde}[1]{\ensuremath{\underset{\sim}{#1}}}
+% \newcommand{\utilde}[1]{\ensuremath{\underset{\sim}{#1}}}
 % \newcommand{\utilde}[1]{\ensuremath{\underset{\smash{\sim}}{#1}}}
+\newcommand{\utilde}[1]{\ensuremath{\underaccent{\tilde}{#1}}}
 \newcommand{\ZF}{\ensuremath{\mathop{\rm ZF}\nolimits}}
 \newcommand{\ZFC}{\ensuremath{\mathop{\rm ZFC}\nolimits}}
 
@@ -799,17 +806,17 @@ We need to show \(X\in M[G]\).
 We need to build a name for it.
 Pick \(\utilde{A}\) and
 % \seqn{\utilde{x}}
-\(\utilde{x_1},\ldots,\utilde{x_2}\)
-names such that \(A={\utilde{A}}_G\) and \(x_i={\utilde{x_i}}_G\).
+\(\utilde{x}_1,\ldots,\utilde{x}_2\)
+names such that \(A={\utilde{A}}_G\) and \(x_i={\utilde{x}_i}_G\).
 Let
 \begin{equation*}
 X = \left\{((\utilde{a},p)\,|\, \utilde{a}\in\dom(\utilde{A})\,\wedge\,
   p\in\dsP \,\wedge\,
   p\forces(\utilde{a}\in\utilde{A}) \,\wedge\,
-  p\forces \phi(\utilde{a},\utilde{x_1},\ldots,\utilde{x_n})
+  p\forces \phi(\utilde{a},\utilde{x}_1,\ldots,\utilde{x}_n)
   \right\}.
 \end{equation*}
-We will show \(X=\utilde{X_G}\).
+We will show \(X=\utilde{X}_G\).
 
 (\(\subseteq\):) Let \(a\in X\), then \(a\in A\) so there exists
 \(\utilde{a}\in\dom(\utilde{A})\) such that \(a=\utilde{a}_G\).
@@ -817,20 +824,82 @@ Now \(M[G]\models a\in A\), \(M[G] \models \phi(a,\seqn{x})\).
 and from the truth lemma there is (a stronger) \(p\in G\) such that
 \begin{align}
 p &\forces \utilde{a} \in \utilde{A} \label{eq:pforce:aA} \\
-p &\forces \phi(\utilde{a},\utilde{x_1},\ldots,\utilde{x_n}). 
+p &\forces \phi(\utilde{a},\utilde{x}_1,\ldots,\utilde{x}_n).
   \label{eq:pforce:phix}
 \end{align}
 We see that \((\utilde{a},p)\in \utilde{X}\).
-Since $p$ in a generic set, \(a\in \utilde{X_G}\).
+Since $p$ in a generic set, \(a\in \utilde{X}_G\).
 
-(\(\supseteq\):) Let \(\in \utilde{X_G}\).
-Then \(\exists (\utilde{a},p)\in\utilde{X}\, 
+(\(\supseteq\):) Let \(\in \utilde{X}_G\).
+Then \(\exists (\utilde{a},p)\in\utilde{X}\,
   (p\in G\,\land\,a={\utilde{a}}_G)\).
-From \((\utilde{a},p)\in\utilde{X}\) 
+From \((\utilde{a},p)\in\utilde{X}\)
 we have (\ref{eq:pforce:aA}) and (\ref{eq:pforce:phix}).
 From \(p\in G\) we have \(M[G] \models \phi(a,\seqn{x})\)
 and \(a\in X\) as desired.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2026/May/3}
+
+Note: The first hout of the lecture lacked video recording.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Refresh}
+
+We have forcing notion \lrangle{\dsP, \leq_\dsP, 0_\dsP},
+partially ordered. A transitive countable model $M$.
+We wish to build a gerneric extension.
+\(G\subseteq\dsP\) is call generic iff
+\begin{enumerate}[label={(\alph*)}]
+\item \(\forall p,q\in\dsP\;((p\in G \land q\leq p) \implies q\in G)\).
+\item \(p,q\in G\;\implies\; \exists r\in G (p,q\leq r)\).
+\item For each dense \(D\subseteq \dsP\) \label{item:dense:DG}
+  if \(D\in M\) then \(G\cap D\neq\emptyset\).
+\end{enumerate}
+
+\B{Note:} In requirement \ref{item:dense:DG} instead of dense $D$,
+we can use maximal antichain (exercise).
+
+\(M^\dsP\) is the class of names.
+A name is a set consisting of pairs \((\sigma,p)\),
+wher \(\sigma\) is a name and \(p\in\dsP\).
+This is a recursive definition in the rang of \(\sigma\).
+
+Given \(\tau\in M^\dsP\),
+we have \(\tau_G = \{\sigma_G|\,\exists p\in G\, (\sigma,p)\in\tau\}\).
+
+A generic extension: \(M[G] = \left\{\tau_G|\,\tau\in M^\dsP\right\}\).
+We saw
+\begin{enumerate}
+\item \(M[G]\cap \On = \On\).
+\item \(M[G]\) is a transitive model. For any model $N$ of
+  set theory if \(M\subseteq Q\) and \(N\in G\) then \(M[G]\subseteq N\).
+\item \(M[G]\) satisfied the extensionality, pairing, union, infinity,
+  regularity and separation axioms.
+\end{enumerate}
+
+In order to show separation, we used
+\begin{ldef}
+\(p\forces \phi\) iff
+\(\forall G \subseteq \dsP\, (p\in G \implies M[G]\models \phi)\).
+\end{ldef}
+
+We had extension and truth lemmas.
+The latter says:
+\(M[G] \models \phi\) iff \(\exists p\in G\, p\forces \phi\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{M[G] and Separation Axiom}
+
+\begin{claim}
+\(M[G]\) satisfies the replacement (scheme) axiom.
+\end{claim}
+Given a formula \(\phi(x)\) and a set \(A\in M[G]\).
+Assume \(M[G]\models \forall a\in A\,\exists! y \phi(a,y)\).
+We will show there exists \(B\in M[G]\) such that
+\(\forall a\in A\,\exists b\in B\, M\models \phi(a,b)\).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
