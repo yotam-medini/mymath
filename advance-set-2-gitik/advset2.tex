@@ -29,6 +29,7 @@
 \newcommand{\On}{\ensuremath{\mathit{On}}}
 \newcommand{\op}{\ensuremath{\mathop{\rm otpo}\nolimits}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
+\newcommand{\Power}{\ensuremath{\mathcal{P}}}
 \newcommand{\rotin}{\rotatebox[origin=c]{90}{\(\in\)}}
 \newcommand{\SH}{\ensuremath{\mathop{\rm SH}\nolimits}}
 \newcommand{\Suc}{\ensuremath{\mathop{\rm Suc}\nolimits}}
@@ -880,7 +881,7 @@ We saw
   regularity and separation axioms.
 \end{enumerate}
 
-In order to show separation, we used
+In order to show separation, we use
 \begin{ldef}
 \(p\forces \phi\) iff
 \(\forall G \subseteq \dsP\, (p\in G \implies M[G]\models \phi)\).
@@ -896,10 +897,84 @@ The latter says:
 \begin{claim}
 \(M[G]\) satisfies the replacement (scheme) axiom.
 \end{claim}
+\begin{proof}
 Given a formula \(\phi(x)\) and a set \(A\in M[G]\).
 Assume \(M[G]\models \forall a\in A\,\exists! y \phi(a,y)\).
 We will show there exists \(B\in M[G]\) such that
 \(\forall a\in A\,\exists b\in B\, M\models \phi(a,b)\).
+Let \utilde{A} be a name of $A$, that is \(\utilde{A}_G = A\).
+There exists $b$ such that \(M[G]\models \phi(a,b)\).
+By the truth lemma there exists \(p \in G\) such that \(p\forces \phi(a, b)\).
+We will work in (ground model?) $M$.
+Define a function \(F:\dom \utilde{A}\times\dsP\to\On\).
+Let \(F(\sigma,p)=\alpha\,\Leftrightarrow\)
+\(\alpha\) is the smallest ordinal such that there exists a name \(\tau\)
+such that \(p\forces \phi(\sigma,\tau)\).
+If there does not exists such \(\alpha\) the we let \(F(\sigma,p)=0\).
+
+Now we can bound. There exists \(\alpha^*\) such that
+\(\forall (\sigma,p)\, F(\sigma,p)<\alpha^*\).
+Let $S$ be the set of all names with rank \(<\alpha^*\).
+
+{\small Note: At the point video recording started, non focused.}
+
+Put \(\utilde{B} = S\times\{0_\dsP\}\).
+We will show that \utilde{B} is as required.
+We will show that
+\(M[G]\models \forall a\in A\,\exists b\in B\,\phi(a,b)\)
+where \(B=\utilde{B}_G\).
+Look at \(F(\utilde{a},p)\) in the above case where \(\alpha\) exists.
+We get \(F(\utilde{a},p)\leq \alpha^*\).
+There exists \(\tau\in S\) such that \(p\models \phi(\utilde{a},\tau)\)
+therefore \(M[G]\models \phi(a,\tau_G)\).
+This shows the replacement axiom.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{M[G] and Power Axiom}
+
+We now turn to the power axiom, which is the the problematic one to show.
+We must be careful, when adding real since we may
+add undesired subsets.
+
+\begin{claim}
+\(M[G]\) satisfies the power axiom.
+\end{claim}
+\begin{proof}
+Let \(A\in M[G]\). We will show that 
+\begin{equation*}
+\left(\Power(A)\right)^{M[G]} = \{a\in M[G]|\, a\subseteq A\} \in M[G].
+\end{equation*}
+The notation of left element in the above, means ``power within \(M[G]\)''.
+
+We need to find a name. We will show that there exists \(B\in M[G]\)
+such that for all \(a\subseteq A\) and \(a\in M[G]\)
+implies \(a\subseteq B\). In $M$, let us look at
+\begin{equation*}
+\{\tau\in M^\dsP|\,\dom\tau \subseteq \dom \utilde{A}\}
+  = \Power(\dom\utilde{A}\times\dsP)^M
+\end{equation*}
+Given a set $S$ of names, we want to convert it to a name:
+\(\utilde{B} = S\times{0_\dsP}\).
+
+Let \(x\subseteq A\), \(x\in M[G]\). We will show that then
+\(x\in B = \utilde{B}_G\).
+
+{\small at the point the video is focused on board}
+
+Define another name 
+\(\tau = \{(\tilde{a},p)|\, 
+  \utilde\in\dom\utilde{A}\,\land\,
+  p\forces \tilde{a}\in\utilde{x}\}\).
+Now
+  \(\dom \tau \subseteq \dom\utilde{a}
+    \;\implies \tau \in S 
+    \;\omega \tau_G \in \utilde{B}_G = B\).
+
+
+\unfinished
+\end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
