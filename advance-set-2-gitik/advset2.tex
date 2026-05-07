@@ -5,6 +5,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{relsize}
+\usepackage{float}
 
 \input{mymacs}
 
@@ -575,7 +576,7 @@ By (\emph{a}) \(M[G]\cap\On \subseteq M \cap\On\).
 \end{enumerate}
 \end{proof}
 
-\begin{figure}[hb]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{MG}
   \caption{World of \(M[G]\) and \On}
@@ -1105,7 +1106,7 @@ that is not a cardinal in \(M[G]\).
 Clealy \(\kappa\) cannot be neither finite nor \(\omega\).
 Since it is the firsr, it also cannot be a limit cardinal.
 By looking at preceding functions, see figure \ref{fig:non-lim-kappa}.
-\begin{figure}[!hb]
+\begin{figure}[H]
   \centering
   \includegraphics[height=0.2\textheight]{kappa-non-limit}
   \caption{Non limit \(\kappa\)}
@@ -1132,7 +1133,7 @@ Then \(\rho > \mu\). Then we have two one-to-one unbounded functions:
 \end{align*}
 Then we can build a one-to-one unbounded \(f:\mu\to\rho\)
 (see figure \ref{fig:mulambdarow})
-\begin{figure}[!hb]
+\begin{figure}[H]
   \centering
   \includegraphics[height=0.4\textheight]{rho-lambda-mu}
   \caption{\(\rho\rightarrow\lambda\leftarrow\mu\)}
@@ -1142,6 +1143,85 @@ Thus \(\rho\) changed it cofinality in \(M[G]\) to \(\mu\),
 a contradiction.
 \end{proof}
 Again we (did not need?) generic extension(?).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Countable Chain Condition}
+
+\begin{ldef}
+\lrangle{\dsP,\leq_\dsP,0_\dsP} in $M$ satisfies
+\emph{countable chain condition} (\ccc) iff
+for any chain \(A\subseteq \dsP\), \(|A|\leq\aleph_0\).
+\end{ldef}
+Clearly if \(|\dsP|=\aleph_0\) then \dsP\ satisfies \ccc.
+
+\begin{claim}
+Let \(G\subseteq\dsP\) be generic, and \dsP satisfies \ccc.
+Assume there exists \(\alpha,\beta\) ordinals 
+and a function \(f:\alpha\to\beta\) in \(M[G]\).
+Then there exists a function \(F:\alpha\to\Power(beta)\) in $M$
+such that for all \(\gamma<\alpha\)
+\begin{enumerate}
+\item \(f(\gamma)\in F(\gamma)\). \label{item:f:gamma:F}
+\item \(|F(\gamma)|\leq\aleph_0\). \label{item:f:gamma:aleph0}
+\end{enumerate}
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=0.2\textwidth]{func-alphabeta-cover}
+  \caption{Cover of \(f:\alpha\to\beta\)}
+  \label{fig:func:alphabeta:cover}
+\end{figure}
+\end{claim}
+Intuitively, we want to have a delicate cover of $f$ by $F$ in the old model.
+\begin{proof}
+Let \(f:\alpha\to\beta\) in \(M[G]\). Then there exists \(p\in G\)
+and a name \utilde{f} of $f$ such that
+ \(p \forces \utilde{f}:\breve{\alpha}\to\breve{\beta}\)
+(canonical names).
+
+We will work in $M$. Define
+\begin{equation*}
+F(\gamma) = \{\delta<\beta|\,\exists q\geq p\, q\forces
+  \utilde{f}(\breve{\gamma})=\breve{\delta}\}.
+\end{equation*}
+We need to check the two requirements above.
+
+Checking \ref{item:f:gamma:F}.
+Let \(\gamma<\alpha\). There exists \(\beta>\delta\) such that
+\(f(\gamma)=\delta\) in \(M[G]\).
+By the truth lemma, there exists \(q\geq p\), \(q\in G\) such that
+\(q\forces \utilde{f}(\breve{\gamma})=\breve{\delta}\).
+Then \(\delta\in F(\gamma)\).
+
+Checking \ref{item:f:gamma:aleph0}.
+In $M$, assume that, \(\delta_1,\delta_2\in F(\gamma)\)
+and \(\delta_1\neq\delta_2\) and \(\gamma<\alpha\).
+Then we have \(q_i \forces \utilde{f}(\breve{\gamma})=\breve{\delta}_i\)
+for \(i=1,2\). 
+We need to show that \(q_1,q_2\) are not compatible.
+By negation, \(\exists r\geq p\leq q_1,q_2 \geq p\).
+Now
+\begin{align}
+p & \forces \utilde{f}: \breve{\alpha} \to \breve{\beta} \nonumber \\
+r & \forces \utilde{f} \; \textnormal{is a function} \nonumber \\
+r & \forces \utilde{f}(\breve{\gamma}) = \breve{\delta}_i
+    \quad \textnormal{for both}\; i=1,2 \label{eq:force:delta12}
+\end{align}
+Note that \eqref{eq:force:delta12} is not an immediate contradiction.
+
+If \(r\in G\) then we could have picked. But we do not assume this.
+
+Let \(H\subseteq \dsP\) be generic such that \(r\in H\).
+In \(M[H]\), we look at \(g = \utilde{g}_H\).
+\begin{equation*}
+ M[H] \models g: \alpha\to \beta \quad \textnormal{is a function}.
+\end{equation*}
+The canonical names \(\breve{\alpha}\), \(\breve{\beta}\)
+are always the same, no matter what generic is used.
+Applying to \eqref{eq:force:delta12}, we get the contradiction
+\begin{equation*}
+g(\gamma) = \delta_1 \neq \delta_2 = g(\gamma).
+\end{equation*}
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
