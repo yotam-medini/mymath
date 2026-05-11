@@ -13,6 +13,7 @@
 \let\dddot\undefined
 \let\ddddot\undefined
 \usepackage{accents}
+\usepackage{centernot}
 
 
 \newcommand{\AC}{\ensuremath{\mathop{\rm AC}\nolimits}}
@@ -848,7 +849,7 @@ and \(a\in X\) as desired.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{2026/May/3}
 
-Note: The first hout of the lecture lacked video recording.
+Note: The first hour of the lecture lacked video recording.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Refresh}
@@ -856,7 +857,7 @@ Note: The first hout of the lecture lacked video recording.
 We have forcing notion \lrangle{\dsP, \leq_\dsP, 0_\dsP},
 partially ordered. A transitive countable model $M$.
 We wish to build a gerneric extension.
-\(G\subseteq\dsP\) is call generic iff
+\(G\subseteq\dsP\) is called generic iff
 \begin{enumerate}[label={(\alph*)}]
 \item \(\forall p,q\in\dsP\;((p\in G \land q\leq p) \implies q\in G)\).
 \item \(p,q\in G\;\implies\; \exists r\in G (p,q\leq r)\).
@@ -1222,6 +1223,51 @@ Applying to \eqref{eq:force:delta12}, we get the contradiction
 g(\gamma) = \delta_1 \neq \delta_2 = g(\gamma).
 \end{equation*}
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2026/May/10}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Refresh}
+
+We have a model $M$, \(\lrangle{\dsP, \leq_\dsP, 0_\dsP} \subseteq M\),
+a generic \(G\subseteq \dsP\) and (class?) of names \(M^\dsP \subseteq M\).
+\begin{center}
+\begin{tabular}{ll}
+$M$ & \(M[G]\) \\
+Ground model & Generic extension \\
+\multicolumn{2}{c}{\ZFC} \\
+\multicolumn{2}{c}{\(M\cap\On = \On\)}
+\end{tabular}
+\end{center}
+
+We had the truth lemma saying:
+\begin{equation*}
+M[G]\models\phi\;\Leftrightarrow\; \exists p\in G\,p\forces \phi.
+\end{equation*}
+
+What about cardinals? \\
+$M$ and \(M[G]\) agree about cardinals till \(\aleph_0\).
+if \(\kappa\) is a cardinal in \(M[G]\) then it is a cardinal in $M$
+because \(M\subseteq M[G]\).
+
+\begin{enumerate}[label={(\alph*)}]
+\item Preserve cardinalities. \label{item:pres:card}
+\item Preserve cofinality. \label{item:pres:cof}
+\item Preserve regular cardinals. \label{item:pres:regcard}
+\end{enumerate}
+
+We have 
+\begin{equation*}
+ \textnormal{\ref{item:pres:card}}
+ % \;\overset{\Longleftarrow}{\not\Longrightarrow}\;
+ \;\mathrel{\substack{\Longleftarrow \\ \centernot\Longrightarrow}}\;
+ \textnormal{\ref{item:pres:cof}}
+ \;\Longleftrightarrow\;
+ \textnormal{\ref{item:pres:regcard}}
+\end{equation*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
