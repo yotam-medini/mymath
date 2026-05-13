@@ -1026,7 +1026,7 @@ We want to make the set $S$ of names to a name
 \begin{equation*}
 (S\times\{0_\dsP\})_G = \{(\gamma,\pi_\gamma)|\, \gamma<\delta\}
 \end{equation*}
-Containing 
+Containing
 \begin{equation*}
 \{(\pi_\gamma)_G|\,\gamma<\delta\} \subseteq A
 \end{equation*}
@@ -1038,29 +1038,29 @@ With this, we completed showing the generic extension is a model for \ZFC.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cohen-Real Forcing}
 
-Let 
+Let
 \begin{equation*}
 C = \left\{p|\, p\;\textnormal{partial finite function}: \omega\to 2\right\}.
 \end{equation*}
 With the continuation order \(q\leq p\;\Leftrightarrow q \subseteq p\).
-Let \(G\subseteq C\) be generic. Let \(g=\cup G\) 
+Let \(G\subseteq C\) be generic. Let \(g=\cup G\)
 which is a function, since being generic, there no inconsistencies in $G$.
 We alreadt saw that \(g:\omega \to 2\) is a complete function
 and \(g\notin M\).
-For any \(h\in M\), look at 
+For any \(h\in M\), look at
 \(D^j = \{p\in C|\, \exists n\in\dom p\, p(n)\neq h(n)\}\).
 which is dense. Thus \(G\cap D^h\neq\emptyset\) and so \(g\neq h\).
 
-\B{Conclusion}: \(V \neq L\) (G\"del model) is consistent.
+\B{Conclusion}: \(V \neq L\) (G\"odel model) is consistent.
 or
 \begin{equation*}
-M[G] \models \textnormal{There exists real not constructible, not in }L. 
+M[G] \models \textnormal{There exists real not constructible, not in }L.
 \end{equation*}
 
-Let \(\lambda\) be a cardinal and 
+Let \(\lambda\) be a cardinal and
 \begin{equation*}
-C(\lambda) = 
-  \left\{p|\, p\;\textnormal{partial finite function}: 
+C(\lambda) =
+  \left\{p|\, p\;\textnormal{partial finite function}:
     \omega\times\lambda\to 2\right\}.
 \end{equation*}
 Here we try to build Cohen-\(\lambda\)-real forcing.
@@ -1157,9 +1157,9 @@ Clearly if \(|\dsP|=\aleph_0\) then \dsP\ satisfies \ccc.
 
 \begin{claim}
 Let \(G\subseteq\dsP\) be generic, and \dsP satisfies \ccc.
-Assume there exists \(\alpha,\beta\) ordinals 
+Assume there exist \(\alpha,\beta\) ordinals
 and a function \(f:\alpha\to\beta\) in \(M[G]\).
-Then there exists a function \(F:\alpha\to\Power(beta)\) in $M$
+Then there exists a function \(F:\alpha\to\Power(\beta)\) in $M$
 such that for all \(\gamma<\alpha\)
 \begin{enumerate}
 \item \(f(\gamma)\in F(\gamma)\). \label{item:f:gamma:F}
@@ -1197,7 +1197,7 @@ Checking \ref{item:f:gamma:aleph0}.
 In $M$, assume that, \(\delta_1,\delta_2\in F(\gamma)\)
 and \(\delta_1\neq\delta_2\) and \(\gamma<\alpha\).
 Then we have \(q_i \forces \utilde{f}(\breve{\gamma})=\breve{\delta}_i\)
-for \(i=1,2\). 
+for \(i=1,2\).
 We need to show that \(q_1,q_2\) are not compatible.
 By negation, \(\exists r\geq p\leq q_1,q_2 \geq p\).
 Now
@@ -1258,7 +1258,7 @@ because \(M\subseteq M[G]\).
 \item Preserve regular cardinals. \label{item:pres:regcard}
 \end{enumerate}
 
-We have 
+We have
 \begin{equation*}
  \textnormal{\ref{item:pres:card}}
  % \;\overset{\Longleftarrow}{\not\Longrightarrow}\;
@@ -1267,6 +1267,189 @@ We have
  \;\Longleftrightarrow\;
  \textnormal{\ref{item:pres:regcard}}
 \end{equation*}
+
+\ccc\ in $M$ --- For each anti-chain \(A\subseteq\dsP\), \(|A|\leq\aleph_0\).
+By \ccc\ we mean
+ \(\forall p,q\in A\, (p\neq q \implies \not\exists r\, p,q\leq r)\).
+
+\begin{claim}
+Assume \dsP\ satisfies \ccc. Let \(G\subseteq\dsP\) generic.
+Assume in \(f:\alpha\to\beta\) in \(M[G]\) then in $M$ there exists
+\(F:\alpha\to\Power(\beta)\) such that for all \(\gamma<\alpha\)
+\(f(\alpha)\in F(\alpha)\subseteq\beta\)
+and the cardinality in $M$ of \(F(\alpha)\) is finite or countable.
+\end{claim}
+
+Let \(\gamma\) and arbitrary ordinal. Let Cohen focring
+\begin{equation*}
+C(\gamma) = \{f|\, f:\gamma\times\omega\to 2\; \textnormal{partial final}\}.
+\end{equation*}
+and \(G\subseteq C(\gamma)\) generic.
+Define \(g_\alpha:\omega\to2\) by
+\begin{equation*}
+g_\alpha(n) = \left(\cup G\right)(\alpha,n).
+\end{equation*}
+For each \(\alpha,\beta<\gamma\), \(\alpha\neq\beta\)
+we have \(g_\alpha\neq g_\beta\).
+
+For each \(h\in M\), \(h:\omega\to2\) and for each \(\alpha<\gamma\),
+\(h\neq g_\alpha\).
+Thus in \(M[G]\) there exist at least \(\gamma\) functions \(\omega\to 2\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Preservations}
+
+\begin{claim}
+Assume \dsP\ satisfies \ccc. Let \(G\subseteq\dsP\) be generic.
+Then $M$ and \(M[G]\) have the same regular cardinals.
+Therefore preserving cardinalities and preserving cofinalities are satisfied.
+\end{claim}
+\begin{proof}
+Let \(\kappa\) be a regular cardinal of $M$. Assume \(\kappa>\aleph_0\).
+Moving to \(M[G]\), let \(f:\delta\to\kappa>\) for \(\delta<\kappa\).
+There exists \(F\in M\) such that \(\dom F=\delta\)
+and for each \(\alpha<\delta\), \(|F(\alpha)|^M\leq\aleph_0\),
+\(F(\alpha)\in F(\alpha)\). Define \(F^*:\delta\to\kappa\)
+by \(\kappa > F^*(\alpha)=\sup F(\alpha)\).
+For all \(\alpha<\delta\), \(f(\alpha)\leq F^*(\alpha\).
+\(F^*\) is bounded in \(\kappa\) hence so is $f$.
+\end{proof}
+
+\begin{claim}
+\(C(\lambda)\) satisfies \ccc\ for each \(\lambda\).
+\end{claim}
+Note: If \(\lambda<\aleph_0\) then any anti-chain \(\leq\aleph_0\).
+\begin{proof}
+Let \(\{f_i|\, i <\aleph_1\} \subseteq C(\lambda)\).
+We will show that there exists \(S\subseteq \aleph_1\) such that
+for all \(i,j\in S\), \(f_i\), \(f_j\) are compatible.
+Denote \(a_i = \dom f_i\). We have \(\aleph_1\) finite subsets of
+\(\lambda\times\omega\).
+Then by \(\Delta\)-system,
+there exists \(S\subseteq \aleph_1\),
+\(|S|=\aleph_1\) and there exists \(a\leq\lambda\) finite
+such that \(\forall i,j\in S\, (i\neq j\implies a_i\cap a_j=a)\).
+
+How many functions \(a\to 2\) are there? \(2^{|a|}\).
+Therefore there exists \(S^*\subseteq S\), \(|S^*|=\aleph_1\)
+and there exists \(f:a\to 2\) such that for each \(i\in S^*\),
+\(f{\restriction}_a = f\).
+
+Pick \(i,j\in S^*\) and look at \(f_i\), \(f_j\).
+If \(\dom f_i \cap \dom f_j \neq\emptyset\)
+ pick \((\alpha,n)\in \dom f_i \cap \dom f_j = a_i\cap a_j\).
+Now \(f_i(\alpha,n) = f(\alpha,n) = f_j(\alpha,n)\).
+\end{proof}
+Conclusion: We can break \GCH\ with \(\lambda\geq\aleph_?\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Strengthening \ccc}
+
+\begin{claim}
+Let \(\lambda\) be regular cardinal \(>\aleph_0\).
+Assume \(\{f_i|\, i < \lambda\} \subseteq C(\lambda)\).
+Then there exists a stationary \(S\subseteq \lambda\)
+such that for all \(i,j\in S\), \(f_i,f_j\) are compatible.
+\end{claim}
+This is stronger than \ccc.
+\begin{proof}
+Put \(a_i = \dom(\dom f_i)\) (taking first coordinate).
+We have finite subsets \(\{a_i|\,i<\lambda\}\subseteq\lambda\).
+Applying \(\Delta\)-system we have \(S\subseteq \lambda\)
+and a finite \(a\subseteq\lambda\) such that for all \(i,j\in S\),
+\((i\neq j\implies a_i\cap a_j = a\).
+Look at the mapping \(i\to f_i{\restriction}_{a\times\omega}\)
+the exist a stationary \(S^*\subseteq S\) and
+a partial finite \(f:a\times\omega\to 2\) such that for all
+\(i\in S^*\), \(f = f{\restriction}_{a\times\omega}\) and then for all
+\(i,j\in S^*\) are compatible.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Contradiction to \CH\ via \(\lambda\)}
+
+\begin{thm}
+Let \(\lambda>0\) be some ordinal. Let \(G\subseteq C(\lambda)\) be generic.
+Then in \(M[G]\) there are at least \(\lambda\)
+distinct functions \(\omega\to 2\).
+Moreover, if \(\lambda\) is a cardinal \(\geq \aleph_2\) in $M$,
+then it remains so also in \(M[G]\) and therefore
+\(\aleph_2 \leq \lambda \leq 2^{\aleph_0}\) in \(M[g]\).
+\end{thm}
+
+\begin{corollary}
+Let \(G\subseteq C(\aleph_2\) be generic. \(\aleph_2\) of $M$.
+Then in \(M[G]\) \(\aleph_2\leq 2^{\aleph_0}\).
+\end{corollary}
+
+Question: Can we get equality?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Good Names Restriction}
+
+Say we have \(X\subseteq\omega\). In \(M[G]\) there is a name \utilde{X}
+such that \(X=\utilde{X}_G\), we have a mapping \(\utilde{X}\to\utilde{X}_G\).
+
+We will try to get some bound.
+We try to restrict the names.
+
+\begin{ldef}
+Let \(\delta\) be an arbitrary ordinal.
+A name \(\tilde{a}\) is called a \emph{nice name} of subset of \(\delta\)
+iff 
+\(\utilde{a} = \bigl\{\{\breve{\alpha}\}\times A_\alpha|\, \alpha<\delta\bigr\}\)
+where \(A_\alpha\subseteq \dsP\) is anti-chain.
+\end{ldef}
+
+\begin{claim}
+Let $b$ be an arbitrary name such that 
+\(0_\dsP\forces\utilde{b}\subseteq\breve{\delta}\).
+Then there exist a nice name \utilde{a} such that
+\(0_\dsP \forces \utilde{a} = \utilde{b}\).
+\end{claim}
+
+\begin{proof}
+For each \(\alpha<\delta\) let \(A_\alpha\subseteq\dsP\) be anti-chain
+such that 
+\begin{enumerate}[label={(\alph*)}]
+\item For each \(p\in A_\alpha\), \(p\forces \breve{\alpha} \in \utilde{b}\).
+\item For each \(q\in\dsP\) if \(q\forces \breve{\alpha}\in\utilde{b}\)
+  then there exists \(p\in A_\alpha\) such that $p$,$q$ are compatible.
+\end{enumerate}
+
+We will show that \(0_\dsP\forces \utilde{a}=\utilde{b}\).
+Let \(G\subseteq\dsP\) generic. We will show \(a=\utilde{a}_G=\utilde{b}_G=g\).
+
+(\(\subseteq\):). Let \(\alpha\in a\). We have \(\alpha=\breve{\alpha}_G\)
+and \(a=\utilde{a}_G\) and there exists \(p\in A_\alpha\) and \(p\in G\)
+The last two memberships respectable implies
+\(p\forces \breve{a}\subseteq \utilde{b}\) and \(\alpha\in b\).
+
+(\(\supseteq\):). Let \(\alpha\in b\).
+There exists \(p\in G\), \(p\forces \breve{\alpha}\in b\).
+If \(p\in A_\alpha\) then simply ... ?\\
+If \(G\cap A_\alpha \neq \emptyset\) then \(q\in G\cap A_\alpha\)
+and there exists \((\breve{\alpha},q) \in\utilde{a}\)
+and so \(\alpha\in a\).
+
+By negation, assume \(G\cap A_\alpha=\emptyset\),
+then \(p\notin A_\alpha\).
+Let
+\begin{equation*}
+D = \{r\in\dsP|\,
+  (\exists q\in A_\alpha \land q<r) \lor
+    (r\forces \breve{\alpha} \notin \utilde{b})
+  \}.
+\end{equation*}
+We will show that $D$ is dense.
+Let \(t\in\dsP\). If there exists \(r\geq t\) such that
+\(r\forces \breve{\alpha}\notin\utilde{b}\) then \(r\in D\).
+Assume there is no strengthening of $t$ that forces
+\(\breve{\alpha}\notin\utilde{b}\), so thee exists \(r\geq t\) such that
+\(r\forces \breve{\alpha}\in\utilde{b}\). If \(r\in A_\alpha\)
+then we are done. Otherwise, there exists \(q\in A_\alpha\) that is compatible
+with $r$, and let \(s\geq r,q\), \(s\in D\).
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
