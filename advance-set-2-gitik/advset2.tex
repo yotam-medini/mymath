@@ -22,14 +22,17 @@
 \newcommand{\MA}{\ensuremath{\mathop{\rm MA}\nolimits}}
 \newcommand{\ccc}{c.c.c.}
 \newcommand{\CH}{\ensuremath{\mathop{\rm CH}\nolimits}}
-\newcommand{\dsP}{\ensuremath{\mathds{P}}}
 \newcommand{\cof}{\ensuremath{\mathop{\rm cof}\nolimits}}
+\newcommand{\Col}{\ensuremath{\mathop{\rm Col}\nolimits}}
 \newcommand{\crotin}{\rotatebox[origin=c]{-90}{\(\in\)}}
+\newcommand{\dsP}{\ensuremath{\mathds{P}}}
 \newcommand{\finitepartial}{\textnormal{finite partial}}
 \newcommand{\forces}{\ensuremath{\Vdash}}
 \newcommand{\forcesstar}{\ensuremath{\Vdash^*}}
 \newcommand{\GCH}{\ensuremath{\mathop{\rm GCH}\nolimits}}
 \newcommand{\Lev}{\ensuremath{\mathop{\rm Lev}\nolimits}}
+\newcommand{\kcc}{\(\kappa\).c.c}
+\newcommand{\MG}{\ensuremath{M[G]}}
 \newcommand{\On}{\ensuremath{\mathit{On}}}
 \newcommand{\op}{\ensuremath{\mathop{\rm op}\nolimits}}
 \newcommand{\otp}{\ensuremath{\mathop{\rm otpo}\nolimits}}
@@ -1452,7 +1455,142 @@ with $r$, and let \(s\geq r,q\), \(s\in D\).
 \end{proof}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Upper Bound on Power set}
+
+\begin{claim}
+Let \dsP\ be a forcing notion. Assum \(|\dsP|=\kappa\), \dsP\ satisfies
+\ccc, \(\lambda\geq \aleph_0\). Let \(\theta = \kappa^\lambda\).
+(So for in ground model). Let \(G\subseteq\dsP\) be generic.
+Then \(2^\lambda\leq \theta\) in \MG.
+\end{claim}
+\begin{proof}
+Compute amount of nice names of subsets of \(\lambda\).
+\(\utilde{a} = \{\{\breve{\alpha}\}\times A_\alpha|\, \alpha<\lambda\}\)
+where \(A_\alpha\) is anti-chain.
+There are \(\kappa^{\aleph_0}\) anti-chains in \dsP.
+For every \(\alpha<\lambda\) we choose an anti-chain \(A_\alpha\).
+So all functions \(\lambda\to\) anti-chain, so their amount is
+\(\left(\kappa^{\aleph_0}\right)^\lambda = \kappa^\lambda = \theta\)
+the number of nice names.
+\end{proof}
+
+\begin{corollary}
+Assume $M$ satisfies \GCH. Let \(G\subseteq C(\aleph_2)\) be a generic.
+Then in \MG, \(2^{\aleph_0} = \aleph_2\).
+And for all \(\alpha>0\), \(2^{\aleph_\alpha}=\aleph_{\alpha+1}\).
+\end{corollary}
+Thus in generic extension, we broke \GCH\ just in a single cardinal.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exponents in \MG}
+
+\B{Example}: Assume \(M\models\GCH\), \(G\subseteq C(\aleph_\omega)\).
+We will compute exponents in \MG.
+We have \(2^{\aleph_0} \geq \aleph_\omega\) since we added \(\aleph_\omega\)
+distinct \(\omega\to 2\) functions.
+From previous claim we have
+\begin{align}
+  2^{\aleph_0} &\leq \left({\aleph_\omega}^{\aleph_0}\right)^M \nonumber \\
+&= \aleph_{\omega+1} \label{eq:aleph:omega+1}
+\end{align}
+The \eqref{eq:aleph:omega+1} equality holds since $M$ is a model of \GCH.
+By K\"onig theorem \(2^{\aleph_0} \neq \aleph_\omega\),
+so in this model \(2^{\aleph_0} = \aleph_{\omega+1}\).
+
+\begin{itemize}
+\item Assume \(\aleph_0\leq \label < \aleph_\omega\). Then
+  \begin{equation*}
+  \aleph_{\omega+1}
+  = \left({\aleph_\omega}^\lambda\right)^M \geq 2^\lambda \geq \aleph_\omega.
+  \end{equation*}
+\item Assume \(\lambda \geq \aleph_\omega\).
+  \begin{equation*}
+  \lambda^+
+  = \left({\aleph_\omega}^\lambda\right)^M \geq 2^\lambda \geq \lambda^+.
+  \end{equation*}
+  Therefore \(2^\lambda = \lambda^+\).
+\end{itemize}
+
+\begin{corollary}
+Assume \(M\models\GCH\).
+For all cardinal \(\lambda > \aleph_0\) such that \(\cof(\lambda)\neq\omega\)
+in \(C(\lambda)\), \(2^{\aleph_0} = \lambda\).
+\end{corollary}
+\begin{proof}
+Let \(G\subseteq C(\lambda)\) be generic.
+\begin{equation*}
+\lambda = \left(\lambda^{\aleph_0}\right)^M \geq 2^{\aleph_0} \geq \lambda
+\end{equation*}
+and therefore an equality.
+\end{proof}
+
+\begin{corollary}
+Assume \(M\models\GCH\). Let \(\lambda\) be
+strongly inaccessible cardinal
+(regular and \(\forall \mu>\lambda, 2^\mu < \lambda\)).
+Let \(G\subseteq C(\lambda)\) be generic.
+Then in \MG\ is weakly inaccessible (regular and limit) but not strongly.
+\end{corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Uncountable Cardinals}
+
+\begin{enumerate}[label={(\alph*)}]
+\item How to get a state like
+   \(2^{\aleph_0}=\aleph_1\;\land\;2^{\aleph_1}=\aleph_3\).
+   That is \GCH\ breaks first in \(\aleph_1\) and not in \(\aleph_0\).
+\item How to get a state like where \((\aleph_1)^M\) is countable in \MG.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\B{Collapse of \(\aleph_1\) (or \(\kappa\geq\aleph_1\))}
+
+Let \(\kappa \geq\aleph_1\) be a cardinal. Let
+\begin{gather*}
+\Col(\aleph_0,\kappa) = \{f|\, f:\aleph_0\to\kappa \;\textnormal{final}\} \\
+f_1 \leq f2 \;\Leftrightarrow\; f_1 \subseteq f_2.
+\end{gather*}
+This does not satisfy \ccc. Take \(\{\{(0,\alpha)\}|\,\alpha<\kappa\}\)
+(partial functions mapping \(0\to\alpha\)),
+an anti-chain of \(\kappa\) cardinality.
+Take generic \(G\subseteq\Col(\omega,\kappa)\).
+Then \(g=\cup G:\omega \xrightarrow{\text{onto}} \kappa\).
+Therefore in \MG\ \(\kappa\) is countable.
+
+\begin{ldef}
+Let \(\kappa\) be a regular cardinal. \dsP\ \emph{satisfies \kcc}
+iff for any anti-chain \(A\subseteq\dsP\), \(|A|\leq\kappa\).
+\end{ldef}
+Then \ccc\ \(\Leftrightarrow\) \(\kappa\)-c.c.
+
+\begin{claim}
+Assume \(\kappa\) is a regular cardinal. \dsP\ a forcing notion
+that satisfies \kcc. Let \(G\subseteq \dsP\) be generic.
+Assume in \MG\ \(f:\alpha\to\beta\).
+Then in $M$ there exists a function $F$ from \(\alpha\) to \(\Power(\beta)\)
+such that for eall \(\gamma<\alpha\) the following hold:
+\begin{enumerate}
+\item \(|F(\gamma) < \kappa\).
+\item \(f(\gamma) \in F(\gamma)\).
+\end{enumerate}
+\end{claim}
+Similar to what we had with \ccc, with similar proof.
+
+\begin{claim}
+Assume \dsP\ satisfies \kcc. Let \(G\subseteq\dsP\) be generic.
+Then in \MG\ all the cardinals \(\geq\kappa\) are preserved.
+\end{claim}
+Similar proof as before. It is sufficient to look at successor cardinals.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{MG-cardinals}
+  \caption{Cardinals in $M$ and \MG}
+  \label{fig:MG-cardinals}
+\end{figure}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
