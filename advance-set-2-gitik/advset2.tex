@@ -1590,7 +1590,57 @@ Similar proof as before. It is sufficient to look at successor cardinals.
   \label{fig:MG-cardinals}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2026/May/17}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Refresh}
+
+We have shown that \(2^{\aleph_0} = \aleph_\alpha\) for all \(\alpha\)
+such that \(\cof(\aleph_\alpha)>\aleph_0\).
+
+\begin{ldef}
+Given forcing notion \dsP, it is \kcc\ iff
+for all anti-chain \(A\subseteq\dsP\), \(|A|<\kappa\).
+\end{ldef}
+
+\begin{claim}
+Assume \dsP\ satisfies \kcc, \(G\subseteq\dsP\) generic, and a function
+\(f:\alpha\to\beta\) in \MG\ then there exists a function \(F\in M\)
+such that
+\begin{enumerate}[label={(\alph*)}]
+  \item \(\dom F = \alpha\).
+  \item For eall \(\gamma<\alpha\)
+    \begin{enumerate}[label={(\alph{enumi}\arabic*)}]
+      \item \(F(\gamma)\subseteq \beta\).
+      \item \(|F(\gamma)|<\kappa\).
+      \item \(f(\gamma)\in F(\gamma)\).
+    \end{enumerate}
+\end{enumerate}
+\end{claim}
+
+\begin{claim}
+Assume \dsP\ satisfies \kcc. Then fir each cardinals \(lambda\geq\kappa\), 
+\(\kappa\) remains a cardinal in a generic extension.
+\end{claim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Generalization to Cardinals \(>\aleph_0\)}
+
+Let \(\rho\), \(\mu\) be cardinals. Define
+\begin{equation*}
+\Cohen(\rho, \mu) = \{f|\, f:\mu\times\rho\to 2\;\land\;|f|<\rho\;
+  \textnormal{partial}\},
+\end{equation*}
+With containing order: \(f_1\leq f_2\l\Leftrightarrow\;f_1\subseteq f_2\).
+Take generic \(G\subseteq\Cohen(\rho, \mu)\) and
+\(g = \cup G:\mu\times\rho\to 2\) and split for each \(\alpha<\mu\)
+\(g_\alpha:\rho\to 2\) by \(g_\alpha(\beta) = g(\alpha,\beta)\).
+We get \(\mu\) new and distinct functions \(\{g_\alpha|\, \alpha<\mu\}\).
+In \MG\ we have \(|\Power(\rho)| \geq |\mu|\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
